@@ -73,7 +73,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -173,7 +174,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "57f82b196db399f2",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
     "source/about/index.md",
     "source/about/index-1.md",
