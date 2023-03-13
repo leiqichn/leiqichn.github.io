@@ -82,8 +82,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -183,8 +182,13 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "520d050d9f24a28a",
   "lastOpenFiles": [
+    "themes/fluid_19/source/img/CLlogo.jpg",
+    "themes/fluid_19/source/img/CL-logo.jpg",
+    "themes/fluid_19/source/img/细胞本体CL-logo.jpg",
+    "themes/fluid_19/source/img/keyboard.jpg",
+    "deploy.sh",
     "themes/fluid_19/source/css/_pages/_base/_widget/toc.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/search.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/scroll-btn.styl",
@@ -194,8 +198,6 @@
     "themes/fluid_19/source/css/_pages/_base/_widget/ngrogress.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/modal.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/header.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/footnote.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/footer.styl",
     "themes/fluid_19/source/img/police_beian.png",
     "themes/fluid_19/source/img/loading.gif",
     "themes/fluid_19/source/img/fluid.png",
