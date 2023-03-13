@@ -11,24 +11,15 @@
             "id": "57f82b196db399f2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
-            "id": "1e72a3c019ed625e",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/关于我/about.md",
+                "file": "source/about/index.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -102,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/关于我/about.md",
+                "file": "source/about/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/关于我/about.md",
+                "file": "source/about/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/关于我/about.md"
+                "file": "source/about/index.md"
               }
             }
           },
@@ -182,53 +173,55 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "520d050d9f24a28a",
+  "active": "57f82b196db399f2",
   "lastOpenFiles": [
-    "themes/fluid_19/source/img/CLlogo.jpg",
-    "themes/fluid_19/source/img/CL-logo.jpg",
-    "themes/fluid_19/source/img/细胞本体CL-logo.jpg",
-    "themes/fluid_19/source/img/keyboard.jpg",
-    "deploy.sh",
-    "themes/fluid_19/source/css/_pages/_base/_widget/toc.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/search.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/scroll-btn.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/qrcode.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/pagination.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/noscript.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/ngrogress.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/modal.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/header.styl",
-    "themes/fluid_19/source/img/police_beian.png",
-    "themes/fluid_19/source/img/loading.gif",
-    "themes/fluid_19/source/img/fluid.png",
-    "themes/fluid_19/source/img/default.png",
-    "themes/fluid_19/source/img/avatar.png",
-    "themes/fluid_19/README_en.md",
-    "themes/fluid_19/README.md",
-    "source/_posts/leetcode/LeiQi.md",
-    "source/_posts/hello-world.md",
     "source/about/index.md",
-    "source/obsidian_tamplate/TemPlater.md",
-    "source/_posts/关于我/about.md",
-    "scaffolds/post.md",
-    "scaffolds/page.md",
-    "scaffolds/draft.md",
-    "leetcode/二叉树的深度和高度.md",
-    "生物医药考研/未命名.md",
-    "Go 基础知识.md",
-    "Go 常用包.md",
-    "微信读书/SQL基础教程（第2版）.md",
-    "微信读书/Python数据可视化之美：专业图表绘制指南（全彩）.md",
-    "微信读书/半小时漫画股票实战法.md",
-    "微信读书/“笨办法”学Python 3.md",
-    "欢迎使用Markdown编辑器.md",
-    "Go  创建变量之new()　函数.md",
-    "设置wps 自动备份.md",
+    "source/about/index-1.md",
+    "node_modules/string_decoder/lib/string_decoder.js",
+    "node_modules/string_decoder/lib",
+    "node_modules/sax/lib/sax.js",
+    "node_modules/sax/lib",
+    "node_modules/rfdc/test/index.js",
+    "node_modules/rfdc/test",
+    "node_modules/jsdom/lib/jsdom/living/webstorage/Storage-impl.js",
+    "node_modules/jsdom/lib/jsdom/living/webstorage",
+    "node_modules/jsdom/lib/jsdom/living/websockets/WebSocket-impl.js",
+    "node_modules/jsdom/lib/jsdom/living/websockets/WebSocket-impl-browser.js",
+    "node_modules/hexo-renderer-stylus/README.md",
+    "node_modules/hexo-cli/assets/source/_posts/hello-world.md",
+    "node_modules/form-data/Readme.md",
+    "node_modules/combined-stream/Readme.md",
+    "node_modules/escodegen/README.md",
+    "node_modules/prismjs/README.md",
+    "node_modules/prismjs/CHANGELOG.md",
+    "node_modules/async/CHANGELOG.md",
+    "node_modules/hexo-cli/README.md",
+    "node_modules/hexo-cli/assets/scaffolds/post.md",
+    "node_modules/hexo-cli/assets/scaffolds/page.md",
+    "node_modules/hexo-cli/assets/scaffolds/draft.md",
+    "node_modules/warehouse/README.md",
+    "node_modules/readable-stream/GOVERNANCE.md",
+    "node_modules/stylus/node_modules/source-map/README.md",
+    "node_modules/source-map/CHANGELOG.md",
+    "node_modules/dom-serializer/node_modules/entities/readme.md",
+    "node_modules/psl/browserstack-logo.svg",
+    "node_modules/psl/README.md",
+    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/helpers/fancybox_buttons.png",
+    "node_modules/hexo-cli/assets/themes/landscape/source/css/images/banner.jpg",
+    "node_modules/hexo-cli/assets/themes/landscape/source/css/fonts/fontawesome-webfont.svg",
+    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_sprite@2x.png",
+    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_sprite.png",
+    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_overlay.png",
+    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_loading@2x.gif",
+    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_loading.gif",
+    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/blank.gif",
+    "node_modules/hexo-cli/completion/README.md",
+    "node_modules/acorn/README.md",
+    "node_modules/hexo-util/README.md",
+    "node_modules/hexo-theme-fluid/README.md",
+    "node_modules/nib/docs/README.md",
+    "node_modules/nib/README.md",
     "未命名 1.canvas",
-    "未命名.canvas",
-    "微信读书/月亮与六便士.md",
-    "微信读书/人生的智慧.md",
-    "微信读书/流浪地球.md",
-    "微信读书/疯传：让你的产品、思想、行为像病毒一样入侵.md"
+    "未命名.canvas"
   ]
 }
