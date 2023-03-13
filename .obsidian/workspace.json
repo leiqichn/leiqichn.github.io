@@ -176,6 +176,12 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "node_modules/has-flag/index.js",
+    "node_modules/has-flag/package.json",
+    "node_modules/has-flag/readme.md",
+    "node_modules/has-flag/license",
+    "node_modules/has-flag/index.d.ts",
+    "node_modules/has-flag",
     "source/about/index.md",
     "source/about/index-1.md",
     "node_modules/string_decoder/lib/string_decoder.js",
@@ -184,10 +190,6 @@
     "node_modules/sax/lib",
     "node_modules/rfdc/test/index.js",
     "node_modules/rfdc/test",
-    "node_modules/jsdom/lib/jsdom/living/webstorage/Storage-impl.js",
-    "node_modules/jsdom/lib/jsdom/living/webstorage",
-    "node_modules/jsdom/lib/jsdom/living/websockets/WebSocket-impl.js",
-    "node_modules/jsdom/lib/jsdom/living/websockets/WebSocket-impl-browser.js",
     "node_modules/hexo-renderer-stylus/README.md",
     "node_modules/hexo-cli/assets/source/_posts/hello-world.md",
     "node_modules/form-data/Readme.md",
@@ -220,8 +222,6 @@
     "node_modules/acorn/README.md",
     "node_modules/hexo-util/README.md",
     "node_modules/hexo-theme-fluid/README.md",
-    "node_modules/nib/docs/README.md",
-    "node_modules/nib/README.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
