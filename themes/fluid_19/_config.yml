@@ -424,9 +424,9 @@ footer:
   # 页脚第一行文字的 HTML，建议保留 Fluid 的链接，用于向更多人推广本主题
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   content: '
-    <a href="https://github.com/" target="_blank" rel="nofollow noopener"><span>github</span></a>
-    <i class="iconfont icon-love"></i>
-    <a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Lei Qi</span></a>
+    <a href="https://github.com/" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2023. All right reserved. /span></a>
+    #<i class="iconfont icon-love"></i>
+    #<a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Lei #Qi</span></a>
   '
 
   # 展示网站的 PV、UV 统计数
@@ -465,7 +465,7 @@ index:
   # 头图高度，屏幕百分比
   # Height ratio of banner image
   # Available: 0 - 100
-  banner_img_height: 90
+  banner_img_height: 80
 
   # 头图黑色蒙版的不透明度，available: 0 - 1.0， 1 是完全不透明
   # Opacity of the banner mask, 1.0 is completely opaque
