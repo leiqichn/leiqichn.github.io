@@ -73,8 +73,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -174,8 +173,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "520d050d9f24a28a",
   "lastOpenFiles": [
+    "sync2gitee.sh",
+    "deploy - 副本.sh",
     "node_modules/has-flag/index.js",
     "node_modules/has-flag/package.json",
     "node_modules/has-flag/readme.md",
@@ -188,8 +189,6 @@
     "node_modules/string_decoder/lib",
     "node_modules/sax/lib/sax.js",
     "node_modules/sax/lib",
-    "node_modules/rfdc/test/index.js",
-    "node_modules/rfdc/test",
     "node_modules/hexo-renderer-stylus/README.md",
     "node_modules/hexo-cli/assets/source/_posts/hello-world.md",
     "node_modules/form-data/Readme.md",
