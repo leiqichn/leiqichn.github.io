@@ -4,30 +4,11 @@
   
   
   <entry>
-    <title>LeiQi</title>
-    <link href="/2023/03/26258a8cfc9b.html"/>
-    <url>/2023/03/26258a8cfc9b.html</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    <categories>
-      
-      <category>leetcode</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>about</title>
     <link href="/2023/03/30bf201fc61d.html"/>
     <url>/2023/03/30bf201fc61d.html</url>
     
-    <content type="html"><![CDATA[<h1 id="个人简历"><a href="#个人简历" class="headerlink" title="个人简历"></a>个人简历</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h1><p>大家好，我是Lei Qi, 毕业于复旦大学 生物信息专业，现转码农成功，现任职于华为，担任软件开发工程师一直。本站是为了方便自己记录学习过程，和大家交流经验而建。也是为了学习web, 实现拥有自己一个网站的小目标，才有了本站，欢迎大家多多交流学习，祝大家学习愉快~</p>]]></content>
     
     
     <categories>
@@ -46,7 +27,7 @@
     <link href="/2023/03/b89f833a532b.html"/>
     <url>/2023/03/b89f833a532b.html</url>
     
-    <content type="html"><![CDATA[<p><img src="https://gitee.com/LeiQiCN/upload-img/raw/master/Image/20230314223800.png" alt="image.png"></p>]]></content>
+    <content type="html"><![CDATA[<p>使用git actions 无法自动完成部署</p><p>需要在github 上点击对应失败的任务</p><p>接下来就能看到具体的报错行</p><p><img src="https://gitee.com/LeiQiCN/upload-img/raw/master/Image/20230314223800.png" alt="image.png"></p>]]></content>
     
     
     <categories>
