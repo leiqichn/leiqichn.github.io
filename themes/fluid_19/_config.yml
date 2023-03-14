@@ -1001,7 +1001,7 @@ links:
     #  intro: "主题博客",
     #  link: "https://hexo.fluid-dev.com/",
     #  avatar: "/img/favicon.png"
-    }
+    #}
     #- {
     #  title: "Fluid Docs",
     # intro: "主题使用指南",
