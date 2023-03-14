@@ -11,12 +11,8 @@
             "id": "57f82b196db399f2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/about/index.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -93,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/about/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +105,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/about/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -132,9 +126,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "source/about/index.md"
-              }
+              "state": {}
             }
           },
           {
@@ -175,20 +167,38 @@
   },
   "active": "520d050d9f24a28a",
   "lastOpenFiles": [
-    "sync2gitee.sh",
-    "deploy - 副本.sh",
-    "node_modules/has-flag/index.js",
-    "node_modules/has-flag/package.json",
-    "node_modules/has-flag/readme.md",
-    "node_modules/has-flag/license",
-    "node_modules/has-flag/index.d.ts",
-    "node_modules/has-flag",
+    "themes/fluid_19/source/css/_pages/_base/_widget/toc.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/search.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/scroll-btn.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/qrcode.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/pagination.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/noscript.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/ngrogress.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/modal.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/header.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/footnote.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/copyright.styl",
+    "themes/fluid_19/source/img/police_beian.png",
+    "themes/fluid_19/source/img/loading.gif",
+    "themes/fluid_19/source/img/keyboard.jpg",
+    "themes/fluid_19/source/img/fluid.png",
+    "themes/fluid_19/source/img/default.png",
+    "themes/fluid_19/source/img/CLlogo.jpg",
+    "themes/fluid_19/source/img/avatar.png",
+    "themes/fluid_19/README.md",
+    "themes/fluid_19/README_en.md",
+    "source/_posts/关于我/about.md",
+    "source/_posts/leetcode/LeiQi.md",
+    "source/obsidian_tamplate/TemPlater.md",
     "source/about/index.md",
+    "scaffolds/post.md",
+    "scaffolds/page.md",
+    "scaffolds/draft.md",
+    "img/loading.gif",
+    "img/police_beian.png",
+    "img/fluid.png",
+    "node_modules/has-flag/readme.md",
     "source/about/index-1.md",
-    "node_modules/string_decoder/lib/string_decoder.js",
-    "node_modules/string_decoder/lib",
-    "node_modules/sax/lib/sax.js",
-    "node_modules/sax/lib",
     "node_modules/hexo-renderer-stylus/README.md",
     "node_modules/hexo-cli/assets/source/_posts/hello-world.md",
     "node_modules/form-data/Readme.md",
@@ -203,24 +213,6 @@
     "node_modules/hexo-cli/assets/scaffolds/draft.md",
     "node_modules/warehouse/README.md",
     "node_modules/readable-stream/GOVERNANCE.md",
-    "node_modules/stylus/node_modules/source-map/README.md",
-    "node_modules/source-map/CHANGELOG.md",
-    "node_modules/dom-serializer/node_modules/entities/readme.md",
-    "node_modules/psl/browserstack-logo.svg",
-    "node_modules/psl/README.md",
-    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/helpers/fancybox_buttons.png",
-    "node_modules/hexo-cli/assets/themes/landscape/source/css/images/banner.jpg",
-    "node_modules/hexo-cli/assets/themes/landscape/source/css/fonts/fontawesome-webfont.svg",
-    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_sprite@2x.png",
-    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_sprite.png",
-    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_overlay.png",
-    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_loading@2x.gif",
-    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/fancybox_loading.gif",
-    "node_modules/hexo-cli/assets/themes/landscape/source/fancybox/blank.gif",
-    "node_modules/hexo-cli/completion/README.md",
-    "node_modules/acorn/README.md",
-    "node_modules/hexo-util/README.md",
-    "node_modules/hexo-theme-fluid/README.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
