@@ -11,8 +11,12 @@
             "id": "57f82b196db399f2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/工作技能/github actions 报错.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -89,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/工作技能/github actions 报错.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/工作技能/github actions 报错.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/工作技能/github actions 报错.md"
+              }
             }
           },
           {
@@ -165,8 +173,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "520d050d9f24a28a",
+  "active": "57f82b196db399f2",
   "lastOpenFiles": [
+    "deploy.sh~",
+    "source/about/index.md",
+    "source/_posts/工作技能/github actions 报错.md",
+    "source/_posts/工作技能",
     "themes/fluid_19/source/img/qrcode.jpg",
     "themes/fluid_19/source/img/cfa23abe0777e60cb46b19cfbf83127.jpg",
     "themes/fluid_19/source/css/_pages/_base/_widget/toc.styl",
@@ -178,7 +190,6 @@
     "themes/fluid_19/source/css/_pages/_base/_widget/ngrogress.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/modal.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/header.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/footnote.styl",
     "themes/fluid_19/source/img/police_beian.png",
     "themes/fluid_19/source/img/loading.gif",
     "themes/fluid_19/source/img/keyboard.jpg",
@@ -191,12 +202,10 @@
     "source/_posts/关于我/about.md",
     "source/_posts/leetcode/LeiQi.md",
     "source/obsidian_tamplate/TemPlater.md",
-    "source/about/index.md",
     "scaffolds/post.md",
     "scaffolds/page.md",
     "scaffolds/draft.md",
     "img/loading.gif",
-    "img/police_beian.png",
     "node_modules/has-flag/readme.md",
     "source/about/index-1.md",
     "node_modules/hexo-renderer-stylus/README.md",
@@ -212,7 +221,6 @@
     "node_modules/hexo-cli/assets/scaffolds/page.md",
     "node_modules/hexo-cli/assets/scaffolds/draft.md",
     "node_modules/warehouse/README.md",
-    "node_modules/readable-stream/GOVERNANCE.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

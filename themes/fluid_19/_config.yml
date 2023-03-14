@@ -1007,7 +1007,7 @@ links:
     # intro: "主题使用指南",
     #  link: "https://hexo.fluid-dev.com/docs/",
     #  avatar: "/img/favicon.png"
-    }
+    #}
     - {
       title: "github",
       intro: "主题 GitHub 仓库",
