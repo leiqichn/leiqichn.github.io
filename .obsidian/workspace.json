@@ -167,13 +167,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -188,7 +186,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "6dc9d8a617b1c729",
   "lastOpenFiles": [
     "source/_posts/关于我/关于我.md",
     "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
