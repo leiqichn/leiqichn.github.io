@@ -6,4 +6,5 @@ categories:
 tags: []
 hide: []
 sticky: []
+category_bar: true
 ---
