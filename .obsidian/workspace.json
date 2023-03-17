@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
+                "file": "source/_posts/leetcode/LeetCode 刷题常用数据结构（Go 篇）.md",
                 "mode": "source",
                 "source": false
               }
@@ -28,6 +28,20 @@
     "id": "f801a880261929fb",
     "type": "split",
     "children": [
+      {
+        "id": "5a204b6f2cac127d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "779c6f963b9d7e25",
+            "type": "leaf",
+            "state": {
+              "type": "file-tree-view",
+              "state": {}
+            }
+          }
+        ]
+      },
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
@@ -94,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
+                "file": "source/_posts/leetcode/LeetCode 刷题常用数据结构（Go 篇）.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
+                "file": "source/_posts/leetcode/LeetCode 刷题常用数据结构（Go 篇）.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md"
+                "file": "source/_posts/leetcode/LeetCode 刷题常用数据结构（Go 篇）.md"
               }
             }
           },
@@ -170,11 +184,15 @@
       "command-palette:打开命令面板": false,
       "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
       "obsidian-weread-plugin:Weread": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "57f82b196db399f2",
   "lastOpenFiles": [
+    "source/_posts/关于我/关于我.md",
+    "source/_posts/leetcode/LeetCode 刷题常用数据结构（Go 篇）.md",
+    "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
     "themes/fluid_19/source/css/_pages/_base/_widget/toc.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/scroll-btn.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/search.styl",
@@ -185,7 +203,6 @@
     "themes/fluid_19/source/css/_pages/_base/_widget/modal.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/header.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/footnote.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/copyright.styl",
     "themes/fluid_19/source/img/qrcode.jpg",
     "themes/fluid_19/source/img/police_beian.png",
     "themes/fluid_19/source/img/loading.gif",
@@ -199,9 +216,6 @@
     "themes/github actions 报错.md",
     "source/obsidian_tamplate/TemPlater.md",
     "source/about/index.md",
-    "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
-    "source/_posts/关于我/关于我.md",
-    "source/_posts/leetcode/LeetCode 刷题常用数据结构（Go 篇）.md",
     "scaffolds/post.md",
     "scaffolds/page.md",
     "scaffolds/draft.md",
