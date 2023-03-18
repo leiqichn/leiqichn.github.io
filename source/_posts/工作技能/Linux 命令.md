@@ -12,9 +12,6 @@ category_bar: true
 
 ![image.png](https://raw.githubusercontent.com/leiqichn/i/master/img/20230318222348.png)
 
-![image.png](https://raw.githubusercontent.com/leiqichn/i/master/img/20230318222321.png)
-
-
 ![image.png](https://raw.githubusercontent.com/leiqichn/i/master/img/20230318222236.png)
 
 ![11.png](https://raw.githubusercontent.com/leiqichn/i/master/keyboard.jpg)
