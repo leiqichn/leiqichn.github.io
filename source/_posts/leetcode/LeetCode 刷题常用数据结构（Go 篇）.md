@@ -5,7 +5,7 @@ categories:
 	- leetcode
 tags: []
 sticky: []
-category_bar: [关于我,leetcode]
+category_bar: [关于我]
 ---
 ## 前言
 
