@@ -1,8 +1,8 @@
-name: sync_gitee
+name: Sync
 
 on:
   push:
-    branches: [gh-pages]
+    branches: [master,gh-pages]
 jobs:
   build:
     runs-on: ubuntu-latest
