@@ -31,6 +31,7 @@
       {
         "id": "5a204b6f2cac127d",
         "type": "tabs",
+        "dimension": 60.79136690647482,
         "children": [
           {
             "id": "779c6f963b9d7e25",
@@ -45,6 +46,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
+        "dimension": 39.20863309352518,
         "children": [
           {
             "id": "520d050d9f24a28a",
@@ -188,7 +190,7 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "57f82b196db399f2",
+  "active": "779c6f963b9d7e25",
   "lastOpenFiles": [
     "source/_posts/leetcode/LeetCode 刷题常用数据结构（Go 篇）.md",
     "source/_posts/about/test.md",
