@@ -2,9 +2,8 @@ name: sync_gitee
 
 on:
   push:
-    branches:
-      - master # default branch
-
+    branches: [gh-pages]
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
