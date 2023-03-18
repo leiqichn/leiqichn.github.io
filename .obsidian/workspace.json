@@ -11,8 +11,12 @@
             "id": "57f82b196db399f2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/about/test.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -106,6 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/about/test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,6 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/about/test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +149,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/about/test.md"
+              }
             }
           },
           {
@@ -182,8 +190,9 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "57f82b196db399f2",
   "lastOpenFiles": [
+    "source/_posts/about/test.md",
     "themes/fluid_19/source/css/_pages/_base/_widget/toc.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/search.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/scroll-btn.styl",
@@ -194,7 +203,6 @@
     "themes/fluid_19/source/css/_pages/_base/_widget/modal.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/header.styl",
     "themes/fluid_19/source/css/_pages/_base/_widget/footnote.styl",
-    "themes/fluid_19/source/css/_pages/_base/_widget/footer.styl",
     "themes/fluid_19/source/img/qrcode.jpg",
     "themes/fluid_19/source/img/police_beian.png",
     "themes/fluid_19/source/img/loading.gif",
@@ -211,7 +219,6 @@
     "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
     "source/_posts/关于我/关于我.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构（Go 篇）.md",
-    "source/_posts/about/test.md",
     "scaffolds/page.md",
     "scaffolds/post.md",
     "scaffolds/draft.md",
