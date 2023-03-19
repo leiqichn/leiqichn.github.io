@@ -8,12 +8,12 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "img/CLlogo.jpg",
+      "src": "/imgs/CLlogo.jpg",
       "sizes": "128x128",
       "type": "image/jpg"
     },
     {
-      "src": "img/CLlogo.jpg",
+      "src": "/imgs/CLlogo.jpg",
       "sizes": "512x512",
       "type": "image/jpg"
     }

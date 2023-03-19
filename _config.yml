@@ -147,10 +147,10 @@ pwa:
       scope: /
       start_url: /
       icons:
-        - src: img/CLlogo.jpg
+        - src: /imgs/CLlogo.jpg
           type: image/jpg
           sizes: 128x128
-        - src: img/CLlogo.jpg
+        - src: /imgs/CLlogo.jpg
           type: image/jpg
           sizes: 512x512
   serviceWorker:
