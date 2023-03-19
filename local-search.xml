@@ -33,7 +33,7 @@
     <link href="/2023-03-19-4d59bacf78a0.html"/>
     <url>/2023-03-19-4d59bacf78a0.html</url>
     
-    <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230319131458.png"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>本地写MD文档我是使用了github 和gitee 图床来着，但是发布到个人博客之后，发现支持都不好。所以选择了最原始的方案，复制图片到指定文件夹，然后连同这些图片文件夹一起上传到对应的git pages, 使用对应的<strong>相对路径</strong>就可以读取并显示图片。</p><p>而obsidian 可以实现插入图片的同时复制到图片到对应的路径，并生成MD 文档格式的链接。</p><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h2 id="1-打开obsidian-文件与链接"><a href="#1-打开obsidian-文件与链接" class="headerlink" title="1. 打开obsidian - 文件与链接"></a>1. 打开obsidian - 文件与链接</h2><h2 id="2-按照下图配置"><a href="#2-按照下图配置" class="headerlink" title="2. 按照下图配置"></a>2. 按照下图配置</h2><p>   *　将内部链接类型 设置为 “基于当前笔记的<strong>相对路径</strong>”<br>     &gt; 因为我们的博客发布了之后，就只有source 文件夹下的文件，所以需要使用<strong>相对路径</strong></p><ul><li>取消wiki 链接 </li><li>指定图片的默认路径为 <code>source/imgs</code><br>&gt; 如果没有该文件夹，则需要先新建一下。</li></ul><p><img src="/../../imgs/Pasted%20image%2020230319131458.png"></p><h2 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h2><p>网页可以成功显示图片</p><p><img src="/../../imgs/Pasted%20image%2020230319134051.png"></p>]]></content>
     
     
     <categories>
