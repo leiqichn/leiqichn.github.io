@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md"
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md"
               }
             }
           },
@@ -192,8 +192,9 @@
   },
   "active": "29ffb3a71ad961e0",
   "lastOpenFiles": [
-    "source/assets/img/微信图片_20230319125819.png.md",
+    "source/imgs/Pasted image 20230319134051.png",
     "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+    "source/assets/img/微信图片_20230319125819.png.md",
     "source/assets/img",
     "source/assets",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
@@ -236,7 +237,6 @@
     "node_modules/follow-redirects/README.md",
     "node_modules/tinypng/README.md",
     "node_modules/pngquant-bin/node_modules/is-stream/readme.md",
-    "node_modules/repeating/readme.md",
     "themes/fluid_19/source/img/qrcode.jpg",
     "未命名 1.canvas",
     "未命名.canvas"
