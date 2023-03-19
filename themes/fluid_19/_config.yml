@@ -997,12 +997,12 @@ links:
   # 友链的成员项
   # Member item of page
   items:
-    #- {
-     # title: "Fluid Blog",
-    #  intro: "主题博客",
-    #  link: "https://hexo.fluid-dev.com/",
-    #  avatar: "/img/favicon.png"
-    #}
+    - {
+      title: "CSDN",
+      intro: "CSDN博客",
+      link: "https://blog.csdn.net/lei_qi"
+      avatar: "/img/favicon.png"
+    }
     #- {
     #  title: "Fluid Docs",
     # intro: "主题使用指南",
