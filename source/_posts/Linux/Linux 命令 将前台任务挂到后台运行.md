@@ -13,7 +13,7 @@ category_bar: true
    
 **第一步：ctrl + z**
 
-**第二步：jobs  查看任务id
+**第二步：jobs  查看任务id**
 
 **第三步： bg %任务id**
 

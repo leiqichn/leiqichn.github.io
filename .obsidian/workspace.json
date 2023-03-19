@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/关于我/关于我.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/关于我/关于我.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/关于我/关于我.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/关于我/关于我.md"
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md"
               }
             }
           },
@@ -192,12 +192,12 @@
   },
   "active": "29ffb3a71ad961e0",
   "lastOpenFiles": [
+    "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+    "source/_posts/关于我/关于我.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
-    "source/_posts/关于我/关于我.md",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/imgs/Pasted image 20230319134051.png",
-    "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
     "source/assets/img/微信图片_20230319125819.png.md",
     "source/assets/img",
     "source/assets",
