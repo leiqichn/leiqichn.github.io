@@ -43,8 +43,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -127,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -144,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -167,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md"
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md"
               }
             }
           },
@@ -187,8 +186,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "horizontal",
@@ -208,19 +206,21 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "de10c1b0d456d672",
+  "active": "62f155cf77d2b888",
   "lastOpenFiles": [
-    "node_modules/hexo-generator-feed/rss2.xml",
-    "node_modules/hexo-generator-feed/atom.xml",
+    "node_modules/duplexer2/node_modules",
+    "node_modules/duplexer2",
+    "node_modules/gulp-decompress/node_modules/readable-stream/lib/_stream_passthrough.js",
+    "node_modules/gulp-decompress/node_modules/readable-stream/lib/_stream_duplex.js",
+    "node_modules/gulp-decompress/node_modules/string_decoder/package.json",
+    "node_modules/gulp-decompress/node_modules/string_decoder/LICENSE",
+    "node_modules/gulp-decompress/node_modules/readable-stream/LICENSE",
+    "node_modules/gulp-decompress/node_modules/readable-stream/lib",
+    "node_modules/gulp-decompress/node_modules/string_decoder",
+    "node_modules/gulp-decompress/node_modules/readable-stream",
+    "node_modules/gulp-decompress/node_modules",
+    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "node_modules/hexo-generator-feed/README.md",
-    "node_modules/hexo-generator-feed/package.json",
-    "node_modules/hexo-generator-feed/index.js",
-    "node_modules/hexo-generator-feed/lib/autodiscovery.js",
-    "node_modules/hexo-generator-feed/lib/generator.js",
-    "node_modules/hexo-generator-feed/lib",
-    "node_modules/hexo-generator-feed/LICENSE",
-    "node_modules/hexo-generator-feed",
-    "node_modules/fsevents",
     "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
     "source/about/index.md",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
@@ -232,7 +232,6 @@
     "source/imgs/fluid.png",
     "source/imgs/default.png",
     "source/imgs/CLlogo.jpg",
-    "source/manifest.json",
     "node_modules/lodash.templatesettings/README.md",
     "node_modules/hexo-pwa/README.md",
     "node_modules/lodash._reinterpolate/README.md",
@@ -243,7 +242,6 @@
     "source/imgs/949a05a0-cbd4-4c49-999a-c1f4209afad1.png",
     "source/assets/img/Snipaste_2023-03-19_12-43-32.png.md",
     "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
-    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/assets/img/微信图片_20230319125819.png.md",
     "node_modules/hexo-neat/README.md",
     "node_modules/html-minifier/node_modules/lower-case/README.md",
