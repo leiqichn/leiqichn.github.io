@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,7 +31,7 @@
       {
         "id": "5a204b6f2cac127d",
         "type": "tabs",
-        "dimension": 49.16067146282973,
+        "dimension": 65.58752997601918,
         "children": [
           {
             "id": "779c6f963b9d7e25",
@@ -46,7 +46,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
-        "dimension": 50.83932853717026,
+        "dimension": 34.412470023980816,
         "children": [
           {
             "id": "520d050d9f24a28a",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md"
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md"
               }
             }
           },
@@ -190,10 +190,17 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "0fda30896e8f37d8",
   "lastOpenFiles": [
-    "source/assets/img/微信图片_20230319125819.png",
+    "source/imgs/Pasted image 20230319131458.png",
+    "source/imgs/微信图片_20230319125819.png",
+    "source/imgs/Snipaste_2023-03-19_12-43-32.png",
+    "source/imgs/img/微信图片_20230319125819.png",
+    "source/imgs/img/Snipaste_2023-03-19_12-43-32.png",
+    "source/imgs/img",
+    "source/imgs",
     "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
+    "source/assets/img/微信图片_20230319125819.png",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/_posts/工作技能/排版测试.md",
     "source/_posts/工具",
@@ -205,10 +212,8 @@
     "source/assets/新建文件夹",
     "source/assets",
     "source/asset",
-    "source/新建文件夹",
     "source/_posts/工作技能/asset/Pasted image 20230319123159.png",
     "source/_posts/工作技能/asset/Pasted image 20230319122933.png",
-    "source/_posts/工作技能/asset",
     "node_modules/hexo-neat/README.md",
     "node_modules/html-minifier/node_modules/lower-case/README.md",
     "node_modules/uglify-js/README.md",
@@ -233,11 +238,6 @@
     "node_modules/repeating/readme.md",
     "themes/fluid_19/source/img/qrcode.jpg",
     "themes/fluid_19/source/img/police_beian.png",
-    "themes/fluid_19/source/img/loading.gif",
-    "themes/fluid_19/source/img/keyboard.jpg",
-    "themes/fluid_19/source/img/fluid.png",
-    "themes/fluid_19/source/img/default.png",
-    "themes/fluid_19/source/img/avatar.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

@@ -1,5 +1,5 @@
 {
   "useMarkdownLinks": true,
-  "attachmentFolderPath": "source/assets/img",
-  "newLinkFormat": "absolute"
+  "attachmentFolderPath": "source/imgs",
+  "newLinkFormat": "relative"
 }
