@@ -171,3 +171,13 @@ neat_js:
 #     - pattern: !!js/regexp /\//
 #        strategy: networkFirst
 #  priority: 5
+
+
+# 1
+plugins:
+  hexo-generator-feed
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
