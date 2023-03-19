@@ -5,8 +5,8 @@
   
   <entry>
     <title></title>
-    <link href="/2023-03-19-e62c7a80e68b.html"/>
-    <url>/2023-03-19-e62c7a80e68b.html</url>
+    <link href="/2023-03-19-92514403dfe3.html"/>
+    <url>/2023-03-19-92514403dfe3.html</url>
     
     <content type="html"><![CDATA[]]></content>
     
@@ -23,19 +23,25 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2023-03-19-12873d17f1ff.html"/>
-    <url>/2023-03-19-12873d17f1ff.html</url>
+    <title>Linux 命令 将前台任务挂到后台运行</title>
+    <link href="/2023-03-19-aaf910b916ec.html"/>
+    <url>/2023-03-19-aaf910b916ec.html</url>
     
     <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p><p><strong>第一步：ctrl + z</strong></p><p>**第二步：jobs  查看任务id</p><p><strong>第三步： bg %任务id</strong></p><p><img src="/source/assets/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>]]></content>
     
     
     <categories>
       
-      <category>L</category>
+      <category>Linux</category>
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>linux命令</tag>
+      
+    </tags>
     
   </entry>
   
