@@ -1001,7 +1001,7 @@ links:
     - {
       title: "CSDN",
       intro: "CSDN博客",
-      link: "https://blog.csdn.net/lei_qi"
+      link: "https://blog.csdn.net/lei_qi",
       avatar: "/img/favicon.png"
     }
     #- {
