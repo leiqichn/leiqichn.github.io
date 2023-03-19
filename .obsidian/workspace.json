@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工作技能/Linux 命令.md",
+                "file": "source/_posts/工作技能/排版测试.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工作技能/Linux 命令.md",
+                "file": "source/_posts/工作技能/排版测试.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工作技能/Linux 命令.md",
+                "file": "source/_posts/工作技能/排版测试.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工作技能/Linux 命令.md"
+                "file": "source/_posts/工作技能/排版测试.md"
               }
             }
           },
@@ -192,18 +192,22 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/assets/img/Snipaste_2023-03-19_12-43-32.png",
+    "source/assets/img",
+    "source/assets/新建文件夹",
+    "source/assets",
+    "source/asset",
+    "source/新建文件夹",
+    "source/_posts/工作技能/asset/Pasted image 20230319123159.png",
+    "source/_posts/工作技能/排版测试.md",
+    "source/_posts/工作技能/asset/Pasted image 20230319122933.png",
+    "source/_posts/工作技能/asset",
     "node_modules/hexo-neat/README.md",
     "node_modules/hexo-neat/package.json",
     "node_modules/hexo-neat/index.js",
     "node_modules/hexo-neat/lib/filter.js",
     "node_modules/hexo-neat/lib",
-    "node_modules/html-minifier/src/utils.js",
-    "node_modules/html-minifier/src/tokenchain.js",
-    "node_modules/html-minifier/node_modules/lower-case/lower-case.d.ts",
-    "node_modules/html-minifier/node_modules/lower-case/lower-case.js",
-    "node_modules/html-minifier/node_modules/lower-case/LICENSE",
     "node_modules/html-minifier/node_modules/lower-case/README.md",
-    "node_modules/html-minifier/node_modules/lower-case/package.json",
     "node_modules/uglify-js/README.md",
     "node_modules/html-minifier/README.md",
     "node_modules/param-case/node_modules/lower-case/README.md",
@@ -226,8 +230,6 @@
     "node_modules/repeating/readme.md",
     "node_modules/meow/readme.md",
     "node_modules/longest/README.md",
-    "node_modules/indent-string/readme.md",
-    "node_modules/get-stdin/readme.md",
     "themes/fluid_19/source/img/qrcode.jpg",
     "themes/fluid_19/source/img/police_beian.png",
     "themes/fluid_19/source/img/loading.gif",
@@ -236,8 +238,6 @@
     "themes/fluid_19/source/img/default.png",
     "themes/fluid_19/source/img/avatar.png",
     "themes/fluid_19/source/img/CLlogo.jpg",
-    "node_modules/jpegtran-bin/test/fixtures/test.jpg",
-    "node_modules/jpegtran-bin/test/fixtures/test-optimized.jpg",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
