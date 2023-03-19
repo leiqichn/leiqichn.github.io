@@ -5,11 +5,14 @@ categories:
 	- leetcode
 tags: []
 sticky: []
+hide: true
 category_bar: ["关于我","leetcode","about"]
 ---
 ## 前言
 
-最近重新开始用 Go 刷 LeetCode 算法题，针对工作需求的算法刷题其实主要是锻炼解决问题的思路和代码撰写能力，而不是像算法竞赛那样用复杂的数据结构，所以常用的数据结构和操作并不多，熟练使用也能很好地提升自己的代码质量，特此做一个整理，以便于查阅。
+
+工作需要，最近使用Go 来刷算法题
+
 
 ## 数据结构
 
@@ -88,7 +91,6 @@ if s1 == s2 {
 } else {
     // 不相等
 }
-
 // Compare 函数可以用于比较，1大于，0相等，-1小于
 // EqualFold 函数忽略大小写后比较
 ```
@@ -267,4 +269,8 @@ str := strconv.Itoa()
 
 ## 总结
 
-刷题路漫漫…加油！
+以上是“术”的内容，算法之“道” 需要经过大量练习和思考才能习得，加油
+
+
+参考：
+[LeetCode 刷题常用数据结构（Go 篇） · Pseudoyu](https://www.pseudoyu.com/zh/2021/05/29/algorithm_data_structure_go/)
