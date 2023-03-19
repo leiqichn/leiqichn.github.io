@@ -8,7 +8,7 @@
     <link href="/2023-03-19-aaf910b916ec.html"/>
     <url>/2023-03-19-aaf910b916ec.html</url>
     
-    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p><p><strong>第一步：ctrl + z</strong></p><p>**第二步：jobs  查看任务id</p><p><strong>第三步： bg %任务id</strong></p><p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p><p><strong>第一步：ctrl + z</strong></p><p><strong>第二步：jobs  查看任务id</strong></p><p><strong>第三步： bg %任务id</strong></p><p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>]]></content>
     
     
     <categories>
@@ -49,15 +49,15 @@
   
   <entry>
     <title>排版测试</title>
-    <link href="/2023-03-18-0d473d84e3c7.html"/>
-    <url>/2023-03-18-0d473d84e3c7.html</url>
+    <link href="/2023-03-18-16129b89df14.html"/>
+    <url>/2023-03-18-16129b89df14.html</url>
     
-    <content type="html"><![CDATA[<h1 id="HELLO"><a href="#HELLO" class="headerlink" title="HELLO"></a>HELLO</h1><p><img src="/source/assets/img/Snipaste_2023-03-19_12-43-32.png"></p><p><img src="https://raw.githubusercontent.com/leiqichn/i/master/keyboard.jpg" alt="11.png"><br><img src="https://gitee.com/LeiQiCN/upload-img/raw/master/Image/unnamed.png" alt="unnamed.png"></p>]]></content>
+    <content type="html"><![CDATA[<p>网页上显示和排版有时候比较麻烦，需要进行测试。本文档就是为测试网页排版格式的。</p><h1 id="HELLO-WORLD"><a href="#HELLO-WORLD" class="headerlink" title="HELLO WORLD"></a>HELLO WORLD</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><h3 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h3><h4 id="hello-world-1"><a href="#hello-world-1" class="headerlink" title="hello world"></a>hello world</h4><p><img src="/../../imgs/949a05a0-cbd4-4c49-999a-c1f4209afad1.png"><br><img src="/../../imgs/1fdf208a-f2ff-4bce-98cf-e60d2746f730%201.png"><br><img src="https://raw.githubusercontent.com/leiqichn/i/master/keyboard.jpg" alt="11.png"><br><img src="https://gitee.com/LeiQiCN/upload-img/raw/master/Image/unnamed.png" alt="unnamed.png"></p>]]></content>
     
     
     <categories>
       
-      <category>工作技能</category>
+      <category>Test</category>
       
     </categories>
     
