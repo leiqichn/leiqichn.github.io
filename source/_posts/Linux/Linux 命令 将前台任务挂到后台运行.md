@@ -17,4 +17,4 @@ category_bar: true
 
 **第三步： bg %任务id**
 
-![](source/assets/img/微信图片_20230319125819.png)
+![](../../imgs/微信图片_20230319125819.png)
