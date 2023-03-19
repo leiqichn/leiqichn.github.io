@@ -439,7 +439,8 @@ footer:
     source: "busuanzi"
     pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
     uv_format: "总访客数 {} 人"
-
+  icons:
+        - { class: "iconfont icon-rss-fill", link: "https://leiqichn.github.io/atom.xml", tip: "订阅RSS" }
   # 国内大陆服务器的备案信息
   # For Chinese mainland website policy, other areas keep disable
   beian:
