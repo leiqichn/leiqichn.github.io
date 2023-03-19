@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "6f4d16c68411e943",
+        "id": "f5ca8e7194ba9c53",
         "type": "tabs",
         "children": [
           {
-            "id": "29ffb3a71ad961e0",
+            "id": "62f155cf77d2b888",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
+                "file": "source/_posts/Test/排版测试.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
+                "file": "source/_posts/Test/排版测试.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
+                "file": "source/_posts/Test/排版测试.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md"
+                "file": "source/_posts/Test/排版测试.md"
               }
             }
           },
@@ -190,13 +190,18 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "29ffb3a71ad961e0",
+  "active": "62f155cf77d2b888",
   "lastOpenFiles": [
+    "source/imgs/1fdf208a-f2ff-4bce-98cf-e60d2746f730 1.png",
+    "source/imgs/949a05a0-cbd4-4c49-999a-c1f4209afad1.png",
+    "source/_posts/Test/排版测试.md",
+    "source/imgs/1fdf208a-f2ff-4bce-98cf-e60d2746f730.png",
+    "source/assets/img/Snipaste_2023-03-19_12-43-32.png.md",
+    "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
     "source/_posts/关于我/关于我.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
-    "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/imgs/Pasted image 20230319134051.png",
     "source/assets/img/微信图片_20230319125819.png.md",
     "source/assets/img",
@@ -209,7 +214,6 @@
     "source/imgs/img",
     "source/imgs",
     "source/assets/img/微信图片_20230319125819.png",
-    "source/_posts/工作技能/排版测试.md",
     "source/_posts/工具",
     "工具",
     "source/_posts/Linux",
@@ -217,8 +221,6 @@
     "source/assets/img/Snipaste_2023-03-19_12-43-32.png",
     "source/assets/新建文件夹",
     "source/asset",
-    "source/_posts/工作技能/asset/Pasted image 20230319123159.png",
-    "source/_posts/工作技能/asset/Pasted image 20230319122933.png",
     "node_modules/hexo-neat/README.md",
     "node_modules/html-minifier/node_modules/lower-case/README.md",
     "node_modules/uglify-js/README.md",
@@ -236,8 +238,6 @@
     "node_modules/axios/lib/env/README.md",
     "node_modules/axios/lib/core/README.md",
     "node_modules/axios/lib/adapters/README.md",
-    "node_modules/axios/CHANGELOG.md",
-    "node_modules/follow-redirects/README.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
