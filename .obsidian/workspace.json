@@ -187,11 +187,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 441.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -207,7 +208,7 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "fdcf8fe4b0c2206c",
   "lastOpenFiles": [
     "source/imgs/avatar.png",
     "source/imgs/qrcode.jpg",
