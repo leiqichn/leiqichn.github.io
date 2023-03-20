@@ -168,7 +168,7 @@ pwa:
         strategy: networkOnly
       - pattern: !!js/regexp /.*\.(js|css|jpg|jpeg|png|gif)$/
         strategy: cacheFirst
-     - pattern: !!js/regexp /\//
+      - pattern: !!js/regexp /\//
         strategy: networkFirst
   priority: 5
 
