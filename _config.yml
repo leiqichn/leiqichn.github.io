@@ -134,46 +134,55 @@ neat_js:
     
     
 # hexo添加PWA
-#pwa:
-#  manifest:
-#    path: /manifest.json
-#    body:
-#      name: Lei Qi's Blog
-#      short_name: Lei Qi
-#      theme_color: white
-#      background_color: white
-#      display: standalone
-#      orientation: portrait
-#      scope: /
-#      start_url: /
-#      icons:
-#        - src: /imgs/CLlogo.jpg
-#          type: image/jpg
-#          sizes: 128x128
-#        - src: /imgs/CLlogo.jpg
-#          type: image/jpg
-#          sizes: 512x512
-#  serviceWorker:
-#    path: /sw.js
-#    preload:
-#      urls:
-#        - /
-#      posts: 12
-#    opts:
-#      networkTimeoutSeconds: 30
-#    routes:
-#      - pattern: !!js/regexp /hm.baidu.com/
-#        strategy: networkOnly
-#      - pattern: !!js/regexp /www.google-analytics.com/
-#        strategy: networkOnly
-#      - pattern: !!js/regexp /.*\.(js|css|jpg|jpeg|png|gif)$/
-#        strategy: cacheFirst
-#     - pattern: !!js/regexp /\//
-#        strategy: networkFirst
-#  priority: 5
+pwa:
+  manifest:
+    path: /manifest.json
+    body:
+      name: Lei Qi's Blog
+      short_name: Lei Qi
+      theme_color: white
+      background_color: white
+      display: standalone
+      orientation: portrait
+      scope: /
+      start_url: /
+      icons:
+        - src: /imgs/CLlogo.jpg
+          type: image/jpg
+          sizes: 128x128
+        - src: /imgs/CLlogo.jpg
+          type: image/jpg
+          sizes: 512x512
+  serviceWorker:
+    path: /sw.js
+    preload:
+      urls:
+        - /
+      posts: 12
+    opts:
+      networkTimeoutSeconds: 30
+    routes:
+      - pattern: !!js/regexp /hm.baidu.com/
+        strategy: networkOnly
+      - pattern: !!js/regexp /www.google-analytics.com/
+        strategy: networkOnly
+      - pattern: !!js/regexp /.*\.(js|css|jpg|jpeg|png|gif)$/
+        strategy: cacheFirst
+     - pattern: !!js/regexp /\//
+        strategy: networkFirst
+  priority: 5
 
 
-# 1
+# minifier
+imagemin:
+  enable     : true
+  interlaced : false
+  multipass  : false
+  optimizationLevel: 2
+  pngquant   : false
+  progressive: false
+
+# rss
 plugins:
   hexo-generator-feed
 #Feed Atom
