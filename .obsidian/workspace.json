@@ -207,8 +207,10 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "fdcf8fe4b0c2206c",
   "lastOpenFiles": [
+    "_config.yml.bak",
+    "_config.fluid.yml",
     "node_modules/css-select-base-adapter/test/index.js",
     "node_modules/css-select-base-adapter/test/implementation.js",
     "node_modules/css-select-base-adapter/test/data.js",
@@ -219,8 +221,6 @@
     "node_modules/css-select-base-adapter/index.js",
     "node_modules/css-select-base-adapter",
     "node_modules/@types/node/timers/promises.d.ts",
-    "node_modules/@types/node/timers",
-    "node_modules/@types/node/stream/web.d.ts",
     "node_modules/cheerio-select/node_modules/css-select/README.md",
     "node_modules/type-fest/readme.md",
     "node_modules/imagemin-mozjpeg/node_modules/execa/readme.md",
