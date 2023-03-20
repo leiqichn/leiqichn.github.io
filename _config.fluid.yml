@@ -957,11 +957,7 @@ about:
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/leiqichn", tip: "GitHub" }
     - { class: "iconfont icon-rss-fill", link: "https://leiqichn.github.io/atom.xml", tip: "订阅RSS" }
-<<<<<<< HEAD
     - { class: "iconfont icon-wechat-fill", qrcode: "/imgs/qrcode.png" }
-=======
-    - { class: "iconfont icon-wechat-fill", qrcode: "/imgs/qrcode.jpg" }
->>>>>>> 85eba5433726e4f97c1cc8f072dddd26dffab389
 
 
 #---------------------------
