@@ -209,6 +209,8 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "node_modules/svgo/node_modules/commander/typings/index.d.ts",
+    "node_modules/svgo/node_modules/commander/typings",
     "node_modules/fsevents",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/manifest.json",
@@ -224,8 +226,6 @@
     "node_modules/call-bind/test",
     "node_modules/call-bind/README.md",
     "node_modules/call-bind/package.json",
-    "node_modules/call-bind/LICENSE",
-    "node_modules/call-bind/index.js",
     "node_modules/call-bind/CHANGELOG.md",
     "node_modules/block-stream/README.md",
     "node_modules/available-typed-arrays/README.md",
