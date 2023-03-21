@@ -136,7 +136,7 @@ neat_js:
 # hexo添加PWA
 pwa:
   manifest:
-   path: /manifest.json
+    path: /manifest.json
     body:
       name: Lei Qi's Blog
       short_name: Lei Qi
