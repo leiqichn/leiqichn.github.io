@@ -30,7 +30,7 @@
     "hexo-theme-landscape": "^0.0.3",
     "nrm": "^0.2.5",
     "shrinkpng": "^1.2.0-beta.1",
-    "svgo": "^2.0.0",
+    "svgo": "^3.0.2",
     "tinypng": "^1.0.0",
     "uuid": "^7.0.3"
   }
