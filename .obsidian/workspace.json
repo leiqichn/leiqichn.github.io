@@ -209,6 +209,7 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "sw.js",
     "node_modules/tunnel-agent/README.md",
     "node_modules/tunnel-agent/LICENSE",
     "node_modules/tunnel-agent/index.js",
@@ -244,7 +245,6 @@
     "node_modules/css-select/README.md",
     "node_modules/caseless/README.md",
     "node_modules/aws4/README.md",
-    "node_modules/aws-sign2/README.md",
     "source/imgs/icon-512x512.png",
     "source/imgs/icon-384x384.png",
     "source/imgs/icon-256x256.png",
