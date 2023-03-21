@@ -16,7 +16,7 @@
     "css": "^3.0.0",
     "exec-series": "^1.0.3",
     "hexo": "^7.0.0-rc1",
-    "hexo-imagemin": "^0.1.0",
+    "hexo-all-minifier": "^0.5.7",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
     "hexo-generator-index": "^3.0.0",

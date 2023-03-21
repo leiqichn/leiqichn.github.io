@@ -169,7 +169,7 @@ imagemin:
   optimizationLevel: 2
   pngquant   : false
   progressive: false
-
+  
 # rss
 plugins:
   hexo-generator-feed

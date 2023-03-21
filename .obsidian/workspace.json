@@ -209,6 +209,8 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "package -minifier.json",
+    "package - 副本.json",
     "node_modules/executable/package.json",
     "node_modules/imagemin-mozjpeg/node_modules/mozjpeg/vendor/cjpeg.exe",
     "node_modules/bin-wrapper/node_modules/file-type/index.js",
@@ -218,8 +220,6 @@
     "node_modules/bin-wrapper/node_modules/download/node_modules/pify/index.js",
     "node_modules/bin-wrapper/node_modules/download/node_modules/pify/package.json",
     "node_modules/bin-wrapper/node_modules/make-dir/node_modules/pify/index.js",
-    "node_modules/bin-wrapper/node_modules/make-dir/node_modules/pify/package.json",
-    "node_modules/bin-wrapper/node_modules/make-dir/index.js",
     "node_modules/os-filter-obj/readme.md",
     "node_modules/import-lazy/readme.md",
     "node_modules/pify/readme.md",
