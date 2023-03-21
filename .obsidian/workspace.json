@@ -207,8 +207,9 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "fdcf8fe4b0c2206c",
   "lastOpenFiles": [
+    "node_modules/fsevents",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/manifest.json",
     "source/raw.manifest - 副本.json",
@@ -248,7 +249,6 @@
     "node_modules/imagemin-pngquant/node_modules/is-stream/readme.md",
     "node_modules/imagemin-pngquant/node_modules/get-stream/readme.md",
     "node_modules/imagemin-pngquant/node_modules/onetime/readme.md",
-    "node_modules/imagemin-pngquant/node_modules/npm-run-path/readme.md",
     "node_modules/svgo/examples/test.svg",
     "node_modules/jpegtran-bin/test/fixtures/test.jpg",
     "node_modules/jpegtran-bin/test/fixtures/test-optimized.jpg",
