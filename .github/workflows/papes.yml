@@ -24,7 +24,6 @@ jobs:
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
         run: npm install
-      - uses: ilammy/setup-nasm@v1
       - name: Build
         run: npm run build
       - name: Deploy
