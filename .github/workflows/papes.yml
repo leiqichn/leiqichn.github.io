@@ -11,6 +11,14 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: ilammy/setup-nasm@v1
+      - uses: actions/checkout@v2
+      - name: Build something requiring NASM
+        run: |
+          cd third_party/boringssl
+          cmake -G Ninja . && ninja
+   
+
       - uses: actions/checkout@v2
       - name: Use Node.js 18.x
         uses: actions/setup-node@v2
