@@ -209,6 +209,9 @@
   },
   "active": "62f155cf77d2b888",
   "lastOpenFiles": [
+    "source/imgs/请不要在这里存放jpg图片！无法压缩.sh",
+    "source/imgs/请不要在这里存放jpg图片！无法压缩.txt",
+    "source/imgs/新建文本文档.txt",
     "source/imgs/CLlogo.jpeg",
     "source/imgs/keyboard.jpeg",
     "source/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
@@ -226,9 +229,7 @@
     "node_modules/lodash.templatesettings/package.json",
     "node_modules/lodash.templatesettings/LICENSE",
     "node_modules/lodash.templatesettings/index.js",
-    "node_modules/lodash.templatesettings",
     "node_modules/lodash.template/README.md",
-    "node_modules/lodash.template/package.json",
     "node_modules/hexo-pwa/README.md",
     "node_modules/imagemin-mozjpeg/node_modules/mimic-fn/readme.md",
     "node_modules/imagemin-mozjpeg/node_modules/onetime/readme.md",
@@ -254,7 +255,6 @@
     "public/imgs/微信图片_20230319125819.png",
     "public/imgs/icon-512x512.png",
     "public/imgs/icon-256x256.png",
-    "public/imgs/icon-384x384.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

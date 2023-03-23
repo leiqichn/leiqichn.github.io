@@ -165,10 +165,12 @@ service_worker:
 imagemin:
   enable     : true
   interlaced : false
-  multipass  : false
-  optimizationLevel: 2
+  multipass  : true
+  optimizationLevel: 5
   pngquant   : false
   progressive: false
+  exclude: 
+    - 'jpg'
   
 # rss
 plugins:
