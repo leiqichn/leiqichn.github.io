@@ -5,7 +5,7 @@ if (workbox) {
 
     workbox.precaching.precache(['/', '/index.html']);
 
-    workbox.routing.registerRoute(new RegExp('^https?://syean.cn/?$'), workbox.strategies.networkFirst());
+    workbox.routing.registerRoute(new RegExp('^https?://leiqichn.github.io/?$'), workbox.strategies.networkFirst());
 
     workbox.routing.registerRoute(new RegExp('.*.html'), workbox.strategies.networkFirst());
 
