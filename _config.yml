@@ -182,47 +182,43 @@ feed:
 
 
 # PWA配置  npm i --save hexo-pwa
-# pwa:
-#   manifest:
-#     path: /manifest.json
-#     body:
-#       name: Lei Qi's Blog
-#       short_name: Lei Qi's Blog
-#       theme_color: white
-#       background_color: white
-#       display: standalone
-#       orientation: portrait
-#       scope: /
-#       start_url: /
-#       icons:
-#         - src: /imgs/icon-192x192.png
-#           type: image/png
-#           sizes: 192x192
-#         - src: /imgs/icon-256x256.png
-#           type: image/png
-#           sizes: 256x256
-#         - src: /imgs/icon-384x384.png
-#           type: image/png
-#           sizes: 384x384
-#         - src: /imgs/icon-512x512.png
-#           type: image/png
-#           sizes: 512x512
-#   serviceWorker:
-#     path: /sw.js
-#     preload:
-#       urls:
-#         - /
-#       posts: 12
-#     opts:
-#       networkTimeoutSeconds: 30
-#     routes:
-#       - pattern: !!js/regexp /hm.baidu.com/
-#         strategy: networkOnly
-#       - pattern: !!js/regexp /www.google-analytics.com/
-#         strategy: networkOnly
-#       - pattern: !!js/regexp /.*\.(js|css|jpg|jpeg|png|gif)$/
-#         strategy: cacheFirst
-#       - pattern: !!js/regexp /\//
-#         strategy: networkFirst
-#   priority: 5
-
+pwa:
+  manifest:
+    path: /manifest.json
+    body:
+      "name": "Lei Qi's Blog"
+      "short_name": "Lei Qi's Blog"
+      "theme_color": "#2a6cb1"
+      "background_color": "#ffffff"
+      "display": "standalone"
+      "Scope": "/"
+      "start_url": "/"
+      icons:
+        - src: /imgs/icon-192x192.png
+          type: image/png
+          sizes: 192x192
+        - src: /imgs/icon-256x256.png
+          type: image/png
+          sizes: 256x256
+        - src: /imgs/icon-384x384.png
+          type: image/png
+          sizes: 384x384
+        - src: /imgs/icon-512x512.png
+          type: image/png
+          sizes: 512x512
+  serviceWorker:
+    path: /sw.js
+    preload:
+      urls:
+        - /
+      posts: 5
+    opts:
+      networkTimeoutSeconds: 5
+    routes:
+      - pattern: !!js/regexp /hm.baidu.com/
+        strategy: networkOnly
+      - pattern: !!js/regexp /.*\.(js|css|jpg|jpeg|png|gif)$/
+        strategy: cacheFirst
+      - pattern: !!js/regexp /\//
+        strategy: networkFirst
+  priority: 5
