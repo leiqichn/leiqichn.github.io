@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Test/排版测试.md",
+                "file": "source/_posts/工具/给你的博客 安装上PWA吧.md",
                 "mode": "source",
                 "source": false
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Test/排版测试.md",
+                "file": "source/_posts/工具/给你的博客 安装上PWA吧.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Test/排版测试.md",
+                "file": "source/_posts/工具/给你的博客 安装上PWA吧.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Test/排版测试.md"
+                "file": "source/_posts/工具/给你的博客 安装上PWA吧.md"
               }
             }
           },
@@ -207,8 +207,14 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "62f155cf77d2b888",
   "lastOpenFiles": [
+    "source/imgs/keyboard.jpeg",
+    "source/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
+    "source/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpg",
+    "source/imgs/Pasted image 20230324004739.png",
+    "source/_posts/Test/排版测试.md",
+    "source/_posts/工具/给你的博客 安装上PWA吧.md",
     "db.json",
     "node_modules/lodash._reinterpolate/README.md",
     "node_modules/lodash._reinterpolate/package.json",
@@ -222,7 +228,6 @@
     "node_modules/lodash.templatesettings",
     "node_modules/lodash.template/README.md",
     "node_modules/lodash.template/package.json",
-    "node_modules/lodash.template/LICENSE",
     "node_modules/hexo-pwa/README.md",
     "node_modules/imagemin-mozjpeg/node_modules/mimic-fn/readme.md",
     "node_modules/imagemin-mozjpeg/node_modules/onetime/readme.md",
@@ -243,8 +248,6 @@
     "node_modules/tunnel-agent/README.md",
     "node_modules/isurl/README.md",
     "node_modules/once/README.md",
-    "node_modules/inherits/README.md",
-    "node_modules/tar-stream/README.md",
     "public/imgs/qrcode.jpg",
     "public/imgs/keyboard.jpg",
     "public/imgs/微信图片_20230319125819.png",
@@ -252,9 +255,6 @@
     "public/imgs/icon-256x256.png",
     "public/imgs/icon-384x384.png",
     "public/imgs/Snipaste_2023-03-19_12-43-32.png",
-    "public/imgs/icon-192x192.png",
-    "public/imgs/Pasted image 20230319134051.png",
-    "public/imgs/fluid.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
