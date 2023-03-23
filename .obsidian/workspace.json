@@ -106,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -207,7 +207,7 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "62f155cf77d2b888",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
     "source/imgs/Pasted image 20230324011438.png",
     "source/_posts/工具/给你的博客 安装上PWA吧.md",

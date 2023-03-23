@@ -161,7 +161,7 @@ service_worker:
         origin: leiqichn.github.io
 
 
-# minifier
+# minifier jpg 不能压缩 否则在ubuntu会报错
 imagemin:
   enable     : true
   interlaced : false

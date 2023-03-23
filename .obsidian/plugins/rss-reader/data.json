@@ -1966,6 +1966,28 @@
       "description": "",
       "items": [
         {
+          "title": "给你的博客 安装上PWA吧",
+          "description": "<p><img src=\"/../../imgs/Pasted%20image%2020230324004739.png\"></p>\n<p><img src=\"/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg\">e</p>\n",
+          "content": "<p><img src=\"/../../imgs/Pasted%20image%2020230324004739.png\"></p><p><img src=\"/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg\">e</p>",
+          "category": "",
+          "link": "http://leiqichn.github.io/2023-03-24-dcc057675a38.html",
+          "creator": "",
+          "pubDate": "2023-03-23T17:24:32.641Z",
+          "enclosure": "",
+          "enclosureType": "",
+          "image": "",
+          "id": "http://leiqichn.github.io/2023-03-24-dcc057675a38.html",
+          "language": "",
+          "folder": "",
+          "feed": "blog",
+          "read": false,
+          "favorite": false,
+          "created": false,
+          "tags": [],
+          "hash": "9d62451e2576973a5d947ef44e0374c8",
+          "highlights": []
+        },
+        {
           "title": "Linux 命令 将前台任务挂到后台运行",
           "description": "<h1 id=\"背景\"><a href=\"#背景\" class=\"headerlink\" title=\"背景\"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code",
           "content": "<h1 id=\"背景\"><a href=\"#背景\" class=\"headerlink\" title=\"背景\"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p><p><strong>第一步：ctrl + z</strong></p><p><strong>第二步：jobs  查看任务id</strong></p><p><strong>第三步： bg %任务id</strong></p><p><img src=\"/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png\"></p>",
