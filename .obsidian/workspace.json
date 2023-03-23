@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/给你的博客 安装上PWA吧.md",
+                "file": "source/_posts/工具/快来压缩你的博客图片.md",
                 "mode": "source",
                 "source": false
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/给你的博客 安装上PWA吧.md",
+                "file": "source/_posts/工具/快来压缩你的博客图片.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/给你的博客 安装上PWA吧.md",
+                "file": "source/_posts/工具/快来压缩你的博客图片.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/给你的博客 安装上PWA吧.md"
+                "file": "source/_posts/工具/快来压缩你的博客图片.md"
               }
             }
           },
@@ -209,6 +209,9 @@
   },
   "active": "62f155cf77d2b888",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20230324011438.png",
+    "source/_posts/工具/给你的博客 安装上PWA吧.md",
+    "source/_posts/工具/快来压缩你的博客图片.md",
     "source/imgs/请不要在这里存放jpg图片！无法压缩.sh",
     "source/imgs/请不要在这里存放jpg图片！无法压缩.txt",
     "source/imgs/新建文本文档.txt",
@@ -218,7 +221,6 @@
     "source/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpg",
     "source/imgs/Pasted image 20230324004739.png",
     "source/_posts/Test/排版测试.md",
-    "source/_posts/工具/给你的博客 安装上PWA吧.md",
     "db.json",
     "node_modules/lodash._reinterpolate/README.md",
     "node_modules/lodash._reinterpolate/package.json",
@@ -228,7 +230,6 @@
     "node_modules/lodash.templatesettings/README.md",
     "node_modules/lodash.templatesettings/package.json",
     "node_modules/lodash.templatesettings/LICENSE",
-    "node_modules/lodash.templatesettings/index.js",
     "node_modules/lodash.template/README.md",
     "node_modules/hexo-pwa/README.md",
     "node_modules/imagemin-mozjpeg/node_modules/mimic-fn/readme.md",
@@ -249,7 +250,6 @@
     "node_modules/url-to-options/README.md",
     "node_modules/tunnel-agent/README.md",
     "node_modules/isurl/README.md",
-    "node_modules/once/README.md",
     "public/imgs/qrcode.jpg",
     "public/imgs/keyboard.jpg",
     "public/imgs/微信图片_20230319125819.png",
