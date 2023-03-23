@@ -6,7 +6,7 @@
   <link href="http://leiqichn.github.io/atom.xml" rel="self"/>
   
   <link href="http://leiqichn.github.io/"/>
-  <updated>2023-03-23T17:09:38.645Z</updated>
+  <updated>2023-03-23T17:24:32.641Z</updated>
   <id>http://leiqichn.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://leiqichn.github.io/2023-03-24-dcc057675a38.html"/>
     <id>http://leiqichn.github.io/2023-03-24-dcc057675a38.html</id>
     <published>2023-03-24T00:00:00.000Z</published>
-    <updated>2023-03-23T17:09:38.645Z</updated>
+    <updated>2023-03-23T17:24:32.641Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p><p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg">e</p>]]></content>
     
@@ -41,11 +41,34 @@
   </entry>
   
   <entry>
+    <title></title>
+    <link href="http://leiqichn.github.io/2023-03-23-0c982b40eb11.html"/>
+    <id>http://leiqichn.github.io/2023-03-23-0c982b40eb11.html</id>
+    <published>2023-03-23T17:24:32.641Z</published>
+    <updated>2023-03-23T17:24:32.641Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230324011438.png"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/../../imgs/Pasted%20image%2020230324011438.png&quot;&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="工" scheme="http://leiqichn.github.io/categories/%E5%B7%A5/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Linux 命令 将前台任务挂到后台运行</title>
     <link href="http://leiqichn.github.io/2023-03-19-aaf910b916ec.html"/>
     <id>http://leiqichn.github.io/2023-03-19-aaf910b916ec.html</id>
     <published>2023-03-19T00:00:00.000Z</published>
-    <updated>2023-03-23T17:09:38.645Z</updated>
+    <updated>2023-03-23T17:24:32.641Z</updated>
     
     <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p><p><strong>第一步：ctrl + z</strong></p><p><strong>第二步：jobs  查看任务id</strong></p><p><strong>第三步： bg %任务id</strong></p><p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>]]></content>
     
@@ -69,7 +92,7 @@
     <link href="http://leiqichn.github.io/2023-03-19-4d59bacf78a0.html"/>
     <id>http://leiqichn.github.io/2023-03-19-4d59bacf78a0.html</id>
     <published>2023-03-19T00:00:00.000Z</published>
-    <updated>2023-03-23T17:09:38.645Z</updated>
+    <updated>2023-03-23T17:24:32.641Z</updated>
     
     <content type="html"><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>本地写MD文档我是使用了github 和gitee 图床来着，但是发布到个人博客之后，发现支持都不好。所以选择了最原始的方案，复制图片到指定文件夹，然后连同这些图片文件夹一起上传到对应的git pages, 使用对应的<strong>相对路径</strong>就可以读取并显示图片。</p><p>而obsidian 可以实现插入图片的同时复制到图片到对应的路径，并生成MD 文档格式的链接。</p><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h2 id="1-打开obsidian-文件与链接"><a href="#1-打开obsidian-文件与链接" class="headerlink" title="1. 打开obsidian - 文件与链接"></a>1. 打开obsidian - 文件与链接</h2><h2 id="2-按照下图配置"><a href="#2-按照下图配置" class="headerlink" title="2. 按照下图配置"></a>2. 按照下图配置</h2><p>   *　将内部链接类型 设置为 “基于当前笔记的<strong>相对路径</strong>”<br>     &gt; 因为我们的博客发布了之后，就只有source 文件夹下的文件，所以需要使用<strong>相对路径</strong></p><ul><li>取消wiki 链接 </li><li>指定图片的默认路径为 <code>source/imgs</code><br>&gt; 如果没有该文件夹，则需要先新建一下。</li></ul><p><img src="/../../imgs/Pasted%20image%2020230319131458.png"></p><h2 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h2><p>网页可以成功显示图片</p><p><img src="/../../imgs/Pasted%20image%2020230319134051.png"></p>]]></content>
     
@@ -91,7 +114,7 @@
     <link href="http://leiqichn.github.io/2023-03-18-16129b89df14.html"/>
     <id>http://leiqichn.github.io/2023-03-18-16129b89df14.html</id>
     <published>2023-03-18T00:00:00.000Z</published>
-    <updated>2023-03-23T17:09:38.645Z</updated>
+    <updated>2023-03-23T17:24:32.641Z</updated>
     
     <content type="html"><![CDATA[<p>网页上显示和排版有时候比较麻烦，需要进行测试。本文档就是为测试网页排版格式的。</p><h1 id="HELLO-WORLD"><a href="#HELLO-WORLD" class="headerlink" title="HELLO WORLD"></a>HELLO WORLD</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><h3 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h3><h4 id="hello-world-1"><a href="#hello-world-1" class="headerlink" title="hello world"></a>hello world</h4><p><img src="https://gitee.com/LeiQiCN/upload-img/raw/master/Image/unnamed.png" alt="unnamed.png"></p>]]></content>
     
@@ -116,7 +139,7 @@
     <link href="http://leiqichn.github.io/2023-03-14-2c94ed65547e.html"/>
     <id>http://leiqichn.github.io/2023-03-14-2c94ed65547e.html</id>
     <published>2023-03-14T00:00:00.000Z</published>
-    <updated>2023-03-23T17:09:38.645Z</updated>
+    <updated>2023-03-23T17:24:32.641Z</updated>
     
     <content type="html"><![CDATA[<h1 id="博客链接"><a href="#博客链接" class="headerlink" title="博客链接"></a>博客链接</h1><p><a href="https://leiqichn.github.io/">国外链接</a><br><a href="https://leiqicn.gitee.io/">国内链接</a><br>大家可以根据网速情况选取任意一个网页浏览，两个网站内容是实时同步的。</p><h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>大家好，我是Lei Qi, 毕业于复旦大学 生物信息专业，现转码农成功，任职于华为，担任软件开发工程师一职。本站是为了方便自己记录学习过程，和大家交流经验而建。也是为了学习web, 实现拥有自己一个网站的小目标，才有了本站。欢迎大家多多交流学习，祝大家学习愉快~</p>]]></content>
     

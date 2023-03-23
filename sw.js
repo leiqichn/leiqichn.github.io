@@ -29,13 +29,13 @@ var precacheUrls = [
 
   '/2023-03-24-dcc057675a38.html',
 
+  '/2023-03-23-0c982b40eb11.html',
+
   '/2023-03-19-aaf910b916ec.html',
 
   '/2023-03-19-4d59bacf78a0.html',
 
   '/2023-03-18-16129b89df14.html',
-
-  '/2023-03-14-2c94ed65547e.html',
 
 ];
 toolbox.precache(precacheUrls);
