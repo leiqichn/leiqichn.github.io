@@ -209,6 +209,8 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/apple-touch-icon.png",
+    "source/icon-192x192.png",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
     "source/imgs/Pasted image 20230325200454.png",
@@ -230,7 +232,6 @@
     "public/imgs/qrcode.jpg",
     "public/imgs/keyboard.jpg",
     "public/imgs/微信图片_20230319125819.png",
-    "public/imgs/icon-512x512.png",
     "node_modules/fast-xml-parser/README.md",
     "node_modules/fast-xml-parser/CHANGELOG.md",
     "node_modules/hexo-pwa/README.md",
@@ -254,7 +255,6 @@
     "node_modules/imagemin-pngquant/node_modules/which/CHANGELOG.md",
     "node_modules/imagemin-pngquant/node_modules/shebang-command/readme.md",
     "node_modules/imagemin-pngquant/node_modules/shebang-regex/readme.md",
-    "node_modules/imagemin-pngquant/node_modules/path-key/readme.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
