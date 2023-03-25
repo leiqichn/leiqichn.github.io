@@ -27,7 +27,7 @@
     <link href="/2023-03-24-554b8cbb674b.html"/>
     <url>/2023-03-24-554b8cbb674b.html</url>
     
-    <content type="html"><![CDATA[<p>TODO:</p><ul><li>安装 hexo-pwa</li><li>解决报错</li><li>设置全局_config.yml 文件(非主题)</li></ul><p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p><p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>]]></content>
+    <content type="html"><![CDATA[<p>TODO:</p><ul><li>什么是PWA，可以提示添加到主屏幕<br>渐进式应用，提前缓存网站，像本地应用一样丝滑的使用网站</li><li>安装 hexo-pwa</li><li>由于hexo-pwa停止维护，需要解决报错</li><li>设置全局_config.yml 文件(非主题)</li></ul><p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p><p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>]]></content>
     
     
     <categories>
