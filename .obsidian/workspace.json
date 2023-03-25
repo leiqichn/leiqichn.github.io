@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
+                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
                 "mode": "source",
                 "source": false
               }
@@ -106,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -126,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
+                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
+                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/【TODO】快来压缩你的博客图片.md"
+                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md"
               }
             }
           },
@@ -207,8 +207,10 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "62f155cf77d2b888",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
+    "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
     "source/imgs/Pasted image 20230325200454.png",
     "db.json",
     "public/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
@@ -229,7 +231,6 @@
     "public/imgs/keyboard.jpg",
     "public/imgs/微信图片_20230319125819.png",
     "public/imgs/icon-512x512.png",
-    "public/imgs/icon-192x192.png",
     "node_modules/fast-xml-parser/README.md",
     "node_modules/fast-xml-parser/CHANGELOG.md",
     "node_modules/hexo-pwa/README.md",
@@ -254,7 +255,6 @@
     "node_modules/imagemin-pngquant/node_modules/shebang-command/readme.md",
     "node_modules/imagemin-pngquant/node_modules/shebang-regex/readme.md",
     "node_modules/imagemin-pngquant/node_modules/path-key/readme.md",
-    "node_modules/imagemin-pngquant/node_modules/npm-run-path/readme.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

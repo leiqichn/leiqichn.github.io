@@ -14,4 +14,4 @@ TODO:
 
 ![](../../imgs/Pasted%20image%2020230324004739.png)
 
-![](../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg)e
+![](../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg)
