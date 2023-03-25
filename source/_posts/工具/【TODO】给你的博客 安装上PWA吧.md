@@ -7,7 +7,10 @@ tags: []
 sticky: []
 category_bar: true
 ---
-
+TODO:
+* 安装 hexo-pwa
+* 解决报错
+* 设置全局_config.yml 文件(非主题)
 
 ![](../../imgs/Pasted%20image%2020230324004739.png)
 
