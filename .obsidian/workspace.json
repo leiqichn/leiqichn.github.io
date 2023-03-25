@@ -209,6 +209,7 @@
   },
   "active": "62f155cf77d2b888",
   "lastOpenFiles": [
+    "node_modules/jpegtran-bin/vendor/jpegtran.exe",
     "node_modules/pngquant-bin/cli.js",
     "node_modules/pngquant-bin/index.js",
     "node_modules/pngquant-bin/readme.md",
@@ -223,7 +224,6 @@
     "node_modules/lodash.template/index.js",
     "node_modules/lodash.template",
     "node_modules/lodash.templatesettings/README.md",
-    "node_modules/lodash.templatesettings/package.json",
     "node_modules/hexo-pwa/README.md",
     "node_modules/fast-glob/README.md",
     "node_modules/meow/readme.md",
