@@ -8,30 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "62f155cf77d2b888",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "de10c1b0d456d672",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "2d0dd73dc6e2d79d",
             "type": "leaf",
             "state": {
@@ -126,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md"
+                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md"
               }
             }
           },
@@ -207,8 +183,13 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "fdcf8fe4b0c2206c",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/guestbook/index.md",
+    "source/about/index.md",
+    "source/_posts/undefinedguestbook.md",
+    "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
+    "source/guestbook",
     "db.json",
     "public/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
     "public/imgs/default.png",
@@ -225,8 +206,6 @@
     "public/imgs/police_beian.png",
     "public/img/police_beian.png",
     "public/manifest.webmanifest",
-    "public/js/utils.js",
-    "public/js/plugins.js",
     "public/imgs/keyboard.jpg",
     "public/imgs/qrcode.jpg",
     "public/imgs/微信图片_20230319125819.png",
@@ -252,9 +231,6 @@
     "node_modules/is-gif/readme.md",
     "node_modules/make-dir/node_modules/semver/README.md",
     "node_modules/make-dir/node_modules/semver/CHANGELOG.md",
-    "node_modules/make-dir/readme.md",
-    "node_modules/imagemin-pngquant/node_modules/which/README.md",
-    "node_modules/imagemin-pngquant/node_modules/which/CHANGELOG.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
