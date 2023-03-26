@@ -178,6 +178,7 @@
   },
   "active": "6ddfd587784895a8",
   "lastOpenFiles": [
+    "push.sh",
     "db.json",
     "public/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
     "public/imgs/default.png",
@@ -194,7 +195,6 @@
     "public/tags/about/index.html",
     "public/tags/about",
     "public/js/search/local-search.js",
-    "public/js/search/algolia.js",
     "public/img/friend_404.gif",
     "public/imgs/微信图片_20230319125819.png",
     "public/imgs/qrcode.jpg",
