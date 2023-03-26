@@ -475,7 +475,7 @@ index:
   # 头图高度，屏幕百分比
   # Height ratio of banner image
   # Available: 0 - 100
-  banner_img_height: 80
+  banner_img_height: 100
 
   # 头图黑色蒙版的不透明度，available: 0 - 1.0， 1 是完全不透明
   # Opacity of the banner mask, 1.0 is completely opaque
@@ -805,9 +805,9 @@ valine:
   appId: adkgmMmfMC1DMgYcjg960d5a-gzGzoHsz
   appKey: RTNGcd7iOxYeuwCSRE5LHm2D
   path: window.location.pathname
-  placeholder:
+  placeholder: '点击这里输入你的真知灼见吧！支持MarkDown语法哦~'
   avatar: 'retro'
-  meta: ['nick', 'mail', 'link']
+  meta: ['nick', 'mail']
   requiredFields: []
   pageSize: 10
   lang: 'zh-CN'
@@ -816,7 +816,8 @@ valine:
   serverURLs: ''
   emojiCDN:
   emojiMaps:
-  enableQQ: false
+  visitor: true
+  enableQQ: true
 
 # Waline
 # 从 Valine 衍生而来，额外增加了服务端和多种功能
