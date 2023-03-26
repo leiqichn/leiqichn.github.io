@@ -98,7 +98,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/guestbook/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/guestbook/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,9 +135,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "source/guestbook/index.md"
-              }
+              "state": {}
             }
           },
           {
@@ -180,31 +176,33 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "6ddfd587784895a8",
   "lastOpenFiles": [
-    "_config.fluid.yml",
-    "themes/fluid_19/_config.fluid.yml",
-    "themes/fluid_19/_config - 副本.yml",
-    "_config.landscape.yml",
+    "db.json",
+    "public/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
+    "public/imgs/default.png",
+    "public/imgs/loading.gif",
+    "public/archives/2023/index.html",
+    "public/assets/img/微信图片_20230319125819.png.html",
+    "public/css/var.css",
+    "public/css/index.css",
+    "public/css",
     "public/imgs/police_beian.png",
     "public/imgs/csdn-logo.png",
-    "public/img/police_beian.png",
     "public/manifest.webmanifest",
-    "public/2023-03-14-519b5e93f019.html",
-    "public/assets/img/微信图片_20230319125819.png.html",
-    "public/2023-03-14-e579ed979874.html",
-    "public/js/local-search.js",
-    "public/js/utils.js",
-    "public/js/plugins.js",
-    "public/imgs/qrcode.jpg",
+    "public/img/favicon.png",
+    "public/tags/about/index.html",
+    "public/tags/about",
+    "public/js/search/local-search.js",
+    "public/js/search/algolia.js",
+    "public/img/friend_404.gif",
     "public/imgs/微信图片_20230319125819.png",
-    "public/imgs/icon-384x384.png",
+    "public/imgs/qrcode.jpg",
     "public/imgs/keyboard.jpg",
-    "public/imgs/cloud.png",
-    "public/imgs/icon-512x512.png",
-    "public/imgs/icon-256x256.png",
-    "source/_posts/关于我/关于我.md",
+    "themes/hexo-theme-butterfly-4-7-0/README_CN.md",
+    "themes/hexo-theme-butterfly-4-7-0/README.md",
     "source/guestbook/index.md",
+    "source/_posts/关于我/关于我.md",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/about/index.md",
     "source/_posts/undefinedguestbook.md",
@@ -226,8 +224,6 @@
     "node_modules/gifsicle/node_modules/cross-spawn/README.md",
     "node_modules/gifsicle/node_modules/cross-spawn/CHANGELOG.md",
     "node_modules/load-json-file/node_modules/pify/readme.md",
-    "node_modules/load-json-file/readme.md",
-    "node_modules/is-gif/node_modules/file-type/readme.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
