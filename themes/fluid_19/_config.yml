@@ -475,7 +475,7 @@ index:
   # 头图高度，屏幕百分比
   # Height ratio of banner image
   # Available: 0 - 100
-  banner_img_height: 100
+  banner_img_height: 80
 
   # 头图黑色蒙版的不透明度，available: 0 - 1.0， 1 是完全不透明
   # Opacity of the banner mask, 1.0 is completely opaque
@@ -800,13 +800,13 @@ gitalk:
 # Valine
 # 基于 LeanCloud
 # Based on LeanCloud
-# See: https://valine.js.org/
+# See: https://valine.js.org/ retro
 valine:
   appId: adkgmMmfMC1DMgYcjg960d5a-gzGzoHsz
   appKey: RTNGcd7iOxYeuwCSRE5LHm2D
   path: window.location.pathname
-  placeholder: '点击这里输入你的真知灼见吧！支持MarkDown语法哦~'
-  avatar: 'retro'
+  placeholder: '点击这里输入你的真知灼见吧！支持MarkDown语法哦~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！快来试试吧~'
+  avatar: ''
   meta: ['nick', 'mail']
   requiredFields: []
   pageSize: 10
