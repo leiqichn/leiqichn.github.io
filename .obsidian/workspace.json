@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
+                "file": "source/guestbook/index.md",
                 "mode": "source",
                 "source": false
               }
@@ -102,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
+                "file": "source/guestbook/index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md",
+                "file": "source/guestbook/index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/博客设置 obsidian 上传图片.md"
+                "file": "source/guestbook/index.md"
               }
             }
           },
@@ -185,7 +185,9 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/关于我/关于我.md",
     "source/guestbook/index.md",
+    "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/about/index.md",
     "source/_posts/undefinedguestbook.md",
     "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
@@ -229,8 +231,6 @@
     "node_modules/load-json-file/readme.md",
     "node_modules/is-gif/node_modules/file-type/readme.md",
     "node_modules/is-gif/readme.md",
-    "node_modules/make-dir/node_modules/semver/README.md",
-    "node_modules/make-dir/node_modules/semver/CHANGELOG.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
