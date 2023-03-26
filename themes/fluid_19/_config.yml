@@ -1012,7 +1012,7 @@ links:
       title: "CSDN",
       intro: "CSDN博客",
       link: "https://blog.csdn.net/lei_qi",
-      avatar: "/img/favicon.png"
+      avatar: "/imgs/csdn-logo.png"
     }
     #- {
     #  title: "Fluid Docs",
@@ -1024,7 +1024,7 @@ links:
       title: "github",
       intro: "主题 GitHub 仓库",
       link: "https://github.com/leiqichn",
-      avatar: "/img/favicon.png"
+      avatar: "/imgs/github-logo.png"
     }
 
   # 当成员头像加载失败时，替换为指定图片
