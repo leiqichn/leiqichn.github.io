@@ -113,7 +113,7 @@ func countNodes(root *TreeNode) int {
     }
     // 递归终止条件，需要左右两边深度相同，则为满二叉树，调用 2^treeDepth - 1 计算node
     if leftH == rightH {
-        return (2 << leftH) - 1
+        return (2 << leftH) - 1  // 2左移 即为平方
     }
     leftTreeNum := countNodes(root.Left) // 左
     rightTreeNum := countNodes(root.Right) // 中
