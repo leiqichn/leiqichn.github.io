@@ -60,6 +60,7 @@ func countNodes(root *TreeNode) int {
 ```
 
 ```go
+// 迭代
 func countNodes(root *TreeNode) int {
     if root == nil {
         return 0
