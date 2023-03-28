@@ -1,5 +1,5 @@
 ---
-title: leetcode 222.完全二叉树的节点个数
+title: Leetcode 222.完全二叉树的节点个数
 date: 2023-03-28 10:10:45
 modificationDate: 2023 三月 28日 星期二 22:44:35
 categories: 
