@@ -6,5 +6,6 @@ categories:
 	- <%tp.file.folder()%>
 tags: []
 sticky: []
+hide: false
 category_bar: true
 ---
