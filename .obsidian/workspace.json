@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "92988f559a08999d",
+        "id": "d787ed97fa620619",
         "type": "tabs",
         "children": [
           {
-            "id": "6ddfd587784895a8",
+            "id": "9fcc9246eb63a7ec",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -98,6 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,6 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +141,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md"
+              }
             }
           },
           {
@@ -178,6 +186,16 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/工具/博客设置 obsidian 上传图片.md",
+    "source/_posts/关于我/关于我.md",
+    "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
+    "source/obsidian_tamplate/TemPlater.md",
+    "source/_posts/Test/排版测试.md",
+    "未命名.canvas",
+    "source/imgs/Pasted image 20230328221334.png",
+    "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
+    "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
+    "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
     "db.json",
     "public/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
     "public/imgs/default.png",
@@ -196,21 +214,15 @@
     "public/img/police_beian.png",
     "public/assets/img/微信图片_20230319125819.png.html",
     "public/js/utils.js",
-    "public/js/local-search.js",
     "public/imgs/微信图片_20230319125819.png",
-    "public/imgs/qrcode.jpg",
     "themes/hexo-theme-butterfly-4-7-0/README_CN.md",
     "themes/hexo-theme-butterfly-4-7-0/README.md",
     "source/guestbook/index.md",
-    "source/_posts/关于我/关于我.md",
-    "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/about/index.md",
     "source/_posts/undefinedguestbook.md",
-    "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
     "themes/hexo-theme-butterfly-4.7.0/README.md",
     "themes/hexo-theme-butterfly-4.7.0/README_CN.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
-    "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
     "node_modules/fast-xml-parser/README.md",
     "node_modules/fast-xml-parser/CHANGELOG.md",
     "node_modules/hexo-pwa/README.md",
@@ -221,10 +233,6 @@
     "node_modules/csso/README.md",
     "node_modules/csso/CHANGELOG.md",
     "node_modules/console-stream/README.md",
-    "node_modules/gifsicle/node_modules/cross-spawn/README.md",
-    "node_modules/gifsicle/node_modules/cross-spawn/CHANGELOG.md",
-    "node_modules/load-json-file/node_modules/pify/readme.md",
-    "未命名 1.canvas",
-    "未命名.canvas"
+    "未命名 1.canvas"
   ]
 }
