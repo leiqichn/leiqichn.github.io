@@ -116,8 +116,8 @@ func countNodes(root *TreeNode) int {
         return (2 << leftH) - 1  // 2左移 即为平方
     }
     leftTreeNum := countNodes(root.Left) // 左
-    rightTreeNum := countNodes(root.Right) // 中
-    res := leftTreeNum + rightTreeNum + 1 // 右
+    rightTreeNum := countNodes(root.Right) // 右
+    res := leftTreeNum + rightTreeNum + 1 // 中
     return res
 }
 ```
