@@ -8,7 +8,6 @@ tags: [二叉树]
 sticky: []
 category_bar: true
 ---
-# leetcode 222.完全二叉树的节点个数
 
 [222. 完全二叉树的节点个数 - 力扣（Leetcode）](https://leetcode.cn/problems/count-complete-tree-nodes/)
 
