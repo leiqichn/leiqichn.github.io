@@ -1,7 +1,7 @@
 ---
-title: Leecode 257.二叉树的所有路径
-date: 2023-03-28 11:47:29
-modificationDate: 2023 三月 28日 星期二 23:50:47
+title: Leetcode 257.二叉树的所有路径
+date: 2023-03-28 23:47:29
+modificationDate: 2023 三月 29日 星期三 22:46:12
 categories: 
 	- leetcode
 tags: []
