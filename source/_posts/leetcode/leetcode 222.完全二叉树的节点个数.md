@@ -6,7 +6,7 @@ categories:
 	- leetcode
 tags: [二叉树]
 sticky: []
-hide: true
+hide: flase
 category_bar: true
 ---
 

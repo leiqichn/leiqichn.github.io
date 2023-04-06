@@ -6,7 +6,7 @@ categories:
 	- leetcode
 tags: []
 sticky: []
-hide: true
+hide: false
 category_bar: true
 ---
 

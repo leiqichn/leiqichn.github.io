@@ -8,36 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f5c3241d43d35fe5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/Linux/Linux 命令 将前台任务挂到后台运行.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "e5f2b254d266e387",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "themes/temp/获取微信公众号的历史文章地址.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e6a3d7b436ecde0d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/leetcode/Leetcode 513.找树左下角的值.md",
                 "mode": "source",
                 "source": false
               }
@@ -55,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -118,8 +93,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -139,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 513.找树左下角的值.md",
+                "file": "themes/temp/获取微信公众号的历史文章地址.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 513.找树左下角的值.md",
+                "file": "themes/temp/获取微信公众号的历史文章地址.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -179,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 513.找树左下角的值.md"
+                "file": "themes/temp/获取微信公众号的历史文章地址.md"
               }
             }
           },
@@ -221,8 +195,12 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "e5f2b254d266e387",
   "lastOpenFiles": [
+    "source/_posts/leetcode/Leetcode 513.找树左下角的值.md",
+    "conflict-files-obsidian-git.md",
+    "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
+    "README.md",
     "node_modules/bs-recipes/recipes/webpack.typescript.react/typings/main/ambient/react/index.d.ts",
     "node_modules/bs-recipes/recipes/webpack.typescript.react/typings/main/ambient/react-dom/index.d.ts",
     "node_modules/bs-recipes/recipes/webpack.typescript.react/typings/browser/ambient/react-dom/index.d.ts",
@@ -233,7 +211,6 @@
     "node_modules/bs-recipes/recipes/webpack.typescript.react/typings/browser/ambient/react",
     "node_modules/bs-recipes/recipes/gulp.browserify/app/js/dist/bundle.js.map",
     "node_modules/bs-recipes/recipes/webpack.typescript.react/typings/main/ambient",
-    "node_modules/bs-recipes/recipes/webpack.typescript.react/typings/browser/ambient",
     "node_modules/bs-recipes/recipes/webpack.typescript.react/readme.md",
     "node_modules/bs-recipes/recipes/webpack.typescript.react/desc.md",
     "node_modules/bs-recipes/recipes/webpack.react-transform-hmr/readme.md",
@@ -256,9 +233,6 @@
     "node_modules/bs-recipes/recipes/server.gzipped.assets/desc.md",
     "node_modules/bs-recipes/recipes/server/readme.md",
     "node_modules/bs-recipes/recipes/server/desc.md",
-    "node_modules/bs-recipes/recipes/proxy.custom-css/readme.md",
-    "node_modules/bs-recipes/recipes/proxy.custom-css/desc.md",
-    "node_modules/bs-recipes/recipes/middleware.css.injection/readme.md",
     "node_modules/serve-index/public/icons/page_world.png",
     "node_modules/serve-index/public/icons/page_word.png",
     "node_modules/serve-index/public/icons/page_white_zip.png",
