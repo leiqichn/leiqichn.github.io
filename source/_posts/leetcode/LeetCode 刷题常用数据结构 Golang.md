@@ -204,6 +204,12 @@ for k, v := range m{
     // 操作
 }
 
+判断键 是否存在
+
+if value, ok := dict["key1"]; ok {
+        fmt.Printf(value)
+    }
+
 // map键需要可比较，不能为slice、map、function
 // map值都有默认值，可以直接操作默认值，如：m[age]++ 值由0变为1
 // 比较两个map需要遍历，其中的kv是否相同，因为有默认值关系，所以需要检查val和ok两个值

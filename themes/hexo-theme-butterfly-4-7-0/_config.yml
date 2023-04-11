@@ -772,7 +772,7 @@ rightside_scroll_percent: false
 rightside_item_order:
   enable: false
   hide: # readmode,translate,darkmode,hideAside
-  show: # toc,chat,comment
+  show: toc,chat,comment
 
 # Lightbox (圖片大圖查看模式)
 # --------------------------------------
