@@ -435,7 +435,7 @@ footer:
     <a href="https://leiqichn.github.io/atom.xml" target="_blank" rel="nofollow noopener"><span>点击获取RSS订阅地址</span></a> <br />   
     	<a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
       <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
-      <a onclick="navigator.clipboard.writeText(&quot;laa@outlook.com&quot;);alert(&quot;已复制邮箱到剪切板，快来给我发邮件吧~&quot;)">Email | </a>
+      <a onclick="navigator.clipboard.writeText(&quot;leiqi@m.fudan.edu.cn&quot;);alert(&quot;已复制邮箱到剪切板，快来给我发邮件吧~&quot;)">Email | </a>
       <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信</span></a>
 
 
