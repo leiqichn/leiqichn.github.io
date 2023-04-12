@@ -437,7 +437,6 @@ footer:
       <a href="https://gitee.com/leiqicn" target="_blank" rel="nofollow noopener"><span>Gitee | </span></a>
       <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
       <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信</span></a>
-      <div class="about-icons"><a href="https://github.com/leiqichn" class="hint--bottom hint--rounded" aria-label="GitHub" target="_blank"><i class="iconfont icon-github-fill" aria-hidden="true"></i> </a><a href="https://leiqichn.github.io/atom.xml" class="hint--bottom hint--rounded" aria-label="订阅RSS" target="_blank"><i class="iconfont icon-rss-fill" aria-hidden="true"></i> </a><a class="qr-trigger" target="_self"><i class="iconfont icon-wechat-fill" aria-hidden="true"></i> <img class="qr-img" src="/imgs/qrcode.jpg" alt="qrcode" title="" style=""></a></div>
     '
   #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span> Powered By Hexo-Fluid</span></a><br /> 
   # 展示网站的 PV、UV 统计数
