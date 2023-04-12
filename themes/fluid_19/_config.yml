@@ -431,7 +431,7 @@ footer:
   content: '
     <a href="https://leiqicn.gitee.io" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2023. All right reserved.</a> <br />
     <a href="https://leiqicn.gitee.io" target="_blank" rel="nofollow noopener"><span>国内加速网站访问</span></a> 
-        <i class="iconfont icon-rss-fill"></i>RSS
+        <i class="iconfont icon-rss-fill"></i>
     <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板&quot;)">点击获取RSS订阅地址</a> <br />   
 
     	<a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
