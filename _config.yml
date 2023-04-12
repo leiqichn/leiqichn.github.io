@@ -136,10 +136,10 @@ neat_js:
     
     
     
-all_minifier: true
+all_minifier: false
 
 image_minifier:
-  enable: true
+  enable: false
   interlaced: false
   multipass: false
   optimizationLevel: 2
@@ -165,7 +165,7 @@ service_worker:
 
 # minifier jpg 不能压缩 否则在ubuntu会报错
 imagemin:
-  enable     : true
+  enable     : false
   interlaced : false
   multipass  : true
   optimizationLevel: 5
