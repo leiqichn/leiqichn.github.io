@@ -186,6 +186,7 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "themes/fluid_19/source/img/qrcode.jpg",
     "source/imgs/Pasted image 20230413232544.png",
     "source/imgs/Pasted image 20230413231612.png",
     "source/imgs/Pasted image 20230413231318.png",
@@ -208,7 +209,6 @@
     "public/img/keyboard.jpg",
     "public/img/fluid.png",
     "public/img/default.png",
-    "public/img/CLlogo.jpg",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/leetcode/递归debug 方法.md",
