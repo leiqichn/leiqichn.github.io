@@ -437,11 +437,12 @@ footer:
 
     	<a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
       <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
-      <a onclick="navigator.clipboard.writeText(&quot;leiqi@m.fudan.edu.cn&quot;);alert(&quot;已复制邮箱到剪切板，快来给我发邮件吧~&quot;)">Email | </a>
+      <a href="mailto:leiqi@m.fudan.edu.cn" target="_blank" rel="nofollow noopener"><span>Email | </span></a>
       <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信</span></a>
 
 
     '
+    #       <a onclick="navigator.clipboard.writeText(&quot;leiqi@m.fudan.edu.cn&quot;);alert(&quot;已复制邮箱到剪切板，快来给我发邮件吧~&quot;)">Email | </a> 
         # <a href="https://leiqichn.github.io/atom.xml" target="_blank" rel="nofollow noopener"><span>点击获取RSS订阅地址</span></a> <br />   
     #     <script>
     #   function copyToClipboard(text) {
@@ -509,9 +510,10 @@ index:
     # If empty, text based on `subtitle` in hexo config 
     text: "Lei Qi's Blog"
     icons:
-      - { class: "iconfont icon-mail", link: "mailto:leiqi@m.fudan.edu.cn", tip: "Email" }
+
       - { class: "iconfont icon-github-fill", link: "https://github.com/leiqichn", tip: "GitHub" }
       - { class: "iconfont icon-rss-fill", link: "https://leiqichn.github.io/atom.xml", tip: "RSS" }
+      - { class: "iconfont icon-mail", link: "mailto:leiqi@m.fudan.edu.cn", tip: "Email" }
       - { class: "iconfont icon-wechat-fill", qrcode: "/imgs/qrcode.jpg" }
     # 通过 API 接口作为首页副标题的内容，必须返回的是 JSON 格式，如果请求失败则按 text 字段显示，该功能必须先开启 typing 打字机功能
     # Subtitle of the homepage through the API, must be returned a JSON. If the request fails, it will be displayed in `text` value. This feature must first enable the typing animation
