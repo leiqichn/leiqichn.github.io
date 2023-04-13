@@ -826,11 +826,11 @@ valine:
   placeholder: '点击这里输入你的真知灼见吧！支持MarkDown语法哦~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！快来试试吧~'
   avatar: ''
   meta: ['nick', 'mail']
-  requiredFields: []
+  requiredFields: ['nick'] #设置必填项
   pageSize: 10
   lang: 'zh-CN'
   highlight: false
-  recordIP: false
+  recordIP: true
   serverURLs: ''
   emojiCDN:
   emojiMaps:
