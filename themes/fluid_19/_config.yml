@@ -432,7 +432,7 @@ footer:
     <a href="https://leiqicn.gitee.io" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2023. All right reserved.</a> <br />
     <a href="https://leiqicn.gitee.io" target="_blank" rel="nofollow noopener"><span>国内加速网站访问</span></a> 
         <i class="iconfont icon-rss-fill"></i>
-    <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板&quot;)">点击获取RSS订阅地址</a> <br />   
+    <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)">点击获取RSS订阅地址</a> <br />   
 
     	<a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
       <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
@@ -505,11 +505,12 @@ index:
     enable: true
 
     # 为空则按 hexo config.subtitle 显示
-    # If empty, text based on `subtitle` in hexo config
+    # If empty, text based on `subtitle` in hexo config 
     text: "Lei Qi's Blog"
     icons:
+      - { class: "iconfont icon-mail", link: "mailto:leiqi@m.fudan.edu.cn", tip: "Email" }
       - { class: "iconfont icon-github-fill", link: "https://github.com/leiqichn", tip: "GitHub" }
-      - { class: "iconfont icon-rss-fill", link: "https://leiqichn.github.io/atom.xml", tip: "订阅RSS" }
+      - { class: "iconfont icon-rss-fill", link: "https://leiqichn.github.io/atom.xml", tip: "RSS" }
       - { class: "iconfont icon-wechat-fill", qrcode: "/imgs/qrcode.jpg" }
     # 通过 API 接口作为首页副标题的内容，必须返回的是 JSON 格式，如果请求失败则按 text 字段显示，该功能必须先开启 typing 打字机功能
     # Subtitle of the homepage through the API, must be returned a JSON. If the request fails, it will be displayed in `text` value. This feature must first enable the typing animation
