@@ -181,7 +181,8 @@
       "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
-      "file-tree-alternative:File Tree Alternative Plugin": false
+      "file-tree-alternative:File Tree Alternative Plugin": false,
+      "remotely-save:Remotely Save": false
     }
   },
   "active": "d3d227159ce7968a",
