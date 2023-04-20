@@ -1,6 +1,8 @@
 http://leiqichn.github.io/manifest.json
 http://leiqichn.github.io/raw.manifest%20-%20%E5%89%AF%E6%9C%AC.json
 http://leiqichn.github.io/obsidian_tamplate/TemPlater.html
+http://leiqichn.github.io/2023-04-21-de97c2f605b0.html
+http://leiqichn.github.io/2023-04-21-326cad9621b7.html
 http://leiqichn.github.io/2023-03-19-aaf910b916ec.html
 http://leiqichn.github.io/2023-03-18-16129b89df14.html
 http://leiqichn.github.io/2023-03-28-40f110530226.html
@@ -23,6 +25,7 @@ http://leiqichn.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/
 http://leiqichn.github.io/tags/about/
 http://leiqichn.github.io/tags/%E6%B8%85%E7%90%86%E7%94%B5%E8%84%91%E5%86%85%E5%AD%98/
 http://leiqichn.github.io/tags/%E6%91%84%E5%BD%B1/
+http://leiqichn.github.io/categories/Golang/
 http://leiqichn.github.io/categories/Linux/
 http://leiqichn.github.io/categories/Test/
 http://leiqichn.github.io/categories/leetcode/
