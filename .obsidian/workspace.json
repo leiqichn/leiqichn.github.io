@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/递归debug 方法.md",
+                "file": "source/_posts/Golang/Go语言-多态.md",
                 "mode": "source",
                 "source": false
               }
@@ -102,7 +102,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/递归debug 方法.md",
+                "file": "source/_posts/Golang/Go语言-多态.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/递归debug 方法.md",
+                "file": "source/_posts/Golang/Go语言-多态.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,7 +142,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/递归debug 方法.md"
+                "file": "source/_posts/Golang/Go语言-多态.md"
               }
             }
           },
@@ -187,6 +187,11 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/Golang/Go语言-接口.md",
+    "source/_posts/Golang/Go语言-多态.md",
+    "source/_posts/leetcode/递归debug 方法.md",
+    "source/_posts/Golang",
+    "Golang",
     "themes/fluid_19/source/img/qrcode.jpg",
     "source/imgs/Pasted image 20230413232544.png",
     "source/imgs/Pasted image 20230413231612.png",
@@ -202,17 +207,13 @@
     "public/js/leancloud.js",
     "public/js/img-lazyload.js",
     "public/js/events.js",
-    "public/js/color-schema.js",
-    "public/js/boot.js",
     "public/img/qrcode.jpg",
     "public/img/police_beian.png",
     "public/img/loading.gif",
     "public/img/keyboard.jpg",
     "public/img/fluid.png",
-    "public/img/default.png",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
-    "source/_posts/leetcode/递归debug 方法.md",
     "source/_posts/Test/排版测试.md",
     "source/_posts/工具/C盘文件太多？回收站太满？.md",
     "themes/temp/蝴蝶 主题的右下角功能按键.md",
@@ -232,7 +233,6 @@
     "node_modules/pug-linker/README.md",
     "node_modules/pug-linker/HISTORY.md",
     "node_modules/pug-strip-comments/README.md",
-    "node_modules/pug-strip-comments/LICENSE.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
