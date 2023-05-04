@@ -4,18 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "58a2777e7658e7d8",
+        "id": "0dad119c0321efc3",
         "type": "tabs",
         "children": [
           {
-            "id": "445c30f5b61ec9f8",
+            "id": "87c4dd856cf1b7ed",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
-              "state": {
-                "file": "source/_posts/工具/删除ppt所有批注和备注.md",
-                "staged": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -180,7 +177,7 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "445c30f5b61ec9f8",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
     "source/_posts/leetcode/leetcode 108.将有序数组转换为二叉搜索树.md",
     "source/imgs/Pasted image 20230504232459.png",
