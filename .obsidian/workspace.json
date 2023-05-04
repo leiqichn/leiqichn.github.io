@@ -76,6 +76,14 @@
               "type": "file-tree-view",
               "state": {}
             }
+          },
+          {
+            "id": "dab6b88fdd11f4e2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ],
         "currentTab": 1
