@@ -27,8 +27,6 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: change mod
-        run: chmod +x hexo
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
