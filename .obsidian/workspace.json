@@ -11,11 +11,10 @@
             "id": "445c30f5b61ec9f8",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "source/_posts/leetcode/二叉树搜索一条边和搜索整棵树的区别.md",
-                "mode": "source",
-                "source": false
+                "file": "source/_posts/工具/删除ppt所有批注和备注.md",
+                "staged": false
               }
             }
           }
@@ -102,7 +101,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/二叉树搜索一条边和搜索整棵树的区别.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +117,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/二叉树搜索一条边和搜索整棵树的区别.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,9 +138,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "source/_posts/leetcode/二叉树搜索一条边和搜索整棵树的区别.md"
-              }
+              "state": {}
             }
           },
           {
@@ -185,11 +180,20 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "445c30f5b61ec9f8",
   "lastOpenFiles": [
+    "source/_posts/leetcode/leetcode 108.将有序数组转换为二叉搜索树.md",
+    "source/imgs/Pasted image 20230504232459.png",
+    "source/_posts/工具/删除ppt所有批注和备注.md",
+    "source/imgs/Pasted image 20230424222611.png",
+    "source/imgs/Pasted image 20230424222544.png",
+    "source/imgs/Pasted image 20230424222537.png",
+    "source/imgs/Pasted image 20230424222527.png",
+    "source/imgs/Pasted image 20230424222515.png",
+    "source/imgs/Pasted image 20230424222511.png",
+    "source/_posts/leetcode/二叉树搜索一条边和搜索整棵树的区别.md",
     "source/imgs/Pasted image 20230421005548.png",
     "未命名.canvas",
-    "source/_posts/leetcode/二叉树搜索一条边和搜索整棵树的区别.md",
     "source/_posts/Golang/Go语言-多态.md",
     "source/_posts/Golang/Go语言-接口.md",
     "source/_posts/leetcode/递归debug 方法.md",
@@ -197,10 +201,7 @@
     "Golang",
     "themes/fluid_19/source/img/qrcode.jpg",
     "source/imgs/Pasted image 20230413232544.png",
-    "source/imgs/Pasted image 20230413231612.png",
-    "source/imgs/Pasted image 20230413231318.png",
     "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
-    "source/imgs/Pasted image 20230413223133.png",
     "source/_posts/工具/增加直达评论，手机端显示toc.md",
     "db.json",
     "public/archives/page/2/index.html",
@@ -210,11 +211,6 @@
     "public/js/leancloud.js",
     "public/js/img-lazyload.js",
     "public/js/events.js",
-    "public/img/qrcode.jpg",
-    "public/img/police_beian.png",
-    "public/img/loading.gif",
-    "public/img/keyboard.jpg",
-    "public/img/fluid.png",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/Test/排版测试.md",
@@ -232,8 +228,6 @@
     "node_modules/css-stringify/History.md",
     "node_modules/character-parser/README.md",
     "node_modules/doctypes/README.md",
-    "node_modules/doctypes/HISTORY.md",
-    "node_modules/pug-linker/README.md",
     "未命名 1.canvas"
   ]
 }
