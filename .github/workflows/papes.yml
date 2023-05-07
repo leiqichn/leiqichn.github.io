@@ -25,13 +25,6 @@ jobs:
             ${{ runner.OS }}-npm-cache
       - name: Install Dependencies
         run: npm install
-
-      - name: Install dependencies
-        run: npm ci
-      - name: Add hexo to PATH
-        run: echo 'export PATH="/usr/local/lib/node_modules/hexo-cli/bin:$PATH"' >> $GITHUB_ENV
-      - name: Generate static files with Hexo
-        run: hexo generate
       - name: Build
         run: npm run build
       - name: Deploy
