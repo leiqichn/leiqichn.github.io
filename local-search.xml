@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
+    <link href="/2023-05-04-0a85ce0d0b0e.html"/>
+    <url>/2023-05-04-0a85ce0d0b0e.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p><p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p><h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * type TreeNode struct &#123;</span><br><span class="hljs-comment"> *     Val int</span><br><span class="hljs-comment"> *     Left *TreeNode</span><br><span class="hljs-comment"> *     Right *TreeNode</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sortedArrayToBST</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> *TreeNode &#123;<br>    <span class="hljs-keyword">return</span> traversal(nums,<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(nums)<span class="hljs-number">-1</span>)<br>&#125;<br><br><span class="hljs-comment">// 定义：返回nums root 节点</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">traversal</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>,left <span class="hljs-type">int</span> , right <span class="hljs-type">int</span>)</span></span> *TreeNode&#123;<br>    <span class="hljs-keyword">if</span> left &gt; right &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>    &#125;<br>    mid := (left + right)/<span class="hljs-number">2</span><br>    root := &amp;TreeNode&#123;nums[mid],<span class="hljs-literal">nil</span>,<span class="hljs-literal">nil</span>&#125;<br>    root.Left =  traversal(nums,left,mid<span class="hljs-number">-1</span>) <span class="hljs-comment">// 把后边 root 节点添加到当前root left 左节点上</span><br>    root.Right = traversal(nums,mid+<span class="hljs-number">1</span>,right) <span class="hljs-comment">// 把后边 root 节点添加到当前root right 左节点上</span><br>    <span class="hljs-keyword">return</span> root<br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>删除ppt所有批注和备注</title>
+    <link href="/2023-04-24-647ad7e06638.html"/>
+    <url>/2023-04-24-647ad7e06638.html</url>
+    
+    <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p><p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p><p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p><p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Go语言-接口</title>
     <link href="/2023-04-21-326cad9621b7.html"/>
     <url>/2023-04-21-326cad9621b7.html</url>
