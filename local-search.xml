@@ -4,31 +4,6 @@
   
   
   <entry>
-    <title>Go语言删除指定索引元素</title>
-    <link href="/2023-05-10-082c579e8beb.html"/>
-    <url>/2023-05-10-082c579e8beb.html</url>
-    
-    <content type="html"><![CDATA[<p>在Go语言中，可以使用切片的操作和 append 函数来删除特定索引的元素。</p><p>以下是一个示例代码，它演示了如何删除切片中索引值为 i 的元素：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    a := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;<br>    i := <span class="hljs-number">2</span> <span class="hljs-comment">// 要删除的索引</span><br><br>    <span class="hljs-comment">// 将要删除的元素从原始切片中删除，并返回剩下的元素组成的新切片</span><br>    b := <span class="hljs-built_in">append</span>(a[:i], a[i+<span class="hljs-number">1</span>:]...)<br><br>    fmt.Println(b) <span class="hljs-comment">// 输出 [1 2 4 5]</span><br>&#125;<br></code></pre></td></tr></table></figure><p>在上面的代码中，我们定义了一个整数切片 a，包含 1、2、3、4、5 五个元素。然后我们定义要删除的元素的索引位置 i 为 2（即第三个元素）。</p><p>接下来，我们使用 append 函数和切片切割（slice expression）操作，在 a[:i] 和 a[i+1:] 中间加入空白符号 (…)，以便将包含 a[i] 元素的子切片略过。也就是说，这个表达式等价于前 i 个元素和后面剩余的所有元素的连接。从而我们得到一个新的切片 b，其中不包含位于索引 i 处的元素。</p><p>最后，我们将结果赋值给变量 b 并打印输出它。注意，这个删除元素的操作不会改变原始切片 a 的内容。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Golang</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>golang</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Go语言指定索引插入元素</title>
     <link href="/2023-05-10-0daa2a6721f1.html"/>
     <url>/2023-05-10-0daa2a6721f1.html</url>
@@ -42,12 +17,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>golang</tag>
-      
-    </tags>
     
   </entry>
   
