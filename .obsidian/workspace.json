@@ -11,6 +11,18 @@
             "id": "87c4dd856cf1b7ed",
             "type": "leaf",
             "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/Golang/Go语言指定索引插入元素.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "07d8b612d620f9f5",
+            "type": "leaf",
+            "state": {
               "type": "empty",
               "state": {}
             }
@@ -106,6 +118,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/Golang/Go语言指定索引插入元素.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,6 +135,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/Golang/Go语言指定索引插入元素.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +157,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/Golang/Go语言指定索引插入元素.md"
+              }
             }
           },
           {
@@ -187,6 +203,9 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/Golang/Go语言指定索引插入元素.md",
+    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
+    "source/_posts/leetcode/各种遍历.md",
     "public/tags/摄影/index.html",
     "public/tags/摄影",
     "public/tags/Linux/index.html",
@@ -197,7 +216,6 @@
     "public/js/plugins.js",
     "public/js/local-search.js",
     "public/js/leancloud.js",
-    "public/js/img-lazyload.js",
     "public/img/fluid.png",
     "public/img/qrcode.jpg",
     "public/img/police_beian.png",
@@ -218,7 +236,6 @@
     "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
     "source/_posts/工具/增加直达评论，手机端显示toc.md",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
-    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/Test/排版测试.md",
     "source/_posts/工具/C盘文件太多？回收站太满？.md",
     "themes/temp/蝴蝶 主题的右下角功能按键.md",
@@ -233,7 +250,6 @@
     "node_modules/css-stringify/Readme.md",
     "node_modules/css-stringify/History.md",
     "node_modules/character-parser/README.md",
-    "node_modules/doctypes/README.md",
     "未命名 1.canvas"
   ]
 }
