@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Go语言删除指定索引元素</title>
+    <link href="/2023-05-10-082c579e8beb.html"/>
+    <url>/2023-05-10-082c579e8beb.html</url>
+    
+    <content type="html"><![CDATA[<p>在Go语言中，可以使用切片的操作和 append 函数来删除特定索引的元素。</p><p>以下是一个示例代码，它演示了如何删除切片中索引值为 i 的元素：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    a := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;<br>    i := <span class="hljs-number">2</span> <span class="hljs-comment">// 要删除的索引</span><br><br>    <span class="hljs-comment">// 将要删除的元素从原始切片中删除，并返回剩下的元素组成的新切片</span><br>    b := <span class="hljs-built_in">append</span>(a[:i], a[i+<span class="hljs-number">1</span>:]...)<br><br>    fmt.Println(b) <span class="hljs-comment">// 输出 [1 2 4 5]</span><br>&#125;<br></code></pre></td></tr></table></figure><p>在上面的代码中，我们定义了一个整数切片 a，包含 1、2、3、4、5 五个元素。然后我们定义要删除的元素的索引位置 i 为 2（即第三个元素）。</p><p>接下来，我们使用 append 函数和切片切割（slice expression）操作，在 a[:i] 和 a[i+1:] 中间加入空白符号 (…)，以便将包含 a[i] 元素的子切片略过。也就是说，这个表达式等价于前 i 个元素和后面剩余的所有元素的连接。从而我们得到一个新的切片 b，其中不包含位于索引 i 处的元素。</p><p>最后，我们将结果赋值给变量 b 并打印输出它。注意，这个删除元素的操作不会改变原始切片 a 的内容。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Go语言指定索引插入元素</title>
     <link href="/2023-05-10-0daa2a6721f1.html"/>
     <url>/2023-05-10-0daa2a6721f1.html</url>
@@ -14,6 +39,31 @@
     <categories>
       
       <category>Golang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title></title>
+    <link href="/2023-05-10-a36a1183ef35.html"/>
+    <url>/2023-05-10-a36a1183ef35.html</url>
+    
+    <content type="html"><![CDATA[<p>最近偶然用到了结构体指针作为map key 的场景。当时有点不太确定：<strong>go 语言使用map 时使用指针p作为key, 那修改指针p的值之后。这map 还包含p 吗？</strong><br>接下来让我们一起看看：</p><p>当将指针作为 Map 的 Key 时，实际上是把指针的值作为键来进行插入和查找操作。因此，如果修改了该指针所指向的变量的值，那么并不会影响已经添加到 Map 中的键。因为这个指针仍然具有相同的值，所以它可以被用作一个标识符来检索和操作存储在Map中的数据</p><p>例如，以下代码定义了一个map[*int]string类型的映射，将指针p用作key来插入和索引数据：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[*<span class="hljs-type">int</span>]<span class="hljs-type">string</span>)<br><br>x := <span class="hljs-number">1</span><br>p := &amp;x<br><br>m[p] = <span class="hljs-string">&quot;A&quot;</span> <span class="hljs-comment">// 添加数据</span><br><br>fmt.Println(m) <span class="hljs-comment">// map[0xc000016088:A]</span><br><br>*p = <span class="hljs-number">2</span> <span class="hljs-comment">// 修改变量x的值</span><br><br>fmt.Println(m) <span class="hljs-comment">// map[0xc000016088:A]</span><br>&#125;<br></code></pre></td></tr></table></figure><p>在上面的示例中，我们首先创建了一个指针p，指向变量x的地址，并把p用作key将字符串”A”添加到了map中。</p><p>接下来，我们修改了变量x的值，将其从1修改为2。但是，当我们再次输出映射m时，发现其中的元素仍然是[p:”A”]。这是因为，在修改变量的值后，指针p的地址仍然相同，因此该指针作为键在Map中仍然有效。映射使用的是地址而不是变量的名称或值，因此不受值的更改的影响。</p><p>总之，在将指针用作Map键时，必须理解这种行为，并根据需要编写代码来处理和管理指针及其地址的值。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>G</category>
       
     </categories>
     
