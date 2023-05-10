@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>Go语言删除指定索引元素</title>
+    <link href="/2023-05-10-082c579e8beb.html"/>
+    <url>/2023-05-10-082c579e8beb.html</url>
+    
+    <content type="html"><![CDATA[<p>在Go语言中，可以使用切片的操作和 append 函数来删除特定索引的元素。</p><p>以下是一个示例代码，它演示了如何删除切片中索引值为 i 的元素：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    a := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;<br>    i := <span class="hljs-number">2</span> <span class="hljs-comment">// 要删除的索引</span><br><br>    <span class="hljs-comment">// 将要删除的元素从原始切片中删除，并返回剩下的元素组成的新切片</span><br>    b := <span class="hljs-built_in">append</span>(a[:i], a[i+<span class="hljs-number">1</span>:]...)<br><br>    fmt.Println(b) <span class="hljs-comment">// 输出 [1 2 4 5]</span><br>&#125;<br></code></pre></td></tr></table></figure><p>在上面的代码中，我们定义了一个整数切片 a，包含 1、2、3、4、5 五个元素。然后我们定义要删除的元素的索引位置 i 为 2（即第三个元素）。</p><p>接下来，我们使用 append 函数和切片切割（slice expression）操作，在 a[:i] 和 a[i+1:] 中间加入空白符号 (…)，以便将包含 a[i] 元素的子切片略过。也就是说，这个表达式等价于前 i 个元素和后面剩余的所有元素的连接。从而我们得到一个新的切片 b，其中不包含位于索引 i 处的元素。</p><p>最后，我们将结果赋值给变量 b 并打印输出它。注意，这个删除元素的操作不会改变原始切片 a 的内容。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Go语言指定索引插入元素</title>
+    <link href="/2023-05-10-0daa2a6721f1.html"/>
+    <url>/2023-05-10-0daa2a6721f1.html</url>
+    
+    <content type="html"><![CDATA[<p>在Go语言中，可以使用切片（slice）的 append 函数和切片的切割（slice expression）操作来在指定索引位置插入元素。</p><p>下面是一个示例代码，它插入一个元素到切片的第二个位置：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    a := []<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;<br>    i := <span class="hljs-number">1</span> <span class="hljs-comment">// 要插入的位置</span><br>    b := <span class="hljs-built_in">append</span>(a[:i], <span class="hljs-built_in">append</span>([]<span class="hljs-type">int</span>&#123;<span class="hljs-number">5</span>&#125;, a[i:]...)...) <span class="hljs-comment">// 在切片的第二个位置插入数字5</span><br>    fmt.Println(b) <span class="hljs-comment">// 输出 [1 5 2 3 4]</span><br>&#125;<br></code></pre></td></tr></table></figure><p>在上面的代码中，我们首先定义了切片 a，包含整数 1、2、3、4。然后我们定义要插入的位置 i 为第二个元素（也就是索引值为 1）。</p><p>接着，在 append 函数中，我们将原始切片 a 切割成两部分：从起始位置到插入位置的子切片 a[:i]，和从插入位置到末尾的子切片 a[i:]。我们在这两个子切片之间插入了元素 5，然后使用两个 append 函数将它们拼接回去。</p><p>最后，我们将结果赋值给变量 b 并打印输出它。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>golang</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 108.将有序数组转换为二叉搜索树</title>
     <link href="/2023-05-04-0a85ce0d0b0e.html"/>
     <url>/2023-05-04-0a85ce0d0b0e.html</url>
