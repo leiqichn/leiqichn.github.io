@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Go语言-copy</title>
+    <link href="/2023-05-12-14cdceacb422.html"/>
+    <url>/2023-05-12-14cdceacb422.html</url>
+    
+    <content type="html"><![CDATA[<p>在 Go 语言中，copy 函数可以用于将一个切片（slice）的元素复制到另一个切片中。它的定义如下：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">copy</span><span class="hljs-params">(dst, src []Type)</span></span> <span class="hljs-type">int</span><br></code></pre></td></tr></table></figure><p>其中 dst 是目标切片，src 是源切片，Type 表示元素类型。函数返回值是复制的元素个数，即 len(src) 和 len(dst) 中较小的那个。</p><p>使用 copy 函数删除数组或切片中的元素，需要用到 append 函数和 copy 函数一起操作。具体步骤如下：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 定义一个包含元素的数组</span><br>a := [<span class="hljs-number">5</span>]<span class="hljs-type">int</span>&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;<br><span class="hljs-comment">// 定义要删除的元素下标</span><br>index := <span class="hljs-number">2</span><br><span class="hljs-comment">// 利用 append 函数和 copy 函数删除指定下标的元素</span><br><span class="hljs-built_in">copy</span>(a[index:], a[index+<span class="hljs-number">1</span>:])<br>a = a[:<span class="hljs-built_in">len</span>(a)<span class="hljs-number">-1</span>]<br><span class="hljs-comment">// 打印删除后的数组</span><br>fmt.Println(a) <span class="hljs-comment">// 输出 [1 2 4 5]</span><br></code></pre></td></tr></table></figure><p>上述代码中，首先定义一个包含 5 个元素的整型数组 a 和要删除的元素下标 index。然后调用 copy 函数将第 index+1 个元素开始的值复制到第 index 个位置，覆盖掉要删除的元素，然后再将数组长度减一，实现删除操作。最后打印删除后的数组。在实际使用时，还需判断删除下标的合法性等情况，以保证程序功能正确性。</p><p>在使用 copy 函数删除切片或数组中指定位置的元素时，需要将删除位置后面的元素向前移动一位，以覆盖被删除的元素。为了完成这个操作，可以使用切片的特性来实现。</p><p>在 Go 语言中，切片可以通过指定起始位置和结束位置来获取一个子切片。例如，对于一个长度为 5 的整型数组 a，我们可以通过以下方式获取从第二个元素到第四个元素组成的子切片：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go">b := a[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure><p>这里的 1 表示起始位置（从零开始计数），表示第二个元素；4 表示结束位置，表示第五个元素之后的位置。注意，slice[start:end] 的结果包含起始位置对应的元素，但不包含结束位置对应的元素。</p><p>在使用 copy 函数删除切片或数组中指定位置的元素时，我们可以利用该特性，将删除位置之后的所有元素复制到它们原来的位置上，以实现向前移位的效果。具体来说，假设要删除的位置是 index，则可以将要删除位置之后的所有元素构造一个子切片，再将子切片复制到原来的位置上来实现删除操作：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-built_in">copy</span>(a[index:], a[index+<span class="hljs-number">1</span>:])<br></code></pre></td></tr></table></figure><p>这里，a[index:] 表示从要删除位置开始到切片结束的一个子切片，它的长度为 len(a) - index。因此，通过 copy 函数将它复制到自身的第 index 个元素位置上时，就可以将删除位置之后的所有元素向前移位，从而删除具体元素。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
     <link href="/2023-05-12-60f3b890bbc5.html"/>
     <url>/2023-05-12-60f3b890bbc5.html</url>
