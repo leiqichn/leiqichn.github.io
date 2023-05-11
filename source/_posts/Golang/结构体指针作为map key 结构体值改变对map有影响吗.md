@@ -1,3 +1,14 @@
+---
+title: 结构体指针作为map key 结构体值改变对map有影响吗
+date: 2023-05-11 00:37:20
+modificationDate: 2023 五月 12日 星期五 00:05:36
+categories: 
+	- Golang
+tags: []
+sticky: []
+hide: false
+category_bar: true
+---
 最近偶然用到了结构体指针作为map key 的场景。当时有点不太确定：**go 语言使用map 时使用指针p作为key, 那修改指针p的值之后。这map 还包含p 吗？**
 接下来让我们一起看看：
 
