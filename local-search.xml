@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
+    <link href="/2023-05-12-60f3b890bbc5.html"/>
+    <url>/2023-05-12-60f3b890bbc5.html</url>
+    
+    <content type="html"><![CDATA[<p>在 Go 语言中，byte 和 rune 都是用来表示字符类型的数据类型。</p><p>byte 是 uint8 的别名，在 Go 中通常用于表示 ASCII 字符集中的一个字节。<br>rune 是 int32 的别名，在 Go 中通常用于表示 Unicode 字符集中的一个代码点。<br>因此，对于 ASCII 字符来说，byte 和 rune 的值是相同的，但是对于大部分 Unicode 字符来说，它们是不同的。</p><p>将 byte 或 rune 转换为 int 可以使用类型转换操作符：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go">b := <span class="hljs-type">byte</span>(<span class="hljs-string">&#x27;0&#x27;</span>)<br>i := <span class="hljs-type">int</span>(b) - <span class="hljs-type">int</span>(<span class="hljs-string">&#x27;0&#x27;</span>) <span class="hljs-comment">// 将 byte &#x27;0&#x27; 转换为 int 0</span><br><span class="hljs-comment">// 上边可以简写为</span><br>i := b - <span class="hljs-string">&#x27;0&#x27;</span><br>r := <span class="hljs-type">rune</span>(<span class="hljs-string">&#x27;中&#x27;</span>)<br>i := <span class="hljs-type">int</span>(r)             <span class="hljs-comment">// 将 rune &#x27;中&#x27; 转换为 int 类型（其实是它的 Unicode 码点）</span><br></code></pre></td></tr></table></figure><p>将 int 转换为 byte 或 rune 可以使用类型断言或类型转换操作符，但是需要注意溢出的情况。例如：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs go">i := <span class="hljs-number">10</span><br>b := <span class="hljs-type">byte</span>(i)   <span class="hljs-comment">// 溢出！编译器会忽略高位部分，直接取低位部分的字节</span><br>r := <span class="hljs-type">rune</span>(i)<br><span class="hljs-keyword">if</span> r &lt; <span class="hljs-number">0xFFFF</span> &#123;<br>    r = <span class="hljs-type">rune</span>(b) <span class="hljs-comment">// 类型断言</span><br>&#125;<br></code></pre></td></tr></table></figure><p>可以通过判断 r 是否小于 0xFFFF 来检测转换是否正确，因为 Unicode 的码点范围在 0～0x10FFFF，超过该范围的值会被认为是无效码点。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Leetcode 200.岛屿数量</title>
     <link href="/2023-05-11-97dc3204326d.html"/>
     <url>/2023-05-11-97dc3204326d.html</url>
@@ -23,6 +42,25 @@
       <tag>图遍历，岛屿问题</tag>
       
     </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>结构体指针作为map key 结构体值改变对map有影响吗</title>
+    <link href="/2023-05-11-36a371e968cb.html"/>
+    <url>/2023-05-11-36a371e968cb.html</url>
+    
+    <content type="html"><![CDATA[<p>最近偶然用到了结构体指针作为map key 的场景。当时有点不太确定：<strong>go 语言使用map 时使用指针p作为key, 那修改指针p的值之后。这map 还包含p 吗？</strong><br>接下来让我们一起看看：</p><p>当将指针作为 Map 的 Key 时，实际上是把指针的值作为键来进行插入和查找操作。因此，如果修改了该指针所指向的变量的值，那么并不会影响已经添加到 Map 中的键。因为这个指针仍然具有相同的值，所以它可以被用作一个标识符来检索和操作存储在Map中的数据</p><p>例如，以下代码定义了一个map[*int]string类型的映射，将指针p用作key来插入和索引数据：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[*<span class="hljs-type">int</span>]<span class="hljs-type">string</span>)<br><br>x := <span class="hljs-number">1</span><br>p := &amp;x<br><br>m[p] = <span class="hljs-string">&quot;A&quot;</span> <span class="hljs-comment">// 添加数据</span><br><br>fmt.Println(m) <span class="hljs-comment">// map[0xc000016088:A]</span><br><br>*p = <span class="hljs-number">2</span> <span class="hljs-comment">// 修改变量x的值</span><br><br>fmt.Println(m) <span class="hljs-comment">// map[0xc000016088:A]</span><br>&#125;<br></code></pre></td></tr></table></figure><p>在上面的示例中，我们首先创建了一个指针p，指向变量x的地址，并把p用作key将字符串”A”添加到了map中。</p><p>接下来，我们修改了变量x的值，将其从1修改为2。但是，当我们再次输出映射m时，发现其中的元素仍然是[p:”A”]。这是因为，在修改变量的值后，指针p的地址仍然相同，因此该指针作为键在Map中仍然有效。映射使用的是地址而不是变量的名称或值，因此不受值的更改的影响。</p><p>总之，在将指针用作Map键时，必须理解这种行为，并根据需要编写代码来处理和管理指针及其地址的值。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
     
   </entry>
   
@@ -73,25 +111,6 @@
       <tag>golang</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/2023-05-10-13dc17fa5336.html"/>
-    <url>/2023-05-10-13dc17fa5336.html</url>
-    
-    <content type="html"><![CDATA[<p>最近偶然用到了结构体指针作为map key 的场景。当时有点不太确定：<strong>go 语言使用map 时使用指针p作为key, 那修改指针p的值之后。这map 还包含p 吗？</strong><br>接下来让我们一起看看：</p><p>当将指针作为 Map 的 Key 时，实际上是把指针的值作为键来进行插入和查找操作。因此，如果修改了该指针所指向的变量的值，那么并不会影响已经添加到 Map 中的键。因为这个指针仍然具有相同的值，所以它可以被用作一个标识符来检索和操作存储在Map中的数据</p><p>例如，以下代码定义了一个map[*int]string类型的映射，将指针p用作key来插入和索引数据：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[*<span class="hljs-type">int</span>]<span class="hljs-type">string</span>)<br><br>x := <span class="hljs-number">1</span><br>p := &amp;x<br><br>m[p] = <span class="hljs-string">&quot;A&quot;</span> <span class="hljs-comment">// 添加数据</span><br><br>fmt.Println(m) <span class="hljs-comment">// map[0xc000016088:A]</span><br><br>*p = <span class="hljs-number">2</span> <span class="hljs-comment">// 修改变量x的值</span><br><br>fmt.Println(m) <span class="hljs-comment">// map[0xc000016088:A]</span><br>&#125;<br></code></pre></td></tr></table></figure><p>在上面的示例中，我们首先创建了一个指针p，指向变量x的地址，并把p用作key将字符串”A”添加到了map中。</p><p>接下来，我们修改了变量x的值，将其从1修改为2。但是，当我们再次输出映射m时，发现其中的元素仍然是[p:”A”]。这是因为，在修改变量的值后，指针p的地址仍然相同，因此该指针作为键在Map中仍然有效。映射使用的是地址而不是变量的名称或值，因此不受值的更改的影响。</p><p>总之，在将指针用作Map键时，必须理解这种行为，并根据需要编写代码来处理和管理指针及其地址的值。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>G</category>
-      
-    </categories>
-    
     
   </entry>
   
