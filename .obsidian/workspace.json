@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 设计题 Constructor构建.md",
+                "file": "source/_posts/leetcode/leetcode 1396.设计地铁系统.md",
                 "mode": "source",
                 "source": false
               }
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 设计题 Constructor构建.md",
+                "file": "source/_posts/leetcode/leetcode 1396.设计地铁系统.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 设计题 Constructor构建.md",
+                "file": "source/_posts/leetcode/leetcode 1396.设计地铁系统.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 设计题 Constructor构建.md"
+                "file": "source/_posts/leetcode/leetcode 1396.设计地铁系统.md"
               }
             }
           },
@@ -207,8 +207,11 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
-    "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
+    "source/imgs/Pasted image 20230518233218.png",
+    "source/_posts/leetcode/Go 语言中常用的函数.md",
+    "source/_posts/leetcode/leetcode 1396.设计地铁系统.md",
     "source/_posts/leetcode/leetcode 设计题 Constructor构建.md",
+    "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
     "source/_posts/leetcode/Leetcode 513.找树左下角的值.md",
     "source/_posts/Golang/Go语言-copy.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
@@ -251,9 +254,6 @@
     "source/_posts/工具/C盘文件太多？回收站太满？.md",
     "themes/temp/蝴蝶 主题的右下角功能按键.md",
     "themes/temp/获取微信公众号的历史文章地址.md",
-    "themes/temp/github actions 报错解决.md",
-    "themes/temp/取消git 代理.md",
-    "source/_posts/leetcode/Leetcode 257.二叉树的所有路径.md",
     "未命名 1.canvas"
   ]
 }
