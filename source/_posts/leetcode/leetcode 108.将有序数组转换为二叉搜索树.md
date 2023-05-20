@@ -7,7 +7,7 @@ categories:
 tags: []
 sticky: []
 hide: false
-category_bar: true
+category_bar: ture
 ---
 
 [108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/)
