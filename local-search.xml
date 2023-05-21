@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>leetcode 455.分发饼干</title>
+    <link href="/2023-05-21-c1aa51f444e0.html"/>
+    <url>/2023-05-21-c1aa51f444e0.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/assign-cookies/description/">455. 分发饼干 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230521231054.png"></p><p><a href="https://leiqicn.gitee.io/">https://leiqicn.gitee.io/</a> 欢迎关注我的博客，定时更新golang 刷题笔记</p><p>贪心的策略：</p><blockquote><p>贪心算法一般分为如下四步：<br> 将问题分解为若干个子问题<br>找出适合的贪心策略<br>求解每一个子问题的最优解<br>将局部最优解堆叠成全局最优解</p></blockquote><p>排序，遍历饼干，child胃口初始化idx&#x3D;0 ,res &#x3D;0 ;<br>如果没有越界并且饼干大于等于胃口，则childIdx ++；res++</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">findContentChildren</span><span class="hljs-params">(g []<span class="hljs-type">int</span>, s []<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-comment">// g 小孩胃口 s 饼干 从大到小排序 排序,并给胃口初始化赋值</span><br>    sort.Ints(g)<br>    sort.Ints(s)<br>    j := <span class="hljs-number">0</span><br>    res := <span class="hljs-number">0</span><br>    <span class="hljs-comment">// 用小饼干 来满足最小的胃口</span><br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(s); i++ &#123;<br>        <span class="hljs-comment">// 判断越界 饼干大于胃口</span><br>        <span class="hljs-keyword">if</span> j &lt; <span class="hljs-built_in">len</span>(g) &amp;&amp; s[i] &gt;= g[j]  &#123; <span class="hljs-comment">// len不越界的条件需要在前边</span><br><br>            res++<br>            j++<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res<br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>网站无法访问categories？</title>
     <link href="/2023-05-21-a827bdd2d159.html"/>
     <url>/2023-05-21-a827bdd2d159.html</url>
