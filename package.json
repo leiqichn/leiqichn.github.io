@@ -18,8 +18,10 @@
     "hexo": "^7.0.0-rc1",
     "hexo-browsersync": "^0.3.0",
     "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
     "hexo-generator-index": "^3.0.0",
+    "hexo-generator-json-content": "^4.2.3",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
     "hexo-neat": "^1.0.9",
@@ -32,7 +34,6 @@
     "hexo-theme-fluid": "^1.9.4",
     "imagemin-mozjpeg": "^10.0.0",
     "lodash": "^4.17.21",
-    "mozjpeg": "^8.0.0",
-    "hexo-generator-category": "^2.0.0"
+    "mozjpeg": "^8.0.0"
   }
 }
