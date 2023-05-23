@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>leetcode 144. 二叉树的前序遍历</title>
+    <link href="/2023-05-23-62bd8ef029a5.html"/>
+    <url>/2023-05-23-62bd8ef029a5.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/binary-tree-preorder-traversal/description/">144. 二叉树的前序遍历 - 力扣（Leetcode）</a></p><p><img src="/../../imgs/Pasted%20image%2020230523224940.png"></p><p>记得提前判断是否为空，否则会报找不到内存指针的错误<br><img src="/../../imgs/Pasted%20image%2020230523225147.png"></p><p>注意：这里和层序遍历不一样，这里不用使用中间变量lens :&#x3D; stack.len() 来遍历每层，虽然增加了每层遍历依然可以通过，但是没有必要。只有在层序遍历的时候才需要记录每层的信息。<a href="leetcode%20102.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86.md">leetcode 102. 二叉树的层序遍历</a></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * type TreeNode struct &#123;</span><br><span class="hljs-comment"> *     Val int</span><br><span class="hljs-comment"> *     Left *TreeNode</span><br><span class="hljs-comment"> *     Right *TreeNode</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">preorderTraversal</span><span class="hljs-params">(root *TreeNode)</span></span> []<span class="hljs-type">int</span> &#123;<br>stack := list.New()<br>res :=  []<span class="hljs-type">int</span>&#123;&#125;<br><br><span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span>&#123;<span class="hljs-comment">//防止为空</span><br><span class="hljs-keyword">return</span> res<br>&#125;<br>stack.PushBack(root)<br><span class="hljs-keyword">for</span> stack.Len() &gt; <span class="hljs-number">0</span> &#123;<br>top := stack.Remove(stack.Back()).(*TreeNode)<br>res = <span class="hljs-built_in">append</span>(res,top.Val)<br><span class="hljs-keyword">if</span> top.Right !=<span class="hljs-literal">nil</span> &#123;<br>stack.PushBack(top.Right)<br>&#125;<br><span class="hljs-keyword">if</span> top.Left !=<span class="hljs-literal">nil</span> &#123;<br>stack.PushBack(top.Left)<br>&#125;<br>&#125;<br><span class="hljs-keyword">return</span>  res <br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>leetcode 102. 二叉树的层序遍历</title>
+    <link href="/2023-05-23-a419f5d1c6af.html"/>
+    <url>/2023-05-23-a419f5d1c6af.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/">102. 二叉树的层序遍历 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523224632.png"></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">levelOrder</span><span class="hljs-params">(root *TreeNode)</span></span> [][]<span class="hljs-type">int</span> &#123;<br>    res := [][]<span class="hljs-type">int</span>&#123;&#125;<br>    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span>&#123;<span class="hljs-comment">//防止为空</span><br>        <span class="hljs-keyword">return</span> res<br>    &#125;<br>    queue := &amp;list.List&#123;&#125;<br>    queue.PushBack(root)<br><br>    <span class="hljs-keyword">for</span> queue.Len() &gt; <span class="hljs-number">0</span> &#123;<br>        length := queue.Len()               <span class="hljs-comment">//保存当前层的长度，然后处理当前层（十分重要，防止添加下层元素影响判断层中元素的个数）     </span><br>        <span class="hljs-keyword">var</span> levelQueue []<span class="hljs-type">int</span><br>        fmt.Println(length)<br>        <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; length; i++ &#123;<br>            node := queue.Remove(queue.Front()).(*TreeNode)    <span class="hljs-comment">//出队列</span><br>            <span class="hljs-keyword">if</span> node.Left != <span class="hljs-literal">nil</span> &#123;<br>                queue.PushBack(node.Left)<br>            &#125;<br>            <span class="hljs-keyword">if</span> node.Right != <span class="hljs-literal">nil</span> &#123;<br>                queue.PushBack(node.Right)<br>            &#125;<br>            levelQueue = <span class="hljs-built_in">append</span>(levelQueue, node.Val)    <span class="hljs-comment">//将值加入本层切片中</span><br>        &#125;<br>        res = <span class="hljs-built_in">append</span>(res, levelQueue)          <span class="hljs-comment">//放入结果集</span><br>    &#125;<br><br>    <span class="hljs-keyword">return</span> res<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 1845.座位预约管理系统</title>
     <link href="/2023-05-22-97adde03f66a.html"/>
     <url>/2023-05-22-97adde03f66a.html</url>
