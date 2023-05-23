@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
+                "file": "source/_posts/leetcode/leetcode 226. 翻转二叉树.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
+                "file": "source/_posts/leetcode/leetcode 226. 翻转二叉树.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
+                "file": "source/_posts/leetcode/leetcode 226. 翻转二叉树.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md"
+                "file": "source/_posts/leetcode/leetcode 226. 翻转二叉树.md"
               }
             }
           },
@@ -195,10 +195,12 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20230523230644.png",
+    "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
+    "source/_posts/leetcode/leetcode 226. 翻转二叉树.md",
     "source/imgs/Pasted image 20230523225147.png",
     "source/imgs/Pasted image 20230523224940.png",
     "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
-    "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
     "source/imgs/Pasted image 20230523224632.png",
     "source/_posts/leetcode/leetcode 1845.座位预约管理系统.md",
     "source/imgs/Pasted image 20230523000703.png",
@@ -217,7 +219,6 @@
     "public/imgs/微信图片_20230319125819.png",
     "public/imgs/Pasted image 20230424222544.png",
     "public/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
-    "public/imgs/Pasted image 20230521214750.png",
     "db.json",
     "public/css/main.css",
     "public/css/highlight.css",
@@ -240,7 +241,6 @@
     "source/_posts/leetcode/二叉树搜索一条边和搜索整棵树的区别.md",
     "source/_posts/leetcode/递归debug 方法.md",
     "source/_posts/leetcode/各种遍历.md",
-    "source/_posts/leetcode/leetcode 706. 设计哈希映射 Golang.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
