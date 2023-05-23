@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 1845.座位预约管理系统.md",
+                "file": "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 1845.座位预约管理系统.md",
+                "file": "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 1845.座位预约管理系统.md",
+                "file": "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 1845.座位预约管理系统.md"
+                "file": "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md"
               }
             }
           },
@@ -195,8 +195,13 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
-    "source/imgs/Pasted image 20230523000703.png",
+    "source/imgs/Pasted image 20230523225147.png",
+    "source/imgs/Pasted image 20230523224940.png",
+    "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
+    "source/_posts/leetcode/leetcode 144. 二叉树的前序遍历.md",
+    "source/imgs/Pasted image 20230523224632.png",
     "source/_posts/leetcode/leetcode 1845.座位预约管理系统.md",
+    "source/imgs/Pasted image 20230523000703.png",
     "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
     "source/_posts/leetcode/leetcode　705. 设计哈希集合.md",
     "source/_posts/leetcode/leetcode 455.分发饼干.md",
@@ -214,9 +219,6 @@
     "public/imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg",
     "public/imgs/Pasted image 20230521214750.png",
     "db.json",
-    "public/imgs/Pasted image 20230408230832.png",
-    "public/imgs/3f0c31123f22ff3aa51312dc4d9a726.jpg",
-    "public/imgs/b4ef89bfab7f211d72486980e53d7b0.jpg",
     "public/css/main.css",
     "public/css/highlight.css",
     "public/css/highlight-dark.css",
@@ -239,8 +241,6 @@
     "source/_posts/leetcode/递归debug 方法.md",
     "source/_posts/leetcode/各种遍历.md",
     "source/_posts/leetcode/leetcode 706. 设计哈希映射 Golang.md",
-    "themes/temp/蝴蝶 主题的右下角功能按键.md",
-    "source/_posts/工具/增加直达评论，手机端显示toc.md",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
