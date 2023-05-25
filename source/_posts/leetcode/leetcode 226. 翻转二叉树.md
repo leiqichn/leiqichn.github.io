@@ -1,9 +1,7 @@
-
-
 ---
 title: leetcode 226. 翻转二叉树
 date: 2023-05-23 23:06:25
-modificationDate: 2023 五月 23日 星期二 23:06:25
+modificationDate: 2023 五月 25日 星期四 21:36:19
 categories: 
 	- leetcode
 tags: []
@@ -11,6 +9,7 @@ sticky: []
 hide: false
 category_bar: true
 ---
+
 [226. 翻转二叉树 - 力扣（Leetcode）](https://leetcode.cn/problems/invert-binary-tree/description/)
 ![](../../imgs/Pasted%20image%2020230523230644.png)
 
