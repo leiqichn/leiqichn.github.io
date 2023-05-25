@@ -13,19 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 226. 翻转二叉树.md",
+                "file": "source/_posts/摄影/波纹.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "285c5793d9dd791b",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.3.3"
               }
             }
           }
@@ -120,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 226. 翻转二叉树.md",
+                "file": "source/_posts/摄影/波纹.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 226. 翻转二叉树.md",
+                "file": "source/_posts/摄影/波纹.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 226. 翻转二叉树.md"
+                "file": "source/_posts/摄影/波纹.md"
               }
             }
           },
@@ -205,8 +195,8 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
-    "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
     "source/_posts/leetcode/leetcode 226. 翻转二叉树.md",
+    "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
     "source/_posts/leetcode/leetcode 376.摆动序列.md",
     "source/imgs/Pasted image 20230524010708.png",
     "source/imgs/Pasted image 20230523230644.png",
