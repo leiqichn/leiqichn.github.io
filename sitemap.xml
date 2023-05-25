@@ -29,6 +29,15 @@
   </url>
   
   <url>
+    <loc>https://leiqichn.github.io/about/index.html</loc>
+    
+    <lastmod>2023-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqichn.github.io/categories/index.html</loc>
     
     <lastmod>2023-05-25</lastmod>
@@ -138,15 +147,6 @@
   
   <url>
     <loc>https://leiqichn.github.io/2023-03-18-87649bcaf9cc.html</loc>
-    
-    <lastmod>2023-05-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqichn.github.io/2023-03-17-2342aabd3189.html</loc>
     
     <lastmod>2023-05-25</lastmod>
     
@@ -361,15 +361,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://leiqichn.github.io/about/index.html</loc>
-    
-    <lastmod>2023-05-25</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>https://leiqichn.github.io/</loc>
@@ -388,13 +379,6 @@
   
   <url>
     <loc>https://leiqichn.github.io/tags/linux%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2023-05-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqichn.github.io/tags/Linux/</loc>
     <lastmod>2023-05-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -460,13 +444,6 @@
   
   <url>
     <loc>https://leiqichn.github.io/categories/Linux/</loc>
-    <lastmod>2023-05-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqichn.github.io/categories/Test/</loc>
     <lastmod>2023-05-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
