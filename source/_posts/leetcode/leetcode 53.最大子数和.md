@@ -17,7 +17,7 @@ category_bar: true
 ![image.png](https://pic.leetcode.cn/1685028457-IOzjjG-image.png)
 [TOC]
 # 思路
-> 这里是经典的最大子序和的问题。我们可以很容易想到贪心的思想。就是如果前边的子序和是正数，则我们会把当前的数添加到前面的自序和上。否则，重新从当前位置开始子序和，丢弃前边的子序和。
+> 这里是经典的最大子序和的问题。我们可以很容易想到贪心的思想。就是如果前边的子序和是正数，则我们会把当前的数添加到前面的子序和上。否则，重新从当前位置开始子序和，丢弃前边的子序和。
 
 
 # 解题方法
@@ -36,7 +36,7 @@ category_bar: true
 
 # Code
 ```Go []
-// 方法1 使用了类似动态规划的思想
+// 方法1 
 func maxSubArray(nums []int) int {
 	count := 0
 	res := math.MinInt32
@@ -53,7 +53,7 @@ func maxSubArray(nums []int) int {
 	}
 	return res
 }
-// 方法2 
+// 方法2 使用了类似动态规划的思想
 // 定义 nums[i] 当前元素，nums[i-1] 前序列之和
 func maxSubArray(nums []int) int {
 	max := nums[0] //初始化最大值为前边一个元素
