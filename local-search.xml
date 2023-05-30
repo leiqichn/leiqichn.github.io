@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>leetcode 104.二叉树的深度</title>
+    <link href="/2023-05-30-b1879d2b65d1.html"/>
+    <url>/2023-05-30-b1879d2b65d1.html</url>
+    
+    <content type="html"><![CDATA[<p>个人网站：<a href="https://leiqicn.gitee.io/categories/leetcode/">https://leiqicn.gitee.io/categories/leetcode/</a><br><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230531000419.png"></p><p>二叉树节点的深度指的是该节点到根节点的距离，也就是从根节点到该节点的路径长度。而二叉树节点的高度指的是该节点到其子树中最远叶子节点的距离，也就是该节点为根的子树的高度。</p><p>所以，可以将整个二叉树的高度定义为根节点的高度，也就是从根节点到最远叶子节点的距离。而整个二叉树的深度则没有固定的定义，通常是指二叉树中节点深度的最大值。</p><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max</span> <span class="hljs-params">(a, b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">if</span> a &gt; b &#123;<br>        <span class="hljs-keyword">return</span> a;<br>    &#125;<br>    <span class="hljs-keyword">return</span> b;<br>&#125;<br><span class="hljs-comment">// 递归</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">maxdepth</span><span class="hljs-params">(root *treenode)</span></span> <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> max(maxdepth(root.left), maxdepth(root.right)) + <span class="hljs-number">1</span>;<br>&#125;<br><br><br></code></pre></td></tr></table></figure><h2 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h2><p>可以使用模板层序遍历</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * type TreeNode struct &#123;</span><br><span class="hljs-comment"> *     Val int</span><br><span class="hljs-comment"> *     Left *TreeNode</span><br><span class="hljs-comment"> *     Right *TreeNode</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;container/list&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">maxDepth</span><span class="hljs-params">(root *TreeNode)</span></span> <span class="hljs-type">int</span> &#123;<br>depth := <span class="hljs-number">0</span><br><span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> &#123;<br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>&#125;<br>queue := list.New()<br>queue.PushBack(root)<br><br><span class="hljs-keyword">for</span> queue.Len() &gt; <span class="hljs-number">0</span> &#123;<br>size := queue.Len()<br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; size; i++ &#123;<br><span class="hljs-comment">// 切掉第一个元素</span><br>first := queue.Remove(queue.Front()).(*TreeNode) <span class="hljs-comment">//注意层序遍历是切掉前边一个</span><br><span class="hljs-keyword">if</span> first.Left != <span class="hljs-literal">nil</span> &#123;<br>queue.PushBack(first.Left)<br>&#125;<br><span class="hljs-keyword">if</span> first.Right != <span class="hljs-literal">nil</span> &#123;<br>queue.PushBack(first.Right)<br>&#125;<br>&#125;<br>depth++<br>&#125;<br><span class="hljs-keyword">return</span> depth<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DFS</tag>
+      
+      <tag>BFS</tag>
+      
+      <tag>层序遍历</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 122买动态股票的最佳时机II</title>
     <link href="/2023-05-27-5cebfed1675b.html"/>
     <url>/2023-05-27-5cebfed1675b.html</url>
