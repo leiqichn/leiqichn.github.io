@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>leetcode 28.找出字符串中第一个匹配项的下标</title>
+    <link href="/2023-05-31-396a1cd3c61e.html"/>
+    <url>/2023-05-31-396a1cd3c61e.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/">28. 找出字符串中第一个匹配项的下标 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230531222721.png"></p><p>简单解法<br>利用split 函数</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">strStr</span><span class="hljs-params">(haystack <span class="hljs-type">string</span>, needle <span class="hljs-type">string</span>)</span></span> <span class="hljs-type">int</span> &#123;<br><span class="hljs-comment">// 使用split 函数，如果存在needle,则会把其切分为至少两个元素的切片</span><br>splitList := strings.Split(haystack, needle)<br><span class="hljs-comment">// 如果长度为1，且needle!=haystack 说明没找到匹配项，返回-1</span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(splitList)== <span class="hljs-number">1</span> &amp;&amp; needle!=haystack &#123;<br><span class="hljs-keyword">return</span> <span class="hljs-number">-1</span><br>&#125;<br><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(splitList) &gt; <span class="hljs-number">1</span> &#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(splitList[<span class="hljs-number">0</span>])<br>&#125;<br><span class="hljs-comment">// needle 在haystack的最开头，返回0</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 104.二叉树的深度</title>
     <link href="/2023-05-30-b1879d2b65d1.html"/>
     <url>/2023-05-30-b1879d2b65d1.html</url>
