@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>什么是二进制的按位或和按位异或</title>
+    <link href="/2023-06-08-3d1c210a715f.html"/>
+    <url>/2023-06-08-3d1c210a715f.html</url>
+    
+    <content type="html"><![CDATA[<p>按位或（bitwise OR）和按位异或（bitwise XOR）是两种二进制位运算。但是这两个概念很容易忘记或者混淆，今天我们就来加深一下印象吧！</p><p>按位或运算符（|）对两个二进制数的每一位都执行逻辑或操作，返回一个新的二进制数。其真值表如下</p><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs coq">input bit a | <span class="hljs-type">input</span> bit b | <span class="hljs-type">output</span> <br>------------------------------- <br><span class="hljs-number">0</span>        |     <span class="hljs-type">0</span>      | <span class="hljs-type">0</span> <br><span class="hljs-number">0</span>        |     <span class="hljs-type">1</span>      | <span class="hljs-type">1</span> <br><span class="hljs-number">1</span>        |     <span class="hljs-type">0</span>      | <span class="hljs-type">1</span> <br><span class="hljs-number">1</span>        |     <span class="hljs-type">1</span>      | <span class="hljs-type">1</span><br></code></pre></td></tr></table></figure><p>例如，执行 6 (二进制位 110) 和 3 (二进制位 011) 的按位或运算 会得到 7 (二进制位 111):</p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">  110</span><br><span class="hljs-section">| 011</span><br><span class="hljs-section">-----</span><br><span class="hljs-code">  111</span><br><br></code></pre></td></tr></table></figure><p>按位异或运算符（^）对两个二进制数的每一位都执行逻辑异或操作，返回一个新的二进制数。其真值表如下：</p><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">input bit a | input bit b | output</span><br><span class="hljs-section">-------------------------------</span><br><span class="hljs-code">        0    |    0      |   0</span><br><span class="hljs-code">        0    |    1      |   1</span><br><span class="hljs-code">        1    |    0      |   1</span><br><span class="hljs-code">        1    |    1      |   0</span><br><br></code></pre></td></tr></table></figure><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code">  110</span><br><span class="hljs-section">^ 011</span><br><span class="hljs-section">-----</span><br><span class="hljs-code">  101</span><br><br></code></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>按位或，就是只要有1 就为1 (包含了1  1 ；0 1；1  0；三种)<br>按位异或，必须一个0一个1，才为1 （包含0 1；1  0；两种）<br>大家记住了吗？</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
+    <link href="/2023-06-05-869070f8049d.html"/>
+    <url>/2023-06-05-869070f8049d.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/apply-operations-to-an-array/description/">2460. 对数组执行操作 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230605224628.png"></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>直接模拟</p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>第一版<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">applyOperations</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> []<span class="hljs-type">int</span> &#123;<br><span class="hljs-keyword">var</span> res []<span class="hljs-type">int</span><br>res = <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-built_in">len</span>(nums))<br>index := <span class="hljs-number">0</span><br><span class="hljs-comment">// 第一次遍历 进行赋值操作</span><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(nums)<span class="hljs-number">-1</span>; i++ &#123;<br><span class="hljs-keyword">if</span> nums[i] == nums[i+<span class="hljs-number">1</span>] &#123;<br>nums[i] *= <span class="hljs-number">2</span><br>nums[i+<span class="hljs-number">1</span>] = <span class="hljs-number">0</span><br>&#125;<br>&#125;<br><span class="hljs-comment">// 第二次遍历 将非0移动到前边</span><br><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(nums); i++ &#123;<br><span class="hljs-keyword">if</span> nums[i] != <span class="hljs-number">0</span> &#123;<br>res[index] = nums[i]<br>index++<br>&#125;<br>&#125;<br><span class="hljs-keyword">return</span> res<br>&#125;<br><br></code></pre></td></tr></table></figure><p>第二版<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">applyOperations</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> []<span class="hljs-type">int</span> &#123;<br>    n := <span class="hljs-built_in">len</span>(nums)<br>    j := <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; n; i++ &#123;<br>        <span class="hljs-keyword">if</span> i+<span class="hljs-number">1</span> &lt; n &amp;&amp; nums[i] == nums[i+<span class="hljs-number">1</span>] &#123;<br>            nums[i] *= <span class="hljs-number">2</span><br>            nums[i + <span class="hljs-number">1</span>] = <span class="hljs-number">0</span><br>        &#125;<br>        <span class="hljs-keyword">if</span> nums[i] != <span class="hljs-number">0</span> &#123;<br>            nums[i], nums[j] = nums[j], nums[i]<br>            j++<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> nums<br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 28.找出字符串中第一个匹配项的下标</title>
     <link href="/2023-05-31-396a1cd3c61e.html"/>
     <url>/2023-05-31-396a1cd3c61e.html</url>
