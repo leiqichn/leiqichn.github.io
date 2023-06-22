@@ -12,14 +12,14 @@ category_bar: true
 [1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）](https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/)
 ![](../../imgs/Pasted%20image%2020230614235423.png)
 
-后缀和（Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。
+**后缀和（**Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。
 
 具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+...+A[i-1] 的前缀和，其中 0≤i<n。那么对于任何 0≤l≤r<n，A[l]+A[l+1]+...+A[r] = S[r+1]-S[l]。
 
 在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。
 
 
-不使用后缀和
+## 不使用后缀和
 ```go
 func f(s string) int {
     cnt := 0
@@ -55,7 +55,7 @@ func numSmallerByFrequency(queries []string, words []string) []int {
 
 ```
 
-
+## 使用后缀和
 ```go
 func f(s string) int {
     cnt := 0
