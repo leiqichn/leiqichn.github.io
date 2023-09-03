@@ -94,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 207.5
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -193,7 +193,7 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "7bd3aa1a59b2a714",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
     "source/imgs/Pasted image 20230903142906.png",
     "source/imgs/Pasted image 20230903140955.png",
