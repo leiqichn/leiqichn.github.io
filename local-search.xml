@@ -5,10 +5,10 @@
   
   <entry>
     <title></title>
-    <link href="/2023-09-03-d920d9357f34.html"/>
-    <url>/2023-09-03-d920d9357f34.html</url>
+    <link href="/2023-09-03-0c562f1bfa86.html"/>
+    <url>/2023-09-03-0c562f1bfa86.html</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230903231353.png"></p><h1 id="抽象工厂模式结构"><a href="#抽象工厂模式结构" class="headerlink" title="抽象工厂模式结构"></a>抽象工厂模式结构</h1><p><img src="/../../imgs/Pasted%20image%2020230903231449.png"><br>多个工厂模式;</p><p>有抽象工厂(现代工厂,和古代工厂),具体工厂(现代工程和古代风格工厂实现),抽象产品(接口 ,椅子和桌子) 和具体产品(实现具体的桌子和椅子)</p><p><img src="/../../imgs/Pasted%20image%2020230903231857.png"></p>]]></content>
     
     
     <categories>
