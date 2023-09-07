@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "7202b1994091f348",
+        "id": "47d48efd343deb50",
         "type": "tabs",
         "children": [
           {
-            "id": "7bd3aa1a59b2a714",
+            "id": "46f01636949b54c1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/设计模式/设计模式-抽象工厂.md",
+                "file": "source/_posts/关于我/关于我.md",
                 "mode": "source",
                 "source": false
               }
@@ -89,12 +89,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 207.5
+    "width": 339.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -110,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/设计模式/设计模式-抽象工厂.md",
+                "file": "source/_posts/关于我/关于我.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/设计模式/设计模式-抽象工厂.md",
+                "file": "source/_posts/关于我/关于我.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/设计模式/设计模式-抽象工厂.md"
+                "file": "source/_posts/关于我/关于我.md"
               }
             }
           },
@@ -193,21 +192,25 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "46f01636949b54c1",
   "lastOpenFiles": [
+    "source/about/index.md",
+    "source/imgs/白鸽.png",
+    "source/_posts/关于我/关于我.md",
+    "source/categories/index.md",
+    "source/guestbook/index.md",
+    "未命名.canvas",
+    "source/_posts/设计模式/设计模式-抽象工厂.md",
     "source/imgs/Pasted image 20230903231857.png",
     "source/imgs/Pasted image 20230903231449.png",
     "source/imgs/Pasted image 20230903231353.png",
     "source/_posts/设计模式/设计模式-工厂方法模式.md",
     "source/imgs/Pasted image 20230903222357.png",
-    "source/_posts/设计模式/设计模式-抽象工厂.md",
     "source/imgs/Pasted image 20230903142906.png",
     "source/imgs/Pasted image 20230903140955.png",
     "source/imgs/Pasted image 20230903140305.png",
     "source/imgs/Pasted image 20230903140113.png",
     "source/imgs/Pasted image 20230903140037.png",
-    "source/imgs/Pasted image 20230903134916.png",
-    "source/imgs/Pasted image 20230903134840.png",
     "source/_posts/leetcode/leetcode 2511 最多可以摧毁的敌人城堡数目.md",
     "source/_posts/设计模式",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
@@ -225,15 +228,11 @@
     "source/_posts/leetcode/leetcode 1845.座位预约管理系统.md",
     "source/_posts/leetcode/leetcode 2460.对数组执行操作 2023.05.06每日一题.md",
     "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
-    "source/guestbook/index.md",
-    "source/_posts/关于我/关于我.md",
     "source/_posts/leetcode/字面值进行初始化和make初始化.md",
     "source/_posts/网络",
     "网络",
     "source/_posts/leetcode/数组双指针刷题总结.md",
     "themes/temp/Go语言算法.md",
-    "source/_posts/leetcode/leetcode 271.字符串的编码与解码.md",
-    "source/_posts/leetcode/leetcode 1170. 比较字符串最小字母出现频次.md",
     "db.json",
     "public/css/main.css",
     "public/css/highlight.css",
@@ -241,7 +240,6 @@
     "public/css/gitalk.css",
     "public/css",
     "public/js/plugins.js",
-    "未命名.canvas",
     "未命名 1.canvas"
   ]
 }
