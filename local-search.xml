@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>leetcode 2594修车的最少时间</title>
+    <link href="/2023-09-07-b8c038c07b41.html"/>
+    <url>/2023-09-07-b8c038c07b41.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/minimum-time-to-repair-cars/description/?envType=daily-question&envId=2023-09-07">2594. 修车的最少时间 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230908000057.png"></p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>能力值为 <code>r</code> 的机械工可以在 t&#x3D; <code>r * n2</code> 分钟内修好 <code>n</code> 辆车。<br>可以看到 n &#x3D; 根号(t&#x2F;r), t 对于car 的数量是单调增的，所以可以适用二分法来不断逼近car 的数量。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">repairCars</span><span class="hljs-params">(ranks []<span class="hljs-type">int</span>, cars <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int64</span> &#123;<br>    l , r := <span class="hljs-number">1</span>, ranks[<span class="hljs-number">0</span>] * cars * cars<br>    <span class="hljs-keyword">var</span> check = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(m <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br>        cnt := <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> _, x := <span class="hljs-keyword">range</span> ranks &#123;<br>            cnt += <span class="hljs-type">int</span>(math.Sqrt(<span class="hljs-type">float64</span>(m / x)))<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt &gt;= cars<br>    &#125;<br>        <br>    <span class="hljs-keyword">for</span> l &lt; r &#123;<br>        m := (l + r) &gt;&gt; <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> check(m) &#123;<br>            r = m<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            l = m + <span class="hljs-number">1</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">int64</span>(l)<br>&#125;<br><br><br></code></pre></td></tr></table></figure><ol><li><p><code>l</code> 和 <code>r</code> 的初始化：</p><ul><li><code>l</code> 初始化为1，表示最小可能的修理时间。</li><li><code>r</code> 初始化为 <code>ranks[0] * cars * cars</code>，表示最大可能的修理时间。这里假设第一个机械工的能力值最高，所以最大时间是他修理所有汽车所需的时间。</li></ul></li><li><p><code>check</code> 函数定义：</p><ul><li>这个函数用于检查给定的修理时间是否足够，以修理所有汽车。它接受一个整数 <code>m</code> 作为参数，表示修理时间。然后，它遍历每个机械工的能力值，计算每个机械工在 <code>m</code> 时间内能修理多少辆车，然后累加到 <code>cnt</code> 变量中。</li><li>如果 <code>cnt</code> 大于或等于需要修理的汽车数量 <code>cars</code>，则返回 <code>true</code>，否则返回 <code>false</code>。</li></ul></li><li><p>二分查找循环：</p><ul><li>使用一个二分查找循环来查找最小的修理时间。循环条件是 <code>l &lt; r</code>，即当最小时间小于最大时间时，继续循环。</li><li>在每次循环中，计算中间值 <code>m</code>，并调用 <code>check(m)</code> 检查是否满足修理所有汽车的条件。</li><li>如果满足条件，则将 <code>r</code> 更新为 <code>m</code>，因为我们希望找到更小的修理时间。</li><li>如果不满足条件，则将 <code>l</code> 更新为 <code>m + 1</code>，因为我们需要增加修理时间。</li><li>这样，不断地缩小时间范围，直到找到最小的修理时间。</li></ul></li><li><p>最终返回结果：</p><ul><li>一旦 <code>l</code> 不再小于 <code>r</code>，循环结束，说明已经找到了最小的修理时间，将其转换为 <code>int64</code> 类型并返回。</li></ul></li></ol><p>我们总结一下二分查找适用的场景</p><h1 id="二分查找算法适用场景"><a href="#二分查找算法适用场景" class="headerlink" title="二分查找算法适用场景"></a>二分查找算法适用场景</h1><p><strong>递增或递减规律</strong>：数据集合必须遵循某种递增或递减的规律，以确保二分查找的有效性。二分查找前提就是单调的。</p><p><strong>有序数据集合</strong>：二分查找要求数据集合必须是有序的，无论是升序还是降序都可以。</p><p><strong>快速查找</strong>：对于大型数据集，二分查找是一种高效的查找算法，因为它每次都将数据集合减半。</p><p><strong>确定性问题</strong>：二分查找通常用于解决确定性问题，即要么找到目标，要么确定目标不存在。它不适用于涉及模糊匹配或多个匹配项的情况。</p><p><strong>时间复杂度要求较高</strong>：在需要快速找到目标的情况下，二分查找的时间复杂度为O(log n)，对于大规模数据集非常高效。</p><p><strong>可比较性数据</strong>：二分查找要求能够比较数据元素的大小，因此适用于数字、字符等可比较的数据类型。</p><p><strong>搜索范围可确定</strong>：二分查找适用于可以确定搜索范围的问题，通常通过定义一个左边界和右边界来实现。</p><p><strong>内存连续性</strong>：在一些需要高效的内存访问场景中，二分查找比线性搜索更有效，因为它充分利用了内存的连续性。</p><p>一些具体的应用场景包括在有序数组中查找元素、查找某个值的边界、查找某个值的插入位置、查找满足某个条件的最大或最小值等。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>设计模式-抽象工厂</title>
     <link href="/2023-09-03-c6ab66461699.html"/>
     <url>/2023-09-03-c6ab66461699.html</url>
