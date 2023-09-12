@@ -63,3 +63,4 @@ alias proxyoff="unset http_proxy;unset http_proxy"
 ![](../../imgs/Pasted%20image%2020230912235632.png)
 ![](../../imgs/Pasted%20image%2020230912235612.png)
 可以看到环境变量里边，有了我们设置的环境变量。通过代理设置，我们可以轻松解决github 代码推送的问题，方便生产开发。
+![图 push成功](../../imgs/Pasted%20image%2020230913000956.png)
