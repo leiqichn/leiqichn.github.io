@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>clash在终端设置代理</title>
+    <link href="/2023-09-12-b926f621cf15.html"/>
+    <url>/2023-09-12-b926f621cf15.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h1 id="开启代理"><a href="#开启代理" class="headerlink" title="开启代理"></a>开启代理</h1><p>前置条件：手动开打 clash 等VPN软件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">export</span> http_proxy=http://127.0.0.1:7890<br><span class="hljs-built_in">export</span> https_proxy=http://127.0.0.1:7890<br></code></pre></td></tr></table></figure><p>对应的网址是在settings- static-Host; 对应port 为General-Prot<br><img src="/../../imgs/Pasted%20image%2020230913000142.png"><br><img src="/../../imgs/Pasted%20image%2020230913000136.png"></p><h1 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">unset</span> http_proxy<br><span class="hljs-built_in">unset</span> http_proxy<br></code></pre></td></tr></table></figure><h1 id="git-里设置开启代理-alias-命令别名"><a href="#git-里设置开启代理-alias-命令别名" class="headerlink" title="git 里设置开启代理 alias 命令别名"></a>git 里设置开启代理 alias 命令别名</h1><h2 id="新建-bashrc"><a href="#新建-bashrc" class="headerlink" title="新建 .bashrc"></a>新建 .bashrc</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">cd</span> ~<br>vi .bashrc<br><br><span class="hljs-comment"># 将以下内容复制进去</span><br><span class="hljs-comment"># .bashrc</span><br><br><span class="hljs-comment"># Source global definitions</span><br><span class="hljs-keyword">if</span> [ -f /etc/bash.bashrc ]; <span class="hljs-keyword">then</span><br>        . /etc/bash.bashrc<br><span class="hljs-keyword">fi</span><br><br><span class="hljs-comment"># Uncomment the following line if you don&#x27;t like systemctl&#x27;s auto-paging feature:</span><br><span class="hljs-comment"># export SYSTEMD_PAGER=</span><br><br><span class="hljs-comment"># User specific aliases and functions</span><br>// 别名设置，其他别名设置也是类似<br><span class="hljs-built_in">alias</span> proxyon=<span class="hljs-string">&quot;export http_proxy=http://127.0.0.1:7890;export https_proxy=http://127.0.0.1:7890&quot;</span><br><span class="hljs-built_in">alias</span> proxyoff=<span class="hljs-string">&quot;unset http_proxy;unset http_proxy&quot;</span><br></code></pre></td></tr></table></figure><h2 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h2><p>可以在终端直接使用proxyon 打开代理，proxyoff关闭代理。<br><img src="/../../imgs/Pasted%20image%2020230912235632.png"><br><img src="/../../imgs/Pasted%20image%2020230912235612.png"><br>可以看到环境变量里边，有了我们设置的环境变量。通过代理设置，我们可以轻松解决github 代码推送的问题，方便生产开发。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 2594修车的最少时间</title>
     <link href="/2023-09-07-b8c038c07b41.html"/>
     <url>/2023-09-07-b8c038c07b41.html</url>
