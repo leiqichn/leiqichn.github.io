@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>C++ 结构化设计</title>
+    <link href="/2023-09-13-476441b87811.html"/>
+    <url>/2023-09-13-476441b87811.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h1><p><strong>自顶向下的设计 是自顶向下的分解</strong> -&gt; 找子问题 -&gt;公共的问题-&gt;抽出来子问题<br><img src="/../../imgs/Pasted%20image%2020230913232308.png"></p><h1 id="实现阶段"><a href="#实现阶段" class="headerlink" title="实现阶段"></a>实现阶段</h1><p>自顶向上的实现，实现一个一个子问题</p><p>程序由三种基本结构组成，<strong>顺序-分支-循环</strong><img src="/../../imgs/Pasted%20image%2020230913232249.png"></p><h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="/../../imgs/Pasted%20image%2020230913232729.png"><br><img src="/../../imgs/Pasted%20image%2020230913232746.png"></p><p><img src="/../../imgs/Pasted%20image%2020230913232825.png"><br><img src="/../../imgs/Pasted%20image%2020230913232951.png"><br><img src="/../../imgs/Pasted%20image%2020230913232936.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>C++</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>clash在终端设置代理</title>
     <link href="/2023-09-12-b926f621cf15.html"/>
     <url>/2023-09-12-b926f621cf15.html</url>
