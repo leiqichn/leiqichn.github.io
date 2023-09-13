@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md",
+                "file": "source/_posts/C++/C++ 结构化设计.md",
                 "mode": "source",
                 "source": false
               }
@@ -89,12 +89,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 339.49999618530273
+    "width": 200
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -110,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md",
+                "file": "source/_posts/C++/C++ 结构化设计.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md",
+                "file": "source/_posts/C++/C++ 结构化设计.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md"
+                "file": "source/_posts/C++/C++ 结构化设计.md"
               }
             }
           },
@@ -169,13 +168,24 @@
               "type": "RSS_FEED",
               "state": {}
             }
+          },
+          {
+            "id": "c80751c690f98dfc",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
           }
         ],
         "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 319.5
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -194,27 +204,31 @@
   },
   "active": "46f01636949b54c1",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20230913232951.png",
+    "source/imgs/Pasted image 20230913232936.png",
+    "source/imgs/Pasted image 20230913232825.png",
+    "source/imgs/Pasted image 20230913232746.png",
+    "source/imgs/Pasted image 20230913232729.png",
+    "source/imgs/Pasted image 20230913232308.png",
+    "source/imgs/Pasted image 20230913232249.png",
+    "source/_posts/工具/clash在终端设置代理.md",
+    "source/_posts/C++/C++ 结构化设计.md",
+    "source/_posts/C++",
+    "C++",
+    "source/_posts/工具/foxmail设置登录gmail.md",
     "source/imgs/Pasted image 20230913000956.png",
     "source/imgs/Pasted image 20230913000142.png",
     "source/imgs/Pasted image 20230913000136.png",
     "source/imgs/Pasted image 20230912235632.png",
-    "source/imgs/Pasted image 20230912235612.png",
-    "source/imgs/Pasted image 20230912234603.png",
     "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
-    "source/_posts/工具/clash在终端设置代理.md",
     "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
     "source/_posts/leetcode/leetcode 2594修车的最少时间.md",
-    "source/imgs/Pasted image 20230908000057.png",
     "source/_posts/关于我/关于我.md",
     "source/about/index.md",
-    "source/imgs/白鸽.png",
     "source/categories/index.md",
     "source/guestbook/index.md",
     "未命名.canvas",
     "source/_posts/设计模式/设计模式-抽象工厂.md",
-    "source/imgs/Pasted image 20230903231857.png",
-    "source/imgs/Pasted image 20230903231449.png",
-    "source/imgs/Pasted image 20230903231353.png",
     "source/_posts/设计模式/设计模式-工厂方法模式.md",
     "source/_posts/leetcode/leetcode 2511 最多可以摧毁的敌人城堡数目.md",
     "source/_posts/设计模式",
@@ -230,8 +244,6 @@
     "source/_posts/leetcode/各种遍历.md",
     "source/_posts/leetcode/二叉树搜索一条边和搜索整棵树的区别.md",
     "source/_posts/leetcode/递归debug 方法.md",
-    "source/_posts/leetcode/leetcode 1845.座位预约管理系统.md",
-    "source/_posts/leetcode/leetcode 2460.对数组执行操作 2023.05.06每日一题.md",
     "source/_posts/网络",
     "网络",
     "db.json",
@@ -239,8 +251,6 @@
     "public/css/highlight.css",
     "public/css/highlight-dark.css",
     "public/css/gitalk.css",
-    "public/css",
-    "public/js/plugins.js",
     "未命名 1.canvas"
   ]
 }
