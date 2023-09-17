@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Linux 将用户追加到对应用户组</title>
+    <link href="/2023-09-17-5141f57450ab.html"/>
+    <url>/2023-09-17-5141f57450ab.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol><li>将test 添加到GroupA</li></ol><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">usermod -a -G GroupName UserName<br><span class="hljs-comment"># 例如将test 追加到GroupA</span><br>usermod -a -G GroupA <span class="hljs-built_in">test</span><br><br></code></pre></td></tr></table></figure><ol start="2"><li>修改新建文件的默认权限</li></ol><p>在.bashrc 里添加</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)<br></code></pre></td></tr></table></figure><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>C++ 结构化设计</title>
     <link href="/2023-09-13-476441b87811.html"/>
     <url>/2023-09-13-476441b87811.html</url>
