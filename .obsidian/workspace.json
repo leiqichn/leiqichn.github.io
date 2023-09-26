@@ -23,11 +23,14 @@
             "id": "1d1aa05d08bde894",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
-                "mode": "source",
-                "source": false
+                "file": "未命名 1.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               }
             }
           }
@@ -123,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
+                "file": "未命名 1.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
+                "file": "未命名 1.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -163,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md"
+                "file": "未命名 1.canvas"
               }
             }
           },
@@ -218,12 +221,14 @@
   },
   "active": "1d1aa05d08bde894",
   "lastOpenFiles": [
+    "source/_posts/leetcode/Leetcode 1603. 设计停车系统.md",
+    "未命名 1.canvas",
+    "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
     "source/_posts/工具/clash在终端设置代理.md",
     "source/_posts/工具/增加直达评论，手机端显示toc.md",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/_posts/工具/C盘文件太多？回收站太满？.md",
     "source/_posts/工具/fluid 左侧显示分类列表.md",
-    "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
     "source/imgs/Pasted image 20230924205559.png",
     "source/imgs/Pasted image 20230924205521.png",
     "source/imgs/Pasted image 20230924205338.png",
@@ -256,15 +261,12 @@
     "source/_posts/leetcode/LRU.md",
     "source/_posts/leetcode/设计题 总结.md",
     "source/_posts/leetcode/Go语言中的byte类型与Unicode码点与整数的转换.md",
-    "source/_posts/leetcode/Go 语言中常用的函数.md",
-    "source/_posts/leetcode/leetcode 设计题 Constructor构建.md",
     "source/_posts/网络",
     "网络",
     "db.json",
     "public/css/main.css",
     "public/css/highlight.css",
     "public/css/highlight-dark.css",
-    "public/css/gitalk.css",
-    "未命名 1.canvas"
+    "public/css/gitalk.css"
   ]
 }
