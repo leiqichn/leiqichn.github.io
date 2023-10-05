@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>JetBrians 全家桶设置文件header</title>
+    <link href="/2023-10-05-7527c8e47a8b.html"/>
+    <url>/2023-10-05-7527c8e47a8b.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p><p>先看下效果图<br><img src="/../../imgs/Pasted%20image%2020231005164404.png"></p><h1 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h1><h2 id="1-file-settings"><a href="#1-file-settings" class="headerlink" title="1. file- settings"></a>1. file- settings</h2><p><img src="/../../imgs/Pasted%20image%2020231005164508.png"></p><h1 id="找到Copyright-CopyrightProfiles"><a href="#找到Copyright-CopyrightProfiles" class="headerlink" title="找到Copyright - CopyrightProfiles"></a>找到Copyright - CopyrightProfiles</h1><p>点击+ 号，新建一个name 为“copyRight” 的profile</p><p><img src="/../../imgs/Pasted%20image%2020231005164618.png"></p><p>profile 的内容粘贴下面的问文本, 替换自己的名字</p><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arcade">Copyright (c) <span class="hljs-symbol">$origi</span>nalComment.match(<span class="hljs-string">&quot;Copyright \(c\) (\d+)&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;-&quot;</span>, <span class="hljs-string">&quot;$today.year&quot;</span>)<span class="hljs-symbol">$today</span>.<span class="hljs-built_in">year</span> YOUR NAME. <span class="hljs-built_in">All</span> rights reserved.  <br>Author: YOUR NAME  <br>Description:  <br><span class="hljs-built_in">Date</span>: <span class="hljs-symbol">$today</span><br></code></pre></td></tr></table></figure><h1 id="点击Copyright-添加刚才的profile"><a href="#点击Copyright-添加刚才的profile" class="headerlink" title="点击Copyright 添加刚才的profile"></a>点击Copyright 添加刚才的profile</h1><p><img src="/../../imgs/Pasted%20image%2020231005165129.png"></p><h2 id="点击应用即可-右键-generate-Copyright-插入"><a href="#点击应用即可-右键-generate-Copyright-插入" class="headerlink" title="点击应用即可 右键-generate-Copyright 插入"></a>点击应用即可 右键-generate-Copyright 插入</h2><p><img src="/../../imgs/Pasted%20image%2020231005164944.png"></p><p><img src="/../../imgs/Pasted%20image%2020231005165025.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Leetcode1603. 设计停车系统</title>
     <link href="/2023-09-26-aeddfdb3bdac.html"/>
     <url>/2023-09-26-aeddfdb3bdac.html</url>
