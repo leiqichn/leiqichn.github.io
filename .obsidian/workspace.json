@@ -13,29 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Linux/Linux 将用户追加到对应用户组,新建文件默认同组读写权限.md",
+                "file": "source/_posts/工具/JetBrians 全家桶设置文件header.md",
                 "mode": "source",
                 "source": false
               }
             }
-          },
-          {
-            "id": "1d1aa05d08bde894",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "未命名 1.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
-                }
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -126,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "未命名 1.canvas",
+                "file": "source/_posts/工具/JetBrians 全家桶设置文件header.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "未命名 1.canvas",
+                "file": "source/_posts/工具/JetBrians 全家桶设置文件header.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "未命名 1.canvas"
+                "file": "source/_posts/工具/JetBrians 全家桶设置文件header.md"
               }
             }
           },
@@ -219,8 +203,16 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "1d1aa05d08bde894",
+  "active": "46f01636949b54c1",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20231005165129.png",
+    "source/imgs/Pasted image 20231005165025.png",
+    "source/imgs/Pasted image 20231005164944.png",
+    "source/imgs/Pasted image 20231005164618.png",
+    "source/imgs/Pasted image 20231005164508.png",
+    "source/imgs/Pasted image 20231005164404.png",
+    "source/_posts/Linux/Linux 将用户追加到对应用户组,新建文件默认同组读写权限.md",
+    "source/_posts/工具/JetBrians 全家桶设置文件header.md",
     "source/_posts/leetcode/Leetcode 1603. 设计停车系统.md",
     "未命名 1.canvas",
     "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
@@ -235,13 +227,7 @@
     "source/imgs/Pasted image 20230924205324.png",
     "source/imgs/Pasted image 20230924203748.png",
     "source/_posts/工具/vscode R.md",
-    "source/_posts/Linux/Linux 将用户追加到对应用户组,新建文件默认同组读写权限.md",
     "source/_posts/C++/C++ 结构化设计.md",
-    "source/imgs/Pasted image 20230913232951.png",
-    "source/imgs/Pasted image 20230913232936.png",
-    "source/imgs/Pasted image 20230913232825.png",
-    "source/imgs/Pasted image 20230913232746.png",
-    "source/imgs/Pasted image 20230913232729.png",
     "source/_posts/C++",
     "C++",
     "source/_posts/工具/foxmail设置登录gmail.md",
@@ -260,7 +246,6 @@
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/leetcode/LRU.md",
     "source/_posts/leetcode/设计题 总结.md",
-    "source/_posts/leetcode/Go语言中的byte类型与Unicode码点与整数的转换.md",
     "source/_posts/网络",
     "网络",
     "db.json",
