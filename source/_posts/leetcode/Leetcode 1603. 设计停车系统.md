@@ -3,7 +3,7 @@ title: Leetcode1603. 设计停车系统
 date: 2023-09-27 01:09:22
 modificationDate: 2023 九月 27日 星期三 01:09:22
 categories: 
-	- leetcodel
+	- leetcode
 tags: []
 sticky: []
 hide: false
