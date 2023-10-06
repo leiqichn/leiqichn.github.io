@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "47d48efd343deb50",
+        "id": "954c9e86cf261ebb",
         "type": "tabs",
         "children": [
           {
-            "id": "46f01636949b54c1",
+            "id": "19ccbd0c1fd4d3de",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/JetBrians 全家桶设置文件header.md",
+                "file": "source/_posts/Golang/Go 中是否使用make创建slice的区别.md",
                 "mode": "source",
                 "source": false
               }
@@ -89,8 +89,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -110,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/JetBrians 全家桶设置文件header.md",
+                "file": "source/_posts/Golang/Go 中是否使用make创建slice的区别.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/JetBrians 全家桶设置文件header.md",
+                "file": "source/_posts/Golang/Go 中是否使用make创建slice的区别.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/JetBrians 全家桶设置文件header.md"
+                "file": "source/_posts/Golang/Go 中是否使用make创建slice的区别.md"
               }
             }
           },
@@ -203,8 +202,10 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "46f01636949b54c1",
+  "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
+    "source/_posts/工具/JetBrians 全家桶设置文件header.md",
+    "source/_posts/Golang/Go 中是否使用make创建slice的区别.md",
     "source/imgs/Pasted image 20231005165129.png",
     "source/imgs/Pasted image 20231005165025.png",
     "source/imgs/Pasted image 20231005164944.png",
@@ -212,7 +213,6 @@
     "source/imgs/Pasted image 20231005164508.png",
     "source/imgs/Pasted image 20231005164404.png",
     "source/_posts/Linux/Linux 将用户追加到对应用户组,新建文件默认同组读写权限.md",
-    "source/_posts/工具/JetBrians 全家桶设置文件header.md",
     "source/_posts/leetcode/Leetcode 1603. 设计停车系统.md",
     "未命名 1.canvas",
     "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
@@ -225,7 +225,6 @@
     "source/imgs/Pasted image 20230924205521.png",
     "source/imgs/Pasted image 20230924205338.png",
     "source/imgs/Pasted image 20230924205324.png",
-    "source/imgs/Pasted image 20230924203748.png",
     "source/_posts/工具/vscode R.md",
     "source/_posts/C++/C++ 结构化设计.md",
     "source/_posts/C++",
