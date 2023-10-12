@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/设计题 总结.md",
+                "file": "source/_posts/leetcode/leetcode 155.最小栈.md",
                 "mode": "source",
                 "source": false
               }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/设计题 总结.md",
+                "file": "source/_posts/leetcode/leetcode 155.最小栈.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/设计题 总结.md",
+                "file": "source/_posts/leetcode/leetcode 155.最小栈.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/设计题 总结.md"
+                "file": "source/_posts/leetcode/leetcode 155.最小栈.md"
               }
             }
           },
@@ -203,10 +203,12 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "6a5736f8a6d1f448",
+  "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
-    "source/_posts/工具/JetBrians 全家桶设置文件header.md",
+    "source/imgs/Pasted image 20231013000854.png",
     "source/_posts/leetcode/设计题 总结.md",
+    "source/_posts/leetcode/leetcode 155.最小栈.md",
+    "source/_posts/工具/JetBrians 全家桶设置文件header.md",
     "source/_posts/leetcode/使用 Go 的 container list 包：双向链表的便捷工具.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/leetcode/leetcode 1845. 座位预约管理系统.md",
@@ -242,8 +244,6 @@
     "source/_posts/leetcode/leetcode 2594修车的最少时间.md",
     "source/_posts/关于我/关于我.md",
     "source/about/index.md",
-    "source/categories/index.md",
-    "source/guestbook/index.md",
     "未命名.canvas",
     "source/_posts/设计模式",
     "source/_posts/网络",
