@@ -111,3 +111,5 @@ func dfs(grid [][]byte, i int, j int, visited [][]byte) {
 在上述示例代码中，我们定义了二维切片dirs，它保存了四个元素，分别代表四个方向的横向(x方向)和纵向(y方向)跨度。在dfs函数内部，我们遍历了dirs，并使用d[0]和d[1]来更新当前的i和j值。这样就可以对每个方向进行递归了。
 
 需要注意的是，如上所述，使用dirs表示方向变化会稍微增加代码的复杂性，但它还可以使函数更灵活，并在处理其他需要迭代解决问题时提供帮助。
+
+https://leetcode.cn/problems/number-of-islands/solutions/211211/dao-yu-lei-wen-ti-de-tong-yong-jie-fa-dfs-bian-li-/ 岛屿问题一文搞定
