@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Leetcode 136.只出现一次的数字</title>
+    <link href="/2023-10-16-66afbe22520d.html"/>
+    <url>/2023-10-16-66afbe22520d.html</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>Problem: <a href="https://leetcode.cn/problems/single-number/description/">136. 只出现一次的数字</a><br><img src="/../../imgs/Pasted%20image%2020231016232403.png"><br>[TOC]</p></blockquote><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote><p>如何才能做到线性时间复杂度和常数空间复杂度呢？</p></blockquote><p>答案是使用位运算。对于这道题，可使用异或运算。异或运算有以下三个性质。</p><p>任何数和 0做异或运算，结果仍然是原来的数<br>任何数和其自身做异或运算，结果是 0<br><img src="https://pic.leetcode.cn/1697469725-QtsjoA-image.png" alt="image.png"></p><h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><blockquote><p>描述你的解题方法</p></blockquote><h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul><li><p>时间复杂度:</p><blockquote><p>添加时间复杂度, 示例： $O(n)$</p></blockquote></li><li><p>空间复杂度:</p><blockquote><p>添加空间复杂度, 示例： $O(1)$</p></blockquote></li></ul><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><ol><li><p>hash</p><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>numsMap := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">int</span>)<br><span class="hljs-keyword">for</span> _, val := <span class="hljs-keyword">range</span> nums &#123;<br>numsMap[val] += <span class="hljs-number">1</span><br>&#125;<br><span class="hljs-keyword">for</span> key, val := <span class="hljs-keyword">range</span> numsMap &#123;<br><span class="hljs-keyword">if</span> val == <span class="hljs-number">1</span> &#123;<br><span class="hljs-keyword">return</span> key<br><br>&#125;<br>&#125;<br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>&#125;<br><br></code></pre></td></tr></table></figure></li><li><p>位运算</p><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    single := <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> _, num := <span class="hljs-keyword">range</span> nums &#123;<br>        single ^= num<br>    &#125;<br>    <span class="hljs-keyword">return</span> single<br>&#125;<br><br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 155.最小栈</title>
     <link href="/2023-10-12-cfa4d16bfad5.html"/>
     <url>/2023-10-12-cfa4d16bfad5.html</url>
