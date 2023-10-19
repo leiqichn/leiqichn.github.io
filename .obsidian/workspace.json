@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "a41ae88b7db7dd07",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -56,7 +69,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#第一步：理解需求 ",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,8 +102,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -110,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 136.只出现一次的数字.md",
+                "file": "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 136.只出现一次的数字.md",
+                "file": "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 136.只出现一次的数字.md"
+                "file": "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md"
               }
             }
           },
@@ -203,8 +215,9 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "19ccbd0c1fd4d3de",
+  "active": "a41ae88b7db7dd07",
   "lastOpenFiles": [
+    "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
     "source/imgs/Pasted image 20231016232403.png",
     "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
     "source/_posts/leetcode/Leetcode 136.只出现一次的数字.md",
@@ -241,7 +254,6 @@
     "source/_posts/工具/C盘文件太多？回收站太满？.md",
     "source/imgs/Pasted image 20230924205559.png",
     "source/imgs/Pasted image 20230924205521.png",
-    "source/imgs/Pasted image 20230924205338.png",
     "source/_posts/C++",
     "C++",
     "未命名.canvas",
