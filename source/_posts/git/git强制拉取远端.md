@@ -3,7 +3,7 @@ title: git强制拉取远端
 date: 2023-10-22 17:53:57
 modificationDate: 2023 十月 22日 星期日 17:53:57
 categories:
-- C++
+- git
 tags: []
 sticky: []
 hide: false
