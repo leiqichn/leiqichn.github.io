@@ -1,3 +1,15 @@
+---
+title: leetcode 1726.同积元组
+date: 2023-10-20 23:21:57
+modificationDate: 2023 十月 20日 星期三 23:21:57
+categories:
+- C++
+tags: []
+sticky: []
+hide: false
+category_bar: true
+---
+
 > Problem: [1726. 同积元组](https://leetcode.cn/problems/tuple-with-same-product/description/)
 
 # 思路
