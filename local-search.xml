@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Windows设置Clion 下方Terminal为WSL linux 子系统</title>
+    <link href="/2023-12-30-397a0b919639.html"/>
+    <url>/2023-12-30-397a0b919639.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="终端上的小箭头下的设置"><a href="#终端上的小箭头下的设置" class="headerlink" title="终端上的小箭头下的设置"></a>终端上的小箭头下的设置</h1><p><img src="/../../imgs/Pasted%20image%2020231230235906.png"><br><img src="/../../imgs/Pasted%20image%2020231230234942.png"></p><h1 id="找到WSL的地址"><a href="#找到WSL的地址" class="headerlink" title="找到WSL的地址"></a>找到WSL的地址</h1><p><img src="/../../imgs/Pasted%20image%2020231231000039.png"></p><p>粘贴到对应地址中<br><img src="/../../imgs/Pasted%20image%2020231231000121.png"></p><h1 id="设置成功"><a href="#设置成功" class="headerlink" title="设置成功"></a>设置成功</h1><p>这个时候,就可以和在linux 中一样的操作啦! 主要是win 的cmd 太难用了!</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>免费使用Jetbrain 全家桶-服务器激活码激活软件</title>
     <link href="/2023-12-30-6a1e804ab992.html"/>
     <url>/2023-12-30-6a1e804ab992.html</url>
