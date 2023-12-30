@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 1726.同积元组.md",
+                "file": "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "git",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,8 +89,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -110,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 1726.同积元组.md",
+                "file": "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 1726.同积元组.md",
+                "file": "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 1726.同积元组.md"
+                "file": "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md"
               }
             }
           },
@@ -205,6 +204,13 @@
   },
   "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20231231000121.png",
+    "source/imgs/Pasted image 20231231000039.png",
+    "source/imgs/Pasted image 20231230235906.png",
+    "source/imgs/Pasted image 20231230235421.png",
+    "source/imgs/Pasted image 20231230234942.png",
+    "source/_posts/leetcode/leetcode 1726.同积元组.md",
+    "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
     "source/_posts/工具/免费使用Jetbrain 全家桶-服务器激活码激活软件.md",
     "source/imgs/Pasted image 20231230231349.png",
     "source/imgs/Pasted image 20231230231326.png",
@@ -225,15 +231,10 @@
     "source/_posts/工具/vscode R.md",
     "source/imgs/Pasted image 20231230221311.png",
     "source/imgs/Pasted image 20231230221037.png",
-    "source/imgs/Pasted image 20231230220903.png",
-    "source/imgs/Pasted image 20231230220856.png",
     "source/_posts/Python/本地运行LeetCode的Python代码 调试.md",
     "source/_posts/Python/三种Python3 判断字典中是否存在对应key的方法.md",
-    "source/_posts/leetcode/leetcode 1726.同积元组.md",
     "source/_posts/Python",
-    "source/imgs/Pasted image 20231020003943.png",
     "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
-    "source/imgs/Pasted image 20231016232403.png",
     "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
     "source/_posts/leetcode/各种遍历.md",
     "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
@@ -241,7 +242,6 @@
     "source/_posts/leetcode/Go 语言中常用的函数.md",
     "source/_posts/leetcode/Leetcode 404.左叶子之和.md",
     "source/_posts/leetcode/递归debug 方法.md",
-    "source/_posts/leetcode/链表总结.md",
     "未命名 1.canvas",
     "source/_posts/C++",
     "C++",
