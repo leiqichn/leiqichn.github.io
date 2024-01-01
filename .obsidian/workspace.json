@@ -202,8 +202,9 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "19ccbd0c1fd4d3de",
+  "active": "520d050d9f24a28a",
   "lastOpenFiles": [
+    "deploy.sh~",
     "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
     "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
     "source/_posts/工具/windows新增wsl bash here键快捷方式.md",
