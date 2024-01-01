@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md",
+                "file": "source/_posts/工具/windows新增wsl bash here键快捷方式.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "proxyon",
+                "query": "wsl",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md",
+                "file": "source/_posts/工具/windows新增wsl bash here键快捷方式.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md",
+                "file": "source/_posts/工具/windows新增wsl bash here键快捷方式.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md"
+                "file": "source/_posts/工具/windows新增wsl bash here键快捷方式.md"
               }
             }
           },
@@ -202,24 +202,25 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "520d050d9f24a28a",
+  "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
+    "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
+    "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
+    "source/_posts/工具/windows新增wsl bash here键快捷方式.md",
+    "source/imgs/Pasted image 20240101183645.png",
+    "source/imgs/Pasted image 20240101183634.png",
+    "source/imgs/Pasted image 20240101183252.png",
+    "source/imgs/Pasted image 20240101183246.png",
+    "source/imgs/Pasted image 20240101182355.png",
+    "source/imgs/Pasted image 20240101182328.png",
+    "source/_posts/工具/clash在终端设置代理.md",
     "source/_posts/git/git强制拉取远端.md",
-    "source/_posts/git/git 设置全局免密配置.md",
     "source/imgs/Pasted image 20240101151457.png",
     "source/imgs/Pasted image 20240101151324.png",
     "source/imgs/Pasted image 20240101145902.png",
-    "source/_posts/工具/clash在终端设置代理.md",
-    "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
     "source/imgs/Pasted image 20231231000121.png",
-    "source/imgs/Pasted image 20231231000039.png",
-    "source/imgs/Pasted image 20231230235906.png",
-    "source/imgs/Pasted image 20231230235421.png",
-    "source/imgs/Pasted image 20231230234942.png",
     "source/_posts/leetcode/leetcode 1726.同积元组.md",
     "source/_posts/工具/免费使用Jetbrain 全家桶-服务器激活码激活软件.md",
-    "source/imgs/Pasted image 20231230231349.png",
-    "source/imgs/Pasted image 20231230231326.png",
     "source/_posts/工具/JetBrians 全家桶设置文件header.md",
     "source/_posts/工具/网站无法访问categories？.md",
     "source/_posts/工具/删除ppt所有批注和备注.md",
@@ -240,7 +241,6 @@
     "source/_posts/leetcode/各种遍历.md",
     "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
     "source/_posts/leetcode/Go语言中的byte类型与Unicode码点与整数的转换.md",
-    "source/_posts/leetcode/Go 语言中常用的函数.md",
     "未命名 1.canvas",
     "source/_posts/C++",
     "C++",
