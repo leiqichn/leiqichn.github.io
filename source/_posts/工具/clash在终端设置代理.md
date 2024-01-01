@@ -53,7 +53,7 @@ fi
 # User specific aliases and functions
 // 别名设置，其他别名设置也是类似
 alias proxyon="export http_proxy=http://127.0.0.1:7890;export https_proxy=http://127.0.0.1:7890"
-alias proxyoff="unset http_proxy;unset http_proxy"
+alias proxyoff="unset http_proxy;unset https_proxy"
 ```
 
 ## 测试是否成功

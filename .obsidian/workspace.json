@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/git/git 设置全局免密配置.md",
+                "file": "source/_posts/工具/clash在终端设置代理.md",
                 "mode": "source",
                 "source": false
               }
@@ -33,6 +33,14 @@
         "type": "tabs",
         "children": [
           {
+            "id": "d3d227159ce7968a",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          },
+          {
             "id": "520d050d9f24a28a",
             "type": "leaf",
             "state": {
@@ -43,20 +51,12 @@
             }
           },
           {
-            "id": "d3d227159ce7968a",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
-            }
-          },
-          {
             "id": "6a5736f8a6d1f448",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "代理",
+                "query": "proxyon",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,11 +89,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 257.5
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -109,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/git/git 设置全局免密配置.md",
+                "file": "source/_posts/工具/clash在终端设置代理.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/git/git 设置全局免密配置.md",
+                "file": "source/_posts/工具/clash在终端设置代理.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/git/git 设置全局免密配置.md"
+                "file": "source/_posts/工具/clash在终端设置代理.md"
               }
             }
           },
@@ -201,13 +202,14 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "19ccbd0c1fd4d3de",
+  "active": "520d050d9f24a28a",
   "lastOpenFiles": [
+    "source/_posts/git/git强制拉取远端.md",
+    "source/_posts/git/git 设置全局免密配置.md",
     "source/imgs/Pasted image 20240101151457.png",
     "source/imgs/Pasted image 20240101151324.png",
     "source/imgs/Pasted image 20240101145902.png",
     "source/_posts/工具/clash在终端设置代理.md",
-    "source/_posts/git/git 设置全局免密配置.md",
     "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
     "source/imgs/Pasted image 20231231000121.png",
     "source/imgs/Pasted image 20231231000039.png",
@@ -218,10 +220,8 @@
     "source/_posts/工具/免费使用Jetbrain 全家桶-服务器激活码激活软件.md",
     "source/imgs/Pasted image 20231230231349.png",
     "source/imgs/Pasted image 20231230231326.png",
-    "source/imgs/Pasted image 20231230231034.png",
     "source/_posts/工具/JetBrians 全家桶设置文件header.md",
     "source/_posts/工具/网站无法访问categories？.md",
-    "source/_posts/git/git强制拉取远端.md",
     "source/_posts/工具/删除ppt所有批注和备注.md",
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
