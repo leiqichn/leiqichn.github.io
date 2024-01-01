@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
+                "file": "source/_posts/git/git 设置全局免密配置.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "git",
+                "query": "代理",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 382.5
+    "width": 200
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -109,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
+                "file": "source/_posts/git/git 设置全局免密配置.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
+                "file": "source/_posts/git/git 设置全局免密配置.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md"
+                "file": "source/_posts/git/git 设置全局免密配置.md"
               }
             }
           },
@@ -184,8 +184,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -204,18 +203,22 @@
   },
   "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20240101151457.png",
+    "source/imgs/Pasted image 20240101151324.png",
+    "source/imgs/Pasted image 20240101145902.png",
+    "source/_posts/工具/clash在终端设置代理.md",
+    "source/_posts/git/git 设置全局免密配置.md",
+    "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
     "source/imgs/Pasted image 20231231000121.png",
     "source/imgs/Pasted image 20231231000039.png",
     "source/imgs/Pasted image 20231230235906.png",
     "source/imgs/Pasted image 20231230235421.png",
     "source/imgs/Pasted image 20231230234942.png",
     "source/_posts/leetcode/leetcode 1726.同积元组.md",
-    "source/_posts/工具/Windows设置Clion 下方Terminal为WSL linux 子系统.md",
     "source/_posts/工具/免费使用Jetbrain 全家桶-服务器激活码激活软件.md",
     "source/imgs/Pasted image 20231230231349.png",
     "source/imgs/Pasted image 20231230231326.png",
     "source/imgs/Pasted image 20231230231034.png",
-    "source/imgs/Pasted image 20231230230904.png",
     "source/_posts/工具/JetBrians 全家桶设置文件header.md",
     "source/_posts/工具/网站无法访问categories？.md",
     "source/_posts/git/git强制拉取远端.md",
@@ -229,8 +232,6 @@
     "source/_posts/工具/WPS设置打开文件自动同步云文档.md",
     "source/_posts/git",
     "source/_posts/工具/vscode R.md",
-    "source/imgs/Pasted image 20231230221311.png",
-    "source/imgs/Pasted image 20231230221037.png",
     "source/_posts/Python/本地运行LeetCode的Python代码 调试.md",
     "source/_posts/Python/三种Python3 判断字典中是否存在对应key的方法.md",
     "source/_posts/Python",
@@ -240,8 +241,6 @@
     "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
     "source/_posts/leetcode/Go语言中的byte类型与Unicode码点与整数的转换.md",
     "source/_posts/leetcode/Go 语言中常用的函数.md",
-    "source/_posts/leetcode/Leetcode 404.左叶子之和.md",
-    "source/_posts/leetcode/递归debug 方法.md",
     "未命名 1.canvas",
     "source/_posts/C++",
     "C++",
