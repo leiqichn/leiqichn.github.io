@@ -64,7 +64,7 @@ func min(a, b int) int {
 
 ## 数学方法
 
-
+辗转相除法
 ```go
 func gcdOfStrings(str1 string, str2 string) string {
     if str1 + str2 != str2 + str1 {
