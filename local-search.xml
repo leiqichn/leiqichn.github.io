@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2024-01-14-6a0d2e8a8d9e.html"/>
+    <url>/2024-01-14-6a0d2e8a8d9e.html</url>
+    
+    <content type="html"><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p><p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust">!s::<span class="hljs-built_in">Send</span> &#123;Down&#125;<br></code></pre></td></tr></table></figure><p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p><p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p><p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p><p>记得在使用第三方工具之前，确保从可信任的来源下载和安装软件，并谨慎执行脚本，以确保安全性。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【20240106】leetcode 2807. 在链表中插入最大公约数</title>
+    <link href="/2024-01-06-2b3ad028343c.html"/>
+    <url>/2024-01-06-2b3ad028343c.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list/description/?envType=daily-question&envId=2024-01-06">2807. 在链表中插入最大公约数 - 力扣（LeetCode）</a></p><p><img src="/../../imgs/Pasted%20image%2020240106233021.png"></p><p>最大公约数（GCD，Greatest Common Divisor）是两个或多个整数的共有因数中的最大值。也叫作最大公因数、最大公因子或最大公量。如果两个整数的最大公约数是 1，那么它们被称为互质。</p><p>计算两个整数的最大公约数有多种方法，其中最著名的方法之一是辗转相除法（Euclidean Algorithm）。辗转相除法的基本思想是通过反复应用两个整数的除法余数关系，直到余数为零为止。具体步骤如下：</p><ol><li>用较大的数除以较小的数，得到余数。</li><li>将较小的数作为新的被除数，余数作为新的除数。</li><li>重复步骤 1 和 2，直到余数为零。</li><li>最后的非零余数即为最大公约数。</li></ol><p>这个算法的效率很高，时间复杂度为 �(log⁡(min⁡(�,�)))O(log(min(a,b)))。</p><p>以下是一个用 Go 语言实现的最大公约数的辗转相除法示例：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-comment">// 辗转相除法求最大公约数</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">gcd</span><span class="hljs-params">(a, b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">for</span> b != <span class="hljs-number">0</span> &#123;<br>        temp := b<br>        b = a % b<br>        a = temp<br>    &#125;<br>    <span class="hljs-keyword">return</span> a<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    num1 := <span class="hljs-number">48</span><br>    num2 := <span class="hljs-number">18</span><br><br>    result := gcd(num1, num2)<br><br>    fmt.Println(<span class="hljs-string">&quot;最大公约数为:&quot;</span>, result)<br>&#125;<br><br><br></code></pre></td></tr></table></figure><p>在这个例子中，<code>gcd</code> 函数使用了辗转相除法来计算两个整数的最大公约数。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LeetCode 1071. 字符串的最大公因子</title>
     <link href="/2024-01-03-58e186a9065e.html"/>
     <url>/2024-01-03-58e186a9065e.html</url>
