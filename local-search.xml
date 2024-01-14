@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2024-01-14-aafa447f185c.html"/>
+    <url>/2024-01-14-aafa447f185c.html</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>Problem: <a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-list/description/">83. 删除排序链表中的重复元素</a></p></blockquote><p>[TOC]</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote><p>遍历</p></blockquote><h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><blockquote><p>描述你的解题方法</p></blockquote><h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><p>时间复杂度:</p><blockquote><p>添加时间复杂度, 示例： $O(n)$</p></blockquote><p>空间复杂度:</p><blockquote><p>添加空间复杂度, 示例： $O(n)$</p></blockquote><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * type ListNode struct &#123;</span><br><span class="hljs-comment"> *     Val int</span><br><span class="hljs-comment"> *     Next *ListNode</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">deleteDuplicates</span><span class="hljs-params">(head *ListNode)</span></span> *ListNode &#123;<br>    <span class="hljs-keyword">for</span> i := head; i != <span class="hljs-literal">nil</span> &amp;&amp; i.Next != <span class="hljs-literal">nil</span> ; &#123;<br>        <span class="hljs-keyword">if</span> i.Next.Val == i.Val &#123;<br>            i.Next = i.Next.Next <span class="hljs-comment">// 这里不用移动下个元素，只用删除重复元素 for i := head; i != nil &amp;&amp; i.Next != nil ;i = i.Next &#123;  i = i.Next不需要</span><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            i = i.Next<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> head<br>&#125;<br><br><span class="hljs-number">2</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">deleteDuplicates</span><span class="hljs-params">(head *ListNode)</span></span> *ListNode &#123;<br>    current := head<br><br>    <span class="hljs-keyword">for</span> current != <span class="hljs-literal">nil</span> &amp;&amp; current.Next != <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">if</span> current.Next.Val == current.Val &#123;<br>            <span class="hljs-comment">// 保存下一个节点的引用</span><br>            nextNode := current.Next<br>            <span class="hljs-comment">// 删除当前节点</span><br>            current.Next = nextNode.Next<br>            <span class="hljs-comment">// 释放内存</span><br>            nextNode = <span class="hljs-literal">nil</span><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 非重复元素，继续遍历</span><br>            current = current.Next<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> head<br>&#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>l</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
     <link href="/2024-01-14-2aaa71f8e7be.html"/>
     <url>/2024-01-14-2aaa71f8e7be.html</url>
