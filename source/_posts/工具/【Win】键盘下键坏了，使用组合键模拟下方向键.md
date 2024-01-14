@@ -1,3 +1,14 @@
+---
+title: 【Win】键盘下键坏了，使用组合键模拟下方向键
+date: 2024-01-14 17:05:02
+modificationDate: 2024 一月 14日 星期日 17:19:47
+categories: 
+	- 工具
+tags: []
+sticky: []
+hide: false
+category_bar: true
+---
 
 使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：
 
