@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
+                "file": "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
                 "mode": "source",
                 "source": false
               }
@@ -90,7 +90,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
+                "file": "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
+                "file": "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md"
+                "file": "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md"
               }
             }
           },
@@ -206,10 +206,11 @@
   },
   "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
+    "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
+    "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
     "source/imgs/Pasted image 20240114170729.png",
     "source/imgs/Pasted image 20240114170655.png",
     "source/_posts/leetcode/【20240106】leetcode 2807. 在链表中插入最大公约数.md",
-    "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
     "source/imgs/Pasted image 20240106233021.png",
     "source/_posts/leetcode/LeetCode 1071. 字符串的最大公因子.md",
     "source/imgs/Pasted image 20240103231323.png",
@@ -227,7 +228,6 @@
     "source/imgs/Pasted image 20240101182328.png",
     "source/_posts/工具/clash在终端设置代理.md",
     "source/_posts/git/git强制拉取远端.md",
-    "source/imgs/Pasted image 20240101151457.png",
     "source/_posts/leetcode/leetcode 1726.同积元组.md",
     "source/_posts/工具/免费使用Jetbrain 全家桶-服务器激活码激活软件.md",
     "source/_posts/工具/JetBrians 全家桶设置文件header.md",
