@@ -4,16 +4,16 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2024-01-14-15b5ab153363.html"/>
-    <url>/2024-01-14-15b5ab153363.html</url>
+    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
+    <link href="/2024-01-14-2aaa71f8e7be.html"/>
+    <url>/2024-01-14-2aaa71f8e7be.html</url>
     
     <content type="html"><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p><p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust">!s::<span class="hljs-built_in">Send</span> &#123;Down&#125;<br></code></pre></td></tr></table></figure><p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p><p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p><p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>]]></content>
     
     
     <categories>
       
-      <category>工</category>
+      <category>工具</category>
       
     </categories>
     
