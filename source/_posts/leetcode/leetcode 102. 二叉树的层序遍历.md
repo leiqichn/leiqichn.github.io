@@ -11,7 +11,55 @@ category_bar: true
 ---
 [102. 二叉树的层序遍历 - 力扣（Leetcode）](https://leetcode.cn/problems/binary-tree-level-order-traversal/description/)
 ![](../../imgs/Pasted%20image%2020230523224632.png)
+# 使用slice
 
+```go
+
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func levelOrder(root *TreeNode) [][]int {
+    // 层序遍历 使用size 记录每层数组 queue node 队列
+
+    res := make([][]int, 0)
+    queue := make([]*TreeNode, 0)
+
+	if root != nil {
+        queue = append(queue, root)
+	} else {
+        return res
+    }
+
+
+    for len(queue) != 0 {
+        size := len(queue)
+        levels := make([]int, 0) 
+
+        for i:= 0; i < size; i++ {
+            node := queue[0]
+            queue = queue[1:len(queue)] //切掉元素0
+
+            levels = append(levels, node.Val) // 添加元素
+            if node.Left != nil {
+                queue = append(queue, node.Left)
+            }
+            if node.Right != nil  {
+                queue = append(queue, node.Right)
+            }
+        }
+        res = append(res, levels)
+    }
+    return res
+}
+```
+
+
+# 使用list
 ```go
 func levelOrder(root *TreeNode) [][]int {
     res := [][]int{}

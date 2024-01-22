@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 94.二叉树的中序遍历.md",
+                "file": "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "中序",
+                "query": "层序遍历",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -90,7 +90,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 94.二叉树的中序遍历.md",
+                "file": "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 94.二叉树的中序遍历.md",
+                "file": "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 94.二叉树的中序遍历.md"
+                "file": "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md"
               }
             }
           },
@@ -206,11 +206,12 @@
   },
   "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
-    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
+    "source/_posts/leetcode/leetcode 104.二叉树的深度.md",
+    "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
     "source/_posts/leetcode/leetcode 94.二叉树的中序遍历.md",
+    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
     "source/_posts/leetcode/【go】初始化双向列表List.md",
-    "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
     "source/_posts/leetcode/设计题 总结.md",
     "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
     "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
@@ -242,7 +243,6 @@
     "source/_posts/工具/博客设置 obsidian 上传图片.md",
     "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
     "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
-    "themes/temp/蝴蝶 主题的右下角功能按键.md",
     "source/_posts/git",
     "source/_posts/Python",
     "未命名 1.canvas",
