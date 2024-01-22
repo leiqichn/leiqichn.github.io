@@ -272,6 +272,37 @@ num, _ := strconv.Atoi()
 str := strconv.Itoa()
 ```
 
+# 反转切片
+
+```go
+func reverseSlice(s []int) []int {
+    for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+        s[i], s[j] = s[j], s[i]
+    }
+    return s
+}
+
+```
+
+# 反转字符串
+
+```go
+
+func reverseString(s string) string {
+    // 将字符串转换为 rune 切片
+    runes := []rune(s)
+
+    // 使用双指针法反转切片
+    for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+        runes[i], runes[j] = runes[j], runes[i]
+    }
+
+    // 将 rune 切片转换回字符串
+    reversedString := string(runes)
+    return reversedString
+}
+```
+
 ## 总结
 
 以上是“术”的内容，算法之“道” 需要经过大量练习和思考才能习得，加油
