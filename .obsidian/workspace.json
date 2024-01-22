@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
+                "file": "source/_posts/leetcode/【go】初始化双向列表List.md",
                 "mode": "source",
                 "source": false
               }
@@ -56,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "wsl",
+                "query": "list.List",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
+                "file": "source/_posts/leetcode/【go】初始化双向列表List.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
+                "file": "source/_posts/leetcode/【go】初始化双向列表List.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md"
+                "file": "source/_posts/leetcode/【go】初始化双向列表List.md"
               }
             }
           },
@@ -206,8 +206,11 @@
   },
   "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
-    "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
+    "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
+    "source/_posts/leetcode/【go】初始化双向列表List.md",
+    "source/_posts/leetcode/设计题 总结.md",
     "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
+    "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
     "source/imgs/Pasted image 20240114170729.png",
     "source/imgs/Pasted image 20240114170655.png",
     "source/_posts/leetcode/【20240106】leetcode 2807. 在链表中插入最大公约数.md",
@@ -241,10 +244,7 @@
     "source/_posts/工具/WPS设置打开文件自动同步云文档.md",
     "source/_posts/git",
     "source/_posts/工具/vscode R.md",
-    "source/_posts/Python/本地运行LeetCode的Python代码 调试.md",
-    "source/_posts/Python/三种Python3 判断字典中是否存在对应key的方法.md",
     "source/_posts/Python",
-    "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
     "未命名 1.canvas",
     "source/_posts/C++",
     "C++",
