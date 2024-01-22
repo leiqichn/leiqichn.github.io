@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>leetcode 94.二叉树的中序遍历</title>
+    <link href="/2024-01-22-f8790b7ced8e.html"/>
+    <url>/2024-01-22-f8790b7ced8e.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(root *TreeNode)</span></span> (res []<span class="hljs-type">int</span>) &#123;<br>    <span class="hljs-keyword">var</span> traversal <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(node *TreeNode)</span></span><br>    traversal = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(node *TreeNode)</span></span> &#123;<br><span class="hljs-keyword">if</span> node == <span class="hljs-literal">nil</span> &#123;<br>    <span class="hljs-keyword">return</span><br>&#125;<br>traversal(node.Left)<br>res = <span class="hljs-built_in">append</span>(res,node.Val)<br>traversal(node.Right)<br>    &#125;<br>    traversal(root)<br>    <span class="hljs-keyword">return</span> res<br>&#125;<br><br></code></pre></td></tr></table></figure><h1 id="非递归方法"><a href="#非递归方法" class="headerlink" title="非递归方法"></a>非递归方法</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">inorderTraversal</span><span class="hljs-params">(root *TreeNode)</span></span> []<span class="hljs-type">int</span> &#123;<br>    ans := []<span class="hljs-type">int</span>&#123;&#125;<br>    <span class="hljs-keyword">if</span> root == <span class="hljs-literal">nil</span> &#123;<br>        <span class="hljs-keyword">return</span> ans<br>    &#125;<br><br>    st := list.New()<br>    cur := root<br><br>    <span class="hljs-keyword">for</span> cur != <span class="hljs-literal">nil</span> || st.Len() &gt; <span class="hljs-number">0</span> &#123;<br>        <span class="hljs-keyword">if</span> cur != <span class="hljs-literal">nil</span> &#123;<br>            st.PushBack(cur)<br>            cur = cur.Left<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            cur = st.Remove(st.Back()).(*TreeNode)<br>            ans = <span class="hljs-built_in">append</span>(ans, cur.Val)<br>            cur = cur.Right<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> ans<br>&#125;<br><br></code></pre></td></tr></table></figure><p>下面是对代码的解释：</p><ol><li><p><code>ans := []int&#123;&#125;</code>: 创建一个空的整数切片，用于存储最终的中序遍历结果。</p></li><li><p><code>if root == nil &#123; return ans &#125;</code>: 检查树的根节点是否为空，如果为空则返回空切片，避免对空树进行遍历。</p></li><li><p><code>st := list.New()</code>: 创建一个新的链表（list），用作栈。这里使用标准库中的<code>list</code>包，实现了一个双向链表作为栈。</p></li><li><p><code>cur := root</code>: 初始化当前节点为根节点。</p></li><li><p><code>for cur != nil || st.Len() &gt; 0 &#123;</code>: 进入循环，只要当前节点不为空或栈不为空就继续遍历。</p></li><li><p><code>if cur != nil &#123;</code>: 如果当前节点不为空，将当前节点入栈，并将当前节点移动到左子树。</p><ul><li><p><code>st.PushBack(cur)</code>: 将当前节点入栈。</p></li><li><p><code>cur = cur.Left</code>: 移动到左子树。</p></li></ul></li><li><p><code>&#125; else &#123;</code>: 如果当前节点为空，表示左子树已经遍历完毕，需要处理栈顶节点。</p><ul><li><p><code>cur = st.Remove(st.Back()).(*TreeNode)</code>: 弹出栈顶节点，即当前待处理的节点。</p></li><li><p><code>ans = append(ans, cur.Val)</code>: 将当前节点的值加入结果切片。</p></li><li><p><code>cur = cur.Right</code>: 移动到右子树。</p></li></ul></li><li><p>循环回到第5步，直到栈为空。</p></li></ol><p>这种非递归中序遍历的实现使用了栈来辅助遍历，通过不断地将左子树的节点入栈，并在处理栈顶节点时将其值加入结果切片，最后移动到右子树，以达到中序遍历的顺序。</p><p>其中 进入循环的条件 <code>for cur != nil || st.Len() &gt; 0</code> 是为了确保在树的所有节点都被遍历到之前，循环能够继续执行。让我们逐步解释这个条件：</p><ul><li><p><code>cur != nil</code>: 如果当前节点不为空，表示还有左子树可以遍历，因此继续循环。</p></li><li><p><code>st.Len() &gt; 0</code>: 如果当前节点为空，但栈不为空，说明还有节点需要处理（回溯到上一层的右子树），也继续循环。</p></li></ul><p>这个条件的目的是确保在左子树和右子树都被遍历完之前，循环一直执行。当所有节点都被遍历过，且栈为空时，循环条件不再满足，退出循环，完成中序遍历。</p><p>在这个中序遍历的非递归实现中，通过栈来模拟递归调用的过程，确保每个节点都按照中序遍历的顺序被访问。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【go】初始化双向列表List</title>
+    <link href="/2024-01-22-93119ce81a1c.html"/>
+    <url>/2024-01-22-93119ce81a1c.html</url>
+    
+    <content type="html"><![CDATA[<p>在Go语言中，两种方法都可以用于初始化一个<code>list.List</code>。</p><ol><li><p><code>queue := &amp;list.List&#123;&#125;</code>: 这是使用结构体字面量的方式，创建一个 <code>list.List</code> 类型的结构体变量，并返回该结构体的指针。这种方式创建了一个空的链表。</p></li><li><p><code>queue := list.New()</code>: 这是使用 <code>list</code> 包中的 <code>New</code> 函数来创建一个新的 <code>list.List</code>。<code>New</code> 函数返回一个指向新创建的 <code>list.List</code> 实例的指针。同样，这种方式也创建了一个空的链表。</p></li></ol><p>两种方式都是有效的</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【20240114】LeetCode 83. 删除排序链表中的重复元素</title>
     <link href="/2024-01-14-e61755fec3db.html"/>
     <url>/2024-01-14-e61755fec3db.html</url>
