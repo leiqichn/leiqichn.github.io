@@ -110,6 +110,11 @@ func dfs(grid [][]byte, i int, j int, visited [][]byte) {
 
 在上述示例代码中，我们定义了二维切片dirs，它保存了四个元素，分别代表四个方向的横向(x方向)和纵向(y方向)跨度。在dfs函数内部，我们遍历了dirs，并使用d[0]和d[1]来更新当前的i和j值。这样就可以对每个方向进行递归了。
 
+**使用额外的visited 的时候，一定要作为dfs 的入参，让其拷贝一份**
+在 `dfs` 函数的递归调用中，条件判断 `if _, ok := visited[point{myRow, myCol}]; !ok` 可能会导致部分陆地未被正确访问。原因是 `visited` 在函**数调用之间是全局共享的**，而不是每次调用都重新初始化（leetcode 的测试环境会造成影响）。
+
+为了解决这个问题，你可以将 `visited` 变量作为参数传递给 `dfs` 函数，确保在每次调用时都使用新的局部副本。以下是修改后的代码：
+
 需要注意的是，如上所述，使用dirs表示方向变化会稍微增加代码的复杂性，但它还可以使函数更灵活，并在处理其他需要迭代解决问题时提供帮助。
 
 https://leetcode.cn/problems/number-of-islands/solutions/211211/dao-yu-lei-wen-ti-de-tong-yong-jie-fa-dfs-bian-li-/ 岛屿问题一文搞定
