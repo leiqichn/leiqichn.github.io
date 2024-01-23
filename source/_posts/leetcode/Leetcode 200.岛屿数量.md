@@ -117,4 +117,116 @@ func dfs(grid [][]byte, i int, j int, visited [][]byte) {
 
 需要注意的是，如上所述，使用dirs表示方向变化会稍微增加代码的复杂性，但它还可以使函数更灵活，并在处理其他需要迭代解决问题时提供帮助。
 
+# 对应BFS实现
+
+
+```go
+type point struct {
+    x int
+    y int
+}
+
+var dirct = [][]int{{1, 0}, {0, 1}, {0, -1}, {-1, 0}}
+
+func numIslands(grid [][]byte) int {
+    if len(grid) == 0 {
+        return 0
+    }
+    res := 0
+    r := len(grid)
+    c := len(grid[0])
+    
+    for i := 0; i < r; i++ {
+        for j := 0; j < c; j++ {
+            if grid[i][j] == '1' {
+                res++
+                bfs(grid, i, j)
+            }
+        }
+    }
+    return res
+}
+
+func bfs(grid [][]byte, i, j int) {
+    r := len(grid)
+    c := len(grid[0])
+    queue := []point{{i, j}}
+    grid[i][j] = '0'  // 标记为已访问
+
+    for len(queue) > 0 {
+        current := queue[0]
+        queue = queue[1:]
+
+        for _, item := range dirct {
+            myRow := current.x + item[0]
+            myCol := current.y + item[1]
+
+            if myRow >= 0 && myRow < r && myCol >= 0 && myCol < c && grid[myRow][myCol] == '1' {
+                grid[myRow][myCol] = '0'  // 标记为已访问
+                queue = append(queue, point{myRow, myCol})
+            }
+        }
+    }
+}
+
+
+
+// DFS 
+
+type point struct {
+    x int
+    y int
+}
+
+var dirct = [][]int{{1, 0}, {0, 1}, {0, -1}, {-1, 0}}
+
+func numIslands(grid [][]byte) int {
+    if len(grid) == 0 {
+        return 0
+    }
+    res := 0
+    r := len(grid)
+    c := len(grid[0])
+    visited := make(map[point]int)  // 使用局部变量，每次调用都重新初始化
+    for i := 0; i < r; i++ {
+        for j := 0; j < c; j++ {
+            if grid[i][j] == '1' {
+                res++
+                dfs(grid, i, j, visited)
+            }
+        }
+    }
+    return res
+}
+
+func dfs(grid [][]byte, i, j int, visited map[point]int) {
+    r := len(grid)
+    c := len(grid[0])
+    if i < 0 || j < 0 || i >= r || j >= c {
+        return
+    }
+    if grid[i][j] == '0' {
+        return
+    } // 和visited 等价
+    if _, ok := visited[point{i, j}]; ok {
+        return
+    }
+    grid[i][j] = '0' // 和visited 等价
+    visited[point{i, j}] = 1
+    for _, item := range dirct {
+        myRow := i + item[0]
+        myCol := j + item[1]
+        if _, ok := visited[point{myRow, myCol}]; !ok { // 这里和前边 if _, ok := visited[point{i, j}]; ok 二选一
+            dfs(grid, myRow, myCol, visited)
+        }
+    }
+}
+
+// 需要注意的是岛屿数量的 Go 语言代码中，有一点需要注意。在 dfs 函数的递归调用中，条件判断 if _, ok := visited[point{myRow, myCol}]; !ok 可能会导致部分陆地未被正确访问。原因是 visited 在函数调用之间是全局共享的，而不是每次调用都重新初始化。
+
+//为了解决这个问题，你可以将 visited 变量作为参数传递给 dfs 函数，确保在每次调用时都使用新的局部副本。以下是修改后的代码：
+
+```
+
+
 https://leetcode.cn/problems/number-of-islands/solutions/211211/dao-yu-lei-wen-ti-de-tong-yong-jie-fa-dfs-bian-li-/ 岛屿问题一文搞定
