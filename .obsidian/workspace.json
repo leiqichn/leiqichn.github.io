@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
+                "file": "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md",
                 "mode": "source",
                 "source": false
               }
@@ -89,8 +89,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -110,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
+                "file": "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
+                "file": "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/Leetcode 200.岛屿数量.md"
+                "file": "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md"
               }
             }
           },
@@ -215,7 +214,7 @@
     "source/_posts/leetcode/leetcode 706. 设计哈希映射 Golang.md",
     "source/_posts/leetcode/leetcode 77.组合【回溯】.md",
     "source/imgs/Pasted image 20240123231742.png",
-    "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
+    "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md",
     "source/_posts/leetcode/leetcode 53.最大子数和.md",
     "source/_posts/leetcode/leetcode 28.找出字符串中第一个匹配项的下标.md",
     "source/_posts/leetcode/Go 语言中常用的函数.md",
