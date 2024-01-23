@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>leetcode 77.组合【回溯】</title>
+    <link href="/2024-01-23-183e0ff5f5ef.html"/>
+    <url>/2024-01-23-183e0ff5f5ef.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/combinations/description/">77. 组合 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020240123231742.png"></p><p>使用回溯的模板</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">backtracking</span><span class="hljs-params">(参数)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (终止条件) &#123;<br>        存放结果;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span> (选择：本层集合中元素（树中节点孩子的数量就是集合的大小）) &#123;<br>        处理节点;<br>        <span class="hljs-built_in">backtracking</span>(路径，选择列表); <span class="hljs-comment">// 递归</span><br>        回溯，撤销处理结果<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">combine</span><span class="hljs-params">(n <span class="hljs-type">int</span>, k <span class="hljs-type">int</span>)</span></span> [][]<span class="hljs-type">int</span> &#123;<br>res := [][]<span class="hljs-type">int</span>&#123;&#125;<br>path := []<span class="hljs-type">int</span>&#123;&#125;<br><br><span class="hljs-comment">// 结束条件</span><br><span class="hljs-keyword">var</span> backtracking <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(n, k ,startIdx <span class="hljs-type">int</span>)</span></span><br>backtracking = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(n, k ,startIdx <span class="hljs-type">int</span>)</span></span> &#123;<br>        <span class="hljs-comment">// 提前返回需要return</span><br><span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(path) == k &#123;<br>            pathTmp := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>,<span class="hljs-built_in">len</span>(path))<br><span class="hljs-built_in">copy</span>(pathTmp, path)<br>res = <span class="hljs-built_in">append</span>(res, pathTmp)<br>            <span class="hljs-keyword">return</span> <span class="hljs-comment">// return </span><br>&#125;<br><br><span class="hljs-keyword">for</span> i := startIdx;i &lt;= n ;i++ &#123;<br>path = <span class="hljs-built_in">append</span>(path,i)<br>backtracking(n,k,i+<span class="hljs-number">1</span>) <span class="hljs-comment">// i+1 进行下一轮</span><br>path = path[:(<span class="hljs-built_in">len</span>(path) <span class="hljs-number">-1</span>)]<br>&#125;<br>&#125;<br>backtracking(n,k,<span class="hljs-number">1</span>)<br><span class="hljs-keyword">return</span> res<br>&#125;<br><br></code></pre></td></tr></table></figure><ol><li><p>创建一个二维切片 <code>res</code> 用于存储最终结果，以及一个一维切片 <code>path</code> 用于存储当前路径。</p></li><li><p>定义回溯函数 <code>backtracking</code>，它接收三个参数：<code>n</code> 表示数字范围，<code>k</code> 表示组合长度，<code>startIdx</code> 表示当前起始数字的索引。</p></li><li><p>在回溯函数中，如果当前路径的长度等于 k，将当前路径添加到结果中。</p></li><li><p>使用循环遍历数字范围，将当前数字加入路径，并递归调用回溯函数。</p></li><li><p>在递归结束后，进行回溯，将当前数字从路径中移除，继续遍历下一个数字。</p></li><li><p>在主函数中初始调用回溯函数，然后返回最终结果。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【BFS DFS通用模板】</title>
     <link href="/2024-01-22-759654485d5d.html"/>
     <url>/2024-01-22-759654485d5d.html</url>
