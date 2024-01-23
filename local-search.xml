@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>leetcode 406. 根据身高重建队列【贪心】</title>
+    <link href="/2024-01-23-1cb0809a7893.html"/>
+    <url>/2024-01-23-1cb0809a7893.html</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/queue-reconstruction-by-height/description/">406. 根据身高重建队列 - 力扣（LeetCode）</a></p><p><img src="/../../imgs/Pasted%20image%2020240124001349.png"></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">reconstructQueue</span><span class="hljs-params">(people [][]<span class="hljs-type">int</span>)</span></span> [][]<span class="hljs-type">int</span> &#123;<br>sort.Slice(people, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(i, j <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">bool</span> &#123;<br><span class="hljs-keyword">if</span> people[i][<span class="hljs-number">0</span>] == people[j][<span class="hljs-number">0</span>]&#123;<br><span class="hljs-keyword">return</span> people[i][<span class="hljs-number">1</span>] &lt; people[j][<span class="hljs-number">1</span>]<br>&#125;<br><span class="hljs-keyword">return</span> people[i][<span class="hljs-number">0</span>] &gt; people[j][<span class="hljs-number">0</span>] <span class="hljs-comment">// 身高由大到小排列</span><br><br>&#125;)i<br><span class="hljs-comment">// 再按照K进行插入排序，优先插入K小的</span><br><span class="hljs-keyword">for</span> i, p := <span class="hljs-keyword">range</span> people &#123;<br><span class="hljs-built_in">copy</span>(people[p[<span class="hljs-number">1</span>]+<span class="hljs-number">1</span> :i+<span class="hljs-number">1</span>], people[p[<span class="hljs-number">1</span>] :i=<span class="hljs-number">1</span>])  <span class="hljs-comment">// 腾空出一个位置</span><br>        people[p[<span class="hljs-number">1</span>]] = pi<br>&#125;<br><span class="hljs-keyword">return</span> people<br>&#125;<br><br></code></pre></td></tr></table></figure><ol><li><p><code>sort.Slice(people, func(i, j int) bool &#123; ... &#125;)</code>: 使用 <code>sort.Slice</code> 对 <code>people</code> 进行排序，按照身高从大到小排列，如果身高相同则按照 <code>k</code> 从小到大排列。</p></li><li><p><code>for i, p := range people &#123; ... &#125;</code>: 遍历排序后的数组，按照每个人的 <code>k</code> 值进行插入排序。</p></li><li><p><code>copy(people[p[1]+1:i+1], people[p[1]:i+1])</code>: 在插入位置 <code>p[1]</code> 之后的位置腾出一个空位，为新的元素插入做准备。</p></li><li><p><code>people[p[1]] = p</code>: 将当前人物 <code>p</code> 插入到正确的位置。</p></li></ol><p>最终，返回重新排列后的队列 <code>people</code>。</p><p>在 <code>copy(people[p[1]+1:i+1], people[p[1]:i+1])</code> 中，使用 <code>i+1</code> 而不是 <code>len(people)</code> 的原因是为了确保只复制有效的元素范围。这里的目标是将 <code>people[p[1]:i+1]</code> 复制到 <code>people[p[1]+1:i+1]</code>，而不是复制整个切片。</p><p>让我们考虑一下为什么使用 <code>i+1</code>：</p><ol><li><code>i</code> 表示当前元素的索引，而我们想要复制的范围是从 <code>p[1]</code> 到 <code>i</code>。</li><li>使用 <code>i+1</code> 作为结束索引可以确保包含 <code>i</code> 在内的元素，而不会超出有效的范围。</li><li>如果使用 <code>len(people)</code> 作为结束索引，那么将会复制从 <code>p[1]</code> 到 <code>len(people)-1</code> 的所有元素，这超出了实际有效的范围。</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 77.组合【回溯】</title>
     <link href="/2024-01-23-183e0ff5f5ef.html"/>
     <url>/2024-01-23-183e0ff5f5ef.html</url>

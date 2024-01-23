@@ -27,6 +27,8 @@ var precacheUrls = [
 
   '/',
 
+  '/2024-01-23-1cb0809a7893.html',
+
   '/2024-01-23-183e0ff5f5ef.html',
 
   '/2024-01-22-759654485d5d.html',
@@ -34,8 +36,6 @@ var precacheUrls = [
   '/2024-01-22-f8790b7ced8e.html',
 
   '/2024-01-22-93119ce81a1c.html',
-
-  '/2024-01-14-e61755fec3db.html',
 
 ];
 toolbox.precache(precacheUrls);
