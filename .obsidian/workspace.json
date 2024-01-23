@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/【BFS DFS通用模板】.md",
+                "file": "source/_posts/leetcode/leetcode 77.组合【回溯】.md",
                 "mode": "source",
                 "source": false
               }
@@ -90,11 +90,11 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 449.49999618530273
+    "width": 298.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/【BFS DFS通用模板】.md",
+                "file": "source/_posts/leetcode/leetcode 77.组合【回溯】.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/【BFS DFS通用模板】.md",
+                "file": "source/_posts/leetcode/leetcode 77.组合【回溯】.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/【BFS DFS通用模板】.md"
+                "file": "source/_posts/leetcode/leetcode 77.组合【回溯】.md"
               }
             }
           },
@@ -183,11 +183,12 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -206,8 +207,14 @@
   },
   "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
-    "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
+    "source/imgs/Pasted image 20240123231742.png",
+    "source/_posts/leetcode/Leetcode 200.岛屿数量.md",
+    "source/_posts/leetcode/leetcode 77.组合【回溯】.md",
+    "source/_posts/leetcode/leetcode 53.最大子数和.md",
+    "source/_posts/leetcode/leetcode 28.找出字符串中第一个匹配项的下标.md",
+    "source/_posts/leetcode/Go 语言中常用的函数.md",
     "source/_posts/leetcode/【BFS DFS通用模板】.md",
+    "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
     "source/_posts/leetcode/leetcode 104.二叉树的深度.md",
     "source/_posts/leetcode/leetcode 94.二叉树的中序遍历.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
@@ -237,12 +244,6 @@
     "source/_posts/工具/clash在终端设置代理.md",
     "source/_posts/git/git强制拉取远端.md",
     "source/_posts/leetcode/leetcode 1726.同积元组.md",
-    "source/_posts/工具/免费使用Jetbrain 全家桶-服务器激活码激活软件.md",
-    "source/_posts/工具/JetBrians 全家桶设置文件header.md",
-    "source/_posts/工具/网站无法访问categories？.md",
-    "source/_posts/工具/删除ppt所有批注和备注.md",
-    "source/_posts/工具/博客设置 obsidian 上传图片.md",
-    "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
     "source/_posts/git",
     "source/_posts/Python",
     "未命名 1.canvas",
