@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>leetcode 单调栈</title>
+    <link href="/2024-02-24-dd95d981cb94.html"/>
+    <url>/2024-02-24-dd95d981cb94.html</url>
+    
+    <content type="html"><![CDATA[<p>单调栈用途不太广泛，只处理一类典型的问题，比如「下一个更大元素」，「上一个更小元素」</p><p>输入一个数组 <code>nums</code>，请你返回一个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 注意：go 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。</span><br><span class="hljs-comment">// 本代码不保证正确性，仅供参考。如有疑惑，可以参照我写的 java 代码对比查看。</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">nextGreaterElement</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> []<span class="hljs-type">int</span> &#123;<br>    n := <span class="hljs-built_in">len</span>(nums)<br>    <span class="hljs-comment">// 存放答案的数组</span><br>    res := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, n)<br>    <span class="hljs-comment">// 倒着往栈里放</span><br>    s := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-number">0</span>)<br><br>    <span class="hljs-keyword">for</span> i := n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i-- &#123; <span class="hljs-comment">// 倒着入栈是为了后边正着出栈</span><br>        <span class="hljs-comment">// 判定个子高矮</span><br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">len</span>(s) &gt; <span class="hljs-number">0</span> &amp;&amp; s[<span class="hljs-built_in">len</span>(s)<span class="hljs-number">-1</span>] &lt;= nums[i] &#123;<br>            <span class="hljs-comment">// 矮个起开，反正也被挡着了。。。</span><br>            s = s[:<span class="hljs-built_in">len</span>(s)<span class="hljs-number">-1</span>]<br>        &#125;<br>        <span class="hljs-comment">// nums[i] 身后的更大元素</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(s) == <span class="hljs-number">0</span> &#123; <span class="hljs-comment">// 没有更大的元素</span><br>            res[i] = <span class="hljs-number">-1</span><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            res[i] = s[<span class="hljs-built_in">len</span>(s)<span class="hljs-number">-1</span>] <span class="hljs-comment">// 正着出栈</span><br>        &#125;<br>        s = <span class="hljs-built_in">append</span>(s, nums[i]) <span class="hljs-comment">// 当前元素</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> res<br>&#125;<br><br><br></code></pre></td></tr></table></figure><p>参考：<br><a href="https://labuladong.online/algo/data-structure/monotonic-stack">https://labuladong.online/algo/data-structure/monotonic-stack</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>golang 修改函数传入参数切片需要指针</title>
+    <link href="/2024-02-24-4fbd7a88bf6f.html"/>
+    <url>/2024-02-24-4fbd7a88bf6f.html</url>
+    
+    <content type="html"><![CDATA[<p>func dfs(root *TreeNode, res *[]int) {<br>    if root &#x3D;&#x3D; nil {<br>        return<br>    }</p><pre><code class="hljs">*res = append(*res, root.Val)dfs(root.Left, res)dfs(root.Right, res)</code></pre><p>}<br>在这个修正后的版本中，res参数是一个指向切片的指针。这样，我们在函数内部通过*res来访问和修改原始切片的内容，确保递归调用可以正确地将结果收集到原始切片中。</p><p>在 Go 语言中，切片是引用类型。这意味着当你将切片传递给函数时，你实际上传递的是切片的引用（底层数组的地址），而不是切片的副本。因此，对切片的修改会影响到原始切片。</p><p>但是需要注意的是，虽然切片是引用类型，但当你在函数内部对切片进行重新分配（比如使用 append 函数时），你实际上是创建了一个新的切片，而原始切片并没有被修改。这是因为切片是对底层数组的一个视图，对切片的修改可能会导致底层数组的重新分配和复制。</p><p>这就是为什么在你的原始 DFS 函数中，尽管你传递了切片 res 给递归函数，但在递归调用中对 res 进行 append 操作并不会修改原始切片的内容。为了避免这个问题，可以通过传递切片的指针来确保在函数内部对切片的修改可以影响到原始切片。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 406. 根据身高重建队列【贪心】</title>
     <link href="/2024-01-23-1cb0809a7893.html"/>
     <url>/2024-01-23-1cb0809a7893.html</url>
