@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>leetcode 双指针</title>
+    <link href="/2024-03-23-84678021105b.html"/>
+    <url>/2024-03-23-84678021105b.html</url>
+    
+    <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240323225412.png"></p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-comment">// 删除有序数组中的重复元素</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> &#123;<br>    slow:=<span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> fast:=<span class="hljs-number">1</span>;fast &lt;<span class="hljs-built_in">len</span>(nums);fast++ &#123;<br>        <span class="hljs-keyword">if</span> nums[fast] != nums[slow] &#123;<br>            slow++<span class="hljs-comment">// 跳到下个位置，保存slow</span><br><br>            nums[slow] = nums[fast]<br>            <br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> slow +<span class="hljs-number">1</span><br>&#125;<br><br></code></pre></td></tr></table></figure><p><img src="/../../imgs/Pasted%20image%2020240323225326.png"></p><p>slow是指向当前已经处理好的序列的尾部，右指针指向待处理序列的头部。<br>右指针不断向右移动，每次右指针指向非零数，则将左右指针对应的数交换，同时左指针右移。</p><p><strong>注意到以下性质：</strong></p><ul><li>左指针左边均为非零数；</li><li>右指针左边直到左指针处均为零。<br>因此每次交换，都是将slow指针的零与fast指针的非零数交换，且非零数的相对顺序并未改变。</li></ul><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">moveZeroes</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> &#123;<br>slow, n := <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(nums)<br><span class="hljs-keyword">for</span> fast := <span class="hljs-number">0</span>; fast &lt; n; fast++ &#123; <span class="hljs-comment">// 注意第一个是0的时候需要比较</span><br><span class="hljs-keyword">if</span> nums[fast] != <span class="hljs-number">0</span> &#123; <span class="hljs-comment">// 不是零的时候，才会交换，如果第一个是0，则fast 是会向后移动的，这样就会交换数值，保证的是slow是指向当前已经处理好的序列的尾部，右指针指向待处理序列的头部。</span><br>nums[slow], nums[fast] = nums[fast], nums[slow]<br>slow++<br>&#125;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 单调栈</title>
     <link href="/2024-02-24-dd95d981cb94.html"/>
     <url>/2024-02-24-dd95d981cb94.html</url>
