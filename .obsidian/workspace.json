@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 单调栈.md",
+                "file": "source/_posts/leetcode/leetcode 双指针.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 298.49999618530273
+    "width": 200
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 单调栈.md",
+                "file": "source/_posts/leetcode/leetcode 双指针.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 单调栈.md",
+                "file": "source/_posts/leetcode/leetcode 双指针.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 单调栈.md"
+                "file": "source/_posts/leetcode/leetcode 双指针.md"
               }
             }
           },
@@ -192,23 +192,26 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "canvas:新建白板": false,
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": true,
-      "command-palette:打开命令面板": false,
-      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "remotely-save:Remotely Save": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
-      "file-tree-alternative:File Tree Alternative Plugin": false,
-      "remotely-save:Remotely Save": false
+      "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
   "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
-    "source/_posts/Golang/golang 修改函数传入参数切片需要指针.md",
+    "source/imgs/Pasted image 20240323225412.png",
+    "source/imgs/Pasted image 20240323225326.png",
     "source/_posts/leetcode/leetcode 单调栈.md",
+    "source/_posts/leetcode/leetcode 双指针.md",
+    "source/_posts/Golang/golang 修改函数传入参数切片需要指针.md",
     "网络/路由器设置桥接.md",
     "source/imgs/Pasted image 20240215221821.png",
     "source/imgs/Pasted image 20240215221453.png",
@@ -224,7 +227,6 @@
     "source/_posts/leetcode/Go语言中的byte类型与Unicode码点与整数的转换.md",
     "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
     "source/_posts/leetcode/leetcode 406. 根据身高重建队列【贪心】.md",
-    "source/imgs/Pasted image 20240124001349.png",
     "source/_posts/leetcode/leetcode 108.将有序数组转换为二叉搜索树.md",
     "source/_posts/leetcode/leetcode 706. 设计哈希映射 Golang.md",
     "source/_posts/leetcode/leetcode 77.组合【回溯】.md",
@@ -242,8 +244,6 @@
     "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
     "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
     "source/_posts/leetcode/【20240106】leetcode 2807. 在链表中插入最大公约数.md",
-    "source/_posts/leetcode/LeetCode 1071. 字符串的最大公因子.md",
-    "source/_posts/记录/复旦大学 生命科学学院 生物医药专硕 复试准备.md",
     "deploy.sh~",
     "source/_posts/git",
     "source/_posts/Python",
