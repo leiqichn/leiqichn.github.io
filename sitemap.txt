@@ -56,6 +56,7 @@ https://leiqichn.github.io/2023-05-10-da8c57fb590a.html
 https://leiqichn.github.io/2023-03-28-53b6b0695943.html
 https://leiqichn.github.io/2023-03-29-c131676dd7b1.html
 https://leiqichn.github.io/2023-04-03-03cca064ab00.html
+https://leiqichn.github.io/2024-03-24-aa898fcc250d.html
 https://leiqichn.github.io/2023-05-23-a419f5d1c6af.html
 https://leiqichn.github.io/2023-05-30-b1879d2b65d1.html
 https://leiqichn.github.io/2023-05-04-ce9a22434c37.html
@@ -112,6 +113,7 @@ https://leiqichn.github.io/categories/Linux/
 https://leiqichn.github.io/categories/Python/
 https://leiqichn.github.io/categories/git/
 https://leiqichn.github.io/categories/leetcode/
+https://leiqichn.github.io/categories/l/
 https://leiqichn.github.io/categories/%E5%85%B3%E4%BA%8E%E6%88%91/
 https://leiqichn.github.io/categories/%E5%B7%A5%E5%85%B7/
 https://leiqichn.github.io/categories/%E6%91%84%E5%BD%B1/
