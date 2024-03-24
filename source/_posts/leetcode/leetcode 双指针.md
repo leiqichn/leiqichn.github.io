@@ -55,3 +55,51 @@ func moveZeroes(nums []int) {
 }
 ```
 
+
+![](../../imgs/Pasted%20image%2020240324224049.png)
+**思路：**
+![](../../imgs/Pasted%20image%2020240324224214.png)
+
+
+```go
+func maxArea(height []int) int {
+	ans := 0
+	for i := 0; i < len(height); i++ {
+		for j := i + 1; j < len(height); j++ {
+			area := (j - i) * min(height[i], height[j])
+			ans = max(area,ans)
+		}
+	}
+	return ans
+}
+
+func min(a, b int) int { if a > b { return b }; return a }
+func max(a, b int) int { if a < b { return b }; return a }
+
+```
+
+![](../../imgs/Pasted%20image%2020240324223922.png)
+
+
+
+```go
+func maxArea(height []int) (ans int) {
+    left, right := 0, len(height)-1 // 初始化两边指针
+    for left < right {
+        area := (right - left) * min(height[left], height[right]) // 计算面积
+        ans = max(ans, area) // 计算最大值
+        if height[left] < height[right] { 
+            left++ // 移动短的那个
+        } else {
+            right--
+        }
+    }
+    return
+}
+
+func min(a, b int) int { if a > b { return b }; return a }
+func max(a, b int) int { if a < b { return b }; return a }
+
+
+```
+
