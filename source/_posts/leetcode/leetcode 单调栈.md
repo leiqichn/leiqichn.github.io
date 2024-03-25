@@ -15,9 +15,6 @@ category_bar: true
 
 
 ```go
-// 注意：go 代码由 chatGPT🤖 根据我的 java 代码翻译，旨在帮助不同背景的读者理解算法逻辑。
-// 本代码不保证正确性，仅供参考。如有疑惑，可以参照我写的 java 代码对比查看。
-
 func nextGreaterElement(nums []int) []int {
     n := len(nums)
     // 存放答案的数组
@@ -41,8 +38,4 @@ func nextGreaterElement(nums []int) []int {
     }
     return res
 }
-
-
 ```
-参考：
-https://labuladong.online/algo/data-structure/monotonic-stack
