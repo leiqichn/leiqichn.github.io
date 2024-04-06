@@ -10,13 +10,15 @@
           {
             "id": "19ccbd0c1fd4d3de",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
                 "file": "source/_posts/leetcode/设计题 总结.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "pinned": true
             }
           }
         ]
@@ -56,7 +58,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "设计",
+                "query": "设计题",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,12 +91,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 249.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -205,15 +206,18 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "19ccbd0c1fd4d3de",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/leetcode/链表总结.md",
+    "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
+    "source/_posts/leetcode/设计题 总结.md",
+    "source/imgs/Pasted image 20240406204841.png",
     "source/imgs/Pasted image 20240406202142.png",
     "source/imgs/Pasted image 20240406201959.png",
     "source/imgs/Pasted image 20240406201929.png",
     "source/imgs/Pasted image 20240406201421.png",
     "source/_posts/leetcode/Leetcode 1603. 设计停车系统.md",
     "source/_posts/leetcode/leetcode 双指针.md",
-    "source/_posts/leetcode/设计题 总结.md",
     "conflict-files-obsidian-git.md",
     "source/imgs/Pasted image 20240326011627.png",
     "source/imgs/Pasted image 20240405184932.png",
@@ -224,8 +228,6 @@
     "source/imgs/Pasted image 20240405173653.png",
     "source/_posts/网络/windows IE代理问题解决.md",
     "source/_posts/leetcode/Untitled.md",
-    "source/imgs/Pasted image 20240324224214.png",
-    "source/imgs/Pasted image 20240324224049.png",
     "source/_posts/leetcode/leetcode 单调栈.md",
     "source/_posts/Golang/golang 修改函数传入参数切片需要指针.md",
     "网络/路由器设置桥接.md",
@@ -243,7 +245,6 @@
     "source/_posts/leetcode/【BFS DFS通用模板】.md",
     "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
     "source/_posts/leetcode/leetcode 104.二叉树的深度.md",
-    "source/_posts/leetcode/leetcode 94.二叉树的中序遍历.md",
     "deploy.sh~",
     "source/_posts/git",
     "source/_posts/Python",
