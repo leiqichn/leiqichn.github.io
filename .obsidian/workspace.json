@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
+                "file": "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
                 "mode": "source",
                 "source": false
               }
@@ -103,7 +103,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -123,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
+                "file": "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
+                "file": "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -163,7 +163,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/给旧windows电脑替换ssd扩容.md"
+                "file": "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md"
               }
             }
           },
@@ -220,24 +220,28 @@
   },
   "active": "8c1b9e6de020033d",
   "lastOpenFiles": [
-    "source/_posts/leetcode/leetcode 双指针.md",
-    "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
-    "source/imgs/Pasted image 20240326011627.png",
     "source/_posts/leetcode/leetcode 单调栈.md",
-    "source/imgs/Pasted image 20240324224214.png",
-    "source/imgs/Pasted image 20240324224049.png",
-    "source/imgs/Pasted image 20240324223922.png",
-    "source/imgs/Pasted image 20240324223916.png",
-    "source/imgs/Pasted image 20240323225412.png",
-    "source/imgs/Pasted image 20240323225326.png",
+    "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
+    "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
+    "conflict-files-obsidian-git.md",
+    "source/imgs/Pasted image 20240406204841.png",
+    "source/imgs/Pasted image 20240406202142.png",
+    "source/imgs/Pasted image 20240406201959.png",
+    "source/imgs/Pasted image 20240406201929.png",
+    "source/imgs/Pasted image 20240406201421.png",
+    "source/imgs/Pasted image 20240405184932.png",
+    "source/imgs/Pasted image 20240405184827.png",
+    "source/imgs/Pasted image 20240405173838.png",
+    "source/imgs/Pasted image 20240405173653.png",
+    "source/_posts/网络/windows IE代理问题解决.md",
+    "source/_posts/工具/goland test配置.md",
+    "source/_posts/leetcode/leetcode 双指针.md",
+    "source/imgs/Pasted image 20240326011627.png",
     "source/_posts/leetcode/leetcode 设计题 Constructor构建.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/leetcode/leetcode 最大深度和最小深度.md",
     "source/_posts/Golang/golang 修改函数传入参数切片需要指针.md",
     "网络/路由器设置桥接.md",
-    "source/imgs/Pasted image 20240215221821.png",
-    "source/imgs/Pasted image 20240215221453.png",
-    "source/imgs/Pasted image 20240215221417.png",
     "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md",
     "valine邮件评论.py",
     "source/_posts/leetcode/Go语言中的byte类型与Unicode码点与整数的转换.md",
@@ -253,10 +257,6 @@
     "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
     "source/_posts/leetcode/leetcode 104.二叉树的深度.md",
     "source/_posts/leetcode/leetcode 94.二叉树的中序遍历.md",
-    "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
-    "source/_posts/leetcode/【go】初始化双向列表List.md",
-    "source/_posts/leetcode/设计题 总结.md",
-    "source/_posts/leetcode/【20240114】LeetCode 83. 删除排序链表中的重复元素.md",
     "deploy.sh~",
     "source/_posts/git",
     "source/_posts/Python",
