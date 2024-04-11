@@ -78,3 +78,39 @@ func combine(n int, k int) [][]int {
 	return res
 }
 ```
+
+
+tempPath := make([]int, k) // **tempPath := []int{}**,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。
+copy(tempPath, path)
+```go
+var res [][]int // go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化
+var path []int
+
+func combine(n int, k int) [][]int {
+
+    res = make([][]int, 0)
+    path = make([]int, 0)
+	// 结束条件
+	var backtracking func(n int, k int, startIndex int)
+    backtracking = func(n int, k int, startIndex int) {
+        if len(path) == k {
+            tempPath := make([]int, k) // tempPath := []int{},copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。
+            copy(tempPath, path)
+            res = append(res, tempPath)
+        }
+
+        for i:= startIndex; i <= n; i++ {
+            if (n -i +1 ) < (k -len(path)) {
+                return
+            }
+
+            path = append(path, i)
+            backtracking(n, k, i+1)
+            path = path[:len(path)-1]
+        }
+    }
+
+	backtracking(n,k,1)
+	return res
+}
+```
