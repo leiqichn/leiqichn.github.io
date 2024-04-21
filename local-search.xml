@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>ssh 隧道 端口转发</title>
+    <link href="/2024-04-21-29ab33001840.html"/>
+    <url>/2024-04-21-29ab33001840.html</url>
+    
+    <content type="html"><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ssh -L 本地端口:localhost:13579 用户名@物理机IP<br></code></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p><p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">ssh -L <span class="hljs-number">13579</span>:localhost:<span class="hljs-number">13579</span> <span class="hljs-symbol">root@</span><span class="hljs-number">110.43</span><span class="hljs-number">.203</span><span class="hljs-number">.19</span> -p <span class="hljs-number">30005</span> <br><span class="hljs-comment">// </span><br>ssh -p <span class="hljs-number">13579</span> <span class="hljs-symbol">root@</span>localhost<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 208. 实现 Trie (前缀树)</title>
     <link href="/2024-04-16-1150f59f3df6.html"/>
     <url>/2024-04-16-1150f59f3df6.html</url>
