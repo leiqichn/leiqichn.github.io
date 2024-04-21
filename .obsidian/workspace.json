@@ -35,16 +35,18 @@
             "id": "eca4cd9041847c33",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 208. 实现 Trie (前缀树).md",
-                "mode": "source",
-                "source": false
+                "file": "未命名 3.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -135,7 +137,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 208. 实现 Trie (前缀树).md",
+                "file": "source/_posts/leetcode/leetcode 单调栈.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,7 +154,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 208. 实现 Trie (前缀树).md",
+                "file": "source/_posts/leetcode/leetcode 单调栈.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -175,7 +177,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 208. 实现 Trie (前缀树).md"
+                "file": "source/_posts/leetcode/leetcode 单调栈.md"
               }
             }
           },
@@ -230,10 +232,13 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "eca4cd9041847c33",
+  "active": "19ccbd0c1fd4d3de",
   "lastOpenFiles": [
-    "source/imgs/Pasted image 20240417003637.png",
+    "未命名 3.canvas",
+    "未命名 2.canvas",
+    "source/_posts/工具/ssh 隧道 端口转发.md",
     "source/_posts/leetcode/leetcode 208. 实现 Trie (前缀树).md",
+    "source/imgs/Pasted image 20240417003637.png",
     "source/_posts/leetcode/leetcode 单调栈.md",
     "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
     "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
@@ -250,7 +255,6 @@
     "source/_posts/网络/windows IE代理问题解决.md",
     "source/_posts/工具/goland test配置.md",
     "source/_posts/leetcode/leetcode 双指针.md",
-    "source/imgs/Pasted image 20240326011627.png",
     "source/_posts/leetcode/leetcode 设计题 Constructor构建.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/leetcode/leetcode 最大深度和最小深度.md",
@@ -268,7 +272,6 @@
     "source/_posts/leetcode/leetcode 28.找出字符串中第一个匹配项的下标.md",
     "source/_posts/leetcode/Go 语言中常用的函数.md",
     "source/_posts/leetcode/【BFS DFS通用模板】.md",
-    "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
     "deploy.sh~",
     "source/_posts/git",
     "source/_posts/Python",
