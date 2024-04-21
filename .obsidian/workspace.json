@@ -46,7 +46,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -116,8 +117,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -137,7 +137,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 单调栈.md",
+                "file": "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,7 +154,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 单调栈.md",
+                "file": "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -177,7 +177,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 单调栈.md"
+                "file": "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md"
               }
             }
           },
@@ -232,14 +232,14 @@
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "19ccbd0c1fd4d3de",
+  "active": "8c1b9e6de020033d",
   "lastOpenFiles": [
+    "source/_posts/leetcode/leetcode 单调栈.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "source/_posts/工具/ssh 隧道 端口转发.md",
     "source/_posts/leetcode/leetcode 208. 实现 Trie (前缀树).md",
     "source/imgs/Pasted image 20240417003637.png",
-    "source/_posts/leetcode/leetcode 单调栈.md",
     "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
     "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
     "conflict-files-obsidian-git.md",
