@@ -125,7 +125,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -142,7 +141,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,9 +162,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md"
-              }
+              "state": {}
             }
           },
           {
@@ -222,8 +218,16 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
-    "source/_posts/网络/计算机网络概览.md",
+    "conflict-files-obsidian-git.md",
     "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
+    "未命名 3.canvas",
+    "未命名 2.canvas",
+    "source/imgs/Pasted image 20240417003637.png",
+    "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
+    "source/_posts/工具/ssh 隧道 端口转发.md",
+    "source/_posts/leetcode/leetcode 208. 实现 Trie (前缀树).md",
+    "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
+    "source/_posts/网络/计算机网络概览.md",
     "source/_posts/网络/路由器设置桥接.md",
     "source/_posts/网络/Mesh组网：家庭路由和无线连接新方式.md",
     "source/_posts/Golang/golang slice无法添加指针.md",
@@ -245,8 +249,6 @@
     "source/imgs/Pasted image 20240406201421.png",
     "source/_posts/leetcode/Leetcode 1603. 设计停车系统.md",
     "source/_posts/leetcode/leetcode 双指针.md",
-    "conflict-files-obsidian-git.md",
-    "source/imgs/Pasted image 20240326011627.png",
     "source/_posts/leetcode/leetcode 122买动态股票的最佳时机II.md",
     "source/_posts/工具/goland test配置.md",
     "source/_posts/网络/windows IE代理问题解决.md",
@@ -255,11 +257,6 @@
     "source/_posts/Golang/golang 修改函数传入参数切片需要指针.md",
     "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md",
     "valine邮件评论.py",
-    "source/_posts/leetcode/Go语言中的byte类型与Unicode码点与整数的转换.md",
-    "source/_posts/leetcode/leetcode 222.完全二叉树的节点个数.md",
-    "source/_posts/leetcode/leetcode 406. 根据身高重建队列【贪心】.md",
-    "source/_posts/leetcode/leetcode 108.将有序数组转换为二叉搜索树.md",
-    "source/_posts/leetcode/leetcode 706. 设计哈希映射 Golang.md",
     "deploy.sh~",
     "source/_posts/git",
     "source/_posts/Python",
