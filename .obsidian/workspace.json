@@ -20,8 +20,21 @@
               },
               "pinned": true
             }
+          },
+          {
+            "id": "0c6c60a4a5f6c791",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -35,14 +48,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d3d227159ce7968a",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
-            }
-          },
-          {
             "id": "520d050d9f24a28a",
             "type": "leaf",
             "state": {
@@ -53,12 +58,20 @@
             }
           },
           {
+            "id": "d3d227159ce7968a",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          },
+          {
             "id": "6a5736f8a6d1f448",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "设计题",
+                "query": "proxyon",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -91,11 +104,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 249.49999618530273
+    "width": 270.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -111,7 +125,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/设计题 总结.md",
+                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/设计题 总结.md",
+                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/设计题 总结.md"
+                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md"
               }
             }
           },
@@ -208,9 +222,22 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/网络/计算机网络概览.md",
+    "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
+    "source/_posts/网络/路由器设置桥接.md",
+    "source/_posts/网络/Mesh组网：家庭路由和无线连接新方式.md",
+    "source/_posts/Golang/golang slice无法添加指针.md",
+    "source/_posts/Golang/【TODO】golang channel.md",
+    "source/imgs/Pasted image 20240502153543.png",
+    "source/imgs/Pasted image 20240502153337.png",
+    "source/imgs/Pasted image 20240502153252.png",
+    "source/imgs/Pasted image 20240502152821.png",
+    "source/_posts/PythonCrashCourse/第一章 起步.md",
+    "source/_posts/工具/clash在终端设置代理.md",
+    "source/_posts/leetcode/设计题 总结.md",
+    "source/_posts/PythonCrashCourse",
     "source/_posts/leetcode/链表总结.md",
     "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
-    "source/_posts/leetcode/设计题 总结.md",
     "source/imgs/Pasted image 20240406204841.png",
     "source/imgs/Pasted image 20240406202142.png",
     "source/imgs/Pasted image 20240406201959.png",
@@ -220,17 +247,12 @@
     "source/_posts/leetcode/leetcode 双指针.md",
     "conflict-files-obsidian-git.md",
     "source/imgs/Pasted image 20240326011627.png",
-    "source/imgs/Pasted image 20240405184932.png",
-    "source/imgs/Pasted image 20240405184827.png",
     "source/_posts/leetcode/leetcode 122买动态股票的最佳时机II.md",
     "source/_posts/工具/goland test配置.md",
-    "source/imgs/Pasted image 20240405173838.png",
-    "source/imgs/Pasted image 20240405173653.png",
     "source/_posts/网络/windows IE代理问题解决.md",
     "source/_posts/leetcode/Untitled.md",
     "source/_posts/leetcode/leetcode 单调栈.md",
     "source/_posts/Golang/golang 修改函数传入参数切片需要指针.md",
-    "网络/路由器设置桥接.md",
     "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md",
     "valine邮件评论.py",
     "source/_posts/leetcode/Go语言中的byte类型与Unicode码点与整数的转换.md",
@@ -238,13 +260,6 @@
     "source/_posts/leetcode/leetcode 406. 根据身高重建队列【贪心】.md",
     "source/_posts/leetcode/leetcode 108.将有序数组转换为二叉搜索树.md",
     "source/_posts/leetcode/leetcode 706. 设计哈希映射 Golang.md",
-    "source/_posts/leetcode/leetcode 77.组合【回溯】.md",
-    "source/_posts/leetcode/leetcode 53.最大子数和.md",
-    "source/_posts/leetcode/leetcode 28.找出字符串中第一个匹配项的下标.md",
-    "source/_posts/leetcode/Go 语言中常用的函数.md",
-    "source/_posts/leetcode/【BFS DFS通用模板】.md",
-    "source/_posts/leetcode/leetcode 102. 二叉树的层序遍历.md",
-    "source/_posts/leetcode/leetcode 104.二叉树的深度.md",
     "deploy.sh~",
     "source/_posts/git",
     "source/_posts/Python",
@@ -254,7 +269,6 @@
     "未命名.canvas",
     "source/_posts/设计模式",
     "source/_posts/网络",
-    "网络",
-    "db.json"
+    "网络"
   ]
 }
