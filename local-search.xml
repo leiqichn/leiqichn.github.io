@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>goland中debug 无法显示全局变量解决</title>
+    <link href="/2024-05-07-c105be0dd846.html"/>
+    <url>/2024-05-07-c105be0dd846.html</url>
+    
+    <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240508002347.png">实际只会有局部变量，没有全局变量test</p><p><img src="/../../imgs/Pasted%20image%2020240508002425.png"></p><p>解决方法：</p><p>右键  选择+ New Watch ； 或者 按按键 Insert </p><p>添加变量 test 即可</p><p><img src="/../../imgs/Pasted%20image%2020240508002502.png"><img src="/../../imgs/Pasted%20image%2020240508002708.png"></p><h1 id="添加成功"><a href="#添加成功" class="headerlink" title="添加成功"></a>添加成功</h1><p><img src="/../../imgs/Pasted%20image%2020240508002737.png"><br>之后每次单步执行都会显示变量结果：<br><img src="/../../imgs/Pasted%20image%2020240508002814.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>golang 中格式化打印单个字符</title>
     <link href="/2024-05-03-ec16a5fd018e.html"/>
     <url>/2024-05-03-ec16a5fd018e.html</url>
@@ -52,25 +71,6 @@
     <categories>
       
       <category>网络</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>第一章 起步</title>
-    <link href="/2024-05-01-bd9b723b7160.html"/>
-    <url>/2024-05-01-bd9b723b7160.html</url>
-    
-    <content type="html"><![CDATA[<ol><li>安装python</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello Python world!&quot;</span>)<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>PythonCrashCourse</category>
       
     </categories>
     
