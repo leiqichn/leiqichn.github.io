@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
+                "file": "source/_posts/工具/可视化工具.md",
                 "mode": "source",
                 "source": false
               }
@@ -75,7 +75,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       },
       {
         "id": "d299abda62253875",
@@ -87,7 +87,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "起步",
+                "query": "Author",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -124,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
+                "file": "source/_posts/工具/可视化工具.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
+                "file": "source/_posts/工具/可视化工具.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Golang/goland中debug 无法显示全局变量解决.md"
+                "file": "source/_posts/工具/可视化工具.md"
               }
             }
           },
@@ -212,6 +212,9 @@
   },
   "active": "8c1b9e6de020033d",
   "lastOpenFiles": [
+    "source/_posts/leetcode/设计题 总结.md",
+    "source/_posts/工具/可视化工具.md",
+    "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
     "source/imgs/Pasted image 20240508002814.png",
     "source/imgs/Pasted image 20240508002737.png",
     "source/imgs/Pasted image 20240508002708.png",
@@ -230,7 +233,6 @@
     "source/imgs/Pasted image 20240508002425.png",
     "source/imgs/Pasted image 20240508002347.png",
     "source/_posts/PythonCrashCourse/第一章 起步.md",
-    "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
     "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
     "source/imgs/Pasted image 20240502153543.png",
     "source/imgs/Pasted image 20240502153337.png",
@@ -256,10 +258,8 @@
     "source/_posts/网络/计算机网络概览.md",
     "source/_posts/Golang/【TODO】golang channel.md",
     "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
-    "source/_posts/Golang/golang slice无法添加指针.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
-    "source/imgs/Pasted image 20240417003637.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
