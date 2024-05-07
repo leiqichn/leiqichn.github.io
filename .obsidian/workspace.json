@@ -8,33 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "19ccbd0c1fd4d3de",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/leetcode/设计题 总结.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true
-            }
-          },
-          {
-            "id": "0c6c60a4a5f6c791",
+            "id": "8c1b9e6de020033d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
+                "file": "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -48,16 +33,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "520d050d9f24a28a",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical"
-              }
-            }
-          },
-          {
             "id": "d3d227159ce7968a",
             "type": "leaf",
             "state": {
@@ -66,16 +41,11 @@
             }
           },
           {
-            "id": "6a5736f8a6d1f448",
+            "id": "520d050d9f24a28a",
             "type": "leaf",
             "state": {
-              "type": "search",
+              "type": "file-explorer",
               "state": {
-                "query": "proxyon",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": false,
-                "extraContext": false,
                 "sortOrder": "alphabetical"
               }
             }
@@ -105,11 +75,40 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
+      },
+      {
+        "id": "d299abda62253875",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6a5736f8a6d1f448",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "起步",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6f2ace9753780822",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 270.49999618530273
+    "width": 298.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -125,6 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,6 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,15 +163,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
-            }
-          },
-          {
-            "id": "6f2ace9753780822",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {}
+              "state": {
+                "file": "source/_posts/Golang/goland中debug 无法显示全局变量解决.md"
+              }
             }
           },
           {
@@ -194,78 +189,78 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 380.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "remotely-save:Remotely Save": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "canvas:新建白板": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": true,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
-      "file-tree-alternative:File Tree Alternative Plugin": false
+      "file-tree-alternative:File Tree Alternative Plugin": false,
+      "remotely-save:Remotely Save": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "8c1b9e6de020033d",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
-    "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
-    "未命名 3.canvas",
-    "未命名 2.canvas",
-    "source/imgs/Pasted image 20240417003637.png",
-    "source/_posts/工具/给旧windows电脑替换ssd扩容.md",
-    "source/_posts/工具/ssh 隧道 端口转发.md",
-    "source/_posts/leetcode/leetcode 208. 实现 Trie (前缀树).md",
+    "source/imgs/Pasted image 20240508002814.png",
+    "source/imgs/Pasted image 20240508002737.png",
+    "source/imgs/Pasted image 20240508002708.png",
+    "source/imgs/Pasted image 20240508002502.png",
+    "node_modules/longest/LICENSE",
+    "node_modules/longest/index.js",
+    "node_modules/longest/README.md",
+    "node_modules/@types/node/fs.d.ts",
+    "node_modules/@types/node/os.d.ts",
+    "node_modules/@types/node/LICENSE",
+    "node_modules/@types/node/vm.d.ts",
+    "node_modules/@types/node/net.d.ts",
+    "node_modules/@types/node/url.d.ts",
+    "node_modules/@types/node/v8.d.ts",
+    "node_modules/@types/node/tls.d.ts",
+    "source/imgs/Pasted image 20240508002425.png",
+    "source/imgs/Pasted image 20240508002347.png",
+    "source/_posts/PythonCrashCourse/第一章 起步.md",
+    "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
     "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
-    "source/_posts/网络/计算机网络概览.md",
-    "source/_posts/网络/路由器设置桥接.md",
-    "source/_posts/网络/Mesh组网：家庭路由和无线连接新方式.md",
-    "source/_posts/Golang/golang slice无法添加指针.md",
-    "source/_posts/Golang/【TODO】golang channel.md",
     "source/imgs/Pasted image 20240502153543.png",
     "source/imgs/Pasted image 20240502153337.png",
     "source/imgs/Pasted image 20240502153252.png",
     "source/imgs/Pasted image 20240502152821.png",
-    "source/_posts/PythonCrashCourse/第一章 起步.md",
-    "source/_posts/工具/clash在终端设置代理.md",
-    "source/_posts/leetcode/设计题 总结.md",
-    "source/_posts/PythonCrashCourse",
-    "source/_posts/leetcode/链表总结.md",
-    "source/_posts/leetcode/数据结构和操作的对比：Python vs. Go vs. C++.md",
-    "source/imgs/Pasted image 20240406204841.png",
-    "source/imgs/Pasted image 20240406202142.png",
-    "source/imgs/Pasted image 20240406201959.png",
-    "source/imgs/Pasted image 20240406201929.png",
-    "source/imgs/Pasted image 20240406201421.png",
-    "source/_posts/leetcode/Leetcode 1603. 设计停车系统.md",
-    "source/_posts/leetcode/leetcode 双指针.md",
-    "source/_posts/leetcode/leetcode 122买动态股票的最佳时机II.md",
-    "source/_posts/工具/goland test配置.md",
-    "source/_posts/网络/windows IE代理问题解决.md",
-    "source/_posts/leetcode/Untitled.md",
-    "source/_posts/leetcode/leetcode 单调栈.md",
-    "source/_posts/Golang/golang 修改函数传入参数切片需要指针.md",
-    "source/_posts/leetcode/Leetcode 200.岛屿数量【BFS DFS】.md",
-    "valine邮件评论.py",
-    "deploy.sh~",
-    "source/_posts/git",
-    "source/_posts/Python",
+    "node_modules/cheerio/Readme.md",
+    "node_modules/cheerio-select/README.md",
+    "node_modules/chalk/readme.md",
+    "node_modules/camelcase/readme.md",
+    "node_modules/camelcase-keys/readme.md",
+    "node_modules/buffer-from/readme.md",
+    "node_modules/boolbase/README.md",
+    "node_modules/array-union/readme.md",
+    "node_modules/array-find-index/readme.md",
+    "node_modules/@types/minimatch/README.md",
+    "node_modules/@types/glob/README.md",
+    "node_modules/@trysound/sax/README.md",
+    "node_modules/@nodelib/fs.walk/README.md",
+    "node_modules/@nodelib/fs.stat/README.md",
+    "node_modules/@nodelib/fs.scandir/README.md",
+    "网络/路由器设置桥接.md",
+    "source/_posts/网络/路由器设置桥接.md",
+    "source/_posts/网络/计算机网络概览.md",
+    "source/_posts/Golang/【TODO】golang channel.md",
+    "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
+    "source/_posts/Golang/golang slice无法添加指针.md",
+    "未命名 3.canvas",
+    "未命名 2.canvas",
+    "source/imgs/Pasted image 20240417003637.png",
     "未命名 1.canvas",
-    "source/_posts/C++",
-    "C++",
-    "未命名.canvas",
-    "source/_posts/设计模式",
-    "source/_posts/网络",
-    "网络"
+    "未命名.canvas"
   ]
 }
