@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/可视化工具.md",
+                "file": "source/_posts/Golang/如何使用递归.md",
                 "mode": "source",
                 "source": false
               }
@@ -108,7 +108,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 298.49999618530273
+    "width": 211.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -124,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/可视化工具.md",
+                "file": "source/_posts/Golang/如何使用递归.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/可视化工具.md",
+                "file": "source/_posts/Golang/如何使用递归.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/可视化工具.md"
+                "file": "source/_posts/Golang/如何使用递归.md"
               }
             }
           },
@@ -193,7 +193,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 380.5
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -212,8 +213,9 @@
   },
   "active": "8c1b9e6de020033d",
   "lastOpenFiles": [
-    "source/_posts/leetcode/设计题 总结.md",
     "source/_posts/工具/可视化工具.md",
+    "source/_posts/Golang/如何使用递归.md",
+    "source/_posts/leetcode/设计题 总结.md",
     "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
     "source/imgs/Pasted image 20240508002814.png",
     "source/imgs/Pasted image 20240508002737.png",
@@ -257,7 +259,6 @@
     "source/_posts/网络/路由器设置桥接.md",
     "source/_posts/网络/计算机网络概览.md",
     "source/_posts/Golang/【TODO】golang channel.md",
-    "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
