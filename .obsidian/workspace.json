@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 355设计推特.md",
+                "file": "source/_posts/leetcode/设计题 总结.md",
                 "mode": "source",
                 "source": false
               }
@@ -74,8 +74,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "d299abda62253875",
@@ -87,7 +86,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Author",
+                "query": "设计题",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -108,7 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 211.49999618530273
+    "width": 354.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -124,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 355设计推特.md",
+                "file": "source/_posts/leetcode/设计题 总结.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 355设计推特.md",
+                "file": "source/_posts/leetcode/设计题 总结.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,16 +163,8 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/leetcode/leetcode 355设计推特.md"
+                "file": "source/_posts/leetcode/设计题 总结.md"
               }
-            }
-          },
-          {
-            "id": "fdcf8fe4b0c2206c",
-            "type": "leaf",
-            "state": {
-              "type": "RSS_FEED",
-              "state": {}
             }
           },
           {
@@ -189,7 +180,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -198,34 +189,60 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "canvas:新建白板": false,
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": true,
-      "command-palette:打开命令面板": false,
-      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false,
       "remotely-save:Remotely Save": false
     }
   },
-  "active": "8c1b9e6de020033d",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20240512223239.png",
+    "source/imgs/Pasted image 20240512223102.png",
+    "source/imgs/Pasted image 20240512223036.png",
+    "source/imgs/Pasted image 20240512222930.png",
+    "source/imgs/Pasted image 20240512222738.png",
+    "source/imgs/Pasted image 20240512222653.png",
+    "source/imgs/Pasted image 20240512222605.png",
+    "source/imgs/Pasted image 20240512222459.png",
+    "source/imgs/Pasted image 20240512222402.png",
+    "source/imgs/Pasted image 20240512222241.png",
+    "source/imgs/Pasted image 20240512222106.png",
     "source/_posts/leetcode/设计题思考.md",
-    "source/_posts/leetcode/leetcode 355设计推特.md",
-    "source/_posts/Golang/如何使用递归.md",
-    "source/_posts/工具/可视化工具.md",
     "source/_posts/leetcode/设计题 总结.md",
-    "source/_posts/Golang/goland中debug 无法显示全局变量解决.md",
-    "source/imgs/Pasted image 20240508002814.png",
-    "source/imgs/Pasted image 20240508002737.png",
-    "source/imgs/Pasted image 20240508002708.png",
-    "source/imgs/Pasted image 20240508002502.png",
+    "source/_posts/leetcode/Leetcode 1603. 设计停车系统.md",
+    "微信读书/Python编程：从入门到实践.md",
+    "微信读书/Python编程：从入门到实践（第2版）.md",
+    "微信读书/六顶思考帽.md",
+    "微信读书/流畅的Python.md",
+    "微信读书/半小时漫画经济学系列（共4册）.md",
+    "微信读书/108个训练让你成为手机摄影达人.md",
+    "微信读书/“笨办法”学Python 3.md",
+    "微信读书/爱的五种能力.md",
+    "微信读书/看见.md",
+    "微信读书/时间移民.md",
+    "微信读书/每天学一点超级自控力.md",
+    "微信读书/穷爸爸富爸爸全集.md",
+    "微信读书/富爸爸穷爸爸-790277.md",
+    "微信读书/小狗钱钱.md",
+    "微信读书/放学后.md",
+    "微信读书/财务自由之路Ⅰ：7年内赚到你的第一个1000万.md",
+    "微信读书/好好说话：新鲜有趣的话术精进技巧.md",
+    "微信读书/小狗钱钱2.md",
+    "微信读书/献给爱米丽的一朵玫瑰花：短篇小说集.md",
+    "微信读书/Vim实用技巧.md",
+    "微信读书/人生的智慧.md",
+    "微信读书/月亮与六便士.md",
+    "微信读书",
     "node_modules/longest/LICENSE",
     "node_modules/longest/index.js",
-    "node_modules/longest/README.md",
     "node_modules/@types/node/fs.d.ts",
     "node_modules/@types/node/os.d.ts",
     "node_modules/@types/node/LICENSE",
@@ -233,32 +250,6 @@
     "node_modules/@types/node/net.d.ts",
     "node_modules/@types/node/url.d.ts",
     "node_modules/@types/node/v8.d.ts",
-    "node_modules/@types/node/tls.d.ts",
-    "source/imgs/Pasted image 20240508002425.png",
-    "source/imgs/Pasted image 20240508002347.png",
-    "source/_posts/PythonCrashCourse/第一章 起步.md",
-    "source/_posts/Golang/Golang slice作为参数传递给函数需要使用指针.md",
-    "source/imgs/Pasted image 20240502153543.png",
-    "source/imgs/Pasted image 20240502153337.png",
-    "source/imgs/Pasted image 20240502153252.png",
-    "source/imgs/Pasted image 20240502152821.png",
-    "node_modules/cheerio/Readme.md",
-    "node_modules/cheerio-select/README.md",
-    "node_modules/chalk/readme.md",
-    "node_modules/camelcase/readme.md",
-    "node_modules/camelcase-keys/readme.md",
-    "node_modules/buffer-from/readme.md",
-    "node_modules/boolbase/README.md",
-    "node_modules/array-union/readme.md",
-    "node_modules/array-find-index/readme.md",
-    "node_modules/@types/minimatch/README.md",
-    "node_modules/@types/glob/README.md",
-    "node_modules/@trysound/sax/README.md",
-    "node_modules/@nodelib/fs.walk/README.md",
-    "node_modules/@nodelib/fs.stat/README.md",
-    "node_modules/@nodelib/fs.scandir/README.md",
-    "网络/路由器设置桥接.md",
-    "source/_posts/网络/路由器设置桥接.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
