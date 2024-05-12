@@ -25,11 +25,10 @@
             "id": "0c6c60a4a5f6c791",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
-                "mode": "source",
-                "source": false
+                "file": ".obsidian/plugins/rss-reader/data.json",
+                "staged": false
               }
             }
           }
@@ -216,10 +215,11 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "0c6c60a4a5f6c791",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
+    "source/_posts/Golang/【TODO】golang channel.md",
     "source/_posts/Golang/golang 中格式化打印单个字符Byte.md",
+    "conflict-files-obsidian-git.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "source/imgs/Pasted image 20240417003637.png",
@@ -231,7 +231,6 @@
     "source/_posts/网络/路由器设置桥接.md",
     "source/_posts/网络/Mesh组网：家庭路由和无线连接新方式.md",
     "source/_posts/Golang/golang slice无法添加指针.md",
-    "source/_posts/Golang/【TODO】golang channel.md",
     "source/imgs/Pasted image 20240502153543.png",
     "source/imgs/Pasted image 20240502153337.png",
     "source/imgs/Pasted image 20240502153252.png",
