@@ -141,6 +141,9 @@ func (h *BigHeap) Pop() any {
 
 // 将 nums 转换成 BigHeap
 func heapify(nums []int) BigHeap {
+
+    h := BigHeap(nums) // bigHeap 本身就是slice 的别名，所以可以转换
+    // 或者使用下边两行
 	h := make(BigHeap, len(nums)) // 新建BigHeap，长度为lenNums
 	copy(h, nums)                 // 将num copy 到 BigHeap 中去
 	heap.Init(&h)                 // 需要输入指针
