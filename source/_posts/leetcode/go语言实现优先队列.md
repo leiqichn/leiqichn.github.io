@@ -1,0 +1,151 @@
+---
+title: go语言实现优先队列
+date: 2024-05-19 00:39:54
+modificationDate: 2024 五月 19日 星期日 00:39:54
+categories: 
+	- leetcode
+tags: []
+sticky: []
+hide: false
+category_bar: true
+---
+
+Go 语言中实现优先队列，最大堆和最小堆通常可以通过使用容器/heap包来完成。Go 语言的heap包提供了一个堆操作的接口，它允许用户实现任意类型的堆，包括最大堆和最小堆。
+
+### 1. 优先队列
+优先队列是一种特殊的队列，元素出队顺序是根据优先级来决定的，而不是按照元素入队顺序。在Go语言中，优先队列可以通过heap包来实现。
+
+### 2. 最大堆
+最大堆是一种特殊的完全二叉树，其中每个父节点的值都大于或等于其子节点的值。在Go语言中，可以通过实现heap.Interface接口来创建最大堆。
+
+### 3. 最小堆
+最小堆与最大堆相反，其中每个父节点的值都小于或等于其子节点的值。最小堆也可以通过实现heap.Interface接口来创建。
+
+### 实现步骤
+
+#### 定义堆的元素类型
+首先，你需要定义一个元素类型，这个类型将用于存储在堆中的元素。
+
+```go
+type IntHeap []int
+```
+
+#### 实现heap.Interface接口
+要使用heap包的功能，你需要实现heap.Interface接口。这个接口包括三个方法：Push, Pop, 和 Less。
+
+```go
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] } // 对于最小堆
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *IntHeap) Push(x interface{}) {
+	*h = append(*h, x.(int))
+}
+
+func (h *IntHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+```
+
+#### 使用heap.Init初始化堆
+在使用堆之前，你需要调用heap.Init来初始化它。
+
+```go
+var h IntHeap // 先声明h
+
+heap.Init(&h) // 再使用heap.Init(&h) 初始化h指针
+```
+
+#### 添加元素
+使用heap.Push来添加元素。
+
+```go
+heap.Push(&h, 10)
+heap.Push(&&h, 20)
+```
+
+#### 移除元素
+使用heap.Pop来移除并获取堆顶元素。
+
+```go
+top := heap.Pop(&h)
+fmt.Printf("top element: %v\n", top)
+```
+
+#### 修改元素
+如果你需要修改堆中的元素，你需要自己处理，因为heap包不提供修改元素的接口。
+
+### 转换为最大堆
+如果你需要实现最大堆，只需要修改Less方法，让它返回父节点大于子节点。
+
+```go
+func (h IntHeap) Less(i, j int) bool { return h[i] > h[j] } // 对于最大堆
+```
+
+以上就是在Go语言中实现优先队列，最大堆和最小堆的基本步骤。通过实现heap.Interface接口，可以轻松地创建和管理各种类型的堆。
+
+# 例题
+[215. 数组中的第K个最大元素 - 力扣（LeetCode）](https://leetcode.cn/problems/kth-largest-element-in-an-array/description/?envType=problem-list-v2&envId=IAmiWIlN)
+
+![](../../imgs/Pasted%20image%2020240520000338.png)
+
+```go
+
+/*
+ * Copyright (c) 2024 Lei Qi. All rights reserved.
+ * Author: Lei Qi
+ * Description:
+ * Date: 2024/5/20 上午12:00
+ */
+
+package leetcode215
+
+import "container/heap"
+
+func findKthLargest(nums []int, k int) int {
+	h := heapify(nums) // 转化为heap 类型
+	var res any
+	for i := 0; i < k; i++ {
+		res = heap.Pop(&h)
+	}
+	return res.(int)
+}
+
+type BigHeap []int
+
+func (h BigHeap) Len() int { return len(h) }
+func (h BigHeap) Less(i, j int) bool {
+	// 大根堆
+	return h[i] > h[j]
+}
+
+func (h BigHeap) Swap(i, j int) {
+	tmp := h[i]
+	h[i] = h[j]
+	h[j] = tmp
+}
+func (h *BigHeap) Push(x any) { // 使用any 或者interface
+	*h = append(*h, x.(int))
+}
+
+// 删除元素待定
+func (h *BigHeap) Pop() any {
+	x := (*h)[h.Len()-1]
+	*h = (*h)[:h.Len()-1]
+	return x
+}
+
+// 将 nums 转换成 BigHeap
+func heapify(nums []int) BigHeap {
+	h := make(BigHeap, len(nums)) // 新建BigHeap，长度为lenNums
+	copy(h, nums)                 // 将num copy 到 BigHeap 中去
+	heap.Init(&h)                 // 需要输入指针
+	return h
+}
+
+
+```
