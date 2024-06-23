@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>jupyter</title>
+    <link href="/2024-06-21-02cd02e81f22.html"/>
+    <url>/2024-06-21-02cd02e81f22.html</url>
+    
+    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p><p>用于启动 Jupyter Notebook 服务的一系列命令</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">jupyter-notebook stop 8888<br>JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="hljs-built_in">tr</span> -dc A-Za-z0-9 | <span class="hljs-built_in">head</span> -c16; <span class="hljs-built_in">echo</span>)<br><span class="hljs-built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="hljs-variable">$JUPYTER_TOKEN</span> &amp;<br>jupyter-notebook list<br></code></pre></td></tr></table></figure><p>这里是每条命令的简要说明：</p><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">jupyter-notebook stop <span class="hljs-number">8888</span>：停止端口为 <span class="hljs-number">8888</span> 的 Jupyter Notebook 服务。<br>JUPYTER_TOKEN=<span class="hljs-constructor">$(&lt; <span class="hljs-operator">/</span><span class="hljs-params">dev</span><span class="hljs-operator">/</span><span class="hljs-params">urandom</span> <span class="hljs-params">tr</span> -<span class="hljs-params">dc</span> A-Za-<span class="hljs-params">z0</span>-9 | <span class="hljs-params">head</span> -<span class="hljs-params">c16</span>; <span class="hljs-params">echo</span>)</span>：生成一个随机的 <span class="hljs-number">16</span> 位的 token，用于 Jupyter Notebook 的安全认证。<br>nohup jupyter-notebook --ip <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span> --port <span class="hljs-number">8888</span> --no-browser --allow-root --<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">NotebookApp</span>.</span></span>token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。<br>jupyter-notebook <span class="hljs-built_in">list</span>：列出当前运行的 Jupyter Notebook 服务。<br><br></code></pre></td></tr></table></figure><h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>leetcode 每日温度 单调栈</title>
     <link href="/2024-05-20-1fbf9ee2486f.html"/>
     <url>/2024-05-20-1fbf9ee2486f.html</url>
