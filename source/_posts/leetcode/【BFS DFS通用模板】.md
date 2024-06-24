@@ -17,6 +17,9 @@ category_bar: true
 
 // 通用的深度优先搜索函数
 func dfs(node int, visited []bool, graph [][]int) {
+	// 边界终止条件 
+	if m n {
+	}
     // 终止条件
     if visited[node] {
         return
