@@ -354,8 +354,8 @@ navbar:
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
     - { key: "RSS", link: "/atom.xml", icon: "iconfont icon-rss-fill" }
-    - { key: "留言板", link: "/guestbook/", icon: "iconfont icon-archive-fill" }    
-    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }    
+    - { key: "留言板", link: "/guestbook/", icon: "iconfont icon-archive-fill" }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
@@ -430,10 +430,10 @@ footer:
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   # <i class="iconfont icon-rss-fill"></i> RSS图标
   content: '
-    <a href="https://leiqicn.gitee.io" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2023. All right reserved.</a> <br />
-    <a href="https://leiqicn.gitee.io" target="_blank" rel="nofollow noopener"><span>国内加速网站访问</span></a> 
+    <a href="https://leiqichn.gitee.io" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2023. All right reserved.</a> <br />
+    <a href="https://leiqichn.gitee.io" target="_blank" rel="nofollow noopener"><span>国内加速网站访问</span></a>
 
-    <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />   
+    <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />
 
     	<a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
       <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
@@ -442,8 +442,8 @@ footer:
 
 
     '
-    #       <a onclick="navigator.clipboard.writeText(&quot;leiqi@m.fudan.edu.cn&quot;);alert(&quot;已复制邮箱到剪切板，快来给我发邮件吧~&quot;)">Email | </a> 
-        # <a href="https://leiqichn.github.io/atom.xml" target="_blank" rel="nofollow noopener"><span>点击获取RSS订阅地址</span></a> <br />   
+    #       <a onclick="navigator.clipboard.writeText(&quot;leiqi@m.fudan.edu.cn&quot;);alert(&quot;已复制邮箱到剪切板，快来给我发邮件吧~&quot;)">Email | </a>
+        # <a href="https://leiqichn.github.io/atom.xml" target="_blank" rel="nofollow noopener"><span>点击获取RSS订阅地址</span></a> <br />
     #     <script>
     #   function copyToClipboard(text) {
     #     var input = document.createElement("textarea");
@@ -454,7 +454,7 @@ footer:
     #     document.body.removeChild(input);alert("邮箱已复制到剪切板！快来给我发邮件吧！");
     #   }
     # </script>
-  #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span> Powered By Hexo-Fluid</span></a><br /> 
+  #<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span> Powered By Hexo-Fluid</span></a><br />
   # 展示网站的 PV、UV 统计数
   # Display website PV and UV statistics
   statistics:
@@ -507,7 +507,7 @@ index:
     enable: true
 
     # 为空则按 hexo config.subtitle 显示
-    # If empty, text based on `subtitle` in hexo config 
+    # If empty, text based on `subtitle` in hexo config
     text: "Lei Qi's Blog"
     icons:
 

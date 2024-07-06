@@ -7,7 +7,7 @@ comment: true
 
 # 博客链接
 [国外链接](https://leiqichn.github.io/)
-[国内链接](https://leiqicn.gitee.io/)
+[国内链接](https://leiqichn.gitee.io/)
 大家可以根据网速情况选取任意一个网页浏览，两个网站内容是实时同步的。
 
 ![](../imgs/白鸽.png)
