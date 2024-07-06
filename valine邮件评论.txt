@@ -1,8 +1,8 @@
 export	SITE_NAME	Lei Qi的小宇宙	[必填] 博客名称
-export	SITE_URL	https://leiqicn.gitee.io	[必填] 首页地址
+export	SITE_URL	https://leiqichn.gitee.io	[必填] 首页地址
 export	SMTP_SERVICE	QQ	[必填] 邮件服务提供商，参照 Supported services
 export	SMTP_USER	leeeqi@qq.com	[必填] SMTP 用户名
-export	SMTP_PASS	hmmofkrphlocbaai	[必填] SMTP 授权码（非邮箱独立密码！），参照客户端设置
+export	SMTP_PASS	xxxxxxx	[必填] SMTP 授权码（非邮箱独立密码！），参照客户端设置
 export	SENDER_NAME	Lei Qi	[必填] 发件人
 export	SENDER_EMAIL	leeeiqi@qq.com	[必填] 发件邮箱
 export	MAIL_SUBJECT	${PARENT_NICK}，您在${SITE_NAME}上的评论收到了回复	[必填]@通知邮件主题（标题）模板
