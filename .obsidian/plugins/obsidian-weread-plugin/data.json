@@ -14,7 +14,7 @@
     },
     {
       "name": "wr_skey",
-      "value": "ACp1Nyi0"
+      "value": "b0_XdQ0x"
     },
     {
       "name": "wr_pf",
@@ -41,12 +41,12 @@
       "value": "1"
     }
   ],
-  "noteLocation": "微信读书",
+  "noteLocation": "read",
   "dailyNotesLocation": "/",
   "insertAfter": "<!-- start of weread -->",
   "insertBefore": "<!-- end of weread -->",
   "dailyNotesFormat": "YYYY-MM-DD",
-  "lastCookieTime": 1715522200876,
+  "lastCookieTime": 1720271482210,
   "isCookieValid": true,
   "user": "Rocks",
   "userVid": "11897562",
