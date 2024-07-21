@@ -11,28 +11,14 @@
             "id": "8c1b9e6de020033d",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "source/_posts/Python/Linux环境上jupyter 安装.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e6bd5c6e67f4bdfc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
-                "mode": "source",
-                "source": false
+                "file": ".idea/git_toolbox_blame.xml",
+                "staged": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -87,8 +73,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "d299abda62253875",
@@ -100,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "前端",
+                "query": "CUDA ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -137,7 +122,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,7 +138,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -176,9 +159,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md"
-              }
+              "state": {}
             }
           },
           {
@@ -215,8 +196,15 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "e6bd5c6e67f4bdfc",
+  "active": "8c1b9e6de020033d",
   "lastOpenFiles": [
+    "source/_posts/工具/企业微信 github 提醒机器人.md",
+    "source/_posts/Python/Linux环境上jupyter 安装.md",
+    "source/imgs/企业微信截图_1721534117437.png",
+    "source/imgs/Pasted image 20240721120138.png",
+    "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
+    "source/imgs/Pasted image 20240707124018.png",
+    "source/imgs/Pasted image 20240707124004.png",
     "source/_posts/关于我/关于我.md~",
     "source/about/index.md~",
     "valine邮件评论.txt",
@@ -228,7 +216,6 @@
     "read/Django 3 Web应用开发实战.md",
     "read/Vue.js设计与实现.md",
     "read/原则.md",
-    "source/_posts/Python/Linux环境上jupyter 安装.md",
     "微信读书/真希望我父母读过这本书.md",
     "微信读书/鲜枣课堂：5G通识讲义.md",
     "微信读书/LTE轻松进阶.md",
@@ -241,7 +228,6 @@
     "source/imgs/Pasted image 20240624230352.png",
     "source/imgs/Pasted image 20240624225914.png",
     "source/imgs/Pasted image 20240624225635.png",
-    "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
     "source/_posts/前端/vue3/vue3 入门",
     "source/_posts/前端/vue3",
     "source/_posts/前端",
@@ -255,14 +241,8 @@
     "source/imgs/Pasted image 20240521004343.png",
     "source/_posts/leetcode/leetcode 每日温度 单调栈.md",
     "source/imgs/Pasted image 20240521001833.png",
-    "source/imgs/Pasted image 20240520000338.png",
     "source/_posts/leetcode/设计题 总结.md",
     "source/_posts/leetcode/leetcode 104.二叉树的深度.md",
-    "source/imgs/Pasted image 20240512223239.png",
-    "source/imgs/Pasted image 20240512223102.png",
-    "source/imgs/Pasted image 20240512223036.png",
-    "source/_posts/leetcode/设计题思考.md",
-    "node_modules/longest/LICENSE",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",

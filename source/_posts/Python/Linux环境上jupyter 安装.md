@@ -41,5 +41,15 @@ jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
 ```
 
+[PyTorch](https://pytorch.org/)
 
+![](../../imgs/Pasted%20image%2020240721120138.png)
 
+```sh
+
+conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+```
+
+指定python版本：
+![](../../imgs/企业微信截图_1721534117437.png)
+conda install python=3.10 pytorch=2.3.0 torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
