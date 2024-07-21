@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Golang/依赖注入.md",
+                "file": "source/_posts/Golang/Golang 使用new创建slice.md",
                 "mode": "source",
                 "source": false
               }
@@ -123,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Golang/依赖注入.md",
+                "file": "source/_posts/Golang/Golang 使用new创建slice.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Golang/依赖注入.md",
+                "file": "source/_posts/Golang/Golang 使用new创建slice.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -163,7 +163,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Golang/依赖注入.md"
+                "file": "source/_posts/Golang/Golang 使用new创建slice.md"
               }
             }
           },
@@ -203,8 +203,9 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
-    "source/_posts/Golang/回调函数和直接调用的区别.md",
     "source/_posts/Golang/依赖注入.md",
+    "source/_posts/Golang/Golang 使用new创建slice.md",
+    "source/_posts/Golang/回调函数和直接调用的区别.md",
     "source/_posts/Golang/【TODO】golang channel.md",
     "source/_posts/工具/企业微信 github 提醒机器人.md",
     "source/_posts/Python/Linux环境上jupyter 安装.md",
@@ -247,7 +248,6 @@
     "source/_posts/Golang/golang 修改函数传入参数切片需要指针.md",
     "source/_posts/leetcode/【BFS DFS通用模板】.md",
     "source/imgs/Pasted image 20240521004343.png",
-    "source/_posts/leetcode/leetcode 每日温度 单调栈.md",
     "source/imgs/Pasted image 20240521001833.png",
     "未命名 3.canvas",
     "未命名 2.canvas",
