@@ -4,17 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "954c9e86cf261ebb",
+        "id": "55b603b34ef4e9a2",
         "type": "tabs",
         "children": [
           {
-            "id": "8c1b9e6de020033d",
+            "id": "18d955a611a8d3db",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": ".idea/git_toolbox_blame.xml",
-                "staged": false
+                "file": "source/_posts/Golang/回调函数和直接调用的区别.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -122,6 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/Golang/回调函数和直接调用的区别.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,6 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "source/_posts/Golang/回调函数和直接调用的区别.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +162,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "source/_posts/Golang/回调函数和直接调用的区别.md"
+              }
             }
           },
           {
@@ -196,8 +201,10 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "8c1b9e6de020033d",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/Golang/【TODO】golang channel.md",
+    "source/_posts/Golang/回调函数和直接调用的区别.md",
     "source/_posts/工具/企业微信 github 提醒机器人.md",
     "source/_posts/Python/Linux环境上jupyter 安装.md",
     "source/imgs/企业微信截图_1721534117437.png",
@@ -242,7 +249,6 @@
     "source/_posts/leetcode/leetcode 每日温度 单调栈.md",
     "source/imgs/Pasted image 20240521001833.png",
     "source/_posts/leetcode/设计题 总结.md",
-    "source/_posts/leetcode/leetcode 104.二叉树的深度.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
