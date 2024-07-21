@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>依赖注入</title>
+    <link href="/2024-07-21-618c8c29b962.html"/>
+    <url>/2024-07-21-618c8c29b962.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><p>使用接口来实现依赖注入，降低模块间的耦合。<br><strong>概念</strong>： 依赖注入是一种设计模式，它允许你将组件的依赖关系（即其他组件或服务）从组件本身中分离出来，并在组件外部进行配置。这样做可以减少组件之间的耦合，使得代码更加模块化，易于测试和维护。</p><p><strong>Go 语言实现</strong>： 在 Go 语言中，可以通过接口来实现依赖注入。接口定义了组件所需的行为，然后你可以在运行时注入任何实现了这些行为的具体类型。</p><p><strong>优点</strong>：</p><ol><li><strong>降低耦合</strong>：组件不直接依赖于具体的实现类，而是依赖于接口，这降低了组件之间的耦合度。</li><li><strong>提高灵活性</strong>：可以轻易地替换依赖的具体实现，而不需要修改组件的代码。</li><li><strong>易于测试</strong>：可以为测试注入模拟对象（mocks），从而可以隔离测试组件，不依赖于外部服务或组件。</li></ol><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">type</span> Logger <span class="hljs-keyword">interface</span> &#123;<br>    Log(message <span class="hljs-type">string</span>)<br>&#125;<br><br><span class="hljs-keyword">type</span> ConsoleLogger <span class="hljs-keyword">struct</span>&#123;&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l ConsoleLogger)</span></span> Log(message <span class="hljs-type">string</span>) &#123;<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;Log-DEBUG:&quot;</span>, message)<br>&#125;<br><br><span class="hljs-keyword">type</span> ConsoleLoggerINFO <span class="hljs-keyword">struct</span>&#123;&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(l ConsoleLoggerINFO)</span></span> Log(message <span class="hljs-type">string</span>) &#123;<br>    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;Log-INFO:&quot;</span>, message)<br>&#125;<br><br><br><span class="hljs-keyword">type</span> Application <span class="hljs-keyword">struct</span> &#123;<br>    logger Logger<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(a *Application)</span></span> SetLogger(logger Logger) &#123;<br>    a.logger = logger<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>    app := Application&#123;&#125;<br>    consoleLogger := ConsoleLogger&#123;&#125;<br>    app.SetLogger(consoleLogger)<br>    app.logger.Log(<span class="hljs-string">&quot;Application started&quot;</span>)<br>    consoleLoggerInfo := ConsoleLoggerINFO&#123;&#125;<br>    app.SetLogger(consoleLoggerInfo)<br>&#125;<br></code></pre></td></tr></table></figure><p>上边通过Go语言的Logger接口包含了Log方法, Application包含了Logger接口。  Application可以通过SetLogger来设置任何实现接口中Log 方法的就，可以方便切换日志类型。这就是依赖注入，每个部分都是个组件，可以随意方便的更换</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>回调函数和直接调用的区别</title>
     <link href="/2024-07-21-023e6a227482.html"/>
     <url>/2024-07-21-023e6a227482.html</url>
