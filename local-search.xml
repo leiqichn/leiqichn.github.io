@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>设置github 同步到gitee</title>
+    <link href="/2024-07-21-3ee37da7ed1c.html"/>
+    <url>/2024-07-21-3ee37da7ed1c.html</url>
+    
+    <content type="html"><![CDATA[<ol><li>复制自己电脑的<strong>私钥</strong>到github</li><li>复制自己电脑的<strong>公钥</strong>到gitee<img src="/../../imgs/Pasted%20image%2020240721222254.png"></li><li>获取gitee 的私人令牌</li><li>创建.github&#x2F;workflows&#x2F;xxx.ymal<br><img src="/../../imgs/Pasted%20image%2020240721221805.png"></li></ol><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">Pages</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">master</span> <span class="hljs-comment"># default branch</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">pages:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">permissions:</span><br>      <span class="hljs-attr">contents:</span> <span class="hljs-string">write</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Sync</span> <span class="hljs-string">to</span> <span class="hljs-string">Gitee</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">wearerequired/git-mirror-action@master</span><br>        <span class="hljs-attr">env:</span><br>          <span class="hljs-comment"># 注意在 Settings-&gt;Secrets 配置 GITEE_RSA_PRIVATE_KEY</span><br>          <span class="hljs-attr">SSH_PRIVATE_KEY:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITEE_RSA_PRIVATE_KEY</span> <span class="hljs-string">&#125;&#125;</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-comment"># 注意替换为你的 GitHub 源仓库地址</span><br>          <span class="hljs-attr">source-repo:</span> <span class="hljs-string">git@github.com:leiqichn/novelBigModel.git</span><br>          <span class="hljs-comment"># 注意替换为你的 Gitee 目标仓库地址</span><br>          <span class="hljs-attr">destination-repo:</span> <span class="hljs-string">git@gitee.com:leiqichn/novelBigModel.git</span><br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>git</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Golang 使用new创建slice</title>
     <link href="/2024-07-21-01f71b57e534.html"/>
     <url>/2024-07-21-01f71b57e534.html</url>
