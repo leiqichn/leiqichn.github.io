@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Golang 使用new创建slice</title>
+    <link href="/2024-07-21-01f71b57e534.html"/>
+    <url>/2024-07-21-01f71b57e534.html</url>
+    
+    <content type="html"><![CDATA[<p>在 Go 语言中，new 关键字用于分配类型为 T 的零值并返回其地址，即类型为 *T 的值。对于 slice 来说，可以使用 new 来分配一个指向 slice 的指针，但是通常我们不这样做，因为 slice 是引用类型，我们更倾向于直接使用 make 函数来创建 slice。</p><p>然而，如果确实需要使用 new 来创建一个 slice 的指针，可以这样做：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">var</span> s *[]<span class="hljs-type">int</span> <span class="hljs-comment">// 声明一个指向int类型slice的指针</span><br>s = <span class="hljs-built_in">new</span>([]<span class="hljs-type">int</span>) <span class="hljs-comment">// 分配一个int类型的slice，并将其地址赋给s</span><br></code></pre></td></tr></table></figure><p>但是，这样创建的 slice 是一个空的 slice，它没有任何底层数组（即 nil 的数组），并且长度和容量都是 0。如果需要一个具有特定长度和容量的 slice，应该使用 make 函数：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs go">s := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, length, capacity) <span class="hljs-comment">// 创建一个长度为 length，容量为 capacity 的int类型slice</span><br></code></pre></td></tr></table></figure><p>如果使用 new 创建了一个 slice 指针，并且想要初始化它，可以这样做：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs go">s := <span class="hljs-built_in">new</span>([]<span class="hljs-type">int</span>)<br>*s = <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, length, capacity) <span class="hljs-comment">// 通过解引用指针并使用make来初始化slice</span><br></code></pre></td></tr></table></figure><p>在大多数情况下，直接使用 make 函数来创建 slice 是更常见和更简单的方法。使用 new 创建 slice 指针通常不是必要的，除非你有特定的需求，比如在函数中返回一个 slice 的指针，或者你需要在多个地方共享同一个 slice 的引用。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Golang</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>依赖注入</title>
     <link href="/2024-07-21-618c8c29b962.html"/>
     <url>/2024-07-21-618c8c29b962.html</url>
