@@ -21,6 +21,7 @@ pip install notebook
 ```sh
 jupyter-notebook stop 8888
 JUPYTER_TOKEN=$(< /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)
+echo $JUPYTER_TOKEN
 nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &
 jupyter-notebook list
 ```
