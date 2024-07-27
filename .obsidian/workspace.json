@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/git/设置github 同步到gitee.md",
+                "file": "source/CNAME.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,6 +31,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
+        "dimension": 69.54022988505747,
         "children": [
           {
             "id": "d3d227159ce7968a",
@@ -79,6 +80,7 @@
       {
         "id": "d299abda62253875",
         "type": "tabs",
+        "dimension": 30.45977011494253,
         "children": [
           {
             "id": "6a5736f8a6d1f448",
@@ -123,7 +125,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/git/设置github 同步到gitee.md",
+                "file": "source/CNAME.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/git/设置github 同步到gitee.md",
+                "file": "source/CNAME.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -163,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/git/设置github 同步到gitee.md"
+                "file": "source/CNAME.md"
               }
             }
           },
@@ -203,11 +205,12 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/git/设置github 同步到gitee.md",
+    "source/CNAME.md",
     "source/imgs/Pasted image 20240721222254.png",
     "source/imgs/Pasted image 20240721222156.png",
     "source/imgs/Pasted image 20240721221805.png",
     "source/_posts/Python/Linux环境上jupyter 安装.md",
-    "source/_posts/git/设置github 同步到gitee.md",
     "source/_posts/Golang/Golang 使用new创建slice.md",
     "source/_posts/Golang/依赖注入.md",
     "source/_posts/Golang/回调函数和直接调用的区别.md",
@@ -240,7 +243,6 @@
     "source/imgs/Pasted image 20240624230722.png",
     "source/imgs/Pasted image 20240624230352.png",
     "source/imgs/Pasted image 20240624225914.png",
-    "source/imgs/Pasted image 20240624225635.png",
     "source/_posts/前端/vue3/vue3 入门",
     "source/_posts/前端/vue3",
     "source/_posts/前端",
