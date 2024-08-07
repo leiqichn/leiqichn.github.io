@@ -4,35 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "954c9e86cf261ebb",
+        "id": "82689f5e2c536d9e",
         "type": "tabs",
         "children": [
           {
-            "id": "8c1b9e6de020033d",
+            "id": "b9f13cec652daf7b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Python/Linux环境上jupyter 安装.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "e6bd5c6e67f4bdfc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/git/git更新仓库地址.md",
+                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -88,7 +75,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "d299abda62253875",
@@ -101,7 +89,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "upyter-notebook",
+                "query": "vbs",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -138,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/git/git更新仓库地址.md",
+                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/git/git更新仓库地址.md",
+                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -178,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/git/git更新仓库地址.md"
+                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md"
               }
             }
           },
@@ -216,13 +204,35 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "b9f13cec652daf7b",
   "lastOpenFiles": [
-    "source/_posts/git/github同步gitee.md",
-    "source/_posts/git/git更新仓库地址.md",
+    "source/imgs/Pasted image 20240807221008.png",
+    "source/_posts/工具/开机自启WSL.md",
+    "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
+    "node_modules/highlight.js/SUPPORTED_LANGUAGES.md",
+    "node_modules/hexo-renderer-marked/README.md",
+    "source/_posts/工具/C盘文件太多？回收站太满？.md",
+    "source/_posts/工具/删除ppt所有批注和备注.md",
+    "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
+    "conflict-files-obsidian-git.md",
     "source/imgs/Pasted image 20240719003858.png",
     "source/imgs/Pasted image 20240719003832.png",
+    "source/_posts/git/git更新仓库地址.md",
+    "source/_posts/git/github同步gitee.md",
+    "source/CNAME.md",
     "source/_posts/Python/Linux环境上jupyter 安装.md",
+    "source/imgs/企业微信截图_1721534117437.png",
+    "source/imgs/Pasted image 20240721222254.png",
+    "source/imgs/Pasted image 20240721222156.png",
+    "source/imgs/Pasted image 20240721221805.png",
+    "source/imgs/Pasted image 20240721120138.png",
+    "source/imgs/Pasted image 20240707124018.png",
+    "source/imgs/Pasted image 20240707124004.png",
+    "source/_posts/工具/企业微信 github 提醒机器人.md",
+    "source/_posts/git/设置github 同步到gitee.md",
+    "source/_posts/Golang/回调函数和直接调用的区别.md",
+    "source/_posts/Golang/依赖注入.md",
+    "source/_posts/Golang/Golang 使用new创建slice.md",
     "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
     "valine邮件评论.txt",
     "read/黑客与画家（10万册纪念版）.md",
@@ -232,35 +242,12 @@
     "read/面向数据科学家的实用统计学.md",
     "read/韭菜的自我修养.md",
     "read/雪中悍刀行（张若昀、李庚希主演）.md",
-    "read/量化投资与FOF基金入门（大数据金融丛书）.md",
-    "read/道德经.md",
-    "read/道德经说什么.md",
-    "read/走遍中国（珍藏版）.md",
-    "read/逆商：我们该如何应对坏事件.md",
-    "read/送你一颗小桃心.md",
-    "read/追风筝的人.md",
-    "read/跟老男孩学Linux运维：Shell编程实战.md",
-    "read/趣学数据结构.md",
-    "read/财务自由之路Ⅰ：7年内赚到你的第一个1000万.md",
-    "read/诗经.md",
-    "read/记忆宫殿：一本书快速提升记忆力.md",
-    "read/计算机是怎样跑起来的.md",
-    "read/职场晋升101（学会本书一小半，骑着火箭往上蹿！30万人验证过的职场干货，解决长期痛点！努力工作非常重要，升职加薪另有诀窍！）.md",
-    "read/要事第一.md",
     "read",
-    "source/imgs/Pasted image 20240624230722.png",
-    "source/imgs/Pasted image 20240624230352.png",
-    "source/imgs/Pasted image 20240624225914.png",
-    "source/imgs/Pasted image 20240624225635.png",
     "source/_posts/前端/vue3/vue3 入门",
     "source/_posts/前端/vue3",
     "source/_posts/前端",
     "前端",
     "source/_posts/比赛",
-    "source/imgs/Pasted image 20240521004343.png",
-    "source/imgs/Pasted image 20240521001833.png",
-    "source/imgs/Pasted image 20240520000338.png",
-    "source/imgs/Pasted image 20240512223239.png",
     "微信读书",
     "node_modules/longest/LICENSE",
     "node_modules/longest/index.js",
