@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "82689f5e2c536d9e",
+        "id": "55b603b34ef4e9a2",
         "type": "tabs",
         "children": [
           {
-            "id": "b9f13cec652daf7b",
+            "id": "18d955a611a8d3db",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
+                "file": "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,7 +31,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
-        "dimension": 69.27860696517413,
+        "dimension": 68.3181225554107,
         "children": [
           {
             "id": "d3d227159ce7968a",
@@ -81,7 +81,7 @@
       {
         "id": "d299abda62253875",
         "type": "tabs",
-        "dimension": 30.721393034825873,
+        "dimension": 31.681877444589308,
         "children": [
           {
             "id": "6a5736f8a6d1f448",
@@ -89,7 +89,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "vbs",
+                "query": "cuda",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -126,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
+                "file": "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
+                "file": "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md"
+                "file": "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md"
               }
             }
           },
@@ -192,65 +192,66 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "b9f13cec652daf7b",
+  "active": "779c6f963b9d7e25",
   "lastOpenFiles": [
     "source/imgs/Pasted image 20240807221008.png",
-    "source/_posts/工具/开机自启WSL.md",
-    "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
-    "node_modules/highlight.js/SUPPORTED_LANGUAGES.md",
-    "node_modules/hexo-renderer-marked/README.md",
-    "source/_posts/工具/C盘文件太多？回收站太满？.md",
-    "source/_posts/工具/删除ppt所有批注和备注.md",
-    "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
-    "conflict-files-obsidian-git.md",
     "source/imgs/Pasted image 20240719003858.png",
     "source/imgs/Pasted image 20240719003832.png",
+    "source/_posts/工具/开机自启WSL.md",
     "source/_posts/git/git更新仓库地址.md",
     "source/_posts/git/github同步gitee.md",
-    "source/CNAME.md",
     "source/_posts/Python/Linux环境上jupyter 安装.md",
-    "source/imgs/企业微信截图_1721534117437.png",
+    "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md",
+    "source/_posts/Docker",
+    "source/_posts/比赛/大模型微调.md",
+    "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
+    "source/imgs/Pasted image 20240803224158.png",
+    "source/imgs/Pasted image 20240803223718.png",
+    "source/CNAME.md",
+    "source/_posts/git/设置github 同步到gitee.md",
     "source/imgs/Pasted image 20240721222254.png",
     "source/imgs/Pasted image 20240721222156.png",
     "source/imgs/Pasted image 20240721221805.png",
-    "source/imgs/Pasted image 20240721120138.png",
-    "source/imgs/Pasted image 20240707124018.png",
-    "source/imgs/Pasted image 20240707124004.png",
-    "source/_posts/工具/企业微信 github 提醒机器人.md",
-    "source/_posts/git/设置github 同步到gitee.md",
-    "source/_posts/Golang/回调函数和直接调用的区别.md",
-    "source/_posts/Golang/依赖注入.md",
     "source/_posts/Golang/Golang 使用new创建slice.md",
+    "source/_posts/Golang/依赖注入.md",
+    "source/_posts/Golang/回调函数和直接调用的区别.md",
+    "source/_posts/Golang/【TODO】golang channel.md",
+    "source/_posts/工具/企业微信 github 提醒机器人.md",
+    "source/imgs/企业微信截图_1721534117437.png",
+    "source/imgs/Pasted image 20240721120138.png",
     "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
+    "source/imgs/Pasted image 20240707124018.png",
+    "source/_posts/关于我/关于我.md~",
+    "source/about/index.md~",
     "valine邮件评论.txt",
-    "read/黑客与画家（10万册纪念版）.md",
+    "valine邮件评论.py~",
+    "read/真希望我父母读过这本书.md",
     "read/鲜枣课堂：5G通识讲义.md",
-    "read/领导力21法则.md",
-    "read/高效能人士的七个习惯（30周年纪念版）（全新增订版）.md",
-    "read/面向数据科学家的实用统计学.md",
-    "read/韭菜的自我修养.md",
-    "read/雪中悍刀行（张若昀、李庚希主演）.md",
-    "read",
+    "read/LTE轻松进阶.md",
+    "read/JavaScript高级程序设计（第4版）.md",
+    "read/Django 3 Web应用开发实战.md",
+    "read/Vue.js设计与实现.md",
+    "read/原则.md",
+    "微信读书/真希望我父母读过这本书.md",
+    "微信读书/鲜枣课堂：5G通识讲义.md",
+    "微信读书/LTE轻松进阶.md",
+    "微信读书",
     "source/_posts/前端/vue3/vue3 入门",
     "source/_posts/前端/vue3",
     "source/_posts/前端",
     "前端",
-    "source/_posts/比赛",
-    "微信读书",
-    "node_modules/longest/LICENSE",
-    "node_modules/longest/index.js",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",

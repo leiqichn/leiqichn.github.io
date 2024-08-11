@@ -39,6 +39,10 @@ jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。
 # conda　对应版本
 
 ```sh
+
+# 创建glm4-demo python 3.10的虚拟环境
+conda create --name glm4-demo python=3.10
+
 conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
 ```
 
@@ -54,3 +58,4 @@ conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c py
 指定python版本：
 ![](../../imgs/企业微信截图_1721534117437.png)
 conda install python=3.10 pytorch=2.3.0 torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+
