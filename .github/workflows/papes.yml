@@ -34,6 +34,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          cname: leiqichn.top  # 添加自定义域名
           
       - name: Sync to Gitee
         uses: wearerequired/git-mirror-action@master
