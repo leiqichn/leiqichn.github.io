@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/git/git stash.md",
+                "file": "source/_posts/前端/申请域名绑定github pages.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,7 +31,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
-        "dimension": 67.75580395528806,
+        "dimension": 44.28202923473775,
         "children": [
           {
             "id": "d3d227159ce7968a",
@@ -75,12 +75,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "d299abda62253875",
         "type": "tabs",
-        "dimension": 32.244196044711956,
+        "dimension": 55.71797076526225,
         "children": [
           {
             "id": "6a5736f8a6d1f448",
@@ -88,7 +89,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "刷题常用",
+                "query": "网页",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -125,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/git/git stash.md",
+                "file": "source/_posts/前端/申请域名绑定github pages.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -142,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/git/git stash.md",
+                "file": "source/_posts/前端/申请域名绑定github pages.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -165,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/git/git stash.md"
+                "file": "source/_posts/前端/申请域名绑定github pages.md"
               }
             }
           },
@@ -203,16 +204,28 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "b7093495eee46c03",
   "lastOpenFiles": [
+    "themes/temp/valine邮件评论.txt",
+    "source/imgs/Pasted image 20240901103553.png",
+    "source/imgs/Pasted image 20240901103530.png",
+    "source/imgs/Pasted image 20240901103241.png",
+    "source/imgs/Pasted image 20240901103216.png",
+    "source/imgs/Pasted image 20240901102848.png",
+    "source/imgs/Pasted image 20240901102815.png",
+    "source/imgs/Pasted image 20240901102745.png",
+    "source/imgs/Pasted image 20240901102714.png",
+    "source/imgs/Pasted image 20240901102623.png",
+    "source/imgs/Pasted image 20240901102510.png",
+    "source/_posts/关于我/关于我.md",
+    "source/_posts/前端/申请域名绑定github pages.md",
+    "source/CNAME.md",
+    "CNAME",
     "source/_posts/git/git stash.md",
     "source/_posts/leetcode/leetcode  1.两数之和.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/工具/查询深度学习环境python torch cuda版本.md",
-    "source/imgs/Pasted image 20240808225509.png",
-    "source/imgs/Pasted image 20240808225507.png",
     "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
-    "source/imgs/Pasted image 20240807221008.png",
     "source/_posts/工具/开机自启WSL.md",
     "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
     "node_modules/highlight.js/SUPPORTED_LANGUAGES.md",
@@ -221,17 +234,9 @@
     "source/_posts/工具/删除ppt所有批注和备注.md",
     "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
     "conflict-files-obsidian-git.md",
-    "source/imgs/Pasted image 20240719003858.png",
-    "source/imgs/Pasted image 20240719003832.png",
     "source/_posts/git/git更新仓库地址.md",
     "source/_posts/git/github同步gitee.md",
-    "source/CNAME.md",
     "source/_posts/Python/Linux环境上jupyter 安装.md",
-    "source/imgs/企业微信截图_1721534117437.png",
-    "source/imgs/Pasted image 20240721222254.png",
-    "source/imgs/Pasted image 20240721222156.png",
-    "source/imgs/Pasted image 20240721221805.png",
-    "source/imgs/Pasted image 20240721120138.png",
     "source/_posts/工具/企业微信 github 提醒机器人.md",
     "source/_posts/git/设置github 同步到gitee.md",
     "source/_posts/Golang/回调函数和直接调用的区别.md",
@@ -239,9 +244,6 @@
     "source/_posts/Golang/Golang 使用new创建slice.md",
     "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
     "valine邮件评论.txt",
-    "read/黑客与画家（10万册纪念版）.md",
-    "read/鲜枣课堂：5G通识讲义.md",
-    "read/领导力21法则.md",
     "read",
     "source/_posts/前端/vue3/vue3 入门",
     "source/_posts/前端/vue3",
@@ -250,7 +252,6 @@
     "source/_posts/比赛",
     "微信读书",
     "node_modules/longest/LICENSE",
-    "node_modules/longest/index.js",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
