@@ -4,6 +4,120 @@
   
   
   <entry>
+    <title>申请域名绑定github pages</title>
+    <link href="/2024-09-01-ed1bf9078b39.html"/>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    
+    <content type="html"><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p><h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol><li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li><li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li></ol><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p><h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p><h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul><li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li></ul><p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p><p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p><p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p><ul><li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li></ul><p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p><p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p><p>上面圈起来的四个地址就是需要等会儿手动输入的。</p><p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p><p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p><p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p><blockquote><p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p></blockquote><p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p><p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p><h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p><h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p><p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>git stash</title>
+    <link href="/2024-08-21-f4ccab39149e.html"/>
+    <url>/2024-08-21-f4ccab39149e.html</url>
+    
+    <content type="html"><![CDATA[<p>当尝试使用 git pull -f 强制拉取远程仓库的更新时，Git 会警告你，因为本地有未提交的更改，这些更改可能会被覆盖。确定要取消对特定文件的保存，可以按照以下步骤操作：</p><p>放弃本地更改：使用 git checkout 命令来放弃对特定文件的更改。</p><p>bash<br>git checkout – .obsidian&#x2F;workspace.json<br>再次尝试拉取：放弃更改后，可以再次尝试拉取远程仓库的更新。</p><p>bash<br>git pull<br>如果不想放弃这些更改，而是想将它们保存起来，可以使用 git stash 命令：</p><p>保存更改：使用 git stash 将更改保存到一个临时区域。</p><p>git stash<br>拉取远程更新：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git pull<br></code></pre></td></tr></table></figure><p>恢复更改：在拉取更新后，你可以使用 git stash apply 来恢复之前保存的更改。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git stash apply<br></code></pre></td></tr></table></figure><p>请注意，使用 git stash apply 可能不会总是成功，在这种情况下，可能需要手动解决冲突。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>git</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>leetcode  1.两数之和</title>
+    <link href="/2024-08-21-64c0a1f316e6.html"/>
+    <url>/2024-08-21-64c0a1f316e6.html</url>
+    
+    <content type="html"><![CDATA[<p>有两种思路：</p><ol><li>使用暴力遍历， 复杂度的是 O(n ^2)</li></ol><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">twoSum</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>, target <span class="hljs-type">int</span>)</span></span> []<span class="hljs-type">int</span> &#123;<br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(nums); i++ &#123;<br>        <span class="hljs-keyword">for</span> j:= i+<span class="hljs-number">1</span>; j &lt; <span class="hljs-built_in">len</span>(nums); j++ &#123;<br>            <span class="hljs-keyword">if</span> nums[i] + nums[j] == target &#123;<br>                <span class="hljs-keyword">return</span> []<span class="hljs-type">int</span>&#123;i, j&#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> []<span class="hljs-type">int</span>&#123;&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure><ol start="2"><li>使用哈希表，是O(n)<br>  使用哈希表需要注意的是， 这里需要判断idx 和idx2 不相同，因为是要找两个位置，不能取同一个位置<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs go"><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">twoSum</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>, target <span class="hljs-type">int</span>)</span></span> []<span class="hljs-type">int</span> &#123;<br>maps := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">int</span>]<span class="hljs-type">int</span>, <span class="hljs-built_in">len</span>(nums))<br><br><span class="hljs-keyword">for</span> idx, num := <span class="hljs-keyword">range</span> nums &#123;<br>maps[num] = idx<br>&#125;<br><br><span class="hljs-keyword">for</span> idx, num := <span class="hljs-keyword">range</span> nums &#123;<br><span class="hljs-keyword">if</span> idx2, ok := maps[target-num]; ok &amp;&amp; idx != idx2 &#123; <span class="hljs-comment">// 00 : 04 : 10 使用哈希表，需要注意的是，有可能使用了同一个idx</span><br><span class="hljs-keyword">return</span> []<span class="hljs-type">int</span>&#123;idx, idx2&#125;<br>&#125;<br>&#125;<br><span class="hljs-keyword">return</span> []<span class="hljs-type">int</span>&#123;&#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>查询深度学习环境python torch cuda版本</title>
+    <link href="/2024-08-08-efa703ec12d7.html"/>
+    <url>/2024-08-08-efa703ec12d7.html</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> torch<br><br><span class="hljs-comment">#sys模块提供了一系列有关Python运行环境的变量和函数。</span><br><span class="hljs-built_in">print</span>(sys.version)<br><span class="hljs-built_in">print</span>(torch.__version__)<br><span class="hljs-built_in">print</span>(torch.cuda.is_available())<br></code></pre></td></tr></table></figure><p><img src="/../../imgs/Pasted%20image%2020240808225509.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>开机自启WSL</title>
+    <link href="/2024-08-07-117ef9b8f4c6.html"/>
+    <url>/2024-08-07-117ef9b8f4c6.html</url>
+    
+    <content type="html"><![CDATA[<p>在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp 目录下，新建vbs文件</p><p><img src="/../../imgs/Pasted%20image%2020240807221008.png"></p><p>文件内容拷贝下边内容，注意bash.exe 要替换为你电脑中的地址</p><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-keyword">Set</span> ws = WScript.CreateObject(<span class="hljs-string">&quot;WScript.Shell&quot;</span>)<br>cmd = <span class="hljs-string">&quot;C:\Windows\System32\bash.exe -c &quot;&quot;bash /init.sh&quot;&quot;&quot;</span><br><span class="hljs-comment">&#x27;运行命令不显示cmd窗口</span><br>ws.Run cmd, <span class="hljs-number">0</span>, <span class="hljs-literal">false</span><br><span class="hljs-keyword">Set</span> ws = <span class="hljs-literal">Nothing</span><br>WScript.quit<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>git更新仓库地址</title>
+    <link href="/2024-07-23-764a3cd05cde.html"/>
+    <url>/2024-07-23-764a3cd05cde.html</url>
+    
+    <content type="html"><![CDATA[<p>使用如下命令</p><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig"><span class="hljs-string">git</span> <span class="hljs-string">remote</span> <span class="hljs-built_in">set-url</span> <span class="hljs-string">origin</span> <span class="hljs-string">https</span>://<span class="hljs-string">gitee</span>.<span class="hljs-string">com</span>/<span class="hljs-string">xxxxx</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>git</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>设置github 同步到gitee</title>
     <link href="/2024-07-21-3ee37da7ed1c.html"/>
     <url>/2024-07-21-3ee37da7ed1c.html</url>
@@ -80,6 +194,25 @@
   
   
   <entry>
+    <title>github同步gitee</title>
+    <link href="/2024-07-18-e17dac938cf8.html"/>
+    <url>/2024-07-18-e17dac938cf8.html</url>
+    
+    <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240719003858.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>git</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>vue3快速实践</title>
     <link href="/2024-06-24-1130f46a1ad4.html"/>
     <url>/2024-06-24-1130f46a1ad4.html</url>
@@ -103,7 +236,7 @@
     <link href="/2024-06-21-02cd02e81f22.html"/>
     <url>/2024-06-21-02cd02e81f22.html</url>
     
-    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p><p>用于启动 Jupyter Notebook 服务的一系列命令</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh">jupyter-notebook stop 8888<br>JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="hljs-built_in">tr</span> -dc A-Za-z0-9 | <span class="hljs-built_in">head</span> -c16; <span class="hljs-built_in">echo</span>)<br><span class="hljs-built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="hljs-variable">$JUPYTER_TOKEN</span> &amp;<br>jupyter-notebook list<br></code></pre></td></tr></table></figure><p>这里是每条命令的简要说明：</p><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">jupyter-notebook stop <span class="hljs-number">8888</span>：停止端口为 <span class="hljs-number">8888</span> 的 Jupyter Notebook 服务。<br>JUPYTER_TOKEN=<span class="hljs-constructor">$(&lt; <span class="hljs-operator">/</span><span class="hljs-params">dev</span><span class="hljs-operator">/</span><span class="hljs-params">urandom</span> <span class="hljs-params">tr</span> -<span class="hljs-params">dc</span> A-Za-<span class="hljs-params">z0</span>-9 | <span class="hljs-params">head</span> -<span class="hljs-params">c16</span>; <span class="hljs-params">echo</span>)</span>：生成一个随机的 <span class="hljs-number">16</span> 位的 token，用于 Jupyter Notebook 的安全认证。<br>nohup jupyter-notebook --ip <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span> --port <span class="hljs-number">8888</span> --no-browser --allow-root --<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">NotebookApp</span>.</span></span>token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。<br>jupyter-notebook <span class="hljs-built_in">list</span>：列出当前运行的 Jupyter Notebook 服务。<br><br></code></pre></td></tr></table></figure><h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch<br></code></pre></td></tr></table></figure><p><a href="https://pytorch.org/">PyTorch</a></p><p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><br>conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia<br></code></pre></td></tr></table></figure><p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p><p>用于启动 Jupyter Notebook 服务的一系列命令</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh">jupyter-notebook stop 8888<br>JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="hljs-built_in">tr</span> -dc A-Za-z0-9 | <span class="hljs-built_in">head</span> -c16; <span class="hljs-built_in">echo</span>)<br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$JUPYTER_TOKEN</span><br><span class="hljs-built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="hljs-variable">$JUPYTER_TOKEN</span> &amp;<br>jupyter-notebook list<br></code></pre></td></tr></table></figure><p>这里是每条命令的简要说明：</p><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">jupyter-notebook stop <span class="hljs-number">8888</span>：停止端口为 <span class="hljs-number">8888</span> 的 Jupyter Notebook 服务。<br>JUPYTER_TOKEN=<span class="hljs-constructor">$(&lt; <span class="hljs-operator">/</span><span class="hljs-params">dev</span><span class="hljs-operator">/</span><span class="hljs-params">urandom</span> <span class="hljs-params">tr</span> -<span class="hljs-params">dc</span> A-Za-<span class="hljs-params">z0</span>-9 | <span class="hljs-params">head</span> -<span class="hljs-params">c16</span>; <span class="hljs-params">echo</span>)</span>：生成一个随机的 <span class="hljs-number">16</span> 位的 token，用于 Jupyter Notebook 的安全认证。<br>nohup jupyter-notebook --ip <span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span> --port <span class="hljs-number">8888</span> --no-browser --allow-root --<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">NotebookApp</span>.</span></span>token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。<br>jupyter-notebook <span class="hljs-built_in">list</span>：列出当前运行的 Jupyter Notebook 服务。<br><br></code></pre></td></tr></table></figure><h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><br><span class="hljs-comment"># 创建glm4-demo python 3.10的虚拟环境</span><br>conda create --name glm4-demo python=3.10<br><br>conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch<br></code></pre></td></tr></table></figure><p><a href="https://pytorch.org/">PyTorch</a></p><p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><br>conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia<br></code></pre></td></tr></table></figure><p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>]]></content>
     
     
     <categories>
@@ -2033,7 +2166,7 @@
     <link href="/2023-03-13-519b5e93f019.html"/>
     <url>/2023-03-13-519b5e93f019.html</url>
     
-    <content type="html"><![CDATA[<h1 id="博客链接"><a href="#博客链接" class="headerlink" title="博客链接"></a>博客链接</h1><p><a href="https://leiqichn.github.io/">国外链接</a><br><a href="https://leiqichn.gitee.io/">国内链接</a> (因gitee服务调整暂时关闭)<br>大家可以根据网速情况选取任意一个网页浏览，两个网站内容是实时同步的。</p><p><img src="/../../imgs/%E7%99%BD%E9%B8%BD.png"></p><h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>大家好，我是Lei Qi, 毕业于复旦大学 生物信息专业，任职于华为，担任软件开发工程师一职。本站是为了方便自己记录学习过程，和大家交流经验而建。也是为了学习web, 实现拥有自己一个网站的小目标，才有了本站。欢迎大家多多交流学习，祝大家学习愉快~</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="博客链接"><a href="#博客链接" class="headerlink" title="博客链接"></a>博客链接</h1><p><a href="https://leiqichn.top/">链接</a></p><p><img src="/../../imgs/%E7%99%BD%E9%B8%BD.png"></p><h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>大家好，我是Lei Qi, 毕业于复旦大学 生物信息专业，任职于华为，担任软件开发工程师一职。本站是为了方便自己记录学习过程，和大家交流经验而建。也是为了学习web, 实现拥有自己一个网站的小目标，才有了本站。欢迎大家多多交流学习，祝大家学习愉快~</p>]]></content>
     
     
     <categories>
