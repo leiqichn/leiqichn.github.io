@@ -826,7 +826,7 @@ valine:
   appId: adkgmMmfMC1DMgYcjg960d5a-gzGzoHsz
   appKey: RTNGcd7iOxYeuwCSRE5LHm2D
   path: window.location.pathname
-  placeholder: '点击这里输入你的真知灼见吧！支持MarkDown语法哦~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！快来试试吧~'
+  placeholder: '点击这里输入你的真知灼见吧！输入邮箱后支持评论回复邮件通知哦！支持MarkDown语法~~~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！期待你的精彩评论！'
   avatar: ''
   meta: ['nick', 'mail']
   requiredFields: ['nick'] #设置必填项
