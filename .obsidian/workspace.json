@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "55b603b34ef4e9a2",
+        "id": "e6c1bf17b0f3df44",
         "type": "tabs",
         "children": [
           {
-            "id": "18d955a611a8d3db",
+            "id": "b7093495eee46c03",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md",
+                "file": "source/_posts/前端/申请域名绑定github pages.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,7 +31,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
-        "dimension": 68.3181225554107,
+        "dimension": 44.28202923473775,
         "children": [
           {
             "id": "d3d227159ce7968a",
@@ -76,12 +76,12 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       },
       {
         "id": "d299abda62253875",
         "type": "tabs",
-        "dimension": 31.681877444589308,
+        "dimension": 55.71797076526225,
         "children": [
           {
             "id": "6a5736f8a6d1f448",
@@ -89,7 +89,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "cuda",
+                "query": "网页",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -126,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md",
+                "file": "source/_posts/前端/申请域名绑定github pages.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md",
+                "file": "source/_posts/前端/申请域名绑定github pages.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md"
+                "file": "source/_posts/前端/申请域名绑定github pages.md"
               }
             }
           },
@@ -192,66 +192,66 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:Create new drawing": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "779c6f963b9d7e25",
+  "active": "520d050d9f24a28a",
   "lastOpenFiles": [
-    "source/imgs/Pasted image 20240807221008.png",
-    "source/imgs/Pasted image 20240719003858.png",
-    "source/imgs/Pasted image 20240719003832.png",
-    "source/_posts/工具/开机自启WSL.md",
-    "source/_posts/git/git更新仓库地址.md",
-    "source/_posts/git/github同步gitee.md",
-    "source/_posts/Python/Linux环境上jupyter 安装.md",
-    "source/_posts/Docker/docker容器打包成本地压缩镜像并load.md",
-    "source/_posts/Docker",
-    "source/_posts/比赛/大模型微调.md",
-    "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
-    "source/imgs/Pasted image 20240803224158.png",
-    "source/imgs/Pasted image 20240803223718.png",
-    "source/CNAME.md",
-    "source/_posts/git/设置github 同步到gitee.md",
-    "source/imgs/Pasted image 20240721222254.png",
-    "source/imgs/Pasted image 20240721222156.png",
-    "source/imgs/Pasted image 20240721221805.png",
-    "source/_posts/Golang/Golang 使用new创建slice.md",
-    "source/_posts/Golang/依赖注入.md",
-    "source/_posts/Golang/回调函数和直接调用的区别.md",
-    "source/_posts/Golang/【TODO】golang channel.md",
-    "source/_posts/工具/企业微信 github 提醒机器人.md",
-    "source/imgs/企业微信截图_1721534117437.png",
-    "source/imgs/Pasted image 20240721120138.png",
-    "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
-    "source/imgs/Pasted image 20240707124018.png",
-    "source/_posts/关于我/关于我.md~",
-    "source/about/index.md~",
-    "valine邮件评论.txt",
-    "valine邮件评论.py~",
-    "read/真希望我父母读过这本书.md",
-    "read/鲜枣课堂：5G通识讲义.md",
-    "read/LTE轻松进阶.md",
-    "read/JavaScript高级程序设计（第4版）.md",
-    "read/Django 3 Web应用开发实战.md",
-    "read/Vue.js设计与实现.md",
-    "read/原则.md",
-    "微信读书/真希望我父母读过这本书.md",
-    "微信读书/鲜枣课堂：5G通识讲义.md",
-    "微信读书/LTE轻松进阶.md",
-    "微信读书",
-    "source/_posts/前端/vue3/vue3 入门",
-    "source/_posts/前端/vue3",
-    "source/_posts/前端",
-    "前端",
+    "themes/fluid_19/_config.yml~",
+    "CNAME~",
+    "themes/temp/read/计算机/SQL基础教程（第2版）.md",
+    "themes/temp/read/计算机/Django 3 Web应用开发实战.md",
+    "themes/temp/read/经济理财/数据化决策：第三版.md",
+    "themes/temp/read/计算机/性能之巅：洞悉系统、企业与云计算.md",
+    "themes/temp/read/经济理财/工业物联网：平台架构、关键技术与应用实践.md",
+    "themes/temp/read/科学技术/《通信之道——从微积分到5G》.md",
+    "themes/temp/read/经济理财/价值投资：从格雷厄姆到巴菲特（第2版）.md",
+    "themes/temp/read/未分类/代码整洁之道.md",
+    "themes/temp/read/计算机/代码整洁之道：程序员的职业素养.md",
+    "themes/temp/read/计算机/Go语言学习笔记-3300055404.md",
+    "themes/temp/read/计算机/测试架构师修炼之道：从测试工程师到测试架构师（第2版）.md",
+    "themes/temp/read/文学/西游记.md",
+    "themes/temp/read/计算机/面向对象分析与设计（第3版）（修订版）.md",
+    "themes/temp/read/文学/看见.md",
+    "themes/temp/read/精品小说/时间移民.md",
+    "themes/temp/read/个人成长/每天学一点超级自控力.md",
+    "themes/temp/read/经济理财/穷爸爸富爸爸全集.md",
+    "themes/temp/read/经济理财/富爸爸穷爸爸-790277.md",
+    "themes/temp/read/教育学习/小狗钱钱.md",
+    "themes/temp/read/精品小说/放学后.md",
+    "themes/temp/read/经济理财/财务自由之路Ⅰ：7年内赚到你的第一个1000万.md",
+    "themes/temp/read/个人成长/好好说话：新鲜有趣的话术精进技巧.md",
+    "themes/temp/read/教育学习/小狗钱钱2.md",
+    "themes/temp/read/文学/献给爱米丽的一朵玫瑰花：短篇小说集.md",
+    "themes/temp/read/文学/月亮与六便士.md",
+    "themes/temp/read/社会文化",
+    "themes/temp/read/政治军事",
+    "themes/temp/read/教育学习",
+    "themes/temp/read/哲学宗教",
+    "themes/temp/read/心理",
+    "themes/temp/read/医学健康",
+    "themes/temp/read/艺术",
+    "themes/temp/read/生活百科",
+    "themes/temp/read/历史",
+    "source/imgs/Pasted image 20240901103553.png",
+    "source/imgs/Pasted image 20240901103530.png",
+    "source/imgs/Pasted image 20240901103241.png",
+    "source/imgs/Pasted image 20240901103216.png",
+    "source/imgs/Pasted image 20240901102848.png",
+    "source/imgs/Pasted image 20240901102815.png",
+    "source/imgs/Pasted image 20240901102745.png",
+    "source/imgs/Pasted image 20240901102714.png",
+    "source/imgs/Pasted image 20240901102623.png",
+    "source/imgs/Pasted image 20240901102510.png",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",

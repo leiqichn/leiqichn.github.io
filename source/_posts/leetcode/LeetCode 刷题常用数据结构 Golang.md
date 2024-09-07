@@ -123,7 +123,7 @@ strings.Join(strs, "World")
 i := 123
 t := strconv.Itoa(i)
 
-// Sprintf转换
+// Sprintf将数字转化为字符串
 i := 123
 t := fmt.Sprintf("%d", i)
 ```
@@ -171,7 +171,7 @@ stack := make([]int, 0)
 stack = append(stack, 10)
 // pop弹出
 v := stack[len(stack) - 1]
-stack = stack[:len(stack) - 1]
+stack = stack[:len(stack) - 1] // 左闭右开
 // 检查栈空
 len(stack) == 0
 ```
@@ -194,11 +194,11 @@ len(queue) == 0
 
 ```go
 // 创建
-m := make(map[string]int)
+m := make(map[string]int, 10)
 // 设置kv
 m["hello"] = 1
 // 删除k
-delete(m,"hello")
+delete(m,"hello") // delete(map, "key")
 // 遍历
 for k, v := range m{
     // 操作
@@ -239,8 +239,9 @@ math.MinInt64
 
 #### COPY
 
+删除指定index 的 
 ```go
-// 删除a[i]，可以用 copy 将i+1到末尾的值覆盖到i,然后末尾-1
+// 删除a[i]，可以用 copy 将i+1到末尾的值覆盖到i（i 位置的地址上的值就被覆盖了）,然后末尾-1
 copy(a[i:], a[i+1:])
 a = a[:len(a)-1]
 

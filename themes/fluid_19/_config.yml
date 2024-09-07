@@ -430,8 +430,8 @@ footer:
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   # <i class="iconfont icon-rss-fill"></i> RSS图标
   content: '
-    <a href="https://leiqichn.gitee.io" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2023. All right reserved.</a> <br />
-    <a href="https://leiqichn.gitee.io" target="_blank" rel="nofollow noopener"><span>国内加速网站访问</span></a>
+    <a href="https://leiqichn.top" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2024. All right reserved.</a> <br />
+    <a href="https://leiqichn.top" target="_blank" rel="nofollow noopener"><span>国内加速网站访问</span></a>
 
     <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />
 
@@ -826,10 +826,10 @@ valine:
   appId: adkgmMmfMC1DMgYcjg960d5a-gzGzoHsz
   appKey: RTNGcd7iOxYeuwCSRE5LHm2D
   path: window.location.pathname
-  placeholder: '点击这里输入你的真知灼见吧！支持MarkDown语法哦~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！快来试试吧~'
+  placeholder: '点击这里输入你的真知灼见吧！输入邮箱后支持评论回复邮件通知哦！支持MarkDown语法~~~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！期待你的精彩评论！'
   avatar: ''
   meta: ['nick', 'mail']
-  requiredFields: ['nick'] #设置必填项
+  requiredFields: ['nick', 'mail'] #设置必填项
   pageSize: 10
   lang: 'zh-CN'
   highlight: false
