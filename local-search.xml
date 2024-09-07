@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2024-09-07-b145566b8f78.html"/>
+    <url>/2024-09-07-b145566b8f78.html</url>
+    
+    <content type="html"><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240803223718.png"></p><p><img src="/../../imgs/Pasted%20image%2020240803224158.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>比</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>申请域名绑定github pages</title>
     <link href="/2024-09-01-ed1bf9078b39.html"/>
     <url>/2024-09-01-ed1bf9078b39.html</url>
@@ -52,6 +71,25 @@
     <categories>
       
       <category>leetcode</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>docker容器打包成本地压缩镜像并load</title>
+    <link href="/2024-08-11-a8e2c27fed87.html"/>
+    <url>/2024-08-11-a8e2c27fed87.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="docker容器打包成镜像和压缩"><a href="#docker容器打包成镜像和压缩" class="headerlink" title="docker容器打包成镜像和压缩"></a>docker容器打包成镜像和压缩</h1><p>（1）将容器保存成新的镜像<br>相当于加了一层，使用docker commit</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">sudo docker commit -<span class="hljs-keyword">a</span> <span class="hljs-string">&#x27;run_code&#x27;</span> b4293c3b9202  myimage:v2<br></code></pre></td></tr></table></figure><p>（2）将镜像打包</p><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">docker save -o mask_detection_v5.tar myimage:v5<br></code></pre></td></tr></table></figure><p>(3) 将镜像包压缩</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">sudo tar -zcvf myimage<span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span> myimage.tar<br></code></pre></td></tr></table></figure><p><strong>还有一种容器的打包和压缩一步到位的方法</strong>：</p><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">docker save myimage:v5 <span class="hljs-string">| gzip &gt; myimage.tar.gz</span><br></code></pre></td></tr></table></figure><p>docker镜像压缩包解压及镜像载入</p><p>一步加载压缩的镜像命令</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">docker load &lt; myimage.tar.gz<br><br></code></pre></td></tr></table></figure><p>（1）压缩包解压</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">tar</span> -zxvf myimage.tar.gz<br></code></pre></td></tr></table></figure><p>得到.tar格式的镜像包</p><p>（2）镜像载入</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">sudo docker load -<span class="hljs-selector-tag">i</span> myimage<span class="hljs-selector-class">.tar</span><br></code></pre></td></tr></table></figure><p>载入后查看已经加载的镜像</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo docker images</span><br></code></pre></td></tr></table></figure><h1 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a>运行镜像</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 交互式运行</span><br>docker run -it myimage:v1 bash<br><br></code></pre></td></tr></table></figure><h1 id="进入已经运行的容器"><a href="#进入已经运行的容器" class="headerlink" title="进入已经运行的容器"></a>进入已经运行的容器</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh"><br>docker <span class="hljs-built_in">exec</span> -it [imagesID] bash<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
       
     </categories>
     
