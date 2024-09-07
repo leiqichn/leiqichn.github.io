@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
+                "file": "source/_posts/比赛/大模型微调.md",
                 "mode": "source",
                 "source": false
               }
@@ -75,8 +75,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "d299abda62253875",
@@ -89,7 +88,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": " git remote ",
+                "query": "大模型",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -126,7 +125,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
+                "file": "source/_posts/比赛/大模型微调.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +142,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
+                "file": "source/_posts/比赛/大模型微调.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md"
+                "file": "source/_posts/比赛/大模型微调.md"
               }
             }
           },
@@ -203,8 +202,9 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "18d955a611a8d3db",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
     "themes/temp/read/计算机/面向对象分析与设计（第3版）（修订版）.md",
     "themes/temp/read/计算机/跟老男孩学Linux运维：Shell编程实战.md",
     "themes/temp/read/计算机/趣学数据结构.md",
@@ -230,7 +230,6 @@
     "themes/temp/read/计算机/图神经网络：基础、前沿与应用.md",
     "themes/temp/read/计算机/代码整洁之道：程序员的职业素养.md",
     "themes/temp/read/计算机/Django 3 Web应用开发实战.md",
-    "themes/temp/read/计算机/SQL基础教程（第2版）.md",
     "themes/temp/read/计算机",
     "themes/temp/read/艺术",
     "themes/temp/read/经济理财",
