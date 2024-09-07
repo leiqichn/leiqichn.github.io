@@ -15,7 +15,7 @@ generate_categories: true
 generate_tags: true
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://leiqichn.top
+url: https://leiqi.top
 permalink: :year-:month-:day-:hash.html # :year-:month-:day-:hash.html 
 #:year/:month/:day/:category/:post_title/
 #:year/:month/:hash.html    :year-:month-:day-:hash.html 

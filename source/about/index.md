@@ -6,7 +6,7 @@ comment: true
 ---
 
 # 博客链接
-[链接](https://leiqichn.top/)
+[链接](https://leiqi.top/)
 
 ![](../imgs/白鸽.png)
 # 关于我

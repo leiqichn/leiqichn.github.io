@@ -430,8 +430,8 @@ footer:
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   # <i class="iconfont icon-rss-fill"></i> RSS图标
   content: '
-    <a href="https://leiqichn.top" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2024. All right reserved.</a> <br />
-    <a href="https://leiqichn.top" target="_blank" rel="nofollow noopener"><span>国内加速网站访问</span></a>
+    <a href="https://leiqi.top" target="_blank" rel="nofollow noopener"><span>Copyright ©Lei Qi 2022-2024. All right reserved.</a> <br />
+    <a href="https://leiqi.top" target="_blank" rel="nofollow noopener"><span>国内加速网站访问</span></a>
 
     <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />
 
