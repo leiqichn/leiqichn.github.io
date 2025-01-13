@@ -1,5 +1,3 @@
-
-
 ---
 title: day32
 date: 2025-01-05 22:46:55
@@ -8,7 +6,7 @@ categories:
 	- carl
 tags: []
 sticky: []
-hide: false
+hide: true
 category_bar: true
 ---
 

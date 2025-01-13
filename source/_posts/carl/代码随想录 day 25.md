@@ -6,7 +6,7 @@ categories:
 	- carl
 tags: []
 sticky: []
-hide: false
+hide: true
 category_bar: true
 ---
 # 第七章 回溯算法 part04

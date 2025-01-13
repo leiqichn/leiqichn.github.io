@@ -6,7 +6,7 @@ categories:
 	- carl
 tags: []
 sticky: []
-hide: false
+hide: true
 category_bar: true
 ---
 # 第六章 二叉树part08
