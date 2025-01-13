@@ -91,4 +91,38 @@ func main() {
 }
 
 
+// 计算从起点 start 到终点 target 的最近距离
+func BFS(start Node, target Node) int {
+    // 核心数据结构
+    q := make([]Node, 0)
+    // 避免走回头路
+    visited := make(map[Node]bool)
+    
+    // 将起点加入队列
+    q = append(q, start)
+    visited[start] = true
+
+    for len(q) > 0 {
+        sz := len(q)
+        // 将当前队列中的所有节点向四周扩散
+        for i := 0; i < sz; i++ {
+            cur := q[0]
+            q = q[1:]
+            // 划重点：这里判断是否到达终点
+            if cur == target {
+                return step
+            }
+            // 将 cur 的相邻节点加入队列
+            for _, x := range cur.adj() {
+                if _, ok := visited[x]; !ok {
+                    q = append(q, x)
+                    visited[x] = true
+                }
+            }
+        }
+    }
+    // 如果走到这里，说明在图中没有找到目标节点
+}
+
+
 ```

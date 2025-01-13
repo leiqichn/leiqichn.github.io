@@ -41,7 +41,7 @@ func twoSum(nums []int, target int) []int {
 	}
 
 	for idx, num := range nums {
-		if idx2, ok := maps[target-num]; ok && idx != idx2 { // 00 : 04 : 10 使用哈希表，需要注意的是，有可能使用了同一个idx
+		if idx2, ok := maps[target-num]; ok && idx != idx2 { // 00 : 04 : 10 使用哈希表，需要注意的是，有可能使用了同一个idx 这里需要注意
 			return []int{idx, idx2}
 		}
 	}

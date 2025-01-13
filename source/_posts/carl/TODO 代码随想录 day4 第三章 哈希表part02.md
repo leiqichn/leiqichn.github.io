@@ -6,7 +6,7 @@ categories:
 	- carl
 tags: []
 sticky: []
-hide: true
+hide: false
 category_bar: true
 ---               
 

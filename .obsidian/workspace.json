@@ -4,65 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "55b603b34ef4e9a2",
+        "id": "e6c1bf17b0f3df44",
         "type": "tabs",
         "children": [
           {
-            "id": "18d955a611a8d3db",
+            "id": "b7093495eee46c03",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
-                "mode": "source",
-                "source": false
+                "file": "source/_posts/carl/代码随想录 day23 回溯part02.md",
+                "staged": false
               },
-              "icon": "lucide-file",
-              "title": "代码随想录 day11 第五章 栈与队列part02"
-            }
-          },
-          {
-            "id": "b18fa704bf9a2ae2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/工具/clash在终端设置代理.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "clash在终端设置代理"
-            }
-          },
-          {
-            "id": "591c634332e94d6c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/carl/课程信息.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "课程信息"
-            }
-          },
-          {
-            "id": "767aca49089e9e05",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.7.6"
-              },
-              "icon": "lucide-file",
-              "title": "Release Notes 1.7.6"
+              "icon": "git-pull-request",
+              "title": "Diff View (代码随想录 day23 回溯part02)"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -74,7 +32,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
-        "dimension": 64.56634544106745,
+        "dimension": 67.9093567251462,
         "children": [
           {
             "id": "d3d227159ce7968a",
@@ -95,7 +53,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "文件列表"
             }
           },
           {
@@ -105,7 +63,7 @@
               "type": "starred",
               "state": {},
               "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "title": "插件不再活动"
             }
           },
           {
@@ -125,7 +83,7 @@
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "Bookmarks"
+              "title": "书签"
             }
           }
         ]
@@ -133,7 +91,7 @@
       {
         "id": "d299abda62253875",
         "type": "tabs",
-        "dimension": 35.433654558932545,
+        "dimension": 32.090643274853804,
         "children": [
           {
             "id": "6a5736f8a6d1f448",
@@ -141,7 +99,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "代理",
+                "query": "format",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -149,7 +107,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "搜索"
             }
           },
           {
@@ -166,7 +124,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 424.49999618530273
+    "width": 415.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -182,7 +140,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
+                "file": "source/_posts/carl/代码随想录 day23 回溯part02.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -192,7 +150,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 代码随想录 day11 第五章 栈与队列part02"
+              "title": "代码随想录 day23 回溯part02 的反向链接列表"
             }
           },
           {
@@ -201,12 +159,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
+                "file": "source/_posts/carl/代码随想录 day23 回溯part02.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 代码随想录 day11 第五章 栈与队列part02"
+              "title": "代码随想录 day23 回溯part02 的出链列表"
             }
           },
           {
@@ -219,7 +177,7 @@
                 "useHierarchy": true
               },
               "icon": "lucide-tags",
-              "title": "Tags"
+              "title": "标签"
             }
           },
           {
@@ -228,10 +186,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/carl/课程信息.md"
+                "file": "source/_posts/carl/代码随想录 day23 回溯part02.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of 课程信息"
+              "title": "代码随想录 day23 回溯part02 的大纲"
             }
           },
           {
@@ -245,7 +203,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-archive",
-              "title": "All properties"
+              "title": "添加笔记属性"
             }
           }
         ],
@@ -253,17 +211,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:Create new drawing": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false
@@ -272,10 +231,16 @@
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
     "source/_posts/carl/课程信息.md",
+    "source/_posts/工具/【最强春节抢票攻略】火车票抢票攻略.md",
+    "source/imgs/56b7445f8dd9a71eb1cd751e0030567.jpg",
+    "source/_posts/carl/代码随想录 day60 第十一章 图论part10.md",
+    "source/_posts/carl/代码随想录 day56 第十一章 图论part056.md",
+    "source/_posts/carl/代码随想录 day31 贪心算法part04.md",
+    "source/_posts/carl/代码随想录 day28 贪心算法part02.md",
+    "source/_posts/carl/代码随想录 day27 贪心算法part01.md",
+    "source/_posts/carl/代码随想录 day23 回溯part02.md",
+    "source/_posts/carl/代码随想录 day21 二叉树 part08.md",
     "source/_posts/carl/代码随想录 day18 二叉树 part06.md",
-    "source/_posts/carl/TODO 代码随想录 day4 第三章 哈希表part02.md",
-    "source/_posts/carl/课程信息.md",
-    "source/_posts/carl/TODO  代码随想录 day 13 第六章 二叉树part01.md",
     "source/_posts/carl/代码随想录 day17 二叉树 part05.md",
     "source/_posts/carl/代码随想录 day16 二叉树 part04.md",
     "source/_posts/carl/代码随想录 day15 二叉树 part03.md",
@@ -284,39 +249,33 @@
     "source/_posts/carl/代码随想录 day10 第五章 栈与队列part01.md",
     "source/_posts/carl/代码随想录 day8  字符串part 01.md",
     "source/_posts/carl/代码随想录 day7 第三章 哈希表part02.md",
-    "source/_posts/carl/代码随想录 day4 第三章 哈希表part02.md",
     "source/_posts/carl/代码随想录 day3 第三章 哈希表part02.md",
+    "source/_posts/carl/代码随想录 day 25.md",
+    "source/_posts/carl/代码随想录 day 24.md",
+    "source/_posts/carl/代码随想录 day 22 回溯算法 part01.md",
     "source/_posts/carl/代码随想录 day 9  字符串part 02.md",
-    "source/imgs/Pasted image 20241110224626.png",
-    "source/imgs/Pasted image 20241110223549.png",
-    "source/imgs/Pasted image 20241110222207.png",
-    "source/imgs/Pasted image 20241110221855.png",
-    "source/imgs/Pasted image 20241110220524.png",
-    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
-    "source/_posts/比赛/大模型微调.md",
+    "source/_posts/carl/代码随想录 day 8  字符串 part 01.md",
+    "source/_posts/carl/代码随想录 day 6  哈希表 part01.md",
+    "source/_posts/carl/代码随想录 day 4  链表 part02.md",
+    "source/imgs/Pasted image 20250113231928.png",
+    "source/imgs/Pasted image 20250113231735.png",
+    "source/imgs/Pasted image 20250113231508.png",
+    "source/imgs/Pasted image 20250113231359.png",
+    "source/imgs/Pasted image 20250113231147.png",
+    "source/imgs/Pasted image 20250113230630.png",
+    "source/imgs/Pasted image 20250105213834.png",
+    "source/imgs/Pasted image 20250105213812.png",
+    "source/_posts/极客时间",
+    "source/imgs/Pasted image 20241123132930.png",
+    "source/_posts/比赛",
     "source/_posts/carl",
-    "source/Untitled",
-    "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
-    "themes/temp/read/计算机/面向对象分析与设计（第3版）（修订版）.md",
-    "themes/temp/read/计算机/跟老男孩学Linux运维：Shell编程实战.md",
-    "themes/temp/read/计算机/趣学数据结构.md",
-    "themes/temp/read/计算机/编写高质量代码：改善Python程序的91个建议.md",
-    "themes/temp/read/计算机/计算机是怎样跑起来的.md",
-    "themes/temp/read/计算机/算法图解.md",
-    "themes/temp/read/计算机/算法（第4版）.md",
-    "themes/temp/read/计算机",
-    "themes/temp/read/艺术",
-    "themes/temp/read/经济理财",
-    "themes/temp/read/精品小说",
-    "themes/temp/read/科学技术",
+    "source/_posts/Docker",
+    "leiqi.top.xlsx",
+    "themes/fluid_19/_config.yml~",
+    "CNAME~",
     "themes/temp/read/社会文化",
-    "themes/temp/read/生活百科",
-    "themes/temp/read/未分类",
-    "source/imgs/Pasted image 20240901103553.png",
-    "source/imgs/Pasted image 20240901103530.png",
-    "source/imgs/Pasted image 20240901103241.png",
-    "source/imgs/Pasted image 20240901103216.png",
-    "source/imgs/Pasted image 20240901102848.png",
+    "themes/temp/read/政治军事",
+    "themes/temp/read/教育学习",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
