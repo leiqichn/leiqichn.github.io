@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2025-02-19-6c40879ec219.html"/>
+    <url>/2025-02-19-6c40879ec219.html</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>极</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【sed】快速替换当前文件夹下文件中指定内容</title>
     <link href="/2025-01-13-1b5c01477594.html"/>
     <url>/2025-01-13-1b5c01477594.html</url>
@@ -2276,11 +2295,11 @@
   
   
   <entry>
-    <title>快来压缩你的博客图片</title>
-    <link href="/2023-03-23-4868b6a1c39c.html"/>
-    <url>/2023-03-23-4868b6a1c39c.html</url>
+    <title>给你的博客 安装上PWA吧</title>
+    <link href="/2023-03-23-49ace33ca004.html"/>
+    <url>/2023-03-23-49ace33ca004.html</url>
     
-    <content type="html"><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p><p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>]]></content>
+    <content type="html"><![CDATA[<p>TODO:</p><ul><li>什么是PWA，可以提示添加到主屏幕<br>渐进式应用，提前缓存网站，像本地应用一样丝滑的使用网站</li><li>安装 hexo-pwa</li><li>由于hexo-pwa停止维护，需要解决报错</li><li>设置全局_config.yml 文件(非主题)</li></ul><p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p><p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>]]></content>
     
     
     <categories>
@@ -2295,11 +2314,11 @@
   
   
   <entry>
-    <title>给你的博客 安装上PWA吧</title>
-    <link href="/2023-03-23-49ace33ca004.html"/>
-    <url>/2023-03-23-49ace33ca004.html</url>
+    <title>快来压缩你的博客图片</title>
+    <link href="/2023-03-23-4868b6a1c39c.html"/>
+    <url>/2023-03-23-4868b6a1c39c.html</url>
     
-    <content type="html"><![CDATA[<p>TODO:</p><ul><li>什么是PWA，可以提示添加到主屏幕<br>渐进式应用，提前缓存网站，像本地应用一样丝滑的使用网站</li><li>安装 hexo-pwa</li><li>由于hexo-pwa停止维护，需要解决报错</li><li>设置全局_config.yml 文件(非主题)</li></ul><p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p><p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>]]></content>
+    <content type="html"><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p><p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>]]></content>
     
     
     <categories>
