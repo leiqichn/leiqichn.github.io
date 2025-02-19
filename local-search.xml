@@ -5,15 +5,53 @@
   
   <entry>
     <title></title>
-    <link href="/2025-02-19-6c40879ec219.html"/>
-    <url>/2025-02-19-6c40879ec219.html</url>
+    <link href="/2025-02-19-724842efc6ef.html"/>
+    <url>/2025-02-19-724842efc6ef.html</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p><a href="https://link.zhihu.com/?target=https://link.jianshu.com/?t=http://markdown-here.com/">markdown here</a> <strong>超好用的一款插件，强烈推荐！！</strong>有个它再也不用担心编辑器不支持markdown语法了，写好以后直接一键转换。而且也是一个跨平台神器，<strong>比如我们可以把简书写好的文章（带md语法）直接复制到微信公众号，然后一键转换，格式几乎无变化！</strong></p><p><img src="https://pic1.zhimg.com/v2-8a387e976e816e48e907ff42efb91b90_1440w.jpg"></p>]]></content>
     
     
     <categories>
       
-      <category>极</category>
+      <category>工</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>系统序列图 - 时序图</title>
+    <link href="/2025-02-19-05250c3f88f5.html"/>
+    <url>/2025-02-19-05250c3f88f5.html</url>
+    
+    <content type="html"><![CDATA[<p><img src="/../../../imgs/Pasted%20image%2020250219200803.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>架构</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>如何画好一个架构图</title>
+    <link href="/2025-02-19-d829d1f5a9ea.html"/>
+    <url>/2025-02-19-d829d1f5a9ea.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="业务架构"><a href="#业务架构" class="headerlink" title="业务架构"></a>业务架构</h1><p><img src="/../../../imgs/Pasted%20image%2020250219195041.png"></p><h1 id="客户端架构、前端架构"><a href="#客户端架构、前端架构" class="headerlink" title="客户端架构、前端架构"></a>客户端架构、前端架构</h1><p>类似于逻辑视图</p><ul><li>通过不同的颜色白标识不同颜色</li><li><img src="/../../../imgs/Pasted%20image%2020250219195111.png"></li></ul><h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>技术架构或者是后端架构，后端的逻辑架构<br>后端架构是核心架构<br><img src="/../../../imgs/Pasted%20image%2020250219195326.png"><img src="/../../../imgs/Pasted%20image%2020250219195934.png"><br>两张图 左边说明功能，右边说明交互。和业务架构有区别。</p><h1 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h1><p>描述后端系统有哪些应用组成</p><p>使用场景：</p><ul><li>项目开发和测试</li><li>部署发布</li><li>子领域项目架构，下方就是个会员中心*</li></ul><p><img src="/../../../imgs/Pasted%20image%2020250219200124.png"><img src="/../../../imgs/Pasted%20image%2020250219200345.png"></p><h1 id="部署架构-物理视图"><a href="#部署架构-物理视图" class="headerlink" title="部署架构 - 物理视图"></a>部署架构 - 物理视图</h1><p>描述后端系统具体是如何部署的，对应4+1 视图中的物理视图</p><p>使用场景</p><ul><li>总体架构设计</li><li>运维规划和优化</li><li>画图技巧</li><li>使用图标代替区块*<br><img src="/../../../imgs/Pasted%20image%2020250219200529.png"><br>上边的球是网络加速点</li></ul><p><a href="https://www.bilibili.com/video/BV1764y1a7PD/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=8d35f023c28f4bba76bb3fadea08f222">前阿里 P9 教你如何画好一张架构图_哔哩哔哩_bilibili</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>架构</category>
       
     </categories>
     
@@ -2295,11 +2333,11 @@
   
   
   <entry>
-    <title>给你的博客 安装上PWA吧</title>
-    <link href="/2023-03-23-49ace33ca004.html"/>
-    <url>/2023-03-23-49ace33ca004.html</url>
+    <title>快来压缩你的博客图片</title>
+    <link href="/2023-03-23-4868b6a1c39c.html"/>
+    <url>/2023-03-23-4868b6a1c39c.html</url>
     
-    <content type="html"><![CDATA[<p>TODO:</p><ul><li>什么是PWA，可以提示添加到主屏幕<br>渐进式应用，提前缓存网站，像本地应用一样丝滑的使用网站</li><li>安装 hexo-pwa</li><li>由于hexo-pwa停止维护，需要解决报错</li><li>设置全局_config.yml 文件(非主题)</li></ul><p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p><p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>]]></content>
+    <content type="html"><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p><p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>]]></content>
     
     
     <categories>
@@ -2314,11 +2352,11 @@
   
   
   <entry>
-    <title>快来压缩你的博客图片</title>
-    <link href="/2023-03-23-4868b6a1c39c.html"/>
-    <url>/2023-03-23-4868b6a1c39c.html</url>
+    <title>给你的博客 安装上PWA吧</title>
+    <link href="/2023-03-23-49ace33ca004.html"/>
+    <url>/2023-03-23-49ace33ca004.html</url>
     
-    <content type="html"><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p><p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>]]></content>
+    <content type="html"><![CDATA[<p>TODO:</p><ul><li>什么是PWA，可以提示添加到主屏幕<br>渐进式应用，提前缓存网站，像本地应用一样丝滑的使用网站</li><li>安装 hexo-pwa</li><li>由于hexo-pwa停止维护，需要解决报错</li><li>设置全局_config.yml 文件(非主题)</li></ul><p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p><p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>]]></content>
     
     
     <categories>
