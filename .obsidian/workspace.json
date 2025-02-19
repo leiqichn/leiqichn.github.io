@@ -4,24 +4,65 @@
     "type": "split",
     "children": [
       {
-        "id": "e6c1bf17b0f3df44",
+        "id": "55b603b34ef4e9a2",
         "type": "tabs",
         "children": [
           {
-            "id": "b7093495eee46c03",
+            "id": "18d955a611a8d3db",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/carl/day32.md",
+                "file": "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "day32"
+              "title": "代码随想录 day11 第五章 栈与队列part02"
+            }
+          },
+          {
+            "id": "b18fa704bf9a2ae2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/工具/clash在终端设置代理.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "clash在终端设置代理"
+            }
+          },
+          {
+            "id": "591c634332e94d6c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/极客时间/架构/Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
+          },
+          {
+            "id": "767aca49089e9e05",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.6"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.6"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -33,7 +74,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
-        "dimension": 67.9093567251462,
+        "dimension": 64.56634544106745,
         "children": [
           {
             "id": "d3d227159ce7968a",
@@ -54,7 +95,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -64,7 +105,7 @@
               "type": "starred",
               "state": {},
               "icon": "lucide-file",
-              "title": "插件不再活动"
+              "title": "Plugin no longer active"
             }
           },
           {
@@ -84,7 +125,7 @@
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "书签"
+              "title": "Bookmarks"
             }
           }
         ]
@@ -92,7 +133,7 @@
       {
         "id": "d299abda62253875",
         "type": "tabs",
-        "dimension": 32.090643274853804,
+        "dimension": 35.433654558932545,
         "children": [
           {
             "id": "6a5736f8a6d1f448",
@@ -100,7 +141,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "format",
+                "query": "代理",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -108,7 +149,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "搜索"
+              "title": "Search"
             }
           },
           {
@@ -125,7 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 415.49999618530273
+    "width": 363.49999618530273
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -141,7 +182,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/carl/代码随想录 day23 回溯part02.md",
+                "file": "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +192,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "代码随想录 day23 回溯part02 的反向链接列表"
+              "title": "Backlinks for 代码随想录 day11 第五章 栈与队列part02"
             }
           },
           {
@@ -160,12 +201,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/carl/代码随想录 day23 回溯part02.md",
+                "file": "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "代码随想录 day23 回溯part02 的出链列表"
+              "title": "Outgoing links from 代码随想录 day11 第五章 栈与队列part02"
             }
           },
           {
@@ -178,7 +219,7 @@
                 "useHierarchy": true
               },
               "icon": "lucide-tags",
-              "title": "标签"
+              "title": "Tags"
             }
           },
           {
@@ -187,10 +228,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/carl/代码随想录 day23 回溯part02.md"
+                "file": "source/_posts/极客时间/架构/Untitled.md"
               },
               "icon": "lucide-list",
-              "title": "代码随想录 day23 回溯part02 的大纲"
+              "title": "Outline of Untitled"
             }
           },
           {
@@ -204,7 +245,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-archive",
-              "title": "添加笔记属性"
+              "title": "All properties"
             }
           }
         ],
@@ -212,18 +253,17 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false
@@ -231,33 +271,11 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
-    "source/_posts/carl/代码随想录 day62 第十一章 图论part11.md",
-    "source/_posts/carl/代码随想录 day60 第十一章 图论part10.md",
-    "source/_posts/carl/代码随想录 day 25.md",
+    "source/_posts/极客时间/架构/Untitled.md",
+    "source/_posts/极客时间/架构",
     "source/_posts/carl/代码随想录 day 9  字符串part 02.md",
-    "source/_posts/carl/代码随想录 day21 二叉树 part08.md",
-    "source/_posts/carl/代码随想录 day29 贪心算法part03.md",
-    "source/_posts/carl/代码随想录 day8  字符串part 01.md",
-    "source/_posts/carl/代码随想录 day22 回溯 part01.md",
-    "source/_posts/carl/代码随想录 day 24.md",
-    "source/_posts/carl/代码随想录 day23 回溯part02.md",
-    "source/_posts/carl/代码随想录 day7 第三章 哈希表part02.md",
-    "source/_posts/carl/代码随想录 day 8  字符串 part 01.md",
-    "source/_posts/carl/代码随想录 day 6  哈希表 part01.md",
-    "source/_posts/carl/代码随想录 day 4  链表 part02.md",
-    "source/_posts/carl/代码随想录 day 3  链表 part01.md",
-    "source/_posts/Linux/【sed】快速替换当前文件夹下文件中指定内容.md",
-    "source/_posts/carl/课程信息.md",
-    "source/_posts/工具/【最强春节抢票攻略】火车票抢票攻略.md",
-    "source/imgs/56b7445f8dd9a71eb1cd751e0030567.jpg",
-    "source/_posts/carl/代码随想录 day56 第十一章 图论part056.md",
-    "source/_posts/carl/代码随想录 day31 贪心算法part04.md",
-    "source/_posts/carl/代码随想录 day28 贪心算法part02.md",
-    "source/_posts/carl/代码随想录 day27 贪心算法part01.md",
-    "source/_posts/carl/代码随想录 day18 二叉树 part06.md",
-    "source/_posts/carl/代码随想录 day17 二叉树 part05.md",
-    "source/_posts/carl/代码随想录 day16 二叉树 part04.md",
-    "source/_posts/carl/代码随想录 day15 二叉树 part03.md",
+    "source/_posts/极客时间/Gin与GORM 设计并实现一个发帖功能.md",
+    "source/_posts/极客时间",
     "source/imgs/Pasted image 20250113231928.png",
     "source/imgs/Pasted image 20250113231735.png",
     "source/imgs/Pasted image 20250113231508.png",
@@ -266,17 +284,39 @@
     "source/imgs/Pasted image 20250113230630.png",
     "source/imgs/Pasted image 20250105213834.png",
     "source/imgs/Pasted image 20250105213812.png",
-    "source/_posts/极客时间",
     "source/imgs/Pasted image 20241123132930.png",
-    "source/_posts/比赛",
+    "source/imgs/Pasted image 20241123132832.png",
+    "source/_posts/carl/代码随想录 day 4  链表 part02.md",
+    "source/_posts/carl/代码随想录 day 3  链表 part01.md",
+    "source/_posts/carl/代码随想录 day 25.md",
+    "source/_posts/carl/代码随想录 day 24.md",
+    "source/_posts/carl/代码随想录 day 22 回溯算法 part01.md",
+    "source/_posts/carl/day63 总结.md",
+    "source/_posts/carl/day34.md",
+    "source/_posts/carl/day32.md",
+    "source/_posts/Linux/【sed】快速替换当前文件夹下文件中指定内容.md",
+    "source/_posts/Golang/Go 浮点数次方.md",
+    "source/_posts/架构/如何画好一张架构图.md",
+    "source/_posts/架构",
+    "source/_posts/carl/代码随想录 day8  字符串part 01.md",
+    "source/_posts/carl/代码随想录 day40 第九章 动态规划 part08.md",
+    "source/_posts/carl/代码随想录 day41 第九章 动态规划part09.md",
+    "source/_posts/carl/代码随想录 day18 二叉树 part06.md",
+    "source/_posts/carl/课程信息.md",
+    "source/_posts/carl/TODO 代码随想录 day4 第三章 哈希表part02.md",
+    "source/_posts/carl/课程信息.md",
+    "source/_posts/carl/TODO  代码随想录 day 13 第六章 二叉树part01.md",
+    "source/_posts/carl/代码随想录 day17 二叉树 part05.md",
+    "source/_posts/carl/代码随想录 day16 二叉树 part04.md",
+    "source/_posts/carl/代码随想录 day15 二叉树 part03.md",
+    "source/_posts/carl/代码随想录 day14 第六章 二叉树 part02.md",
     "source/_posts/carl",
-    "source/_posts/Docker",
-    "leiqi.top.xlsx",
-    "themes/fluid_19/_config.yml~",
-    "CNAME~",
-    "themes/temp/read/社会文化",
-    "themes/temp/read/政治军事",
-    "themes/temp/read/教育学习",
+    "source/Untitled",
+    "themes/temp/read/计算机",
+    "themes/temp/read/艺术",
+    "themes/temp/read/经济理财",
+    "themes/temp/read/精品小说",
+    "themes/temp/read/科学技术",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
