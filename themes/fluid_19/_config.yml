@@ -438,7 +438,7 @@ footer:
     	<a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
       <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
       <a href="mailto:leiqi@fudan.edu.cn" target="_blank" rel="nofollow noopener"><span>Email | </span></a>
-      <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信</span></a>
+      <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信公众号</span></a>
 
 
     '
@@ -1050,6 +1050,12 @@ links:
       intro: "主题 GitHub 仓库",
       link: "https://github.com/leiqichn",
       avatar: "/imgs/github-logo.png"
+    }
+    - {
+      title: "微信公众号",
+      intro: "微信公众号",
+      link: "https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ",
+      avatar: "/imgs/qrcode.jpg"
     }
 
   # 当成员头像加载失败时，替换为指定图片
