@@ -38,14 +38,17 @@
           {
             "id": "591c634332e94d6c",
             "type": "leaf",
+            "pinned": true,
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": "source/_posts/极客时间/架构/系统序列图 - 时序图.md",
-                "staged": false
+                "file": "source/_posts/Golang/golang 设计题.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "git-pull-request",
-              "title": "Diff View (系统序列图 - 时序图)"
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "golang 设计题"
             }
           }
         ],
@@ -93,7 +96,7 @@
               "type": "starred",
               "state": {},
               "icon": "lucide-file",
-              "title": "Plugin no longer active"
+              "title": "插件不再活动"
             }
           },
           {
@@ -129,7 +132,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "golang",
+                "query": "question.titleSlug",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -137,7 +140,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "搜索"
             }
           },
           {
@@ -216,12 +219,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "source/_posts/Golang/golang 设计题.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "golang 设计题 的大纲"
             }
           },
           {
@@ -247,20 +251,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-excalidraw-plugin:Create new drawing": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "mermaid-tools:Open Mermaid Toolbar": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "591c634332e94d6c",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20250304232815.png",
+    "source/imgs/Pasted image 20250304232749.png",
+    "source/imgs/Pasted image 20250304232719.png",
+    "source/imgs/Pasted image 20250304232633.png",
+    "source/imgs/Pasted image 20250304232604.png",
+    "source/imgs/Pasted image 20250304232540.png",
+    "source/imgs/Pasted image 20250304232518.png",
+    "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
+    "source/_posts/Golang/golang 设计题.md",
     "source/_posts/架构/高级系统架构师备考策略.md",
     "source/_posts/极客时间/架构/系统序列图 - 时序图.md",
     "source/_posts/极客时间/架构/如何画好一个架构图.md",
@@ -271,16 +285,10 @@
     "source/imgs/Pasted image 20250219200529.png",
     "source/imgs/Pasted image 20250219200345.png",
     "source/imgs/Pasted image 20250219200124.png",
-    "source/imgs/Pasted image 20250219195934.png",
-    "source/imgs/Pasted image 20250219195326.png",
-    "source/imgs/Pasted image 20250219195111.png",
-    "source/imgs/Pasted image 20250219195041.png",
     "source/_posts/极客时间/架构",
     "source/_posts/carl/代码随想录 day 9  字符串part 02.md",
     "source/_posts/极客时间/Gin与GORM 设计并实现一个发帖功能.md",
     "source/_posts/极客时间",
-    "source/imgs/Pasted image 20250113231928.png",
-    "source/imgs/Pasted image 20250113231735.png",
     "source/_posts/carl/代码随想录 day 4  链表 part02.md",
     "source/_posts/carl/代码随想录 day 3  链表 part01.md",
     "source/_posts/carl/代码随想录 day 25.md",
@@ -297,9 +305,6 @@
     "source/_posts/carl/代码随想录 day40 第九章 动态规划 part08.md",
     "source/_posts/carl/代码随想录 day41 第九章 动态规划part09.md",
     "source/_posts/carl/代码随想录 day18 二叉树 part06.md",
-    "source/_posts/carl/课程信息.md",
-    "source/_posts/carl/TODO 代码随想录 day4 第三章 哈希表part02.md",
-    "source/_posts/carl/课程信息.md",
     "source/_posts/carl",
     "source/Untitled",
     "themes/temp/read/计算机",
