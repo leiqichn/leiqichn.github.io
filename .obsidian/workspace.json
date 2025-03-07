@@ -50,9 +50,22 @@
               "icon": "lucide-file",
               "title": "golang 设计题"
             }
+          },
+          {
+            "id": "1a33415f81a1dec4",
+            "type": "leaf",
+            "state": {
+              "type": "diff-view",
+              "state": {
+                "file": "source/_posts/极客时间/架构/如何画好一个架构图.md",
+                "staged": false
+              },
+              "icon": "git-pull-request",
+              "title": "Diff View (如何画好一个架构图)"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "文件列表"
             }
           },
           {
@@ -219,13 +232,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Golang/golang 设计题.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "golang 设计题 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -264,8 +276,12 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "1a33415f81a1dec4",
   "lastOpenFiles": [
+    "source/_posts/labuladong速成记录/数据结构设计专题.md",
+    "source/_posts/极客时间/架构/如何画好一个架构图.md",
+    "source/_posts/labuladong速成记录",
+    "source/_posts/Golang/golang 设计题.md",
     "source/imgs/Pasted image 20250304232815.png",
     "source/imgs/Pasted image 20250304232749.png",
     "source/imgs/Pasted image 20250304232719.png",
@@ -274,17 +290,14 @@
     "source/imgs/Pasted image 20250304232540.png",
     "source/imgs/Pasted image 20250304232518.png",
     "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
-    "source/_posts/Golang/golang 设计题.md",
     "source/_posts/架构/高级系统架构师备考策略.md",
     "source/_posts/极客时间/架构/系统序列图 - 时序图.md",
-    "source/_posts/极客时间/架构/如何画好一个架构图.md",
     "source/_posts/工具/chrome 插件.md",
     "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
     "source/_posts/工具/clash在终端设置代理.md",
     "source/imgs/Pasted image 20250219200803.png",
     "source/imgs/Pasted image 20250219200529.png",
     "source/imgs/Pasted image 20250219200345.png",
-    "source/imgs/Pasted image 20250219200124.png",
     "source/_posts/极客时间/架构",
     "source/_posts/carl/代码随想录 day 9  字符串part 02.md",
     "source/_posts/极客时间/Gin与GORM 设计并实现一个发帖功能.md",
@@ -311,7 +324,6 @@
     "themes/temp/read/艺术",
     "themes/temp/read/经济理财",
     "themes/temp/read/精品小说",
-    "themes/temp/read/科学技术",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
