@@ -52,16 +52,17 @@
             }
           },
           {
-            "id": "1a33415f81a1dec4",
+            "id": "3510a28e73acdece",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": "source/_posts/极客时间/架构/如何画好一个架构图.md",
-                "staged": false
+                "file": "source/_posts/labuladong速成记录/数据结构设计专题.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "git-pull-request",
-              "title": "Diff View (如何画好一个架构图)"
+              "icon": "lucide-file",
+              "title": "数据结构设计专题"
             }
           }
         ],
@@ -232,12 +233,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "source/_posts/labuladong速成记录/数据结构设计专题.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "数据结构设计专题 的大纲"
             }
           },
           {
@@ -276,12 +278,13 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "1a33415f81a1dec4",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20250307231252.png",
+    "source/_posts/Golang/golang 设计题.md",
     "source/_posts/labuladong速成记录/数据结构设计专题.md",
     "source/_posts/极客时间/架构/如何画好一个架构图.md",
     "source/_posts/labuladong速成记录",
-    "source/_posts/Golang/golang 设计题.md",
     "source/imgs/Pasted image 20250304232815.png",
     "source/imgs/Pasted image 20250304232749.png",
     "source/imgs/Pasted image 20250304232719.png",
@@ -317,7 +320,6 @@
     "source/_posts/carl/代码随想录 day8  字符串part 01.md",
     "source/_posts/carl/代码随想录 day40 第九章 动态规划 part08.md",
     "source/_posts/carl/代码随想录 day41 第九章 动态规划part09.md",
-    "source/_posts/carl/代码随想录 day18 二叉树 part06.md",
     "source/_posts/carl",
     "source/Untitled",
     "themes/temp/read/计算机",
