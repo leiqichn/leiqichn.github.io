@@ -23,22 +23,23 @@ category_bar: true
 
 #### [链表双指针技巧](https://labuladong.online/algo/intro/quick-learning-plan/#%E9%93%BE%E8%A1%A8%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7)
 
-|LeetCode|力扣|难度|
-|---|---|---|
-|[21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/?show=1)|[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/?show=1)|🟢|
-|[86. Partition List](https://leetcode.com/problems/partition-list/?show=1)|[86. 分隔链表](https://leetcode.cn/problems/partition-list/?show=1)|🟠|
-|[23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/?show=1)|[23. 合并K个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/?show=1)|🔴|
-|[141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/?show=1)|[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/?show=1)|🟢|
-|[142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/?show=1)|[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/?show=1)|🟠|
-|[876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/?show=1)|[876. 链表的中间结点](https://leetcode.cn/problems/middle-of-the-linked-list/?show=1)|🟢|
-|[19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/?show=1)|[19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/?show=1)|🟠|
-|[160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/?show=1)|[160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/?show=1)|🟢|
-|[264. Ugly Number II](https://leetcode.com/problems/ugly-number-ii/?show=1)|[264. 丑数 II](https://leetcode.cn/problems/ugly-number-ii/?show=1)|🟠|
-|[378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/?show=1)|[378. 有序矩阵中第 K 小的元素](https://leetcode.cn/problems/kth-smallest-element-in-a-sorted-matrix/?show=1)|🟠|
-|[373. Find K Pairs with Smallest Sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/?show=1)|[373. 查找和最小的 K 对数字](https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/?show=1)|🟠|
-|[82. Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/?show=1)|[82. 删除排序链表中的重复元素 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/?show=1)|🟠|
-|[2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/?show=1)|[2. 两数相加](https://leetcode.cn/problems/add-two-numbers/?show=1)|🟠|
-|[445. Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii/?show=1)|[445. 两数相加 II](https://leetcode.cn/problems/add-two-numbers-ii/?show=1)|🟠|
+| LeetCode                                                                                                                      | 力扣                                                                                                 | 难度  |
+| ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | --- |
+| [21. Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/?show=1)                                    | [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/?show=1)                        | 🟢  |
+| [86. Partition List](https://leetcode.com/problems/partition-list/?show=1)                                                    | [86. 分隔链表](https://leetcode.cn/problems/partition-list/?show=1)                                    | 🟠  |
+| [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/?show=1)                                        | [23. 合并K个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/?show=1)                          | 🔴  |
+| [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/?show=1)                                             | [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/?show=1)                                | 🟢  |
+| [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/?show=1)                                       | [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/?show=1)                          | 🟠  |
+| [876. Middle of the Linked List](https://leetcode.com/problems/middle-of-the-linked-list/?show=1)                             | [876. 链表的中间结点](https://leetcode.cn/problems/middle-of-the-linked-list/?show=1)                     | 🟢  |
+| [19. Remove Nth Node From End of List](https://leetcode.com/problems/remove-nth-node-from-end-of-list/?show=1)                | [19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/?show=1)        | 🟠  |
+| [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/?show=1)               | [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/?show=1)                 | 🟢  |
+| [264. Ugly Number II](https://leetcode.com/problems/ugly-number-ii/?show=1)                                                   | [264. 丑数 II](https://leetcode.cn/problems/ugly-number-ii/?show=1)                                  | 🟠  |
+| [378. Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/?show=1) | [378. 有序矩阵中第 K 小的元素](https://leetcode.cn/problems/kth-smallest-element-in-a-sorted-matrix/?show=1) | 🟠  |
+| [373. Find K Pairs with Smallest Sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/?show=1)                 | [373. 查找和最小的 K 对数字](https://leetcode.cn/problems/find-k-pairs-with-smallest-sums/?show=1)          | 🟠  |
+| [82. Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/?show=1)      | [82. 删除排序链表中的重复元素 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/?show=1)  | 🟠  |
+| [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/?show=1)                                                   | [2. 两数相加](https://leetcode.cn/problems/add-two-numbers/?show=1)                                    | 🟠  |
+| [445. Add Two Numbers II](https://leetcode.com/problems/add-two-numbers-ii/?show=1)                                           | [445. 两数相加 II](https://leetcode.cn/problems/add-two-numbers-ii/?show=1)                            | 🟠  |
+|                                                                                                                               |                                                                                                    |     |
 
 #### [递归操作链表](https://labuladong.online/algo/intro/quick-learning-plan/#%E9%80%92%E5%BD%92%E6%93%8D%E4%BD%9C%E9%93%BE%E8%A1%A8)
 
