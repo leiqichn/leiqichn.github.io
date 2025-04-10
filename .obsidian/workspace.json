@@ -43,12 +43,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/速刷记录/数据结构设计专题.md",
+                "file": "source/_posts/架构/软件架构/软件架构.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据结构设计专题"
+              "title": "软件架构"
             }
           }
         ],
@@ -132,7 +132,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "博客",
+                "query": "软件架构",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -219,13 +219,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/速刷记录/数据结构设计专题.md",
+                "file": "source/_posts/架构/软件架构/软件架构.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "数据结构设计专题 的大纲"
+              "title": "软件架构 的大纲"
             }
           },
           {
@@ -264,15 +264,27 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "331906324583b373",
   "lastOpenFiles": [
+    "README.md",
+    "未命名.md",
+    "source/_posts/架构/软件架构/软件架构.md",
+    "scripts/deploy.sh",
+    "scripts/push.sh",
+    "scripts/pull.sh",
+    "scripts/sync2gitee.sh",
+    "sync2gitee - 副本.sh",
+    "scripts",
+    "新建文件夹",
+    "source/imgs/Pasted image 20250328002035.png",
+    "source/_posts/速刷记录/数据结构设计专题.md",
+    "source/_posts/架构/软件架构",
     "source/_posts/Golang/golang 设计题.md",
     "source/_posts/前端/本地生成hexo 网页.md",
     "source/_posts/工具/chrome 插件.md",
     "source/_posts/工具/clash在终端设置代理.md",
     "source/_posts/前端/申请域名绑定github pages.md",
     "node_modules/hexo-theme-fluid/README.md",
-    "source/_posts/速刷记录/数据结构设计专题.md",
     "source/imgs/Pasted image 20250309231207.png",
     "source/imgs/Pasted image 20250307231252.png",
     "source/_posts/极客时间/架构/如何画好一个架构图.md",
@@ -288,11 +300,9 @@
     "source/_posts/架构/高级系统架构师备考策略.md",
     "source/_posts/极客时间/架构/系统序列图 - 时序图.md",
     "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
-    "source/imgs/Pasted image 20250219200803.png",
     "source/_posts/极客时间/架构",
     "source/_posts/carl/代码随想录 day 9  字符串part 02.md",
     "source/_posts/极客时间/Gin与GORM 设计并实现一个发帖功能.md",
-    "source/_posts/极客时间",
     "source/_posts/carl/代码随想录 day 4  链表 part02.md",
     "source/_posts/carl/代码随想录 day 3  链表 part01.md",
     "source/_posts/carl/代码随想录 day 25.md",
@@ -302,16 +312,6 @@
     "source/_posts/carl/day34.md",
     "source/_posts/carl/day32.md",
     "source/_posts/Linux/【sed】快速替换当前文件夹下文件中指定内容.md",
-    "source/_posts/Golang/Go 浮点数次方.md",
-    "source/_posts/架构/如何画好一张架构图.md",
-    "source/_posts/架构",
-    "source/_posts/carl/代码随想录 day8  字符串part 01.md",
-    "source/_posts/carl",
-    "source/Untitled",
-    "themes/temp/read/计算机",
-    "themes/temp/read/艺术",
-    "themes/temp/read/经济理财",
-    "themes/temp/read/精品小说",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
