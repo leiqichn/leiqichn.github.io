@@ -26,6 +26,7 @@
           {
             "id": "3510a28e73acdece",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
@@ -33,6 +34,7 @@
                 "mode": "source",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
               "title": "本地生成hexo 网页"
             }
@@ -52,7 +54,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -219,13 +221,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/架构/软件架构/软件架构.md",
+                "file": "source/_posts/前端/本地生成hexo 网页.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "软件架构 的大纲"
+              "title": "本地生成hexo 网页 的大纲"
             }
           },
           {
@@ -264,54 +266,54 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "331906324583b373",
+  "active": "3510a28e73acdece",
   "lastOpenFiles": [
+    "themes/fluid_19/source/css/_pages/_base/_widget/header.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/toc.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/scroll-btn.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/search.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/noscript.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/qrcode.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/ngrogress.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/pagination.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/modal.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/footnote.styl",
+    "themes/fluid_19/source/css/_pages/_base/_widget/copyright.styl",
+    "themes/fluid_19/source/img/police_beian.png",
+    "themes/fluid_19/source/img/qrcode.jpg",
+    "themes/fluid_19/source/img/keyboard.jpg",
+    "themes/fluid_19/source/img/loading.gif",
+    "themes/fluid_19/source/img/fluid.png",
+    "themes/fluid_19/source/img/default.png",
+    "themes/fluid_19/source/img/CLlogo.jpg",
+    "themes/fluid_19/source/img/avatar.png",
+    "themes/fluid_19/README_en.md",
+    "themes/fluid_19/README.md",
+    "themes/hexo-theme-fluid/source/img/qrcode.jpg",
+    "themes/hexo-theme-fluid/source/img/police_beian.png",
+    "themes/hexo-theme-fluid/README_en.md",
+    "themes/hexo-theme-fluid/README.md",
+    "themes/hexo-theme-butterfly/README_CN.md",
+    "themes/hexo-theme-butterfly/README.md",
+    "source/_posts/Golang/golang 设计题.md",
+    "source/_posts/架构/软件架构/软件架构.md",
     "README.md",
     "未命名.md",
-    "source/_posts/架构/软件架构/软件架构.md",
-    "scripts/deploy.sh",
-    "scripts/push.sh",
-    "scripts/pull.sh",
-    "scripts/sync2gitee.sh",
-    "sync2gitee - 副本.sh",
-    "scripts",
-    "新建文件夹",
-    "source/imgs/Pasted image 20250328002035.png",
     "source/_posts/速刷记录/数据结构设计专题.md",
-    "source/_posts/架构/软件架构",
-    "source/_posts/Golang/golang 设计题.md",
     "source/_posts/前端/本地生成hexo 网页.md",
     "source/_posts/工具/chrome 插件.md",
     "source/_posts/工具/clash在终端设置代理.md",
     "source/_posts/前端/申请域名绑定github pages.md",
     "node_modules/hexo-theme-fluid/README.md",
-    "source/imgs/Pasted image 20250309231207.png",
-    "source/imgs/Pasted image 20250307231252.png",
     "source/_posts/极客时间/架构/如何画好一个架构图.md",
-    "source/_posts/速刷记录",
-    "source/imgs/Pasted image 20250304232815.png",
-    "source/imgs/Pasted image 20250304232749.png",
-    "source/imgs/Pasted image 20250304232719.png",
-    "source/imgs/Pasted image 20250304232633.png",
-    "source/imgs/Pasted image 20250304232604.png",
-    "source/imgs/Pasted image 20250304232540.png",
-    "source/imgs/Pasted image 20250304232518.png",
     "source/_posts/前端/vue3/vue3 入门/vue3快速实践.md",
     "source/_posts/架构/高级系统架构师备考策略.md",
     "source/_posts/极客时间/架构/系统序列图 - 时序图.md",
     "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
-    "source/_posts/极客时间/架构",
     "source/_posts/carl/代码随想录 day 9  字符串part 02.md",
     "source/_posts/极客时间/Gin与GORM 设计并实现一个发帖功能.md",
     "source/_posts/carl/代码随想录 day 4  链表 part02.md",
     "source/_posts/carl/代码随想录 day 3  链表 part01.md",
-    "source/_posts/carl/代码随想录 day 25.md",
-    "source/_posts/carl/代码随想录 day 24.md",
-    "source/_posts/carl/代码随想录 day 22 回溯算法 part01.md",
-    "source/_posts/carl/day63 总结.md",
-    "source/_posts/carl/day34.md",
-    "source/_posts/carl/day32.md",
-    "source/_posts/Linux/【sed】快速替换当前文件夹下文件中指定内容.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",

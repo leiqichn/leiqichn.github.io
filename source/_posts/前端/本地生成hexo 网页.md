@@ -18,6 +18,7 @@ https://registry.npmjs.org/
 npm set registry https://registry.npmjs.org/
 
 ## 本地部署调测
+`hexo clean`、`hexo g`、`hexo d`
 
 hexo cl && hexo g && hexo s
 
