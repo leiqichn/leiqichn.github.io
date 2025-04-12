@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/photography/scenery/index.md",
+                "file": "source/_posts/架构/软件架构/软件架构.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "软件架构"
             }
           }
         ],
@@ -236,13 +236,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/photography/scenery/index.md",
+                "file": "source/_posts/架构/软件架构/软件架构.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "index 的大纲"
+              "title": "软件架构 的大纲"
             }
           },
           {
@@ -283,6 +283,7 @@
   },
   "active": "297447e4d7be5745",
   "lastOpenFiles": [
+    "source/photography/scenery/index.md",
     "TODO.txt",
     "public/search.json",
     "node_modules/hexo-generator-searchdb/LICENSE",
@@ -293,7 +294,6 @@
     "public/2024-01-23-183e0ff5f5ef.html",
     "public/2024-01-23-759654485d5d.html",
     "public/2024-01-22-f8790b7ced8e.html",
-    "public/assets/algolia/algoliasearchLite.min.js",
     "node_modules/agentkeepalive/README.md",
     "node_modules/agentkeepalive/History.md",
     "node_modules/dom-walk/README.md",
