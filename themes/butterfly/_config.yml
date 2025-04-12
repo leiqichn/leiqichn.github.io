@@ -27,8 +27,9 @@ menu:
     经济: /economics/ || fas fa-usd
     Music: /music/ || fas fa-music
     Movie: /movies/ || fas fa-video
-  摄影: /photography/ || fas fa-camera
+  摄影集: /photography/ || fas fa-camera
   RSS: /atom.xml || fas fa-rss-square
+  友链: /link || fas fa-camera
   留言板: /guestbook/ || fas fa-comment-dots
   关于我: /about/ || fas fa-heart
   # Home: / || fas fa-home

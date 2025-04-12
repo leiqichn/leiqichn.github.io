@@ -1,18 +1,8 @@
-- author: Butterfly
-  avatar: https://butterfly.js.org/img/avatar.png
-  date: 2024-09-21 23:33:26
+- author: LeiQi
+  avatar: https://leiqichn.github.io/imgs/avatar.png
+  date: 2025-04-12 23:33:26
   key: key-1
   content: |
-    第一條說說
+    第一条说说
   tags:
     - 自言自語
-- author: Butterfly
-  avatar: https://butterfly.js.org/img/avatar.png
-  date: 2024-09-22 23:33:26
-  key: key-2
-  content: |
-    第二條說說
-    圖片:
-      ![圖片](https://butterfly.js.org/img/avatar.png)
-  tags:
-    - 頭像
