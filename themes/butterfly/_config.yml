@@ -23,8 +23,8 @@ menu:
     分类: /categories/ || fas fa-archive
     说说: /shuoshuo/ || fas fa-comment-dots
   生活 ||fas fa-list:
-    读书: /archives/ || fas fa-book
-    经济: /archives/ || fas fa-usd
+    读书: /readings/ || fas fa-book
+    经济: /economics/ || fas fa-usd
     Music: /music/ || fas fa-music
     Movie: /movies/ || fas fa-video
   摄影: /photography/ || fas fa-camera
