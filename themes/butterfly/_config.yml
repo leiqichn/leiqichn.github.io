@@ -233,10 +233,10 @@ reward:
 # Post edit
 # Easily browse and edit blog source code online.
 post_edit:
-  enable: false
+  enable: true
   # url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/
   # For example: https://github.com/jerryc127/butterfly.js.org/edit/main/source/
-  url:
+  url: https://github.com/leiqichn/leiqichn.github.io/edit/master/source
 
 # Related Articles
 related_post:
@@ -304,7 +304,7 @@ aside:
       link: https://github.com/leiqichnchn
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 欢迎关注公众号：DeepThinking深思，本站的文章会同步发布在微信公众号，方便推送~
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -485,7 +485,7 @@ math:
 search:
   # Choose: algolia_search / local_search / docsearch
   # leave it empty if you don't need search
-  use:
+  use: algolia_search
   placeholder:
 
   # Algolia Search
