@@ -612,22 +612,24 @@ valine:
   enable: true
   appId: adkgmMmfMC1DMgYcjg960d5a-gzGzoHsz
   appKey: RTNGcd7iOxYeuwCSRE5LHm2D
-  placeholder: '点击这里输入你的真知灼见吧！输入邮箱后，支持他人评论你时，邮件通知你哦！支持MarkDown语法~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！期待你的精彩评论！'
-  avatar: ''
+  bg:
+  avatar: monsterid
   # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
-  serverURLs: ''
+  serverURLs:
   # Use Valine visitor count as the page view count
   visitor: false
-  path: window.location.pathname
-  meta: [ 'nick', 'mail' ]
-  requiredFields: [ 'nick', 'mail' ]
-  pageSize: 10
-  lang: 'zh-CN'
-  highlight: false
-  recordIP: true
-  emojiCDN:
-  emojiMaps:
-  enableQQ: true
+  option:
+    path: window.location.pathname
+    meta: [ 'nick', 'mail' ]
+    placeholder: '点击这里输入你的真知灼见吧！输入邮箱后，支持他人评论你时，邮件通知你哦！支持MarkDown语法~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！期待你的精彩评论！'
+    requiredFields: [ 'nick', 'mail' ]
+    pageSize: 10
+    lang: 'zh-CN'
+    highlight: false
+    recordIP: true
+    emojiCDN:
+    emojiMaps:
+    enableQQ: true
 
 # Waline - A simple comment system with backend support fork from Valine
 # https://waline.js.org/
