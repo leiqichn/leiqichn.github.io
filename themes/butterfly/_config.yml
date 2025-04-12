@@ -17,6 +17,20 @@ nav:
   fixed: false
 
 menu:
+  首页: / || fas fa-home
+  文章 ||fas fa-list:
+    归档: /archives/ || fas fa-archive
+    分类: /categories/ || fas fa-archive
+    说说: /shuoshuo/ || fas fa-comment-dots
+  生活 ||fas fa-list:
+    读书: /archives/ || fas fa-book
+    经济: /archives/ || fas fa-usd
+    Music: /music/ || fas fa-music
+    Movie: /movies/ || fas fa-video
+  摄影: /photography/ || fas fa-camera
+  RSS: /atom.xml || fas fa-rss-square
+  留言板: /guestbook/ || fas fa-comment-dots
+  关于我: /about/ || fas fa-heart
   # Home: / || fas fa-home
   # List||fas fa-list:
   #   Music: /music/ || fas fa-music
@@ -45,8 +59,8 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+  fab fa-github: https://github.com/leiqichn || Github || '#24292e'
+  fas fa-envelope: mailto:leiqi@fudan.edu.cn || Email || '#4a7dbe'
 
 # --------------------------------------
 # Image Settings
@@ -55,14 +69,14 @@ social:
 favicon: /img/favicon.png
 
 avatar:
-  img: /img/butterfly-icon.png
+  img: /img/icon.png
   effect: false
 
 # Disable all banner images
 disable_top_img: false
 
-# If the banner of page not setting, it will show the default_top_img
-default_top_img:
+# If the banner of page not setting, it will show the default_top_img 首页背景图 https://butterfly.js.org/posts/4aa8abbe/
+default_top_img: 'linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)'
 
 # The banner image of index page
 index_img:
@@ -287,7 +301,7 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/xxxxxx
+      link: https://github.com/leiqichnchn
   card_announcement:
     enable: true
     content: This is my Blog
