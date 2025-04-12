@@ -282,12 +282,11 @@ footer:
     version: false
   custom_text: |
     <div class="custom-footer">
-    <a href="https://leiqi.top" target="_blank" rel="nofollow noopener">
-        <span>Copyright ©Lei Qi 2022-<script>document.write(new Date().getFullYear())</script>. All right reserved.</span>
-    </a> <br />
-    <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />
-
-    	<a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
+      <a href="https://leiqi.top" target="_blank" rel="nofollow noopener">
+          <span>Copyright ©Lei Qi 2022-<script>document.write(new Date().getFullYear())</script>. All right reserved.</span>
+      </a> <br />
+      <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />
+      <a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
       <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
       <a href="mailto:leiqi@fudan.edu.cn" target="_blank" rel="nofollow noopener"><span>Email | </span></a>
       <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信公众号</span></a>
