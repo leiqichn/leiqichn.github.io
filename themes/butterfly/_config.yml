@@ -257,7 +257,7 @@ footer:
   nav:
   owner:
     enable: true
-    since: 2025
+    since: 2022
   # Copyright of theme and framework
   copyright:
     enable: true
@@ -525,7 +525,7 @@ comments:
   # Leave it empty if you don't need comments
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # Format of two comments system : Disqus,Waline
-  use:
+  use: valine
   # Display the comment name next to the button
   text: true
   # Lazyload: The comment system will be load when comment element enters the browser's viewport.
@@ -568,15 +568,25 @@ gitalk:
 # Valine
 # https://valine.js.org
 valine:
-  appId:
-  appKey:
+  appId: adkgmMmfMC1DMgYcjg960d5a-gzGzoHsz
+  appKey: RTNGcd7iOxYeuwCSRE5LHm2D
   avatar: monsterid
   # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
-  serverURLs:
+  serverURLs: https://leiqi.top
   bg:
   # Use Valine visitor count as the page view count
-  visitor: false
+  visitor: true
   option:
+  placeholder: '点击这里输入你的真知灼见吧！输入邮箱后支持评论回复邮件通知哦！支持MarkDown语法~~~ PS: 在昵称框输入QQ号可自动获取QQ昵称和QQ头像哦！期待你的精彩评论！'
+  meta: [ 'nick', 'mail' ]
+  requiredFields: [ 'nick', 'mail' ] #设置必填项
+  pageSize: 10
+  lang: 'zh-CN'
+  highlight: false
+  recordIP: true
+  emojiCDN:
+  emojiMaps:
+  enableQQ: true
 
 # Waline - A simple comment system with backend support fork from Valine
 # https://waline.js.org/
