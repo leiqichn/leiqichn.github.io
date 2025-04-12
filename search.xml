@@ -145,6 +145,23 @@
       </categories>
   </entry>
   <entry>
+    <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
+    <url>/2023-05-11-257639a12a8e.html</url>
+    <content><![CDATA[<p>在 Go 语言中，byte 和 rune 都是用来表示字符类型的数据类型。</p>
+<p>byte 是 uint8 的别名，在 Go 中通常用于表示 ASCII 字符集中的一个字节。<br>rune 是 int32 的别名，在 Go 中通常用于表示 Unicode 字符集中的一个代码点。<br>因此，对于 ASCII 字符来说，byte 和 rune 的值是相同的，但是对于大部分 Unicode 字符来说，它们是不同的。</p>
+<p>将 byte 或 rune 转换为 int 可以使用类型转换操作符：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">b := <span class="type">byte</span>(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">i := <span class="type">int</span>(b) - <span class="type">int</span>(<span class="string">&#x27;0&#x27;</span>) <span class="comment">// 将 byte &#x27;0&#x27; 转换为 int 0</span></span><br><span class="line"><span class="comment">// 上边可以简写为</span></span><br><span class="line">i := b - <span class="string">&#x27;0&#x27;</span></span><br><span class="line">r := <span class="type">rune</span>(<span class="string">&#x27;中&#x27;</span>)</span><br><span class="line">i := <span class="type">int</span>(r)             <span class="comment">// 将 rune &#x27;中&#x27; 转换为 int 类型（其实是它的 Unicode 码点）</span></span><br></pre></td></tr></table></figure>
+
+<p>将 int 转换为 byte 或 rune 可以使用类型断言或类型转换操作符，但是需要注意溢出的情况。例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">i := <span class="number">10</span></span><br><span class="line">b := <span class="type">byte</span>(i)   <span class="comment">// 溢出！编译器会忽略高位部分，直接取低位部分的字节</span></span><br><span class="line">r := <span class="type">rune</span>(i)</span><br><span class="line"><span class="keyword">if</span> r &lt; <span class="number">0xFFFF</span> &#123;</span><br><span class="line">    r = <span class="type">rune</span>(b) <span class="comment">// 类型断言</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以通过判断 r 是否小于 0xFFFF 来检测转换是否正确，因为 Unicode 的码点范围在 0～0x10FFFF，超过该范围的值会被认为是无效码点。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Golang 使用new创建slice</title>
     <url>/2024-07-21-01f71b57e534.html</url>
     <content><![CDATA[<p>在 Go 语言中，new 关键字用于分配类型为 T 的零值并返回其地址，即类型为 *T 的值。对于 slice 来说，可以使用 new 来分配一个指向 slice 的指针，但是通常我们不这样做，因为 slice 是引用类型，我们更倾向于直接使用 make 函数来创建 slice。</p>
@@ -158,23 +175,6 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">*s = <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 通过解引用指针并使用make来初始化slice</span></span><br></pre></td></tr></table></figure>
 
 <p>在大多数情况下，直接使用 make 函数来创建 slice 是更常见和更简单的方法。使用 new 创建 slice 指针通常不是必要的，除非你有特定的需求，比如在函数中返回一个 slice 的指针，或者你需要在多个地方共享同一个 slice 的引用。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
-    <url>/2023-05-11-257639a12a8e.html</url>
-    <content><![CDATA[<p>在 Go 语言中，byte 和 rune 都是用来表示字符类型的数据类型。</p>
-<p>byte 是 uint8 的别名，在 Go 中通常用于表示 ASCII 字符集中的一个字节。<br>rune 是 int32 的别名，在 Go 中通常用于表示 Unicode 字符集中的一个代码点。<br>因此，对于 ASCII 字符来说，byte 和 rune 的值是相同的，但是对于大部分 Unicode 字符来说，它们是不同的。</p>
-<p>将 byte 或 rune 转换为 int 可以使用类型转换操作符：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">b := <span class="type">byte</span>(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">i := <span class="type">int</span>(b) - <span class="type">int</span>(<span class="string">&#x27;0&#x27;</span>) <span class="comment">// 将 byte &#x27;0&#x27; 转换为 int 0</span></span><br><span class="line"><span class="comment">// 上边可以简写为</span></span><br><span class="line">i := b - <span class="string">&#x27;0&#x27;</span></span><br><span class="line">r := <span class="type">rune</span>(<span class="string">&#x27;中&#x27;</span>)</span><br><span class="line">i := <span class="type">int</span>(r)             <span class="comment">// 将 rune &#x27;中&#x27; 转换为 int 类型（其实是它的 Unicode 码点）</span></span><br></pre></td></tr></table></figure>
-
-<p>将 int 转换为 byte 或 rune 可以使用类型断言或类型转换操作符，但是需要注意溢出的情况。例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">i := <span class="number">10</span></span><br><span class="line">b := <span class="type">byte</span>(i)   <span class="comment">// 溢出！编译器会忽略高位部分，直接取低位部分的字节</span></span><br><span class="line">r := <span class="type">rune</span>(i)</span><br><span class="line"><span class="keyword">if</span> r &lt; <span class="number">0xFFFF</span> &#123;</span><br><span class="line">    r = <span class="type">rune</span>(b) <span class="comment">// 类型断言</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以通过判断 r 是否小于 0xFFFF 来检测转换是否正确，因为 Unicode 的码点范围在 0～0x10FFFF，超过该范围的值会被认为是无效码点。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -864,16 +864,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>git更新仓库地址</title>
-    <url>/2024-07-23-764a3cd05cde.html</url>
-    <content><![CDATA[<p>使用如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>设置github 同步到gitee</title>
     <url>/2024-07-21-3ee37da7ed1c.html</url>
     <content><![CDATA[<ol>
@@ -883,6 +873,16 @@ dfs(root.Right, res)
 <li>创建.github&#x2F;workflows&#x2F;xxx.ymal<br><img src="/../../imgs/Pasted%20image%2020240721221805.png"></li>
 </ol>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">master</span> <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">contents:</span> <span class="string">write</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Sync</span> <span class="string">to</span> <span class="string">Gitee</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">wearerequired/git-mirror-action@master</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="comment"># 注意在 Settings-&gt;Secrets 配置 GITEE_RSA_PRIVATE_KEY</span></span><br><span class="line">          <span class="attr">SSH_PRIVATE_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITEE_RSA_PRIVATE_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="comment"># 注意替换为你的 GitHub 源仓库地址</span></span><br><span class="line">          <span class="attr">source-repo:</span> <span class="string">git@github.com:leiqichn/novelBigModel.git</span></span><br><span class="line">          <span class="comment"># 注意替换为你的 Gitee 目标仓库地址</span></span><br><span class="line">          <span class="attr">destination-repo:</span> <span class="string">git@gitee.com:leiqichn/novelBigModel.git</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git更新仓库地址</title>
+    <url>/2024-07-23-764a3cd05cde.html</url>
+    <content><![CDATA[<p>使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>git</category>
@@ -903,44 +903,6 @@ dfs(root.Right, res)
       <tags>
         <tag>about</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-ed1bf9078b39.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
   </entry>
   <entry>
     <title>Go语言中的byte类型与Unicode码点与整数的转换</title>
@@ -1338,23 +1300,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 122买动态股票的最佳时机II</title>
-    <url>/2023-05-27-5cebfed1675b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/">122. 买卖股票的最佳时机 II - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230527235217.png"></p>
-<p>每次只允许在一天买入一支股票，在之后某个时间卖出它。同时，你也可以选择不进行任何交易。</p>
-<p>相比于第一题买卖股票的最佳时机（只能进行一次交易），这道题没有限制交易次数，因此我们应该从一个更灵活的角度去考虑如何进行交易。</p>
-<p>下面是代码解释：</p>
-<p>首先定义变量 sum 记录当前总利润。<br>然后从第二个价格开始遍历，计算当日价格与前一天价格之差。<br>如果价格上涨了，则将当前利润加上买卖差价，否则不进行操作。<br>最后返回累计的总利润。<br>这样做的原理在于，如果在 i 天买入，在 j 天卖出（j &gt; i），我们可以等价于在 i+1、i+2……j-1、j 这些连续的日子里都进行了购入和卖出，而我们所需获得的利润即为这些差价的总和。因此，代码中只统计了所有价格差大于 0 的部分，而将其他价格差为负值的日子抛弃掉了。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="comment">// 累加每次大于0的交易</span></span><br><span class="line">        <span class="keyword">if</span> prices[i] - prices[i<span class="number">-1</span>] &gt; <span class="number">0</span> &#123;</span><br><span class="line">            sum += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 1396.设计地铁系统</title>
     <url>/2023-05-18-0a0f1bd6a4a5.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-underground-system/description/">1396. 设计地铁系统 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230518233218.png"></p>
@@ -1383,6 +1328,23 @@ dfs(root.Right, res)
       <tags>
         <tag>设计题</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>leetcode 122买动态股票的最佳时机II</title>
+    <url>/2023-05-27-5cebfed1675b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/">122. 买卖股票的最佳时机 II - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230527235217.png"></p>
+<p>每次只允许在一天买入一支股票，在之后某个时间卖出它。同时，你也可以选择不进行任何交易。</p>
+<p>相比于第一题买卖股票的最佳时机（只能进行一次交易），这道题没有限制交易次数，因此我们应该从一个更灵活的角度去考虑如何进行交易。</p>
+<p>下面是代码解释：</p>
+<p>首先定义变量 sum 记录当前总利润。<br>然后从第二个价格开始遍历，计算当日价格与前一天价格之差。<br>如果价格上涨了，则将当前利润加上买卖差价，否则不进行操作。<br>最后返回累计的总利润。<br>这样做的原理在于，如果在 i 天买入，在 j 天卖出（j &gt; i），我们可以等价于在 i+1、i+2……j-1、j 这些连续的日子里都进行了购入和卖出，而我们所需获得的利润即为这些差价的总和。因此，代码中只统计了所有价格差大于 0 的部分，而将其他价格差为负值的日子抛弃掉了。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="comment">// 累加每次大于0的交易</span></span><br><span class="line">        <span class="keyword">if</span> prices[i] - prices[i<span class="number">-1</span>] &gt; <span class="number">0</span> &#123;</span><br><span class="line">            sum += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
   </entry>
   <entry>
     <title>leetcode 144. 二叉树的前序遍历</title>
@@ -1689,20 +1651,20 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 355设计推特</title>
-    <url>/2024-05-10-b1491b9671d6.html</url>
-    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>leetcode 376.摆动序列</title>
+    <url>/2023-05-23-7b5e53100757.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
   </entry>
   <entry>
-    <title>leetcode 376.摆动序列</title>
-    <url>/2023-05-23-7b5e53100757.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>leetcode 355设计推特</title>
+    <url>/2024-05-10-b1491b9671d6.html</url>
+    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2574,15 +2536,41 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>WPS设置打开文件自动同步云文档</title>
-    <url>/2023-12-30-3a73bdfdd568.html</url>
-    <content><![CDATA[<p>不知道我们会不会有远程办公的场景，有时候在公司写了一般文档，回到家后还想着继续写。<br>WPS 的自动同步功能能够很方便的满足这需求。接下来介绍一下具体操作：</p>
-<h1 id="打开首页，设置中心"><a href="#打开首页，设置中心" class="headerlink" title="打开首页，设置中心"></a>打开首页，设置中心</h1><p><img src="/../../imgs/Pasted%20image%2020231230221037.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020231230220856.png"></p>
-<h1 id="打开新文件会自动上传更新"><a href="#打开新文件会自动上传更新" class="headerlink" title="打开新文件会自动上传更新"></a>打开新文件会自动上传更新</h1><p><img src="/../../imgs/Pasted%20image%2020231230221311.png"></p>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
 ]]></content>
       <categories>
-        <category>工具</category>
+        <category>前端</category>
       </categories>
   </entry>
   <entry>
@@ -2617,6 +2605,18 @@ dfs(root.Right, res)
 <h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p> 经过漫长的等待，直接运行rstudio 就会进入x11转发的图形界面<br> <img src="/../../imgs/Pasted%20image%2020230924205521.png"><br><strong>画个图试试，顺利出图！开始愉快的coding吧！</strong><br><img src="/../../imgs/Pasted%20image%2020230924205559.png"></p>
 <p><strong>已知问题：</strong> 操作延迟较高，没有本地反应快，但是还可以接受，大家可以试试。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们可以通过<strong>X11</strong>来在服务器上运行图形化的程序，这个图形化的程序一般不需要很高的权限，不涉及外部端口新增。因此我们可以在服务器上运行很多图形化程序，例如Rstudio。甚至是我们的Pycharm、Goland、CLion 等Jetbrains的全家桶。大家快来试试吧！</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>WPS设置打开文件自动同步云文档</title>
+    <url>/2023-12-30-3a73bdfdd568.html</url>
+    <content><![CDATA[<p>不知道我们会不会有远程办公的场景，有时候在公司写了一般文档，回到家后还想着继续写。<br>WPS 的自动同步功能能够很方便的满足这需求。接下来介绍一下具体操作：</p>
+<h1 id="打开首页，设置中心"><a href="#打开首页，设置中心" class="headerlink" title="打开首页，设置中心"></a>打开首页，设置中心</h1><p><img src="/../../imgs/Pasted%20image%2020231230221037.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020231230220856.png"></p>
+<h1 id="打开新文件会自动上传更新"><a href="#打开新文件会自动上传更新" class="headerlink" title="打开新文件会自动上传更新"></a>打开新文件会自动上传更新</h1><p><img src="/../../imgs/Pasted%20image%2020231230221311.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2904,6 +2904,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>windows IE代理问题解决</title>
+    <url>/2024-04-05-e1116cf34b00.html</url>
+    <content><![CDATA[<p>CMD <strong>检查系统代理配置</strong>：</p>
+<pre><code>- 通过命令提示符运行`netsh winhttp show proxy`来查看当前的系统代理设置。
+- 如果需要更改系统代理，可以使用`netsh winhttp set proxy`命令进行设置。
+</code></pre>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+  </entry>
+  <entry>
     <title>计算机网络概览</title>
     <url>/2024-05-02-82705503428a.html</url>
     <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240502152821.png"></p>
@@ -2912,18 +2924,6 @@ dfs(root.Right, res)
 <p><img src="/../../imgs/Pasted%20image%2020240502153543.png"></p>
 <p>【计算机网络】常识</p>
 <p>知识点：集线器Hub、交换机Switch、桥接、路由器Router、路由表、MAC地址、IP地址、默认网关IP；高低电平表示电信号，2.4-5.0v表示高电平，0-0.4表示低电平；<br>两台计算机可以通过一条网线，但多条计算机需要指数级根网线；太费线<br>【集线器Hub】转发消息的设备；Hub是物理层的设备；广播隐私性较差；<br>数据链路层；<br>【半双工】无法同时向上或向下传输（双向通讯，例如对讲机）Hub太费时间；<br>【交换机Switch】交换机记录设备的唯一标识【MAC地址】是设备的物理地址且全球唯一；<br>【物理地址MAC】<br>交换机将每个设备的MAC地址与【对应端口】记录为一张地址表；（首先是群发，随后才是点对点）<br>【点对点连接】【全双工通讯】提高了带宽利用率；<br>【桥接】一根线连接两台交换机，实现两个交换机设备的相互访问；两台交换器有一个端口记录为桥接端口，交换两台交换机的MAC地址表；<br>【交换机Switch】只能用在设备不多的内网，例如公司内网或学校教育网；<br>【交换机Switch】虽然可以记录几千到几万个MAC地址，并且【桥接】只能增加新的MAC地址记录；交换机越多，通过桥接的传播路径也会越长<br>【路由器Router】一种专门的网络设备，用于找到网络的最优路径（并非家里的WiFi路由器）；<br>【IP地址】用于标识不同的网络和网络设备；<br>【路由器Router】连接两个不同的交换机Switch组成的网络并分配【网段】（例如网络A分配192.168.1.0&#x2F;24，网络B分配192.168.2.0&#x2F;24，连接到路由器的192.168.1.1和192.168.2.1端口，设备A1和设备B1分配192.168.1.10和192.168.2.10）<br>【默认网关IP】不同网段连接到路由器的IP；<br>【IP地址】只是设备的临时标识，方便使用，最终的通信还是需要靠MAC地址完成；<br>设备A1给设备B1发数据包，在网络A内找目标IP，找不到就会发送到路由器；<br>【路由表】记录IP和端口映射关系的路由表（一说网关）；来决定如何将数据包转发到网络B，在网络B中找到对应设备B1的MAC地址；后续的通信还是通过路由器来转发；拓展：DHCP服务器<br>【IPv4】2的32次方，43亿个网络设备，2019年11月耗尽；【IPv6】2的128次方；<br>【海底光缆】</p>
-]]></content>
-      <categories>
-        <category>网络</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>windows IE代理问题解决</title>
-    <url>/2024-04-05-e1116cf34b00.html</url>
-    <content><![CDATA[<p>CMD <strong>检查系统代理配置</strong>：</p>
-<pre><code>- 通过命令提示符运行`netsh winhttp show proxy`来查看当前的系统代理设置。
-- 如果需要更改系统代理，可以使用`netsh winhttp set proxy`命令进行设置。
-</code></pre>
 ]]></content>
       <categories>
         <category>网络</category>
