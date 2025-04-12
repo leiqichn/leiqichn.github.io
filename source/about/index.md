@@ -1,6 +1,7 @@
 ---
-title: about
+title: 关于我
 layout: about
+sticky: 100 
 date: 2023-03-14 01:15:57
 comment: true
 ---
