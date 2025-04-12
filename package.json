@@ -40,6 +40,7 @@
     "imagemin-mozjpeg": "^7.0.0",
     "lodash": "^4.17.21",
     "mime-db": "^1.54.0",
-    "mozjpeg": "^5.0.0"
+    "mozjpeg": "^5.0.0",
+    "valine": "^1.5.3"
   }
 }
