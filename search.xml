@@ -59,74 +59,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Linux 命令 将前台任务挂到后台运行</title>
-    <url>/2023-03-18-87649bcaf9cc.html</url>
-    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
-<p><strong>第一步：ctrl + z</strong></p>
-<p><strong>第二步：jobs  查看任务id</strong></p>
-<p><strong>第三步： bg %任务id</strong></p>
-<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 将用户追加到对应用户组</title>
-    <url>/2023-09-17-5141f57450ab.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
-<li>将test 添加到GroupA</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">usermod -a -G GroupName UserName</span><br><span class="line"><span class="comment"># 例如将test 追加到GroupA</span></span><br><span class="line">usermod -a -G GroupA <span class="built_in">test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>修改新建文件的默认权限</li>
-</ol>
-<p>在.bashrc 里添加</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【sed】快速替换当前文件夹下文件中指定内容</title>
-    <url>/2025-01-13-1b5c01477594.html</url>
-    <content><![CDATA[<p>在 Linux 中，可以使用以下命令来实现这个需求：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *</span><br></pre></td></tr></table></figure>
-
-<p>解释一下这个命令：</p>
-<ul>
-<li><code>sed</code> 是流编辑器，用于对文本进行过滤和转换。</li>
-<li><code>-i</code> 选项表示直接修改文件，而不是输出到终端。</li>
-<li><code>&#39;s/hide: true/hide: false/g&#39;</code> 是 sed 的替换命令，其中：<ul>
-<li><code>s</code> 表示替换操作。</li>
-<li><code>hide: true</code> 是要被替换的字符串。</li>
-<li><code>hide: false</code> 是替换后的字符串。</li>
-<li><code>g</code> 表示全局替换，即在每一行中将所有匹配的 <code>hide: true</code> 都替换为 <code>hide: false</code>。</li>
-</ul>
-</li>
-<li><code>*</code> 表示当前文件夹下的所有文件。</li>
-</ul>
-<p>需要注意的是，这个命令会修改当前文件夹下所有文件的内容，包括二进制文件等，可能会导致一些文件损坏。如果只想修改特定类型的文件，可以使用通配符指定文件类型，例如替换当前文件夹下所有 <code>.txt</code> 文件中的内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *.txt</span><br></pre></td></tr></table></figure>
-
-<p>另外，如果当前文件夹下有子文件夹，并且也想修改子文件夹中文件的内容，可以使用 <code>find</code> 命令结合 <code>sed</code> 来实现，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> &#123;&#125; +</span><br></pre></td></tr></table></figure>
-
-<p>这个命令会递归查找当前文件夹及其子文件夹下的所有文件（<code>-type f</code>），然后对每个文件执行 <code>sed</code> 命令进行替换。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Go 中是否使用make创建slice的区别</title>
     <url>/2023-10-05-9d3185fd2258.html</url>
     <content><![CDATA[<p>go slice 的make 会创建默认长度 且值为0 的slice </p>
@@ -353,21 +285,6 @@
       </tags>
   </entry>
   <entry>
-    <title>goland中debug 无法显示全局变量解决</title>
-    <url>/2024-05-07-c105be0dd846.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240508002347.png">实际只会有局部变量，没有全局变量test</p>
-<p><img src="/../../imgs/Pasted%20image%2020240508002425.png"></p>
-<p>解决方法：</p>
-<p>右键  选择+ New Watch ； 或者 按按键 Insert </p>
-<p>添加变量 test 即可</p>
-<p><img src="/../../imgs/Pasted%20image%2020240508002502.png"><img src="/../../imgs/Pasted%20image%2020240508002708.png"></p>
-<h1 id="添加成功"><a href="#添加成功" class="headerlink" title="添加成功"></a>添加成功</h1><p><img src="/../../imgs/Pasted%20image%2020240508002737.png"><br>之后每次单步执行都会显示变量结果：<br><img src="/../../imgs/Pasted%20image%2020240508002814.png"></p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>golang slice无法添加指针</title>
     <url>/2024-05-02-247b79126fb5.html</url>
     <content><![CDATA[<p>在Go语言中，指针是一种存储变量内存地址的数据类型。当你有一个指向<code>int</code>的指针，比如<code>timePtr *int</code>，你可以通过<code>*timePtr</code>来访问和修改指针指向的值。然而，指针本身是一个值类型，它存储的是变量的内存地址，而不是变量本身。</p>
@@ -387,6 +304,21 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTime <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> history []<span class="type">int</span> <span class="comment">// 用于记录历史时间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(timePtr *<span class="type">int</span>, historyPtr *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    *timePtr++</span><br><span class="line">    historyPtr = <span class="built_in">append</span>(*historyPtr, *timePtr)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    currentTime = <span class="number">0</span></span><br><span class="line">    history = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) <span class="comment">// 初始化历史切片</span></span><br><span class="line"></span><br><span class="line">    add(&amp;currentTime, &amp;history)</span><br><span class="line">    <span class="comment">// 可以继续调用 add 并传入 &amp;currentTime 和 &amp;history 来记录更多时间点</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;History of times:&quot;</span>, history)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，<code>history</code>是一个切片，用于存储时间点的历史记录。每次调用<code>add</code>函数时，我们不仅更新<code>currentTime</code>，还将新的时间点添加到<code>history</code>切片中。注意，由于切片是引用类型，我们传递<code>&amp;history</code>来允许函数修改原始切片。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>goland中debug 无法显示全局变量解决</title>
+    <url>/2024-05-07-c105be0dd846.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240508002347.png">实际只会有局部变量，没有全局变量test</p>
+<p><img src="/../../imgs/Pasted%20image%2020240508002425.png"></p>
+<p>解决方法：</p>
+<p>右键  选择+ New Watch ； 或者 按按键 Insert </p>
+<p>添加变量 test 即可</p>
+<p><img src="/../../imgs/Pasted%20image%2020240508002502.png"><img src="/../../imgs/Pasted%20image%2020240508002708.png"></p>
+<h1 id="添加成功"><a href="#添加成功" class="headerlink" title="添加成功"></a>添加成功</h1><p><img src="/../../imgs/Pasted%20image%2020240508002737.png"><br>之后每次单步执行都会显示变量结果：<br><img src="/../../imgs/Pasted%20image%2020240508002814.png"></p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -666,6 +598,74 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>Linux 命令 将前台任务挂到后台运行</title>
+    <url>/2023-03-18-87649bcaf9cc.html</url>
+    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
+<p><strong>第一步：ctrl + z</strong></p>
+<p><strong>第二步：jobs  查看任务id</strong></p>
+<p><strong>第三步： bg %任务id</strong></p>
+<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 将用户追加到对应用户组</title>
+    <url>/2023-09-17-5141f57450ab.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
+<li>将test 添加到GroupA</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">usermod -a -G GroupName UserName</span><br><span class="line"><span class="comment"># 例如将test 追加到GroupA</span></span><br><span class="line">usermod -a -G GroupA <span class="built_in">test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改新建文件的默认权限</li>
+</ol>
+<p>在.bashrc 里添加</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【sed】快速替换当前文件夹下文件中指定内容</title>
+    <url>/2025-01-13-1b5c01477594.html</url>
+    <content><![CDATA[<p>在 Linux 中，可以使用以下命令来实现这个需求：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *</span><br></pre></td></tr></table></figure>
+
+<p>解释一下这个命令：</p>
+<ul>
+<li><code>sed</code> 是流编辑器，用于对文本进行过滤和转换。</li>
+<li><code>-i</code> 选项表示直接修改文件，而不是输出到终端。</li>
+<li><code>&#39;s/hide: true/hide: false/g&#39;</code> 是 sed 的替换命令，其中：<ul>
+<li><code>s</code> 表示替换操作。</li>
+<li><code>hide: true</code> 是要被替换的字符串。</li>
+<li><code>hide: false</code> 是替换后的字符串。</li>
+<li><code>g</code> 表示全局替换，即在每一行中将所有匹配的 <code>hide: true</code> 都替换为 <code>hide: false</code>。</li>
+</ul>
+</li>
+<li><code>*</code> 表示当前文件夹下的所有文件。</li>
+</ul>
+<p>需要注意的是，这个命令会修改当前文件夹下所有文件的内容，包括二进制文件等，可能会导致一些文件损坏。如果只想修改特定类型的文件，可以使用通配符指定文件类型，例如替换当前文件夹下所有 <code>.txt</code> 文件中的内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *.txt</span><br></pre></td></tr></table></figure>
+
+<p>另外，如果当前文件夹下有子文件夹，并且也想修改子文件夹中文件的内容，可以使用 <code>find</code> 命令结合 <code>sed</code> 来实现，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> &#123;&#125; +</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会递归查找当前文件夹及其子文件夹下的所有文件（<code>-type f</code>），然后对每个文件执行 <code>sed</code> 命令进行替换。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>jupyter</title>
     <url>/2024-06-21-02cd02e81f22.html</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
@@ -887,6 +887,22 @@ dfs(root.Right, res)
       <categories>
         <category>git</category>
       </categories>
+  </entry>
+  <entry>
+    <title>关于我</title>
+    <url>/2023-03-13-519b5e93f019.html</url>
+    <content><![CDATA[<h1 id="博客链接"><a href="#博客链接" class="headerlink" title="博客链接"></a>博客链接</h1><p><a href="https://leiqi.top/">链接</a></p>
+<p><img src="/../../imgs/%E7%99%BD%E9%B8%BD.png"></p>
+<h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>大家好，我是Lei Qi, 毕业于复旦大学，任职于华为，主要做Golang、Python软件开发。本站是为了方便自己记录学习过程，和大家交流经验而建。也是为了学习web, 实现拥有自己一个网站的小目标，才有了本站。欢迎大家多多交流学习，祝大家学习愉快~</p>
+<h1 id="爱生活，爱学习，爱分享"><a href="#爱生活，爱学习，爱分享" class="headerlink" title="爱生活，爱学习，爱分享"></a>爱生活，爱学习，爱分享</h1><p>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
+<h1 id="欢迎关注微信公众号"><a href="#欢迎关注微信公众号" class="headerlink" title="欢迎关注微信公众号~"></a>欢迎关注微信公众号~</h1><p><img src="/../../imgs/qrcode.jpg"></p>
+]]></content>
+      <categories>
+        <category>关于我</category>
+      </categories>
+      <tags>
+        <tag>about</tag>
+      </tags>
   </entry>
   <entry>
     <title>Go语言中的byte类型与Unicode码点与整数的转换</title>
@@ -2520,22 +2536,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>关于我</title>
-    <url>/2023-03-13-519b5e93f019.html</url>
-    <content><![CDATA[<h1 id="博客链接"><a href="#博客链接" class="headerlink" title="博客链接"></a>博客链接</h1><p><a href="https://leiqi.top/">链接</a></p>
-<p><img src="/../../imgs/%E7%99%BD%E9%B8%BD.png"></p>
-<h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>大家好，我是Lei Qi, 毕业于复旦大学，任职于华为，主要做Golang、Python软件开发。本站是为了方便自己记录学习过程，和大家交流经验而建。也是为了学习web, 实现拥有自己一个网站的小目标，才有了本站。欢迎大家多多交流学习，祝大家学习愉快~</p>
-<h1 id="爱生活，爱学习，爱分享"><a href="#爱生活，爱学习，爱分享" class="headerlink" title="爱生活，爱学习，爱分享"></a>爱生活，爱学习，爱分享</h1><p>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
-<h1 id="欢迎关注微信公众号"><a href="#欢迎关注微信公众号" class="headerlink" title="欢迎关注微信公众号~"></a>欢迎关注微信公众号~</h1><p><img src="/../../imgs/qrcode.jpg"></p>
-]]></content>
-      <categories>
-        <category>关于我</category>
-      </categories>
-      <tags>
-        <tag>about</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>申请域名绑定github pages</title>
     <url>/2024-09-01-ed1bf9078b39.html</url>
     <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
@@ -2574,19 +2574,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>波纹</title>
-    <url>/2023-04-08-722322c4ddc3.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
-]]></content>
-      <categories>
-        <category>摄影</category>
-      </categories>
-      <tags>
-        <tag>摄影</tag>
-        <tag>水</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JetBrians 全家桶设置文件header</title>
     <url>/2023-10-05-7527c8e47a8b.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p>
@@ -2599,18 +2586,6 @@ dfs(root.Right, res)
 <h1 id="点击Copyright-添加刚才的profile"><a href="#点击Copyright-添加刚才的profile" class="headerlink" title="点击Copyright 添加刚才的profile"></a>点击Copyright 添加刚才的profile</h1><p><img src="/../../imgs/Pasted%20image%2020231005165129.png"></p>
 <h2 id="点击应用即可-右键-generate-Copyright-插入"><a href="#点击应用即可-右键-generate-Copyright-插入" class="headerlink" title="点击应用即可 右键-generate-Copyright 插入"></a>点击应用即可 右键-generate-Copyright 插入</h2><p><img src="/../../imgs/Pasted%20image%2020231005164944.png"></p>
 <p><img src="/../../imgs/Pasted%20image%2020231005165025.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>WPS设置打开文件自动同步云文档</title>
-    <url>/2023-12-30-3a73bdfdd568.html</url>
-    <content><![CDATA[<p>不知道我们会不会有远程办公的场景，有时候在公司写了一般文档，回到家后还想着继续写。<br>WPS 的自动同步功能能够很方便的满足这需求。接下来介绍一下具体操作：</p>
-<h1 id="打开首页，设置中心"><a href="#打开首页，设置中心" class="headerlink" title="打开首页，设置中心"></a>打开首页，设置中心</h1><p><img src="/../../imgs/Pasted%20image%2020231230221037.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020231230220856.png"></p>
-<h1 id="打开新文件会自动上传更新"><a href="#打开新文件会自动上传更新" class="headerlink" title="打开新文件会自动上传更新"></a>打开新文件会自动上传更新</h1><p><img src="/../../imgs/Pasted%20image%2020231230221311.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2630,6 +2605,18 @@ dfs(root.Right, res)
 <h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p> 经过漫长的等待，直接运行rstudio 就会进入x11转发的图形界面<br> <img src="/../../imgs/Pasted%20image%2020230924205521.png"><br><strong>画个图试试，顺利出图！开始愉快的coding吧！</strong><br><img src="/../../imgs/Pasted%20image%2020230924205559.png"></p>
 <p><strong>已知问题：</strong> 操作延迟较高，没有本地反应快，但是还可以接受，大家可以试试。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们可以通过<strong>X11</strong>来在服务器上运行图形化的程序，这个图形化的程序一般不需要很高的权限，不涉及外部端口新增。因此我们可以在服务器上运行很多图形化程序，例如Rstudio。甚至是我们的Pycharm、Goland、CLion 等Jetbrains的全家桶。大家快来试试吧！</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>WPS设置打开文件自动同步云文档</title>
+    <url>/2023-12-30-3a73bdfdd568.html</url>
+    <content><![CDATA[<p>不知道我们会不会有远程办公的场景，有时候在公司写了一般文档，回到家后还想着继续写。<br>WPS 的自动同步功能能够很方便的满足这需求。接下来介绍一下具体操作：</p>
+<h1 id="打开首页，设置中心"><a href="#打开首页，设置中心" class="headerlink" title="打开首页，设置中心"></a>打开首页，设置中心</h1><p><img src="/../../imgs/Pasted%20image%2020231230221037.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020231230220856.png"></p>
+<h1 id="打开新文件会自动上传更新"><a href="#打开新文件会自动上传更新" class="headerlink" title="打开新文件会自动上传更新"></a>打开新文件会自动上传更新</h1><p><img src="/../../imgs/Pasted%20image%2020231230221311.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2701,21 +2688,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
-    <url>/2024-01-14-2aaa71f8e7be.html</url>
-    <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
-<p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!s::Send &#123;Down&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
-<p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
-<p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>给你的博客 安装上PWA吧</title>
     <url>/2023-03-23-49ace33ca004.html</url>
     <content><![CDATA[<p>TODO:</p>
@@ -2727,6 +2699,21 @@ dfs(root.Right, res)
 </ul>
 <p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p>
 <p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
+    <url>/2024-01-14-2aaa71f8e7be.html</url>
+    <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
+<p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!s::Send &#123;Down&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
+<p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
+<p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2771,18 +2758,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>删除ppt所有批注和备注</title>
-    <url>/2023-04-24-4faf63eb321c.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>博客设置 obsidian 上传图片</title>
     <url>/2023-03-18-4e4b648f656d.html</url>
     <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>本地写MD文档我是使用了github 和gitee 图床来着，但是发布到个人博客之后，发现支持都不好。所以选择了最原始的方案，复制图片到指定文件夹，然后连同这些图片文件夹一起上传到对应的git pages, 使用对应的<strong>相对路径</strong>就可以读取并显示图片。</p>
@@ -2801,12 +2776,34 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>删除ppt所有批注和备注</title>
+    <url>/2023-04-24-4faf63eb321c.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>开机自启WSL</title>
     <url>/2024-08-07-117ef9b8f4c6.html</url>
     <content><![CDATA[<p>在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp 目录下，新建vbs文件</p>
 <p><img src="/../../imgs/Pasted%20image%2020240807221008.png"></p>
 <p>文件内容拷贝下边内容，注意bash.exe 要替换为你电脑中的地址</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set ws = WScript.CreateObject(&quot;WScript.Shell&quot;)</span><br><span class="line">cmd = &quot;C:\Windows\System32\bash.exe -c &quot;&quot;bash /init.sh&quot;&quot;&quot;</span><br><span class="line">&#x27;运行命令不显示cmd窗口</span><br><span class="line">ws.Run cmd, 0, false</span><br><span class="line">Set ws = Nothing</span><br><span class="line">WScript.quit</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>查询深度学习环境python torch cuda版本</title>
+    <url>/2024-08-08-efa703ec12d7.html</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment">#sys模块提供了一系列有关Python运行环境的变量和函数。</span></span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
+<p><img src="/../../imgs/Pasted%20image%2020240808225509.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2824,14 +2821,17 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>查询深度学习环境python torch cuda版本</title>
-    <url>/2024-08-08-efa703ec12d7.html</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment">#sys模块提供了一系列有关Python运行环境的变量和函数。</span></span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
-<p><img src="/../../imgs/Pasted%20image%2020240808225509.png"></p>
+    <title>波纹</title>
+    <url>/2023-04-08-722322c4ddc3.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
 ]]></content>
       <categories>
-        <category>工具</category>
+        <category>摄影</category>
       </categories>
+      <tags>
+        <tag>摄影</tag>
+        <tag>水</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mesh组网：家庭路由和无线连接新方式</title>
