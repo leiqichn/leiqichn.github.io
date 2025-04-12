@@ -185,6 +185,11 @@ feed:
   path: atom.xml
   limit: 20
   
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
 
 
 # PWA配置  npm i --save hexo-pwa
