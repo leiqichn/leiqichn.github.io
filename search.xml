@@ -59,6 +59,74 @@
       </categories>
   </entry>
   <entry>
+    <title>Linux 命令 将前台任务挂到后台运行</title>
+    <url>/2023-03-18-87649bcaf9cc.html</url>
+    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
+<p><strong>第一步：ctrl + z</strong></p>
+<p><strong>第二步：jobs  查看任务id</strong></p>
+<p><strong>第三步： bg %任务id</strong></p>
+<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 将用户追加到对应用户组</title>
+    <url>/2023-09-17-5141f57450ab.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
+<li>将test 添加到GroupA</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">usermod -a -G GroupName UserName</span><br><span class="line"><span class="comment"># 例如将test 追加到GroupA</span></span><br><span class="line">usermod -a -G GroupA <span class="built_in">test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改新建文件的默认权限</li>
+</ol>
+<p>在.bashrc 里添加</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【sed】快速替换当前文件夹下文件中指定内容</title>
+    <url>/2025-01-13-1b5c01477594.html</url>
+    <content><![CDATA[<p>在 Linux 中，可以使用以下命令来实现这个需求：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *</span><br></pre></td></tr></table></figure>
+
+<p>解释一下这个命令：</p>
+<ul>
+<li><code>sed</code> 是流编辑器，用于对文本进行过滤和转换。</li>
+<li><code>-i</code> 选项表示直接修改文件，而不是输出到终端。</li>
+<li><code>&#39;s/hide: true/hide: false/g&#39;</code> 是 sed 的替换命令，其中：<ul>
+<li><code>s</code> 表示替换操作。</li>
+<li><code>hide: true</code> 是要被替换的字符串。</li>
+<li><code>hide: false</code> 是替换后的字符串。</li>
+<li><code>g</code> 表示全局替换，即在每一行中将所有匹配的 <code>hide: true</code> 都替换为 <code>hide: false</code>。</li>
+</ul>
+</li>
+<li><code>*</code> 表示当前文件夹下的所有文件。</li>
+</ul>
+<p>需要注意的是，这个命令会修改当前文件夹下所有文件的内容，包括二进制文件等，可能会导致一些文件损坏。如果只想修改特定类型的文件，可以使用通配符指定文件类型，例如替换当前文件夹下所有 <code>.txt</code> 文件中的内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *.txt</span><br></pre></td></tr></table></figure>
+
+<p>另外，如果当前文件夹下有子文件夹，并且也想修改子文件夹中文件的内容，可以使用 <code>find</code> 命令结合 <code>sed</code> 来实现，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> &#123;&#125; +</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会递归查找当前文件夹及其子文件夹下的所有文件（<code>-type f</code>），然后对每个文件执行 <code>sed</code> 命令进行替换。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Go 中是否使用make创建slice的区别</title>
     <url>/2023-10-05-9d3185fd2258.html</url>
     <content><![CDATA[<p>go slice 的make 会创建默认长度 且值为0 的slice </p>
@@ -145,6 +213,25 @@
       </categories>
   </entry>
   <entry>
+    <title>Golang 使用new创建slice</title>
+    <url>/2024-07-21-01f71b57e534.html</url>
+    <content><![CDATA[<p>在 Go 语言中，new 关键字用于分配类型为 T 的零值并返回其地址，即类型为 *T 的值。对于 slice 来说，可以使用 new 来分配一个指向 slice 的指针，但是通常我们不这样做，因为 slice 是引用类型，我们更倾向于直接使用 make 函数来创建 slice。</p>
+<p>然而，如果确实需要使用 new 来创建一个 slice 的指针，可以这样做：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s *[]<span class="type">int</span> <span class="comment">// 声明一个指向int类型slice的指针</span></span><br><span class="line">s = <span class="built_in">new</span>([]<span class="type">int</span>) <span class="comment">// 分配一个int类型的slice，并将其地址赋给s</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，这样创建的 slice 是一个空的 slice，它没有任何底层数组（即 nil 的数组），并且长度和容量都是 0。如果需要一个具有特定长度和容量的 slice，应该使用 make 函数：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 创建一个长度为 length，容量为 capacity 的int类型slice</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用 new 创建了一个 slice 指针，并且想要初始化它，可以这样做：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">*s = <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 通过解引用指针并使用make来初始化slice</span></span><br></pre></td></tr></table></figure>
+
+<p>在大多数情况下，直接使用 make 函数来创建 slice 是更常见和更简单的方法。使用 new 创建 slice 指针通常不是必要的，除非你有特定的需求，比如在函数中返回一个 slice 的指针，或者你需要在多个地方共享同一个 slice 的引用。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
     <url>/2023-05-11-257639a12a8e.html</url>
     <content><![CDATA[<p>在 Go 语言中，byte 和 rune 都是用来表示字符类型的数据类型。</p>
@@ -181,25 +268,6 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="built_in">copy</span>(a[index:], a[index+<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
 
 <p>这里，a[index:] 表示从要删除位置开始到切片结束的一个子切片，它的长度为 len(a) - index。因此，通过 copy 函数将它复制到自身的第 index 个元素位置上时，就可以将删除位置之后的所有元素向前移位，从而删除具体元素。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Golang 使用new创建slice</title>
-    <url>/2024-07-21-01f71b57e534.html</url>
-    <content><![CDATA[<p>在 Go 语言中，new 关键字用于分配类型为 T 的零值并返回其地址，即类型为 *T 的值。对于 slice 来说，可以使用 new 来分配一个指向 slice 的指针，但是通常我们不这样做，因为 slice 是引用类型，我们更倾向于直接使用 make 函数来创建 slice。</p>
-<p>然而，如果确实需要使用 new 来创建一个 slice 的指针，可以这样做：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s *[]<span class="type">int</span> <span class="comment">// 声明一个指向int类型slice的指针</span></span><br><span class="line">s = <span class="built_in">new</span>([]<span class="type">int</span>) <span class="comment">// 分配一个int类型的slice，并将其地址赋给s</span></span><br></pre></td></tr></table></figure>
-
-<p>但是，这样创建的 slice 是一个空的 slice，它没有任何底层数组（即 nil 的数组），并且长度和容量都是 0。如果需要一个具有特定长度和容量的 slice，应该使用 make 函数：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 创建一个长度为 length，容量为 capacity 的int类型slice</span></span><br></pre></td></tr></table></figure>
-
-<p>如果使用 new 创建了一个 slice 指针，并且想要初始化它，可以这样做：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">*s = <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 通过解引用指针并使用make来初始化slice</span></span><br></pre></td></tr></table></figure>
-
-<p>在大多数情况下，直接使用 make 函数来创建 slice 是更常见和更简单的方法。使用 new 创建 slice 指针通常不是必要的，除非你有特定的需求，比如在函数中返回一个 slice 的指针，或者你需要在多个地方共享同一个 slice 的引用。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -582,22 +650,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>Linux 命令 将前台任务挂到后台运行</title>
-    <url>/2023-03-18-87649bcaf9cc.html</url>
-    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
-<p><strong>第一步：ctrl + z</strong></p>
-<p><strong>第二步：jobs  查看任务id</strong></p>
-<p><strong>第三步： bg %任务id</strong></p>
-<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>结构体指针作为map key 结构体值改变对map有影响吗</title>
     <url>/2023-05-10-7dfabb45bbc2.html</url>
     <content><![CDATA[<p>最近偶然用到了结构体指针作为map key 的场景。当时有点不太确定：<strong>go 语言使用map 时使用指针p作为key, 那修改指针p的值之后。这map 还包含p 吗？</strong><br>接下来让我们一起看看：</p>
@@ -611,58 +663,6 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Linux 将用户追加到对应用户组</title>
-    <url>/2023-09-17-5141f57450ab.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
-<li>将test 添加到GroupA</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">usermod -a -G GroupName UserName</span><br><span class="line"><span class="comment"># 例如将test 追加到GroupA</span></span><br><span class="line">usermod -a -G GroupA <span class="built_in">test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>修改新建文件的默认权限</li>
-</ol>
-<p>在.bashrc 里添加</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【sed】快速替换当前文件夹下文件中指定内容</title>
-    <url>/2025-01-13-1b5c01477594.html</url>
-    <content><![CDATA[<p>在 Linux 中，可以使用以下命令来实现这个需求：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *</span><br></pre></td></tr></table></figure>
-
-<p>解释一下这个命令：</p>
-<ul>
-<li><code>sed</code> 是流编辑器，用于对文本进行过滤和转换。</li>
-<li><code>-i</code> 选项表示直接修改文件，而不是输出到终端。</li>
-<li><code>&#39;s/hide: true/hide: false/g&#39;</code> 是 sed 的替换命令，其中：<ul>
-<li><code>s</code> 表示替换操作。</li>
-<li><code>hide: true</code> 是要被替换的字符串。</li>
-<li><code>hide: false</code> 是替换后的字符串。</li>
-<li><code>g</code> 表示全局替换，即在每一行中将所有匹配的 <code>hide: true</code> 都替换为 <code>hide: false</code>。</li>
-</ul>
-</li>
-<li><code>*</code> 表示当前文件夹下的所有文件。</li>
-</ul>
-<p>需要注意的是，这个命令会修改当前文件夹下所有文件的内容，包括二进制文件等，可能会导致一些文件损坏。如果只想修改特定类型的文件，可以使用通配符指定文件类型，例如替换当前文件夹下所有 <code>.txt</code> 文件中的内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *.txt</span><br></pre></td></tr></table></figure>
-
-<p>另外，如果当前文件夹下有子文件夹，并且也想修改子文件夹中文件的内容，可以使用 <code>find</code> 命令结合 <code>sed</code> 来实现，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> &#123;&#125; +</span><br></pre></td></tr></table></figure>
-
-<p>这个命令会递归查找当前文件夹及其子文件夹下的所有文件（<code>-type f</code>），然后对每个文件执行 <code>sed</code> 命令进行替换。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
       </categories>
   </entry>
   <entry>
@@ -887,22 +887,6 @@ dfs(root.Right, res)
       <categories>
         <category>git</category>
       </categories>
-  </entry>
-  <entry>
-    <title>关于我</title>
-    <url>/2023-03-13-519b5e93f019.html</url>
-    <content><![CDATA[<h1 id="博客链接"><a href="#博客链接" class="headerlink" title="博客链接"></a>博客链接</h1><p><a href="https://leiqi.top/">链接</a></p>
-<p><img src="/../../imgs/%E7%99%BD%E9%B8%BD.png"></p>
-<h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>大家好，我是Lei Qi, 毕业于复旦大学，任职于华为，主要做Golang、Python软件开发。本站是为了方便自己记录学习过程，和大家交流经验而建。也是为了学习web, 实现拥有自己一个网站的小目标，才有了本站。欢迎大家多多交流学习，祝大家学习愉快~</p>
-<h1 id="爱生活，爱学习，爱分享"><a href="#爱生活，爱学习，爱分享" class="headerlink" title="爱生活，爱学习，爱分享"></a>爱生活，爱学习，爱分享</h1><p>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
-<h1 id="欢迎关注微信公众号"><a href="#欢迎关注微信公众号" class="headerlink" title="欢迎关注微信公众号~"></a>欢迎关注微信公众号~</h1><p><img src="/../../imgs/qrcode.jpg"></p>
-]]></content>
-      <categories>
-        <category>关于我</category>
-      </categories>
-      <tags>
-        <tag>about</tag>
-      </tags>
   </entry>
   <entry>
     <title>Go语言中的byte类型与Unicode码点与整数的转换</title>
@@ -1236,6 +1220,18 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
+    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
+    <url>/2023-05-04-ce9a22434c37.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
+<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 1091.二进制矩阵中的最短路径</title>
     <url>/2023-05-26-5abcbf266873.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/shortest-path-in-binary-matrix/description/">1091. 二进制矩阵中的最短路径 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230526235236.png"><br>DFS 超时版本：</p>
@@ -1267,12 +1263,21 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
-    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
-    <url>/2023-05-04-ce9a22434c37.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
-<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>leetcode 1170. 比较字符串最小字母出现频次</title>
+    <url>/2023-06-14-88f65f0a1bb7.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
+<p><strong>后缀和（</strong>Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。</p>
+<p>具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+…+A[i-1] 的前缀和，其中 0≤i&lt;n。那么对于任何 0≤l≤r&lt;n，A[l]+A[l+1]+…+A[r] &#x3D; S[r+1]-S[l]。</p>
+<p>在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。</p>
+<h2 id="不使用后缀和"><a href="#不使用后缀和" class="headerlink" title="不使用后缀和"></a>不使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数 f(s)是s字符串中最小字符串的数量</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        <span class="keyword">for</span> idx, c := <span class="keyword">range</span> count &#123; <span class="comment">// 遍历count</span></span><br><span class="line">            <span class="keyword">if</span> c&gt;<span class="number">0</span> &amp;&amp; f(s) &lt; idx &#123;<span class="comment">// 如果count&gt;0,则说明该最小字符串数量(idx) 的个数为c。需要将res 加上这个数量c</span></span><br><span class="line">                res[i]+=c</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用后缀和"><a href="#使用后缀和" class="headerlink" title="使用后缀和"></a>使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算后缀和,i+1 就是大于i位置的所有个数</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">9</span>; i &gt;= <span class="number">1</span>; i-- &#123;</span><br><span class="line">        count[i] += count[i + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        res[i] = count[f(s) + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么是res[i] &#x3D; count[f(s) + 1] ，而不是res[i] &#x3D; count[f(s)]？</strong></p>
+<p>在<code>numSmallerByFrequency</code>函数中， <code>count</code>数组记录的是各个不同频次出现的次数，因此 <code>count[i]</code>代表所有最小字母出现频次不于 i 的字符串的数量。</p>
+<p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
+<p><code>res[i] = count[f(s) + 1]</code></p>
+<p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1290,27 +1295,6 @@ dfs(root.Right, res)
 
 
 
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 1170. 比较字符串最小字母出现频次</title>
-    <url>/2023-06-14-88f65f0a1bb7.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
-<p><strong>后缀和（</strong>Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。</p>
-<p>具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+…+A[i-1] 的前缀和，其中 0≤i&lt;n。那么对于任何 0≤l≤r&lt;n，A[l]+A[l+1]+…+A[r] &#x3D; S[r+1]-S[l]。</p>
-<p>在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。</p>
-<h2 id="不使用后缀和"><a href="#不使用后缀和" class="headerlink" title="不使用后缀和"></a>不使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数 f(s)是s字符串中最小字符串的数量</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        <span class="keyword">for</span> idx, c := <span class="keyword">range</span> count &#123; <span class="comment">// 遍历count</span></span><br><span class="line">            <span class="keyword">if</span> c&gt;<span class="number">0</span> &amp;&amp; f(s) &lt; idx &#123;<span class="comment">// 如果count&gt;0,则说明该最小字符串数量(idx) 的个数为c。需要将res 加上这个数量c</span></span><br><span class="line">                res[i]+=c</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用后缀和"><a href="#使用后缀和" class="headerlink" title="使用后缀和"></a>使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算后缀和,i+1 就是大于i位置的所有个数</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">9</span>; i &gt;= <span class="number">1</span>; i-- &#123;</span><br><span class="line">        count[i] += count[i + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        res[i] = count[f(s) + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>为什么是res[i] &#x3D; count[f(s) + 1] ，而不是res[i] &#x3D; count[f(s)]？</strong></p>
-<p>在<code>numSmallerByFrequency</code>函数中， <code>count</code>数组记录的是各个不同频次出现的次数，因此 <code>count[i]</code>代表所有最小字母出现频次不于 i 的字符串的数量。</p>
-<p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
-<p><code>res[i] = count[f(s) + 1]</code></p>
-<p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1545,6 +1529,20 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
+    <url>/2023-06-05-869070f8049d.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/apply-operations-to-an-array/description/">2460. 对数组执行操作 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230605224628.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>直接模拟</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>第一版<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> res []<span class="type">int</span></span><br><span class="line">	res = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">	index := <span class="number">0</span></span><br><span class="line">	<span class="comment">// 第一次遍历 进行赋值操作</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">			nums[i] *= <span class="number">2</span></span><br><span class="line">			nums[i+<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 第二次遍历 将非0移动到前边</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">			res[index] = nums[i]</span><br><span class="line">			index++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>第二版<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; n &amp;&amp; nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">            nums[i] *= <span class="number">2</span></span><br><span class="line">            nums[i + <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">            nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 2511 最多可以摧毁的敌人城堡数目</title>
     <url>/2023-09-02-72954cc13c19.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-enemy-forts-that-can-be-captured/description/?envType=daily-question&envId=2023-09-02">2511. 最多可以摧毁的敌人城堡数目 - 力扣（LeetCode）</a></p>
@@ -1557,20 +1555,6 @@ dfs(root.Right, res)
 </ol>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">captureForts</span><span class="params">(forts []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    ans, pre := <span class="number">0</span>, <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 记录的是 1 或 -1 的位置 </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, fort := <span class="keyword">range</span> forts &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fort == <span class="number">-1</span> || fort == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> pre &gt;= <span class="number">0</span> &amp;&amp; forts[pre] != fort &#123;</span><br><span class="line"></span><br><span class="line">                ans = max(ans, i - pre - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pre = i</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
-    <url>/2023-06-05-869070f8049d.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/apply-operations-to-an-array/description/">2460. 对数组执行操作 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230605224628.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>直接模拟</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>第一版<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> res []<span class="type">int</span></span><br><span class="line">	res = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">	index := <span class="number">0</span></span><br><span class="line">	<span class="comment">// 第一次遍历 进行赋值操作</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">			nums[i] *= <span class="number">2</span></span><br><span class="line">			nums[i+<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 第二次遍历 将非0移动到前边</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">			res[index] = nums[i]</span><br><span class="line">			index++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第二版<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; n &amp;&amp; nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">            nums[i] *= <span class="number">2</span></span><br><span class="line">            nums[i + <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">            nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1861,28 +1845,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 最大深度和最小深度</title>
-    <url>/2023-07-29-4df215f63090.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230729235323.png"><br><a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/description/">111. 二叉树的最小深度 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230729235305.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>深度 是指从根节点到该节点的距离（节点数量）<br>高度 是指从该节点到叶子节点的角力（节点数量）</p>
-<p><strong>最大深度</strong> 可以通过迭代法，计算总共有多少层。 可以使用递归分治的思想，1 + maxDepth(左子树) + maxDepth(右子树)<br><strong>最小子树</strong> 其实和最大深度类似，但是这里要注意的是，不能直接套用最大深度的代码。最小子树的要求是，到叶子节点的距离。而上边最大深度没有这个要求。所以要对一侧子树为空的情况需要单独讨论。以下是代码实现：</p>
-<h1 id="最大深度"><a href="#最大深度" class="headerlink" title="最大深度"></a>最大深度</h1><h2 id="递归分治"><a href="#递归分治" class="headerlink" title="递归分治"></a>递归分治</h2><p>后序遍历 需要调用自生函数，需要严格按照定义调用递归。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := maxDepth(root.Right)</span><br><span class="line">    leftMaxDepth := maxDepth(root.Left)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + max(rightMaxDepth,leftMaxDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="迭代-层序遍历"><a href="#迭代-层序遍历" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="最小深度"><a href="#最小深度" class="headerlink" title="最小深度"></a>最小深度</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>后序遍历</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最小深度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := minDepth(root.Right)</span><br><span class="line"></span><br><span class="line">    leftMaxDepth := minDepth(root.Left)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意 最小深度是要到叶子节点的距离，对于一侧子树为空的情况需要单独讨论</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &amp;&amp; root.Left !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftMaxDepth <span class="comment">// 注意前面已经计算了rightMin 后边就直接调用这个函数， 不要再写个递归函数，否则会超时。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightMaxDepth</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(rightMaxDepth,leftMaxDepth)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="迭代-层序遍历-1"><a href="#迭代-层序遍历-1" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> top.Right == <span class="literal">nil</span> &amp;&amp; top.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> depth + <span class="number">1</span> <span class="comment">// 当前节点也算哦</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 双指针</title>
     <url>/2024-03-23-84678021105b.html</url>
     <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240323225412.png"></p>
@@ -1913,6 +1875,28 @@ dfs(root.Right, res)
 
 <p>双指针</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trap</span><span class="params">(height []<span class="type">int</span>)</span></span> (ans <span class="type">int</span>) &#123;</span><br><span class="line">    left, right, preMax, sufMax := <span class="number">0</span>, <span class="built_in">len</span>(height)<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> left &lt; right &#123;</span><br><span class="line">        preMax = max(preMax, height[left])</span><br><span class="line">        sufMax = max(sufMax, height[right])</span><br><span class="line">        <span class="keyword">if</span> preMax &lt; sufMax &#123;</span><br><span class="line">            ans += preMax - height[left]</span><br><span class="line">            left++</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ans += sufMax - height[right]</span><br><span class="line">            right--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123; <span class="keyword">if</span> a &lt; b &#123; <span class="keyword">return</span> b &#125;; <span class="keyword">return</span> a &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 最大深度和最小深度</title>
+    <url>/2023-07-29-4df215f63090.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230729235323.png"><br><a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/description/">111. 二叉树的最小深度 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230729235305.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>深度 是指从根节点到该节点的距离（节点数量）<br>高度 是指从该节点到叶子节点的角力（节点数量）</p>
+<p><strong>最大深度</strong> 可以通过迭代法，计算总共有多少层。 可以使用递归分治的思想，1 + maxDepth(左子树) + maxDepth(右子树)<br><strong>最小子树</strong> 其实和最大深度类似，但是这里要注意的是，不能直接套用最大深度的代码。最小子树的要求是，到叶子节点的距离。而上边最大深度没有这个要求。所以要对一侧子树为空的情况需要单独讨论。以下是代码实现：</p>
+<h1 id="最大深度"><a href="#最大深度" class="headerlink" title="最大深度"></a>最大深度</h1><h2 id="递归分治"><a href="#递归分治" class="headerlink" title="递归分治"></a>递归分治</h2><p>后序遍历 需要调用自生函数，需要严格按照定义调用递归。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := maxDepth(root.Right)</span><br><span class="line">    leftMaxDepth := maxDepth(root.Left)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + max(rightMaxDepth,leftMaxDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="迭代-层序遍历"><a href="#迭代-层序遍历" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="最小深度"><a href="#最小深度" class="headerlink" title="最小深度"></a>最小深度</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>后序遍历</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最小深度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := minDepth(root.Right)</span><br><span class="line"></span><br><span class="line">    leftMaxDepth := minDepth(root.Left)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意 最小深度是要到叶子节点的距离，对于一侧子树为空的情况需要单独讨论</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &amp;&amp; root.Left !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftMaxDepth <span class="comment">// 注意前面已经计算了rightMin 后边就直接调用这个函数， 不要再写个递归函数，否则会超时。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightMaxDepth</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(rightMaxDepth,leftMaxDepth)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代-层序遍历-1"><a href="#迭代-层序遍历-1" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> top.Right == <span class="literal">nil</span> &amp;&amp; top.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> depth + <span class="number">1</span> <span class="comment">// 当前节点也算哦</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2536,6 +2520,22 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>关于我</title>
+    <url>/2023-03-13-519b5e93f019.html</url>
+    <content><![CDATA[<h1 id="博客链接"><a href="#博客链接" class="headerlink" title="博客链接"></a>博客链接</h1><p><a href="https://leiqi.top/">链接</a></p>
+<p><img src="/../../imgs/%E7%99%BD%E9%B8%BD.png"></p>
+<h1 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h1><p>大家好，我是Lei Qi, 毕业于复旦大学，任职于华为，主要做Golang、Python软件开发。本站是为了方便自己记录学习过程，和大家交流经验而建。也是为了学习web, 实现拥有自己一个网站的小目标，才有了本站。欢迎大家多多交流学习，祝大家学习愉快~</p>
+<h1 id="爱生活，爱学习，爱分享"><a href="#爱生活，爱学习，爱分享" class="headerlink" title="爱生活，爱学习，爱分享"></a>爱生活，爱学习，爱分享</h1><p>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
+<h1 id="欢迎关注微信公众号"><a href="#欢迎关注微信公众号" class="headerlink" title="欢迎关注微信公众号~"></a>欢迎关注微信公众号~</h1><p><img src="/../../imgs/qrcode.jpg"></p>
+]]></content>
+      <categories>
+        <category>关于我</category>
+      </categories>
+      <tags>
+        <tag>about</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>申请域名绑定github pages</title>
     <url>/2024-09-01-ed1bf9078b39.html</url>
     <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
@@ -2605,6 +2605,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>WPS设置打开文件自动同步云文档</title>
+    <url>/2023-12-30-3a73bdfdd568.html</url>
+    <content><![CDATA[<p>不知道我们会不会有远程办公的场景，有时候在公司写了一般文档，回到家后还想着继续写。<br>WPS 的自动同步功能能够很方便的满足这需求。接下来介绍一下具体操作：</p>
+<h1 id="打开首页，设置中心"><a href="#打开首页，设置中心" class="headerlink" title="打开首页，设置中心"></a>打开首页，设置中心</h1><p><img src="/../../imgs/Pasted%20image%2020231230221037.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020231230220856.png"></p>
+<h1 id="打开新文件会自动上传更新"><a href="#打开新文件会自动上传更新" class="headerlink" title="打开新文件会自动上传更新"></a>打开新文件会自动上传更新</h1><p><img src="/../../imgs/Pasted%20image%2020231230221311.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Linux非root用户通过X11运行图形界面程序-以Rstudio为例</title>
     <url>/2023-09-24-4fe5badbd053.html</url>
     <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>由于使用单位或者学校的服务器，我们一般都没有root权限，导致一些Server版本的软件不能安装（例如数据分析领域的Rstudio-Server，需要root权限，新增端口给Rstudio-Server的web服务）。<br>但大家有没有发现，我们自己在本地的PC上安装桌面版本的Rstudio是并不要管理员权限的，是因为我们不需要开放端口，Rstudio直接在显示在图形界面上了。<br>那么理论上，我们可以在服务器上，通过模拟服务器的图形界面来直接运行桌面版的Rstudio。而这个模拟服务器的图形界面就可以使用X11！</p>
@@ -2618,18 +2630,6 @@ dfs(root.Right, res)
 <h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p> 经过漫长的等待，直接运行rstudio 就会进入x11转发的图形界面<br> <img src="/../../imgs/Pasted%20image%2020230924205521.png"><br><strong>画个图试试，顺利出图！开始愉快的coding吧！</strong><br><img src="/../../imgs/Pasted%20image%2020230924205559.png"></p>
 <p><strong>已知问题：</strong> 操作延迟较高，没有本地反应快，但是还可以接受，大家可以试试。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们可以通过<strong>X11</strong>来在服务器上运行图形化的程序，这个图形化的程序一般不需要很高的权限，不涉及外部端口新增。因此我们可以在服务器上运行很多图形化程序，例如Rstudio。甚至是我们的Pycharm、Goland、CLion 等Jetbrains的全家桶。大家快来试试吧！</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>WPS设置打开文件自动同步云文档</title>
-    <url>/2023-12-30-3a73bdfdd568.html</url>
-    <content><![CDATA[<p>不知道我们会不会有远程办公的场景，有时候在公司写了一般文档，回到家后还想着继续写。<br>WPS 的自动同步功能能够很方便的满足这需求。接下来介绍一下具体操作：</p>
-<h1 id="打开首页，设置中心"><a href="#打开首页，设置中心" class="headerlink" title="打开首页，设置中心"></a>打开首页，设置中心</h1><p><img src="/../../imgs/Pasted%20image%2020231230221037.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020231230220856.png"></p>
-<h1 id="打开新文件会自动上传更新"><a href="#打开新文件会自动上传更新" class="headerlink" title="打开新文件会自动上传更新"></a>打开新文件会自动上传更新</h1><p><img src="/../../imgs/Pasted%20image%2020231230221311.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2679,6 +2679,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>windows新增wsl bash here键快捷方式</title>
+    <url>/2024-01-01-38178c63ba17.html</url>
+    <content><![CDATA[<p>win + R 输入regedit<br><img src="/../../imgs/Pasted%20image%2020240101182355.png"><br>输入到 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell</p>
+<h1 id="新建wsl-bash-here目录-设置如下默认值"><a href="#新建wsl-bash-here目录-设置如下默认值" class="headerlink" title="新建wsl_bash_here目录, 设置如下默认值"></a>新建wsl_bash_here目录, 设置如下默认值</h1><p><img src="/../../imgs/Pasted%20image%2020240101183252.png"></p>
+<h1 id="新建command新建项，输入wsl-exe-的地址"><a href="#新建command新建项，输入wsl-exe-的地址" class="headerlink" title="新建command新建项，输入wsl.exe 的地址"></a>新建command新建项，输入wsl.exe 的地址</h1><p><img src="/../../imgs/Pasted%20image%2020240101183246.png"></p>
+<h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p>可以看到右侧是有wsl bash here的选项的<br><img src="/../../imgs/Pasted%20image%2020240101183634.png"><br><strong>在当面目录打开wsl 成功</strong><br><img src="/../../imgs/Pasted%20image%2020240101183645.png"><br>原理和添加git bash here 类似, 参考:<br><a href="https://blog.csdn.net/Passerby_Wang/article/details/120881670">手动添加Git Bash Here到右键菜单（超详细）_gitbash添加到右键-CSDN博客</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>快来压缩你的博客图片</title>
     <url>/2023-03-23-4868b6a1c39c.html</url>
     <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
@@ -2689,12 +2701,15 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>windows新增wsl bash here键快捷方式</title>
-    <url>/2024-01-01-38178c63ba17.html</url>
-    <content><![CDATA[<p>win + R 输入regedit<br><img src="/../../imgs/Pasted%20image%2020240101182355.png"><br>输入到 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell</p>
-<h1 id="新建wsl-bash-here目录-设置如下默认值"><a href="#新建wsl-bash-here目录-设置如下默认值" class="headerlink" title="新建wsl_bash_here目录, 设置如下默认值"></a>新建wsl_bash_here目录, 设置如下默认值</h1><p><img src="/../../imgs/Pasted%20image%2020240101183252.png"></p>
-<h1 id="新建command新建项，输入wsl-exe-的地址"><a href="#新建command新建项，输入wsl-exe-的地址" class="headerlink" title="新建command新建项，输入wsl.exe 的地址"></a>新建command新建项，输入wsl.exe 的地址</h1><p><img src="/../../imgs/Pasted%20image%2020240101183246.png"></p>
-<h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p>可以看到右侧是有wsl bash here的选项的<br><img src="/../../imgs/Pasted%20image%2020240101183634.png"><br><strong>在当面目录打开wsl 成功</strong><br><img src="/../../imgs/Pasted%20image%2020240101183645.png"><br>原理和添加git bash here 类似, 参考:<br><a href="https://blog.csdn.net/Passerby_Wang/article/details/120881670">手动添加Git Bash Here到右键菜单（超详细）_gitbash添加到右键-CSDN博客</a></p>
+    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
+    <url>/2024-01-14-2aaa71f8e7be.html</url>
+    <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
+<p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!s::Send &#123;Down&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
+<p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
+<p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2712,21 +2727,6 @@ dfs(root.Right, res)
 </ul>
 <p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p>
 <p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
-    <url>/2024-01-14-2aaa71f8e7be.html</url>
-    <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
-<p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!s::Send &#123;Down&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
-<p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
-<p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2801,16 +2801,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>查询深度学习环境python torch cuda版本</title>
-    <url>/2024-08-08-efa703ec12d7.html</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment">#sys模块提供了一系列有关Python运行环境的变量和函数。</span></span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
-<p><img src="/../../imgs/Pasted%20image%2020240808225509.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>开机自启WSL</title>
     <url>/2024-08-07-117ef9b8f4c6.html</url>
     <content><![CDATA[<p>在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp 目录下，新建vbs文件</p>
@@ -2828,6 +2818,16 @@ dfs(root.Right, res)
     <content><![CDATA[<p>在package.json中没有放 下边的hexo-generator-category，导致无法生成对应的文件。</p>
 <p><img src="/../../imgs/Pasted%20image%2020230521214536.png"></p>
 <p>可以显示啦<br><img src="/../../imgs/Pasted%20image%2020230521214912.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>查询深度学习环境python torch cuda版本</title>
+    <url>/2024-08-08-efa703ec12d7.html</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment">#sys模块提供了一系列有关Python运行环境的变量和函数。</span></span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
+<p><img src="/../../imgs/Pasted%20image%2020240808225509.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
