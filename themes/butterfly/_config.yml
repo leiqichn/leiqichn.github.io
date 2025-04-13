@@ -31,7 +31,7 @@ menu:
   RSS: /atom.xml || fas fa-rss-square
   友链: /link || fas fa-link
   留言板: /guestbook/ || fas fa-comment-dots
-  关于我: /about/ || fas fa-heart
+#  关于我: /about/ || fas fa-heart
   # Home: / || fas fa-home
   # List||fas fa-list:
   #   Music: /music/ || fas fa-music
@@ -236,7 +236,7 @@ reward:
 # Post edit
 # Easily browse and edit blog source code online.
 post_edit:
-  enable: true
+  enable: false
   # url: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/
   # For example: https://github.com/jerryc127/butterfly.js.org/edit/main/source/
   url: https://github.com/leiqichn/leiqichn.github.io/edit/master/source/

@@ -20,15 +20,22 @@
       avatar: /imgs/github-logo.png
       descr: 我的GitHub仓库
     - name: DeepThinking深思
-      link: https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ
+      link: /imgs/qrcode.jpg
       avatar: /imgs/qrcode.jpg
       descr: AI知识公众号
+    - name: 小红书
+      link: https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ
+      avatar: /imgs/xiaohongshu.png
+      descr: 随便拍拍 - 上传生活和摄影作品
 
-
-- class_name: '<i class="fas fa-fan" style="color:#00cccc;padding-right: 0.4rem"></i>示例'
+- class_name: '<i class="fas fa-fan" style="color:#00cccc;padding-right: 0.4rem"></i>友情链接'
   class_desc: '<span style="font-style: italic;">最可爱的朋友在这里</span>'
   link_list:
     - name: Tian Lejin
       link: https://tianlejin.top/
       descr: 認真是我們參與這個社會的方式
       avatar: /imgs/foresty_boy.jpg
+    - name: Butterfly
+      link: https://github.com/jerryc127/hexo-theme-butterfly
+      avatar: /imgs/butterfly-icon.png
+      descr: '🦋 A Hexo Theme: Butterfly'
