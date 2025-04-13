@@ -300,6 +300,24 @@
       </categories>
   </entry>
   <entry>
+    <title>golang 中格式化打印单个字符</title>
+    <url>/2024-05-03-ec16a5fd018e.html</url>
+    <content><![CDATA[<p>在Go语言中，<code>fmt.Printf</code> 函数是用来格式化输出的，它接受一个格式化字符串作为第一个参数，后面跟着相应的参数。格式化字符串中可以包含一些格式化动词（也称为转换说明符），它们定义了如何将相应的参数值转换为字符串并输出。</p>
+<p><code>%c</code> 是一个格式化动词，它指定了对应的参数应该被转换为一个单一的Unicode字符并输出。当你在 <code>fmt.Printf</code> 中使用 <code>%c</code>，并且传入一个整数（<code>int</code> 类型）时，它会将该整数值转换为该整数值对应的Unicode码点的字符。</p>
+<p>例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> codePoint <span class="type">int</span> = <span class="number">65</span> <span class="comment">// ASCII码中A的码点</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;%c\n&quot;</span>, codePoint) <span class="comment">// 输出: A</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，变量 <code>codePoint</code> 的值为 <code>65</code>，它是大写字母 “A” 在ASCII编码中的码点。<code>fmt.Printf(&quot;%c\n&quot;, codePoint)</code> 将这个整数值格式化为字符 “A” 并输出。</p>
+<p>在处理字节数组 <code>[]byte</code> 并想要将每个字节转换为对应的字符时，<code>%c</code> 非常有用，因为Go的 <code>string</code> 类型是UTF-8编码的，每个字节可以是一个字符的一部分。例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">    bytes := []<span class="type">byte</span>(s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b := <span class="keyword">range</span> bytes &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Byte %d: %c\n&quot;</span>, i, b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出:</span></span><br><span class="line">    <span class="comment">// Byte 0: h</span></span><br><span class="line">    <span class="comment">// Byte 1: e</span></span><br><span class="line">    <span class="comment">// Byte 2: l</span></span><br><span class="line">    <span class="comment">// Byte 3: l</span></span><br><span class="line">    <span class="comment">// Byte 4: o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们遍历字符串 <code>&quot;hello&quot;</code> 的字节表示，并使用 <code>%c</code> 格式化每个字节为字符。由于 “hello” 由纯ASCII字符组成，每个字节都是一个完整的字符。如果处理包含多字节UTF-8字符的字符串，单独的字节可能不会形成有效的字符。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>golang slice无法添加指针</title>
     <url>/2024-05-02-247b79126fb5.html</url>
     <content><![CDATA[<p>在Go语言中，指针是一种存储变量内存地址的数据类型。当你有一个指向<code>int</code>的指针，比如<code>timePtr *int</code>，你可以通过<code>*timePtr</code>来访问和修改指针指向的值。然而，指针本身是一个值类型，它存储的是变量的内存地址，而不是变量本身。</p>
@@ -336,24 +354,6 @@ dfs(root.Right, res)
 <p>在 Go 语言中，切片是引用类型。这意味着当你将切片传递给函数时，你实际上传递的是切片的引用（底层数组的地址），而不是切片的副本。因此，对切片的修改会影响到原始切片。</p>
 <p>但是需要注意的是，虽然切片是引用类型，但当你在函数内部对切片进行重新分配（比如使用 append 函数时），你实际上是创建了一个新的切片，而原始切片并没有被修改。这是因为切片是对底层数组的一个视图，对切片的修改可能会导致底层数组的重新分配和复制。</p>
 <p>这就是为什么在你的原始 DFS 函数中，尽管你传递了切片 res 给递归函数，但在递归调用中对 res 进行 append 操作并不会修改原始切片的内容。为了避免这个问题，可以通过传递切片的指针来确保在函数内部对切片的修改可以影响到原始切片。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>golang 中格式化打印单个字符</title>
-    <url>/2024-05-03-ec16a5fd018e.html</url>
-    <content><![CDATA[<p>在Go语言中，<code>fmt.Printf</code> 函数是用来格式化输出的，它接受一个格式化字符串作为第一个参数，后面跟着相应的参数。格式化字符串中可以包含一些格式化动词（也称为转换说明符），它们定义了如何将相应的参数值转换为字符串并输出。</p>
-<p><code>%c</code> 是一个格式化动词，它指定了对应的参数应该被转换为一个单一的Unicode字符并输出。当你在 <code>fmt.Printf</code> 中使用 <code>%c</code>，并且传入一个整数（<code>int</code> 类型）时，它会将该整数值转换为该整数值对应的Unicode码点的字符。</p>
-<p>例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> codePoint <span class="type">int</span> = <span class="number">65</span> <span class="comment">// ASCII码中A的码点</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;%c\n&quot;</span>, codePoint) <span class="comment">// 输出: A</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，变量 <code>codePoint</code> 的值为 <code>65</code>，它是大写字母 “A” 在ASCII编码中的码点。<code>fmt.Printf(&quot;%c\n&quot;, codePoint)</code> 将这个整数值格式化为字符 “A” 并输出。</p>
-<p>在处理字节数组 <code>[]byte</code> 并想要将每个字节转换为对应的字符时，<code>%c</code> 非常有用，因为Go的 <code>string</code> 类型是UTF-8编码的，每个字节可以是一个字符的一部分。例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">    bytes := []<span class="type">byte</span>(s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b := <span class="keyword">range</span> bytes &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Byte %d: %c\n&quot;</span>, i, b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出:</span></span><br><span class="line">    <span class="comment">// Byte 0: h</span></span><br><span class="line">    <span class="comment">// Byte 1: e</span></span><br><span class="line">    <span class="comment">// Byte 2: l</span></span><br><span class="line">    <span class="comment">// Byte 3: l</span></span><br><span class="line">    <span class="comment">// Byte 4: o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，我们遍历字符串 <code>&quot;hello&quot;</code> 的字节表示，并使用 <code>%c</code> 格式化每个字节为字符。由于 “hello” 由纯ASCII字符组成，每个字节都是一个完整的字符。如果处理包含多字节UTF-8字符的字符串，单独的字节可能不会形成有效的字符。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -744,6 +744,34 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>git stash</title>
+    <url>/2024-08-21-f4ccab39149e.html</url>
+    <content><![CDATA[<p>当尝试使用 git pull -f 强制拉取远程仓库的更新时，Git 会警告你，因为本地有未提交的更改，这些更改可能会被覆盖。确定要取消对特定文件的保存，可以按照以下步骤操作：</p>
+<p>放弃本地更改：使用 git checkout 命令来放弃对特定文件的更改。</p>
+<p>bash<br>git checkout – .obsidian&#x2F;workspace.json<br>再次尝试拉取：放弃更改后，可以再次尝试拉取远程仓库的更新。</p>
+<p>bash<br>git pull<br>如果不想放弃这些更改，而是想将它们保存起来，可以使用 git stash 命令：</p>
+<p>保存更改：使用 git stash 将更改保存到一个临时区域。</p>
+<p>git stash<br>拉取远程更新：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>恢复更改：在拉取更新后，你可以使用 git stash apply 来恢复之前保存的更改。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
+
+<p>请注意，使用 git stash apply 可能不会总是成功，在这种情况下，可能需要手动解决冲突。</p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>github同步gitee</title>
+    <url>/2024-07-18-e17dac938cf8.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240719003858.png"></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
     <title>git 设置免密配置-全局免密-单仓库免密-SSH免密</title>
     <url>/2024-01-01-91517aa963bc.html</url>
     <content><![CDATA[<h1 id="介绍之前"><a href="#介绍之前" class="headerlink" title="介绍之前"></a>介绍之前</h1><p>我们要首先知道一个简单的概念:<br>https通过<strong>记住账号密码免登</strong>，ssh通过<strong>校验生成的密钥免登</strong>。 通常都用ssh校验。</p>
@@ -823,34 +851,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>github同步gitee</title>
-    <url>/2024-07-18-e17dac938cf8.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240719003858.png"></p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>git stash</title>
-    <url>/2024-08-21-f4ccab39149e.html</url>
-    <content><![CDATA[<p>当尝试使用 git pull -f 强制拉取远程仓库的更新时，Git 会警告你，因为本地有未提交的更改，这些更改可能会被覆盖。确定要取消对特定文件的保存，可以按照以下步骤操作：</p>
-<p>放弃本地更改：使用 git checkout 命令来放弃对特定文件的更改。</p>
-<p>bash<br>git checkout – .obsidian&#x2F;workspace.json<br>再次尝试拉取：放弃更改后，可以再次尝试拉取远程仓库的更新。</p>
-<p>bash<br>git pull<br>如果不想放弃这些更改，而是想将它们保存起来，可以使用 git stash 命令：</p>
-<p>保存更改：使用 git stash 将更改保存到一个临时区域。</p>
-<p>git stash<br>拉取远程更新：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<p>恢复更改：在拉取更新后，你可以使用 git stash apply 来恢复之前保存的更改。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git stash apply</span><br></pre></td></tr></table></figure>
-
-<p>请注意，使用 git stash apply 可能不会总是成功，在这种情况下，可能需要手动解决冲突。</p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git强制拉取远端</title>
     <url>/2023-10-22-9bf76366f18c.html</url>
     <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git reset --hard origin/&lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
@@ -903,6 +903,55 @@ dfs(root.Right, res)
       <tags>
         <tag>about</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-8c397fc87827.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>Go语言中的byte类型与Unicode码点与整数的转换</title>
@@ -1083,18 +1132,18 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
-    <title>Leetcode 257.二叉树的所有路径</title>
-    <url>/2023-03-28-53b6b0695943.html</url>
-    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">binaryTreePaths</span><span class="params">(root *TreeNode)</span></span> []<span class="type">string</span> &#123;</span><br><span class="line">    res = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">	backTracking(root)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backTracking</span><span class="params">(root *TreeNode)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 终点 左右子节点都为nil</span></span><br><span class="line">	<span class="keyword">if</span> isLeafNode(root) &#123;</span><br><span class="line">        NodeValStr := strconv.Itoa(root.Val)</span><br><span class="line">	    path = <span class="built_in">append</span>(path, NodeValStr)</span><br><span class="line">		pathStr := strings.Join(path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">		res = <span class="built_in">append</span>(res, pathStr)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 前序遍历 中左右</span></span><br><span class="line">	<span class="comment">// 遍历 每次递归的操作</span></span><br><span class="line">	NodeVal:= strconv.Itoa(root.Val)<span class="comment">// 中</span></span><br><span class="line">	path = <span class="built_in">append</span>(path, NodeVal)</span><br><span class="line">	<span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123; <span class="comment">// 左</span></span><br><span class="line">		backTracking(root.Left)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123; <span class="comment">// 右</span></span><br><span class="line">		backTracking(root.Right)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLeafNode</span><span class="params">(node *TreeNode)</span></span> <span class="type">bool</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> node.Right==<span class="literal">nil</span> &amp;&amp; node.Left== <span class="literal">nil</span> &amp;&amp; node!= <span class="literal">nil</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>Leetcode 404.左叶子之和</title>
+    <url>/2023-03-29-c131676dd7b1.html</url>
+    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sumOfLeftLeaves</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 递归</span></span><br><span class="line">	res := <span class="number">0</span></span><br><span class="line">	<span class="comment">// 终止条件</span></span><br><span class="line">	<span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">    leftNode := root.Left</span><br><span class="line">	leftNodeVal := sumOfLeftLeaves(root.Left) <span class="comment">// 左</span></span><br><span class="line">    rightNodeVal := sumOfLeftLeaves(root.Right)<span class="comment">// 右</span></span><br><span class="line">	<span class="keyword">if</span> leftNode != <span class="literal">nil</span> &amp;&amp; leftNode.Left == <span class="literal">nil</span> &amp;&amp; leftNode.Right == <span class="literal">nil</span> &#123; <span class="comment">// 中</span></span><br><span class="line">		leftNodeVal = leftNode.Val</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 单次循环</span></span><br><span class="line">    res = leftNodeVal + rightNodeVal <span class="comment">// 中，左边+右边</span></span><br><span class="line">	<span class="keyword">return</span> res </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
   </entry>
   <entry>
-    <title>Leetcode 404.左叶子之和</title>
-    <url>/2023-03-29-c131676dd7b1.html</url>
-    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sumOfLeftLeaves</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 递归</span></span><br><span class="line">	res := <span class="number">0</span></span><br><span class="line">	<span class="comment">// 终止条件</span></span><br><span class="line">	<span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">    leftNode := root.Left</span><br><span class="line">	leftNodeVal := sumOfLeftLeaves(root.Left) <span class="comment">// 左</span></span><br><span class="line">    rightNodeVal := sumOfLeftLeaves(root.Right)<span class="comment">// 右</span></span><br><span class="line">	<span class="keyword">if</span> leftNode != <span class="literal">nil</span> &amp;&amp; leftNode.Left == <span class="literal">nil</span> &amp;&amp; leftNode.Right == <span class="literal">nil</span> &#123; <span class="comment">// 中</span></span><br><span class="line">		leftNodeVal = leftNode.Val</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 单次循环</span></span><br><span class="line">    res = leftNodeVal + rightNodeVal <span class="comment">// 中，左边+右边</span></span><br><span class="line">	<span class="keyword">return</span> res </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>Leetcode 257.二叉树的所有路径</title>
+    <url>/2023-03-28-53b6b0695943.html</url>
+    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">binaryTreePaths</span><span class="params">(root *TreeNode)</span></span> []<span class="type">string</span> &#123;</span><br><span class="line">    res = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">	backTracking(root)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backTracking</span><span class="params">(root *TreeNode)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 终点 左右子节点都为nil</span></span><br><span class="line">	<span class="keyword">if</span> isLeafNode(root) &#123;</span><br><span class="line">        NodeValStr := strconv.Itoa(root.Val)</span><br><span class="line">	    path = <span class="built_in">append</span>(path, NodeValStr)</span><br><span class="line">		pathStr := strings.Join(path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">		res = <span class="built_in">append</span>(res, pathStr)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 前序遍历 中左右</span></span><br><span class="line">	<span class="comment">// 遍历 每次递归的操作</span></span><br><span class="line">	NodeVal:= strconv.Itoa(root.Val)<span class="comment">// 中</span></span><br><span class="line">	path = <span class="built_in">append</span>(path, NodeVal)</span><br><span class="line">	<span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123; <span class="comment">// 左</span></span><br><span class="line">		backTracking(root.Left)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123; <span class="comment">// 右</span></span><br><span class="line">		backTracking(root.Right)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLeafNode</span><span class="params">(node *TreeNode)</span></span> <span class="type">bool</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> node.Right==<span class="literal">nil</span> &amp;&amp; node.Left== <span class="literal">nil</span> &amp;&amp; node!= <span class="literal">nil</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1248,27 +1297,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 1170. 比较字符串最小字母出现频次</title>
-    <url>/2023-06-14-88f65f0a1bb7.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
-<p><strong>后缀和（</strong>Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。</p>
-<p>具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+…+A[i-1] 的前缀和，其中 0≤i&lt;n。那么对于任何 0≤l≤r&lt;n，A[l]+A[l+1]+…+A[r] &#x3D; S[r+1]-S[l]。</p>
-<p>在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。</p>
-<h2 id="不使用后缀和"><a href="#不使用后缀和" class="headerlink" title="不使用后缀和"></a>不使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数 f(s)是s字符串中最小字符串的数量</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        <span class="keyword">for</span> idx, c := <span class="keyword">range</span> count &#123; <span class="comment">// 遍历count</span></span><br><span class="line">            <span class="keyword">if</span> c&gt;<span class="number">0</span> &amp;&amp; f(s) &lt; idx &#123;<span class="comment">// 如果count&gt;0,则说明该最小字符串数量(idx) 的个数为c。需要将res 加上这个数量c</span></span><br><span class="line">                res[i]+=c</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用后缀和"><a href="#使用后缀和" class="headerlink" title="使用后缀和"></a>使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算后缀和,i+1 就是大于i位置的所有个数</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">9</span>; i &gt;= <span class="number">1</span>; i-- &#123;</span><br><span class="line">        count[i] += count[i + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        res[i] = count[f(s) + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>为什么是res[i] &#x3D; count[f(s) + 1] ，而不是res[i] &#x3D; count[f(s)]？</strong></p>
-<p>在<code>numSmallerByFrequency</code>函数中， <code>count</code>数组记录的是各个不同频次出现的次数，因此 <code>count[i]</code>代表所有最小字母出现频次不于 i 的字符串的数量。</p>
-<p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
-<p><code>res[i] = count[f(s) + 1]</code></p>
-<p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 1091.二进制矩阵中的最短路径</title>
     <url>/2023-05-26-5abcbf266873.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/shortest-path-in-binary-matrix/description/">1091. 二进制矩阵中的最短路径 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230526235236.png"><br>DFS 超时版本：</p>
@@ -1300,17 +1328,21 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
-    <title>leetcode 122买动态股票的最佳时机II</title>
-    <url>/2023-05-27-5cebfed1675b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/">122. 买卖股票的最佳时机 II - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230527235217.png"></p>
-<p>每次只允许在一天买入一支股票，在之后某个时间卖出它。同时，你也可以选择不进行任何交易。</p>
-<p>相比于第一题买卖股票的最佳时机（只能进行一次交易），这道题没有限制交易次数，因此我们应该从一个更灵活的角度去考虑如何进行交易。</p>
-<p>下面是代码解释：</p>
-<p>首先定义变量 sum 记录当前总利润。<br>然后从第二个价格开始遍历，计算当日价格与前一天价格之差。<br>如果价格上涨了，则将当前利润加上买卖差价，否则不进行操作。<br>最后返回累计的总利润。<br>这样做的原理在于，如果在 i 天买入，在 j 天卖出（j &gt; i），我们可以等价于在 i+1、i+2……j-1、j 这些连续的日子里都进行了购入和卖出，而我们所需获得的利润即为这些差价的总和。因此，代码中只统计了所有价格差大于 0 的部分，而将其他价格差为负值的日子抛弃掉了。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="comment">// 累加每次大于0的交易</span></span><br><span class="line">        <span class="keyword">if</span> prices[i] - prices[i<span class="number">-1</span>] &gt; <span class="number">0</span> &#123;</span><br><span class="line">            sum += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>leetcode 1170. 比较字符串最小字母出现频次</title>
+    <url>/2023-06-14-88f65f0a1bb7.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
+<p><strong>后缀和（</strong>Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。</p>
+<p>具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+…+A[i-1] 的前缀和，其中 0≤i&lt;n。那么对于任何 0≤l≤r&lt;n，A[l]+A[l+1]+…+A[r] &#x3D; S[r+1]-S[l]。</p>
+<p>在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。</p>
+<h2 id="不使用后缀和"><a href="#不使用后缀和" class="headerlink" title="不使用后缀和"></a>不使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数 f(s)是s字符串中最小字符串的数量</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        <span class="keyword">for</span> idx, c := <span class="keyword">range</span> count &#123; <span class="comment">// 遍历count</span></span><br><span class="line">            <span class="keyword">if</span> c&gt;<span class="number">0</span> &amp;&amp; f(s) &lt; idx &#123;<span class="comment">// 如果count&gt;0,则说明该最小字符串数量(idx) 的个数为c。需要将res 加上这个数量c</span></span><br><span class="line">                res[i]+=c</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h2 id="使用后缀和"><a href="#使用后缀和" class="headerlink" title="使用后缀和"></a>使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算后缀和,i+1 就是大于i位置的所有个数</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">9</span>; i &gt;= <span class="number">1</span>; i-- &#123;</span><br><span class="line">        count[i] += count[i + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        res[i] = count[f(s) + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
+<p><strong>为什么是res[i] &#x3D; count[f(s) + 1] ，而不是res[i] &#x3D; count[f(s)]？</strong></p>
+<p>在<code>numSmallerByFrequency</code>函数中， <code>count</code>数组记录的是各个不同频次出现的次数，因此 <code>count[i]</code>代表所有最小字母出现频次不于 i 的字符串的数量。</p>
+<p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
+<p><code>res[i] = count[f(s) + 1]</code></p>
+<p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1347,6 +1379,23 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
+    <title>leetcode 122买动态股票的最佳时机II</title>
+    <url>/2023-05-27-5cebfed1675b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/">122. 买卖股票的最佳时机 II - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230527235217.png"></p>
+<p>每次只允许在一天买入一支股票，在之后某个时间卖出它。同时，你也可以选择不进行任何交易。</p>
+<p>相比于第一题买卖股票的最佳时机（只能进行一次交易），这道题没有限制交易次数，因此我们应该从一个更灵活的角度去考虑如何进行交易。</p>
+<p>下面是代码解释：</p>
+<p>首先定义变量 sum 记录当前总利润。<br>然后从第二个价格开始遍历，计算当日价格与前一天价格之差。<br>如果价格上涨了，则将当前利润加上买卖差价，否则不进行操作。<br>最后返回累计的总利润。<br>这样做的原理在于，如果在 i 天买入，在 j 天卖出（j &gt; i），我们可以等价于在 i+1、i+2……j-1、j 这些连续的日子里都进行了购入和卖出，而我们所需获得的利润即为这些差价的总和。因此，代码中只统计了所有价格差大于 0 的部分，而将其他价格差为负值的日子抛弃掉了。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="comment">// 累加每次大于0的交易</span></span><br><span class="line">        <span class="keyword">if</span> prices[i] - prices[i<span class="number">-1</span>] &gt; <span class="number">0</span> &#123;</span><br><span class="line">            sum += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 144. 二叉树的前序遍历</title>
     <url>/2023-05-23-62bd8ef029a5.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/binary-tree-preorder-traversal/description/">144. 二叉树的前序遍历 - 力扣（Leetcode）</a></p>
@@ -1357,6 +1406,36 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 1726.同积元组</title>
+    <url>/2023-10-20-9599b5db4d91.html</url>
+    <content><![CDATA[<blockquote>
+<p>Problem: <a href="https://leetcode.cn/problems/tuple-with-same-product/description/">1726. 同积元组</a></p>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
+<p>使用排列组合的方法，开始使用三种语言同时写leetcode.</p>
+</blockquote>
+<h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><p><img src="/../../imgs/Pasted%20image%2020231020003943.png"></p>
+<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul>
+<li><p>时间复杂度:</p>
+<blockquote>
+<p>添加时间复杂度, 示例： $O(n)$</p>
+</blockquote>
+</li>
+<li><p>空间复杂度:</p>
+<blockquote>
+<p>添加空间复杂度, 示例： $O(n)$</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tupleSameProduct</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    cnt := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := i + <span class="number">1</span>; j &lt; n; j++ &#123;<span class="comment">// j +1 不要重复</span></span><br><span class="line">            cnt[nums[i] * nums[j]]++ <span class="comment">// 使用map 遍历每次乘积对应次数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ans := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> cnt &#123;</span><br><span class="line">        ans += v * (v - <span class="number">1</span>) * <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">tupleSameProduct</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; cnt;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">                cnt[nums[i] * nums[j]]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;[k, v] : cnt) &#123;</span><br><span class="line">            ans += v * (v - <span class="number">1</span>) * <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def tupleSameProduct(self, nums: List[int]) -&gt; int:</span><br><span class="line">        n = len(nums)</span><br><span class="line">        maps = dict()</span><br><span class="line">        </span><br><span class="line">        for i in range(n):</span><br><span class="line">            for j in range(i+1,n):</span><br><span class="line">                if nums[i]*nums[j] in maps:</span><br><span class="line">                    maps[nums[i] * nums[j]] += 1</span><br><span class="line">                else:</span><br><span class="line">                    maps[nums[i] * nums[j]] = 1</span><br><span class="line"></span><br><span class="line">        ans = 0</span><br><span class="line">        for _, v in maps.items():</span><br><span class="line">            ans += v*(v-1) *4</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>C++</category>
       </categories>
   </entry>
   <entry>
@@ -1423,36 +1502,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 1726.同积元组</title>
-    <url>/2023-10-20-9599b5db4d91.html</url>
-    <content><![CDATA[<blockquote>
-<p>Problem: <a href="https://leetcode.cn/problems/tuple-with-same-product/description/">1726. 同积元组</a></p>
-</blockquote>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
-<p>使用排列组合的方法，开始使用三种语言同时写leetcode.</p>
-</blockquote>
-<h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><p><img src="/../../imgs/Pasted%20image%2020231020003943.png"></p>
-<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul>
-<li><p>时间复杂度:</p>
-<blockquote>
-<p>添加时间复杂度, 示例： $O(n)$</p>
-</blockquote>
-</li>
-<li><p>空间复杂度:</p>
-<blockquote>
-<p>添加空间复杂度, 示例： $O(n)$</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">tupleSameProduct</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    cnt := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := i + <span class="number">1</span>; j &lt; n; j++ &#123;<span class="comment">// j +1 不要重复</span></span><br><span class="line">            cnt[nums[i] * nums[j]]++ <span class="comment">// 使用map 遍历每次乘积对应次数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ans := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> cnt &#123;</span><br><span class="line">        ans += v * (v - <span class="number">1</span>) * <span class="number">4</span></span><br><span class="line">    &#125;</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">tupleSameProduct</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; cnt;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">                cnt[nums[i] * nums[j]]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;[k, v] : cnt) &#123;</span><br><span class="line">            ans += v * (v - <span class="number">1</span>) * <span class="number">4</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def tupleSameProduct(self, nums: List[int]) -&gt; int:</span><br><span class="line">        n = len(nums)</span><br><span class="line">        maps = dict()</span><br><span class="line">        </span><br><span class="line">        for i in range(n):</span><br><span class="line">            for j in range(i+1,n):</span><br><span class="line">                if nums[i]*nums[j] in maps:</span><br><span class="line">                    maps[nums[i] * nums[j]] += 1</span><br><span class="line">                else:</span><br><span class="line">                    maps[nums[i] * nums[j]] = 1</span><br><span class="line"></span><br><span class="line">        ans = 0</span><br><span class="line">        for _, v in maps.items():</span><br><span class="line">            ans += v*(v-1) *4</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 1845.座位预约管理系统</title>
     <url>/2023-05-22-97adde03f66a.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/seat-reservation-manager/description/">1845. 座位预约管理系统 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523000703.png"></p>
@@ -1479,6 +1528,16 @@ dfs(root.Right, res)
 
 
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// TrieNode 代表Trie中的每个节点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TrieNode <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    children [<span class="number">26</span>]*TrieNode</span><br><span class="line"></span><br><span class="line">    isEnd    <span class="type">bool</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Trie 代表整个前缀树</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Trie <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    root *TrieNode</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Constructor 初始化一个Trie对象</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Trie &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Trie&#123;root: &amp;TrieNode&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Insert 将word插入到trie中</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> Insert(word <span class="type">string</span>) &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> word &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            node.children[index] = &amp;TrieNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    node.isEnd = <span class="literal">true</span> <span class="comment">// 标记单词结束的节点</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Search 在trie中搜索word</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> Search(word <span class="type">string</span>) <span class="type">bool</span> &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> word &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 如果路径中的节点不存在，说明word不在trie中</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> node.isEnd <span class="comment">// 检查最后一个节点是否标记为单词结尾</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// StartsWith 返回trie中是否有任何单词以prefix为前缀</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> StartsWith(prefix <span class="type">string</span>) <span class="type">bool</span> &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> prefix &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 如果路径中的节点不存在，说明没有以prefix为前缀的word</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 所有的char都在路径中，说明trie有以prefix为前缀的word</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * obj.Insert(word);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * param_2 := obj.Search(word);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * param_3 := obj.StartsWith(prefix);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 226. 翻转二叉树</title>
+    <url>/2023-05-23-d59f64e0619b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1533,16 +1592,6 @@ dfs(root.Right, res)
       <tags>
         <tag>二叉树</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 226. 翻转二叉树</title>
-    <url>/2023-05-23-d59f64e0619b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
@@ -2008,6 +2057,29 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>【20240106】leetcode 2807. 在链表中插入最大公约数</title>
+    <url>/2024-01-06-2b3ad028343c.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list/description/?envType=daily-question&envId=2024-01-06">2807. 在链表中插入最大公约数 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240106233021.png"></p>
+<p>最大公约数（GCD，Greatest Common Divisor）是两个或多个整数的共有因数中的最大值。也叫作最大公因数、最大公因子或最大公量。如果两个整数的最大公约数是 1，那么它们被称为互质。</p>
+<p>计算两个整数的最大公约数有多种方法，其中最著名的方法之一是辗转相除法（Euclidean Algorithm）。辗转相除法的基本思想是通过反复应用两个整数的除法余数关系，直到余数为零为止。具体步骤如下：</p>
+<ol>
+<li>用较大的数除以较小的数，得到余数。</li>
+<li>将较小的数作为新的被除数，余数作为新的除数。</li>
+<li>重复步骤 1 和 2，直到余数为零。</li>
+<li>最后的非零余数即为最大公约数。</li>
+</ol>
+<p>这个算法的效率很高，时间复杂度为 �(log⁡(min⁡(�,�)))O(log(min(a,b)))。</p>
+<p>以下是一个用 Go 语言实现的最大公约数的辗转相除法示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 辗转相除法求最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gcd</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> b != <span class="number">0</span> &#123;</span><br><span class="line">        temp := b</span><br><span class="line">        b = a % b</span><br><span class="line">        a = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    num1 := <span class="number">48</span></span><br><span class="line">    num2 := <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    result := gcd(num1, num2)</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;最大公约数为:&quot;</span>, result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>gcd</code> 函数使用了辗转相除法来计算两个整数的最大公约数。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【20240114】LeetCode 83. 删除排序链表中的重复元素</title>
     <url>/2024-01-14-e61755fec3db.html</url>
     <content><![CDATA[<blockquote>
@@ -2040,29 +2112,6 @@ dfs(root.Right, res)
     <content><![CDATA[<h1 id="深度优先搜索（DFS）通用模板"><a href="#深度优先搜索（DFS）通用模板" class="headerlink" title="深度优先搜索（DFS）通用模板"></a>深度优先搜索（DFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 通用的深度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(node <span class="type">int</span>, visited []<span class="type">bool</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 边界终止条件 </span></span><br><span class="line">	<span class="keyword">if</span> m n &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 终止条件</span></span><br><span class="line">    <span class="keyword">if</span> visited[node] &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理当前节点</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">    visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归处理相邻节点</span></span><br><span class="line">    <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">        dfs(neighbor, visited, graph)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化节点、访问数组等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历所有节点</span></span><br><span class="line">    <span class="keyword">for</span> node := <span class="number">0</span>; node &lt; <span class="built_in">len</span>(graph); node++ &#123;</span><br><span class="line">        <span class="keyword">if</span> !visited[node] &#123;</span><br><span class="line">            dfs(node, visited, graph)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h1 id="广度优先搜索（BFS）通用模板"><a href="#广度优先搜索（BFS）通用模板" class="headerlink" title="广度优先搜索（BFS）通用模板"></a>广度优先搜索（BFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 通用的广度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bfs</span><span class="params">(start <span class="type">int</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    queue := []<span class="type">int</span>&#123;start&#125;</span><br><span class="line">    visited := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(graph))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="comment">// 出队列</span></span><br><span class="line">        node := queue[<span class="number">0</span>]</span><br><span class="line">        queue = queue[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理当前节点</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">        visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将相邻节点入队列</span></span><br><span class="line">        <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">            <span class="keyword">if</span> !visited[neighbor] &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, neighbor)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化起始节点、图等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用BFS函数</span></span><br><span class="line">    bfs(start, graph)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算从起点 start 到终点 target 的最近距离</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BFS</span><span class="params">(start Node, target Node)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 核心数据结构</span></span><br><span class="line">    q := <span class="built_in">make</span>([]Node, <span class="number">0</span>)</span><br><span class="line">    <span class="comment">// 避免走回头路</span></span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[Node]<span class="type">bool</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将起点加入队列</span></span><br><span class="line">    q = <span class="built_in">append</span>(q, start)</span><br><span class="line">    visited[start] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(q) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        sz := <span class="built_in">len</span>(q)</span><br><span class="line">        <span class="comment">// 将当前队列中的所有节点向四周扩散</span></span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; sz; i++ &#123;</span><br><span class="line">            cur := q[<span class="number">0</span>]</span><br><span class="line">            q = q[<span class="number">1</span>:]</span><br><span class="line">            <span class="comment">// 划重点：这里判断是否到达终点</span></span><br><span class="line">            <span class="keyword">if</span> cur == target &#123;</span><br><span class="line">                <span class="keyword">return</span> step</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 将 cur 的相邻节点加入队列</span></span><br><span class="line">            <span class="keyword">for</span> _, x := <span class="keyword">range</span> cur.adj() &#123;</span><br><span class="line">                <span class="keyword">if</span> _, ok := visited[x]; !ok &#123;</span><br><span class="line">                    q = <span class="built_in">append</span>(q, x)</span><br><span class="line">                    visited[x] = <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果走到这里，说明在图中没有找到目标节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【20240106】leetcode 2807. 在链表中插入最大公约数</title>
-    <url>/2024-01-06-2b3ad028343c.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list/description/?envType=daily-question&envId=2024-01-06">2807. 在链表中插入最大公约数 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240106233021.png"></p>
-<p>最大公约数（GCD，Greatest Common Divisor）是两个或多个整数的共有因数中的最大值。也叫作最大公因数、最大公因子或最大公量。如果两个整数的最大公约数是 1，那么它们被称为互质。</p>
-<p>计算两个整数的最大公约数有多种方法，其中最著名的方法之一是辗转相除法（Euclidean Algorithm）。辗转相除法的基本思想是通过反复应用两个整数的除法余数关系，直到余数为零为止。具体步骤如下：</p>
-<ol>
-<li>用较大的数除以较小的数，得到余数。</li>
-<li>将较小的数作为新的被除数，余数作为新的除数。</li>
-<li>重复步骤 1 和 2，直到余数为零。</li>
-<li>最后的非零余数即为最大公约数。</li>
-</ol>
-<p>这个算法的效率很高，时间复杂度为 �(log⁡(min⁡(�,�)))O(log(min(a,b)))。</p>
-<p>以下是一个用 Go 语言实现的最大公约数的辗转相除法示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 辗转相除法求最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gcd</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> b != <span class="number">0</span> &#123;</span><br><span class="line">        temp := b</span><br><span class="line">        b = a % b</span><br><span class="line">        a = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    num1 := <span class="number">48</span></span><br><span class="line">    num2 := <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    result := gcd(num1, num2)</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;最大公约数为:&quot;</span>, result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>gcd</code> 函数使用了辗转相除法来计算两个整数的最大公约数。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2536,6 +2585,24 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>JetBrians 全家桶设置文件header</title>
+    <url>/2023-10-05-7527c8e47a8b.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p>
+<p>先看下效果图<br><img src="/../../imgs/Pasted%20image%2020231005164404.png"></p>
+<h1 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h1><h2 id="1-file-settings"><a href="#1-file-settings" class="headerlink" title="1. file- settings"></a>1. file- settings</h2><p><img src="/../../imgs/Pasted%20image%2020231005164508.png"></p>
+<h1 id="找到Copyright-CopyrightProfiles"><a href="#找到Copyright-CopyrightProfiles" class="headerlink" title="找到Copyright - CopyrightProfiles"></a>找到Copyright - CopyrightProfiles</h1><p>点击+ 号，新建一个name 为“copyRight” 的profile</p>
+<p><img src="/../../imgs/Pasted%20image%2020231005164618.png"></p>
+<p>profile 的内容粘贴下面的问文本, 替换自己的名字</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Copyright (c) $originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;$today.year&quot;)$today.year YOUR NAME. All rights reserved.  </span><br><span class="line">Author: YOUR NAME  </span><br><span class="line">Description:  </span><br><span class="line">Date: $today</span><br></pre></td></tr></table></figure>
+<h1 id="点击Copyright-添加刚才的profile"><a href="#点击Copyright-添加刚才的profile" class="headerlink" title="点击Copyright 添加刚才的profile"></a>点击Copyright 添加刚才的profile</h1><p><img src="/../../imgs/Pasted%20image%2020231005165129.png"></p>
+<h2 id="点击应用即可-右键-generate-Copyright-插入"><a href="#点击应用即可-右键-generate-Copyright-插入" class="headerlink" title="点击应用即可 右键-generate-Copyright 插入"></a>点击应用即可 右键-generate-Copyright 插入</h2><p><img src="/../../imgs/Pasted%20image%2020231005164944.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020231005165025.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Linux非root用户通过X11运行图形界面程序-以Rstudio为例</title>
     <url>/2023-09-24-4fe5badbd053.html</url>
     <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>由于使用单位或者学校的服务器，我们一般都没有root权限，导致一些Server版本的软件不能安装（例如数据分析领域的Rstudio-Server，需要root权限，新增端口给Rstudio-Server的web服务）。<br>但大家有没有发现，我们自己在本地的PC上安装桌面版本的Rstudio是并不要管理员权限的，是因为我们不需要开放端口，Rstudio直接在显示在图形界面上了。<br>那么理论上，我们可以在服务器上，通过模拟服务器的图形界面来直接运行桌面版的Rstudio。而这个模拟服务器的图形界面就可以使用X11！</p>
@@ -2549,24 +2616,6 @@ dfs(root.Right, res)
 <h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p> 经过漫长的等待，直接运行rstudio 就会进入x11转发的图形界面<br> <img src="/../../imgs/Pasted%20image%2020230924205521.png"><br><strong>画个图试试，顺利出图！开始愉快的coding吧！</strong><br><img src="/../../imgs/Pasted%20image%2020230924205559.png"></p>
 <p><strong>已知问题：</strong> 操作延迟较高，没有本地反应快，但是还可以接受，大家可以试试。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们可以通过<strong>X11</strong>来在服务器上运行图形化的程序，这个图形化的程序一般不需要很高的权限，不涉及外部端口新增。因此我们可以在服务器上运行很多图形化程序，例如Rstudio。甚至是我们的Pycharm、Goland、CLion 等Jetbrains的全家桶。大家快来试试吧！</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JetBrians 全家桶设置文件header</title>
-    <url>/2023-10-05-7527c8e47a8b.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p>
-<p>先看下效果图<br><img src="/../../imgs/Pasted%20image%2020231005164404.png"></p>
-<h1 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h1><h2 id="1-file-settings"><a href="#1-file-settings" class="headerlink" title="1. file- settings"></a>1. file- settings</h2><p><img src="/../../imgs/Pasted%20image%2020231005164508.png"></p>
-<h1 id="找到Copyright-CopyrightProfiles"><a href="#找到Copyright-CopyrightProfiles" class="headerlink" title="找到Copyright - CopyrightProfiles"></a>找到Copyright - CopyrightProfiles</h1><p>点击+ 号，新建一个name 为“copyRight” 的profile</p>
-<p><img src="/../../imgs/Pasted%20image%2020231005164618.png"></p>
-<p>profile 的内容粘贴下面的问文本, 替换自己的名字</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Copyright (c) $originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;$today.year&quot;)$today.year YOUR NAME. All rights reserved.  </span><br><span class="line">Author: YOUR NAME  </span><br><span class="line">Description:  </span><br><span class="line">Date: $today</span><br></pre></td></tr></table></figure>
-<h1 id="点击Copyright-添加刚才的profile"><a href="#点击Copyright-添加刚才的profile" class="headerlink" title="点击Copyright 添加刚才的profile"></a>点击Copyright 添加刚才的profile</h1><p><img src="/../../imgs/Pasted%20image%2020231005165129.png"></p>
-<h2 id="点击应用即可-右键-generate-Copyright-插入"><a href="#点击应用即可-右键-generate-Copyright-插入" class="headerlink" title="点击应用即可 右键-generate-Copyright 插入"></a>点击应用即可 右键-generate-Copyright 插入</h2><p><img src="/../../imgs/Pasted%20image%2020231005164944.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020231005165025.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2701,6 +2750,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>删除ppt所有批注和备注</title>
+    <url>/2023-04-24-4faf63eb321c.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>免费使用Jetbrain 全家桶-服务器激活码激活软件</title>
     <url>/2023-12-30-6a1e804ab992.html</url>
     <content><![CDATA[<p>众所周知，PyCharm和IDEA Goland CLion 都是Jetbrain 公司的产品,非常适合开发项目.但是这个软件确是收费的,而且还不低. 本文就是介绍一种方法可以免费使用的方法,如果大家有余力的,还是希望购买正版产品.</p>
@@ -2717,18 +2778,6 @@ dfs(root.Right, res)
 <p><img src="/../../imgs/Pasted%20image%2020231230231034.png"><br>例如上边就是 <a href="http://111.231.22.61:1024/">http://111.231.22.61:1024</a></p>
 <p><img src="/../../imgs/Pasted%20image%2020231230231326.png"></p>
 <h1 id="激活成功"><a href="#激活成功" class="headerlink" title="激活成功"></a>激活成功</h1><p>激活成功，请开始愉快的编码吧！<br><img src="/../../imgs/Pasted%20image%2020231230231349.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>删除ppt所有批注和备注</title>
-    <url>/2023-04-24-4faf63eb321c.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2783,55 +2832,6 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>更新网页url后，恢复valine网页评论</title>
-    <url>/2025-04-13-8c397fc87827.html</url>
-    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
-<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
-<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-ed1bf9078b39.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
       </categories>
   </entry>
   <entry>
@@ -3016,47 +3016,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>如何画好一个架构图</title>
-    <url>/2025-02-19-d829d1f5a9ea.html</url>
-    <content><![CDATA[<h1 id="业务架构"><a href="#业务架构" class="headerlink" title="业务架构"></a>业务架构</h1><p><img src="/../../../imgs/Pasted%20image%2020250219195041.png"></p>
-<h1 id="客户端架构、前端架构"><a href="#客户端架构、前端架构" class="headerlink" title="客户端架构、前端架构"></a>客户端架构、前端架构</h1><p>类似于逻辑视图</p>
-<ul>
-<li>通过不同的颜色白标识不同颜色</li>
-</ul>
-<p><img src="/../../../imgs/Pasted%20image%2020250219195111.png"></p>
-<h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>技术架构或者是后端架构，后端的逻辑架构<br>后端架构是核心架构<br><img src="/../../../imgs/Pasted%20image%2020250219195326.png"><img src="/../../../imgs/Pasted%20image%2020250219195934.png"><br>两张图 左边说明功能，右边说明交互。和业务架构有区别。</p>
-<h1 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h1><p>描述后端系统有哪些应用组成</p>
-<p>使用场景：</p>
-<ul>
-<li>项目开发和测试</li>
-<li>部署发布</li>
-<li>子领域项目架构，下方就是个会员中心*</li>
-</ul>
-<p><img src="/../../../imgs/Pasted%20image%2020250219200124.png"><img src="/../../../imgs/Pasted%20image%2020250219200345.png"></p>
-<h1 id="部署架构-物理视图"><a href="#部署架构-物理视图" class="headerlink" title="部署架构 - 物理视图"></a>部署架构 - 物理视图</h1><p>描述后端系统具体是如何部署的，对应4+1 视图中的物理视图</p>
-<p>使用场景</p>
-<ul>
-<li>总体架构设计</li>
-<li>运维规划和优化</li>
-<li>画图技巧</li>
-<li>使用图标代替区块*<br><img src="/../../../imgs/Pasted%20image%2020250219200529.png"><br>上边的球是网络加速点</li>
-</ul>
-<p><a href="https://www.bilibili.com/video/BV1764y1a7PD/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=8d35f023c28f4bba76bb3fadea08f222">前阿里 P9 教你如何画好一张架构图_哔哩哔哩_bilibili</a></p>
-]]></content>
-      <categories>
-        <category>架构</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>系统序列图 - 时序图</title>
-    <url>/2025-02-19-05250c3f88f5.html</url>
-    <content><![CDATA[<p><img src="/../../../imgs/Pasted%20image%2020250219200803.png"></p>
-]]></content>
-      <categories>
-        <category>架构</category>
-      </categories>
-  </entry>
-  <entry>
     <title>数据结构设计专题</title>
     <url>/2025-03-06-dab119f1439d.html</url>
     <content><![CDATA[<h4 id="数据结构设计"><a href="#数据结构设计" class="headerlink" title="数据结构设计"></a><a href="https://labuladong.online/algo/intro/quick-learning-plan/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1">数据结构设计</a></h4><table>
@@ -3139,6 +3098,47 @@ dfs(root.Right, res)
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> leetcode1700  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 9分钟完成  </span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">countStudents</span><span class="params">(students []<span class="type">int</span>, sandwiches []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;  </span><br><span class="line">    <span class="comment">// 栈模拟  </span></span><br><span class="line">    <span class="comment">// 结束条件  </span></span><br><span class="line">    <span class="comment">// 同学中数字都相同，且不等于栈顶元素 [0]  </span></span><br><span class="line">    <span class="keyword">for</span> !isEnd(students, sandwiches) &#123;  </span><br><span class="line">       <span class="keyword">if</span> sandwiches[<span class="number">0</span>] == students[<span class="number">0</span>] &#123;  </span><br><span class="line">          sandwiches = sandwiches[<span class="number">1</span>:]  </span><br><span class="line">          students = students[<span class="number">1</span>:]  </span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">          students = <span class="built_in">append</span>(students[<span class="number">1</span>:], students[<span class="number">0</span>])  </span><br><span class="line">       &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(students)  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isEnd</span><span class="params">(students []<span class="type">int</span>, sandwiches []<span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;  </span><br><span class="line">    <span class="keyword">for</span> _, val := <span class="keyword">range</span> students &#123;  </span><br><span class="line">       <span class="keyword">if</span> val == sandwiches[<span class="number">0</span>] &#123;  </span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>  </span><br><span class="line">       &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>速刷记录</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何画好一个架构图</title>
+    <url>/2025-02-19-d829d1f5a9ea.html</url>
+    <content><![CDATA[<h1 id="业务架构"><a href="#业务架构" class="headerlink" title="业务架构"></a>业务架构</h1><p><img src="/../../../imgs/Pasted%20image%2020250219195041.png"></p>
+<h1 id="客户端架构、前端架构"><a href="#客户端架构、前端架构" class="headerlink" title="客户端架构、前端架构"></a>客户端架构、前端架构</h1><p>类似于逻辑视图</p>
+<ul>
+<li>通过不同的颜色白标识不同颜色</li>
+</ul>
+<p><img src="/../../../imgs/Pasted%20image%2020250219195111.png"></p>
+<h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>技术架构或者是后端架构，后端的逻辑架构<br>后端架构是核心架构<br><img src="/../../../imgs/Pasted%20image%2020250219195326.png"><img src="/../../../imgs/Pasted%20image%2020250219195934.png"><br>两张图 左边说明功能，右边说明交互。和业务架构有区别。</p>
+<h1 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h1><p>描述后端系统有哪些应用组成</p>
+<p>使用场景：</p>
+<ul>
+<li>项目开发和测试</li>
+<li>部署发布</li>
+<li>子领域项目架构，下方就是个会员中心*</li>
+</ul>
+<p><img src="/../../../imgs/Pasted%20image%2020250219200124.png"><img src="/../../../imgs/Pasted%20image%2020250219200345.png"></p>
+<h1 id="部署架构-物理视图"><a href="#部署架构-物理视图" class="headerlink" title="部署架构 - 物理视图"></a>部署架构 - 物理视图</h1><p>描述后端系统具体是如何部署的，对应4+1 视图中的物理视图</p>
+<p>使用场景</p>
+<ul>
+<li>总体架构设计</li>
+<li>运维规划和优化</li>
+<li>画图技巧</li>
+<li>使用图标代替区块*<br><img src="/../../../imgs/Pasted%20image%2020250219200529.png"><br>上边的球是网络加速点</li>
+</ul>
+<p><a href="https://www.bilibili.com/video/BV1764y1a7PD/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=8d35f023c28f4bba76bb3fadea08f222">前阿里 P9 教你如何画好一张架构图_哔哩哔哩_bilibili</a></p>
+]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>系统序列图 - 时序图</title>
+    <url>/2025-02-19-05250c3f88f5.html</url>
+    <content><![CDATA[<p><img src="/../../../imgs/Pasted%20image%2020250219200803.png"></p>
+]]></content>
+      <categories>
+        <category>架构</category>
       </categories>
   </entry>
   <entry>
