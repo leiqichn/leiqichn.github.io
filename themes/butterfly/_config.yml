@@ -179,8 +179,6 @@ subtitle:
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
     - "代码如诗，逻辑如歌"
-    - "Stay hungry, stay foolish"
-    - "Hello, World!"
     - "顺势而为"
 
 # Article layout on the homepage
