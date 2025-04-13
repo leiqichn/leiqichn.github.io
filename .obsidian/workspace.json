@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/架构/软件架构/软件架构.md",
+                "file": "source/_posts/工具/clash在终端设置代理.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "软件架构"
+              "title": "clash在终端设置代理"
             }
           }
         ],
@@ -149,7 +149,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "软件架构",
+                "query": "https_",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -236,13 +236,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/架构/软件架构/软件架构.md",
+                "file": "source/_posts/工具/clash在终端设置代理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "软件架构 的大纲"
+              "title": "clash在终端设置代理 的大纲"
             }
           },
           {
@@ -283,20 +283,28 @@
   },
   "active": "297447e4d7be5745",
   "lastOpenFiles": [
-    "node_modules/javascript-state-machine/test/requirejs/index.html",
-    "node_modules/javascript-state-machine/test/qunit/qunit.js",
-    "node_modules/javascript-state-machine/test/requirejs/require.js",
-    "node_modules/javascript-state-machine/demo/images/alerts.green.png",
-    "node_modules/javascript-state-machine/test/qunit/qunit.css",
-    "node_modules/javascript-state-machine/demo/images/alerts.yellow.png",
-    "node_modules/javascript-state-machine/demo/images/alerts.red.png",
-    "node_modules/javascript-state-machine/test/test_classes.js",
-    "node_modules/javascript-state-machine/test/test_initialize.js",
-    "node_modules/javascript-state-machine/test/test_advanced.js",
-    "node_modules/javascript-state-machine/test/test_basics.js",
-    "node_modules/javascript-state-machine/test/test_async.js",
-    "node_modules/javascript-state-machine/test/runner.js",
-    "node_modules/javascript-state-machine/test/requirejs",
+    "public/archives/2023/10/page/2/index.html",
+    "public/archives/2024/01/page/2/index.html",
+    "public/archives/2023/05/page/3/index.html",
+    "public/archives/2023/05/page/2/index.html",
+    "public/archives/2024/page/5/index.html",
+    "public/archives/2024/page/4/index.html",
+    "public/archives/2024/page/3/index.html",
+    "public/archives/2024/page/2/index.html",
+    "public/archives/2023/page/7/index.html",
+    "public/archives/2023/page/4/index.html",
+    "public/archives/2023/page/5/index.html",
+    "public/imgs/微信图片_20230319125819.png",
+    "public/imgs/白鸽.png",
+    "public/imgs/企业微信.jpg",
+    "public/imgs/企业微信截图_1721534117437.png",
+    "public/imgs/Snipaste_2023-03-19_12-43-32.png",
+    "public/imgs/police_beian.png",
+    "public/imgs/qrcode.jpg",
+    "public/imgs/Pasted image 20250413120942.png",
+    "public/imgs/Pasted image 20250413121036.png",
+    "public/imgs/Pasted image 20250413120927.png",
+    "source/_posts/架构/软件架构/软件架构.md",
     "node_modules/javascript-state-machine/RELEASE_NOTES.md",
     "node_modules/javascript-state-machine/README.md",
     "source/economics/index.md",
@@ -319,16 +327,8 @@
     "node_modules/protobufjs/node_modules/cliui/CHANGELOG.md",
     "node_modules/protobufjs/examples/websocket/README.md",
     "node_modules/protobufjs/examples/protoify/README.md",
-    "node_modules/protobufjs/docs/fonts/OpenSans-Regular-webfont.svg",
-    "node_modules/protobufjs/docs/fonts/OpenSans-LightItalic-webfont.svg",
-    "node_modules/protobufjs/docs/fonts/OpenSans-Light-webfont.svg",
-    "node_modules/protobufjs/docs/fonts/OpenSans-Italic-webfont.svg",
-    "node_modules/protobufjs/docs/fonts/OpenSans-BoldItalic-webfont.svg",
-    "node_modules/protobufjs/docs/fonts/OpenSans-Bold-webfont.svg",
     "node_modules/protobufjs/dist/README.md",
-    "node_modules/protobufjs/protobuf.png",
     "node_modules/protobufjs/README.md",
-    "node_modules/miniprogram-api-typings/VERSIONS.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
