@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
+                "file": "source/_posts/前端/配置七牛云搭建图床.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "更新网页url后，恢复valine网页评论"
+              "title": "配置七牛云搭建图床"
             }
           }
         ],
@@ -136,7 +136,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       },
       {
         "id": "d299abda62253875",
@@ -236,13 +236,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
+                "file": "source/_posts/前端/配置七牛云搭建图床.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "更新网页url后，恢复valine网页评论 的大纲"
+              "title": "配置七牛云搭建图床 的大纲"
             }
           },
           {
@@ -281,8 +281,14 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "297447e4d7be5745",
+  "active": "520d050d9f24a28a",
   "lastOpenFiles": [
+    "source/imgs/Pasted image 20250413131129.png",
+    "source/imgs/Pasted image 20250413131054.png",
+    "source/imgs/Pasted image 20250413130834.png",
+    "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
+    "source/_posts/前端/配置七牛云搭建图床.md",
+    "vpn.sh",
     "source/imgs/Pasted image 20250413123508.png",
     "public/img/icon.png",
     "public/img/friend_404.gif",
@@ -297,17 +303,12 @@
     "public/css",
     "source/imgs/Pasted image 20250413122851.png",
     "source/_posts/前端/本地生成hexo 网页.md",
-    "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
     "source/_posts/前端/申请域名绑定github pages.md",
     "source/_posts/工具/clash在终端设置代理.md",
     "db.json",
-    "public/imgs/白鸽.png",
     "public/imgs/请不要在这里存放jpg图片！无法压缩.sh",
-    "public/imgs/qrcode.jpg",
-    "public/imgs/微信图片_20230319125819.png",
     "public/imgs",
     "public/2024-08-07-117ef9b8f4c6.html",
-    "public/2024-08-11-a8e2c27fed87.html",
     "source/_posts/架构/软件架构/软件架构.md",
     "node_modules/javascript-state-machine/RELEASE_NOTES.md",
     "node_modules/javascript-state-machine/README.md",
@@ -328,7 +329,6 @@
     "node_modules/protobufjs/node_modules/is-fullwidth-code-point/readme.md",
     "node_modules/protobufjs/node_modules/string-width/readme.md",
     "node_modules/protobufjs/node_modules/cliui/README.md",
-    "node_modules/protobufjs/node_modules/cliui/CHANGELOG.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
