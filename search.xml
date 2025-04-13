@@ -14,41 +14,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Go 中是否使用make创建slice的区别</title>
-    <url>/2023-10-05-9d3185fd2258.html</url>
-    <content><![CDATA[<p>go slice 的make 会创建默认长度 且值为0 的slice </p>
-<p>在 Go 语言中，可以使用 <code>make</code> 函数来创建切片（slice）。切片是一种动态数组，它可以在运行时动态增长或缩小。以下是使用 <code>make</code> 和不使用 <code>make</code> 创建切片的主要区别：</p>
-<p><strong>使用 <code>make</code> 创建切片：</strong></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用 make 创建切片，指定长度和容量 </span></span><br><span class="line">slice := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">5</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-
-<ol>
-<li><p><strong>指定长度和容量：</strong> 使用 <code>make</code> 创建切片时，您需要明确指定切片的长度和容量。长度是切片当前包含的元素数量，容量是底层数组的大小，通常大于或等于切片的长度。指定容量可以提高性能，因为它可以减少重新分配内存的次数。</p>
-</li>
-<li><p><strong>底层数组初始化：</strong> 使用 <code>make</code> 创建切片时，它会自动初始化底层数组，将切片的元素都设置为其类型的零值。在上面的示例中，<code>slice</code> 是一个包含5个零值整数的切片。</p>
-</li>
-</ol>
-<p><strong>不使用 <code>make</code> 创建切片：</strong></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不使用 make 创建切片，长度为 5 </span></span><br><span class="line">slice := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
-<p>&#96;</p>
-<ol>
-<li><p><strong>自动确定长度：</strong> 不使用 <code>make</code> 创建切片时，切片的长度会根据提供的元素数量自动确定。在上面的示例中，<code>slice</code> 的长度是5，因为提供了5个整数。</p>
-</li>
-<li><p><strong>容量与长度相同：</strong> 如果不使用 <code>make</code> 创建切片，切片的容量将与长度相同，因为底层数组的大小会与切片的长度相匹配。</p>
-</li>
-</ol>
-<p>总结：</p>
-<ul>
-<li>使用 <code>make</code> 创建切片时，您可以明确控制切片的容量，并<strong>按长度初始化为0值</strong>，适用于需要精确控制内存分配的情况，或者在预先知道切片的最大长度时。</li>
-<li>不使用 <code>make</code> 创建切片时，适用于快速创建切片并根据提供的元素自动确定长度的情况。这种方式更简洁，适合大多数情况。</li>
-</ul>
-<p>无论使用哪种方式创建切片，都可以使用 <code>append</code> 函数来动态增长切片的长度。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>docker容器打包成本地压缩镜像并load</title>
     <url>/2024-08-11-a8e2c27fed87.html</url>
     <content><![CDATA[<h1 id="docker容器打包成镜像和压缩"><a href="#docker容器打包成镜像和压缩" class="headerlink" title="docker容器打包成镜像和压缩"></a>docker容器打包成镜像和压缩</h1><p>（1）将容器保存成新的镜像<br>相当于加了一层，使用docker commit</p>
@@ -94,6 +59,41 @@
       </categories>
   </entry>
   <entry>
+    <title>Go 中是否使用make创建slice的区别</title>
+    <url>/2023-10-05-9d3185fd2258.html</url>
+    <content><![CDATA[<p>go slice 的make 会创建默认长度 且值为0 的slice </p>
+<p>在 Go 语言中，可以使用 <code>make</code> 函数来创建切片（slice）。切片是一种动态数组，它可以在运行时动态增长或缩小。以下是使用 <code>make</code> 和不使用 <code>make</code> 创建切片的主要区别：</p>
+<p><strong>使用 <code>make</code> 创建切片：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用 make 创建切片，指定长度和容量 </span></span><br><span class="line">slice := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">5</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+<ol>
+<li><p><strong>指定长度和容量：</strong> 使用 <code>make</code> 创建切片时，您需要明确指定切片的长度和容量。长度是切片当前包含的元素数量，容量是底层数组的大小，通常大于或等于切片的长度。指定容量可以提高性能，因为它可以减少重新分配内存的次数。</p>
+</li>
+<li><p><strong>底层数组初始化：</strong> 使用 <code>make</code> 创建切片时，它会自动初始化底层数组，将切片的元素都设置为其类型的零值。在上面的示例中，<code>slice</code> 是一个包含5个零值整数的切片。</p>
+</li>
+</ol>
+<p><strong>不使用 <code>make</code> 创建切片：</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不使用 make 创建切片，长度为 5 </span></span><br><span class="line">slice := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>&#96;</p>
+<ol>
+<li><p><strong>自动确定长度：</strong> 不使用 <code>make</code> 创建切片时，切片的长度会根据提供的元素数量自动确定。在上面的示例中，<code>slice</code> 的长度是5，因为提供了5个整数。</p>
+</li>
+<li><p><strong>容量与长度相同：</strong> 如果不使用 <code>make</code> 创建切片，切片的容量将与长度相同，因为底层数组的大小会与切片的长度相匹配。</p>
+</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li>使用 <code>make</code> 创建切片时，您可以明确控制切片的容量，并<strong>按长度初始化为0值</strong>，适用于需要精确控制内存分配的情况，或者在预先知道切片的最大长度时。</li>
+<li>不使用 <code>make</code> 创建切片时，适用于快速创建切片并根据提供的元素自动确定长度的情况。这种方式更简洁，适合大多数情况。</li>
+</ul>
+<p>无论使用哪种方式创建切片，都可以使用 <code>append</code> 函数来动态增长切片的长度。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Go 浮点数次方</title>
     <url>/2024-12-03-3d026e7b5bec.html</url>
     <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
@@ -110,6 +110,25 @@
 <li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
 <li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
 </ul>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Golang 使用new创建slice</title>
+    <url>/2024-07-21-01f71b57e534.html</url>
+    <content><![CDATA[<p>在 Go 语言中，new 关键字用于分配类型为 T 的零值并返回其地址，即类型为 *T 的值。对于 slice 来说，可以使用 new 来分配一个指向 slice 的指针，但是通常我们不这样做，因为 slice 是引用类型，我们更倾向于直接使用 make 函数来创建 slice。</p>
+<p>然而，如果确实需要使用 new 来创建一个 slice 的指针，可以这样做：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s *[]<span class="type">int</span> <span class="comment">// 声明一个指向int类型slice的指针</span></span><br><span class="line">s = <span class="built_in">new</span>([]<span class="type">int</span>) <span class="comment">// 分配一个int类型的slice，并将其地址赋给s</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，这样创建的 slice 是一个空的 slice，它没有任何底层数组（即 nil 的数组），并且长度和容量都是 0。如果需要一个具有特定长度和容量的 slice，应该使用 make 函数：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 创建一个长度为 length，容量为 capacity 的int类型slice</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用 new 创建了一个 slice 指针，并且想要初始化它，可以这样做：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">*s = <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 通过解引用指针并使用make来初始化slice</span></span><br></pre></td></tr></table></figure>
+
+<p>在大多数情况下，直接使用 make 函数来创建 slice 是更常见和更简单的方法。使用 new 创建 slice 指针通常不是必要的，除非你有特定的需求，比如在函数中返回一个 slice 的指针，或者你需要在多个地方共享同一个 slice 的引用。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -139,25 +158,6 @@
 
 <p>tempPath :&#x3D; make([]int, k) &#x2F;&#x2F; <strong>tempPath :&#x3D; []int{}</strong>,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。<br>copy(tempPath, path)</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res [][]<span class="type">int</span> <span class="comment">// go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    res = <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="comment">// 结束条件</span></span><br><span class="line">	<span class="keyword">var</span> backtracking <span class="function"><span class="keyword">func</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>, startIndex <span class="type">int</span>)</span></span></span><br><span class="line">    backtracking = <span class="function"><span class="keyword">func</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>, startIndex <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(path) == k &#123;</span><br><span class="line">            tempPath := <span class="built_in">make</span>([]<span class="type">int</span>, k) <span class="comment">// tempPath := []int&#123;&#125;,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。</span></span><br><span class="line">            <span class="built_in">copy</span>(tempPath, path)</span><br><span class="line">            res = <span class="built_in">append</span>(res, tempPath)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i:= startIndex; i &lt;= n; i++ &#123;</span><br><span class="line">            <span class="keyword">if</span> (n -i +<span class="number">1</span> ) &lt; (k -<span class="built_in">len</span>(path)) &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            path = <span class="built_in">append</span>(path, i)</span><br><span class="line">            backtracking(n, k, i+<span class="number">1</span>)</span><br><span class="line">            path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	backtracking(n,k,<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Golang 使用new创建slice</title>
-    <url>/2024-07-21-01f71b57e534.html</url>
-    <content><![CDATA[<p>在 Go 语言中，new 关键字用于分配类型为 T 的零值并返回其地址，即类型为 *T 的值。对于 slice 来说，可以使用 new 来分配一个指向 slice 的指针，但是通常我们不这样做，因为 slice 是引用类型，我们更倾向于直接使用 make 函数来创建 slice。</p>
-<p>然而，如果确实需要使用 new 来创建一个 slice 的指针，可以这样做：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s *[]<span class="type">int</span> <span class="comment">// 声明一个指向int类型slice的指针</span></span><br><span class="line">s = <span class="built_in">new</span>([]<span class="type">int</span>) <span class="comment">// 分配一个int类型的slice，并将其地址赋给s</span></span><br></pre></td></tr></table></figure>
-
-<p>但是，这样创建的 slice 是一个空的 slice，它没有任何底层数组（即 nil 的数组），并且长度和容量都是 0。如果需要一个具有特定长度和容量的 slice，应该使用 make 函数：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 创建一个长度为 length，容量为 capacity 的int类型slice</span></span><br></pre></td></tr></table></figure>
-
-<p>如果使用 new 创建了一个 slice 指针，并且想要初始化它，可以这样做：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">*s = <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 通过解引用指针并使用make来初始化slice</span></span><br></pre></td></tr></table></figure>
-
-<p>在大多数情况下，直接使用 make 函数来创建 slice 是更常见和更简单的方法。使用 new 创建 slice 指针通常不是必要的，除非你有特定的需求，比如在函数中返回一个 slice 的指针，或者你需要在多个地方共享同一个 slice 的引用。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -300,6 +300,31 @@
       </categories>
   </entry>
   <entry>
+    <title>golang slice无法添加指针</title>
+    <url>/2024-05-02-247b79126fb5.html</url>
+    <content><![CDATA[<p>在Go语言中，指针是一种存储变量内存地址的数据类型。当你有一个指向<code>int</code>的指针，比如<code>timePtr *int</code>，你可以通过<code>*timePtr</code>来访问和修改指针指向的值。然而，指针本身是一个值类型，它存储的是变量的内存地址，而不是变量本身。</p>
+<p>在你提供的<code>add</code>函数中：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(timePtr *<span class="type">int</span>)</span></span> &#123; *timePtr += <span class="number">1</span> &#125; <span class="comment">// 增加一秒</span></span><br></pre></td></tr></table></figure>
+
+<p><code>timePtr</code>是一个指向<code>int</code>的指针。虽然你可以通过<code>*timePtr</code>来间接修改它所指向的<code>int</code>值，但是你不能使用这个指针来创建一个关于<code>*int</code>的切片。原因如下：</p>
+<ol>
+<li><p><strong>指针的值是地址</strong>：<code>timePtr</code>变量存储的是<code>currentTime</code>变量的内存地址，而不是<code>currentTime</code>的值。切片是基于数组的，它们需要一个具体的数据集合来创建。</p>
+</li>
+<li><p><strong>切片的元素类型</strong>：切片的元素类型是固定的，并且是在创建时确定的。你不能创建一个关于<code>*int</code>的切片，<strong>因为切片的元素类型是</strong><code>int</code>，而不是<code>*int</code>（指向<code>int</code>的指针）。</p>
+</li>
+<li><p><strong>切片创建语法</strong>：创建切片通常需要一个数组或另一个切片作为基础，或者使用<code>make</code>函数指定长度和容量。例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr [<span class="number">5</span>]<span class="type">int</span></span><br><span class="line">slice1 := arr[:] <span class="comment">// 基于数组的切片</span></span><br><span class="line">slice2 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">5</span>, <span class="number">10</span>) <span class="comment">// 使用make创建切片</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>如果你的目的是创建一个记录时间变化历史的切片，你需要一个独立的切片来存储这些时间值。你可以在<code>main</code>函数中声明这样一个切片，并在CRUD操作中更新它：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTime <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> history []<span class="type">int</span> <span class="comment">// 用于记录历史时间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(timePtr *<span class="type">int</span>, historyPtr *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    *timePtr++</span><br><span class="line">    historyPtr = <span class="built_in">append</span>(*historyPtr, *timePtr)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    currentTime = <span class="number">0</span></span><br><span class="line">    history = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) <span class="comment">// 初始化历史切片</span></span><br><span class="line"></span><br><span class="line">    add(&amp;currentTime, &amp;history)</span><br><span class="line">    <span class="comment">// 可以继续调用 add 并传入 &amp;currentTime 和 &amp;history 来记录更多时间点</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;History of times:&quot;</span>, history)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>history</code>是一个切片，用于存储时间点的历史记录。每次调用<code>add</code>函数时，我们不仅更新<code>currentTime</code>，还将新的时间点添加到<code>history</code>切片中。注意，由于切片是引用类型，我们传递<code>&amp;history</code>来允许函数修改原始切片。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>golang 中格式化打印单个字符</title>
     <url>/2024-05-03-ec16a5fd018e.html</url>
     <content><![CDATA[<p>在Go语言中，<code>fmt.Printf</code> 函数是用来格式化输出的，它接受一个格式化字符串作为第一个参数，后面跟着相应的参数。格式化字符串中可以包含一些格式化动词（也称为转换说明符），它们定义了如何将相应的参数值转换为字符串并输出。</p>
@@ -329,31 +354,6 @@ dfs(root.Right, res)
 <p>在 Go 语言中，切片是引用类型。这意味着当你将切片传递给函数时，你实际上传递的是切片的引用（底层数组的地址），而不是切片的副本。因此，对切片的修改会影响到原始切片。</p>
 <p>但是需要注意的是，虽然切片是引用类型，但当你在函数内部对切片进行重新分配（比如使用 append 函数时），你实际上是创建了一个新的切片，而原始切片并没有被修改。这是因为切片是对底层数组的一个视图，对切片的修改可能会导致底层数组的重新分配和复制。</p>
 <p>这就是为什么在你的原始 DFS 函数中，尽管你传递了切片 res 给递归函数，但在递归调用中对 res 进行 append 操作并不会修改原始切片的内容。为了避免这个问题，可以通过传递切片的指针来确保在函数内部对切片的修改可以影响到原始切片。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>golang slice无法添加指针</title>
-    <url>/2024-05-02-247b79126fb5.html</url>
-    <content><![CDATA[<p>在Go语言中，指针是一种存储变量内存地址的数据类型。当你有一个指向<code>int</code>的指针，比如<code>timePtr *int</code>，你可以通过<code>*timePtr</code>来访问和修改指针指向的值。然而，指针本身是一个值类型，它存储的是变量的内存地址，而不是变量本身。</p>
-<p>在你提供的<code>add</code>函数中：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(timePtr *<span class="type">int</span>)</span></span> &#123; *timePtr += <span class="number">1</span> &#125; <span class="comment">// 增加一秒</span></span><br></pre></td></tr></table></figure>
-
-<p><code>timePtr</code>是一个指向<code>int</code>的指针。虽然你可以通过<code>*timePtr</code>来间接修改它所指向的<code>int</code>值，但是你不能使用这个指针来创建一个关于<code>*int</code>的切片。原因如下：</p>
-<ol>
-<li><p><strong>指针的值是地址</strong>：<code>timePtr</code>变量存储的是<code>currentTime</code>变量的内存地址，而不是<code>currentTime</code>的值。切片是基于数组的，它们需要一个具体的数据集合来创建。</p>
-</li>
-<li><p><strong>切片的元素类型</strong>：切片的元素类型是固定的，并且是在创建时确定的。你不能创建一个关于<code>*int</code>的切片，<strong>因为切片的元素类型是</strong><code>int</code>，而不是<code>*int</code>（指向<code>int</code>的指针）。</p>
-</li>
-<li><p><strong>切片创建语法</strong>：创建切片通常需要一个数组或另一个切片作为基础，或者使用<code>make</code>函数指定长度和容量。例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr [<span class="number">5</span>]<span class="type">int</span></span><br><span class="line">slice1 := arr[:] <span class="comment">// 基于数组的切片</span></span><br><span class="line">slice2 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">5</span>, <span class="number">10</span>) <span class="comment">// 使用make创建切片</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>如果你的目的是创建一个记录时间变化历史的切片，你需要一个独立的切片来存储这些时间值。你可以在<code>main</code>函数中声明这样一个切片，并在CRUD操作中更新它：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTime <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> history []<span class="type">int</span> <span class="comment">// 用于记录历史时间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(timePtr *<span class="type">int</span>, historyPtr *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    *timePtr++</span><br><span class="line">    historyPtr = <span class="built_in">append</span>(*historyPtr, *timePtr)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    currentTime = <span class="number">0</span></span><br><span class="line">    history = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) <span class="comment">// 初始化历史切片</span></span><br><span class="line"></span><br><span class="line">    add(&amp;currentTime, &amp;history)</span><br><span class="line">    <span class="comment">// 可以继续调用 add 并传入 &amp;currentTime 和 &amp;history 来记录更多时间点</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;History of times:&quot;</span>, history)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>history</code>是一个切片，用于存储时间点的历史记录。每次调用<code>add</code>函数时，我们不仅更新<code>currentTime</code>，还将新的时间点添加到<code>history</code>切片中。注意，由于切片是引用类型，我们传递<code>&amp;history</code>来允许函数修改原始切片。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -763,6 +763,15 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>github同步gitee</title>
+    <url>/2024-07-18-e17dac938cf8.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240719003858.png"></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
     <title>git 设置免密配置-全局免密-单仓库免密-SSH免密</title>
     <url>/2024-01-01-91517aa963bc.html</url>
     <content><![CDATA[<h1 id="介绍之前"><a href="#介绍之前" class="headerlink" title="介绍之前"></a>介绍之前</h1><p>我们要首先知道一个简单的概念:<br>https通过<strong>记住账号密码免登</strong>，ssh通过<strong>校验生成的密钥免登</strong>。 通常都用ssh校验。</p>
@@ -842,15 +851,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>github同步gitee</title>
-    <url>/2024-07-18-e17dac938cf8.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240719003858.png"></p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git强制拉取远端</title>
     <url>/2023-10-22-9bf76366f18c.html</url>
     <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git reset --hard origin/&lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
@@ -903,6 +903,17 @@ dfs(root.Right, res)
       <tags>
         <tag>about</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-8c397fc87827.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>申请域名绑定github pages</title>
@@ -1094,6 +1105,15 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>Leetcode 257.二叉树的所有路径</title>
+    <url>/2023-03-28-53b6b0695943.html</url>
+    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">binaryTreePaths</span><span class="params">(root *TreeNode)</span></span> []<span class="type">string</span> &#123;</span><br><span class="line">    res = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">	backTracking(root)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backTracking</span><span class="params">(root *TreeNode)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 终点 左右子节点都为nil</span></span><br><span class="line">	<span class="keyword">if</span> isLeafNode(root) &#123;</span><br><span class="line">        NodeValStr := strconv.Itoa(root.Val)</span><br><span class="line">	    path = <span class="built_in">append</span>(path, NodeValStr)</span><br><span class="line">		pathStr := strings.Join(path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">		res = <span class="built_in">append</span>(res, pathStr)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 前序遍历 中左右</span></span><br><span class="line">	<span class="comment">// 遍历 每次递归的操作</span></span><br><span class="line">	NodeVal:= strconv.Itoa(root.Val)<span class="comment">// 中</span></span><br><span class="line">	path = <span class="built_in">append</span>(path, NodeVal)</span><br><span class="line">	<span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123; <span class="comment">// 左</span></span><br><span class="line">		backTracking(root.Left)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123; <span class="comment">// 右</span></span><br><span class="line">		backTracking(root.Right)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLeafNode</span><span class="params">(node *TreeNode)</span></span> <span class="type">bool</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> node.Right==<span class="literal">nil</span> &amp;&amp; node.Left== <span class="literal">nil</span> &amp;&amp; node!= <span class="literal">nil</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Leetcode 200.岛屿数量</title>
     <url>/2023-05-10-da8c57fb590a.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/number-of-islands/description/">200. 岛屿数量 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230511010424.png"></p>
@@ -1119,15 +1139,6 @@ dfs(root.Right, res)
       <tags>
         <tag>图遍历，岛屿问题</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Leetcode 257.二叉树的所有路径</title>
-    <url>/2023-03-28-53b6b0695943.html</url>
-    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">binaryTreePaths</span><span class="params">(root *TreeNode)</span></span> []<span class="type">string</span> &#123;</span><br><span class="line">    res = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">	backTracking(root)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backTracking</span><span class="params">(root *TreeNode)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 终点 左右子节点都为nil</span></span><br><span class="line">	<span class="keyword">if</span> isLeafNode(root) &#123;</span><br><span class="line">        NodeValStr := strconv.Itoa(root.Val)</span><br><span class="line">	    path = <span class="built_in">append</span>(path, NodeValStr)</span><br><span class="line">		pathStr := strings.Join(path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">		res = <span class="built_in">append</span>(res, pathStr)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 前序遍历 中左右</span></span><br><span class="line">	<span class="comment">// 遍历 每次递归的操作</span></span><br><span class="line">	NodeVal:= strconv.Itoa(root.Val)<span class="comment">// 中</span></span><br><span class="line">	path = <span class="built_in">append</span>(path, NodeVal)</span><br><span class="line">	<span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123; <span class="comment">// 左</span></span><br><span class="line">		backTracking(root.Left)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123; <span class="comment">// 右</span></span><br><span class="line">		backTracking(root.Right)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLeafNode</span><span class="params">(node *TreeNode)</span></span> <span class="type">bool</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> node.Right==<span class="literal">nil</span> &amp;&amp; node.Left== <span class="literal">nil</span> &amp;&amp; node!= <span class="literal">nil</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>Leetcode 404.左叶子之和</title>
@@ -1171,37 +1182,6 @@ dfs(root.Right, res)
 <p>只需要将 遍历左右的顺序颠倒一下即可</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findBottomLeftValue</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	res := <span class="number">-1</span></span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	queue = <span class="built_in">append</span>(queue, root)</span><br><span class="line">	<span class="comment">//res 在哪里更新呢？</span></span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="comment">// 遍历每一层</span></span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; size; i++ &#123;</span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:]</span><br><span class="line">			<span class="comment">// 获取每一层的最左边的位置，更新res</span></span><br><span class="line">			<span class="keyword">if</span> i == <span class="number">0</span> &#123;</span><br><span class="line">				res = top.Val</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue, top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue, top.Left)</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode  1.两数之和</title>
-    <url>/2024-08-21-64c0a1f316e6.html</url>
-    <content><![CDATA[<p>有两种思路：</p>
-<ol>
-<li>使用暴力遍历， 复杂度的是 O(n ^2)</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j:= i+<span class="number">1</span>; j &lt; <span class="built_in">len</span>(nums); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] == target &#123;</span><br><span class="line">                <span class="keyword">return</span> []<span class="type">int</span>&#123;i, j&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>使用哈希表，是O(n)<br>  使用哈希表需要注意的是， 这里需要判断idx 和idx2 不相同，因为是要找两个位置，不能取同一个位置<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	maps := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		maps[num] = idx</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		<span class="keyword">if</span> idx2, ok := maps[target-num]; ok &amp;&amp; idx != idx2 &#123; <span class="comment">// 00 : 04 : 10 使用哈希表，需要注意的是，有可能使用了同一个idx 这里需要注意</span></span><br><span class="line">			<span class="keyword">return</span> []<span class="type">int</span>&#123;idx, idx2&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 102. 二叉树的层序遍历</title>
-    <url>/2023-05-23-a419f5d1c6af.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/">102. 二叉树的层序遍历 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523224632.png"></p>
-<h1 id="使用slice"><a href="#使用slice" class="headerlink" title="使用slice"></a>使用slice</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 层序遍历 使用size 记录每层数组 queue node 队列</span></span><br><span class="line"></span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">    queue := <span class="built_in">make</span>([]*TreeNode, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> root != <span class="literal">nil</span> &#123;</span><br><span class="line">        queue = <span class="built_in">append</span>(queue, root)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) != <span class="number">0</span> &#123;</span><br><span class="line">        size := <span class="built_in">len</span>(queue)</span><br><span class="line">        levels := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) </span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i:= <span class="number">0</span>; i &lt; size; i++ &#123;</span><br><span class="line">            node := queue[<span class="number">0</span>]</span><br><span class="line">            queue = queue[<span class="number">1</span>:<span class="built_in">len</span>(queue)] <span class="comment">//切掉元素0</span></span><br><span class="line"></span><br><span class="line">            levels = <span class="built_in">append</span>(levels, node.Val) <span class="comment">// 添加元素</span></span><br><span class="line">            <span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, node.Left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> node.Right != <span class="literal">nil</span>  &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, node.Right)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, levels)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="使用list"><a href="#使用list" class="headerlink" title="使用list"></a>使用list</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span>&#123;<span class="comment">//防止为空</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    queue := &amp;list.List&#123;&#125;</span><br><span class="line">    queue.PushBack(root)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> queue.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">        length := queue.Len()               <span class="comment">//保存当前层的长度，然后处理当前层（十分重要，防止添加下层元素影响判断层中元素的个数）     </span></span><br><span class="line">        <span class="keyword">var</span> levelQueue []<span class="type">int</span></span><br><span class="line">        fmt.Println(length)</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length; i++ &#123;</span><br><span class="line">            node := queue.Remove(queue.Front()).(*TreeNode)    <span class="comment">//出队列</span></span><br><span class="line">            <span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue.PushBack(node.Left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> node.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue.PushBack(node.Right)</span><br><span class="line">            &#125;</span><br><span class="line">            levelQueue = <span class="built_in">append</span>(levelQueue, node.Val)    <span class="comment">//将值加入本层切片中</span></span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, levelQueue)          <span class="comment">//放入结果集</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1274,12 +1254,64 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
+    <title>leetcode  1.两数之和</title>
+    <url>/2024-08-21-64c0a1f316e6.html</url>
+    <content><![CDATA[<p>有两种思路：</p>
+<ol>
+<li>使用暴力遍历， 复杂度的是 O(n ^2)</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j:= i+<span class="number">1</span>; j &lt; <span class="built_in">len</span>(nums); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] == target &#123;</span><br><span class="line">                <span class="keyword">return</span> []<span class="type">int</span>&#123;i, j&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用哈希表，是O(n)<br>  使用哈希表需要注意的是， 这里需要判断idx 和idx2 不相同，因为是要找两个位置，不能取同一个位置<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	maps := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		maps[num] = idx</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		<span class="keyword">if</span> idx2, ok := maps[target-num]; ok &amp;&amp; idx != idx2 &#123; <span class="comment">// 00 : 04 : 10 使用哈希表，需要注意的是，有可能使用了同一个idx 这里需要注意</span></span><br><span class="line">			<span class="keyword">return</span> []<span class="type">int</span>&#123;idx, idx2&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 102. 二叉树的层序遍历</title>
+    <url>/2023-05-23-a419f5d1c6af.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/">102. 二叉树的层序遍历 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523224632.png"></p>
+<h1 id="使用slice"><a href="#使用slice" class="headerlink" title="使用slice"></a>使用slice</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 层序遍历 使用size 记录每层数组 queue node 队列</span></span><br><span class="line"></span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">    queue := <span class="built_in">make</span>([]*TreeNode, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> root != <span class="literal">nil</span> &#123;</span><br><span class="line">        queue = <span class="built_in">append</span>(queue, root)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) != <span class="number">0</span> &#123;</span><br><span class="line">        size := <span class="built_in">len</span>(queue)</span><br><span class="line">        levels := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) </span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i:= <span class="number">0</span>; i &lt; size; i++ &#123;</span><br><span class="line">            node := queue[<span class="number">0</span>]</span><br><span class="line">            queue = queue[<span class="number">1</span>:<span class="built_in">len</span>(queue)] <span class="comment">//切掉元素0</span></span><br><span class="line"></span><br><span class="line">            levels = <span class="built_in">append</span>(levels, node.Val) <span class="comment">// 添加元素</span></span><br><span class="line">            <span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, node.Left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> node.Right != <span class="literal">nil</span>  &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, node.Right)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, levels)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="使用list"><a href="#使用list" class="headerlink" title="使用list"></a>使用list</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span>&#123;<span class="comment">//防止为空</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    queue := &amp;list.List&#123;&#125;</span><br><span class="line">    queue.PushBack(root)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> queue.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">        length := queue.Len()               <span class="comment">//保存当前层的长度，然后处理当前层（十分重要，防止添加下层元素影响判断层中元素的个数）     </span></span><br><span class="line">        <span class="keyword">var</span> levelQueue []<span class="type">int</span></span><br><span class="line">        fmt.Println(length)</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length; i++ &#123;</span><br><span class="line">            node := queue.Remove(queue.Front()).(*TreeNode)    <span class="comment">//出队列</span></span><br><span class="line">            <span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue.PushBack(node.Left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> node.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue.PushBack(node.Right)</span><br><span class="line">            &#125;</span><br><span class="line">            levelQueue = <span class="built_in">append</span>(levelQueue, node.Val)    <span class="comment">//将值加入本层切片中</span></span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, levelQueue)          <span class="comment">//放入结果集</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 108.将有序数组转换为二叉搜索树</title>
     <url>/2023-05-04-ce9a22434c37.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
 <p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
 <h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 1170. 比较字符串最小字母出现频次</title>
+    <url>/2023-06-14-88f65f0a1bb7.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
+<p><strong>后缀和（</strong>Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。</p>
+<p>具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+…+A[i-1] 的前缀和，其中 0≤i&lt;n。那么对于任何 0≤l≤r&lt;n，A[l]+A[l+1]+…+A[r] &#x3D; S[r+1]-S[l]。</p>
+<p>在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。</p>
+<h2 id="不使用后缀和"><a href="#不使用后缀和" class="headerlink" title="不使用后缀和"></a>不使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数 f(s)是s字符串中最小字符串的数量</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        <span class="keyword">for</span> idx, c := <span class="keyword">range</span> count &#123; <span class="comment">// 遍历count</span></span><br><span class="line">            <span class="keyword">if</span> c&gt;<span class="number">0</span> &amp;&amp; f(s) &lt; idx &#123;<span class="comment">// 如果count&gt;0,则说明该最小字符串数量(idx) 的个数为c。需要将res 加上这个数量c</span></span><br><span class="line">                res[i]+=c</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用后缀和"><a href="#使用后缀和" class="headerlink" title="使用后缀和"></a>使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算后缀和,i+1 就是大于i位置的所有个数</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">9</span>; i &gt;= <span class="number">1</span>; i-- &#123;</span><br><span class="line">        count[i] += count[i + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        res[i] = count[f(s) + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么是res[i] &#x3D; count[f(s) + 1] ，而不是res[i] &#x3D; count[f(s)]？</strong></p>
+<p>在<code>numSmallerByFrequency</code>函数中， <code>count</code>数组记录的是各个不同频次出现的次数，因此 <code>count[i]</code>代表所有最小字母出现频次不于 i 的字符串的数量。</p>
+<p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
+<p><code>res[i] = count[f(s) + 1]</code></p>
+<p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1315,27 +1347,6 @@ dfs(root.Right, res)
       <tags>
         <tag>二维数组最短路径</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 1170. 比较字符串最小字母出现频次</title>
-    <url>/2023-06-14-88f65f0a1bb7.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
-<p><strong>后缀和（</strong>Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。</p>
-<p>具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+…+A[i-1] 的前缀和，其中 0≤i&lt;n。那么对于任何 0≤l≤r&lt;n，A[l]+A[l+1]+…+A[r] &#x3D; S[r+1]-S[l]。</p>
-<p>在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。</p>
-<h2 id="不使用后缀和"><a href="#不使用后缀和" class="headerlink" title="不使用后缀和"></a>不使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数 f(s)是s字符串中最小字符串的数量</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        <span class="keyword">for</span> idx, c := <span class="keyword">range</span> count &#123; <span class="comment">// 遍历count</span></span><br><span class="line">            <span class="keyword">if</span> c&gt;<span class="number">0</span> &amp;&amp; f(s) &lt; idx &#123;<span class="comment">// 如果count&gt;0,则说明该最小字符串数量(idx) 的个数为c。需要将res 加上这个数量c</span></span><br><span class="line">                res[i]+=c</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用后缀和"><a href="#使用后缀和" class="headerlink" title="使用后缀和"></a>使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算后缀和,i+1 就是大于i位置的所有个数</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">9</span>; i &gt;= <span class="number">1</span>; i-- &#123;</span><br><span class="line">        count[i] += count[i + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        res[i] = count[f(s) + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>为什么是res[i] &#x3D; count[f(s) + 1] ，而不是res[i] &#x3D; count[f(s)]？</strong></p>
-<p>在<code>numSmallerByFrequency</code>函数中， <code>count</code>数组记录的是各个不同频次出现的次数，因此 <code>count[i]</code>代表所有最小字母出现频次不于 i 的字符串的数量。</p>
-<p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
-<p><code>res[i] = count[f(s) + 1]</code></p>
-<p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 122买动态股票的最佳时机II</title>
@@ -1573,6 +1584,24 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
+    <title>leetcode 2511 最多可以摧毁的敌人城堡数目</title>
+    <url>/2023-09-02-72954cc13c19.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-enemy-forts-that-can-be-captured/description/?envType=daily-question&envId=2023-09-02">2511. 最多可以摧毁的敌人城堡数目 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230902205220.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>抽象出来就是求1和-1间最大连续0 的数量。</p>
+<p>有两种情况，开始是1 结尾是-1，中间都是0；第二种情况开始是-1结尾是1，中间都是0；上边怎么保证终点和起点不一样呢？</p>
+<p>1.当然可以分类讨论，代码会很复杂，判断很多，容易出错</p>
+<ol start="2">
+<li>使用 一个变量pre记录开始节点，变更当1或者-1 进来的时候，pre 更新为index，判断当前节点是否和pre 不相等,符合条件则更新res</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">captureForts</span><span class="params">(forts []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    ans, pre := <span class="number">0</span>, <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 记录的是 1 或 -1 的位置 </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, fort := <span class="keyword">range</span> forts &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fort == <span class="number">-1</span> || fort == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> pre &gt;= <span class="number">0</span> &amp;&amp; forts[pre] != fort &#123;</span><br><span class="line"></span><br><span class="line">                ans = max(ans, i - pre - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pre = i</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 226. 翻转二叉树</title>
     <url>/2023-05-23-d59f64e0619b.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
@@ -1592,47 +1621,6 @@ dfs(root.Right, res)
 <p>第二版<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; n &amp;&amp; nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">            nums[i] *= <span class="number">2</span></span><br><span class="line">            nums[i + <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">            nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 2511 最多可以摧毁的敌人城堡数目</title>
-    <url>/2023-09-02-72954cc13c19.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-enemy-forts-that-can-be-captured/description/?envType=daily-question&envId=2023-09-02">2511. 最多可以摧毁的敌人城堡数目 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230902205220.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>抽象出来就是求1和-1间最大连续0 的数量。</p>
-<p>有两种情况，开始是1 结尾是-1，中间都是0；第二种情况开始是-1结尾是1，中间都是0；上边怎么保证终点和起点不一样呢？</p>
-<p>1.当然可以分类讨论，代码会很复杂，判断很多，容易出错</p>
-<ol start="2">
-<li>使用 一个变量pre记录开始节点，变更当1或者-1 进来的时候，pre 更新为index，判断当前节点是否和pre 不相等,符合条件则更新res</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">captureForts</span><span class="params">(forts []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    ans, pre := <span class="number">0</span>, <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 记录的是 1 或 -1 的位置 </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, fort := <span class="keyword">range</span> forts &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fort == <span class="number">-1</span> || fort == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> pre &gt;= <span class="number">0</span> &amp;&amp; forts[pre] != fort &#123;</span><br><span class="line"></span><br><span class="line">                ans = max(ans, i - pre - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pre = i</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 28.找出字符串中第一个匹配项的下标</title>
-    <url>/2023-05-31-396a1cd3c61e.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/">28. 找出字符串中第一个匹配项的下标 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230531222721.png"></p>
-<h1 id="简单解法"><a href="#简单解法" class="headerlink" title="简单解法"></a>简单解法</h1><p>利用split 函数，判断是否能够拆分，如果</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">strStr</span><span class="params">(haystack <span class="type">string</span>, needle <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 使用split 函数，如果存在needle,则会把其切分为至少两个元素的切片</span></span><br><span class="line">	splitList := strings.Split(haystack, needle)</span><br><span class="line">	<span class="comment">// 如果长度为1，且needle!=haystack 说明没找到匹配项，返回-1</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(splitList)== <span class="number">1</span> &amp;&amp; needle!=haystack &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(splitList) &gt; <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">len</span>(splitList[<span class="number">0</span>])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// needle 在haystack的最开头，返回0</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    haystack := <span class="string">&quot;good&quot;</span>  </span><br><span class="line">    needle := <span class="string">&quot;go&quot;</span>  </span><br><span class="line">    splitList := strings.Split(haystack, needle) <span class="comment">// 如果在首位相同，前边会有个空字符串。  </span></span><br><span class="line">    fmt.Println(splitList, <span class="built_in">len</span>(splitList))  </span><br><span class="line">    fmt.Println(<span class="string">&quot;tmp:&quot;</span>, splitList[<span class="number">0</span>])  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [&quot;&quot;  &quot;od&quot;] 2</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="双指针解法"><a href="#双指针解法" class="headerlink" title="双指针解法"></a>双指针解法</h1><p>朴素解法<br>直观的解法的是：枚举原串 ss 中的每个字符作为「发起点」，每次从原串的「发起点」和匹配串的「首位」开始尝试匹配：</p>
-<p>匹配成功：返回本次匹配的原串「发起点」。<br>匹配失败：枚举原串的下一个「发起点」，重新尝试匹配。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">strStr</span><span class="params">(haystack <span class="type">string</span>, needle <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cur := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> cur &lt; <span class="built_in">len</span>(haystack) &#123;</span><br><span class="line">        p1 := cur</span><br><span class="line">        p2 := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> p1 &lt; <span class="built_in">len</span>(haystack) &amp;&amp; p2 &lt; <span class="built_in">len</span>(needle) &amp;&amp; needle[p2] == haystack[p1] &#123;</span><br><span class="line">            p1++</span><br><span class="line">            p2++</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> p2 == <span class="built_in">len</span>(needle) &#123;</span><br><span class="line">            <span class="keyword">return</span> cur</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>可以修改为for 循环</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">strStr</span><span class="params">(haystack <span class="type">string</span>, needle <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(haystack) &lt; <span class="built_in">len</span>(needle) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i:= <span class="number">0</span>; i &lt; <span class="built_in">len</span>(haystack); i++ &#123;</span><br><span class="line">        p1 := i</span><br><span class="line">        p2 := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> p1 &lt; <span class="built_in">len</span>(haystack) &amp;&amp; p2 &lt; <span class="built_in">len</span>(needle) &amp;&amp; needle[p2] == haystack[p1] &#123;</span><br><span class="line">            p1++</span><br><span class="line">            p2++</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> p2 == <span class="built_in">len</span>(needle) &#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="TODO-KMP-算法"><a href="#TODO-KMP-算法" class="headerlink" title="TODO　KMP 算法"></a>TODO　KMP 算法</h1>]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -1704,6 +1692,29 @@ dfs(root.Right, res)
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 28.找出字符串中第一个匹配项的下标</title>
+    <url>/2023-05-31-396a1cd3c61e.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/">28. 找出字符串中第一个匹配项的下标 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230531222721.png"></p>
+<h1 id="简单解法"><a href="#简单解法" class="headerlink" title="简单解法"></a>简单解法</h1><p>利用split 函数，判断是否能够拆分，如果</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">strStr</span><span class="params">(haystack <span class="type">string</span>, needle <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 使用split 函数，如果存在needle,则会把其切分为至少两个元素的切片</span></span><br><span class="line">	splitList := strings.Split(haystack, needle)</span><br><span class="line">	<span class="comment">// 如果长度为1，且needle!=haystack 说明没找到匹配项，返回-1</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(splitList)== <span class="number">1</span> &amp;&amp; needle!=haystack &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(splitList) &gt; <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">len</span>(splitList[<span class="number">0</span>])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// needle 在haystack的最开头，返回0</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    haystack := <span class="string">&quot;good&quot;</span>  </span><br><span class="line">    needle := <span class="string">&quot;go&quot;</span>  </span><br><span class="line">    splitList := strings.Split(haystack, needle) <span class="comment">// 如果在首位相同，前边会有个空字符串。  </span></span><br><span class="line">    fmt.Println(splitList, <span class="built_in">len</span>(splitList))  </span><br><span class="line">    fmt.Println(<span class="string">&quot;tmp:&quot;</span>, splitList[<span class="number">0</span>])  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [&quot;&quot;  &quot;od&quot;] 2</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="双指针解法"><a href="#双指针解法" class="headerlink" title="双指针解法"></a>双指针解法</h1><p>朴素解法<br>直观的解法的是：枚举原串 ss 中的每个字符作为「发起点」，每次从原串的「发起点」和匹配串的「首位」开始尝试匹配：</p>
+<p>匹配成功：返回本次匹配的原串「发起点」。<br>匹配失败：枚举原串的下一个「发起点」，重新尝试匹配。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">strStr</span><span class="params">(haystack <span class="type">string</span>, needle <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cur := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> cur &lt; <span class="built_in">len</span>(haystack) &#123;</span><br><span class="line">        p1 := cur</span><br><span class="line">        p2 := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> p1 &lt; <span class="built_in">len</span>(haystack) &amp;&amp; p2 &lt; <span class="built_in">len</span>(needle) &amp;&amp; needle[p2] == haystack[p1] &#123;</span><br><span class="line">            p1++</span><br><span class="line">            p2++</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> p2 == <span class="built_in">len</span>(needle) &#123;</span><br><span class="line">            <span class="keyword">return</span> cur</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以修改为for 循环</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">strStr</span><span class="params">(haystack <span class="type">string</span>, needle <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(haystack) &lt; <span class="built_in">len</span>(needle) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i:= <span class="number">0</span>; i &lt; <span class="built_in">len</span>(haystack); i++ &#123;</span><br><span class="line">        p1 := i</span><br><span class="line">        p2 := <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> p1 &lt; <span class="built_in">len</span>(haystack) &amp;&amp; p2 &lt; <span class="built_in">len</span>(needle) &amp;&amp; needle[p2] == haystack[p1] &#123;</span><br><span class="line">            p1++</span><br><span class="line">            p2++</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> p2 == <span class="built_in">len</span>(needle) &#123;</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="TODO-KMP-算法"><a href="#TODO-KMP-算法" class="headerlink" title="TODO　KMP 算法"></a>TODO　KMP 算法</h1>]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -2120,20 +2131,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【Golang】for range 数组指针遍历</title>
-    <url>/2024-12-03-90d19c862e9c.html</url>
-    <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
-<p>这意味着，即使<code>for range</code>对指针进行了拷贝，你仍然可以通过这个拷贝的指针修改原始结构体的内容。下面是一个例子来说明这一点：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    students := []*Student&#123;</span><br><span class="line">        &#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">20</span>&#125;,</span><br><span class="line">        &#123;Name: <span class="string">&quot;Bob&quot;</span>, Age: <span class="number">22</span>&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for range遍历指针数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        <span class="comment">// 修改指向的结构体的内容</span></span><br><span class="line">        student.Age += <span class="number">1</span> <span class="comment">// 给每个学生的年龄加1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印修改后的students数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Name: %s, Age: %d\n&quot;</span>, student.Name, student.Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，尽管<code>for range</code>对每个<code>*Student</code>指针进行了拷贝，但通过这个拷贝的指针修改<code>Age</code>字段时，修改的是原始<code>Student</code>结构体的内容。因此，当再次遍历<code>students</code>数组时，你会看到每个学生的年龄都已经增加了。</p>
-<p>总结来说，当你使用<code>for range</code>遍历指针数组并修改指向的值时，这些修改会反映在原始数组上，因为指针拷贝仍然指向原始的内存地址。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>【go】初始化双向列表List</title>
     <url>/2024-01-22-93119ce81a1c.html</url>
     <content><![CDATA[<p>在Go语言中，两种方法都可以用于初始化一个<code>list.List</code>。</p>
@@ -2144,6 +2141,20 @@ dfs(root.Right, res)
 </li>
 </ol>
 <p>两种方式都是有效的</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Golang】for range 数组指针遍历</title>
+    <url>/2024-12-03-90d19c862e9c.html</url>
+    <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
+<p>这意味着，即使<code>for range</code>对指针进行了拷贝，你仍然可以通过这个拷贝的指针修改原始结构体的内容。下面是一个例子来说明这一点：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    students := []*Student&#123;</span><br><span class="line">        &#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">20</span>&#125;,</span><br><span class="line">        &#123;Name: <span class="string">&quot;Bob&quot;</span>, Age: <span class="number">22</span>&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for range遍历指针数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        <span class="comment">// 修改指向的结构体的内容</span></span><br><span class="line">        student.Age += <span class="number">1</span> <span class="comment">// 给每个学生的年龄加1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印修改后的students数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Name: %s, Age: %d\n&quot;</span>, student.Name, student.Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，尽管<code>for range</code>对每个<code>*Student</code>指针进行了拷贝，但通过这个拷贝的指针修改<code>Age</code>字段时，修改的是原始<code>Student</code>结构体的内容。因此，当再次遍历<code>students</code>数组时，你会看到每个学生的年龄都已经增加了。</p>
+<p>总结来说，当你使用<code>for range</code>遍历指针数组并修改指向的值时，这些修改会反映在原始数组上，因为指针拷贝仍然指向原始的内存地址。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2335,6 +2346,81 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>设计题思考</title>
+    <url>/2024-05-08-9a58f8b87168.html</url>
+    <content><![CDATA[<p>设计数据结构和算法时，通常需要遵循以下步骤来解决问题：</p>
+<ol>
+<li><p><strong>理解问题</strong>：首先，彻底理解题目要求做什么，包括输入、输出、限制条件等。</p>
+</li>
+<li><p><strong>确定需求</strong>：明确需要哪些<strong>数据结构</strong>来存储信息，以及如何使用这些数据结构来满足题目的需求。</p>
+</li>
+<li><p><strong>设计数据结构</strong>：</p>
+<ul>
+<li>确定实体类型：例如，用户（User）、推文（Tweet）等。</li>
+<li>确定实体之间的关系：例如，用户可以发布推文，用户可以关注其他用户。</li>
+</ul>
+</li>
+<li><p><strong>定义方法</strong>：根据题目要求，设计所需的方法或函数，如发布推文、关注用户、取消关注和获取信息流。</p>
+</li>
+<li><p><strong>实现逻辑</strong>：为每个方法设计逻辑，考虑如何使用数据结构来实现题目要求的功能。</p>
+</li>
+<li><p><strong>考虑边界条件和错误处理</strong>：确保你的代码可以处理各种边界情况和潜在的错误。</p>
+</li>
+<li><p><strong>优化</strong>：在满足基本要求后，考虑是否可以优化代码，比如提高时间效率或空间效率。</p>
+</li>
+</ol>
+<p>对于LeetCode题目 <strong>设计推特</strong>，思考过程如下：</p>
+<ol>
+<li><p><strong>理解题目</strong>：题目要求模拟Twitter的功能，包括用户发布推文、关注和取消关注，以及获取个人的信息流。</p>
+</li>
+<li><p><strong>确定需求</strong>：</p>
+<ul>
+<li>需要存储用户信息，包括用户ID、关注列表和推文列表。</li>
+<li>需要存储推文信息，包括推文ID和时间戳。</li>
+</ul>
+</li>
+<li><p><strong>设计数据结构</strong>：</p>
+<ul>
+<li><code>Twitter</code>：包含用户映射，用于快速访问用户信息。</li>
+<li><code>User</code>：包含用户ID、关注列表和推文列表。</li>
+<li><code>Tweet</code>：包含推文ID和时间戳。</li>
+</ul>
+</li>
+<li><p><strong>定义方法</strong>：</p>
+<ul>
+<li><code>Constructor</code>：初始化<code>Twitter</code>实例。</li>
+<li><code>PostTweet</code>：实现用户发布推文的逻辑。</li>
+<li><code>Follow</code>：实现用户关注其他用户的逻辑。</li>
+<li><code>Unfollow</code>：实现用户取消关注的逻辑。</li>
+<li><code>GetNewsFeed</code>：实现获取用户信息流的逻辑。</li>
+</ul>
+</li>
+<li><p><strong>实现逻辑</strong>：</p>
+<ul>
+<li>对于<code>PostTweet</code>，检查用户是否存在，如果不存在则创建用户，然后添加推文。</li>
+<li>对于<code>Follow</code>和<code>Unfollow</code>，更新用户的<code>followees</code>映射。</li>
+<li>对于<code>GetNewsFeed</code>，收集并排序推文，然后返回结果。</li>
+</ul>
+</li>
+<li><p><strong>考虑边界条件</strong>：</p>
+<ul>
+<li>确保在添加推文或关注用户时，处理用户不存在的情况。</li>
+<li>在获取信息流时，处理用户没有推文或关注任何人的情况。</li>
+</ul>
+</li>
+<li><p><strong>优化</strong>：</p>
+<ul>
+<li>考虑是否可以使用更高效的数据结构或算法来提高性能。</li>
+</ul>
+</li>
+</ol>
+<p>在解决LeetCode题目时，通常需要具备一定的数据结构和算法知识，包括对数组、链表、树、图、哈希表等的熟悉，以及对排序、搜索、动态规划等算法的理解。此外，练习和分析不同的题目类型和解法也是提高解题能力的关键。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>设计题 总结</title>
     <url>/2024-04-05-d9f9294c39ef.html</url>
     <content><![CDATA[<p>举个简单的例子：<br><strong>设计题 - 实现浏览器历史记录</strong><br>1.初始化 homepage 和历史记录容量<br>2.浏览网页 </p>
@@ -2447,81 +2533,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>设计题思考</title>
-    <url>/2024-05-08-9a58f8b87168.html</url>
-    <content><![CDATA[<p>设计数据结构和算法时，通常需要遵循以下步骤来解决问题：</p>
-<ol>
-<li><p><strong>理解问题</strong>：首先，彻底理解题目要求做什么，包括输入、输出、限制条件等。</p>
-</li>
-<li><p><strong>确定需求</strong>：明确需要哪些<strong>数据结构</strong>来存储信息，以及如何使用这些数据结构来满足题目的需求。</p>
-</li>
-<li><p><strong>设计数据结构</strong>：</p>
-<ul>
-<li>确定实体类型：例如，用户（User）、推文（Tweet）等。</li>
-<li>确定实体之间的关系：例如，用户可以发布推文，用户可以关注其他用户。</li>
-</ul>
-</li>
-<li><p><strong>定义方法</strong>：根据题目要求，设计所需的方法或函数，如发布推文、关注用户、取消关注和获取信息流。</p>
-</li>
-<li><p><strong>实现逻辑</strong>：为每个方法设计逻辑，考虑如何使用数据结构来实现题目要求的功能。</p>
-</li>
-<li><p><strong>考虑边界条件和错误处理</strong>：确保你的代码可以处理各种边界情况和潜在的错误。</p>
-</li>
-<li><p><strong>优化</strong>：在满足基本要求后，考虑是否可以优化代码，比如提高时间效率或空间效率。</p>
-</li>
-</ol>
-<p>对于LeetCode题目 <strong>设计推特</strong>，思考过程如下：</p>
-<ol>
-<li><p><strong>理解题目</strong>：题目要求模拟Twitter的功能，包括用户发布推文、关注和取消关注，以及获取个人的信息流。</p>
-</li>
-<li><p><strong>确定需求</strong>：</p>
-<ul>
-<li>需要存储用户信息，包括用户ID、关注列表和推文列表。</li>
-<li>需要存储推文信息，包括推文ID和时间戳。</li>
-</ul>
-</li>
-<li><p><strong>设计数据结构</strong>：</p>
-<ul>
-<li><code>Twitter</code>：包含用户映射，用于快速访问用户信息。</li>
-<li><code>User</code>：包含用户ID、关注列表和推文列表。</li>
-<li><code>Tweet</code>：包含推文ID和时间戳。</li>
-</ul>
-</li>
-<li><p><strong>定义方法</strong>：</p>
-<ul>
-<li><code>Constructor</code>：初始化<code>Twitter</code>实例。</li>
-<li><code>PostTweet</code>：实现用户发布推文的逻辑。</li>
-<li><code>Follow</code>：实现用户关注其他用户的逻辑。</li>
-<li><code>Unfollow</code>：实现用户取消关注的逻辑。</li>
-<li><code>GetNewsFeed</code>：实现获取用户信息流的逻辑。</li>
-</ul>
-</li>
-<li><p><strong>实现逻辑</strong>：</p>
-<ul>
-<li>对于<code>PostTweet</code>，检查用户是否存在，如果不存在则创建用户，然后添加推文。</li>
-<li>对于<code>Follow</code>和<code>Unfollow</code>，更新用户的<code>followees</code>映射。</li>
-<li>对于<code>GetNewsFeed</code>，收集并排序推文，然后返回结果。</li>
-</ul>
-</li>
-<li><p><strong>考虑边界条件</strong>：</p>
-<ul>
-<li>确保在添加推文或关注用户时，处理用户不存在的情况。</li>
-<li>在获取信息流时，处理用户没有推文或关注任何人的情况。</li>
-</ul>
-</li>
-<li><p><strong>优化</strong>：</p>
-<ul>
-<li>考虑是否可以使用更高效的数据结构或算法来提高性能。</li>
-</ul>
-</li>
-</ol>
-<p>在解决LeetCode题目时，通常需要具备一定的数据结构和算法知识，包括对数组、链表、树、图、哈希表等的熟悉，以及对排序、搜索、动态规划等算法的理解。此外，练习和分析不同的题目类型和解法也是提高解题能力的关键。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>链表总结</title>
     <url>/2023-06-24-42b41b131ba0.html</url>
     <content><![CDATA[<h1 id="链表的合并"><a href="#链表的合并" class="headerlink" title="链表的合并"></a>链表的合并</h1><ul>
@@ -2572,19 +2583,6 @@ dfs(root.Right, res)
       <categories>
         <category>leetcode</category>
       </categories>
-  </entry>
-  <entry>
-    <title>波纹</title>
-    <url>/2023-04-08-722322c4ddc3.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
-]]></content>
-      <categories>
-        <category>摄影</category>
-      </categories>
-      <tags>
-        <tag>摄影</tag>
-        <tag>水</tag>
-      </tags>
   </entry>
   <entry>
     <title>JetBrians 全家桶设置文件header</title>
@@ -2682,22 +2680,22 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>快来压缩你的博客图片</title>
-    <url>/2023-03-23-4868b6a1c39c.html</url>
-    <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>windows新增wsl bash here键快捷方式</title>
     <url>/2024-01-01-38178c63ba17.html</url>
     <content><![CDATA[<p>win + R 输入regedit<br><img src="/../../imgs/Pasted%20image%2020240101182355.png"><br>输入到 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell</p>
 <h1 id="新建wsl-bash-here目录-设置如下默认值"><a href="#新建wsl-bash-here目录-设置如下默认值" class="headerlink" title="新建wsl_bash_here目录, 设置如下默认值"></a>新建wsl_bash_here目录, 设置如下默认值</h1><p><img src="/../../imgs/Pasted%20image%2020240101183252.png"></p>
 <h1 id="新建command新建项，输入wsl-exe-的地址"><a href="#新建command新建项，输入wsl-exe-的地址" class="headerlink" title="新建command新建项，输入wsl.exe 的地址"></a>新建command新建项，输入wsl.exe 的地址</h1><p><img src="/../../imgs/Pasted%20image%2020240101183246.png"></p>
 <h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p>可以看到右侧是有wsl bash here的选项的<br><img src="/../../imgs/Pasted%20image%2020240101183634.png"><br><strong>在当面目录打开wsl 成功</strong><br><img src="/../../imgs/Pasted%20image%2020240101183645.png"><br>原理和添加git bash here 类似, 参考:<br><a href="https://blog.csdn.net/Passerby_Wang/article/details/120881670">手动添加Git Bash Here到右键菜单（超详细）_gitbash添加到右键-CSDN博客</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>快来压缩你的博客图片</title>
+    <url>/2023-03-23-4868b6a1c39c.html</url>
+    <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2721,6 +2719,21 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
+    <url>/2024-01-14-2aaa71f8e7be.html</url>
+    <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
+<p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!s::Send &#123;Down&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
+<p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
+<p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【最强春节抢票攻略】火车票抢票攻略</title>
     <url>/2025-01-13-facf42a009b6.html</url>
     <content><![CDATA[<h1 id="1-下载分流抢票（windows-，并安装"><a href="#1-下载分流抢票（windows-，并安装" class="headerlink" title="1. 下载分流抢票（windows) ，并安装"></a>1. 下载分流抢票（windows) ，并安装</h1><p><a href="https://www.bypass.cn/">https://www.bypass.cn/</a></p>
@@ -2731,21 +2744,6 @@ dfs(root.Right, res)
 <h1 id="5-设置自动支付"><a href="#5-设置自动支付" class="headerlink" title="5.设置自动支付"></a>5.设置自动支付</h1><p>绑定支付宝，抢到票自动支付。<br><img src="/../../imgs/Pasted%20image%2020250113231928.png"></p>
 <h1 id="6-设置定时抢票提前两秒"><a href="#6-设置定时抢票提前两秒" class="headerlink" title="6. 设置定时抢票提前两秒"></a>6. 设置定时抢票提前两秒</h1><p>时间间隔修改为200，设置更低的话IP容易被封（200我抢成功了），点击<font color="#00b0f0">开始抢票</font>！等待抢票成功吧！<br><img src="/../../imgs/Pasted%20image%2020250113231359.png"></p>
 <h1 id="抢到啦"><a href="#抢到啦" class="headerlink" title="抢到啦"></a>抢到啦</h1><p><img src="/../../imgs/56b7445f8dd9a71eb1cd751e0030567.jpg"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
-    <url>/2024-01-14-2aaa71f8e7be.html</url>
-    <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
-<p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!s::Send &#123;Down&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
-<p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
-<p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2835,6 +2833,19 @@ dfs(root.Right, res)
       <categories>
         <category>工具</category>
       </categories>
+  </entry>
+  <entry>
+    <title>波纹</title>
+    <url>/2023-04-08-722322c4ddc3.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
+]]></content>
+      <categories>
+        <category>摄影</category>
+      </categories>
+      <tags>
+        <tag>摄影</tag>
+        <tag>水</tag>
+      </tags>
   </entry>
   <entry>
     <title>Mesh组网：家庭路由和无线连接新方式</title>
@@ -2946,18 +2957,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>设计模式-抽象工厂</title>
-    <url>/2023-09-03-c6ab66461699.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230903231353.png"></p>
-<h1 id="抽象工厂模式结构"><a href="#抽象工厂模式结构" class="headerlink" title="抽象工厂模式结构"></a>抽象工厂模式结构</h1><p><img src="/../../imgs/Pasted%20image%2020230903231449.png"><br>多个工厂模式;</p>
-<p>有抽象工厂(现代工厂,和古代工厂),具体工厂(现代工程和古代风格工厂实现),抽象产品(接口 ,椅子和桌子) 和具体产品(实现具体的桌子和椅子)</p>
-<p><img src="/../../imgs/Pasted%20image%2020230903231857.png"></p>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-  </entry>
-  <entry>
     <title>设计模式-工厂方法模式</title>
     <url>/2023-09-03-c58ee0dac51b.html</url>
     <content><![CDATA[<p>网站链接：<br><a href="https://refactoringguru.cn/design-patterns/factory-method">工厂方法设计模式 (refactoringguru.cn)</a></p>
@@ -3005,35 +3004,15 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>如何画好一个架构图</title>
-    <url>/2025-02-19-d829d1f5a9ea.html</url>
-    <content><![CDATA[<h1 id="业务架构"><a href="#业务架构" class="headerlink" title="业务架构"></a>业务架构</h1><p><img src="/../../../imgs/Pasted%20image%2020250219195041.png"></p>
-<h1 id="客户端架构、前端架构"><a href="#客户端架构、前端架构" class="headerlink" title="客户端架构、前端架构"></a>客户端架构、前端架构</h1><p>类似于逻辑视图</p>
-<ul>
-<li>通过不同的颜色白标识不同颜色</li>
-</ul>
-<p><img src="/../../../imgs/Pasted%20image%2020250219195111.png"></p>
-<h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>技术架构或者是后端架构，后端的逻辑架构<br>后端架构是核心架构<br><img src="/../../../imgs/Pasted%20image%2020250219195326.png"><img src="/../../../imgs/Pasted%20image%2020250219195934.png"><br>两张图 左边说明功能，右边说明交互。和业务架构有区别。</p>
-<h1 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h1><p>描述后端系统有哪些应用组成</p>
-<p>使用场景：</p>
-<ul>
-<li>项目开发和测试</li>
-<li>部署发布</li>
-<li>子领域项目架构，下方就是个会员中心*</li>
-</ul>
-<p><img src="/../../../imgs/Pasted%20image%2020250219200124.png"><img src="/../../../imgs/Pasted%20image%2020250219200345.png"></p>
-<h1 id="部署架构-物理视图"><a href="#部署架构-物理视图" class="headerlink" title="部署架构 - 物理视图"></a>部署架构 - 物理视图</h1><p>描述后端系统具体是如何部署的，对应4+1 视图中的物理视图</p>
-<p>使用场景</p>
-<ul>
-<li>总体架构设计</li>
-<li>运维规划和优化</li>
-<li>画图技巧</li>
-<li>使用图标代替区块*<br><img src="/../../../imgs/Pasted%20image%2020250219200529.png"><br>上边的球是网络加速点</li>
-</ul>
-<p><a href="https://www.bilibili.com/video/BV1764y1a7PD/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=8d35f023c28f4bba76bb3fadea08f222">前阿里 P9 教你如何画好一张架构图_哔哩哔哩_bilibili</a></p>
+    <title>设计模式-抽象工厂</title>
+    <url>/2023-09-03-c6ab66461699.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230903231353.png"></p>
+<h1 id="抽象工厂模式结构"><a href="#抽象工厂模式结构" class="headerlink" title="抽象工厂模式结构"></a>抽象工厂模式结构</h1><p><img src="/../../imgs/Pasted%20image%2020230903231449.png"><br>多个工厂模式;</p>
+<p>有抽象工厂(现代工厂,和古代工厂),具体工厂(现代工程和古代风格工厂实现),抽象产品(接口 ,椅子和桌子) 和具体产品(实现具体的桌子和椅子)</p>
+<p><img src="/../../imgs/Pasted%20image%2020230903231857.png"></p>
 ]]></content>
       <categories>
-        <category>架构</category>
+        <category>设计模式</category>
       </categories>
   </entry>
   <entry>
@@ -3119,6 +3098,38 @@ dfs(root.Right, res)
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> leetcode1700  </span><br><span class="line">  </span><br><span class="line"><span class="comment">// 9分钟完成  </span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">countStudents</span><span class="params">(students []<span class="type">int</span>, sandwiches []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;  </span><br><span class="line">    <span class="comment">// 栈模拟  </span></span><br><span class="line">    <span class="comment">// 结束条件  </span></span><br><span class="line">    <span class="comment">// 同学中数字都相同，且不等于栈顶元素 [0]  </span></span><br><span class="line">    <span class="keyword">for</span> !isEnd(students, sandwiches) &#123;  </span><br><span class="line">       <span class="keyword">if</span> sandwiches[<span class="number">0</span>] == students[<span class="number">0</span>] &#123;  </span><br><span class="line">          sandwiches = sandwiches[<span class="number">1</span>:]  </span><br><span class="line">          students = students[<span class="number">1</span>:]  </span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">          students = <span class="built_in">append</span>(students[<span class="number">1</span>:], students[<span class="number">0</span>])  </span><br><span class="line">       &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(students)  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isEnd</span><span class="params">(students []<span class="type">int</span>, sandwiches []<span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;  </span><br><span class="line">    <span class="keyword">for</span> _, val := <span class="keyword">range</span> students &#123;  </span><br><span class="line">       <span class="keyword">if</span> val == sandwiches[<span class="number">0</span>] &#123;  </span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>  </span><br><span class="line">       &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>速刷记录</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何画好一个架构图</title>
+    <url>/2025-02-19-d829d1f5a9ea.html</url>
+    <content><![CDATA[<h1 id="业务架构"><a href="#业务架构" class="headerlink" title="业务架构"></a>业务架构</h1><p><img src="/../../../imgs/Pasted%20image%2020250219195041.png"></p>
+<h1 id="客户端架构、前端架构"><a href="#客户端架构、前端架构" class="headerlink" title="客户端架构、前端架构"></a>客户端架构、前端架构</h1><p>类似于逻辑视图</p>
+<ul>
+<li>通过不同的颜色白标识不同颜色</li>
+</ul>
+<p><img src="/../../../imgs/Pasted%20image%2020250219195111.png"></p>
+<h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p>技术架构或者是后端架构，后端的逻辑架构<br>后端架构是核心架构<br><img src="/../../../imgs/Pasted%20image%2020250219195326.png"><img src="/../../../imgs/Pasted%20image%2020250219195934.png"><br>两张图 左边说明功能，右边说明交互。和业务架构有区别。</p>
+<h1 id="应用架构"><a href="#应用架构" class="headerlink" title="应用架构"></a>应用架构</h1><p>描述后端系统有哪些应用组成</p>
+<p>使用场景：</p>
+<ul>
+<li>项目开发和测试</li>
+<li>部署发布</li>
+<li>子领域项目架构，下方就是个会员中心*</li>
+</ul>
+<p><img src="/../../../imgs/Pasted%20image%2020250219200124.png"><img src="/../../../imgs/Pasted%20image%2020250219200345.png"></p>
+<h1 id="部署架构-物理视图"><a href="#部署架构-物理视图" class="headerlink" title="部署架构 - 物理视图"></a>部署架构 - 物理视图</h1><p>描述后端系统具体是如何部署的，对应4+1 视图中的物理视图</p>
+<p>使用场景</p>
+<ul>
+<li>总体架构设计</li>
+<li>运维规划和优化</li>
+<li>画图技巧</li>
+<li>使用图标代替区块*<br><img src="/../../../imgs/Pasted%20image%2020250219200529.png"><br>上边的球是网络加速点</li>
+</ul>
+<p><a href="https://www.bilibili.com/video/BV1764y1a7PD/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=8d35f023c28f4bba76bb3fadea08f222">前阿里 P9 教你如何画好一张架构图_哔哩哔哩_bilibili</a></p>
+]]></content>
+      <categories>
+        <category>架构</category>
       </categories>
   </entry>
   <entry>
