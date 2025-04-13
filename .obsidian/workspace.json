@@ -281,8 +281,9 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "520d050d9f24a28a",
+  "active": "297447e4d7be5745",
   "lastOpenFiles": [
+    "themes/butterfly/source/img/loading.gif",
     "source/imgs/Pasted image 20250413131129.png",
     "source/imgs/Pasted image 20250413131054.png",
     "source/imgs/Pasted image 20250413130834.png",
@@ -301,7 +302,6 @@
     "public/css/var.css",
     "public/css/index.css",
     "public/css",
-    "source/imgs/Pasted image 20250413122851.png",
     "source/_posts/前端/本地生成hexo 网页.md",
     "source/_posts/前端/申请域名绑定github pages.md",
     "source/_posts/工具/clash在终端设置代理.md",
