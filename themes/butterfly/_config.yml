@@ -610,12 +610,11 @@ gitalk:
 # Valine
 # https://valine.js.org
 valine:
-  enable: true
   appId: adkgmMmfMC1DMgYcjg960d5a-gzGzoHsz
   appKey: RTNGcd7iOxYeuwCSRE5LHm2D
-  bg:
   avatar: monsterid
   # This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)
+  bg:
   serverURLs:
   # Use Valine visitor count as the page view count
   visitor: false
