@@ -285,21 +285,6 @@
       </tags>
   </entry>
   <entry>
-    <title>goland中debug 无法显示全局变量解决</title>
-    <url>/2024-05-07-c105be0dd846.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240508002347.png">实际只会有局部变量，没有全局变量test</p>
-<p><img src="/../../imgs/Pasted%20image%2020240508002425.png"></p>
-<p>解决方法：</p>
-<p>右键  选择+ New Watch ； 或者 按按键 Insert </p>
-<p>添加变量 test 即可</p>
-<p><img src="/../../imgs/Pasted%20image%2020240508002502.png"><img src="/../../imgs/Pasted%20image%2020240508002708.png"></p>
-<h1 id="添加成功"><a href="#添加成功" class="headerlink" title="添加成功"></a>添加成功</h1><p><img src="/../../imgs/Pasted%20image%2020240508002737.png"><br>之后每次单步执行都会显示变量结果：<br><img src="/../../imgs/Pasted%20image%2020240508002814.png"></p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>golang slice无法添加指针</title>
     <url>/2024-05-02-247b79126fb5.html</url>
     <content><![CDATA[<p>在Go语言中，指针是一种存储变量内存地址的数据类型。当你有一个指向<code>int</code>的指针，比如<code>timePtr *int</code>，你可以通过<code>*timePtr</code>来访问和修改指针指向的值。然而，指针本身是一个值类型，它存储的是变量的内存地址，而不是变量本身。</p>
@@ -337,6 +322,21 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">    bytes := []<span class="type">byte</span>(s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b := <span class="keyword">range</span> bytes &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Byte %d: %c\n&quot;</span>, i, b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出:</span></span><br><span class="line">    <span class="comment">// Byte 0: h</span></span><br><span class="line">    <span class="comment">// Byte 1: e</span></span><br><span class="line">    <span class="comment">// Byte 2: l</span></span><br><span class="line">    <span class="comment">// Byte 3: l</span></span><br><span class="line">    <span class="comment">// Byte 4: o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，我们遍历字符串 <code>&quot;hello&quot;</code> 的字节表示，并使用 <code>%c</code> 格式化每个字节为字符。由于 “hello” 由纯ASCII字符组成，每个字节都是一个完整的字符。如果处理包含多字节UTF-8字符的字符串，单独的字节可能不会形成有效的字符。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>goland中debug 无法显示全局变量解决</title>
+    <url>/2024-05-07-c105be0dd846.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240508002347.png">实际只会有局部变量，没有全局变量test</p>
+<p><img src="/../../imgs/Pasted%20image%2020240508002425.png"></p>
+<p>解决方法：</p>
+<p>右键  选择+ New Watch ； 或者 按按键 Insert </p>
+<p>添加变量 test 即可</p>
+<p><img src="/../../imgs/Pasted%20image%2020240508002502.png"><img src="/../../imgs/Pasted%20image%2020240508002708.png"></p>
+<h1 id="添加成功"><a href="#添加成功" class="headerlink" title="添加成功"></a>添加成功</h1><p><img src="/../../imgs/Pasted%20image%2020240508002737.png"><br>之后每次单步执行都会显示变量结果：<br><img src="/../../imgs/Pasted%20image%2020240508002814.png"></p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -851,16 +851,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>git更新仓库地址</title>
-    <url>/2024-07-23-764a3cd05cde.html</url>
-    <content><![CDATA[<p>使用如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git强制拉取远端</title>
     <url>/2023-10-22-9bf76366f18c.html</url>
     <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git reset --hard origin/&lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
@@ -868,6 +858,16 @@ dfs(root.Right, res)
 <p>git fetch origin：这个命令会从远程仓库（通常是”origin”，可以根据你的实际情况替换）获取最新的分支信息，但不会合并或应用任何更改到你的本地分支。</p>
 <p>git reset –hard origin&#x2F;<branch_name>：这个命令会将你的本地分支重置为与指定远程分支相同的状态，并且会放弃本地的任何更改。–hard 标志会强制应用这个重置，因此请小心使用，确保你不需要本地的更改。</p>
 <p>这些命令将强制拉取远程分支的最新版本，并且会覆盖本地的任何更改。确保在执行这些命令之前，你没有重要的未提交更改，因为它们将永久丢失。</p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git更新仓库地址</title>
+    <url>/2024-07-23-764a3cd05cde.html</url>
+    <content><![CDATA[<p>使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>git</category>
@@ -1210,6 +1210,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
+    <url>/2023-05-04-ce9a22434c37.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
+<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 104.二叉树的深度</title>
     <url>/2023-05-30-b1879d2b65d1.html</url>
     <content><![CDATA[<p>个人网站：<a href="https://leiqicn.gitee.io/categories/leetcode/">https://leiqicn.gitee.io/categories/leetcode/</a><br><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230531000419.png"></p>
@@ -1234,18 +1246,6 @@ dfs(root.Right, res)
         <tag>BFS</tag>
         <tag>层序遍历</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
-    <url>/2023-05-04-ce9a22434c37.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
-<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 1091.二进制矩阵中的最短路径</title>
@@ -2008,29 +2008,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【20240106】leetcode 2807. 在链表中插入最大公约数</title>
-    <url>/2024-01-06-2b3ad028343c.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list/description/?envType=daily-question&envId=2024-01-06">2807. 在链表中插入最大公约数 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240106233021.png"></p>
-<p>最大公约数（GCD，Greatest Common Divisor）是两个或多个整数的共有因数中的最大值。也叫作最大公因数、最大公因子或最大公量。如果两个整数的最大公约数是 1，那么它们被称为互质。</p>
-<p>计算两个整数的最大公约数有多种方法，其中最著名的方法之一是辗转相除法（Euclidean Algorithm）。辗转相除法的基本思想是通过反复应用两个整数的除法余数关系，直到余数为零为止。具体步骤如下：</p>
-<ol>
-<li>用较大的数除以较小的数，得到余数。</li>
-<li>将较小的数作为新的被除数，余数作为新的除数。</li>
-<li>重复步骤 1 和 2，直到余数为零。</li>
-<li>最后的非零余数即为最大公约数。</li>
-</ol>
-<p>这个算法的效率很高，时间复杂度为 �(log⁡(min⁡(�,�)))O(log(min(a,b)))。</p>
-<p>以下是一个用 Go 语言实现的最大公约数的辗转相除法示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 辗转相除法求最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gcd</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> b != <span class="number">0</span> &#123;</span><br><span class="line">        temp := b</span><br><span class="line">        b = a % b</span><br><span class="line">        a = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    num1 := <span class="number">48</span></span><br><span class="line">    num2 := <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    result := gcd(num1, num2)</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;最大公约数为:&quot;</span>, result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>gcd</code> 函数使用了辗转相除法来计算两个整数的最大公约数。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>【20240114】LeetCode 83. 删除排序链表中的重复元素</title>
     <url>/2024-01-14-e61755fec3db.html</url>
     <content><![CDATA[<blockquote>
@@ -2052,6 +2029,29 @@ dfs(root.Right, res)
 <p>添加空间复杂度, 示例： $O(n)$</p>
 </blockquote>
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteDuplicates</span><span class="params">(head *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="keyword">for</span> i := head; i != <span class="literal">nil</span> &amp;&amp; i.Next != <span class="literal">nil</span> ; &#123;</span><br><span class="line">        <span class="keyword">if</span> i.Next.Val == i.Val &#123;</span><br><span class="line">            i.Next = i.Next.Next <span class="comment">// 这里不用移动下个元素，只用删除重复元素 for i := head; i != nil &amp;&amp; i.Next != nil ;i = i.Next &#123;  i = i.Next不需要</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            i = i.Next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteDuplicates</span><span class="params">(head *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    current := head</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> current != <span class="literal">nil</span> &amp;&amp; current.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> current.Next.Val == current.Val &#123;</span><br><span class="line">            <span class="comment">// 保存下一个节点的引用</span></span><br><span class="line">            nextNode := current.Next</span><br><span class="line">            <span class="comment">// 删除当前节点</span></span><br><span class="line">            current.Next = nextNode.Next</span><br><span class="line">            <span class="comment">// 释放内存</span></span><br><span class="line">            nextNode = <span class="literal">nil</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 非重复元素，继续遍历</span></span><br><span class="line">            current = current.Next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【20240106】leetcode 2807. 在链表中插入最大公约数</title>
+    <url>/2024-01-06-2b3ad028343c.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list/description/?envType=daily-question&envId=2024-01-06">2807. 在链表中插入最大公约数 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240106233021.png"></p>
+<p>最大公约数（GCD，Greatest Common Divisor）是两个或多个整数的共有因数中的最大值。也叫作最大公因数、最大公因子或最大公量。如果两个整数的最大公约数是 1，那么它们被称为互质。</p>
+<p>计算两个整数的最大公约数有多种方法，其中最著名的方法之一是辗转相除法（Euclidean Algorithm）。辗转相除法的基本思想是通过反复应用两个整数的除法余数关系，直到余数为零为止。具体步骤如下：</p>
+<ol>
+<li>用较大的数除以较小的数，得到余数。</li>
+<li>将较小的数作为新的被除数，余数作为新的除数。</li>
+<li>重复步骤 1 和 2，直到余数为零。</li>
+<li>最后的非零余数即为最大公约数。</li>
+</ol>
+<p>这个算法的效率很高，时间复杂度为 �(log⁡(min⁡(�,�)))O(log(min(a,b)))。</p>
+<p>以下是一个用 Go 语言实现的最大公约数的辗转相除法示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 辗转相除法求最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gcd</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> b != <span class="number">0</span> &#123;</span><br><span class="line">        temp := b</span><br><span class="line">        b = a % b</span><br><span class="line">        a = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    num1 := <span class="number">48</span></span><br><span class="line">    num2 := <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    result := gcd(num1, num2)</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;最大公约数为:&quot;</span>, result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>gcd</code> 函数使用了辗转相除法来计算两个整数的最大公约数。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2183,45 +2183,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>使用 Go 的 container list 包：双向链表的便捷工具</title>
-    <url>/2023-10-09-5ecfb18fa495.html</url>
-    <content><![CDATA[<p>Go 语言中的 container&#x2F;list 包提供了一种便捷的方式来操作双向链表（doubly linked list）。这个包是标准库的一部分，旨在提供一种通用的方式来创建、操作和遍历链表。在这篇博客中，我们将介绍如何使用 container&#x2F;list 包，探讨一些可能容易混淆的地方，并提供主要函数的使用示例。</p>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>在开始之前，让我们先了解一下双向链表的基本概念。双向链表是一种数据结构，其中每个节点都有两个指针，一个指向前一个节点，另一个指向后一个节点。这种结构允许我们在链表中轻松插入、删除和遍历元素。</p>
-<h2 id="导入-container-list-包"><a href="#导入-container-list-包" class="headerlink" title="导入 container&#x2F;list 包"></a>导入 container&#x2F;list 包</h2><p>要使用 container&#x2F;list 包，首先需要导入它：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/list&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="创建链表"><a href="#创建链表" class="headerlink" title="创建链表"></a>创建链表</h2><p>创建一个新的链表非常简单：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">myList := list.New()</span><br></pre></td></tr></table></figure>
-
-<p>这将创建一个名为 myList 的新链表。</p>
-<h2 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h2><p>你可以使用 PushBack 和 PushFront 方法将元素插入链表的末尾和开头：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">myList.PushBack(<span class="number">42</span>)</span><br><span class="line">myList.PushFront(<span class="number">23</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="访问元素"><a href="#访问元素" class="headerlink" title="访问元素"></a>访问元素</h2><p>要访问链表中的元素，你可以使用 Front 和 Back 方法：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">firstElement := myList.Front().Value</span><br><span class="line">lastElement := myList.Back().Value</span><br></pre></td></tr></table></figure>
-
-<h2 id="遍历链表"><a href="#遍历链表" class="headerlink" title="遍历链表"></a>遍历链表</h2><p>遍历链表可以使用 for 循环来实现：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> element := myList.Front(); element != <span class="literal">nil</span>; element = element.Next() &#123;</span><br><span class="line">    <span class="comment">// 处理 element.Value</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><p>要删除链表中的元素，可以使用 Remove 方法：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">elementToRemove := myList.Front()</span><br><span class="line">myList.Remove(elementToRemove)</span><br></pre></td></tr></table></figure>
-
-<h1 id="容易混淆的地方"><a href="#容易混淆的地方" class="headerlink" title="容易混淆的地方"></a>容易混淆的地方</h1><h2 id="1-类型断言"><a href="#1-类型断言" class="headerlink" title="1. 类型断言"></a>1. 类型断言</h2><p>链表中的元素是空接口类型 interface{}，因此在访问元素的值之前，你需要进行类型断言。例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">value := element.Value.(<span class="type">int</span>)</span><br></pre></td></tr></table></figure>
-
-<p>如果断言失败，会导致运行时错误。</p>
-<h2 id="2-InsertAfter-和-InsertBefore"><a href="#2-InsertAfter-和-InsertBefore" class="headerlink" title="2. InsertAfter 和 InsertBefore"></a>2. InsertAfter 和 InsertBefore</h2><p>这两个方法用于在某个元素之后或之前插入新元素，并返回新插入元素的引用。这些方法在实际应用中非常有用。</p>
-<h1 id="示例：浏览器历史记录"><a href="#示例：浏览器历史记录" class="headerlink" title="示例：浏览器历史记录"></a>示例：浏览器历史记录</h1><p>下面是一个示例，展示了如何使用 container&#x2F;list 包来实现浏览器历史记录功能：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2023 Lei Qi. All rights reserved.</span></span><br><span class="line"><span class="comment"> * Author: Lei Qi</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> * Date: 2023/10/10 上午12:33</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;container/list&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Browser <span class="keyword">struct</span> &#123;</span><br><span class="line">	history  *list.List</span><br><span class="line">	current  *list.Element</span><br><span class="line">	maxLen   <span class="type">int</span></span><br><span class="line">	homepage <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewBrowser</span><span class="params">(maxLen <span class="type">int</span>, homepage <span class="type">string</span>)</span></span> *Browser &#123;</span><br><span class="line">	history := list.New()</span><br><span class="line">	current := history.PushBack(homepage)</span><br><span class="line">	<span class="keyword">return</span> &amp;Browser&#123;</span><br><span class="line">		history:  history,</span><br><span class="line">		current:  current,</span><br><span class="line">		maxLen:   maxLen,</span><br><span class="line">		homepage: homepage,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Browser)</span></span> GetCurrentPage() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> b.current.Value.(<span class="type">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Browser)</span></span> GoBack() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> b.current.Prev() != <span class="literal">nil</span> &#123;</span><br><span class="line">		b.current = b.current.Prev()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> b.GetCurrentPage()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Browser)</span></span> GoForward() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> b.current.Next() != <span class="literal">nil</span> &#123;</span><br><span class="line">		b.current = b.current.Next()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> b.GetCurrentPage()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Browser)</span></span> NavigateToNewPage(newPageURL <span class="type">string</span>) <span class="type">string</span> &#123;</span><br><span class="line">	<span class="comment">// 清除当前页面之后的历史记录</span></span><br><span class="line">	<span class="keyword">for</span> e := b.current.Next(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		b.history.Remove(e)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 将新页面添加到历史记录中</span></span><br><span class="line">	b.current = b.history.InsertAfter(newPageURL, b.current)</span><br><span class="line">	<span class="comment">// 限制浏览器历史记录的最大长度</span></span><br><span class="line">	<span class="keyword">for</span> b.history.Len() &gt; b.maxLen &#123;</span><br><span class="line">		front := b.history.Front()</span><br><span class="line">		<span class="keyword">if</span> front != <span class="literal">nil</span> &#123;</span><br><span class="line">			b.history.Remove(front)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> b.GetCurrentPage()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	browser := NewBrowser(<span class="number">5</span>, <span class="string">&quot;初始页面&quot;</span>)</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">&quot;当前页面:&quot;</span>, browser.GetCurrentPage())</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 浏览新页面</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面1&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;当前页面:&quot;</span>, browser.GetCurrentPage())</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 浏览更多新页面</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面2&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面3&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面4&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面5&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;当前页面:&quot;</span>, browser.GetCurrentPage())</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 后退和前进</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;后退:&quot;</span>, browser.GoBack())</span><br><span class="line">	fmt.Println(<span class="string">&quot;后退:&quot;</span>, browser.GoBack())</span><br><span class="line">	fmt.Println(<span class="string">&quot;前进:&quot;</span>, browser.GoForward())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这个示例创建了一个浏览器历史记录，并通过插入新页面来模拟浏览历史。使用 container&#x2F;list 包，我们可以轻松地插入、遍历和操作历史记录。</p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>container&#x2F;list 包提供了一个便捷的方式来操作双向链表，它在某些情况下非常有用，例如实现浏览器历史记录或其他需要动态插入和删除元素的场景。希望这篇博客能够帮助大家。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>【基础知识】符号整数和非符号整数</title>
     <url>/2024-11-23-dce4118b03a7.html</url>
     <content><![CDATA[<p><code>uint8</code> <code>uint16</code>和<code>uint32</code>是无符号整数类型，分别有16位和32位。它们能存储的数字数量由其位数决定。</p>
@@ -2264,6 +2225,45 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>使用 Go 的 container list 包：双向链表的便捷工具</title>
+    <url>/2023-10-09-5ecfb18fa495.html</url>
+    <content><![CDATA[<p>Go 语言中的 container&#x2F;list 包提供了一种便捷的方式来操作双向链表（doubly linked list）。这个包是标准库的一部分，旨在提供一种通用的方式来创建、操作和遍历链表。在这篇博客中，我们将介绍如何使用 container&#x2F;list 包，探讨一些可能容易混淆的地方，并提供主要函数的使用示例。</p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>在开始之前，让我们先了解一下双向链表的基本概念。双向链表是一种数据结构，其中每个节点都有两个指针，一个指向前一个节点，另一个指向后一个节点。这种结构允许我们在链表中轻松插入、删除和遍历元素。</p>
+<h2 id="导入-container-list-包"><a href="#导入-container-list-包" class="headerlink" title="导入 container&#x2F;list 包"></a>导入 container&#x2F;list 包</h2><p>要使用 container&#x2F;list 包，首先需要导入它：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/list&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建链表"><a href="#创建链表" class="headerlink" title="创建链表"></a>创建链表</h2><p>创建一个新的链表非常简单：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">myList := list.New()</span><br></pre></td></tr></table></figure>
+
+<p>这将创建一个名为 myList 的新链表。</p>
+<h2 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h2><p>你可以使用 PushBack 和 PushFront 方法将元素插入链表的末尾和开头：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">myList.PushBack(<span class="number">42</span>)</span><br><span class="line">myList.PushFront(<span class="number">23</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问元素"><a href="#访问元素" class="headerlink" title="访问元素"></a>访问元素</h2><p>要访问链表中的元素，你可以使用 Front 和 Back 方法：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">firstElement := myList.Front().Value</span><br><span class="line">lastElement := myList.Back().Value</span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历链表"><a href="#遍历链表" class="headerlink" title="遍历链表"></a>遍历链表</h2><p>遍历链表可以使用 for 循环来实现：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> element := myList.Front(); element != <span class="literal">nil</span>; element = element.Next() &#123;</span><br><span class="line">    <span class="comment">// 处理 element.Value</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><p>要删除链表中的元素，可以使用 Remove 方法：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">elementToRemove := myList.Front()</span><br><span class="line">myList.Remove(elementToRemove)</span><br></pre></td></tr></table></figure>
+
+<h1 id="容易混淆的地方"><a href="#容易混淆的地方" class="headerlink" title="容易混淆的地方"></a>容易混淆的地方</h1><h2 id="1-类型断言"><a href="#1-类型断言" class="headerlink" title="1. 类型断言"></a>1. 类型断言</h2><p>链表中的元素是空接口类型 interface{}，因此在访问元素的值之前，你需要进行类型断言。例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">value := element.Value.(<span class="type">int</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果断言失败，会导致运行时错误。</p>
+<h2 id="2-InsertAfter-和-InsertBefore"><a href="#2-InsertAfter-和-InsertBefore" class="headerlink" title="2. InsertAfter 和 InsertBefore"></a>2. InsertAfter 和 InsertBefore</h2><p>这两个方法用于在某个元素之后或之前插入新元素，并返回新插入元素的引用。这些方法在实际应用中非常有用。</p>
+<h1 id="示例：浏览器历史记录"><a href="#示例：浏览器历史记录" class="headerlink" title="示例：浏览器历史记录"></a>示例：浏览器历史记录</h1><p>下面是一个示例，展示了如何使用 container&#x2F;list 包来实现浏览器历史记录功能：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2023 Lei Qi. All rights reserved.</span></span><br><span class="line"><span class="comment"> * Author: Lei Qi</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> * Date: 2023/10/10 上午12:33</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;container/list&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Browser <span class="keyword">struct</span> &#123;</span><br><span class="line">	history  *list.List</span><br><span class="line">	current  *list.Element</span><br><span class="line">	maxLen   <span class="type">int</span></span><br><span class="line">	homepage <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewBrowser</span><span class="params">(maxLen <span class="type">int</span>, homepage <span class="type">string</span>)</span></span> *Browser &#123;</span><br><span class="line">	history := list.New()</span><br><span class="line">	current := history.PushBack(homepage)</span><br><span class="line">	<span class="keyword">return</span> &amp;Browser&#123;</span><br><span class="line">		history:  history,</span><br><span class="line">		current:  current,</span><br><span class="line">		maxLen:   maxLen,</span><br><span class="line">		homepage: homepage,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Browser)</span></span> GetCurrentPage() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> b.current.Value.(<span class="type">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Browser)</span></span> GoBack() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> b.current.Prev() != <span class="literal">nil</span> &#123;</span><br><span class="line">		b.current = b.current.Prev()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> b.GetCurrentPage()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Browser)</span></span> GoForward() <span class="type">string</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> b.current.Next() != <span class="literal">nil</span> &#123;</span><br><span class="line">		b.current = b.current.Next()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> b.GetCurrentPage()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Browser)</span></span> NavigateToNewPage(newPageURL <span class="type">string</span>) <span class="type">string</span> &#123;</span><br><span class="line">	<span class="comment">// 清除当前页面之后的历史记录</span></span><br><span class="line">	<span class="keyword">for</span> e := b.current.Next(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		b.history.Remove(e)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 将新页面添加到历史记录中</span></span><br><span class="line">	b.current = b.history.InsertAfter(newPageURL, b.current)</span><br><span class="line">	<span class="comment">// 限制浏览器历史记录的最大长度</span></span><br><span class="line">	<span class="keyword">for</span> b.history.Len() &gt; b.maxLen &#123;</span><br><span class="line">		front := b.history.Front()</span><br><span class="line">		<span class="keyword">if</span> front != <span class="literal">nil</span> &#123;</span><br><span class="line">			b.history.Remove(front)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> b.GetCurrentPage()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	browser := NewBrowser(<span class="number">5</span>, <span class="string">&quot;初始页面&quot;</span>)</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">&quot;当前页面:&quot;</span>, browser.GetCurrentPage())</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 浏览新页面</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面1&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;当前页面:&quot;</span>, browser.GetCurrentPage())</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 浏览更多新页面</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面2&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面3&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面4&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;浏览新页面:&quot;</span>, browser.NavigateToNewPage(<span class="string">&quot;新页面5&quot;</span>))</span><br><span class="line">	fmt.Println(<span class="string">&quot;当前页面:&quot;</span>, browser.GetCurrentPage())</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 后退和前进</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;后退:&quot;</span>, browser.GoBack())</span><br><span class="line">	fmt.Println(<span class="string">&quot;后退:&quot;</span>, browser.GoBack())</span><br><span class="line">	fmt.Println(<span class="string">&quot;前进:&quot;</span>, browser.GoForward())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这个示例创建了一个浏览器历史记录，并通过插入新页面来模拟浏览历史。使用 container&#x2F;list 包，我们可以轻松地插入、遍历和操作历史记录。</p>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>container&#x2F;list 包提供了一个便捷的方式来操作双向链表，它在某些情况下非常有用，例如实现浏览器历史记录或其他需要动态插入和删除元素的场景。希望这篇博客能够帮助大家。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>数据结构和操作的对比：Python vs. Go vs. C++</title>
     <url>/2023-10-19-86483682723b.html</url>
     <content><![CDATA[<h1 id="Python示例"><a href="#Python示例" class="headerlink" title="Python示例"></a>Python示例</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 数组</span></span><br><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切片</span></span><br><span class="line">sub_list = my_list[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">reversed_list = my_list[::-1python]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">my_dict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Alice&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">30</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 双向链表（使用collections.deque）</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">my_linked_list = deque()</span><br><span class="line">my_linked_list.append(<span class="number">1</span>)</span><br><span class="line">my_linked_list.append(<span class="number">2</span>)</span><br><span class="line">my_linked_list.append(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最大堆和最小堆（需要使用第三方库heapq）</span></span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line">max_heap = []</span><br><span class="line">min_heap = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二叉树（使用类或结构体）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串操作</span></span><br><span class="line">my_string = <span class="string">&quot;Hello, World!&quot;</span></span><br><span class="line">substring = my_string[<span class="number">7</span>:<span class="number">12</span>]</span><br><span class="line">my_int = <span class="number">42</span></span><br><span class="line">my_str = <span class="built_in">str</span>(my_int)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 深度拷贝和浅拷贝（使用copy模块）</span></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">original_list = [<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>], <span class="number">4</span>]</span><br><span class="line">shallow_copy = copy.copy(original_list)</span><br><span class="line">deep_copy = copy.deepcopy(original_list)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除元素</span></span><br><span class="line">my_list.pop(<span class="number">1</span>)  <span class="comment"># 删除第二个元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找小写字母</span></span><br><span class="line"><span class="keyword">if</span> my_string.islower():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;String contains only lowercase letters&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历数组</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> my_list:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用循环遍历字典</span></span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> my_dict.items():</span><br><span class="line">    <span class="built_in">print</span>(key, value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断字典是否包含键</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> my_dict:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Dictionary contains &#x27;name&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
@@ -2291,6 +2291,81 @@ dfs(root.Right, res)
 </li>
 </ul>
 <h1 id="左右指针"><a href="#左右指针" class="headerlink" title="左右指针"></a>左右指针</h1><p>1.二分查找<br>    * 有序，直接找中间的点，判断中间是否符合对应的题目逻辑，将中间点赋值为左边界或者右边界<br>2.<strong>N sum 之和</strong><br>    * 一般是有序数组，然后左右相加，利用右边向内部移动数值减小和左边向内部移动数组变大<br>3.反转字符串<br>    * 终止条件是i&gt;j<br>4.回文串判断<br>     * 判断条件s[i] &#x3D;&#x3D; s[j]</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>设计题思考</title>
+    <url>/2024-05-08-9a58f8b87168.html</url>
+    <content><![CDATA[<p>设计数据结构和算法时，通常需要遵循以下步骤来解决问题：</p>
+<ol>
+<li><p><strong>理解问题</strong>：首先，彻底理解题目要求做什么，包括输入、输出、限制条件等。</p>
+</li>
+<li><p><strong>确定需求</strong>：明确需要哪些<strong>数据结构</strong>来存储信息，以及如何使用这些数据结构来满足题目的需求。</p>
+</li>
+<li><p><strong>设计数据结构</strong>：</p>
+<ul>
+<li>确定实体类型：例如，用户（User）、推文（Tweet）等。</li>
+<li>确定实体之间的关系：例如，用户可以发布推文，用户可以关注其他用户。</li>
+</ul>
+</li>
+<li><p><strong>定义方法</strong>：根据题目要求，设计所需的方法或函数，如发布推文、关注用户、取消关注和获取信息流。</p>
+</li>
+<li><p><strong>实现逻辑</strong>：为每个方法设计逻辑，考虑如何使用数据结构来实现题目要求的功能。</p>
+</li>
+<li><p><strong>考虑边界条件和错误处理</strong>：确保你的代码可以处理各种边界情况和潜在的错误。</p>
+</li>
+<li><p><strong>优化</strong>：在满足基本要求后，考虑是否可以优化代码，比如提高时间效率或空间效率。</p>
+</li>
+</ol>
+<p>对于LeetCode题目 <strong>设计推特</strong>，思考过程如下：</p>
+<ol>
+<li><p><strong>理解题目</strong>：题目要求模拟Twitter的功能，包括用户发布推文、关注和取消关注，以及获取个人的信息流。</p>
+</li>
+<li><p><strong>确定需求</strong>：</p>
+<ul>
+<li>需要存储用户信息，包括用户ID、关注列表和推文列表。</li>
+<li>需要存储推文信息，包括推文ID和时间戳。</li>
+</ul>
+</li>
+<li><p><strong>设计数据结构</strong>：</p>
+<ul>
+<li><code>Twitter</code>：包含用户映射，用于快速访问用户信息。</li>
+<li><code>User</code>：包含用户ID、关注列表和推文列表。</li>
+<li><code>Tweet</code>：包含推文ID和时间戳。</li>
+</ul>
+</li>
+<li><p><strong>定义方法</strong>：</p>
+<ul>
+<li><code>Constructor</code>：初始化<code>Twitter</code>实例。</li>
+<li><code>PostTweet</code>：实现用户发布推文的逻辑。</li>
+<li><code>Follow</code>：实现用户关注其他用户的逻辑。</li>
+<li><code>Unfollow</code>：实现用户取消关注的逻辑。</li>
+<li><code>GetNewsFeed</code>：实现获取用户信息流的逻辑。</li>
+</ul>
+</li>
+<li><p><strong>实现逻辑</strong>：</p>
+<ul>
+<li>对于<code>PostTweet</code>，检查用户是否存在，如果不存在则创建用户，然后添加推文。</li>
+<li>对于<code>Follow</code>和<code>Unfollow</code>，更新用户的<code>followees</code>映射。</li>
+<li>对于<code>GetNewsFeed</code>，收集并排序推文，然后返回结果。</li>
+</ul>
+</li>
+<li><p><strong>考虑边界条件</strong>：</p>
+<ul>
+<li>确保在添加推文或关注用户时，处理用户不存在的情况。</li>
+<li>在获取信息流时，处理用户没有推文或关注任何人的情况。</li>
+</ul>
+</li>
+<li><p><strong>优化</strong>：</p>
+<ul>
+<li>考虑是否可以使用更高效的数据结构或算法来提高性能。</li>
+</ul>
+</li>
+</ol>
+<p>在解决LeetCode题目时，通常需要具备一定的数据结构和算法知识，包括对数组、链表、树、图、哈希表等的熟悉，以及对排序、搜索、动态规划等算法的理解。此外，练习和分析不同的题目类型和解法也是提高解题能力的关键。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2409,81 +2484,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>设计题思考</title>
-    <url>/2024-05-08-9a58f8b87168.html</url>
-    <content><![CDATA[<p>设计数据结构和算法时，通常需要遵循以下步骤来解决问题：</p>
-<ol>
-<li><p><strong>理解问题</strong>：首先，彻底理解题目要求做什么，包括输入、输出、限制条件等。</p>
-</li>
-<li><p><strong>确定需求</strong>：明确需要哪些<strong>数据结构</strong>来存储信息，以及如何使用这些数据结构来满足题目的需求。</p>
-</li>
-<li><p><strong>设计数据结构</strong>：</p>
-<ul>
-<li>确定实体类型：例如，用户（User）、推文（Tweet）等。</li>
-<li>确定实体之间的关系：例如，用户可以发布推文，用户可以关注其他用户。</li>
-</ul>
-</li>
-<li><p><strong>定义方法</strong>：根据题目要求，设计所需的方法或函数，如发布推文、关注用户、取消关注和获取信息流。</p>
-</li>
-<li><p><strong>实现逻辑</strong>：为每个方法设计逻辑，考虑如何使用数据结构来实现题目要求的功能。</p>
-</li>
-<li><p><strong>考虑边界条件和错误处理</strong>：确保你的代码可以处理各种边界情况和潜在的错误。</p>
-</li>
-<li><p><strong>优化</strong>：在满足基本要求后，考虑是否可以优化代码，比如提高时间效率或空间效率。</p>
-</li>
-</ol>
-<p>对于LeetCode题目 <strong>设计推特</strong>，思考过程如下：</p>
-<ol>
-<li><p><strong>理解题目</strong>：题目要求模拟Twitter的功能，包括用户发布推文、关注和取消关注，以及获取个人的信息流。</p>
-</li>
-<li><p><strong>确定需求</strong>：</p>
-<ul>
-<li>需要存储用户信息，包括用户ID、关注列表和推文列表。</li>
-<li>需要存储推文信息，包括推文ID和时间戳。</li>
-</ul>
-</li>
-<li><p><strong>设计数据结构</strong>：</p>
-<ul>
-<li><code>Twitter</code>：包含用户映射，用于快速访问用户信息。</li>
-<li><code>User</code>：包含用户ID、关注列表和推文列表。</li>
-<li><code>Tweet</code>：包含推文ID和时间戳。</li>
-</ul>
-</li>
-<li><p><strong>定义方法</strong>：</p>
-<ul>
-<li><code>Constructor</code>：初始化<code>Twitter</code>实例。</li>
-<li><code>PostTweet</code>：实现用户发布推文的逻辑。</li>
-<li><code>Follow</code>：实现用户关注其他用户的逻辑。</li>
-<li><code>Unfollow</code>：实现用户取消关注的逻辑。</li>
-<li><code>GetNewsFeed</code>：实现获取用户信息流的逻辑。</li>
-</ul>
-</li>
-<li><p><strong>实现逻辑</strong>：</p>
-<ul>
-<li>对于<code>PostTweet</code>，检查用户是否存在，如果不存在则创建用户，然后添加推文。</li>
-<li>对于<code>Follow</code>和<code>Unfollow</code>，更新用户的<code>followees</code>映射。</li>
-<li>对于<code>GetNewsFeed</code>，收集并排序推文，然后返回结果。</li>
-</ul>
-</li>
-<li><p><strong>考虑边界条件</strong>：</p>
-<ul>
-<li>确保在添加推文或关注用户时，处理用户不存在的情况。</li>
-<li>在获取信息流时，处理用户没有推文或关注任何人的情况。</li>
-</ul>
-</li>
-<li><p><strong>优化</strong>：</p>
-<ul>
-<li>考虑是否可以使用更高效的数据结构或算法来提高性能。</li>
-</ul>
-</li>
-</ol>
-<p>在解决LeetCode题目时，通常需要具备一定的数据结构和算法知识，包括对数组、链表、树、图、哈希表等的熟悉，以及对排序、搜索、动态规划等算法的理解。此外，练习和分析不同的题目类型和解法也是提高解题能力的关键。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>链表总结</title>
     <url>/2023-06-24-42b41b131ba0.html</url>
     <content><![CDATA[<h1 id="链表的合并"><a href="#链表的合并" class="headerlink" title="链表的合并"></a>链表的合并</h1><ul>
@@ -2585,22 +2585,17 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>JetBrians 全家桶设置文件header</title>
-    <url>/2023-10-05-7527c8e47a8b.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p>
-<p>先看下效果图<br><img src="/../../imgs/Pasted%20image%2020231005164404.png"></p>
-<h1 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h1><h2 id="1-file-settings"><a href="#1-file-settings" class="headerlink" title="1. file- settings"></a>1. file- settings</h2><p><img src="/../../imgs/Pasted%20image%2020231005164508.png"></p>
-<h1 id="找到Copyright-CopyrightProfiles"><a href="#找到Copyright-CopyrightProfiles" class="headerlink" title="找到Copyright - CopyrightProfiles"></a>找到Copyright - CopyrightProfiles</h1><p>点击+ 号，新建一个name 为“copyRight” 的profile</p>
-<p><img src="/../../imgs/Pasted%20image%2020231005164618.png"></p>
-<p>profile 的内容粘贴下面的问文本, 替换自己的名字</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Copyright (c) $originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;$today.year&quot;)$today.year YOUR NAME. All rights reserved.  </span><br><span class="line">Author: YOUR NAME  </span><br><span class="line">Description:  </span><br><span class="line">Date: $today</span><br></pre></td></tr></table></figure>
-<h1 id="点击Copyright-添加刚才的profile"><a href="#点击Copyright-添加刚才的profile" class="headerlink" title="点击Copyright 添加刚才的profile"></a>点击Copyright 添加刚才的profile</h1><p><img src="/../../imgs/Pasted%20image%2020231005165129.png"></p>
-<h2 id="点击应用即可-右键-generate-Copyright-插入"><a href="#点击应用即可-右键-generate-Copyright-插入" class="headerlink" title="点击应用即可 右键-generate-Copyright 插入"></a>点击应用即可 右键-generate-Copyright 插入</h2><p><img src="/../../imgs/Pasted%20image%2020231005164944.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020231005165025.png"></p>
+    <title>波纹</title>
+    <url>/2023-04-08-722322c4ddc3.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
 ]]></content>
       <categories>
-        <category>工具</category>
+        <category>摄影</category>
       </categories>
+      <tags>
+        <tag>摄影</tag>
+        <tag>水</tag>
+      </tags>
   </entry>
   <entry>
     <title>Linux非root用户通过X11运行图形界面程序-以Rstudio为例</title>
@@ -2616,6 +2611,24 @@ dfs(root.Right, res)
 <h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p> 经过漫长的等待，直接运行rstudio 就会进入x11转发的图形界面<br> <img src="/../../imgs/Pasted%20image%2020230924205521.png"><br><strong>画个图试试，顺利出图！开始愉快的coding吧！</strong><br><img src="/../../imgs/Pasted%20image%2020230924205559.png"></p>
 <p><strong>已知问题：</strong> 操作延迟较高，没有本地反应快，但是还可以接受，大家可以试试。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>我们可以通过<strong>X11</strong>来在服务器上运行图形化的程序，这个图形化的程序一般不需要很高的权限，不涉及外部端口新增。因此我们可以在服务器上运行很多图形化程序，例如Rstudio。甚至是我们的Pycharm、Goland、CLion 等Jetbrains的全家桶。大家快来试试吧！</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JetBrians 全家桶设置文件header</title>
+    <url>/2023-10-05-7527c8e47a8b.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p>
+<p>先看下效果图<br><img src="/../../imgs/Pasted%20image%2020231005164404.png"></p>
+<h1 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h1><h2 id="1-file-settings"><a href="#1-file-settings" class="headerlink" title="1. file- settings"></a>1. file- settings</h2><p><img src="/../../imgs/Pasted%20image%2020231005164508.png"></p>
+<h1 id="找到Copyright-CopyrightProfiles"><a href="#找到Copyright-CopyrightProfiles" class="headerlink" title="找到Copyright - CopyrightProfiles"></a>找到Copyright - CopyrightProfiles</h1><p>点击+ 号，新建一个name 为“copyRight” 的profile</p>
+<p><img src="/../../imgs/Pasted%20image%2020231005164618.png"></p>
+<p>profile 的内容粘贴下面的问文本, 替换自己的名字</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Copyright (c) $originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;$today.year&quot;)$today.year YOUR NAME. All rights reserved.  </span><br><span class="line">Author: YOUR NAME  </span><br><span class="line">Description:  </span><br><span class="line">Date: $today</span><br></pre></td></tr></table></figure>
+<h1 id="点击Copyright-添加刚才的profile"><a href="#点击Copyright-添加刚才的profile" class="headerlink" title="点击Copyright 添加刚才的profile"></a>点击Copyright 添加刚才的profile</h1><p><img src="/../../imgs/Pasted%20image%2020231005165129.png"></p>
+<h2 id="点击应用即可-右键-generate-Copyright-插入"><a href="#点击应用即可-右键-generate-Copyright-插入" class="headerlink" title="点击应用即可 右键-generate-Copyright 插入"></a>点击应用即可 右键-generate-Copyright 插入</h2><p><img src="/../../imgs/Pasted%20image%2020231005164944.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020231005165025.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2833,19 +2846,6 @@ dfs(root.Right, res)
       <categories>
         <category>工具</category>
       </categories>
-  </entry>
-  <entry>
-    <title>波纹</title>
-    <url>/2023-04-08-722322c4ddc3.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
-]]></content>
-      <categories>
-        <category>摄影</category>
-      </categories>
-      <tags>
-        <tag>摄影</tag>
-        <tag>水</tag>
-      </tags>
   </entry>
   <entry>
     <title>Mesh组网：家庭路由和无线连接新方式</title>
@@ -3101,15 +3101,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>系统序列图 - 时序图</title>
-    <url>/2025-02-19-05250c3f88f5.html</url>
-    <content><![CDATA[<p><img src="/../../../imgs/Pasted%20image%2020250219200803.png"></p>
-]]></content>
-      <categories>
-        <category>架构</category>
-      </categories>
-  </entry>
-  <entry>
     <title>如何画好一个架构图</title>
     <url>/2025-02-19-d829d1f5a9ea.html</url>
     <content><![CDATA[<h1 id="业务架构"><a href="#业务架构" class="headerlink" title="业务架构"></a>业务架构</h1><p><img src="/../../../imgs/Pasted%20image%2020250219195041.png"></p>
@@ -3136,6 +3127,15 @@ dfs(root.Right, res)
 <li>使用图标代替区块*<br><img src="/../../../imgs/Pasted%20image%2020250219200529.png"><br>上边的球是网络加速点</li>
 </ul>
 <p><a href="https://www.bilibili.com/video/BV1764y1a7PD/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=8d35f023c28f4bba76bb3fadea08f222">前阿里 P9 教你如何画好一张架构图_哔哩哔哩_bilibili</a></p>
+]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>系统序列图 - 时序图</title>
+    <url>/2025-02-19-05250c3f88f5.html</url>
+    <content><![CDATA[<p><img src="/../../../imgs/Pasted%20image%2020250219200803.png"></p>
 ]]></content>
       <categories>
         <category>架构</category>
