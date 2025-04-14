@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C++ 结构化设计</title>
-    <url>/2023-09-13-476441b87811.html</url>
-    <content><![CDATA[<h1 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h1><p><strong>自顶向下的设计 是自顶向下的分解</strong> -&gt; 找子问题 -&gt;公共的问题-&gt;抽出来子问题<br><img src="/../../imgs/Pasted%20image%2020230913232308.png"></p>
-<h1 id="实现阶段"><a href="#实现阶段" class="headerlink" title="实现阶段"></a>实现阶段</h1><p>自顶向上的实现，实现一个一个子问题</p>
-<p>程序由三种基本结构组成，<strong>顺序-分支-循环</strong><img src="/../../imgs/Pasted%20image%2020230913232249.png"></p>
-<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="/../../imgs/Pasted%20image%2020230913232729.png"><br><img src="/../../imgs/Pasted%20image%2020230913232746.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230913232825.png"><br><img src="/../../imgs/Pasted%20image%2020230913232951.png"><br><img src="/../../imgs/Pasted%20image%2020230913232936.png"></p>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>docker容器打包成本地压缩镜像并load</title>
     <url>/2024-08-11-a8e2c27fed87.html</url>
     <content><![CDATA[<h1 id="docker容器打包成镜像和压缩"><a href="#docker容器打包成镜像和压缩" class="headerlink" title="docker容器打包成镜像和压缩"></a>docker容器打包成镜像和压缩</h1><p>（1）将容器保存成新的镜像<br>相当于加了一层，使用docker commit</p>
@@ -56,6 +43,19 @@
 ]]></content>
       <categories>
         <category>Docker</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C++ 结构化设计</title>
+    <url>/2023-09-13-476441b87811.html</url>
+    <content><![CDATA[<h1 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h1><p><strong>自顶向下的设计 是自顶向下的分解</strong> -&gt; 找子问题 -&gt;公共的问题-&gt;抽出来子问题<br><img src="/../../imgs/Pasted%20image%2020230913232308.png"></p>
+<h1 id="实现阶段"><a href="#实现阶段" class="headerlink" title="实现阶段"></a>实现阶段</h1><p>自顶向上的实现，实现一个一个子问题</p>
+<p>程序由三种基本结构组成，<strong>顺序-分支-循环</strong><img src="/../../imgs/Pasted%20image%2020230913232249.png"></p>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="/../../imgs/Pasted%20image%2020230913232729.png"><br><img src="/../../imgs/Pasted%20image%2020230913232746.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230913232825.png"><br><img src="/../../imgs/Pasted%20image%2020230913232951.png"><br><img src="/../../imgs/Pasted%20image%2020230913232936.png"></p>
+]]></content>
+      <categories>
+        <category>C++</category>
       </categories>
   </entry>
   <entry>
@@ -135,23 +135,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
-    <url>/2023-05-11-257639a12a8e.html</url>
-    <content><![CDATA[<p>在 Go 语言中，byte 和 rune 都是用来表示字符类型的数据类型。</p>
-<p>byte 是 uint8 的别名，在 Go 中通常用于表示 ASCII 字符集中的一个字节。<br>rune 是 int32 的别名，在 Go 中通常用于表示 Unicode 字符集中的一个代码点。<br>因此，对于 ASCII 字符来说，byte 和 rune 的值是相同的，但是对于大部分 Unicode 字符来说，它们是不同的。</p>
-<p>将 byte 或 rune 转换为 int 可以使用类型转换操作符：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">b := <span class="type">byte</span>(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">i := <span class="type">int</span>(b) - <span class="type">int</span>(<span class="string">&#x27;0&#x27;</span>) <span class="comment">// 将 byte &#x27;0&#x27; 转换为 int 0</span></span><br><span class="line"><span class="comment">// 上边可以简写为</span></span><br><span class="line">i := b - <span class="string">&#x27;0&#x27;</span></span><br><span class="line">r := <span class="type">rune</span>(<span class="string">&#x27;中&#x27;</span>)</span><br><span class="line">i := <span class="type">int</span>(r)             <span class="comment">// 将 rune &#x27;中&#x27; 转换为 int 类型（其实是它的 Unicode 码点）</span></span><br></pre></td></tr></table></figure>
-
-<p>将 int 转换为 byte 或 rune 可以使用类型断言或类型转换操作符，但是需要注意溢出的情况。例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">i := <span class="number">10</span></span><br><span class="line">b := <span class="type">byte</span>(i)   <span class="comment">// 溢出！编译器会忽略高位部分，直接取低位部分的字节</span></span><br><span class="line">r := <span class="type">rune</span>(i)</span><br><span class="line"><span class="keyword">if</span> r &lt; <span class="number">0xFFFF</span> &#123;</span><br><span class="line">    r = <span class="type">rune</span>(b) <span class="comment">// 类型断言</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以通过判断 r 是否小于 0xFFFF 来检测转换是否正确，因为 Unicode 的码点范围在 0～0x10FFFF，超过该范围的值会被认为是无效码点。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Golang slice作为参数传递给函数需要使用指针</title>
     <url>/2024-04-11-22166b2f52d0.html</url>
     <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    dfs(<span class="number">1</span>,n,k,&amp;res,&amp;[]<span class="type">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(s, n, k <span class="type">int</span>, res *[][]<span class="type">int</span>, item *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(*item) == k &#123;</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, <span class="built_in">append</span>([]<span class="type">int</span>&#123;&#125;, *item...))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := s; i &lt;= n-(k-<span class="built_in">len</span>(*item))+<span class="number">1</span>; i++&#123;</span><br><span class="line">        *item = <span class="built_in">append</span>(*item, i)</span><br><span class="line">        dfs(i+<span class="number">1</span>, n, k, res, item)</span><br><span class="line">        *item = (*item)[:<span class="built_in">len</span>(*item)<span class="number">-1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -181,21 +164,17 @@
       </categories>
   </entry>
   <entry>
-    <title>Go语言-多态</title>
-    <url>/2023-04-20-af074e588287.html</url>
-    <content><![CDATA[<p>Go语言中没有类，我们可以使用结构体作为对象，来绑定对应的方法。而接口是功能的抽象，是方法的集合。</p>
-<p>我们来实现这样一个例子：</p>
-<ul>
-<li>实现猫和狗<strong>两个对象</strong>，并且他们都有动作：叫，<strong>但叫声不同</strong>。再实现一个<strong>对象鸟</strong>，他除了叫，还会<strong>飞</strong>。</li>
-</ul>
-<p>下面是基于Go语言，实现题目要求的代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    Cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c Cat)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;喵喵喵&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d Dog)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Bird <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;叽叽喳喳&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Fly() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;我会飞&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只猫</span></span><br><span class="line">    animal = Cat&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只狗</span></span><br><span class="line">    animal = Dog&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只鸟</span></span><br><span class="line">    bird := Bird&#123;&#125;</span><br><span class="line">    animal = bird</span><br><span class="line">    animal.Cry()</span><br><span class="line">    bird.Fly()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
+    <url>/2023-05-11-257639a12a8e.html</url>
+    <content><![CDATA[<p>在 Go 语言中，byte 和 rune 都是用来表示字符类型的数据类型。</p>
+<p>byte 是 uint8 的别名，在 Go 中通常用于表示 ASCII 字符集中的一个字节。<br>rune 是 int32 的别名，在 Go 中通常用于表示 Unicode 字符集中的一个代码点。<br>因此，对于 ASCII 字符来说，byte 和 rune 的值是相同的，但是对于大部分 Unicode 字符来说，它们是不同的。</p>
+<p>将 byte 或 rune 转换为 int 可以使用类型转换操作符：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">b := <span class="type">byte</span>(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">i := <span class="type">int</span>(b) - <span class="type">int</span>(<span class="string">&#x27;0&#x27;</span>) <span class="comment">// 将 byte &#x27;0&#x27; 转换为 int 0</span></span><br><span class="line"><span class="comment">// 上边可以简写为</span></span><br><span class="line">i := b - <span class="string">&#x27;0&#x27;</span></span><br><span class="line">r := <span class="type">rune</span>(<span class="string">&#x27;中&#x27;</span>)</span><br><span class="line">i := <span class="type">int</span>(r)             <span class="comment">// 将 rune &#x27;中&#x27; 转换为 int 类型（其实是它的 Unicode 码点）</span></span><br></pre></td></tr></table></figure>
 
-<p>在上述代码中，定义了一个Animal接口和三个结构体Cat、Dog、Bird分别实现了这个接口。其中，Cat和Dog只能叫，而Bird除了叫外还可以飞行。在main函数中创建相应的对象并调用相应的方法。</p>
-<p>运行上述代码，输出如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">喵喵喵</span><br><span class="line">汪汪汪</span><br><span class="line">叽叽喳喳</span><br><span class="line">我会飞</span><br></pre></td></tr></table></figure>
+<p>将 int 转换为 byte 或 rune 可以使用类型断言或类型转换操作符，但是需要注意溢出的情况。例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">i := <span class="number">10</span></span><br><span class="line">b := <span class="type">byte</span>(i)   <span class="comment">// 溢出！编译器会忽略高位部分，直接取低位部分的字节</span></span><br><span class="line">r := <span class="type">rune</span>(i)</span><br><span class="line"><span class="keyword">if</span> r &lt; <span class="number">0xFFFF</span> &#123;</span><br><span class="line">    r = <span class="type">rune</span>(b) <span class="comment">// 类型断言</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在这段代码中，我们使用了<strong>接口的多态特性</strong>，通过定义<strong>Animal接口</strong>，实现了<strong>不同类型的对象之间的通用性</strong>，并且在<strong>Bird中新增了Fly() 方法</strong>，符合面向对象的<strong>开放封闭原则</strong>。</p>
+<p>可以通过判断 r 是否小于 0xFFFF 来检测转换是否正确，因为 Unicode 的码点范围在 0～0x10FFFF，超过该范围的值会被认为是无效码点。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -265,6 +244,27 @@
       <tags>
         <tag>golang</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Go语言-多态</title>
+    <url>/2023-04-20-af074e588287.html</url>
+    <content><![CDATA[<p>Go语言中没有类，我们可以使用结构体作为对象，来绑定对应的方法。而接口是功能的抽象，是方法的集合。</p>
+<p>我们来实现这样一个例子：</p>
+<ul>
+<li>实现猫和狗<strong>两个对象</strong>，并且他们都有动作：叫，<strong>但叫声不同</strong>。再实现一个<strong>对象鸟</strong>，他除了叫，还会<strong>飞</strong>。</li>
+</ul>
+<p>下面是基于Go语言，实现题目要求的代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    Cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c Cat)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;喵喵喵&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d Dog)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Bird <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;叽叽喳喳&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Fly() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;我会飞&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只猫</span></span><br><span class="line">    animal = Cat&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只狗</span></span><br><span class="line">    animal = Dog&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只鸟</span></span><br><span class="line">    bird := Bird&#123;&#125;</span><br><span class="line">    animal = bird</span><br><span class="line">    animal.Cry()</span><br><span class="line">    bird.Fly()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，定义了一个Animal接口和三个结构体Cat、Dog、Bird分别实现了这个接口。其中，Cat和Dog只能叫，而Bird除了叫外还可以飞行。在main函数中创建相应的对象并调用相应的方法。</p>
+<p>运行上述代码，输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">喵喵喵</span><br><span class="line">汪汪汪</span><br><span class="line">叽叽喳喳</span><br><span class="line">我会飞</span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，我们使用了<strong>接口的多态特性</strong>，通过定义<strong>Animal接口</strong>，实现了<strong>不同类型的对象之间的通用性</strong>，并且在<strong>Bird中新增了Fly() 方法</strong>，符合面向对象的<strong>开放封闭原则</strong>。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
   </entry>
   <entry>
     <title>Go语言指定索引插入元素</title>
@@ -635,6 +635,28 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>jupyter</title>
+    <url>/2024-06-21-02cd02e81f22.html</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
+<p>用于启动 Jupyter Notebook 服务的一系列命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="built_in">tr</span> -dc A-Za-z0-9 | <span class="built_in">head</span> -c16; <span class="built_in">echo</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JUPYTER_TOKEN</span></span><br><span class="line"><span class="built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="variable">$JUPYTER_TOKEN</span> &amp;</span><br><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
+
+<p>这里是每条命令的简要说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888：停止端口为 8888 的 Jupyter Notebook 服务。</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)：生成一个随机的 16 位的 token，用于 Jupyter Notebook 的安全认证。</span><br><span class="line">nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。</span><br><span class="line">jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建glm4-demo python 3.10的虚拟环境</span></span><br><span class="line">conda create --name glm4-demo python=3.10</span><br><span class="line"></span><br><span class="line">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://pytorch.org/">PyTorch</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
+
+<p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【sed】快速替换当前文件夹下文件中指定内容</title>
     <url>/2025-01-13-1b5c01477594.html</url>
     <content><![CDATA[<p>在 Linux 中，可以使用以下命令来实现这个需求：</p>
@@ -663,28 +685,6 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>jupyter</title>
-    <url>/2024-06-21-02cd02e81f22.html</url>
-    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
-<p>用于启动 Jupyter Notebook 服务的一系列命令</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="built_in">tr</span> -dc A-Za-z0-9 | <span class="built_in">head</span> -c16; <span class="built_in">echo</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JUPYTER_TOKEN</span></span><br><span class="line"><span class="built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="variable">$JUPYTER_TOKEN</span> &amp;</span><br><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
-
-<p>这里是每条命令的简要说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888：停止端口为 8888 的 Jupyter Notebook 服务。</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)：生成一个随机的 16 位的 token，用于 Jupyter Notebook 的安全认证。</span><br><span class="line">nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。</span><br><span class="line">jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建glm4-demo python 3.10的虚拟环境</span></span><br><span class="line">conda create --name glm4-demo python=3.10</span><br><span class="line"></span><br><span class="line">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://pytorch.org/">PyTorch</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
-
-<p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>
-]]></content>
-      <categories>
-        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -1246,6 +1246,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
+    <url>/2023-05-04-ce9a22434c37.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
+<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 104.二叉树的深度</title>
     <url>/2023-05-30-b1879d2b65d1.html</url>
     <content><![CDATA[<p>个人网站：<a href="https://leiqicn.gitee.io/categories/leetcode/">https://leiqicn.gitee.io/categories/leetcode/</a><br><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230531000419.png"></p>
@@ -1270,18 +1282,6 @@ dfs(root.Right, res)
         <tag>BFS</tag>
         <tag>层序遍历</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
-    <url>/2023-05-04-ce9a22434c37.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
-<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 1091.二进制矩阵中的最短路径</title>
@@ -1396,6 +1396,37 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 155.最小栈</title>
+    <url>/2023-10-12-cfa4d16bfad5.html</url>
+    <content><![CDATA[<blockquote>
+<p>Problem: <a href="https://leetcode.cn/problems/min-stack/description/">155. 最小栈</a></p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020231013000854.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
+<p>栈</p>
+</blockquote>
+<h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><blockquote>
+<p>描使用额外栈辅助， a b c d 入栈，如果d 在那么abc 必然在，所以每次入栈比较一个最小值，放入另一个栈就好</p>
+</blockquote>
+<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul>
+<li><p>时间复杂度:</p>
+<blockquote>
+<p>添加时间复杂度, 示例： $O(n)$</p>
+</blockquote>
+</li>
+<li><p>空间复杂度:</p>
+<blockquote>
+<p>添加空间复杂度, 示例： $O(n)$</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 使用额外栈辅助， a b c d 入栈，如果d 在那么abc 必然在，所以每次入栈比较一个最小值，放入另一个栈就好</span></span><br><span class="line"><span class="keyword">type</span> MinStack <span class="keyword">struct</span> &#123;</span><br><span class="line">	stack    []<span class="type">int</span> <span class="comment">// 主栈</span></span><br><span class="line">	minStack []<span class="type">int</span> <span class="comment">// 辅助栈</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MinStack &#123;</span><br><span class="line">	minStacks := MinStack&#123;[]<span class="type">int</span>&#123;&#125;, []<span class="type">int</span>&#123;math.MaxInt&#125;&#125;</span><br><span class="line">	<span class="keyword">return</span> minStacks</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MinStack)</span></span> Push(x <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 同时比较辅助站的的top元素，如果更小 则添加到辅助站</span></span><br><span class="line">	this.stack = <span class="built_in">append</span>(this.stack, x)</span><br><span class="line">	minTmp := min(x, this.minStack[<span class="built_in">len</span>(this.minStack)<span class="number">-1</span>])</span><br><span class="line">	this.minStack = <span class="built_in">append</span>(this.minStack, minTmp)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MinStack)</span></span> Pop() &#123;</span><br><span class="line">	this.stack = this.stack[:<span class="built_in">len</span>(this.stack)<span class="number">-1</span>]</span><br><span class="line">	this.minStack = this.minStack[:<span class="built_in">len</span>(this.minStack)<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MinStack)</span></span> Top() <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> (this.stack[<span class="built_in">len</span>(this.stack)<span class="number">-1</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MinStack)</span></span> GetMin() <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> (this.minStack[<span class="built_in">len</span>(this.minStack)<span class="number">-1</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(x, y <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> x &lt; y &#123;</span><br><span class="line">		<span class="keyword">return</span> x</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> y</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 1726.同积元组</title>
     <url>/2023-10-20-9599b5db4d91.html</url>
     <content><![CDATA[<blockquote>
@@ -1452,37 +1483,6 @@ dfs(root.Right, res)
 </ul>
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p><strong>使用slice</strong><br>  <figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="keyword">type</span> SeatManager <span class="keyword">struct</span> &#123;</span><br><span class="line">	seats []<span class="type">int</span></span><br><span class="line">	min <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(n <span class="type">int</span>)</span></span> SeatManager &#123;</span><br><span class="line">	set:=<span class="built_in">make</span>([]<span class="type">int</span>,n+<span class="number">2</span>)</span><br><span class="line">	<span class="keyword">return</span> SeatManager&#123;seats:set,min:<span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Reserve() <span class="type">int</span> &#123;</span><br><span class="line">	value := this.min</span><br><span class="line">	this.seats[value]=<span class="number">1</span></span><br><span class="line">	length := <span class="built_in">len</span> (this.seats)</span><br><span class="line">	fmt.Println(length)</span><br><span class="line">	i:=value</span><br><span class="line">	<span class="keyword">for</span> ;i&lt;length+<span class="number">1</span>;i++&#123;</span><br><span class="line">		<span class="keyword">if</span> this.seats[i]==<span class="number">1</span>&#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		this.min=i <span class="comment">// 中间变量，更新下次的最小座位号</span></span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> value <span class="comment">// 最小的座位号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Unreserve(seatNumber <span class="type">int</span>)  &#123;</span><br><span class="line">	this.seats[seatNumber] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">if</span> seatNumber &lt; this.min&#123;</span><br><span class="line">		this.min=seatNumber</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><strong>使用map</strong><br>map 有个用例会超时</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> SeatManager <span class="keyword">struct</span> &#123;</span><br><span class="line">	seatMap   <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">	minSeat   <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(n <span class="type">int</span>)</span></span> SeatManager &#123;</span><br><span class="line">	seatMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, n+<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= n; i++ &#123; <span class="comment">// 注意从0 开始初始化</span></span><br><span class="line">		seatMap[i] = <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">	seatMan := SeatManager&#123;</span><br><span class="line">		seatMap,</span><br><span class="line">		<span class="number">1</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> seatMan</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Reserve() <span class="type">int</span> &#123;</span><br><span class="line">  value := this.minSeat</span><br><span class="line">	this.seatMap[value] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i:= value; i &lt;= <span class="built_in">len</span>(this.seatMap);i++ &#123;</span><br><span class="line">    <span class="keyword">if</span> this.seatMap[i] == <span class="number">1</span> &#123;</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    &#125;</span><br><span class="line">    this.minSeat = i</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">	<span class="keyword">return</span> value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Unreserve(seatNumber <span class="type">int</span>) &#123;</span><br><span class="line">  this.seatMap[seatNumber] = <span class="number">0</span></span><br><span class="line">  <span class="keyword">if</span> seatNumber &lt; this.minSeat &#123;</span><br><span class="line">    this.minSeat = seatNumber</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 155.最小栈</title>
-    <url>/2023-10-12-cfa4d16bfad5.html</url>
-    <content><![CDATA[<blockquote>
-<p>Problem: <a href="https://leetcode.cn/problems/min-stack/description/">155. 最小栈</a></p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020231013000854.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
-<p>栈</p>
-</blockquote>
-<h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><blockquote>
-<p>描使用额外栈辅助， a b c d 入栈，如果d 在那么abc 必然在，所以每次入栈比较一个最小值，放入另一个栈就好</p>
-</blockquote>
-<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul>
-<li><p>时间复杂度:</p>
-<blockquote>
-<p>添加时间复杂度, 示例： $O(n)$</p>
-</blockquote>
-</li>
-<li><p>空间复杂度:</p>
-<blockquote>
-<p>添加空间复杂度, 示例： $O(n)$</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 使用额外栈辅助， a b c d 入栈，如果d 在那么abc 必然在，所以每次入栈比较一个最小值，放入另一个栈就好</span></span><br><span class="line"><span class="keyword">type</span> MinStack <span class="keyword">struct</span> &#123;</span><br><span class="line">	stack    []<span class="type">int</span> <span class="comment">// 主栈</span></span><br><span class="line">	minStack []<span class="type">int</span> <span class="comment">// 辅助栈</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MinStack &#123;</span><br><span class="line">	minStacks := MinStack&#123;[]<span class="type">int</span>&#123;&#125;, []<span class="type">int</span>&#123;math.MaxInt&#125;&#125;</span><br><span class="line">	<span class="keyword">return</span> minStacks</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MinStack)</span></span> Push(x <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 同时比较辅助站的的top元素，如果更小 则添加到辅助站</span></span><br><span class="line">	this.stack = <span class="built_in">append</span>(this.stack, x)</span><br><span class="line">	minTmp := min(x, this.minStack[<span class="built_in">len</span>(this.minStack)<span class="number">-1</span>])</span><br><span class="line">	this.minStack = <span class="built_in">append</span>(this.minStack, minTmp)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MinStack)</span></span> Pop() &#123;</span><br><span class="line">	this.stack = this.stack[:<span class="built_in">len</span>(this.stack)<span class="number">-1</span>]</span><br><span class="line">	this.minStack = this.minStack[:<span class="built_in">len</span>(this.minStack)<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MinStack)</span></span> Top() <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> (this.stack[<span class="built_in">len</span>(this.stack)<span class="number">-1</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MinStack)</span></span> GetMin() <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> (this.minStack[<span class="built_in">len</span>(this.minStack)<span class="number">-1</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(x, y <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> x &lt; y &#123;</span><br><span class="line">		<span class="keyword">return</span> x</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> y</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1581,14 +1581,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
-    <url>/2023-06-05-869070f8049d.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/apply-operations-to-an-array/description/">2460. 对数组执行操作 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230605224628.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>直接模拟</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>第一版<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> res []<span class="type">int</span></span><br><span class="line">	res = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">	index := <span class="number">0</span></span><br><span class="line">	<span class="comment">// 第一次遍历 进行赋值操作</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">			nums[i] *= <span class="number">2</span></span><br><span class="line">			nums[i+<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 第二次遍历 将非0移动到前边</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">			res[index] = nums[i]</span><br><span class="line">			index++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第二版<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; n &amp;&amp; nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">            nums[i] *= <span class="number">2</span></span><br><span class="line">            nums[i + <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">            nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>leetcode 2511 最多可以摧毁的敌人城堡数目</title>
+    <url>/2023-09-02-72954cc13c19.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-enemy-forts-that-can-be-captured/description/?envType=daily-question&envId=2023-09-02">2511. 最多可以摧毁的敌人城堡数目 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230902205220.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>抽象出来就是求1和-1间最大连续0 的数量。</p>
+<p>有两种情况，开始是1 结尾是-1，中间都是0；第二种情况开始是-1结尾是1，中间都是0；上边怎么保证终点和起点不一样呢？</p>
+<p>1.当然可以分类讨论，代码会很复杂，判断很多，容易出错</p>
+<ol start="2">
+<li>使用 一个变量pre记录开始节点，变更当1或者-1 进来的时候，pre 更新为index，判断当前节点是否和pre 不相等,符合条件则更新res</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">captureForts</span><span class="params">(forts []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    ans, pre := <span class="number">0</span>, <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 记录的是 1 或 -1 的位置 </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, fort := <span class="keyword">range</span> forts &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fort == <span class="number">-1</span> || fort == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> pre &gt;= <span class="number">0</span> &amp;&amp; forts[pre] != fort &#123;</span><br><span class="line"></span><br><span class="line">                ans = max(ans, i - pre - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pre = i</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1646,18 +1650,14 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 2511 最多可以摧毁的敌人城堡数目</title>
-    <url>/2023-09-02-72954cc13c19.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-enemy-forts-that-can-be-captured/description/?envType=daily-question&envId=2023-09-02">2511. 最多可以摧毁的敌人城堡数目 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230902205220.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>抽象出来就是求1和-1间最大连续0 的数量。</p>
-<p>有两种情况，开始是1 结尾是-1，中间都是0；第二种情况开始是-1结尾是1，中间都是0；上边怎么保证终点和起点不一样呢？</p>
-<p>1.当然可以分类讨论，代码会很复杂，判断很多，容易出错</p>
-<ol start="2">
-<li>使用 一个变量pre记录开始节点，变更当1或者-1 进来的时候，pre 更新为index，判断当前节点是否和pre 不相等,符合条件则更新res</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">captureForts</span><span class="params">(forts []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    ans, pre := <span class="number">0</span>, <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 记录的是 1 或 -1 的位置 </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, fort := <span class="keyword">range</span> forts &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fort == <span class="number">-1</span> || fort == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> pre &gt;= <span class="number">0</span> &amp;&amp; forts[pre] != fort &#123;</span><br><span class="line"></span><br><span class="line">                ans = max(ans, i - pre - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pre = i</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+    <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
+    <url>/2023-06-05-869070f8049d.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/apply-operations-to-an-array/description/">2460. 对数组执行操作 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230605224628.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>直接模拟</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>第一版<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> res []<span class="type">int</span></span><br><span class="line">	res = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">	index := <span class="number">0</span></span><br><span class="line">	<span class="comment">// 第一次遍历 进行赋值操作</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">			nums[i] *= <span class="number">2</span></span><br><span class="line">			nums[i+<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 第二次遍历 将非0移动到前边</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">			res[index] = nums[i]</span><br><span class="line">			index++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>第二版<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; n &amp;&amp; nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">            nums[i] *= <span class="number">2</span></span><br><span class="line">            nums[i + <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">            nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1830,17 +1830,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 单调栈</title>
-    <url>/2024-02-24-dd95d981cb94.html</url>
-    <content><![CDATA[<p>单调栈用途不太广泛，只处理一类典型的问题，比如「下一个更大元素」，「上一个更小元素」</p>
-<p>输入一个数组 <code>nums</code>，请你返回一个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nextGreaterElement</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="comment">// 存放答案的数组</span></span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, n)</span><br><span class="line">    <span class="comment">// 倒着往栈里放</span></span><br><span class="line">    s := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- &#123; <span class="comment">// 倒着入栈是为了后边正着出栈</span></span><br><span class="line">        <span class="comment">// 判定个子高矮</span></span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">len</span>(s) &gt; <span class="number">0</span> &amp;&amp; s[<span class="built_in">len</span>(s)<span class="number">-1</span>] &lt;= nums[i] &#123;</span><br><span class="line">            <span class="comment">// 矮个起开，反正也被挡着了。。。</span></span><br><span class="line">            s = s[:<span class="built_in">len</span>(s)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// nums[i] 身后的更大元素</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(s) == <span class="number">0</span> &#123; <span class="comment">// 没有更大的元素</span></span><br><span class="line">            res[i] = <span class="number">-1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res[i] = s[<span class="built_in">len</span>(s)<span class="number">-1</span>] <span class="comment">// 正着出栈</span></span><br><span class="line">        &#125;</span><br><span class="line">        s = <span class="built_in">append</span>(s, nums[i]) <span class="comment">// 当前元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 94.二叉树的中序遍历</title>
     <url>/2024-01-22-f8790b7ced8e.html</url>
     <content><![CDATA[<h1 id="递归方法"><a href="#递归方法" class="headerlink" title="递归方法"></a>递归方法</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">inorderTraversal</span><span class="params">(root *TreeNode)</span></span> (res []<span class="type">int</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> traversal <span class="function"><span class="keyword">func</span><span class="params">(node *TreeNode)</span></span></span><br><span class="line">    traversal = <span class="function"><span class="keyword">func</span><span class="params">(node *TreeNode)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> node == <span class="literal">nil</span> &#123;</span><br><span class="line">	    <span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	traversal(node.Left)</span><br><span class="line">	res = <span class="built_in">append</span>(res,node.Val)</span><br><span class="line">	traversal(node.Right)</span><br><span class="line">    &#125;</span><br><span class="line">    traversal(root)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1891,6 +1880,17 @@ dfs(root.Right, res)
 </ul>
 <p>这个条件的目的是确保在左子树和右子树都被遍历完之前，循环一直执行。当所有节点都被遍历过，且栈为空时，循环条件不再满足，退出循环，完成中序遍历。</p>
 <p>在这个中序遍历的非递归实现中，通过栈来模拟递归调用的过程，确保每个节点都按照中序遍历的顺序被访问。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 单调栈</title>
+    <url>/2024-02-24-dd95d981cb94.html</url>
+    <content><![CDATA[<p>单调栈用途不太广泛，只处理一类典型的问题，比如「下一个更大元素」，「上一个更小元素」</p>
+<p>输入一个数组 <code>nums</code>，请你返回一个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nextGreaterElement</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="comment">// 存放答案的数组</span></span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, n)</span><br><span class="line">    <span class="comment">// 倒着往栈里放</span></span><br><span class="line">    s := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- &#123; <span class="comment">// 倒着入栈是为了后边正着出栈</span></span><br><span class="line">        <span class="comment">// 判定个子高矮</span></span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">len</span>(s) &gt; <span class="number">0</span> &amp;&amp; s[<span class="built_in">len</span>(s)<span class="number">-1</span>] &lt;= nums[i] &#123;</span><br><span class="line">            <span class="comment">// 矮个起开，反正也被挡着了。。。</span></span><br><span class="line">            s = s[:<span class="built_in">len</span>(s)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// nums[i] 身后的更大元素</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(s) == <span class="number">0</span> &#123; <span class="comment">// 没有更大的元素</span></span><br><span class="line">            res[i] = <span class="number">-1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res[i] = s[<span class="built_in">len</span>(s)<span class="number">-1</span>] <span class="comment">// 正着出栈</span></span><br><span class="line">        &#125;</span><br><span class="line">        s = <span class="built_in">append</span>(s, nums[i]) <span class="comment">// 当前元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2118,6 +2118,20 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>【Golang】for range 数组指针遍历</title>
+    <url>/2024-12-03-90d19c862e9c.html</url>
+    <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
+<p>这意味着，即使<code>for range</code>对指针进行了拷贝，你仍然可以通过这个拷贝的指针修改原始结构体的内容。下面是一个例子来说明这一点：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    students := []*Student&#123;</span><br><span class="line">        &#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">20</span>&#125;,</span><br><span class="line">        &#123;Name: <span class="string">&quot;Bob&quot;</span>, Age: <span class="number">22</span>&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for range遍历指针数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        <span class="comment">// 修改指向的结构体的内容</span></span><br><span class="line">        student.Age += <span class="number">1</span> <span class="comment">// 给每个学生的年龄加1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印修改后的students数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Name: %s, Age: %d\n&quot;</span>, student.Name, student.Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，尽管<code>for range</code>对每个<code>*Student</code>指针进行了拷贝，但通过这个拷贝的指针修改<code>Age</code>字段时，修改的是原始<code>Student</code>结构体的内容。因此，当再次遍历<code>students</code>数组时，你会看到每个学生的年龄都已经增加了。</p>
+<p>总结来说，当你使用<code>for range</code>遍历指针数组并修改指向的值时，这些修改会反映在原始数组上，因为指针拷贝仍然指向原始的内存地址。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【go】初始化双向列表List</title>
     <url>/2024-01-22-93119ce81a1c.html</url>
     <content><![CDATA[<p>在Go语言中，两种方法都可以用于初始化一个<code>list.List</code>。</p>
@@ -2128,20 +2142,6 @@ dfs(root.Right, res)
 </li>
 </ol>
 <p>两种方式都是有效的</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Golang】for range 数组指针遍历</title>
-    <url>/2024-12-03-90d19c862e9c.html</url>
-    <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
-<p>这意味着，即使<code>for range</code>对指针进行了拷贝，你仍然可以通过这个拷贝的指针修改原始结构体的内容。下面是一个例子来说明这一点：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    students := []*Student&#123;</span><br><span class="line">        &#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">20</span>&#125;,</span><br><span class="line">        &#123;Name: <span class="string">&quot;Bob&quot;</span>, Age: <span class="number">22</span>&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for range遍历指针数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        <span class="comment">// 修改指向的结构体的内容</span></span><br><span class="line">        student.Age += <span class="number">1</span> <span class="comment">// 给每个学生的年龄加1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印修改后的students数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Name: %s, Age: %d\n&quot;</span>, student.Name, student.Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，尽管<code>for range</code>对每个<code>*Student</code>指针进行了拷贝，但通过这个拷贝的指针修改<code>Age</code>字段时，修改的是原始<code>Student</code>结构体的内容。因此，当再次遍历<code>students</code>数组时，你会看到每个学生的年龄都已经增加了。</p>
-<p>总结来说，当你使用<code>for range</code>遍历指针数组并修改指向的值时，这些修改会反映在原始数组上，因为指针拷贝仍然指向原始的内存地址。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2300,6 +2300,19 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>数据结构和操作的对比：Python vs. Go vs. C++</title>
+    <url>/2023-10-19-86483682723b.html</url>
+    <content><![CDATA[<h1 id="Python示例"><a href="#Python示例" class="headerlink" title="Python示例"></a>Python示例</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 数组</span></span><br><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切片</span></span><br><span class="line">sub_list = my_list[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">reversed_list = my_list[::-1python]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">my_dict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Alice&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">30</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 双向链表（使用collections.deque）</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">my_linked_list = deque()</span><br><span class="line">my_linked_list.append(<span class="number">1</span>)</span><br><span class="line">my_linked_list.append(<span class="number">2</span>)</span><br><span class="line">my_linked_list.append(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最大堆和最小堆（需要使用第三方库heapq）</span></span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line">max_heap = []</span><br><span class="line">min_heap = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二叉树（使用类或结构体）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串操作</span></span><br><span class="line">my_string = <span class="string">&quot;Hello, World!&quot;</span></span><br><span class="line">substring = my_string[<span class="number">7</span>:<span class="number">12</span>]</span><br><span class="line">my_int = <span class="number">42</span></span><br><span class="line">my_str = <span class="built_in">str</span>(my_int)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 深度拷贝和浅拷贝（使用copy模块）</span></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">original_list = [<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>], <span class="number">4</span>]</span><br><span class="line">shallow_copy = copy.copy(original_list)</span><br><span class="line">deep_copy = copy.deepcopy(original_list)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除元素</span></span><br><span class="line">my_list.pop(<span class="number">1</span>)  <span class="comment"># 删除第二个元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找小写字母</span></span><br><span class="line"><span class="keyword">if</span> my_string.islower():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;String contains only lowercase letters&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历数组</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> my_list:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用循环遍历字典</span></span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> my_dict.items():</span><br><span class="line">    <span class="built_in">print</span>(key, value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断字典是否包含键</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> my_dict:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Dictionary contains &#x27;name&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Go示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组和切片</span></span><br><span class="line">mySlice := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">subSlice := mySlice[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">reversedSlice := reverseSlice(mySlice)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字典</span></span><br><span class="line">myMap := <span class="keyword">map</span>[<span class="type">string</span>]<span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Alice&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">30</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 双向链表（使用container/list）</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/list&quot;</span></span><br><span class="line">myList := list.New()</span><br><span class="line">myList.PushBack(<span class="number">1</span>)</span><br><span class="line">myList.PushBack(<span class="number">2</span>)</span><br><span class="line">myList.PushBack(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大堆和最小堆（需要使用heap包）</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/heap&quot;</span></span><br><span class="line">maxHeap := &amp;MaxHeap&#123;&#125;</span><br><span class="line">minHeap := &amp;MinHeap&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树（使用结构体或指针）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串操作</span></span><br><span class="line">myString := <span class="string">&quot;Hello, World!&quot;</span></span><br><span class="line">substring := myString[<span class="number">7</span>:<span class="number">12</span>]</span><br><span class="line">myInt := <span class="number">42</span></span><br><span class="line">myStr := fmt.Sprintf(<span class="string">&quot;%d&quot;</span>, myInt)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 深度拷贝和浅拷贝（使用复制切片或递归）</span></span><br><span class="line">originalSlice := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">shallowCopy := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(originalSlice))</span><br><span class="line"><span class="built_in">copy</span>(shallowCopy, originalSlice)</span><br><span class="line">deepCopy := <span class="built_in">append</span>([]<span class="type">int</span>(<span class="literal">nil</span>), originalSlice...)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">index := <span class="number">1</span></span><br><span class="line">mySlice = <span class="built_in">append</span>(mySlice[:index], mySlice[index+<span class="number">1</span>:]...)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找小写字母</span></span><br><span class="line">containsLowercase := <span class="literal">false</span></span><br><span class="line"><span class="keyword">for</span> _, char := <span class="keyword">range</span> myString &#123;</span><br><span class="line">    <span class="keyword">if</span> unicode.IsLower(char) &#123;</span><br><span class="line">        containsLowercase = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历切片</span></span><br><span class="line"><span class="keyword">for</span> _, item := <span class="keyword">range</span> mySlice &#123;</span><br><span class="line">    fmt.Println(item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用循环遍历字典</span></span><br><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> myMap &#123;</span><br><span class="line">    fmt.Println(key, value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断字典是否包含键</span></span><br><span class="line"><span class="keyword">if</span> _, exists := myMap[<span class="string">&quot;name&quot;</span>]; exists &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Map contains &#x27;name&#x27;&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组和向量</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; myVector = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">subVector</span><span class="params">(myVector.begin() + <span class="number">1</span>, myVector.begin() + <span class="number">3</span>)</span></span>;</span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">reversedVector</span><span class="params">(myVector.rbegin(), myVector.rend())</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字典（使用std::map）</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line">std::map&lt;std::string, <span class="type">int</span>&gt; myMap;</span><br><span class="line">myMap[<span class="string">&quot;name&quot;</span>] = <span class="string">&quot;Alice&quot;</span>;</span><br><span class="line">myMap[<span class="string">&quot;age&quot;</span>] = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 双向链表（使用std::list）</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;list&gt;</span></span></span><br><span class="line">std::list&lt;<span class="type">int</span>&gt; myList;</span><br><span class="line">myList.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">myList.<span class="built_in">push_back</span>(<span class="number">2</span>);</span><br><span class="line">myList.<span class="built_in">push_back</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大堆和最小堆（使用std::priority_queue）</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line">std::priority_queue&lt;<span class="type">int</span>&gt; maxHeap;</span><br><span class="line">std::priority_queue&lt;<span class="type">int</span>, std::vector&lt;<span class="type">int</span>&gt;, std::greater&lt;<span class="type">int</span>&gt;&gt; minHeap;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树（使用结构体或指针）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串操作</span></span><br><span class="line">std::string myString = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">std::string substring = myString.<span class="built_in">substr</span>(<span class="number">7</span>, <span class="number">5</span>);</span><br><span class="line"><span class="type">int</span> myInt = <span class="number">42</span>;</span><br><span class="line">std::string myStr = std::<span class="built_in">to_string</span>(myInt);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 深度拷贝和浅拷贝</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; originalVector = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; shallowCopy = originalVector;</span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">deepCopy</span><span class="params">(originalVector)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line"><span class="type">int</span> index = <span class="number">1</span>;</span><br><span class="line">myVector.<span class="built_in">erase</span>(myVector.<span class="built_in">begin</span>() + index);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找小写字母</span></span><br><span class="line"><span class="type">bool</span> containsLowercase = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c : myString) &#123;</span><br><span class="line">    <span class="keyword">if</span> (std::<span class="built_in">islower</span>(c)) &#123;</span><br><span class="line">        containsLowercase = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历向量</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> item : myVector) &#123;</span><br><span class="line">    std::cout &lt;&lt; item &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用循环遍历字典</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; pair : myMap) &#123;</span><br><span class="line">    std::cout &lt;&lt; pair.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair.second &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断字典是否包含键</span></span><br><span class="line"><span class="keyword">if</span> (myMap.<span class="built_in">find</span>(<span class="string">&quot;name&quot;</span>) != myMap.<span class="built_in">end</span>()) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Map contains &#x27;name&#x27;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>数组双指针刷题总结</title>
     <url>/2023-06-22-079d0af75447.html</url>
     <content><![CDATA[<p>双指针技巧分为<strong>快慢指针</strong>和<strong>左右指针</strong></p>
@@ -2314,19 +2327,6 @@ dfs(root.Right, res)
 </li>
 </ul>
 <h1 id="左右指针"><a href="#左右指针" class="headerlink" title="左右指针"></a>左右指针</h1><p>1.二分查找<br>    * 有序，直接找中间的点，判断中间是否符合对应的题目逻辑，将中间点赋值为左边界或者右边界<br>2.<strong>N sum 之和</strong><br>    * 一般是有序数组，然后左右相加，利用右边向内部移动数值减小和左边向内部移动数组变大<br>3.反转字符串<br>    * 终止条件是i&gt;j<br>4.回文串判断<br>     * 判断条件s[i] &#x3D;&#x3D; s[j]</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>数据结构和操作的对比：Python vs. Go vs. C++</title>
-    <url>/2023-10-19-86483682723b.html</url>
-    <content><![CDATA[<h1 id="Python示例"><a href="#Python示例" class="headerlink" title="Python示例"></a>Python示例</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 数组</span></span><br><span class="line">my_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切片</span></span><br><span class="line">sub_list = my_list[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">reversed_list = my_list[::-1python]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">my_dict = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Alice&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">30</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 双向链表（使用collections.deque）</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line">my_linked_list = deque()</span><br><span class="line">my_linked_list.append(<span class="number">1</span>)</span><br><span class="line">my_linked_list.append(<span class="number">2</span>)</span><br><span class="line">my_linked_list.append(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最大堆和最小堆（需要使用第三方库heapq）</span></span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line">max_heap = []</span><br><span class="line">min_heap = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 二叉树（使用类或结构体）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字符串操作</span></span><br><span class="line">my_string = <span class="string">&quot;Hello, World!&quot;</span></span><br><span class="line">substring = my_string[<span class="number">7</span>:<span class="number">12</span>]</span><br><span class="line">my_int = <span class="number">42</span></span><br><span class="line">my_str = <span class="built_in">str</span>(my_int)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 深度拷贝和浅拷贝（使用copy模块）</span></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">original_list = [<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>], <span class="number">4</span>]</span><br><span class="line">shallow_copy = copy.copy(original_list)</span><br><span class="line">deep_copy = copy.deepcopy(original_list)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除元素</span></span><br><span class="line">my_list.pop(<span class="number">1</span>)  <span class="comment"># 删除第二个元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找小写字母</span></span><br><span class="line"><span class="keyword">if</span> my_string.islower():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;String contains only lowercase letters&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历数组</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> my_list:</span><br><span class="line">    <span class="built_in">print</span>(item)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用循环遍历字典</span></span><br><span class="line"><span class="keyword">for</span> key, value <span class="keyword">in</span> my_dict.items():</span><br><span class="line">    <span class="built_in">print</span>(key, value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断字典是否包含键</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> my_dict:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Dictionary contains &#x27;name&#x27;&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Go示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组和切片</span></span><br><span class="line">mySlice := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">subSlice := mySlice[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">reversedSlice := reverseSlice(mySlice)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字典</span></span><br><span class="line">myMap := <span class="keyword">map</span>[<span class="type">string</span>]<span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Alice&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">30</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 双向链表（使用container/list）</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/list&quot;</span></span><br><span class="line">myList := list.New()</span><br><span class="line">myList.PushBack(<span class="number">1</span>)</span><br><span class="line">myList.PushBack(<span class="number">2</span>)</span><br><span class="line">myList.PushBack(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大堆和最小堆（需要使用heap包）</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/heap&quot;</span></span><br><span class="line">maxHeap := &amp;MaxHeap&#123;&#125;</span><br><span class="line">minHeap := &amp;MinHeap&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树（使用结构体或指针）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串操作</span></span><br><span class="line">myString := <span class="string">&quot;Hello, World!&quot;</span></span><br><span class="line">substring := myString[<span class="number">7</span>:<span class="number">12</span>]</span><br><span class="line">myInt := <span class="number">42</span></span><br><span class="line">myStr := fmt.Sprintf(<span class="string">&quot;%d&quot;</span>, myInt)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 深度拷贝和浅拷贝（使用复制切片或递归）</span></span><br><span class="line">originalSlice := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">shallowCopy := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(originalSlice))</span><br><span class="line"><span class="built_in">copy</span>(shallowCopy, originalSlice)</span><br><span class="line">deepCopy := <span class="built_in">append</span>([]<span class="type">int</span>(<span class="literal">nil</span>), originalSlice...)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">index := <span class="number">1</span></span><br><span class="line">mySlice = <span class="built_in">append</span>(mySlice[:index], mySlice[index+<span class="number">1</span>:]...)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找小写字母</span></span><br><span class="line">containsLowercase := <span class="literal">false</span></span><br><span class="line"><span class="keyword">for</span> _, char := <span class="keyword">range</span> myString &#123;</span><br><span class="line">    <span class="keyword">if</span> unicode.IsLower(char) &#123;</span><br><span class="line">        containsLowercase = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历切片</span></span><br><span class="line"><span class="keyword">for</span> _, item := <span class="keyword">range</span> mySlice &#123;</span><br><span class="line">    fmt.Println(item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用循环遍历字典</span></span><br><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> myMap &#123;</span><br><span class="line">    fmt.Println(key, value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断字典是否包含键</span></span><br><span class="line"><span class="keyword">if</span> _, exists := myMap[<span class="string">&quot;name&quot;</span>]; exists &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Map contains &#x27;name&#x27;&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// C++示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组和向量</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; myVector = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">subVector</span><span class="params">(myVector.begin() + <span class="number">1</span>, myVector.begin() + <span class="number">3</span>)</span></span>;</span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">reversedVector</span><span class="params">(myVector.rbegin(), myVector.rend())</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字典（使用std::map）</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line">std::map&lt;std::string, <span class="type">int</span>&gt; myMap;</span><br><span class="line">myMap[<span class="string">&quot;name&quot;</span>] = <span class="string">&quot;Alice&quot;</span>;</span><br><span class="line">myMap[<span class="string">&quot;age&quot;</span>] = <span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 双向链表（使用std::list）</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;list&gt;</span></span></span><br><span class="line">std::list&lt;<span class="type">int</span>&gt; myList;</span><br><span class="line">myList.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">myList.<span class="built_in">push_back</span>(<span class="number">2</span>);</span><br><span class="line">myList.<span class="built_in">push_back</span>(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大堆和最小堆（使用std::priority_queue）</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line">std::priority_queue&lt;<span class="type">int</span>&gt; maxHeap;</span><br><span class="line">std::priority_queue&lt;<span class="type">int</span>, std::vector&lt;<span class="type">int</span>&gt;, std::greater&lt;<span class="type">int</span>&gt;&gt; minHeap;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二叉树（使用结构体或指针）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串操作</span></span><br><span class="line">std::string myString = <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">std::string substring = myString.<span class="built_in">substr</span>(<span class="number">7</span>, <span class="number">5</span>);</span><br><span class="line"><span class="type">int</span> myInt = <span class="number">42</span>;</span><br><span class="line">std::string myStr = std::<span class="built_in">to_string</span>(myInt);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 深度拷贝和浅拷贝</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; originalVector = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; shallowCopy = originalVector;</span><br><span class="line"><span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">deepCopy</span><span class="params">(originalVector)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line"><span class="type">int</span> index = <span class="number">1</span>;</span><br><span class="line">myVector.<span class="built_in">erase</span>(myVector.<span class="built_in">begin</span>() + index);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找小写字母</span></span><br><span class="line"><span class="type">bool</span> containsLowercase = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c : myString) &#123;</span><br><span class="line">    <span class="keyword">if</span> (std::<span class="built_in">islower</span>(c)) &#123;</span><br><span class="line">        containsLowercase = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历向量</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> item : myVector) &#123;</span><br><span class="line">    std::cout &lt;&lt; item &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用循环遍历字典</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; pair : myMap) &#123;</span><br><span class="line">    std::cout &lt;&lt; pair.first &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; pair.second &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断字典是否包含键</span></span><br><span class="line"><span class="keyword">if</span> (myMap.<span class="built_in">find</span>(<span class="string">&quot;name&quot;</span>) != myMap.<span class="built_in">end</span>()) &#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Map contains &#x27;name&#x27;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2621,6 +2621,19 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>波纹</title>
+    <url>/2023-04-08-722322c4ddc3.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
+]]></content>
+      <categories>
+        <category>摄影</category>
+      </categories>
+      <tags>
+        <tag>摄影</tag>
+        <tag>水</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JetBrians 全家桶设置文件header</title>
     <url>/2023-10-05-7527c8e47a8b.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p>
@@ -2808,18 +2821,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>删除ppt所有批注和备注</title>
-    <url>/2023-04-24-4faf63eb321c.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>博客设置 obsidian 上传图片</title>
     <url>/2023-03-18-4e4b648f656d.html</url>
     <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>本地写MD文档我是使用了github 和gitee 图床来着，但是发布到个人博客之后，发现支持都不好。所以选择了最原始的方案，复制图片到指定文件夹，然后连同这些图片文件夹一起上传到对应的git pages, 使用对应的<strong>相对路径</strong>就可以读取并显示图片。</p>
@@ -2832,6 +2833,18 @@ dfs(root.Right, res)
 <p><img src="/../../imgs/Pasted%20image%2020230319131458.png"></p>
 <h2 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h2><p>网页可以成功显示图片</p>
 <p><img src="/../../imgs/Pasted%20image%2020230319134051.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>删除ppt所有批注和备注</title>
+    <url>/2023-04-24-4faf63eb321c.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2869,19 +2882,6 @@ dfs(root.Right, res)
       <categories>
         <category>工具</category>
       </categories>
-  </entry>
-  <entry>
-    <title>波纹</title>
-    <url>/2023-04-08-722322c4ddc3.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
-]]></content>
-      <categories>
-        <category>摄影</category>
-      </categories>
-      <tags>
-        <tag>摄影</tag>
-        <tag>水</tag>
-      </tags>
   </entry>
   <entry>
     <title>Mesh组网：家庭路由和无线连接新方式</title>
@@ -2966,19 +2966,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>路由器设置桥接</title>
-    <url>/2024-02-15-1f66da892e14.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240215213434.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020240215213536.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020240215213849.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020240215214100.png"><br><img src="/../../imgs/Pasted%20image%2020240215221821.png"><br>设置密码类型和主路由一样<br><img src="/../../imgs/Pasted%20image%2020240215221453.png"></p>
-<p>记得关闭DHCP服务器<br><img src="/../../imgs/Pasted%20image%2020240215221417.png"><br><img src="/../../imgs/Pasted%20image%2020240215221130.png"><img src="/../../imgs/Pasted%20image%2020240215221401.png"></p>
-]]></content>
-      <categories>
-        <category>网络</category>
-      </categories>
-  </entry>
-  <entry>
     <title>计算机网络概览</title>
     <url>/2024-05-02-82705503428a.html</url>
     <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240502152821.png"></p>
@@ -2987,6 +2974,19 @@ dfs(root.Right, res)
 <p><img src="/../../imgs/Pasted%20image%2020240502153543.png"></p>
 <p>【计算机网络】常识</p>
 <p>知识点：集线器Hub、交换机Switch、桥接、路由器Router、路由表、MAC地址、IP地址、默认网关IP；高低电平表示电信号，2.4-5.0v表示高电平，0-0.4表示低电平；<br>两台计算机可以通过一条网线，但多条计算机需要指数级根网线；太费线<br>【集线器Hub】转发消息的设备；Hub是物理层的设备；广播隐私性较差；<br>数据链路层；<br>【半双工】无法同时向上或向下传输（双向通讯，例如对讲机）Hub太费时间；<br>【交换机Switch】交换机记录设备的唯一标识【MAC地址】是设备的物理地址且全球唯一；<br>【物理地址MAC】<br>交换机将每个设备的MAC地址与【对应端口】记录为一张地址表；（首先是群发，随后才是点对点）<br>【点对点连接】【全双工通讯】提高了带宽利用率；<br>【桥接】一根线连接两台交换机，实现两个交换机设备的相互访问；两台交换器有一个端口记录为桥接端口，交换两台交换机的MAC地址表；<br>【交换机Switch】只能用在设备不多的内网，例如公司内网或学校教育网；<br>【交换机Switch】虽然可以记录几千到几万个MAC地址，并且【桥接】只能增加新的MAC地址记录；交换机越多，通过桥接的传播路径也会越长<br>【路由器Router】一种专门的网络设备，用于找到网络的最优路径（并非家里的WiFi路由器）；<br>【IP地址】用于标识不同的网络和网络设备；<br>【路由器Router】连接两个不同的交换机Switch组成的网络并分配【网段】（例如网络A分配192.168.1.0&#x2F;24，网络B分配192.168.2.0&#x2F;24，连接到路由器的192.168.1.1和192.168.2.1端口，设备A1和设备B1分配192.168.1.10和192.168.2.10）<br>【默认网关IP】不同网段连接到路由器的IP；<br>【IP地址】只是设备的临时标识，方便使用，最终的通信还是需要靠MAC地址完成；<br>设备A1给设备B1发数据包，在网络A内找目标IP，找不到就会发送到路由器；<br>【路由表】记录IP和端口映射关系的路由表（一说网关）；来决定如何将数据包转发到网络B，在网络B中找到对应设备B1的MAC地址；后续的通信还是通过路由器来转发；拓展：DHCP服务器<br>【IPv4】2的32次方，43亿个网络设备，2019年11月耗尽；【IPv6】2的128次方；<br>【海底光缆】</p>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>路由器设置桥接</title>
+    <url>/2024-02-15-1f66da892e14.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240215213434.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020240215213536.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020240215213849.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020240215214100.png"><br><img src="/../../imgs/Pasted%20image%2020240215221821.png"><br>设置密码类型和主路由一样<br><img src="/../../imgs/Pasted%20image%2020240215221453.png"></p>
+<p>记得关闭DHCP服务器<br><img src="/../../imgs/Pasted%20image%2020240215221417.png"><br><img src="/../../imgs/Pasted%20image%2020240215221130.png"><img src="/../../imgs/Pasted%20image%2020240215221401.png"></p>
 ]]></content>
       <categories>
         <category>网络</category>
