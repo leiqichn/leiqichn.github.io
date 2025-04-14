@@ -158,7 +158,7 @@ post_meta:
 # The position of site info, eg: 300px/300em/300rem/10%
 index_site_info_top:
 # The height of top_img, eg: 300px/300em/300rem
-index_top_img_height: 60%
+index_top_img_height:
 
 # The subtitle on homepage
 subtitle:
