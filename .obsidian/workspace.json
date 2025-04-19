@@ -40,35 +40,22 @@
             }
           },
           {
-            "id": "331906324583b373",
+            "id": "33d09e0aad894f31",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/架构/软件架构/软件架构.md",
+                "file": "source/obsidian_tamplate/TemPlater.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "软件架构"
-            }
-          },
-          {
-            "id": "297447e4d7be5745",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/前端/配置七牛云搭建图床.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "配置七牛云搭建图床"
+              "title": "TemPlater"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -149,7 +136,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "https_",
+                "query": "template",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -190,7 +177,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/carl/代码随想录 day11 第五章 栈与队列part02.md",
+                "file": "source/obsidian_tamplate/TemPlater.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -200,7 +187,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 代码随想录 day11 第五章 栈与队列part02"
+              "title": "TemPlater 的反向链接列表"
             }
           },
           {
@@ -236,13 +223,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/前端/配置七牛云搭建图床.md",
+                "file": "source/obsidian_tamplate/TemPlater.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "配置七牛云搭建图床 的大纲"
+              "title": "TemPlater 的大纲"
             }
           },
           {
@@ -259,8 +246,7 @@
               "title": "All properties"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -281,38 +267,45 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "297447e4d7be5745",
+  "active": "33d09e0aad894f31",
   "lastOpenFiles": [
-    "source/imgs/xiaohongshu.png",
-    "source/imgs/小红书_爱给网_aigei_com.png.crdownload",
-    "source/imgs/bilibili.png",
-    "source/imgs/bilibili.png.crdownload",
-    "public/archives/2023/10/page/2/index.html",
-    "public/archives/2024/01/page/2/index.html",
-    "public/archives/2023/05/page/3/index.html",
-    "public/archives/2023/05/page/2/index.html",
-    "public/categories/工具/page/2/index.html",
-    "public/categories/leetcode/page/6/index.html",
-    "public/categories/leetcode/page/5/index.html",
-    "public/categories/leetcode/page/4/index.html",
+    "public/tags/贪心/index.html",
+    "public/tags/设计题/index.html",
+    "public/tags/水/index.html",
+    "public/tags/摄影/index.html",
+    "public/tags/层序遍历/index.html",
+    "public/tags/图遍历，岛屿问题/index.html",
+    "public/tags/动态规划/index.html",
+    "public/tags/刨根问底/index.html",
+    "public/tags/二维数组最短路径/index.html",
+    "public/tags/DFS/index.html",
+    "public/tags/二叉树/index.html",
+    "public/img/friend_404.gif",
+    "public/img/loading.gif",
+    "public/img/icon.png",
+    "public/img/favicon.jpg",
+    "public/img/error-page.png",
+    "public/img/butterfly-icon.png",
+    "public/img/404.jpg",
+    "public/apple-touch-icon.png",
     "public/imgs/白鸽.png",
     "public/imgs/微信图片_20230319125819.png",
-    "public/imgs/企业微信截图_1721534117437.png",
-    "public/imgs/企业微信.jpg",
-    "public/imgs/Snipaste_2023-03-19_12-43-32.png",
-    "public/imgs/qrcode.jpg",
-    "public/imgs/police_beian.png",
-    "public/imgs/Pasted image 20250413131129.png",
-    "public/imgs/Pasted image 20250413131054.png",
-    "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
+    "scaffolds/post.md",
+    "scaffolds/page.md",
+    "scaffolds/draft.md",
     "source/_posts/前端/配置七牛云搭建图床.md",
     "source/_posts/前端/本地生成hexo 网页.md",
+    "source/photography/scenery/index.md",
+    "source/photography/portrait/index.md",
+    "source/economics/index.md",
+    "source/photography/index.md",
+    "source/_posts/架构/软件架构/软件架构.md",
+    "source/guestbook/index.md",
+    "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
     "source/_posts/前端/申请域名绑定github pages.md",
     "source/_posts/工具/clash在终端设置代理.md",
-    "source/_posts/架构/软件架构/软件架构.md",
     "node_modules/javascript-state-machine/RELEASE_NOTES.md",
     "node_modules/javascript-state-machine/README.md",
-    "source/economics/index.md",
     "source/readings/index.md",
     "node_modules/sass/node_modules/readdirp/README.md",
     "node_modules/sass/node_modules/immutable/README.md",
@@ -322,13 +315,6 @@
     "node_modules/protobufjs/src/google/protobuf/README.md",
     "node_modules/protobufjs/node_modules/wrap-ansi/readme.md",
     "node_modules/protobufjs/node_modules/yargs/README.md",
-    "node_modules/protobufjs/node_modules/yargs/CHANGELOG.md",
-    "node_modules/protobufjs/node_modules/y18n/README.md",
-    "node_modules/protobufjs/node_modules/y18n/CHANGELOG.md",
-    "node_modules/protobufjs/node_modules/window-size/README.md",
-    "node_modules/protobufjs/node_modules/is-fullwidth-code-point/readme.md",
-    "node_modules/protobufjs/node_modules/string-width/readme.md",
-    "node_modules/protobufjs/node_modules/cliui/README.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
