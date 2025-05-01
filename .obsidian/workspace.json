@@ -43,15 +43,13 @@
             "id": "33d09e0aad894f31",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "source/obsidian_tamplate/TemPlater.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
+                "file": "themes/temp/取消git 代理.md",
+                "staged": false
               },
-              "icon": "lucide-file",
-              "title": "TemPlater"
+              "icon": "git-pull-request",
+              "title": "Diff View (取消git 代理)"
             }
           }
         ],
@@ -122,8 +120,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "d299abda62253875",
@@ -136,7 +133,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "template",
+                "query": "git config ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -177,7 +174,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/obsidian_tamplate/TemPlater.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,7 +183,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "TemPlater 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -223,13 +219,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/obsidian_tamplate/TemPlater.md",
+                "file": "source/_posts/工具/clash在终端设置代理.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "TemPlater 的大纲"
+              "title": "clash在终端设置代理 的大纲"
             }
           },
           {
@@ -269,27 +265,36 @@
   },
   "active": "33d09e0aad894f31",
   "lastOpenFiles": [
-    "public/tags/贪心/index.html",
-    "public/tags/设计题/index.html",
-    "public/tags/水/index.html",
-    "public/tags/摄影/index.html",
-    "public/tags/层序遍历/index.html",
-    "public/tags/图遍历，岛屿问题/index.html",
-    "public/tags/动态规划/index.html",
-    "public/tags/刨根问底/index.html",
-    "public/tags/二维数组最短路径/index.html",
-    "public/tags/DFS/index.html",
-    "public/tags/二叉树/index.html",
+    "source/_posts/比赛/comet 生成临时文件导致磁盘满.md",
+    "source/_posts/比赛/比赛任务分配.md",
+    "source/_posts/比赛/大模型微调.md",
+    "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
+    "source/_posts/git/Windows Git自动转换为Linux换行符.md",
+    "source/_posts/git/设置github 同步到gitee.md",
+    "source/_posts/git/git更新仓库地址.md",
+    "themes/temp/取消git 代理.md",
+    "source/_posts/工具/clash在终端设置代理.md",
+    "source/imgs/ima.copilot-win-x64-1.6.1(2463).exe",
+    "source/imgs/未确认 695400.crdownload",
+    "source/obsidian_tamplate/TemPlater.md",
+    "source/imgs/xiaohongshu-qrcode.jpg",
+    "source/imgs/bilibili-qrcode.jpg",
+    "source/imgs/wexin-logo.png",
+    "source/imgs/公众号_爱给网_aigei_com.png.crdownload",
+    "source/imgs/xiaohongshu_qrcode.jpg",
+    "source/imgs/xiaohongshu.zip",
+    "source/imgs/CSDN.png",
+    "public/assets/algolia/algoliasearchLite.min.js",
+    "public/assets/algolia/algoliasearchLite.js",
+    "public/assets/algolia/algoliasearch.min.js",
+    "public/assets/img/微信图片_20230319125819.png.html",
+    "public/assets/algolia/algoliasearch.js",
+    "public/assets/img/Snipaste_2023-03-19_12-43-32.png.html",
     "public/img/friend_404.gif",
     "public/img/loading.gif",
     "public/img/icon.png",
     "public/img/favicon.jpg",
     "public/img/error-page.png",
-    "public/img/butterfly-icon.png",
-    "public/img/404.jpg",
-    "public/apple-touch-icon.png",
-    "public/imgs/白鸽.png",
-    "public/imgs/微信图片_20230319125819.png",
     "scaffolds/post.md",
     "scaffolds/page.md",
     "scaffolds/draft.md",
@@ -303,18 +308,9 @@
     "source/guestbook/index.md",
     "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
     "source/_posts/前端/申请域名绑定github pages.md",
-    "source/_posts/工具/clash在终端设置代理.md",
     "node_modules/javascript-state-machine/RELEASE_NOTES.md",
     "node_modules/javascript-state-machine/README.md",
     "source/readings/index.md",
-    "node_modules/sass/node_modules/readdirp/README.md",
-    "node_modules/sass/node_modules/immutable/README.md",
-    "node_modules/sass/node_modules/chokidar/README.md",
-    "node_modules/sass/README.md",
-    "node_modules/@babel/runtime/README.md",
-    "node_modules/protobufjs/src/google/protobuf/README.md",
-    "node_modules/protobufjs/node_modules/wrap-ansi/readme.md",
-    "node_modules/protobufjs/node_modules/yargs/README.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",

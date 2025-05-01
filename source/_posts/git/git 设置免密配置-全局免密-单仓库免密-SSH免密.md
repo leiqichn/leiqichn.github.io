@@ -39,7 +39,7 @@ origin  https://gitee.com/xxx/xxx.git (push)
 
 ```text
 git config --global user.name "xxx"
-git config --global user.email "xxx@qq.com"
+git config --global user.email "lei_qi@outlook.com"
 ```
 
 项目初始化，生成 .git 目录，配置远程项目地址(前提已经在网页上新建了仓库)，完成首次提交。
