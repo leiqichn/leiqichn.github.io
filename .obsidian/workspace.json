@@ -16,7 +16,8 @@
               "state": {
                 "file": "source/_posts/Golang/golang 设计题.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "pinned": true,
               "icon": "lucide-file",
@@ -32,7 +33,8 @@
               "state": {
                 "file": "source/_posts/前端/本地生成hexo 网页.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "pinned": true,
               "icon": "lucide-file",
@@ -40,16 +42,16 @@
             }
           },
           {
-            "id": "33d09e0aad894f31",
+            "id": "afbaf72d8b3a11ec",
             "type": "leaf",
             "state": {
               "type": "diff-view",
               "state": {
-                "file": "themes/temp/取消git 代理.md",
+                "file": "source/_posts/关于我/关于我.md",
                 "staged": false
               },
               "icon": "git-pull-request",
-              "title": "Diff View (取消git 代理)"
+              "title": "Diff View (关于我)"
             }
           }
         ],
@@ -263,8 +265,12 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "33d09e0aad894f31",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/前端/本地生成hexo 网页.md",
+    "source/_posts/Golang/golang 设计题.md",
+    "source/_posts/关于我/关于我.md",
+    "source/about/index.md",
     "source/_posts/比赛/comet 生成临时文件导致磁盘满.md",
     "source/_posts/比赛/比赛任务分配.md",
     "source/_posts/比赛/大模型微调.md",
@@ -299,7 +305,6 @@
     "scaffolds/page.md",
     "scaffolds/draft.md",
     "source/_posts/前端/配置七牛云搭建图床.md",
-    "source/_posts/前端/本地生成hexo 网页.md",
     "source/photography/scenery/index.md",
     "source/photography/portrait/index.md",
     "source/economics/index.md",
@@ -308,9 +313,6 @@
     "source/guestbook/index.md",
     "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
     "source/_posts/前端/申请域名绑定github pages.md",
-    "node_modules/javascript-state-machine/RELEASE_NOTES.md",
-    "node_modules/javascript-state-machine/README.md",
-    "source/readings/index.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
