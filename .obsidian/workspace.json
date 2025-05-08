@@ -45,13 +45,15 @@
             "id": "afbaf72d8b3a11ec",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": "source/_posts/关于我/关于我.md",
-                "staged": false
+                "file": "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "git-pull-request",
-              "title": "Diff View (关于我)"
+              "icon": "lucide-file",
+              "title": "git 设置免密配置-全局免密-单仓库免密-SSH免密"
             }
           }
         ],
@@ -176,6 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -185,7 +188,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "git 设置免密配置-全局免密-单仓库免密-SSH免密 的反向链接列表"
             }
           },
           {
@@ -265,8 +268,9 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "afbaf72d8b3a11ec",
   "lastOpenFiles": [
+    "source/_posts/git/git stash 使用指南.md",
     "source/_posts/前端/本地生成hexo 网页.md",
     "source/_posts/Golang/golang 设计题.md",
     "source/_posts/关于我/关于我.md",
@@ -312,7 +316,6 @@
     "source/_posts/架构/软件架构/软件架构.md",
     "source/guestbook/index.md",
     "source/_posts/前端/更新网页url后，恢复valine网页评论.md",
-    "source/_posts/前端/申请域名绑定github pages.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
