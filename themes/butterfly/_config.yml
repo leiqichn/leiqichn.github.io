@@ -31,7 +31,7 @@ menu:
   RSS: /atom.xml || fas fa-rss-square
   友链: /link || fas fa-link
   留言板: /guestbook/ || fas fa-comment-dots
-#  关于我: /about/ || fas fa-heart
+  关于我: /about/ || fas fa-heart
   # Home: / || fas fa-home
   # List||fas fa-list:
   #   Music: /music/ || fas fa-music
