@@ -249,24 +249,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Go语言指定索引插入元素</title>
-    <url>/2023-05-10-5e3b5c8e7446.html</url>
-    <content><![CDATA[<p>在Go语言中，可以使用切片（slice）的 append 函数和切片的切割（slice expression）操作来在指定索引位置插入元素。</p>
-<p>下面是一个示例代码，它插入一个元素到切片的第二个位置：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">    i := <span class="number">1</span> <span class="comment">// 要插入的位置</span></span><br><span class="line">    b := <span class="built_in">append</span>(a[:i], <span class="built_in">append</span>([]<span class="type">int</span>&#123;<span class="number">5</span>&#125;, a[i:]...)...) <span class="comment">// 在切片的第二个位置插入数字5</span></span><br><span class="line">    fmt.Println(b) <span class="comment">// 输出 [1 5 2 3 4]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们首先定义了切片 a，包含整数 1、2、3、4。然后我们定义要插入的位置 i 为第二个元素（也就是索引值为 1）。</p>
-<p>接着，在 append 函数中，我们将原始切片 a 切割成两部分：从起始位置到插入位置的子切片 a[:i]，和从插入位置到末尾的子切片 a[i:]。我们在这两个子切片之间插入了元素 5，然后使用两个 append 函数将它们拼接回去。</p>
-<p>最后，我们将结果赋值给变量 b 并打印输出它。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-      <tags>
-        <tag>golang</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Go语言删除指定索引元素</title>
     <url>/2023-05-10-741623f2e4fb.html</url>
     <content><![CDATA[<p>在Go语言中，可以使用切片的操作和 append 函数来删除特定索引的元素。</p>
@@ -276,6 +258,24 @@
 <p>在上面的代码中，我们定义了一个整数切片 a，包含 1、2、3、4、5 五个元素。然后我们定义要删除的元素的索引位置 i 为 2（即第三个元素）。</p>
 <p>接下来，我们使用 append 函数和切片切割（slice expression）操作，在 a[:i] 和 a[i+1:] 中间加入空白符号 (…)，以便将包含 a[i] 元素的子切片略过。也就是说，这个表达式等价于前 i 个元素和后面剩余的所有元素的连接。从而我们得到一个新的切片 b，其中不包含位于索引 i 处的元素。</p>
 <p>最后，我们将结果赋值给变量 b 并打印输出它。注意，这个删除元素的操作不会改变原始切片 a 的内容。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+      <tags>
+        <tag>golang</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Go语言指定索引插入元素</title>
+    <url>/2023-05-10-5e3b5c8e7446.html</url>
+    <content><![CDATA[<p>在Go语言中，可以使用切片（slice）的 append 函数和切片的切割（slice expression）操作来在指定索引位置插入元素。</p>
+<p>下面是一个示例代码，它插入一个元素到切片的第二个位置：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">    i := <span class="number">1</span> <span class="comment">// 要插入的位置</span></span><br><span class="line">    b := <span class="built_in">append</span>(a[:i], <span class="built_in">append</span>([]<span class="type">int</span>&#123;<span class="number">5</span>&#125;, a[i:]...)...) <span class="comment">// 在切片的第二个位置插入数字5</span></span><br><span class="line">    fmt.Println(b) <span class="comment">// 输出 [1 5 2 3 4]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们首先定义了切片 a，包含整数 1、2、3、4。然后我们定义要插入的位置 i 为第二个元素（也就是索引值为 1）。</p>
+<p>接着，在 append 函数中，我们将原始切片 a 切割成两部分：从起始位置到插入位置的子切片 a[:i]，和从插入位置到末尾的子切片 a[i:]。我们在这两个子切片之间插入了元素 5，然后使用两个 append 函数将它们拼接回去。</p>
+<p>最后，我们将结果赋值给变量 b 并打印输出它。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -325,23 +325,6 @@
       </categories>
   </entry>
   <entry>
-    <title>golang 修改函数传入参数切片需要指针</title>
-    <url>/2024-02-24-4fbd7a88bf6f.html</url>
-    <content><![CDATA[<p>func dfs(root *TreeNode, res *[]int) {<br>    if root &#x3D;&#x3D; nil {<br>        return<br>    }</p>
-<pre><code>*res = append(*res, root.Val)
-dfs(root.Left, res)
-dfs(root.Right, res)
-</code></pre>
-<p>}<br>在这个修正后的版本中，res参数是一个指向切片的指针。这样，我们在函数内部通过*res来访问和修改原始切片的内容，确保递归调用可以正确地将结果收集到原始切片中。</p>
-<p>在 Go 语言中，切片是引用类型。这意味着当你将切片传递给函数时，你实际上传递的是切片的引用（底层数组的地址），而不是切片的副本。因此，对切片的修改会影响到原始切片。</p>
-<p>但是需要注意的是，虽然切片是引用类型，但当你在函数内部对切片进行重新分配（比如使用 append 函数时），你实际上是创建了一个新的切片，而原始切片并没有被修改。这是因为切片是对底层数组的一个视图，对切片的修改可能会导致底层数组的重新分配和复制。</p>
-<p>这就是为什么在你的原始 DFS 函数中，尽管你传递了切片 res 给递归函数，但在递归调用中对 res 进行 append 操作并不会修改原始切片的内容。为了避免这个问题，可以通过传递切片的指针来确保在函数内部对切片的修改可以影响到原始切片。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>golang 中格式化打印单个字符</title>
     <url>/2024-05-03-ec16a5fd018e.html</url>
     <content><![CDATA[<p>在Go语言中，<code>fmt.Printf</code> 函数是用来格式化输出的，它接受一个格式化字符串作为第一个参数，后面跟着相应的参数。格式化字符串中可以包含一些格式化动词（也称为转换说明符），它们定义了如何将相应的参数值转换为字符串并输出。</p>
@@ -354,6 +337,23 @@ dfs(root.Right, res)
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">    bytes := []<span class="type">byte</span>(s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b := <span class="keyword">range</span> bytes &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Byte %d: %c\n&quot;</span>, i, b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出:</span></span><br><span class="line">    <span class="comment">// Byte 0: h</span></span><br><span class="line">    <span class="comment">// Byte 1: e</span></span><br><span class="line">    <span class="comment">// Byte 2: l</span></span><br><span class="line">    <span class="comment">// Byte 3: l</span></span><br><span class="line">    <span class="comment">// Byte 4: o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，我们遍历字符串 <code>&quot;hello&quot;</code> 的字节表示，并使用 <code>%c</code> 格式化每个字节为字符。由于 “hello” 由纯ASCII字符组成，每个字节都是一个完整的字符。如果处理包含多字节UTF-8字符的字符串，单独的字节可能不会形成有效的字符。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>golang 修改函数传入参数切片需要指针</title>
+    <url>/2024-02-24-4fbd7a88bf6f.html</url>
+    <content><![CDATA[<p>func dfs(root *TreeNode, res *[]int) {<br>    if root &#x3D;&#x3D; nil {<br>        return<br>    }</p>
+<pre><code>*res = append(*res, root.Val)
+dfs(root.Left, res)
+dfs(root.Right, res)
+</code></pre>
+<p>}<br>在这个修正后的版本中，res参数是一个指向切片的指针。这样，我们在函数内部通过*res来访问和修改原始切片的内容，确保递归调用可以正确地将结果收集到原始切片中。</p>
+<p>在 Go 语言中，切片是引用类型。这意味着当你将切片传递给函数时，你实际上传递的是切片的引用（底层数组的地址），而不是切片的副本。因此，对切片的修改会影响到原始切片。</p>
+<p>但是需要注意的是，虽然切片是引用类型，但当你在函数内部对切片进行重新分配（比如使用 append 函数时），你实际上是创建了一个新的切片，而原始切片并没有被修改。这是因为切片是对底层数组的一个视图，对切片的修改可能会导致底层数组的重新分配和复制。</p>
+<p>这就是为什么在你的原始 DFS 函数中，尽管你传递了切片 res 给递归函数，但在递归调用中对 res 进行 append 操作并不会修改原始切片的内容。为了避免这个问题，可以通过传递切片的指针来确保在函数内部对切片的修改可以影响到原始切片。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -744,67 +744,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>Windows Git自动转换为Linux换行符</title>
-    <url>/2025-04-28-84ca2c3d5919.html</url>
-    <content><![CDATA[<p>在 Git 中处理不同操作系统（Windows&#x2F;Linux&#x2F;macOS）的换行符（<code>LF</code> 和 <code>CRLF</code>）时，自动转换是关键。以下是配置 Git 自动处理换行符的方法：</p>
-<hr>
-<h3 id="1-核心配置：core-autocrlf"><a href="#1-核心配置：core-autocrlf" class="headerlink" title="1. 核心配置：core.autocrlf"></a><strong>1. 核心配置：<code>core.autocrlf</code></strong></h3><p>通过设置 <code>core.autocrlf</code> 属性，让 Git 自动转换换行符：</p>
-<h4 id="不同操作系统的推荐设置"><a href="#不同操作系统的推荐设置" class="headerlink" title="不同操作系统的推荐设置"></a><strong>不同操作系统的推荐设置</strong></h4><ul>
-<li><p><strong>Windows（推荐）</strong>：  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">true</span></span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时转换为 CRLF</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Linux&#x2F;macOS（推荐）</strong>：  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时不转换</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2-强制规范：-gitattributes-文件"><a href="#2-强制规范：-gitattributes-文件" class="headerlink" title="2. 强制规范：.gitattributes 文件"></a><strong>2. 强制规范：<code>.gitattributes</code> 文件</strong></h3><p>在项目根目录创建 <code>.gitattributes</code> 文件，<strong>优先级高于全局配置</strong>，适合团队协作。</p>
-<h4 id="示例配置："><a href="#示例配置：" class="headerlink" title="示例配置："></a><strong>示例配置</strong>：</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 所有文本文件使用 LF 换行符</span><br><span class="line">* text=auto eol=lf</span><br><span class="line"></span><br><span class="line"># 排除二进制文件（避免误处理）</span><br><span class="line">*.png binary</span><br><span class="line">*.jpg binary</span><br><span class="line">*.zip binary</span><br><span class="line"></span><br><span class="line"># 指定特定文件类型（可选）</span><br><span class="line">*.sh text eol=lf</span><br><span class="line">*.bat text eol=crlf</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>text=auto</code>：Git 自动识别文本文件。</li>
-<li><code>eol=lf</code> 或 <code>eol=crlf</code>：强制统一换行符。</li>
-</ul>
-<hr>
-<h3 id="3-修复已存在的换行符问题"><a href="#3-修复已存在的换行符问题" class="headerlink" title="3. 修复已存在的换行符问题"></a><strong>3. 修复已存在的换行符问题</strong></h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤：</strong></h4><ol>
-<li><p>删除缓存并重置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached -r .  <span class="comment"># 清除缓存</span></span><br><span class="line">git reset --hard      <span class="comment"># 重置文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新添加文件并提交：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;fix: normalize line endings&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h3 id="4-检查换行符状态"><a href="#4-检查换行符状态" class="headerlink" title="4. 检查换行符状态"></a><strong>4. 检查换行符状态</strong></h3><h4 id="检查文件换行符："><a href="#检查文件换行符：" class="headerlink" title="检查文件换行符："></a><strong>检查文件换行符</strong>：</h4><ul>
-<li><p><strong>Linux&#x2F;macOS</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">file yourfile.txt</span><br><span class="line"><span class="comment"># 输出中包含 &quot;LF&quot; 或 &quot;CRLF&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Windows（PowerShell）</strong>：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-Content</span> yourfile.txt <span class="literal">-Encoding</span> Byte | <span class="built_in">Select-String</span> <span class="string">&quot;0D 0A&quot;</span></span><br><span class="line"><span class="comment"># 存在 &quot;0D 0A&quot; 表示 CRLF</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="查看-Git-换行符转换日志："><a href="#查看-Git-换行符转换日志：" class="headerlink" title="查看 Git 换行符转换日志："></a><strong>查看 Git 换行符转换日志</strong>：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git ls-files --eol</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a><strong>常见问题解决</strong></h3><ul>
-<li><p>**警告 <code>LF will be replaced by CRLF</code>**：<br>正常提示，表示 Git 正在按配置转换换行符。</p>
-</li>
-<li><p><strong>文件被标记为已修改（仅换行符变化）</strong>：<br>运行以下命令清除差异：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.whitespace cr-at-eol</span><br><span class="line">git add --renormalize .</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>混合换行符导致冲突</strong>：<br>使用 <code>.gitattributes</code> 强制统一换行符，并重新提交文件。</p>
-</li>
-</ul>
-<hr>
-<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a><strong>最佳实践</strong></h3><ol>
-<li><strong>团队协作</strong>：在项目中添加 <code>.gitattributes</code> 文件，统一换行符规则。</li>
-<li><strong>编辑器配置</strong>：设置 IDE（如 VSCode）默认使用 <code>LF</code>（<a href="https://stackoverflow.com/a/44788470">配置示例</a>）。</li>
-<li><strong>Windows 用户</strong>：安装 Git 时选择 <code>Checkout as-is, commit Unix-style line endings</code>。</li>
-</ol>
-<hr>
-<p>通过上述配置，Git 会自动处理换行符，避免跨平台协作时的混乱！ 🛠️</p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git stash</title>
     <url>/2024-08-21-d34ebab44074.html</url>
     <content><![CDATA[<p>当尝试使用 git pull -f 强制拉取远程仓库的更新时，Git 会警告你，因为本地有未提交的更改，这些更改可能会被覆盖。确定要取消对特定文件的保存，可以按照以下步骤操作：</p>
@@ -904,6 +843,67 @@ dfs(root.Right, res)
       <tags>
         <tag>git</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Windows Git自动转换为Linux换行符</title>
+    <url>/2025-04-28-84ca2c3d5919.html</url>
+    <content><![CDATA[<p>在 Git 中处理不同操作系统（Windows&#x2F;Linux&#x2F;macOS）的换行符（<code>LF</code> 和 <code>CRLF</code>）时，自动转换是关键。以下是配置 Git 自动处理换行符的方法：</p>
+<hr>
+<h3 id="1-核心配置：core-autocrlf"><a href="#1-核心配置：core-autocrlf" class="headerlink" title="1. 核心配置：core.autocrlf"></a><strong>1. 核心配置：<code>core.autocrlf</code></strong></h3><p>通过设置 <code>core.autocrlf</code> 属性，让 Git 自动转换换行符：</p>
+<h4 id="不同操作系统的推荐设置"><a href="#不同操作系统的推荐设置" class="headerlink" title="不同操作系统的推荐设置"></a><strong>不同操作系统的推荐设置</strong></h4><ul>
+<li><p><strong>Windows（推荐）</strong>：  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">true</span></span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时转换为 CRLF</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Linux&#x2F;macOS（推荐）</strong>：  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时不转换</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-强制规范：-gitattributes-文件"><a href="#2-强制规范：-gitattributes-文件" class="headerlink" title="2. 强制规范：.gitattributes 文件"></a><strong>2. 强制规范：<code>.gitattributes</code> 文件</strong></h3><p>在项目根目录创建 <code>.gitattributes</code> 文件，<strong>优先级高于全局配置</strong>，适合团队协作。</p>
+<h4 id="示例配置："><a href="#示例配置：" class="headerlink" title="示例配置："></a><strong>示例配置</strong>：</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 所有文本文件使用 LF 换行符</span><br><span class="line">* text=auto eol=lf</span><br><span class="line"></span><br><span class="line"># 排除二进制文件（避免误处理）</span><br><span class="line">*.png binary</span><br><span class="line">*.jpg binary</span><br><span class="line">*.zip binary</span><br><span class="line"></span><br><span class="line"># 指定特定文件类型（可选）</span><br><span class="line">*.sh text eol=lf</span><br><span class="line">*.bat text eol=crlf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>text=auto</code>：Git 自动识别文本文件。</li>
+<li><code>eol=lf</code> 或 <code>eol=crlf</code>：强制统一换行符。</li>
+</ul>
+<hr>
+<h3 id="3-修复已存在的换行符问题"><a href="#3-修复已存在的换行符问题" class="headerlink" title="3. 修复已存在的换行符问题"></a><strong>3. 修复已存在的换行符问题</strong></h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤：</strong></h4><ol>
+<li><p>删除缓存并重置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached -r .  <span class="comment"># 清除缓存</span></span><br><span class="line">git reset --hard      <span class="comment"># 重置文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新添加文件并提交：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;fix: normalize line endings&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h3 id="4-检查换行符状态"><a href="#4-检查换行符状态" class="headerlink" title="4. 检查换行符状态"></a><strong>4. 检查换行符状态</strong></h3><h4 id="检查文件换行符："><a href="#检查文件换行符：" class="headerlink" title="检查文件换行符："></a><strong>检查文件换行符</strong>：</h4><ul>
+<li><p><strong>Linux&#x2F;macOS</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">file yourfile.txt</span><br><span class="line"><span class="comment"># 输出中包含 &quot;LF&quot; 或 &quot;CRLF&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Windows（PowerShell）</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-Content</span> yourfile.txt <span class="literal">-Encoding</span> Byte | <span class="built_in">Select-String</span> <span class="string">&quot;0D 0A&quot;</span></span><br><span class="line"><span class="comment"># 存在 &quot;0D 0A&quot; 表示 CRLF</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="查看-Git-换行符转换日志："><a href="#查看-Git-换行符转换日志：" class="headerlink" title="查看 Git 换行符转换日志："></a><strong>查看 Git 换行符转换日志</strong>：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git ls-files --eol</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a><strong>常见问题解决</strong></h3><ul>
+<li><p>**警告 <code>LF will be replaced by CRLF</code>**：<br>正常提示，表示 Git 正在按配置转换换行符。</p>
+</li>
+<li><p><strong>文件被标记为已修改（仅换行符变化）</strong>：<br>运行以下命令清除差异：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.whitespace cr-at-eol</span><br><span class="line">git add --renormalize .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>混合换行符导致冲突</strong>：<br>使用 <code>.gitattributes</code> 强制统一换行符，并重新提交文件。</p>
+</li>
+</ul>
+<hr>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a><strong>最佳实践</strong></h3><ol>
+<li><strong>团队协作</strong>：在项目中添加 <code>.gitattributes</code> 文件，统一换行符规则。</li>
+<li><strong>编辑器配置</strong>：设置 IDE（如 VSCode）默认使用 <code>LF</code>（<a href="https://stackoverflow.com/a/44788470">配置示例</a>）。</li>
+<li><strong>Windows 用户</strong>：安装 Git 时选择 <code>Checkout as-is, commit Unix-style line endings</code>。</li>
+</ol>
+<hr>
+<p>通过上述配置，Git 会自动处理换行符，避免跨平台协作时的混乱！ 🛠️</p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
   </entry>
   <entry>
     <title>git 设置免密配置-全局免密-单仓库免密-SSH免密</title>
@@ -1007,16 +1007,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>git更新仓库地址</title>
-    <url>/2024-07-23-764a3cd05cde.html</url>
-    <content><![CDATA[<p>使用如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>设置github 同步到gitee</title>
     <url>/2024-07-21-3ee37da7ed1c.html</url>
     <content><![CDATA[<ol>
@@ -1030,6 +1020,68 @@ dfs(root.Right, res)
       <categories>
         <category>git</category>
       </categories>
+  </entry>
+  <entry>
+    <title>git更新仓库地址</title>
+    <url>/2024-07-23-764a3cd05cde.html</url>
+    <content><![CDATA[<p>使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于我</title>
+    <url>/2023-03-13-519b5e93f019.html</url>
+    <content><![CDATA[<div style="text-align: center">
+
+<h1 id="欢迎来到我的空间"><a href="#欢迎来到我的空间" class="headerlink" title="欢迎来到我的空间!"></a>欢迎来到我的空间!</h1></div>
+
+<div style="text-align: center">
+
+<h1 id="我的第"><a href="#我的第" class="headerlink" title="我的第 "></a>我的第 <img src="https://profile-counter.glitch.me/leiqitop/count.svg" alt="Visitor Count"></h1></div>
+
+
+<div style="text-align: center">
+
+<h1 id="个朋友！"><a href="#个朋友！" class="headerlink" title="个朋友！"></a>个朋友！</h1></div>
+
+<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
+<li><p>🌱 毕业于复旦大学</p>
+</li>
+<li><p>⭐ 现就职于华为，软件开发工程师</p>
+</li>
+</ul>
+<h2 id="兴趣-👨🏽‍💻"><a href="#兴趣-👨🏽‍💻" class="headerlink" title="兴趣 👨🏽‍💻"></a>兴趣 👨🏽‍💻</h2><ul>
+<li><p>项目: NLP, Large Language Model, Golang Project, Python Project, Vue Project.</p>
+</li>
+<li><p>编程语言 : Golang, Python, C++&#x2F;C, Java</p>
+</li>
+</ul>
+<h2 id="开源项目经验-👯"><a href="#开源项目经验-👯" class="headerlink" title="开源项目经验 👯"></a>开源项目经验 👯</h2><p><strong>As a manager</strong> ：</p>
+<ul>
+<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
+</ul>
+<p><strong>As a member</strong> :</p>
+<ul>
+<li><p><a href="https://github.com/TianlabTech/PhenoBERT.git">PhenoBERT</a> : <strong>PhenoBERT:</strong> A combined deep learning method for automated recognition of human phenotype ontology</p>
+</li>
+<li><p><a href="">IEEE Journal of Biomedical and Health Informatics（IF&#x3D;5.77）</a> : Reviewer</p>
+</li>
+</ul>
+<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><ul>
+<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
+</ul>
+<h2 id="欢迎志同道合的朋友"><a href="#欢迎志同道合的朋友" class="headerlink" title="欢迎志同道合的朋友~"></a>欢迎志同道合的朋友~</h2><p>本站是为了记录自己学习和生活，欢迎大家多多交流讨论。<br>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
+<h2 id="微信公众号"><a href="#微信公众号" class="headerlink" title="微信公众号"></a>微信公众号</h2><p><img src="/../../imgs/qrcode.jpg"></p>
+]]></content>
+      <categories>
+        <category>关于我</category>
+      </categories>
+      <tags>
+        <tag>about</tag>
+      </tags>
   </entry>
   <entry>
     <title>Go语言中的byte类型与Unicode码点与整数的转换</title>
@@ -1427,6 +1479,23 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 122买动态股票的最佳时机II</title>
+    <url>/2023-05-27-5cebfed1675b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/">122. 买卖股票的最佳时机 II - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230527235217.png"></p>
+<p>每次只允许在一天买入一支股票，在之后某个时间卖出它。同时，你也可以选择不进行任何交易。</p>
+<p>相比于第一题买卖股票的最佳时机（只能进行一次交易），这道题没有限制交易次数，因此我们应该从一个更灵活的角度去考虑如何进行交易。</p>
+<p>下面是代码解释：</p>
+<p>首先定义变量 sum 记录当前总利润。<br>然后从第二个价格开始遍历，计算当日价格与前一天价格之差。<br>如果价格上涨了，则将当前利润加上买卖差价，否则不进行操作。<br>最后返回累计的总利润。<br>这样做的原理在于，如果在 i 天买入，在 j 天卖出（j &gt; i），我们可以等价于在 i+1、i+2……j-1、j 这些连续的日子里都进行了购入和卖出，而我们所需获得的利润即为这些差价的总和。因此，代码中只统计了所有价格差大于 0 的部分，而将其他价格差为负值的日子抛弃掉了。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="comment">// 累加每次大于0的交易</span></span><br><span class="line">        <span class="keyword">if</span> prices[i] - prices[i<span class="number">-1</span>] &gt; <span class="number">0</span> &#123;</span><br><span class="line">            sum += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 1396.设计地铁系统</title>
     <url>/2023-05-18-0a0f1bd6a4a5.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-underground-system/description/">1396. 设计地铁系统 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230518233218.png"></p>
@@ -1455,23 +1524,6 @@ dfs(root.Right, res)
       <tags>
         <tag>设计题</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 122买动态股票的最佳时机II</title>
-    <url>/2023-05-27-5cebfed1675b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/">122. 买卖股票的最佳时机 II - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230527235217.png"></p>
-<p>每次只允许在一天买入一支股票，在之后某个时间卖出它。同时，你也可以选择不进行任何交易。</p>
-<p>相比于第一题买卖股票的最佳时机（只能进行一次交易），这道题没有限制交易次数，因此我们应该从一个更灵活的角度去考虑如何进行交易。</p>
-<p>下面是代码解释：</p>
-<p>首先定义变量 sum 记录当前总利润。<br>然后从第二个价格开始遍历，计算当日价格与前一天价格之差。<br>如果价格上涨了，则将当前利润加上买卖差价，否则不进行操作。<br>最后返回累计的总利润。<br>这样做的原理在于，如果在 i 天买入，在 j 天卖出（j &gt; i），我们可以等价于在 i+1、i+2……j-1、j 这些连续的日子里都进行了购入和卖出，而我们所需获得的利润即为这些差价的总和。因此，代码中只统计了所有价格差大于 0 的部分，而将其他价格差为负值的日子抛弃掉了。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="comment">// 累加每次大于0的交易</span></span><br><span class="line">        <span class="keyword">if</span> prices[i] - prices[i<span class="number">-1</span>] &gt; <span class="number">0</span> &#123;</span><br><span class="line">            sum += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 144. 二叉树的前序遍历</title>
@@ -1755,6 +1807,16 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 355设计推特</title>
+    <url>/2024-05-10-b1491b9671d6.html</url>
+    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 28.找出字符串中第一个匹配项的下标</title>
     <url>/2023-05-31-396a1cd3c61e.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/">28. 找出字符串中第一个匹配项的下标 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230531222721.png"></p>
@@ -1773,16 +1835,6 @@ dfs(root.Right, res)
 
 
 <h1 id="TODO-KMP-算法"><a href="#TODO-KMP-算法" class="headerlink" title="TODO　KMP 算法"></a>TODO　KMP 算法</h1>]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 355设计推特</title>
-    <url>/2024-05-10-b1491b9671d6.html</url>
-    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -1843,6 +1895,17 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 706. 设计哈希映射 Golang</title>
+    <url>/2023-05-20-e3f31d125f9b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashmap/description/">706. 设计哈希映射 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230520230121.png"><br>使用了go 语言的list.List (双向列表)，具体如何使用请看文章：Go语言-list.List</p>
+<h2 id="使用结构体（非指针）"><a href="#使用结构体（非指针）" class="headerlink" title="使用结构体（非指针）"></a>使用结构体（非指针）</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// func　(this *MyHashMap) hash(key int, value int)&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(entry); et.k == key &#123;</span><br><span class="line">			e.Value = entry&#123;key, value&#125; <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok&amp;&amp; et.k == key&#123;</span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用结构体指针"><a href="#使用结构体指针" class="headerlink" title="使用结构体指针"></a>使用结构体指针</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(*entry); et.k == key &#123; <span class="comment">// 注意list 的元素类型是空接口，需要断言类型</span></span><br><span class="line">			et.v = value  <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝,可以使用其指针</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(&amp;entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok&amp;&amp; et.k == key&#123; <span class="comment">// 可以缩写为if et := e.Value.(entry); et.k == key  用于断言，并找key</span></span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 53.最大子数和</title>
     <url>/2023-05-25-8fc7b96cd054.html</url>
     <content><![CDATA[<blockquote>
@@ -1879,17 +1942,6 @@ dfs(root.Right, res)
         <tag>贪心</tag>
         <tag>动态规划</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 706. 设计哈希映射 Golang</title>
-    <url>/2023-05-20-e3f31d125f9b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashmap/description/">706. 设计哈希映射 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230520230121.png"><br>使用了go 语言的list.List (双向列表)，具体如何使用请看文章：Go语言-list.List</p>
-<h2 id="使用结构体（非指针）"><a href="#使用结构体（非指针）" class="headerlink" title="使用结构体（非指针）"></a>使用结构体（非指针）</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// func　(this *MyHashMap) hash(key int, value int)&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(entry); et.k == key &#123;</span><br><span class="line">			e.Value = entry&#123;key, value&#125; <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok&amp;&amp; et.k == key&#123;</span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用结构体指针"><a href="#使用结构体指针" class="headerlink" title="使用结构体指针"></a>使用结构体指针</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(*entry); et.k == key &#123; <span class="comment">// 注意list 的元素类型是空接口，需要断言类型</span></span><br><span class="line">			et.v = value  <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝,可以使用其指针</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(&amp;entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok&amp;&amp; et.k == key&#123; <span class="comment">// 可以缩写为if et := e.Value.(entry); et.k == key  用于断言，并找key</span></span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 77.组合【回溯】</title>
@@ -2196,6 +2248,19 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>【Golang】 byte和rune 有什么区别</title>
+    <url>/2024-11-23-ff51ba651704.html</url>
+    <content><![CDATA[<p>byte 和rune 有什么区别？<br>    在Go语言（Golang）中，byte和rune是两种不同的数据类型，它们在处理文本数据时有不同的用途和含义：</p>
+<p>byte：</p>
+<p>byte是uint8的别名，即一个无符号的8位整数。<br>在Go语言中，byte通常用于表示字节（byte），即数据的基本单位。<br>byte可以存储任何0到255之间的值，因为一个字节有8位，每位可以是0或1，所以总共有256种可能的值（从0到255）。<br>rune：</p>
+<p>rune是int32的别名，即一个有符号的32位整数。<br>rune在Go语言中用于表示一个Unicode码点（Unicode scalar value），可以表示任何Unicode字符。<br>rune类型用于处理字符串中的单个字符，特别是对于需要表示多字节字符（如中文、日文、韩文等）的Unicode字符非常有用。<br>由于rune是一个32位整数，它可以表示从0到0x10FFFF（即Unicode的最大值）的任何值。<br>区别：</p>
+<p>大小：byte是8位的，而rune是32位的。<br>用途：byte用于处理字节数据，rune用于处理Unicode字符。<br>范围：byte的范围是0到255，而rune的范围是0到0x10FFFF。<br>编码：在字符串中，byte类型表示的是UTF-8编码的字节序列，而rune类型表示的是Unicode码点。例如，一个包含中文字符的字符串在byte切片中可能包含多个字节，但在rune切片中，每个rune值对应一个Unicode字符。<br>在处理文本数据时，选择byte还是rune取决于你的具体需求，如果你需要处理原始字节数据，比如文件I&#x2F;O或者网络传输，可能会使用byte。而如果你需要处理文本数据，特别是涉及到多字节字符集的文本，使用rune会更加方便。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【Golang】for range 数组指针遍历</title>
     <url>/2024-12-03-90d19c862e9c.html</url>
     <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
@@ -2226,19 +2291,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【Golang】 byte和rune 有什么区别</title>
-    <url>/2024-11-23-ff51ba651704.html</url>
-    <content><![CDATA[<p>byte 和rune 有什么区别？<br>    在Go语言（Golang）中，byte和rune是两种不同的数据类型，它们在处理文本数据时有不同的用途和含义：</p>
-<p>byte：</p>
-<p>byte是uint8的别名，即一个无符号的8位整数。<br>在Go语言中，byte通常用于表示字节（byte），即数据的基本单位。<br>byte可以存储任何0到255之间的值，因为一个字节有8位，每位可以是0或1，所以总共有256种可能的值（从0到255）。<br>rune：</p>
-<p>rune是int32的别名，即一个有符号的32位整数。<br>rune在Go语言中用于表示一个Unicode码点（Unicode scalar value），可以表示任何Unicode字符。<br>rune类型用于处理字符串中的单个字符，特别是对于需要表示多字节字符（如中文、日文、韩文等）的Unicode字符非常有用。<br>由于rune是一个32位整数，它可以表示从0到0x10FFFF（即Unicode的最大值）的任何值。<br>区别：</p>
-<p>大小：byte是8位的，而rune是32位的。<br>用途：byte用于处理字节数据，rune用于处理Unicode字符。<br>范围：byte的范围是0到255，而rune的范围是0到0x10FFFF。<br>编码：在字符串中，byte类型表示的是UTF-8编码的字节序列，而rune类型表示的是Unicode码点。例如，一个包含中文字符的字符串在byte切片中可能包含多个字节，但在rune切片中，每个rune值对应一个Unicode字符。<br>在处理文本数据时，选择byte还是rune取决于你的具体需求，如果你需要处理原始字节数据，比如文件I&#x2F;O或者网络传输，可能会使用byte。而如果你需要处理文本数据，特别是涉及到多字节字符集的文本，使用rune会更加方便。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>【刨根问底】为什么Itoa代表整型转化为字符串，为什么不是ItoSting</title>
     <url>/2024-11-23-cf0eba4d8369.html</url>
     <content><![CDATA[<p>确实，如果我们按照缩写的逻辑来看，<code>Itos</code>（Integer to String）可能更直观地表达了<code>Itoa</code>函数的功能，即把整数转换为字符串。</p>
@@ -2263,6 +2315,25 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
+    <title>【刨根问底】创建slice是否填第二个参数0的区别</title>
+    <url>/2024-11-23-b80d94088ccd.html</url>
+    <content><![CDATA[<p>在Go语言中，创建切片（slice）时使用<code>make</code>函数有两种常见的方式，它们之间有细微的差别：</p>
+<ol>
+<li><p><code>slice := make([]string, 0)</code></p>
+<p> 这种方式明确指定了切片的初始长度为0。这意味着你创建了一个容量和长度都是0的字符串切片。在这种形式中，你可以指定切片的类型（这里是<code>[]string</code>），并且设置其长度为0。由于长度和容量都是0，这个切片一开始是空的，没有任何元素。</p>
+</li>
+<li><p><code>slice := make([]string)</code></p>
+<p> 这种方式创建了一个切片，但没有指定其长度和容量。在这种情况下，<code>make</code>函数会创建一个长度和容量都是0的切片，但是它默认会分配一个初始容量。这个初始容量通常是底层数组的最小大小，比如在Go中，对于字符串切片，默认的初始容量可能是2（这个值可能会根据Go的版本和实现有所不同）。这意味着虽然长度是0，但是你可以在不触发重新分配内存的情况下至少添加两个元素。</p>
+</li>
+</ol>
+<p>两种方式都会创建一个空的字符串切片，但是第二种方式在内部会预分配一些容量，这可以减少在添加元素时可能发生的内存重新分配的次数。如果你预计会向切片中添加一些元素，使用<code>make([]string)</code>（或者等价的<code>make([]string, 0)</code>）可能会稍微高效一些，因为它避免了第一次添加元素时的内存分配。</p>
+<p>总结来说，两种方式在功能上没有太大区别，都会创建一个空的字符串切片，但是第二种方式可能会在内部预分配一些额外的空间，这有助于提高在添加元素时的性能。在实际编程中，选择哪种方式取决于你的具体需求和偏好。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【基础知识】Golang  sort.Slice 复杂排序</title>
     <url>/2024-11-24-24291296f81a.html</url>
     <content><![CDATA[<p>在 Go 语言中，你可以使用 <code>sort.Slice</code> 对 <code>slice</code> 按照复杂条件进行排序。 <code>sort.Slice</code> 函数接受一个 <code>slice</code> 和一个比较函数，该比较函数定义了两个元素之间的排序关系。</p>
@@ -2285,25 +2356,6 @@ dfs(root.Right, res)
 <li>对于大数据排序，可以先构造权重或转换为单一排序值，减少比较复杂度。</li>
 </ul>
 <p>通过 <code>sort.Slice</code> 的灵活性，可以轻松实现各种复杂条件的排序逻辑。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【刨根问底】创建slice是否填第二个参数0的区别</title>
-    <url>/2024-11-23-b80d94088ccd.html</url>
-    <content><![CDATA[<p>在Go语言中，创建切片（slice）时使用<code>make</code>函数有两种常见的方式，它们之间有细微的差别：</p>
-<ol>
-<li><p><code>slice := make([]string, 0)</code></p>
-<p> 这种方式明确指定了切片的初始长度为0。这意味着你创建了一个容量和长度都是0的字符串切片。在这种形式中，你可以指定切片的类型（这里是<code>[]string</code>），并且设置其长度为0。由于长度和容量都是0，这个切片一开始是空的，没有任何元素。</p>
-</li>
-<li><p><code>slice := make([]string)</code></p>
-<p> 这种方式创建了一个切片，但没有指定其长度和容量。在这种情况下，<code>make</code>函数会创建一个长度和容量都是0的切片，但是它默认会分配一个初始容量。这个初始容量通常是底层数组的最小大小，比如在Go中，对于字符串切片，默认的初始容量可能是2（这个值可能会根据Go的版本和实现有所不同）。这意味着虽然长度是0，但是你可以在不触发重新分配内存的情况下至少添加两个元素。</p>
-</li>
-</ol>
-<p>两种方式都会创建一个空的字符串切片，但是第二种方式在内部会预分配一些容量，这可以减少在添加元素时可能发生的内存重新分配的次数。如果你预计会向切片中添加一些元素，使用<code>make([]string)</code>（或者等价的<code>make([]string, 0)</code>）可能会稍微高效一些，因为它避免了第一次添加元素时的内存分配。</p>
-<p>总结来说，两种方式在功能上没有太大区别，都会创建一个空的字符串切片，但是第二种方式可能会在内部预分配一些额外的空间，这有助于提高在添加元素时的性能。在实际编程中，选择哪种方式取决于你的具体需求和偏好。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2663,58 +2715,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>关于我</title>
-    <url>/2023-03-13-519b5e93f019.html</url>
-    <content><![CDATA[<div style="text-align: center">
-
-<h1 id="欢迎来到我的空间"><a href="#欢迎来到我的空间" class="headerlink" title="欢迎来到我的空间!"></a>欢迎来到我的空间!</h1></div>
-
-<div style="text-align: center">
-
-<h1 id="我的第"><a href="#我的第" class="headerlink" title="我的第 "></a>我的第 <img src="https://profile-counter.glitch.me/leiqitop/count.svg" alt="Visitor Count"></h1></div>
-
-
-<div style="text-align: center">
-
-<h1 id="个朋友！"><a href="#个朋友！" class="headerlink" title="个朋友！"></a>个朋友！</h1></div>
-
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
-<li><p>🌱 毕业于复旦大学</p>
-</li>
-<li><p>⭐ 现就职于华为，软件开发工程师</p>
-</li>
-</ul>
-<h2 id="兴趣-👨🏽‍💻"><a href="#兴趣-👨🏽‍💻" class="headerlink" title="兴趣 👨🏽‍💻"></a>兴趣 👨🏽‍💻</h2><ul>
-<li><p>项目: NLP, Large Language Model, Golang Project, Python Project, Vue Project.</p>
-</li>
-<li><p>编程语言 : Golang, Python, C++&#x2F;C, Java</p>
-</li>
-</ul>
-<h2 id="开源项目经验-👯"><a href="#开源项目经验-👯" class="headerlink" title="开源项目经验 👯"></a>开源项目经验 👯</h2><p><strong>As a manager</strong> ：</p>
-<ul>
-<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
-</ul>
-<p><strong>As a member</strong> :</p>
-<ul>
-<li><p><a href="https://github.com/TianlabTech/PhenoBERT.git">PhenoBERT</a> : <strong>PhenoBERT:</strong> A combined deep learning method for automated recognition of human phenotype ontology</p>
-</li>
-<li><p><a href="">IEEE Journal of Biomedical and Health Informatics（IF&#x3D;5.77）</a> : Reviewer</p>
-</li>
-</ul>
-<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><ul>
-<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
-</ul>
-<h2 id="欢迎志同道合的朋友"><a href="#欢迎志同道合的朋友" class="headerlink" title="欢迎志同道合的朋友~"></a>欢迎志同道合的朋友~</h2><p>本站是为了记录自己学习和生活，欢迎大家多多交流讨论。<br>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
-<h2 id="微信公众号"><a href="#微信公众号" class="headerlink" title="微信公众号"></a>微信公众号</h2><p><img src="/../../imgs/qrcode.jpg"></p>
-]]></content>
-      <categories>
-        <category>关于我</category>
-      </categories>
-      <tags>
-        <tag>about</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>更新网页url后，恢复valine网页评论</title>
     <url>/2025-04-13-8c397fc87827.html</url>
     <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
@@ -2871,16 +2871,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>快来压缩你的博客图片</title>
-    <url>/2023-03-23-4868b6a1c39c.html</url>
-    <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>给你的博客 安装上PWA吧</title>
     <url>/2023-03-23-49ace33ca004.html</url>
     <content><![CDATA[<p>TODO:</p>
@@ -2892,6 +2882,16 @@ dfs(root.Right, res)
 </ul>
 <p><img src="/../../imgs/Pasted%20image%2020230324004739.png"></p>
 <p><img src="/../../imgs/ad6c5ebfc9a6401cde512120b6ed719.jpeg"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>快来压缩你的博客图片</title>
+    <url>/2023-03-23-4868b6a1c39c.html</url>
+    <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2929,28 +2929,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>免费使用Jetbrain 全家桶-服务器激活码激活软件</title>
-    <url>/2023-12-30-6a1e804ab992.html</url>
-    <content><![CDATA[<p>众所周知，PyCharm和IDEA Goland CLion 都是Jetbrain 公司的产品,非常适合开发项目.但是这个软件确是收费的,而且还不低. 本文就是介绍一种方法可以免费使用的方法,如果大家有余力的,还是希望购买正版产品.</p>
-<p>Jetbrain 是针对公司这种大客户是有对应的License Server的，这样方便很多用户使用。而我们可以通过输入这些License 从而免费使用。</p>
-<ul>
-<li><a href="https://search.censys.io/">https://search.censys.io/</a>     搜索：<code>services.http.response.headers.location: account.jetbrains.com/fls-auth</code></li>
-<li><a href="https://www.shodan.io/">https://www.shodan.io</a>  搜索：<br><code>Location: https://account.jetbrains.com/fls-auth</code></li>
-<li><a href="https://fofa.info/">https://fofa.info/</a>     搜索：<code>fls-auth</code></li>
-</ul>
-<p>随便点进去一个搜索结果，找到状态为302的网址和端口，复制到对应的JetBrains 软件的License Server里. 我下边使用的是<a href="https://search.censys.io/">https://search.censys.io/</a> 网站, 搜索 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">services.http.response.headers.location: account.jetbrains.com/fls-auth</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/../../imgs/Pasted%20image%2020231230231034.png"><br>例如上边就是 <a href="http://111.231.22.61:1024/">http://111.231.22.61:1024</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020231230231326.png"></p>
-<h1 id="激活成功"><a href="#激活成功" class="headerlink" title="激活成功"></a>激活成功</h1><p>激活成功，请开始愉快的编码吧！<br><img src="/../../imgs/Pasted%20image%2020231230231349.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>删除ppt所有批注和备注</title>
     <url>/2023-04-24-4faf63eb321c.html</url>
     <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
@@ -2981,12 +2959,22 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>开机自启WSL</title>
-    <url>/2024-08-07-117ef9b8f4c6.html</url>
-    <content><![CDATA[<p>在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp 目录下，新建vbs文件</p>
-<p><img src="/../../imgs/Pasted%20image%2020240807221008.png"></p>
-<p>文件内容拷贝下边内容，注意bash.exe 要替换为你电脑中的地址</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set ws = WScript.CreateObject(&quot;WScript.Shell&quot;)</span><br><span class="line">cmd = &quot;C:\Windows\System32\bash.exe -c &quot;&quot;bash /init.sh&quot;&quot;&quot;</span><br><span class="line">&#x27;运行命令不显示cmd窗口</span><br><span class="line">ws.Run cmd, 0, false</span><br><span class="line">Set ws = Nothing</span><br><span class="line">WScript.quit</span><br></pre></td></tr></table></figure>
+    <title>免费使用Jetbrain 全家桶-服务器激活码激活软件</title>
+    <url>/2023-12-30-6a1e804ab992.html</url>
+    <content><![CDATA[<p>众所周知，PyCharm和IDEA Goland CLion 都是Jetbrain 公司的产品,非常适合开发项目.但是这个软件确是收费的,而且还不低. 本文就是介绍一种方法可以免费使用的方法,如果大家有余力的,还是希望购买正版产品.</p>
+<p>Jetbrain 是针对公司这种大客户是有对应的License Server的，这样方便很多用户使用。而我们可以通过输入这些License 从而免费使用。</p>
+<ul>
+<li><a href="https://search.censys.io/">https://search.censys.io/</a>     搜索：<code>services.http.response.headers.location: account.jetbrains.com/fls-auth</code></li>
+<li><a href="https://www.shodan.io/">https://www.shodan.io</a>  搜索：<br><code>Location: https://account.jetbrains.com/fls-auth</code></li>
+<li><a href="https://fofa.info/">https://fofa.info/</a>     搜索：<code>fls-auth</code></li>
+</ul>
+<p>随便点进去一个搜索结果，找到状态为302的网址和端口，复制到对应的JetBrains 软件的License Server里. 我下边使用的是<a href="https://search.censys.io/">https://search.censys.io/</a> 网站, 搜索 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">services.http.response.headers.location: account.jetbrains.com/fls-auth</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/../../imgs/Pasted%20image%2020231230231034.png"><br>例如上边就是 <a href="http://111.231.22.61:1024/">http://111.231.22.61:1024</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020231230231326.png"></p>
+<h1 id="激活成功"><a href="#激活成功" class="headerlink" title="激活成功"></a>激活成功</h1><p>激活成功，请开始愉快的编码吧！<br><img src="/../../imgs/Pasted%20image%2020231230231349.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -2997,6 +2985,18 @@ dfs(root.Right, res)
     <url>/2024-08-08-efa703ec12d7.html</url>
     <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment">#sys模块提供了一系列有关Python运行环境的变量和函数。</span></span><br><span class="line"><span class="built_in">print</span>(sys.version)</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure>
 <p><img src="/../../imgs/Pasted%20image%2020240808225509.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>开机自启WSL</title>
+    <url>/2024-08-07-117ef9b8f4c6.html</url>
+    <content><![CDATA[<p>在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp 目录下，新建vbs文件</p>
+<p><img src="/../../imgs/Pasted%20image%2020240807221008.png"></p>
+<p>文件内容拷贝下边内容，注意bash.exe 要替换为你电脑中的地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Set ws = WScript.CreateObject(&quot;WScript.Shell&quot;)</span><br><span class="line">cmd = &quot;C:\Windows\System32\bash.exe -c &quot;&quot;bash /init.sh&quot;&quot;&quot;</span><br><span class="line">&#x27;运行命令不显示cmd窗口</span><br><span class="line">ws.Run cmd, 0, false</span><br><span class="line">Set ws = Nothing</span><br><span class="line">WScript.quit</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -3065,6 +3065,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>windows IE代理问题解决</title>
+    <url>/2024-04-05-e1116cf34b00.html</url>
+    <content><![CDATA[<p>CMD <strong>检查系统代理配置</strong>：</p>
+<pre><code>- 通过命令提示符运行`netsh winhttp show proxy`来查看当前的系统代理设置。
+- 如果需要更改系统代理，可以使用`netsh winhttp set proxy`命令进行设置。
+</code></pre>
+]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Mesh组网：家庭路由和无线连接新方式</title>
     <url>/2023-06-25-a45e5f4edabc.html</url>
     <content><![CDATA[<p>在当今互联的世界中，传统的网络常常面临覆盖范围、可靠性和可扩展性方面的限制。Mesh组网作为一种解决方案应运而生，通过创建一个动态网络，使设备能够直接相互通信，形成一个弹性和高效的网络基础设施。本文将从what、how和why的角度探讨Mesh组网。</p>
@@ -3129,18 +3141,6 @@ dfs(root.Right, res)
 </li>
 </ol>
 <p>结论： Mesh组网通过提供去中心化、自动配置和高度鲁棒的通信基础设施，彻底改变了设备相互连接的方式。Mesh网络能够扩大覆盖范围、提高可靠性并轻松扩展，为各种应用提供了有前途的解决方案。随着技术的不断发，利用Mesh组网的潜力将在塑造无线通信未来方面发挥重要作用。</p>
-]]></content>
-      <categories>
-        <category>网络</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>windows IE代理问题解决</title>
-    <url>/2024-04-05-e1116cf34b00.html</url>
-    <content><![CDATA[<p>CMD <strong>检查系统代理配置</strong>：</p>
-<pre><code>- 通过命令提示符运行`netsh winhttp show proxy`来查看当前的系统代理设置。
-- 如果需要更改系统代理，可以使用`netsh winhttp set proxy`命令进行设置。
-</code></pre>
 ]]></content>
       <categories>
         <category>网络</category>
