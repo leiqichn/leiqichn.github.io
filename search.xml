@@ -94,6 +94,28 @@
       </categories>
   </entry>
   <entry>
+    <title>Go 浮点数次方</title>
+    <url>/2024-12-03-3d026e7b5bec.html</url>
+    <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
+<h3 id="使用math-Pow函数"><a href="#使用math-Pow函数" class="headerlink" title="使用math.Pow函数"></a>使用<code>math.Pow</code>函数</h3><p><code>math.Pow</code>函数的签名如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Pow</span><span class="params">(x, y <span class="type">float64</span>)</span></span> <span class="type">float64</span></span><br></pre></td></tr></table></figure>
+
+<p>这个函数接受两个<code>float64</code>类型的参数：<code>x</code>是底数，<code>y</code>是指数，返回<code>x</code>的<code>y</code>次方的结果。</p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>下面是一个使用<code>math.Pow</code>函数的示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 计算2的3次方</span></span><br><span class="line">    result := math.Pow(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;2的3次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算3的2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;3的2次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算10的-2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">10</span>, <span class="number">-2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;10的-2次方是: %v\n&quot;</span>, result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2的3次方是: 8</span><br><span class="line">3的2次方是: 9</span><br><span class="line">10的-2次方是: 0.01</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
+<li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Golang slice作为参数传递给函数需要使用指针</title>
     <url>/2024-04-11-22166b2f52d0.html</url>
     <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    dfs(<span class="number">1</span>,n,k,&amp;res,&amp;[]<span class="type">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(s, n, k <span class="type">int</span>, res *[][]<span class="type">int</span>, item *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(*item) == k &#123;</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, <span class="built_in">append</span>([]<span class="type">int</span>&#123;&#125;, *item...))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := s; i &lt;= n-(k-<span class="built_in">len</span>(*item))+<span class="number">1</span>; i++&#123;</span><br><span class="line">        *item = <span class="built_in">append</span>(*item, i)</span><br><span class="line">        dfs(i+<span class="number">1</span>, n, k, res, item)</span><br><span class="line">        *item = (*item)[:<span class="built_in">len</span>(*item)<span class="number">-1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -142,28 +164,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Go 浮点数次方</title>
-    <url>/2024-12-03-3d026e7b5bec.html</url>
-    <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
-<h3 id="使用math-Pow函数"><a href="#使用math-Pow函数" class="headerlink" title="使用math.Pow函数"></a>使用<code>math.Pow</code>函数</h3><p><code>math.Pow</code>函数的签名如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Pow</span><span class="params">(x, y <span class="type">float64</span>)</span></span> <span class="type">float64</span></span><br></pre></td></tr></table></figure>
-
-<p>这个函数接受两个<code>float64</code>类型的参数：<code>x</code>是底数，<code>y</code>是指数，返回<code>x</code>的<code>y</code>次方的结果。</p>
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>下面是一个使用<code>math.Pow</code>函数的示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 计算2的3次方</span></span><br><span class="line">    result := math.Pow(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;2的3次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算3的2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;3的2次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算10的-2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">10</span>, <span class="number">-2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;10的-2次方是: %v\n&quot;</span>, result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2的3次方是: 8</span><br><span class="line">3的2次方是: 9</span><br><span class="line">10的-2次方是: 0.01</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
-<li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
     <url>/2023-05-11-257639a12a8e.html</url>
     <content><![CDATA[<p>在 Go 语言中，byte 和 rune 都是用来表示字符类型的数据类型。</p>
@@ -175,6 +175,27 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">i := <span class="number">10</span></span><br><span class="line">b := <span class="type">byte</span>(i)   <span class="comment">// 溢出！编译器会忽略高位部分，直接取低位部分的字节</span></span><br><span class="line">r := <span class="type">rune</span>(i)</span><br><span class="line"><span class="keyword">if</span> r &lt; <span class="number">0xFFFF</span> &#123;</span><br><span class="line">    r = <span class="type">rune</span>(b) <span class="comment">// 类型断言</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>可以通过判断 r 是否小于 0xFFFF 来检测转换是否正确，因为 Unicode 的码点范围在 0～0x10FFFF，超过该范围的值会被认为是无效码点。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Go语言-多态</title>
+    <url>/2023-04-20-af074e588287.html</url>
+    <content><![CDATA[<p>Go语言中没有类，我们可以使用结构体作为对象，来绑定对应的方法。而接口是功能的抽象，是方法的集合。</p>
+<p>我们来实现这样一个例子：</p>
+<ul>
+<li>实现猫和狗<strong>两个对象</strong>，并且他们都有动作：叫，<strong>但叫声不同</strong>。再实现一个<strong>对象鸟</strong>，他除了叫，还会<strong>飞</strong>。</li>
+</ul>
+<p>下面是基于Go语言，实现题目要求的代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    Cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c Cat)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;喵喵喵&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d Dog)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Bird <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;叽叽喳喳&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Fly() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;我会飞&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只猫</span></span><br><span class="line">    animal = Cat&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只狗</span></span><br><span class="line">    animal = Dog&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只鸟</span></span><br><span class="line">    bird := Bird&#123;&#125;</span><br><span class="line">    animal = bird</span><br><span class="line">    animal.Cry()</span><br><span class="line">    bird.Fly()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，定义了一个Animal接口和三个结构体Cat、Dog、Bird分别实现了这个接口。其中，Cat和Dog只能叫，而Bird除了叫外还可以飞行。在main函数中创建相应的对象并调用相应的方法。</p>
+<p>运行上述代码，输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">喵喵喵</span><br><span class="line">汪汪汪</span><br><span class="line">叽叽喳喳</span><br><span class="line">我会飞</span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，我们使用了<strong>接口的多态特性</strong>，通过定义<strong>Animal接口</strong>，实现了<strong>不同类型的对象之间的通用性</strong>，并且在<strong>Bird中新增了Fly() 方法</strong>，符合面向对象的<strong>开放封闭原则</strong>。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -222,27 +243,6 @@
 
 <p>其实我们可以将其类比于现实生活中的“合同”或“协议”等，接口定义了一组规则和方法集合，当你实现接口时，就像在签署一个合同，你同意遵守这个合同的规定，将这个合同上的对应部分填上具体的内容，这样就可以按照<strong>合同的规定</strong>进行处理。</p>
 <p>同时，接口的使用，使得代码更加灵活、可扩展和相互独立，降低了耦合性，提高了代码的可维护性和重复利用性。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Go语言-多态</title>
-    <url>/2023-04-20-af074e588287.html</url>
-    <content><![CDATA[<p>Go语言中没有类，我们可以使用结构体作为对象，来绑定对应的方法。而接口是功能的抽象，是方法的集合。</p>
-<p>我们来实现这样一个例子：</p>
-<ul>
-<li>实现猫和狗<strong>两个对象</strong>，并且他们都有动作：叫，<strong>但叫声不同</strong>。再实现一个<strong>对象鸟</strong>，他除了叫，还会<strong>飞</strong>。</li>
-</ul>
-<p>下面是基于Go语言，实现题目要求的代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    Cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c Cat)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;喵喵喵&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d Dog)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Bird <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;叽叽喳喳&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Fly() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;我会飞&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只猫</span></span><br><span class="line">    animal = Cat&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只狗</span></span><br><span class="line">    animal = Dog&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只鸟</span></span><br><span class="line">    bird := Bird&#123;&#125;</span><br><span class="line">    animal = bird</span><br><span class="line">    animal.Cry()</span><br><span class="line">    bird.Fly()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上述代码中，定义了一个Animal接口和三个结构体Cat、Dog、Bird分别实现了这个接口。其中，Cat和Dog只能叫，而Bird除了叫外还可以飞行。在main函数中创建相应的对象并调用相应的方法。</p>
-<p>运行上述代码，输出如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">喵喵喵</span><br><span class="line">汪汪汪</span><br><span class="line">叽叽喳喳</span><br><span class="line">我会飞</span><br></pre></td></tr></table></figure>
-
-<p>在这段代码中，我们使用了<strong>接口的多态特性</strong>，通过定义<strong>Animal接口</strong>，实现了<strong>不同类型的对象之间的通用性</strong>，并且在<strong>Bird中新增了Fly() 方法</strong>，符合面向对象的<strong>开放封闭原则</strong>。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -582,43 +582,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>结构体指针作为map key 结构体值改变对map有影响吗</title>
-    <url>/2023-05-10-7dfabb45bbc2.html</url>
-    <content><![CDATA[<p>最近偶然用到了结构体指针作为map key 的场景。当时有点不太确定：<strong>go 语言使用map 时使用指针p作为key, 那修改指针p的值之后。这map 还包含p 吗？</strong><br>接下来让我们一起看看：</p>
-<p>当将指针作为 Map 的 Key 时，实际上是把指针的值作为键来进行插入和查找操作。因此，如果修改了该指针所指向的变量的值，那么并不会影响已经添加到 Map 中的键。因为这个指针仍然具有相同的值，所以它可以被用作一个标识符来检索和操作存储在Map中的数据</p>
-<p>例如，以下代码定义了一个map[*int]string类型的映射，将指针p用作key来插入和索引数据：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[*<span class="type">int</span>]<span class="type">string</span>)</span><br><span class="line"></span><br><span class="line">	x := <span class="number">1</span></span><br><span class="line">	p := &amp;x</span><br><span class="line"></span><br><span class="line">	m[p] = <span class="string">&quot;A&quot;</span> <span class="comment">// 添加数据</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(m) <span class="comment">// map[0xc000016088:A]</span></span><br><span class="line"></span><br><span class="line">	*p = <span class="number">2</span> <span class="comment">// 修改变量x的值</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(m) <span class="comment">// map[0xc000016088:A]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的示例中，我们首先创建了一个指针p，指向变量x的地址，并把p用作key将字符串”A”添加到了map中。</p>
-<p>接下来，我们修改了变量x的值，将其从1修改为2。但是，当我们再次输出映射m时，发现其中的元素仍然是[p:”A”]。这是因为，在修改变量的值后，指针p的地址仍然相同，因此该指针作为键在Map中仍然有效。映射使用的是地址而不是变量的名称或值，因此不受值的更改的影响。</p>
-<p>总之，在将指针用作Map键时，必须理解这种行为，并根据需要编写代码来处理和管理指针及其地址的值。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Linux 将用户追加到对应用户组</title>
-    <url>/2023-09-17-5141f57450ab.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
-<li>将test 添加到GroupA</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">usermod -a -G GroupName UserName</span><br><span class="line"><span class="comment"># 例如将test 追加到GroupA</span></span><br><span class="line">usermod -a -G GroupA <span class="built_in">test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>修改新建文件的默认权限</li>
-</ol>
-<p>在.bashrc 里添加</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux 命令 将前台任务挂到后台运行</title>
     <url>/2023-03-18-87649bcaf9cc.html</url>
     <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
@@ -633,6 +596,22 @@ dfs(root.Right, res)
       <tags>
         <tag>linux命令</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>结构体指针作为map key 结构体值改变对map有影响吗</title>
+    <url>/2023-05-10-7dfabb45bbc2.html</url>
+    <content><![CDATA[<p>最近偶然用到了结构体指针作为map key 的场景。当时有点不太确定：<strong>go 语言使用map 时使用指针p作为key, 那修改指针p的值之后。这map 还包含p 吗？</strong><br>接下来让我们一起看看：</p>
+<p>当将指针作为 Map 的 Key 时，实际上是把指针的值作为键来进行插入和查找操作。因此，如果修改了该指针所指向的变量的值，那么并不会影响已经添加到 Map 中的键。因为这个指针仍然具有相同的值，所以它可以被用作一个标识符来检索和操作存储在Map中的数据</p>
+<p>例如，以下代码定义了一个map[*int]string类型的映射，将指针p用作key来插入和索引数据：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[*<span class="type">int</span>]<span class="type">string</span>)</span><br><span class="line"></span><br><span class="line">	x := <span class="number">1</span></span><br><span class="line">	p := &amp;x</span><br><span class="line"></span><br><span class="line">	m[p] = <span class="string">&quot;A&quot;</span> <span class="comment">// 添加数据</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(m) <span class="comment">// map[0xc000016088:A]</span></span><br><span class="line"></span><br><span class="line">	*p = <span class="number">2</span> <span class="comment">// 修改变量x的值</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(m) <span class="comment">// map[0xc000016088:A]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的示例中，我们首先创建了一个指针p，指向变量x的地址，并把p用作key将字符串”A”添加到了map中。</p>
+<p>接下来，我们修改了变量x的值，将其从1修改为2。但是，当我们再次输出映射m时，发现其中的元素仍然是[p:”A”]。这是因为，在修改变量的值后，指针p的地址仍然相同，因此该指针作为键在Map中仍然有效。映射使用的是地址而不是变量的名称或值，因此不受值的更改的影响。</p>
+<p>总之，在将指针用作Map键时，必须理解这种行为，并根据需要编写代码来处理和管理指针及其地址的值。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
   </entry>
   <entry>
     <title>【sed】快速替换当前文件夹下文件中指定内容</title>
@@ -741,6 +720,27 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Linux 将用户追加到对应用户组</title>
+    <url>/2023-09-17-5141f57450ab.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
+<li>将test 添加到GroupA</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">usermod -a -G GroupName UserName</span><br><span class="line"><span class="comment"># 例如将test 追加到GroupA</span></span><br><span class="line">usermod -a -G GroupA <span class="built_in">test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改新建文件的默认权限</li>
+</ol>
+<p>在.bashrc 里添加</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
       </categories>
   </entry>
   <entry>
@@ -1082,55 +1082,6 @@ dfs(root.Right, res)
       <tags>
         <tag>about</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-ed1bf9078b39.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>更新网页url后，恢复valine网页评论</title>
-    <url>/2025-04-13-8c397fc87827.html</url>
-    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
-<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
-<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
   </entry>
   <entry>
     <title>Go语言中的byte类型与Unicode码点与整数的转换</title>
@@ -1899,6 +1850,21 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 455.分发饼干</title>
+    <url>/2023-05-21-c1aa51f444e0.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/assign-cookies/description/">455. 分发饼干 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230521231054.png"></p>
+<p><a href="https://leiqicn.gitee.io/">https://leiqicn.gitee.io/</a> 欢迎关注我的博客，定时更新golang 刷题笔记</p>
+<p>贪心的策略：</p>
+<blockquote>
+<p>贪心算法一般分为如下四步：<br> 将问题分解为若干个子问题<br>找出适合的贪心策略<br>求解每一个子问题的最优解<br>将局部最优解堆叠成全局最优解</p>
+</blockquote>
+<p>排序，遍历饼干，child胃口初始化idx&#x3D;0 ,res &#x3D;0 ;<br>如果没有越界并且饼干大于等于胃口，则childIdx ++；res++</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findContentChildren</span><span class="params">(g []<span class="type">int</span>, s []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// g 小孩胃口 s 饼干 从大到小排序 排序,并给胃口初始化赋值</span></span><br><span class="line">    sort.Ints(g)</span><br><span class="line">    sort.Ints(s)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="comment">// 用小饼干 来满足最小的胃口</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">        <span class="comment">// 判断越界 饼干大于胃口</span></span><br><span class="line">        <span class="keyword">if</span> j &lt; <span class="built_in">len</span>(g) &amp;&amp; s[i] &gt;= g[j]  &#123; <span class="comment">// len不越界的条件需要在前边</span></span><br><span class="line"></span><br><span class="line">            res++</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 406. 根据身高重建队列【贪心】</title>
     <url>/2024-01-23-1cb0809a7893.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/queue-reconstruction-by-height/description/">406. 根据身高重建队列 - 力扣（LeetCode）</a></p>
@@ -1924,21 +1890,6 @@ dfs(root.Right, res)
 <li>如果使用 <code>len(people)</code> 作为结束索引，那么将会复制从 <code>p[1]</code> 到 <code>len(people)-1</code> 的所有元素，这超出了实际有效的范围。</li>
 </ol>
 ]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 455.分发饼干</title>
-    <url>/2023-05-21-c1aa51f444e0.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/assign-cookies/description/">455. 分发饼干 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230521231054.png"></p>
-<p><a href="https://leiqicn.gitee.io/">https://leiqicn.gitee.io/</a> 欢迎关注我的博客，定时更新golang 刷题笔记</p>
-<p>贪心的策略：</p>
-<blockquote>
-<p>贪心算法一般分为如下四步：<br> 将问题分解为若干个子问题<br>找出适合的贪心策略<br>求解每一个子问题的最优解<br>将局部最优解堆叠成全局最优解</p>
-</blockquote>
-<p>排序，遍历饼干，child胃口初始化idx&#x3D;0 ,res &#x3D;0 ;<br>如果没有越界并且饼干大于等于胃口，则childIdx ++；res++</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findContentChildren</span><span class="params">(g []<span class="type">int</span>, s []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// g 小孩胃口 s 饼干 从大到小排序 排序,并给胃口初始化赋值</span></span><br><span class="line">    sort.Ints(g)</span><br><span class="line">    sort.Ints(s)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="comment">// 用小饼干 来满足最小的胃口</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">        <span class="comment">// 判断越界 饼干大于胃口</span></span><br><span class="line">        <span class="keyword">if</span> j &lt; <span class="built_in">len</span>(g) &amp;&amp; s[i] &gt;= g[j]  &#123; <span class="comment">// len不越界的条件需要在前边</span></span><br><span class="line"></span><br><span class="line">            res++</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -2340,30 +2291,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【刨根问底】为什么Itoa代表整型转化为字符串，为什么不是ItoSting</title>
-    <url>/2024-11-23-cf0eba4d8369.html</url>
-    <content><![CDATA[<p>确实，如果我们按照缩写的逻辑来看，<code>Itos</code>（Integer to String）可能更直观地表达了<code>Itoa</code>函数的功能，即把整数转换为字符串。</p>
-<p>然而，<code>Itoa</code>这个名称的由来实际上与历史和传统有关。在计算机科学和编程语言的历史中，<code>Itoa</code>这个术语已经被广泛接受和使用。以下是一些可能的原因：</p>
-<ol>
-<li><p><strong>历史原因</strong>：<code>Itoa</code>这个名称可能起源于早期的编程语言和库，当时ASCII码（American Standard Code for Information Interchange）被广泛使用。因此，<code>Itoa</code>（Integer to ASCII）这个名字被保留下来，以表示将整数转换为其对应的ASCII字符表示。</p>
-</li>
-<li><p><strong>约定俗成</strong>：在编程社区中，<code>Itoa</code>已经成为一个广泛认可的术语。改变它可能会引起混淆，因为许多开发者已经习惯了这个名字。</p>
-</li>
-<li><p><strong>ASCII与字符串的关系</strong>：虽然现代编程语言中字符串通常以Unicode表示，但在许多情况下，整数的ASCII表示和字符串表示是相同的。例如，数字<code>123</code>的ASCII表示和字符串表示都是<code>&quot;123&quot;</code>。因此，<code>Itoa</code>这个名字仍然适用。</p>
-</li>
-<li><p><strong>简洁性</strong>：<code>Itoa</code>这个名称比较简洁，易于记忆。如果使用<code>Itos</code>，虽然直观，但可能不如<code>Itoa</code>简洁。</p>
-</li>
-</ol>
-<p><code>Itoa</code>这个名字更多是基于历史和传统，而不是严格的缩写逻辑。尽管<code>Itos</code>可能更直观地表示整数到字符串的转换，但<code>Itoa</code>已经成为一个广泛接受和使用的术语。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>刨根问底</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【刨根问底】创建slice是否填第二个参数0的区别</title>
     <url>/2024-11-23-b80d94088ccd.html</url>
     <content><![CDATA[<p>在Go语言中，创建切片（slice）时使用<code>make</code>函数有两种常见的方式，它们之间有细微的差别：</p>
@@ -2409,6 +2336,30 @@ dfs(root.Right, res)
       <categories>
         <category>leetcode</category>
       </categories>
+  </entry>
+  <entry>
+    <title>【刨根问底】为什么Itoa代表整型转化为字符串，为什么不是ItoSting</title>
+    <url>/2024-11-23-cf0eba4d8369.html</url>
+    <content><![CDATA[<p>确实，如果我们按照缩写的逻辑来看，<code>Itos</code>（Integer to String）可能更直观地表达了<code>Itoa</code>函数的功能，即把整数转换为字符串。</p>
+<p>然而，<code>Itoa</code>这个名称的由来实际上与历史和传统有关。在计算机科学和编程语言的历史中，<code>Itoa</code>这个术语已经被广泛接受和使用。以下是一些可能的原因：</p>
+<ol>
+<li><p><strong>历史原因</strong>：<code>Itoa</code>这个名称可能起源于早期的编程语言和库，当时ASCII码（American Standard Code for Information Interchange）被广泛使用。因此，<code>Itoa</code>（Integer to ASCII）这个名字被保留下来，以表示将整数转换为其对应的ASCII字符表示。</p>
+</li>
+<li><p><strong>约定俗成</strong>：在编程社区中，<code>Itoa</code>已经成为一个广泛认可的术语。改变它可能会引起混淆，因为许多开发者已经习惯了这个名字。</p>
+</li>
+<li><p><strong>ASCII与字符串的关系</strong>：虽然现代编程语言中字符串通常以Unicode表示，但在许多情况下，整数的ASCII表示和字符串表示是相同的。例如，数字<code>123</code>的ASCII表示和字符串表示都是<code>&quot;123&quot;</code>。因此，<code>Itoa</code>这个名字仍然适用。</p>
+</li>
+<li><p><strong>简洁性</strong>：<code>Itoa</code>这个名称比较简洁，易于记忆。如果使用<code>Itos</code>，虽然直观，但可能不如<code>Itoa</code>简洁。</p>
+</li>
+</ol>
+<p><code>Itoa</code>这个名字更多是基于历史和传统，而不是严格的缩写逻辑。尽管<code>Itos</code>可能更直观地表示整数到字符串的转换，但<code>Itoa</code>已经成为一个广泛接受和使用的术语。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>刨根问底</tag>
+      </tags>
   </entry>
   <entry>
     <title>【基础知识】符号整数和非符号整数</title>
@@ -2487,6 +2438,17 @@ dfs(root.Right, res)
 <p>这个示例创建了一个浏览器历史记录，并通过插入新页面来模拟浏览历史。使用 container&#x2F;list 包，我们可以轻松地插入、遍历和操作历史记录。</p>
 <h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>container&#x2F;list 包提供了一个便捷的方式来操作双向链表，它在某些情况下非常有用，例如实现浏览器历史记录或其他需要动态插入和删除元素的场景。希望这篇博客能够帮助大家。</p>
 ]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>回溯总结</title>
+    <url>/2025-06-03-fc6703ad881e.html</url>
+    <content><![CDATA[<h2 id="子集型回溯"><a href="#子集型回溯" class="headerlink" title="子集型回溯"></a>子集型回溯</h2><p><a href="https://leetcode.cn/problems/letter-combinations-of-a-phone-number/description/">17. 电话号码的字母组合 - 力扣（LeetCode）</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    m []<span class="type">string</span></span><br><span class="line">    path []<span class="type">byte</span></span><br><span class="line">    res []<span class="type">string</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">letterCombinations</span><span class="params">(digits <span class="type">string</span>)</span></span> []<span class="type">string</span> &#123;</span><br><span class="line">	<span class="comment">// 将index 和 字符串对应起来</span></span><br><span class="line">	m = []<span class="type">string</span>&#123;<span class="string">&quot;&quot;</span>,<span class="string">&quot;&quot;</span>,<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;def&quot;</span>, <span class="string">&quot;ghi&quot;</span>, <span class="string">&quot;jkl&quot;</span>, <span class="string">&quot;mno&quot;</span>, <span class="string">&quot;pqrs&quot;</span>, <span class="string">&quot;tuv&quot;</span>, <span class="string">&quot;wxyz&quot;</span>&#125;</span><br><span class="line">	path, res = <span class="built_in">make</span>([]<span class="type">byte</span>,<span class="number">0</span>),<span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> digits == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">	backTracking(digits,<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backTracking</span><span class="params">(digits <span class="type">string</span>, start <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 终止条件 ，遍历完digits</span></span><br><span class="line">	<span class="keyword">if</span> start == <span class="built_in">len</span>(digits) &#123;</span><br><span class="line">        tmp := <span class="type">string</span>(path)</span><br><span class="line">		res = <span class="built_in">append</span>(res,tmp)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 找到 digit</span></span><br><span class="line">	digitNum := <span class="type">int</span>(digits[start] - <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">	<span class="comment">// 遍历 digit 对应的map 字符串</span></span><br><span class="line">	str := m[digitNum]</span><br><span class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt; <span class="built_in">len</span>(str);i++ &#123; <span class="comment">// i 从0开始，因为每个字典都是一个独立的集合，之前的组合是一个集合，所以才从start 开始</span></span><br><span class="line">		path = <span class="built_in">append</span>(path,str[i])</span><br><span class="line">		backTracking(digits,start+<span class="number">1</span>)</span><br><span class="line">		path =path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组合型回溯"><a href="#组合型回溯" class="headerlink" title="组合型回溯"></a>组合型回溯</h2><h2 id="排列型回溯"><a href="#排列型回溯" class="headerlink" title="排列型回溯"></a>排列型回溯</h2>]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -2859,6 +2821,55 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-8c397fc87827.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Linux非root用户通过X11运行图形界面程序-以Rstudio为例</title>
     <url>/2023-09-24-4fe5badbd053.html</url>
     <content><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>由于使用单位或者学校的服务器，我们一般都没有root权限，导致一些Server版本的软件不能安装（例如数据分析领域的Rstudio-Server，需要root权限，新增端口给Rstudio-Server的web服务）。<br>但大家有没有发现，我们自己在本地的PC上安装桌面版本的Rstudio是并不要管理员权限的，是因为我们不需要开放端口，Rstudio直接在显示在图形界面上了。<br>那么理论上，我们可以在服务器上，通过模拟服务器的图形界面来直接运行桌面版的Rstudio。而这个模拟服务器的图形界面就可以使用X11！</p>
@@ -2954,6 +2965,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>windows新增wsl bash here键快捷方式</title>
+    <url>/2024-01-01-38178c63ba17.html</url>
+    <content><![CDATA[<p>win + R 输入regedit<br><img src="/../../imgs/Pasted%20image%2020240101182355.png"><br>输入到 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell</p>
+<h1 id="新建wsl-bash-here目录-设置如下默认值"><a href="#新建wsl-bash-here目录-设置如下默认值" class="headerlink" title="新建wsl_bash_here目录, 设置如下默认值"></a>新建wsl_bash_here目录, 设置如下默认值</h1><p><img src="/../../imgs/Pasted%20image%2020240101183252.png"></p>
+<h1 id="新建command新建项，输入wsl-exe-的地址"><a href="#新建command新建项，输入wsl-exe-的地址" class="headerlink" title="新建command新建项，输入wsl.exe 的地址"></a>新建command新建项，输入wsl.exe 的地址</h1><p><img src="/../../imgs/Pasted%20image%2020240101183246.png"></p>
+<h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p>可以看到右侧是有wsl bash here的选项的<br><img src="/../../imgs/Pasted%20image%2020240101183634.png"><br><strong>在当面目录打开wsl 成功</strong><br><img src="/../../imgs/Pasted%20image%2020240101183645.png"><br>原理和添加git bash here 类似, 参考:<br><a href="https://blog.csdn.net/Passerby_Wang/article/details/120881670">手动添加Git Bash Here到右键菜单（超详细）_gitbash添加到右键-CSDN博客</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>快来压缩你的博客图片</title>
     <url>/2023-03-23-4868b6a1c39c.html</url>
     <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
@@ -2981,33 +3004,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>windows新增wsl bash here键快捷方式</title>
-    <url>/2024-01-01-38178c63ba17.html</url>
-    <content><![CDATA[<p>win + R 输入regedit<br><img src="/../../imgs/Pasted%20image%2020240101182355.png"><br>输入到 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell</p>
-<h1 id="新建wsl-bash-here目录-设置如下默认值"><a href="#新建wsl-bash-here目录-设置如下默认值" class="headerlink" title="新建wsl_bash_here目录, 设置如下默认值"></a>新建wsl_bash_here目录, 设置如下默认值</h1><p><img src="/../../imgs/Pasted%20image%2020240101183252.png"></p>
-<h1 id="新建command新建项，输入wsl-exe-的地址"><a href="#新建command新建项，输入wsl-exe-的地址" class="headerlink" title="新建command新建项，输入wsl.exe 的地址"></a>新建command新建项，输入wsl.exe 的地址</h1><p><img src="/../../imgs/Pasted%20image%2020240101183246.png"></p>
-<h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p>可以看到右侧是有wsl bash here的选项的<br><img src="/../../imgs/Pasted%20image%2020240101183634.png"><br><strong>在当面目录打开wsl 成功</strong><br><img src="/../../imgs/Pasted%20image%2020240101183645.png"><br>原理和添加git bash here 类似, 参考:<br><a href="https://blog.csdn.net/Passerby_Wang/article/details/120881670">手动添加Git Bash Here到右键菜单（超详细）_gitbash添加到右键-CSDN博客</a></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
-    <url>/2024-01-14-2aaa71f8e7be.html</url>
-    <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
-<p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!s::Send &#123;Down&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
-<p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
-<p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>【最强春节抢票攻略】火车票抢票攻略</title>
     <url>/2025-01-13-facf42a009b6.html</url>
     <content><![CDATA[<h1 id="1-下载分流抢票（windows-，并安装"><a href="#1-下载分流抢票（windows-，并安装" class="headerlink" title="1. 下载分流抢票（windows) ，并安装"></a>1. 下载分流抢票（windows) ，并安装</h1><p><a href="https://www.bypass.cn/">https://www.bypass.cn/</a></p>
@@ -3024,22 +3020,15 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>免费使用Jetbrain 全家桶-服务器激活码激活软件</title>
-    <url>/2023-12-30-6a1e804ab992.html</url>
-    <content><![CDATA[<p>众所周知，PyCharm和IDEA Goland CLion 都是Jetbrain 公司的产品,非常适合开发项目.但是这个软件确是收费的,而且还不低. 本文就是介绍一种方法可以免费使用的方法,如果大家有余力的,还是希望购买正版产品.</p>
-<p>Jetbrain 是针对公司这种大客户是有对应的License Server的，这样方便很多用户使用。而我们可以通过输入这些License 从而免费使用。</p>
-<ul>
-<li><a href="https://search.censys.io/">https://search.censys.io/</a>     搜索：<code>services.http.response.headers.location: account.jetbrains.com/fls-auth</code></li>
-<li><a href="https://www.shodan.io/">https://www.shodan.io</a>  搜索：<br><code>Location: https://account.jetbrains.com/fls-auth</code></li>
-<li><a href="https://fofa.info/">https://fofa.info/</a>     搜索：<code>fls-auth</code></li>
-</ul>
-<p>随便点进去一个搜索结果，找到状态为302的网址和端口，复制到对应的JetBrains 软件的License Server里. 我下边使用的是<a href="https://search.censys.io/">https://search.censys.io/</a> 网站, 搜索 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">services.http.response.headers.location: account.jetbrains.com/fls-auth</span><br></pre></td></tr></table></figure>
+    <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
+    <url>/2024-01-14-2aaa71f8e7be.html</url>
+    <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
+<p>下载并安装 AutoHotKey： 访问 AutoHotKey 官网，下载并安装 AutoHotKey v1.0。<br><img src="/../../imgs/Pasted%20image%2020240114170655.png"><br>创建脚本文件： 打开文本编辑器（如记事本）并创建一个新的脚本文件，将以下内容复制粘贴到文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">!s::Send &#123;Down&#125;</span><br></pre></td></tr></table></figure>
 
-
-<p><img src="/../../imgs/Pasted%20image%2020231230231034.png"><br>例如上边就是 <a href="http://111.231.22.61:1024/">http://111.231.22.61:1024</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020231230231326.png"></p>
-<h1 id="激活成功"><a href="#激活成功" class="headerlink" title="激活成功"></a>激活成功</h1><p>激活成功，请开始愉快的编码吧！<br><img src="/../../imgs/Pasted%20image%2020231230231349.png"></p>
+<p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
+<p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
+<p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -3070,6 +3059,28 @@ dfs(root.Right, res)
 <p><img src="/../../imgs/Pasted%20image%2020230319131458.png"></p>
 <h2 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h2><p>网页可以成功显示图片</p>
 <p><img src="/../../imgs/Pasted%20image%2020230319134051.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>免费使用Jetbrain 全家桶-服务器激活码激活软件</title>
+    <url>/2023-12-30-6a1e804ab992.html</url>
+    <content><![CDATA[<p>众所周知，PyCharm和IDEA Goland CLion 都是Jetbrain 公司的产品,非常适合开发项目.但是这个软件确是收费的,而且还不低. 本文就是介绍一种方法可以免费使用的方法,如果大家有余力的,还是希望购买正版产品.</p>
+<p>Jetbrain 是针对公司这种大客户是有对应的License Server的，这样方便很多用户使用。而我们可以通过输入这些License 从而免费使用。</p>
+<ul>
+<li><a href="https://search.censys.io/">https://search.censys.io/</a>     搜索：<code>services.http.response.headers.location: account.jetbrains.com/fls-auth</code></li>
+<li><a href="https://www.shodan.io/">https://www.shodan.io</a>  搜索：<br><code>Location: https://account.jetbrains.com/fls-auth</code></li>
+<li><a href="https://fofa.info/">https://fofa.info/</a>     搜索：<code>fls-auth</code></li>
+</ul>
+<p>随便点进去一个搜索结果，找到状态为302的网址和端口，复制到对应的JetBrains 软件的License Server里. 我下边使用的是<a href="https://search.censys.io/">https://search.censys.io/</a> 网站, 搜索 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">services.http.response.headers.location: account.jetbrains.com/fls-auth</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/../../imgs/Pasted%20image%2020231230231034.png"><br>例如上边就是 <a href="http://111.231.22.61:1024/">http://111.231.22.61:1024</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020231230231326.png"></p>
+<h1 id="激活成功"><a href="#激活成功" class="headerlink" title="激活成功"></a>激活成功</h1><p>激活成功，请开始愉快的编码吧！<br><img src="/../../imgs/Pasted%20image%2020231230231349.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -3269,6 +3280,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>设计模式-抽象工厂</title>
+    <url>/2023-09-03-c6ab66461699.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230903231353.png"></p>
+<h1 id="抽象工厂模式结构"><a href="#抽象工厂模式结构" class="headerlink" title="抽象工厂模式结构"></a>抽象工厂模式结构</h1><p><img src="/../../imgs/Pasted%20image%2020230903231449.png"><br>多个工厂模式;</p>
+<p>有抽象工厂(现代工厂,和古代工厂),具体工厂(现代工程和古代风格工厂实现),抽象产品(接口 ,椅子和桌子) 和具体产品(实现具体的桌子和椅子)</p>
+<p><img src="/../../imgs/Pasted%20image%2020230903231857.png"></p>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+  </entry>
+  <entry>
     <title>设计模式-工厂方法模式</title>
     <url>/2023-09-03-c58ee0dac51b.html</url>
     <content><![CDATA[<p>网站链接：<br><a href="https://refactoringguru.cn/design-patterns/factory-method">工厂方法设计模式 (refactoringguru.cn)</a></p>
@@ -3310,18 +3333,6 @@ dfs(root.Right, res)
 <p><strong>聚合:</strong> 我们再来看大雁与雁群这两个类，大雁是群居动物，每只大雁都是属于一个雁群，一个雁群可以有多只大雁。所以它们之间就满足聚合（Aggregation）关系。聚合表示一种弱的‘拥有’关系，体现的是A对象可以包含B对象，但B对象不是A对象的一部分 [DPE]（DPE表示此句摘自《设计模式》（第2版），详细摘要说明见附录二）。聚合关系用空心的菱形+实线箭头来表示。</p>
 <p><img src="/../../imgs/Pasted%20image%2020230903140037.png"><br><strong>合成</strong>（Composition，也有翻译成‘<strong>组合</strong>’的）是一种强的‘拥有’关系，体现了严格的部分和整体的关系，部分和整体的生命周期一样 [DPE]。在这里鸟和其翅膀就是合成（组合）关系，因为它们是部分和整体的关系，并且翅膀和鸟的生命周期是相同的。合成关系用实心的菱形+实线箭头来表示。另外，你会注意到合成关系的连线两端还有一个数字‘1’和数字‘2’，这被称为基数。表明这一端的类可以有几个实例，很显然，一个鸟应该有两只翅膀。如果一个类可能有无数个实例，则就用‘n’来表示。关联关系、聚合关系也可以有基数的。<br><img src="/../../imgs/Pasted%20image%2020230903140113.png"></p>
 <p><strong>依赖</strong><br><img src="/../../imgs/Pasted%20image%2020230903140305.png"></p>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>设计模式-抽象工厂</title>
-    <url>/2023-09-03-c6ab66461699.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230903231353.png"></p>
-<h1 id="抽象工厂模式结构"><a href="#抽象工厂模式结构" class="headerlink" title="抽象工厂模式结构"></a>抽象工厂模式结构</h1><p><img src="/../../imgs/Pasted%20image%2020230903231449.png"><br>多个工厂模式;</p>
-<p>有抽象工厂(现代工厂,和古代工厂),具体工厂(现代工程和古代风格工厂实现),抽象产品(接口 ,椅子和桌子) 和具体产品(实现具体的桌子和椅子)</p>
-<p><img src="/../../imgs/Pasted%20image%2020230903231857.png"></p>
 ]]></content>
       <categories>
         <category>设计模式</category>
