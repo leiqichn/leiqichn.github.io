@@ -45,13 +45,15 @@
             "id": "afbaf72d8b3a11ec",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/【go】初始化双向列表List.md",
-                "staged": false
+                "file": "source/_posts/leetcode/回溯总结.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "git-pull-request",
-              "title": "Diff View (【go】初始化双向列表List)"
+              "icon": "lucide-file",
+              "title": "回溯总结"
             }
           }
         ],
@@ -176,6 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/leetcode/回溯总结.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -185,7 +188,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "回溯总结 的反向链接列表"
             }
           },
           {
@@ -265,8 +268,9 @@
       "file-tree-alternative:File Tree Alternative Plugin": false
     }
   },
-  "active": "afbaf72d8b3a11ec",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/leetcode/回溯总结.md",
     "source/_posts/leetcode/闭包介绍.md",
     "source/_posts/leetcode/test.md",
     "source/_posts/leetcode/【go】初始化双向列表List.md",
@@ -312,7 +316,6 @@
     "scaffolds/draft.md",
     "source/_posts/前端/配置七牛云搭建图床.md",
     "source/photography/scenery/index.md",
-    "source/photography/portrait/index.md",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
