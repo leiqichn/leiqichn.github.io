@@ -8,5 +8,6 @@
   "templater-obsidian",
   "file-tree-alternative",
   "obsidian-image-toolkit",
-  "mermaid-tools"
+  "mermaid-tools",
+  "global-proxy"
 ]
