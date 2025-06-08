@@ -59,6 +59,28 @@
       </categories>
   </entry>
   <entry>
+    <title>Go 浮点数次方</title>
+    <url>/2024-12-03-3d026e7b5bec.html</url>
+    <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
+<h3 id="使用math-Pow函数"><a href="#使用math-Pow函数" class="headerlink" title="使用math.Pow函数"></a>使用<code>math.Pow</code>函数</h3><p><code>math.Pow</code>函数的签名如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Pow</span><span class="params">(x, y <span class="type">float64</span>)</span></span> <span class="type">float64</span></span><br></pre></td></tr></table></figure>
+
+<p>这个函数接受两个<code>float64</code>类型的参数：<code>x</code>是底数，<code>y</code>是指数，返回<code>x</code>的<code>y</code>次方的结果。</p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>下面是一个使用<code>math.Pow</code>函数的示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 计算2的3次方</span></span><br><span class="line">    result := math.Pow(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;2的3次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算3的2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;3的2次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算10的-2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">10</span>, <span class="number">-2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;10的-2次方是: %v\n&quot;</span>, result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2的3次方是: 8</span><br><span class="line">3的2次方是: 9</span><br><span class="line">10的-2次方是: 0.01</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
+<li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Go 中是否使用make创建slice的区别</title>
     <url>/2023-10-05-9d3185fd2258.html</url>
     <content><![CDATA[<p>go slice 的make 会创建默认长度 且值为0 的slice </p>
@@ -88,28 +110,6 @@
 <li>不使用 <code>make</code> 创建切片时，适用于快速创建切片并根据提供的元素自动确定长度的情况。这种方式更简洁，适合大多数情况。</li>
 </ul>
 <p>无论使用哪种方式创建切片，都可以使用 <code>append</code> 函数来动态增长切片的长度。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Go 浮点数次方</title>
-    <url>/2024-12-03-3d026e7b5bec.html</url>
-    <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
-<h3 id="使用math-Pow函数"><a href="#使用math-Pow函数" class="headerlink" title="使用math.Pow函数"></a>使用<code>math.Pow</code>函数</h3><p><code>math.Pow</code>函数的签名如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Pow</span><span class="params">(x, y <span class="type">float64</span>)</span></span> <span class="type">float64</span></span><br></pre></td></tr></table></figure>
-
-<p>这个函数接受两个<code>float64</code>类型的参数：<code>x</code>是底数，<code>y</code>是指数，返回<code>x</code>的<code>y</code>次方的结果。</p>
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>下面是一个使用<code>math.Pow</code>函数的示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 计算2的3次方</span></span><br><span class="line">    result := math.Pow(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;2的3次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算3的2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;3的2次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算10的-2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">10</span>, <span class="number">-2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;10的-2次方是: %v\n&quot;</span>, result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2的3次方是: 8</span><br><span class="line">3的2次方是: 9</span><br><span class="line">10的-2次方是: 0.01</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
-<li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
-</ul>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -181,6 +181,27 @@
       </categories>
   </entry>
   <entry>
+    <title>Go语言-多态</title>
+    <url>/2023-04-20-af074e588287.html</url>
+    <content><![CDATA[<p>Go语言中没有类，我们可以使用结构体作为对象，来绑定对应的方法。而接口是功能的抽象，是方法的集合。</p>
+<p>我们来实现这样一个例子：</p>
+<ul>
+<li>实现猫和狗<strong>两个对象</strong>，并且他们都有动作：叫，<strong>但叫声不同</strong>。再实现一个<strong>对象鸟</strong>，他除了叫，还会<strong>飞</strong>。</li>
+</ul>
+<p>下面是基于Go语言，实现题目要求的代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    Cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c Cat)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;喵喵喵&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d Dog)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Bird <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;叽叽喳喳&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Fly() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;我会飞&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只猫</span></span><br><span class="line">    animal = Cat&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只狗</span></span><br><span class="line">    animal = Dog&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只鸟</span></span><br><span class="line">    bird := Bird&#123;&#125;</span><br><span class="line">    animal = bird</span><br><span class="line">    animal.Cry()</span><br><span class="line">    bird.Fly()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，定义了一个Animal接口和三个结构体Cat、Dog、Bird分别实现了这个接口。其中，Cat和Dog只能叫，而Bird除了叫外还可以飞行。在main函数中创建相应的对象并调用相应的方法。</p>
+<p>运行上述代码，输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">喵喵喵</span><br><span class="line">汪汪汪</span><br><span class="line">叽叽喳喳</span><br><span class="line">我会飞</span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，我们使用了<strong>接口的多态特性</strong>，通过定义<strong>Animal接口</strong>，实现了<strong>不同类型的对象之间的通用性</strong>，并且在<strong>Bird中新增了Fly() 方法</strong>，符合面向对象的<strong>开放封闭原则</strong>。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Go语言-copy</title>
     <url>/2023-05-11-27c67ecef2a3.html</url>
     <content><![CDATA[<p>在 Go 语言中，copy 函数可以用于将一个切片（slice）的元素复制到另一个切片中。它的定义如下：</p>
@@ -200,27 +221,6 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="built_in">copy</span>(a[index:], a[index+<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
 
 <p>这里，a[index:] 表示从要删除位置开始到切片结束的一个子切片，它的长度为 len(a) - index。因此，通过 copy 函数将它复制到自身的第 index 个元素位置上时，就可以将删除位置之后的所有元素向前移位，从而删除具体元素。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Go语言-多态</title>
-    <url>/2023-04-20-af074e588287.html</url>
-    <content><![CDATA[<p>Go语言中没有类，我们可以使用结构体作为对象，来绑定对应的方法。而接口是功能的抽象，是方法的集合。</p>
-<p>我们来实现这样一个例子：</p>
-<ul>
-<li>实现猫和狗<strong>两个对象</strong>，并且他们都有动作：叫，<strong>但叫声不同</strong>。再实现一个<strong>对象鸟</strong>，他除了叫，还会<strong>飞</strong>。</li>
-</ul>
-<p>下面是基于Go语言，实现题目要求的代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    Cry()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c Cat)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;喵喵喵&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d Dog)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;汪汪汪&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Bird <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Cry() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;叽叽喳喳&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Bird)</span></span> Fly() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;我会飞&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> animal Animal</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只猫</span></span><br><span class="line">    animal = Cat&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只狗</span></span><br><span class="line">    animal = Dog&#123;&#125;</span><br><span class="line">    animal.Cry()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一只鸟</span></span><br><span class="line">    bird := Bird&#123;&#125;</span><br><span class="line">    animal = bird</span><br><span class="line">    animal.Cry()</span><br><span class="line">    bird.Fly()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上述代码中，定义了一个Animal接口和三个结构体Cat、Dog、Bird分别实现了这个接口。其中，Cat和Dog只能叫，而Bird除了叫外还可以飞行。在main函数中创建相应的对象并调用相应的方法。</p>
-<p>运行上述代码，输出如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">喵喵喵</span><br><span class="line">汪汪汪</span><br><span class="line">叽叽喳喳</span><br><span class="line">我会飞</span><br></pre></td></tr></table></figure>
-
-<p>在这段代码中，我们使用了<strong>接口的多态特性</strong>，通过定义<strong>Animal接口</strong>，实现了<strong>不同类型的对象之间的通用性</strong>，并且在<strong>Bird中新增了Fly() 方法</strong>，符合面向对象的<strong>开放封闭原则</strong>。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -360,6 +360,27 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>什么是二进制的按位或和按位异或</title>
+    <url>/2023-06-08-3d1c210a715f.html</url>
+    <content><![CDATA[<p>按位或（bitwise OR）和按位异或（bitwise XOR）是两种二进制位运算。但是这两个概念很容易忘记或者混淆，今天我们就来加深一下印象吧！</p>
+<p>按位或运算符（|）对两个二进制数的每一位都执行逻辑或操作，返回一个新的二进制数。其真值表如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input bit a | input bit b | output </span><br><span class="line">------------------------------- </span><br><span class="line">	0        |     0      | 0 </span><br><span class="line">	0        |     1      | 1 </span><br><span class="line">	1        |     0      | 1 </span><br><span class="line">	1        |     1      | 1</span><br></pre></td></tr></table></figure>
+
+<p>例如，执行 6 (二进制位 110) 和 3 (二进制位 011) 的按位或运算 会得到 7 (二进制位 111):</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">| 011</span><br><span class="line">-----</span><br><span class="line">  111</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>按位异或运算符（^）对两个二进制数的每一位都执行逻辑异或操作，返回一个新的二进制数。其真值表如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input bit a | input bit b | output</span><br><span class="line">-------------------------------</span><br><span class="line">        0    |    0      |   0</span><br><span class="line">        0    |    1      |   1</span><br><span class="line">        1    |    0      |   1</span><br><span class="line">        1    |    1      |   0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">^ 011</span><br><span class="line">-----</span><br><span class="line">  101</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>按位或，就是只要有1 就为1 (包含了1  1 ；0 1；1  0；三种)<br>按位异或，必须一个0一个1，才为1 （包含0 1；1  0；两种）<br>大家记住了吗？</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>go语言-回调函数（钩子）</title>
     <url>/2023-05-25-2cbe3a05ec00.html</url>
     <content><![CDATA[<p>在Go语言中，回调函数和钩子函数通常是使用函数类型作为参数传递给函数或方法，以便在特定事件发生时被调用。这种机制非常灵活，可以让你编写出高效的、可复用的代码。</p>
@@ -387,27 +408,6 @@ dfs(root.Right, res)
 <p>而使用钩子函数，可以将打印程序执行时间的功能单独提出来作为一个函数。这使得我们可以像 heavyCalculation 函数那样封装其他计算逻辑并复用 TimeElapsedCallback 钩子函数。</p>
 <p>钩子函数的使用场景非常广泛，在几乎<strong>所有需要在特定事件发生时自动执行一些附加逻辑的场景中都可以使用。</strong></p>
 <h2 id="以下是使用回调函数的优点："><a href="#以下是使用回调函数的优点：" class="headerlink" title="以下是使用回调函数的优点："></a>以下是使用回调函数的优点：</h2><p>灵活性：可以轻松地将自定义代码插入到已有的代码流程中。<br>可重用性：可以将钩子函数单独进行封装，以供不同的代码文件或项目中使用。<br>易于维护：通过修改单个钩子函数即可更改所有使用该钩子函数的代码的行为。<br>总之，使用钩子函数可以帮助我们让代码变得更加简洁、灵活、模块化和可重用。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>什么是二进制的按位或和按位异或</title>
-    <url>/2023-06-08-3d1c210a715f.html</url>
-    <content><![CDATA[<p>按位或（bitwise OR）和按位异或（bitwise XOR）是两种二进制位运算。但是这两个概念很容易忘记或者混淆，今天我们就来加深一下印象吧！</p>
-<p>按位或运算符（|）对两个二进制数的每一位都执行逻辑或操作，返回一个新的二进制数。其真值表如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input bit a | input bit b | output </span><br><span class="line">------------------------------- </span><br><span class="line">	0        |     0      | 0 </span><br><span class="line">	0        |     1      | 1 </span><br><span class="line">	1        |     0      | 1 </span><br><span class="line">	1        |     1      | 1</span><br></pre></td></tr></table></figure>
-
-<p>例如，执行 6 (二进制位 110) 和 3 (二进制位 011) 的按位或运算 会得到 7 (二进制位 111):</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">| 011</span><br><span class="line">-----</span><br><span class="line">  111</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>按位异或运算符（^）对两个二进制数的每一位都执行逻辑异或操作，返回一个新的二进制数。其真值表如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input bit a | input bit b | output</span><br><span class="line">-------------------------------</span><br><span class="line">        0    |    0      |   0</span><br><span class="line">        0    |    1      |   1</span><br><span class="line">        1    |    0      |   1</span><br><span class="line">        1    |    1      |   0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">^ 011</span><br><span class="line">-----</span><br><span class="line">  101</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>按位或，就是只要有1 就为1 (包含了1  1 ；0 1；1  0；三种)<br>按位异或，必须一个0一个1，才为1 （包含0 1；1  0；两种）<br>大家记住了吗？</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -598,22 +598,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>Linux 命令 将前台任务挂到后台运行</title>
-    <url>/2023-03-18-87649bcaf9cc.html</url>
-    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
-<p><strong>第一步：ctrl + z</strong></p>
-<p><strong>第二步：jobs  查看任务id</strong></p>
-<p><strong>第三步： bg %任务id</strong></p>
-<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 将用户追加到对应用户组</title>
     <url>/2023-09-17-5141f57450ab.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
@@ -633,6 +617,22 @@ dfs(root.Right, res)
       <categories>
         <category>Linux</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Linux 命令 将前台任务挂到后台运行</title>
+    <url>/2023-03-18-87649bcaf9cc.html</url>
+    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
+<p><strong>第一步：ctrl + z</strong></p>
+<p><strong>第二步：jobs  查看任务id</strong></p>
+<p><strong>第三步： bg %任务id</strong></p>
+<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+      </tags>
   </entry>
   <entry>
     <title>【sed】快速替换当前文件夹下文件中指定内容</title>
@@ -744,67 +744,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>Windows Git自动转换为Linux换行符</title>
-    <url>/2025-04-28-84ca2c3d5919.html</url>
-    <content><![CDATA[<p>在 Git 中处理不同操作系统（Windows&#x2F;Linux&#x2F;macOS）的换行符（<code>LF</code> 和 <code>CRLF</code>）时，自动转换是关键。以下是配置 Git 自动处理换行符的方法：</p>
-<hr>
-<h3 id="1-核心配置：core-autocrlf"><a href="#1-核心配置：core-autocrlf" class="headerlink" title="1. 核心配置：core.autocrlf"></a><strong>1. 核心配置：<code>core.autocrlf</code></strong></h3><p>通过设置 <code>core.autocrlf</code> 属性，让 Git 自动转换换行符：</p>
-<h4 id="不同操作系统的推荐设置"><a href="#不同操作系统的推荐设置" class="headerlink" title="不同操作系统的推荐设置"></a><strong>不同操作系统的推荐设置</strong></h4><ul>
-<li><p><strong>Windows（推荐）</strong>：  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">true</span></span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时转换为 CRLF</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Linux&#x2F;macOS（推荐）</strong>：  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时不转换</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2-强制规范：-gitattributes-文件"><a href="#2-强制规范：-gitattributes-文件" class="headerlink" title="2. 强制规范：.gitattributes 文件"></a><strong>2. 强制规范：<code>.gitattributes</code> 文件</strong></h3><p>在项目根目录创建 <code>.gitattributes</code> 文件，<strong>优先级高于全局配置</strong>，适合团队协作。</p>
-<h4 id="示例配置："><a href="#示例配置：" class="headerlink" title="示例配置："></a><strong>示例配置</strong>：</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 所有文本文件使用 LF 换行符</span><br><span class="line">* text=auto eol=lf</span><br><span class="line"></span><br><span class="line"># 排除二进制文件（避免误处理）</span><br><span class="line">*.png binary</span><br><span class="line">*.jpg binary</span><br><span class="line">*.zip binary</span><br><span class="line"></span><br><span class="line"># 指定特定文件类型（可选）</span><br><span class="line">*.sh text eol=lf</span><br><span class="line">*.bat text eol=crlf</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>text=auto</code>：Git 自动识别文本文件。</li>
-<li><code>eol=lf</code> 或 <code>eol=crlf</code>：强制统一换行符。</li>
-</ul>
-<hr>
-<h3 id="3-修复已存在的换行符问题"><a href="#3-修复已存在的换行符问题" class="headerlink" title="3. 修复已存在的换行符问题"></a><strong>3. 修复已存在的换行符问题</strong></h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤：</strong></h4><ol>
-<li><p>删除缓存并重置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached -r .  <span class="comment"># 清除缓存</span></span><br><span class="line">git reset --hard      <span class="comment"># 重置文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新添加文件并提交：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;fix: normalize line endings&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h3 id="4-检查换行符状态"><a href="#4-检查换行符状态" class="headerlink" title="4. 检查换行符状态"></a><strong>4. 检查换行符状态</strong></h3><h4 id="检查文件换行符："><a href="#检查文件换行符：" class="headerlink" title="检查文件换行符："></a><strong>检查文件换行符</strong>：</h4><ul>
-<li><p><strong>Linux&#x2F;macOS</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">file yourfile.txt</span><br><span class="line"><span class="comment"># 输出中包含 &quot;LF&quot; 或 &quot;CRLF&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Windows（PowerShell）</strong>：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-Content</span> yourfile.txt <span class="literal">-Encoding</span> Byte | <span class="built_in">Select-String</span> <span class="string">&quot;0D 0A&quot;</span></span><br><span class="line"><span class="comment"># 存在 &quot;0D 0A&quot; 表示 CRLF</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="查看-Git-换行符转换日志："><a href="#查看-Git-换行符转换日志：" class="headerlink" title="查看 Git 换行符转换日志："></a><strong>查看 Git 换行符转换日志</strong>：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git ls-files --eol</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a><strong>常见问题解决</strong></h3><ul>
-<li><p>**警告 <code>LF will be replaced by CRLF</code>**：<br>正常提示，表示 Git 正在按配置转换换行符。</p>
-</li>
-<li><p><strong>文件被标记为已修改（仅换行符变化）</strong>：<br>运行以下命令清除差异：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.whitespace cr-at-eol</span><br><span class="line">git add --renormalize .</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>混合换行符导致冲突</strong>：<br>使用 <code>.gitattributes</code> 强制统一换行符，并重新提交文件。</p>
-</li>
-</ul>
-<hr>
-<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a><strong>最佳实践</strong></h3><ol>
-<li><strong>团队协作</strong>：在项目中添加 <code>.gitattributes</code> 文件，统一换行符规则。</li>
-<li><strong>编辑器配置</strong>：设置 IDE（如 VSCode）默认使用 <code>LF</code>（<a href="https://stackoverflow.com/a/44788470">配置示例</a>）。</li>
-<li><strong>Windows 用户</strong>：安装 Git 时选择 <code>Checkout as-is, commit Unix-style line endings</code>。</li>
-</ol>
-<hr>
-<p>通过上述配置，Git 会自动处理换行符，避免跨平台协作时的混乱！ 🛠️</p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git stash</title>
     <url>/2024-08-21-d34ebab44074.html</url>
     <content><![CDATA[<p>当尝试使用 git pull -f 强制拉取远程仓库的更新时，Git 会警告你，因为本地有未提交的更改，这些更改可能会被覆盖。确定要取消对特定文件的保存，可以按照以下步骤操作：</p>
@@ -904,6 +843,67 @@ dfs(root.Right, res)
       <tags>
         <tag>git</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Windows Git自动转换为Linux换行符</title>
+    <url>/2025-04-28-84ca2c3d5919.html</url>
+    <content><![CDATA[<p>在 Git 中处理不同操作系统（Windows&#x2F;Linux&#x2F;macOS）的换行符（<code>LF</code> 和 <code>CRLF</code>）时，自动转换是关键。以下是配置 Git 自动处理换行符的方法：</p>
+<hr>
+<h3 id="1-核心配置：core-autocrlf"><a href="#1-核心配置：core-autocrlf" class="headerlink" title="1. 核心配置：core.autocrlf"></a><strong>1. 核心配置：<code>core.autocrlf</code></strong></h3><p>通过设置 <code>core.autocrlf</code> 属性，让 Git 自动转换换行符：</p>
+<h4 id="不同操作系统的推荐设置"><a href="#不同操作系统的推荐设置" class="headerlink" title="不同操作系统的推荐设置"></a><strong>不同操作系统的推荐设置</strong></h4><ul>
+<li><p><strong>Windows（推荐）</strong>：  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">true</span></span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时转换为 CRLF</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Linux&#x2F;macOS（推荐）</strong>：  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时不转换</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-强制规范：-gitattributes-文件"><a href="#2-强制规范：-gitattributes-文件" class="headerlink" title="2. 强制规范：.gitattributes 文件"></a><strong>2. 强制规范：<code>.gitattributes</code> 文件</strong></h3><p>在项目根目录创建 <code>.gitattributes</code> 文件，<strong>优先级高于全局配置</strong>，适合团队协作。</p>
+<h4 id="示例配置："><a href="#示例配置：" class="headerlink" title="示例配置："></a><strong>示例配置</strong>：</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 所有文本文件使用 LF 换行符</span><br><span class="line">* text=auto eol=lf</span><br><span class="line"></span><br><span class="line"># 排除二进制文件（避免误处理）</span><br><span class="line">*.png binary</span><br><span class="line">*.jpg binary</span><br><span class="line">*.zip binary</span><br><span class="line"></span><br><span class="line"># 指定特定文件类型（可选）</span><br><span class="line">*.sh text eol=lf</span><br><span class="line">*.bat text eol=crlf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>text=auto</code>：Git 自动识别文本文件。</li>
+<li><code>eol=lf</code> 或 <code>eol=crlf</code>：强制统一换行符。</li>
+</ul>
+<hr>
+<h3 id="3-修复已存在的换行符问题"><a href="#3-修复已存在的换行符问题" class="headerlink" title="3. 修复已存在的换行符问题"></a><strong>3. 修复已存在的换行符问题</strong></h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤：</strong></h4><ol>
+<li><p>删除缓存并重置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached -r .  <span class="comment"># 清除缓存</span></span><br><span class="line">git reset --hard      <span class="comment"># 重置文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新添加文件并提交：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;fix: normalize line endings&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h3 id="4-检查换行符状态"><a href="#4-检查换行符状态" class="headerlink" title="4. 检查换行符状态"></a><strong>4. 检查换行符状态</strong></h3><h4 id="检查文件换行符："><a href="#检查文件换行符：" class="headerlink" title="检查文件换行符："></a><strong>检查文件换行符</strong>：</h4><ul>
+<li><p><strong>Linux&#x2F;macOS</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">file yourfile.txt</span><br><span class="line"><span class="comment"># 输出中包含 &quot;LF&quot; 或 &quot;CRLF&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Windows（PowerShell）</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-Content</span> yourfile.txt <span class="literal">-Encoding</span> Byte | <span class="built_in">Select-String</span> <span class="string">&quot;0D 0A&quot;</span></span><br><span class="line"><span class="comment"># 存在 &quot;0D 0A&quot; 表示 CRLF</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="查看-Git-换行符转换日志："><a href="#查看-Git-换行符转换日志：" class="headerlink" title="查看 Git 换行符转换日志："></a><strong>查看 Git 换行符转换日志</strong>：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git ls-files --eol</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a><strong>常见问题解决</strong></h3><ul>
+<li><p>**警告 <code>LF will be replaced by CRLF</code>**：<br>正常提示，表示 Git 正在按配置转换换行符。</p>
+</li>
+<li><p><strong>文件被标记为已修改（仅换行符变化）</strong>：<br>运行以下命令清除差异：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.whitespace cr-at-eol</span><br><span class="line">git add --renormalize .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>混合换行符导致冲突</strong>：<br>使用 <code>.gitattributes</code> 强制统一换行符，并重新提交文件。</p>
+</li>
+</ul>
+<hr>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a><strong>最佳实践</strong></h3><ol>
+<li><strong>团队协作</strong>：在项目中添加 <code>.gitattributes</code> 文件，统一换行符规则。</li>
+<li><strong>编辑器配置</strong>：设置 IDE（如 VSCode）默认使用 <code>LF</code>（<a href="https://stackoverflow.com/a/44788470">配置示例</a>）。</li>
+<li><strong>Windows 用户</strong>：安装 Git 时选择 <code>Checkout as-is, commit Unix-style line endings</code>。</li>
+</ol>
+<hr>
+<p>通过上述配置，Git 会自动处理换行符，避免跨平台协作时的混乱！ 🛠️</p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
   </entry>
   <entry>
     <title>git 设置免密配置-全局免密-单仓库免密-SSH免密</title>
@@ -1084,14 +1084,52 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
-    <title>LRU</title>
-    <url>/2023-08-07-e74632bdccbf.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/lru-cache/description/">146. LRU 缓存 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230807233035.png"></p>
-<p>list Elemet 双向列表；<br><img src="/../../imgs/Pasted%20image%2020230807233013.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/list&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="built_in">cap</span>  <span class="type">int</span>                    <span class="comment">// 缓存容量</span></span><br><span class="line">    cache <span class="keyword">map</span>[<span class="type">int</span>]*list.Element<span class="comment">//!!! 双向链表 使用Element // 双向链表节点 指向的map</span></span><br><span class="line">    list *list.List             <span class="comment">// 双向链表</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> keyVal <span class="keyword">struct</span> &#123;</span><br><span class="line">    key, val <span class="type">int</span> <span class="comment">// 节点的Key和Value</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="type">int</span>)</span></span> LRUCache &#123;</span><br><span class="line">    <span class="keyword">return</span> LRUCache&#123;</span><br><span class="line">        <span class="built_in">cap</span>:   capacity,                            <span class="comment">// 初始化缓存容量</span></span><br><span class="line">        cache: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*list.Element),          <span class="comment">// 初始化map映射</span></span><br><span class="line">        list:  list.New(),                           <span class="comment">// 初始化双向链表</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> elem, ok := this.cache[key]; ok &#123;             <span class="comment">// 如果map里有key对应的双向链表节点</span></span><br><span class="line">        this.list.MoveToFront(elem)                  <span class="comment">// 把节点移动到链表头</span></span><br><span class="line">        <span class="keyword">return</span> elem.Value.(*keyVal).val              <span class="comment">// 返回节点的value值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>                                        <span class="comment">// 没有找到的情况下，返回-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> elem, ok := this.cache[key]; ok &#123;             <span class="comment">// 如果map里有key对应的双向链表节点</span></span><br><span class="line">        this.list.MoveToFront(elem)                  <span class="comment">// 把节点移动到链表头</span></span><br><span class="line">        <span class="comment">//!!! elem.Value 是接口，需要将其转为对应结构体，然后再取值；</span></span><br><span class="line">        elem.Value.(*keyVal).val = value             <span class="comment">// 更新节点的value值 </span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> this.list.Len() &gt;= this.<span class="built_in">cap</span> &#123;                 <span class="comment">// 如果超过了缓存容量</span></span><br><span class="line">        tail := this.list.Back()                     <span class="comment">// 获取链表的尾节点</span></span><br><span class="line">        k := tail.Value.(*keyVal).key                <span class="comment">// 获取节点的key</span></span><br><span class="line">        this.list.Remove(tail)                       <span class="comment">// 从链表中删除尾节点</span></span><br><span class="line">        <span class="built_in">delete</span>(this.cache, k)                        <span class="comment">// 从map中删除尾节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    elem := this.list.PushFront(&amp;keyVal&#123;key, value&#125;) <span class="comment">// 将节点添加到链表头</span></span><br><span class="line">    this.cache[key] = elem                           <span class="comment">// 将节点映射到map中</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-8c397fc87827.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
 ]]></content>
       <categories>
-        <category>leetcode</category>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
       </categories>
   </entry>
   <entry>
@@ -1114,6 +1152,17 @@ dfs(root.Right, res)
 <p>可以看到，字符 ‘0’ 成功转换为整数 0。<br>其中需要注意的是：在Go语言中，格式化输出时 <code>%c</code> 是一个占位符，用于表示要输出的值是一个Unicode字符。<br>具体来说，<code>%c</code> 会将相应参数作为一个Unicode码点（或称为rune类型）来解释，并将其格式化为相应的字符表示。这允许你将一个整数值或字符类型的变量作为参数，并将其打印为对应的字符。例如上边就是直接打印编码后的字符0,而不是byte&#x2F;rune 对应的值 48</p>
 <p>这种转换方式可以用于将字符 ‘0’ 到 ‘9’ 范围内的数字字符转换为对应的整数值。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>byte&#x2F;rune 转对应unicode 码点的话，直接使用int() 进行强转；<br>如果是要转成0-9 对应的整数，则需要使用 int(byte(‘XX’) - ‘0’ )进行转换 。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>LRU</title>
+    <url>/2023-08-07-e74632bdccbf.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/lru-cache/description/">146. LRU 缓存 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230807233035.png"></p>
+<p>list Elemet 双向列表；<br><img src="/../../imgs/Pasted%20image%2020230807233013.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/list&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="built_in">cap</span>  <span class="type">int</span>                    <span class="comment">// 缓存容量</span></span><br><span class="line">    cache <span class="keyword">map</span>[<span class="type">int</span>]*list.Element<span class="comment">//!!! 双向链表 使用Element // 双向链表节点 指向的map</span></span><br><span class="line">    list *list.List             <span class="comment">// 双向链表</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> keyVal <span class="keyword">struct</span> &#123;</span><br><span class="line">    key, val <span class="type">int</span> <span class="comment">// 节点的Key和Value</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="type">int</span>)</span></span> LRUCache &#123;</span><br><span class="line">    <span class="keyword">return</span> LRUCache&#123;</span><br><span class="line">        <span class="built_in">cap</span>:   capacity,                            <span class="comment">// 初始化缓存容量</span></span><br><span class="line">        cache: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*list.Element),          <span class="comment">// 初始化map映射</span></span><br><span class="line">        list:  list.New(),                           <span class="comment">// 初始化双向链表</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> elem, ok := this.cache[key]; ok &#123;             <span class="comment">// 如果map里有key对应的双向链表节点</span></span><br><span class="line">        this.list.MoveToFront(elem)                  <span class="comment">// 把节点移动到链表头</span></span><br><span class="line">        <span class="keyword">return</span> elem.Value.(*keyVal).val              <span class="comment">// 返回节点的value值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>                                        <span class="comment">// 没有找到的情况下，返回-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> elem, ok := this.cache[key]; ok &#123;             <span class="comment">// 如果map里有key对应的双向链表节点</span></span><br><span class="line">        this.list.MoveToFront(elem)                  <span class="comment">// 把节点移动到链表头</span></span><br><span class="line">        <span class="comment">//!!! elem.Value 是接口，需要将其转为对应结构体，然后再取值；</span></span><br><span class="line">        elem.Value.(*keyVal).val = value             <span class="comment">// 更新节点的value值 </span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> this.list.Len() &gt;= this.<span class="built_in">cap</span> &#123;                 <span class="comment">// 如果超过了缓存容量</span></span><br><span class="line">        tail := this.list.Back()                     <span class="comment">// 获取链表的尾节点</span></span><br><span class="line">        k := tail.Value.(*keyVal).key                <span class="comment">// 获取节点的key</span></span><br><span class="line">        this.list.Remove(tail)                       <span class="comment">// 从链表中删除尾节点</span></span><br><span class="line">        <span class="built_in">delete</span>(this.cache, k)                        <span class="comment">// 从map中删除尾节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    elem := this.list.PushFront(&amp;keyVal&#123;key, value&#125;) <span class="comment">// 将节点添加到链表头</span></span><br><span class="line">    this.cache[key] = elem                           <span class="comment">// 将节点映射到map中</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1664,6 +1713,30 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 226. 翻转二叉树</title>
+    <url>/2023-05-23-d59f64e0619b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
+    <url>/2023-06-05-869070f8049d.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/apply-operations-to-an-array/description/">2460. 对数组执行操作 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230605224628.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>直接模拟</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>第一版<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> res []<span class="type">int</span></span><br><span class="line">	res = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">	index := <span class="number">0</span></span><br><span class="line">	<span class="comment">// 第一次遍历 进行赋值操作</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">			nums[i] *= <span class="number">2</span></span><br><span class="line">			nums[i+<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 第二次遍历 将非0移动到前边</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">			res[index] = nums[i]</span><br><span class="line">			index++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>第二版<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; n &amp;&amp; nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">            nums[i] *= <span class="number">2</span></span><br><span class="line">            nums[i + <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">            nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Leetcode 222.完全二叉树的节点个数</title>
     <url>/2023-03-28-da7418525964.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/count-complete-tree-nodes/">222. 完全二叉树的节点个数 - 力扣（Leetcode）</a></p>
@@ -1712,30 +1785,6 @@ dfs(root.Right, res)
       <tags>
         <tag>二叉树</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 226. 翻转二叉树</title>
-    <url>/2023-05-23-d59f64e0619b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
-    <url>/2023-06-05-869070f8049d.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/apply-operations-to-an-array/description/">2460. 对数组执行操作 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230605224628.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>直接模拟</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p>第一版<br>时间复杂度：O(n)<br>空间复杂度：O(n)</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">var</span> res []<span class="type">int</span></span><br><span class="line">	res = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">	index := <span class="number">0</span></span><br><span class="line">	<span class="comment">// 第一次遍历 进行赋值操作</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">			nums[i] *= <span class="number">2</span></span><br><span class="line">			nums[i+<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 第二次遍历 将非0移动到前边</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">			res[index] = nums[i]</span><br><span class="line">			index++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第二版<br>时间复杂度：O(n)<br>空间复杂度：O(1)</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">applyOperations</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; n &amp;&amp; nums[i] == nums[i+<span class="number">1</span>] &#123;</span><br><span class="line">            nums[i] *= <span class="number">2</span></span><br><span class="line">            nums[i + <span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> nums[i] != <span class="number">0</span> &#123;</span><br><span class="line">            nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 2511 最多可以摧毁的敌人城堡数目</title>
@@ -1880,6 +1929,21 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 455.分发饼干</title>
+    <url>/2023-05-21-c1aa51f444e0.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/assign-cookies/description/">455. 分发饼干 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230521231054.png"></p>
+<p><a href="https://leiqicn.gitee.io/">https://leiqicn.gitee.io/</a> 欢迎关注我的博客，定时更新golang 刷题笔记</p>
+<p>贪心的策略：</p>
+<blockquote>
+<p>贪心算法一般分为如下四步：<br> 将问题分解为若干个子问题<br>找出适合的贪心策略<br>求解每一个子问题的最优解<br>将局部最优解堆叠成全局最优解</p>
+</blockquote>
+<p>排序，遍历饼干，child胃口初始化idx&#x3D;0 ,res &#x3D;0 ;<br>如果没有越界并且饼干大于等于胃口，则childIdx ++；res++</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findContentChildren</span><span class="params">(g []<span class="type">int</span>, s []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// g 小孩胃口 s 饼干 从大到小排序 排序,并给胃口初始化赋值</span></span><br><span class="line">    sort.Ints(g)</span><br><span class="line">    sort.Ints(s)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="comment">// 用小饼干 来满足最小的胃口</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">        <span class="comment">// 判断越界 饼干大于胃口</span></span><br><span class="line">        <span class="keyword">if</span> j &lt; <span class="built_in">len</span>(g) &amp;&amp; s[i] &gt;= g[j]  &#123; <span class="comment">// len不越界的条件需要在前边</span></span><br><span class="line"></span><br><span class="line">            res++</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 53.最大子数和</title>
     <url>/2023-05-25-8fc7b96cd054.html</url>
     <content><![CDATA[<blockquote>
@@ -1916,21 +1980,6 @@ dfs(root.Right, res)
         <tag>贪心</tag>
         <tag>动态规划</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 455.分发饼干</title>
-    <url>/2023-05-21-c1aa51f444e0.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/assign-cookies/description/">455. 分发饼干 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230521231054.png"></p>
-<p><a href="https://leiqicn.gitee.io/">https://leiqicn.gitee.io/</a> 欢迎关注我的博客，定时更新golang 刷题笔记</p>
-<p>贪心的策略：</p>
-<blockquote>
-<p>贪心算法一般分为如下四步：<br> 将问题分解为若干个子问题<br>找出适合的贪心策略<br>求解每一个子问题的最优解<br>将局部最优解堆叠成全局最优解</p>
-</blockquote>
-<p>排序，遍历饼干，child胃口初始化idx&#x3D;0 ,res &#x3D;0 ;<br>如果没有越界并且饼干大于等于胃口，则childIdx ++；res++</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findContentChildren</span><span class="params">(g []<span class="type">int</span>, s []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// g 小孩胃口 s 饼干 从大到小排序 排序,并给胃口初始化赋值</span></span><br><span class="line">    sort.Ints(g)</span><br><span class="line">    sort.Ints(s)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="comment">// 用小饼干 来满足最小的胃口</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">        <span class="comment">// 判断越界 饼干大于胃口</span></span><br><span class="line">        <span class="keyword">if</span> j &lt; <span class="built_in">len</span>(g) &amp;&amp; s[i] &gt;= g[j]  &#123; <span class="comment">// len不越界的条件需要在前边</span></span><br><span class="line"></span><br><span class="line">            res++</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 706. 设计哈希映射 Golang</title>
@@ -2210,6 +2259,17 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>【BFS DFS通用模板】</title>
+    <url>/2024-01-22-759654485d5d.html</url>
+    <content><![CDATA[<h1 id="深度优先搜索（DFS）通用模板"><a href="#深度优先搜索（DFS）通用模板" class="headerlink" title="深度优先搜索（DFS）通用模板"></a>深度优先搜索（DFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 通用的深度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(node <span class="type">int</span>, visited []<span class="type">bool</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 边界终止条件 </span></span><br><span class="line">	<span class="keyword">if</span> m n &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 终止条件</span></span><br><span class="line">    <span class="keyword">if</span> visited[node] &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理当前节点</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">    visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归处理相邻节点</span></span><br><span class="line">    <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">        dfs(neighbor, visited, graph)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化节点、访问数组等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历所有节点</span></span><br><span class="line">    <span class="keyword">for</span> node := <span class="number">0</span>; node &lt; <span class="built_in">len</span>(graph); node++ &#123;</span><br><span class="line">        <span class="keyword">if</span> !visited[node] &#123;</span><br><span class="line">            dfs(node, visited, graph)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="广度优先搜索（BFS）通用模板"><a href="#广度优先搜索（BFS）通用模板" class="headerlink" title="广度优先搜索（BFS）通用模板"></a>广度优先搜索（BFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 通用的广度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bfs</span><span class="params">(start <span class="type">int</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    queue := []<span class="type">int</span>&#123;start&#125;</span><br><span class="line">    visited := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(graph))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="comment">// 出队列</span></span><br><span class="line">        node := queue[<span class="number">0</span>]</span><br><span class="line">        queue = queue[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理当前节点</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">        visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将相邻节点入队列</span></span><br><span class="line">        <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">            <span class="keyword">if</span> !visited[neighbor] &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, neighbor)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化起始节点、图等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用BFS函数</span></span><br><span class="line">    bfs(start, graph)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算从起点 start 到终点 target 的最近距离</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BFS</span><span class="params">(start Node, target Node)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 核心数据结构</span></span><br><span class="line">    q := <span class="built_in">make</span>([]Node, <span class="number">0</span>)</span><br><span class="line">    <span class="comment">// 避免走回头路</span></span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[Node]<span class="type">bool</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将起点加入队列</span></span><br><span class="line">    q = <span class="built_in">append</span>(q, start)</span><br><span class="line">    visited[start] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(q) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        sz := <span class="built_in">len</span>(q)</span><br><span class="line">        <span class="comment">// 将当前队列中的所有节点向四周扩散</span></span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; sz; i++ &#123;</span><br><span class="line">            cur := q[<span class="number">0</span>]</span><br><span class="line">            q = q[<span class="number">1</span>:]</span><br><span class="line">            <span class="comment">// 划重点：这里判断是否到达终点</span></span><br><span class="line">            <span class="keyword">if</span> cur == target &#123;</span><br><span class="line">                <span class="keyword">return</span> step</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 将 cur 的相邻节点加入队列</span></span><br><span class="line">            <span class="keyword">for</span> _, x := <span class="keyword">range</span> cur.adj() &#123;</span><br><span class="line">                <span class="keyword">if</span> _, ok := visited[x]; !ok &#123;</span><br><span class="line">                    q = <span class="built_in">append</span>(q, x)</span><br><span class="line">                    visited[x] = <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果走到这里，说明在图中没有找到目标节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【20240114】LeetCode 83. 删除排序链表中的重复元素</title>
     <url>/2024-01-14-e61755fec3db.html</url>
     <content><![CDATA[<blockquote>
@@ -2231,17 +2291,6 @@ dfs(root.Right, res)
 <p>添加空间复杂度, 示例： $O(n)$</p>
 </blockquote>
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteDuplicates</span><span class="params">(head *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="keyword">for</span> i := head; i != <span class="literal">nil</span> &amp;&amp; i.Next != <span class="literal">nil</span> ; &#123;</span><br><span class="line">        <span class="keyword">if</span> i.Next.Val == i.Val &#123;</span><br><span class="line">            i.Next = i.Next.Next <span class="comment">// 这里不用移动下个元素，只用删除重复元素 for i := head; i != nil &amp;&amp; i.Next != nil ;i = i.Next &#123;  i = i.Next不需要</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            i = i.Next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deleteDuplicates</span><span class="params">(head *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    current := head</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> current != <span class="literal">nil</span> &amp;&amp; current.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> current.Next.Val == current.Val &#123;</span><br><span class="line">            <span class="comment">// 保存下一个节点的引用</span></span><br><span class="line">            nextNode := current.Next</span><br><span class="line">            <span class="comment">// 删除当前节点</span></span><br><span class="line">            current.Next = nextNode.Next</span><br><span class="line">            <span class="comment">// 释放内存</span></span><br><span class="line">            nextNode = <span class="literal">nil</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 非重复元素，继续遍历</span></span><br><span class="line">            current = current.Next</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> head</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【BFS DFS通用模板】</title>
-    <url>/2024-01-22-759654485d5d.html</url>
-    <content><![CDATA[<h1 id="深度优先搜索（DFS）通用模板"><a href="#深度优先搜索（DFS）通用模板" class="headerlink" title="深度优先搜索（DFS）通用模板"></a>深度优先搜索（DFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 通用的深度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(node <span class="type">int</span>, visited []<span class="type">bool</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 边界终止条件 </span></span><br><span class="line">	<span class="keyword">if</span> m n &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 终止条件</span></span><br><span class="line">    <span class="keyword">if</span> visited[node] &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理当前节点</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">    visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归处理相邻节点</span></span><br><span class="line">    <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">        dfs(neighbor, visited, graph)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化节点、访问数组等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历所有节点</span></span><br><span class="line">    <span class="keyword">for</span> node := <span class="number">0</span>; node &lt; <span class="built_in">len</span>(graph); node++ &#123;</span><br><span class="line">        <span class="keyword">if</span> !visited[node] &#123;</span><br><span class="line">            dfs(node, visited, graph)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="广度优先搜索（BFS）通用模板"><a href="#广度优先搜索（BFS）通用模板" class="headerlink" title="广度优先搜索（BFS）通用模板"></a>广度优先搜索（BFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 通用的广度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bfs</span><span class="params">(start <span class="type">int</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    queue := []<span class="type">int</span>&#123;start&#125;</span><br><span class="line">    visited := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(graph))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="comment">// 出队列</span></span><br><span class="line">        node := queue[<span class="number">0</span>]</span><br><span class="line">        queue = queue[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理当前节点</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">        visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将相邻节点入队列</span></span><br><span class="line">        <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">            <span class="keyword">if</span> !visited[neighbor] &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, neighbor)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化起始节点、图等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用BFS函数</span></span><br><span class="line">    bfs(start, graph)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算从起点 start 到终点 target 的最近距离</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BFS</span><span class="params">(start Node, target Node)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 核心数据结构</span></span><br><span class="line">    q := <span class="built_in">make</span>([]Node, <span class="number">0</span>)</span><br><span class="line">    <span class="comment">// 避免走回头路</span></span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[Node]<span class="type">bool</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将起点加入队列</span></span><br><span class="line">    q = <span class="built_in">append</span>(q, start)</span><br><span class="line">    visited[start] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(q) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        sz := <span class="built_in">len</span>(q)</span><br><span class="line">        <span class="comment">// 将当前队列中的所有节点向四周扩散</span></span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; sz; i++ &#123;</span><br><span class="line">            cur := q[<span class="number">0</span>]</span><br><span class="line">            q = q[<span class="number">1</span>:]</span><br><span class="line">            <span class="comment">// 划重点：这里判断是否到达终点</span></span><br><span class="line">            <span class="keyword">if</span> cur == target &#123;</span><br><span class="line">                <span class="keyword">return</span> step</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 将 cur 的相邻节点加入队列</span></span><br><span class="line">            <span class="keyword">for</span> _, x := <span class="keyword">range</span> cur.adj() &#123;</span><br><span class="line">                <span class="keyword">if</span> _, ok := visited[x]; !ok &#123;</span><br><span class="line">                    q = <span class="built_in">append</span>(q, x)</span><br><span class="line">                    visited[x] = <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果走到这里，说明在图中没有找到目标节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2843,55 +2892,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>更新网页url后，恢复valine网页评论</title>
-    <url>/2025-04-13-8c397fc87827.html</url>
-    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
-<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
-<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-ed1bf9078b39.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
     <title>JetBrians 全家桶设置文件header</title>
     <url>/2023-10-05-7527c8e47a8b.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p>
@@ -2969,6 +2969,22 @@ dfs(root.Right, res)
 <h1 id="git-里设置开启代理-alias-命令别名"><a href="#git-里设置开启代理-alias-命令别名" class="headerlink" title="git 里设置开启代理 alias 命令别名"></a>git 里设置开启代理 alias 命令别名</h1><h2 id="新建-bashrc"><a href="#新建-bashrc" class="headerlink" title="新建 .bashrc"></a>新建 .bashrc</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">vi .bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将以下内容复制进去</span></span><br><span class="line"><span class="comment"># .bashrc</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Source global definitions</span></span><br><span class="line"><span class="keyword">if</span> [ -f /etc/bash.bashrc ]; <span class="keyword">then</span></span><br><span class="line">        . /etc/bash.bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment the following line if you don&#x27;t like systemctl&#x27;s auto-paging feature:</span></span><br><span class="line"><span class="comment"># export SYSTEMD_PAGER=</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User specific aliases and functions</span></span><br><span class="line"><span class="comment"># 别名设置，其他别名设置也是类似</span></span><br><span class="line"><span class="built_in">alias</span> proxyon=<span class="string">&quot;export http_proxy=http://127.0.0.1:7890;export https_proxy=http://127.0.0.1:7890&quot;</span></span><br><span class="line"><span class="built_in">alias</span> proxyoff=<span class="string">&quot;unset http_proxy;unset https_proxy&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h2><p>可以在终端直接使用proxyon 打开代理，proxyoff关闭代理。<br><img src="/../../imgs/Pasted%20image%2020230912235632.png"><br><img src="/../../imgs/Pasted%20image%2020230912235612.png"><br>可以看到环境变量里边，有了我们设置的环境变量。通过代理设置，我们可以轻松解决github 代码推送的问题，方便生产开发。<br><img src="/../../imgs/Pasted%20image%2020230913000956.png" alt="图 push成功"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>pycharm配置VPN代理</title>
+    <url>/2025-06-08-e7d1013a5402.html</url>
+    <content><![CDATA[<p>确定本地VPN的代理端口：</p>
+<p><img src="/../../imgs/Pasted%20image%2020250609001902.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020250609001826.png"></p>
+<p>点击check connetion 输入<a href="http://www.google.com/">http://www.google.com</a><br><img src="/../../imgs/Pasted%20image%2020250609001953.png"><br><img src="/../../imgs/Pasted%20image%2020250609001820.png"></p>
+<p>也可以使用requests 包验证, 返回内容，不爆红即可。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:  </span><br><span class="line">    response = requests.get(<span class="string">&quot;http://www.youtube.com&quot;</span>)  </span><br><span class="line">    <span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../imgs/Pasted%20image%2020250609002055.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -3057,6 +3073,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>删除ppt所有批注和备注</title>
+    <url>/2023-04-24-4faf63eb321c.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>免费使用Jetbrain 全家桶-服务器激活码激活软件</title>
     <url>/2023-12-30-6a1e804ab992.html</url>
     <content><![CDATA[<p>众所周知，PyCharm和IDEA Goland CLion 都是Jetbrain 公司的产品,非常适合开发项目.但是这个软件确是收费的,而且还不低. 本文就是介绍一种方法可以免费使用的方法,如果大家有余力的,还是希望购买正版产品.</p>
@@ -3073,18 +3101,6 @@ dfs(root.Right, res)
 <p><img src="/../../imgs/Pasted%20image%2020231230231034.png"><br>例如上边就是 <a href="http://111.231.22.61:1024/">http://111.231.22.61:1024</a></p>
 <p><img src="/../../imgs/Pasted%20image%2020231230231326.png"></p>
 <h1 id="激活成功"><a href="#激活成功" class="headerlink" title="激活成功"></a>激活成功</h1><p>激活成功，请开始愉快的编码吧！<br><img src="/../../imgs/Pasted%20image%2020231230231349.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>删除ppt所有批注和备注</title>
-    <url>/2023-04-24-4faf63eb321c.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
