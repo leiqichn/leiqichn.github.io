@@ -34,6 +34,8 @@ type IntHeap []int
 要使用heap包的功能，你需要实现heap.Interface接口。这个接口包括三个方法：Push, Pop, 和 Less。
 
 ```go
+
+type IntHeap []int
 func (h IntHeap) Len() int           { return len(h) }
 func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] } // 对于最小堆
 func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
@@ -50,6 +52,7 @@ func (h *IntHeap) Pop() interface{} {
 	return x
 }
 ```
+
 
 #### 使用heap.Init初始化堆
 在使用堆之前，你需要调用heap.Init来初始化它。
@@ -87,6 +90,60 @@ func (h IntHeap) Less(i, j int) bool { return h[i] > h[j] } // 对于最大堆
 ```
 
 以上就是在Go语言中实现优先队列，最大堆和最小堆的基本步骤。通过实现heap.Interface接口，可以轻松地创建和管理各种类型的堆。
+
+# 结构体 优先队列
+
+
+
+```go
+
+type Item struct {
+    Value    string
+    Priority int
+    Index    int // 堆中的索引
+}
+
+type PriorityQueue []*Item
+
+func (pq PriorityQueue) Len() int { return len(pq) }
+
+func (pq PriorityQueue) Less(i, j int) bool {
+    // 优先值大的先出（最大堆）
+    return pq[i].Priority > pq[j].Priority
+}
+
+func (pq PriorityQueue) Swap(i, j int) {
+    pq[i], pq[j] = pq[j], pq[i]
+    pq[i].Index = i
+    pq[j].Index = j
+}
+
+func (pq *PriorityQueue) Push(x any) {
+    n := len(*pq)
+    item := x.(*Item)
+    item.Index = n
+    *pq = append(*pq, item)
+}
+
+func (pq *PriorityQueue) Pop() any {
+    old := *pq
+    n := len(old)
+    item := old[n-1]
+    old[n-1] = nil  // 避免内存泄漏
+    item.Index = -1 // 标记已移除
+    *pq = old[0 : n-1]
+    return item
+}
+
+// 更新元素的优先级
+func (pq *PriorityQueue) Update(item *Item, value string, priority int) {
+    item.Value = value
+    item.Priority = priority
+    heap.Fix(pq, item.Index)
+}
+
+```
+
 
 # 例题
 [215. 数组中的第K个最大元素 - 力扣（LeetCode）](https://leetcode.cn/problems/kth-largest-element-in-an-array/description/?envType=problem-list-v2&envId=IAmiWIlN)

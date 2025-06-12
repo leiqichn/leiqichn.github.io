@@ -45,13 +45,15 @@
             "id": "afbaf72d8b3a11ec",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/设计题思考.md",
-                "staged": false
+                "file": "source/_posts/leetcode/go语言实现优先队列.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
               },
-              "icon": "git-pull-request",
-              "title": "Diff View (设计题思考)"
+              "icon": "lucide-file",
+              "title": "go语言实现优先队列"
             }
           }
         ],
@@ -67,7 +69,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
-        "dimension": 79.54040029651594,
+        "dimension": 52.17391304347826,
         "children": [
           {
             "id": "d3d227159ce7968a",
@@ -127,7 +129,7 @@
       {
         "id": "d299abda62253875",
         "type": "tabs",
-        "dimension": 20.459599703484063,
+        "dimension": 47.82608695652174,
         "children": [
           {
             "id": "6a5736f8a6d1f448",
@@ -135,7 +137,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "git ",
+                "query": "优先队列",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -176,6 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/leetcode/go语言实现优先队列.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -185,7 +188,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "go语言实现优先队列 的反向链接列表"
             }
           },
           {
@@ -266,8 +269,9 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "afbaf72d8b3a11ec",
+  "active": "d3d227159ce7968a",
   "lastOpenFiles": [
+    "source/_posts/leetcode/设计题 总结.md",
     "source/_posts/速刷记录/数据结构设计专题.md",
     "source/_posts/速刷记录/数据结构练习技巧.md",
     "source/_posts/leetcode/go语言实现优先队列.md",
@@ -303,7 +307,6 @@
     "source/_posts/比赛/comet 生成临时文件导致磁盘满.md",
     "source/_posts/比赛/大模型微调.md",
     "source/_posts/git/Windows Git自动转换为Linux换行符.md",
-    "source/_posts/git/git更新仓库地址.md",
     "source/imgs/ima.copilot-win-x64-1.6.1(2463).exe",
     "source/imgs/未确认 695400.crdownload",
     "source/imgs/公众号_爱给网_aigei_com.png.crdownload",
