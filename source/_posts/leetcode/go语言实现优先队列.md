@@ -69,6 +69,12 @@ heap.Init(&h) // 再使用heap.Init(&h) 初始化h指针
 ```go
 heap.Push(&h, 10)
 heap.Push(&&h, 20)
+
+
+h := &MyHeap{}  // 创建堆实例
+heap.Init(h)       // 初始化堆
+heap.Push(h, item) // 添加元素
+item := heap.Pop(h) // 取出元素
 ```
 
 #### 移除元素
