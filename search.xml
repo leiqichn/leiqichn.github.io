@@ -300,6 +300,24 @@
       </categories>
   </entry>
   <entry>
+    <title>golang 中格式化打印单个字符</title>
+    <url>/2024-05-03-ec16a5fd018e.html</url>
+    <content><![CDATA[<p>在Go语言中，<code>fmt.Printf</code> 函数是用来格式化输出的，它接受一个格式化字符串作为第一个参数，后面跟着相应的参数。格式化字符串中可以包含一些格式化动词（也称为转换说明符），它们定义了如何将相应的参数值转换为字符串并输出。</p>
+<p><code>%c</code> 是一个格式化动词，它指定了对应的参数应该被转换为一个单一的Unicode字符并输出。当你在 <code>fmt.Printf</code> 中使用 <code>%c</code>，并且传入一个整数（<code>int</code> 类型）时，它会将该整数值转换为该整数值对应的Unicode码点的字符。</p>
+<p>例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> codePoint <span class="type">int</span> = <span class="number">65</span> <span class="comment">// ASCII码中A的码点</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;%c\n&quot;</span>, codePoint) <span class="comment">// 输出: A</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，变量 <code>codePoint</code> 的值为 <code>65</code>，它是大写字母 “A” 在ASCII编码中的码点。<code>fmt.Printf(&quot;%c\n&quot;, codePoint)</code> 将这个整数值格式化为字符 “A” 并输出。</p>
+<p>在处理字节数组 <code>[]byte</code> 并想要将每个字节转换为对应的字符时，<code>%c</code> 非常有用，因为Go的 <code>string</code> 类型是UTF-8编码的，每个字节可以是一个字符的一部分。例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">    bytes := []<span class="type">byte</span>(s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b := <span class="keyword">range</span> bytes &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Byte %d: %c\n&quot;</span>, i, b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出:</span></span><br><span class="line">    <span class="comment">// Byte 0: h</span></span><br><span class="line">    <span class="comment">// Byte 1: e</span></span><br><span class="line">    <span class="comment">// Byte 2: l</span></span><br><span class="line">    <span class="comment">// Byte 3: l</span></span><br><span class="line">    <span class="comment">// Byte 4: o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们遍历字符串 <code>&quot;hello&quot;</code> 的字节表示，并使用 <code>%c</code> 格式化每个字节为字符。由于 “hello” 由纯ASCII字符组成，每个字节都是一个完整的字符。如果处理包含多字节UTF-8字符的字符串，单独的字节可能不会形成有效的字符。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>golang slice无法添加指针</title>
     <url>/2024-05-02-247b79126fb5.html</url>
     <content><![CDATA[<p>在Go语言中，指针是一种存储变量内存地址的数据类型。当你有一个指向<code>int</code>的指针，比如<code>timePtr *int</code>，你可以通过<code>*timePtr</code>来访问和修改指针指向的值。然而，指针本身是一个值类型，它存储的是变量的内存地址，而不是变量本身。</p>
@@ -319,24 +337,6 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> currentTime <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> history []<span class="type">int</span> <span class="comment">// 用于记录历史时间</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(timePtr *<span class="type">int</span>, historyPtr *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    *timePtr++</span><br><span class="line">    historyPtr = <span class="built_in">append</span>(*historyPtr, *timePtr)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    currentTime = <span class="number">0</span></span><br><span class="line">    history = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) <span class="comment">// 初始化历史切片</span></span><br><span class="line"></span><br><span class="line">    add(&amp;currentTime, &amp;history)</span><br><span class="line">    <span class="comment">// 可以继续调用 add 并传入 &amp;currentTime 和 &amp;history 来记录更多时间点</span></span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;History of times:&quot;</span>, history)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，<code>history</code>是一个切片，用于存储时间点的历史记录。每次调用<code>add</code>函数时，我们不仅更新<code>currentTime</code>，还将新的时间点添加到<code>history</code>切片中。注意，由于切片是引用类型，我们传递<code>&amp;history</code>来允许函数修改原始切片。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>golang 中格式化打印单个字符</title>
-    <url>/2024-05-03-ec16a5fd018e.html</url>
-    <content><![CDATA[<p>在Go语言中，<code>fmt.Printf</code> 函数是用来格式化输出的，它接受一个格式化字符串作为第一个参数，后面跟着相应的参数。格式化字符串中可以包含一些格式化动词（也称为转换说明符），它们定义了如何将相应的参数值转换为字符串并输出。</p>
-<p><code>%c</code> 是一个格式化动词，它指定了对应的参数应该被转换为一个单一的Unicode字符并输出。当你在 <code>fmt.Printf</code> 中使用 <code>%c</code>，并且传入一个整数（<code>int</code> 类型）时，它会将该整数值转换为该整数值对应的Unicode码点的字符。</p>
-<p>例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> codePoint <span class="type">int</span> = <span class="number">65</span> <span class="comment">// ASCII码中A的码点</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;%c\n&quot;</span>, codePoint) <span class="comment">// 输出: A</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，变量 <code>codePoint</code> 的值为 <code>65</code>，它是大写字母 “A” 在ASCII编码中的码点。<code>fmt.Printf(&quot;%c\n&quot;, codePoint)</code> 将这个整数值格式化为字符 “A” 并输出。</p>
-<p>在处理字节数组 <code>[]byte</code> 并想要将每个字节转换为对应的字符时，<code>%c</code> 非常有用，因为Go的 <code>string</code> 类型是UTF-8编码的，每个字节可以是一个字符的一部分。例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">    bytes := []<span class="type">byte</span>(s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b := <span class="keyword">range</span> bytes &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Byte %d: %c\n&quot;</span>, i, b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出:</span></span><br><span class="line">    <span class="comment">// Byte 0: h</span></span><br><span class="line">    <span class="comment">// Byte 1: e</span></span><br><span class="line">    <span class="comment">// Byte 2: l</span></span><br><span class="line">    <span class="comment">// Byte 3: l</span></span><br><span class="line">    <span class="comment">// Byte 4: o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，我们遍历字符串 <code>&quot;hello&quot;</code> 的字节表示，并使用 <code>%c</code> 格式化每个字节为字符。由于 “hello” 由纯ASCII字符组成，每个字节都是一个完整的字符。如果处理包含多字节UTF-8字符的字符串，单独的字节可能不会形成有效的字符。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -598,6 +598,22 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>Linux 命令 将前台任务挂到后台运行</title>
+    <url>/2023-03-18-87649bcaf9cc.html</url>
+    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
+<p><strong>第一步：ctrl + z</strong></p>
+<p><strong>第二步：jobs  查看任务id</strong></p>
+<p><strong>第三步： bg %任务id</strong></p>
+<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux 将用户追加到对应用户组</title>
     <url>/2023-09-17-5141f57450ab.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
@@ -617,22 +633,6 @@ dfs(root.Right, res)
       <categories>
         <category>Linux</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Linux 命令 将前台任务挂到后台运行</title>
-    <url>/2023-03-18-87649bcaf9cc.html</url>
-    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
-<p><strong>第一步：ctrl + z</strong></p>
-<p><strong>第二步：jobs  查看任务id</strong></p>
-<p><strong>第三步： bg %任务id</strong></p>
-<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux命令</tag>
-      </tags>
   </entry>
   <entry>
     <title>【sed】快速替换当前文件夹下文件中指定内容</title>
@@ -805,85 +805,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>git 设置免密配置-全局免密-单仓库免密-SSH免密</title>
-    <url>/2024-01-01-91517aa963bc.html</url>
-    <content><![CDATA[<h1 id="介绍之前"><a href="#介绍之前" class="headerlink" title="介绍之前"></a>介绍之前</h1><p>我们要首先知道一个简单的概念:<br>https通过<strong>记住账号密码免登</strong>，ssh通过<strong>校验生成的密钥免登</strong>。 通常都用ssh校验。</p>
-<p>查看通信方式</p>
-<p>在项目目录中运行命令：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-<p>如果出现提示是：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin  https://gitee.com/xxx/xxx.git (fetch)</span><br><span class="line">origin  https://gitee.com/xxx/xxx.git (push)</span><br></pre></td></tr></table></figure>
-
-<p>则证明是https 通信，这样每次都会提示输入用户名和密码，如果我们还是使用https则看下文，全局https免密 和单个仓库免密<br>如果我们git远端配置了ssh 配置; 我们将其修改为ssh的地址<br><img src="/../../imgs/Pasted%20image%2020240101151457.png"></p>
-<h1 id="一、https-方式及免密码配置"><a href="#一、https-方式及免密码配置" class="headerlink" title="一、https 方式及免密码配置"></a>一、https 方式及免密码配置</h1><h3 id="0-项目中-git-基本配置"><a href="#0-项目中-git-基本配置" class="headerlink" title="0. 项目中 git 基本配置"></a>0. 项目中 git 基本配置</h3><p>全局用户名密码配置</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;lei_qi@outlook.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>项目初始化，生成 .git 目录，配置远程项目地址(前提已经在网页上新建了仓库)，完成首次提交。</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 初始化仓库 适用于新库,如果你之前已经有文件并且使用git管理过,请勿使用该命令</span><br><span class="line">git init</span><br><span class="line"># 关联远程仓库</span><br><span class="line">git remote add origin https://gitee.com/xxx/xxx.git</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;初始化&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p>需要输入用户名，再输入密码，才能完成提交。以后每次都要输入用户名和密码。</p>
-<p>这种方式如果要以后提交时免密码，只能将用户名和密码明文保存在本地，由 git 保管。因为本地没有加密，这种方式是不太安全的。</p>
-<h3 id="1-全局免密码配置"><a href="#1-全局免密码配置" class="headerlink" title="1.全局免密码配置"></a>1.全局免密码配置</h3><p>配置存储模式</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
-
-<p>执行之后会在用户主目录下的.gitconfig文件中多加 helper &#x3D; store</p>
-<p>Linux 下查看：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">vim ~/.gitconfig</span><br></pre></td></tr></table></figure>
-
-<p>windows10 下当前用户路径：<code>%USERPROFILE%</code><br>内容如下：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[user]</span><br><span class="line">        name = lenovo</span><br><span class="line">        email = xxxx@outlook.com</span><br><span class="line">[credential]</span><br><span class="line">        helper = store</span><br></pre></td></tr></table></figure>
-
-<p>然后在项目目录，执行git pull&#x2F;git push命令，会提示输入<strong>账号密码</strong>。这次输入账号密码之后，就会<strong>记住</strong>账号密码，并且会在当前用户根目录下生成一个.git-credentials文件，下一次就不用再输入账号密码了。<br><img src="/../../imgs/Pasted%20image%2020240101145902.png"></p>
-<h3 id="2、单项目免密码配置"><a href="#2、单项目免密码配置" class="headerlink" title="2、单项目免密码配置"></a>2、单项目免密码配置</h3><p>编辑项目目录中.git 文件夹下的配置文件 config，修改其中 url 项：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">url = https://gitee.com/xxx/xxx.git</span><br></pre></td></tr></table></figure>
-
-<p>修改为：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]   </span><br><span class="line">url = https://yourusername:password@gitee.com/xxx/xxxx.git</span><br></pre></td></tr></table></figure>
-
-<p>也就是在 <code>https://</code> 之后，增加 <code>用户名:密码@</code></p>
-<h1 id="二-SSH免密登录"><a href="#二-SSH免密登录" class="headerlink" title="二. SSH免密登录"></a>二. SSH免密登录</h1><p>如果之前是https 关联的,现在想使用ssh 方式关联,请先命令删除原有 origin 的通信方式,</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
-<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>github 网页增加本机SSH key</p>
-<p>git ssh 方式免密提交方式需要将 <code>ssh-keygen</code> 生成的公钥放到服务器上</p>
-<p>全局用户名密码配置</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot; </span><br><span class="line">git config --global user.email &quot;xxx@qq.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>项目初始化，生成 .git 目录，配置 ssh 远程项目地址。</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 如果是新仓库需要git init ;否则不需要git init; git init</span><br><span class="line"># git 关联远程仓库</span><br><span class="line">git remote add origin git@gitee.com:xxx/xxx.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="生成公钥和私钥"><a href="#生成公钥和私钥" class="headerlink" title="生成公钥和私钥"></a>生成公钥和私钥</h2><p>1、首先需要检查你电脑是否已经有 SSH key</p>
-<p>运行 git Bash 客户端，检查本机的ssh密钥。</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ cd ~/.ssh </span><br><span class="line">$ ls</span><br></pre></td></tr></table></figure>
-
-<p>如果提示：No such file or directory ，说明是第一次使用 git。</p>
-<p>如果不是第一次使用，已经存在 id_rsa.pub 或 id_dsa.pub 文件, 则不用重新生成,直接跳到步骤3。如果没有生成过 id_rsa.pub ,请执行下面的操作，生成ssh 密钥。</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ mkdir key_backup   </span><br><span class="line">$ cp id_rsa* key_backup   </span><br><span class="line">$ rm id_rsa*</span><br></pre></td></tr></table></figure>
-
-<p>2、执行生成公钥和私钥的命令，生成新的密钥：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
-
-<p>代码参数：</p>
-<p>-t 指定密钥类型，默认是 rsa ，可以省略。</p>
-<p>-C 设置注释文字，比如邮箱。</p>
-<p>执行命令时会提示要求输入邮箱密码，这个密码会在提交时使用，如果为空的话提交时则不用输入。这个设置是防止别人往你的项目里提交内容。我们自己的电脑，自己本机使用，当然不用密码了。</p>
-<p>按默认为空，直接按回车3下，生成 id_rsa 和 id_rsa.pub 两个秘钥文件。</p>
-<p>执行查看公钥信息：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-
-<p>Windows 系统，位置在用户目录下 .ssh文件夹中。<code>%USERPROFILE%</code></p>
-<h2 id="复制公钥信息到远端仓库"><a href="#复制公钥信息到远端仓库" class="headerlink" title="复制公钥信息到远端仓库"></a>复制公钥信息到远端仓库</h2><p><strong>gitee</strong><br>打开 gitee，我的账户-设置-SSH 公钥，如下图所示，把公钥粘贴到公钥文本框中，标题自己定义，然后点击确定按键，输入密码。</p>
-<p><img src="https://pic3.zhimg.com/80/v2-8c26fae5769cb56da5e20c884a33c702_720w.webp"></p>
-<p><strong>github</strong><br>Settings -SSH and GPG keys - New SSH key<br><img src="app://db738d3bb1089e4d04f6eb022a68209f31bf/D:/obsidian_note/LeiQi_Blog/source/imgs/Pasted%20image%2020240101151324.png?1704093204312"><br>然后，提交时就不再需要用户名和密码了</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git commit -m &quot;ssh免密提交&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p>参考:<br><a href="https://zhuanlan.zhihu.com/p/358721423">https://zhuanlan.zhihu.com/p/358721423</a></p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git stash</title>
     <url>/2024-08-21-d34ebab44074.html</url>
     <content><![CDATA[<p>当尝试使用 git pull -f 强制拉取远程仓库的更新时，Git 会警告你，因为本地有未提交的更改，这些更改可能会被覆盖。确定要取消对特定文件的保存，可以按照以下步骤操作：</p>
@@ -985,6 +906,85 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
+    <title>git 设置免密配置-全局免密-单仓库免密-SSH免密</title>
+    <url>/2024-01-01-91517aa963bc.html</url>
+    <content><![CDATA[<h1 id="介绍之前"><a href="#介绍之前" class="headerlink" title="介绍之前"></a>介绍之前</h1><p>我们要首先知道一个简单的概念:<br>https通过<strong>记住账号密码免登</strong>，ssh通过<strong>校验生成的密钥免登</strong>。 通常都用ssh校验。</p>
+<p>查看通信方式</p>
+<p>在项目目录中运行命令：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<p>如果出现提示是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin  https://gitee.com/xxx/xxx.git (fetch)</span><br><span class="line">origin  https://gitee.com/xxx/xxx.git (push)</span><br></pre></td></tr></table></figure>
+
+<p>则证明是https 通信，这样每次都会提示输入用户名和密码，如果我们还是使用https则看下文，全局https免密 和单个仓库免密<br>如果我们git远端配置了ssh 配置; 我们将其修改为ssh的地址<br><img src="/../../imgs/Pasted%20image%2020240101151457.png"></p>
+<h1 id="一、https-方式及免密码配置"><a href="#一、https-方式及免密码配置" class="headerlink" title="一、https 方式及免密码配置"></a>一、https 方式及免密码配置</h1><h3 id="0-项目中-git-基本配置"><a href="#0-项目中-git-基本配置" class="headerlink" title="0. 项目中 git 基本配置"></a>0. 项目中 git 基本配置</h3><p>全局用户名密码配置</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;lei_qi@outlook.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>项目初始化，生成 .git 目录，配置远程项目地址(前提已经在网页上新建了仓库)，完成首次提交。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 初始化仓库 适用于新库,如果你之前已经有文件并且使用git管理过,请勿使用该命令</span><br><span class="line">git init</span><br><span class="line"># 关联远程仓库</span><br><span class="line">git remote add origin https://gitee.com/xxx/xxx.git</span><br><span class="line">git add -A</span><br><span class="line">git commit -m &quot;初始化&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>需要输入用户名，再输入密码，才能完成提交。以后每次都要输入用户名和密码。</p>
+<p>这种方式如果要以后提交时免密码，只能将用户名和密码明文保存在本地，由 git 保管。因为本地没有加密，这种方式是不太安全的。</p>
+<h3 id="1-全局免密码配置"><a href="#1-全局免密码配置" class="headerlink" title="1.全局免密码配置"></a>1.全局免密码配置</h3><p>配置存储模式</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
+
+<p>执行之后会在用户主目录下的.gitconfig文件中多加 helper &#x3D; store</p>
+<p>Linux 下查看：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">vim ~/.gitconfig</span><br></pre></td></tr></table></figure>
+
+<p>windows10 下当前用户路径：<code>%USERPROFILE%</code><br>内容如下：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[user]</span><br><span class="line">        name = lenovo</span><br><span class="line">        email = xxxx@outlook.com</span><br><span class="line">[credential]</span><br><span class="line">        helper = store</span><br></pre></td></tr></table></figure>
+
+<p>然后在项目目录，执行git pull&#x2F;git push命令，会提示输入<strong>账号密码</strong>。这次输入账号密码之后，就会<strong>记住</strong>账号密码，并且会在当前用户根目录下生成一个.git-credentials文件，下一次就不用再输入账号密码了。<br><img src="/../../imgs/Pasted%20image%2020240101145902.png"></p>
+<h3 id="2、单项目免密码配置"><a href="#2、单项目免密码配置" class="headerlink" title="2、单项目免密码配置"></a>2、单项目免密码配置</h3><p>编辑项目目录中.git 文件夹下的配置文件 config，修改其中 url 项：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">url = https://gitee.com/xxx/xxx.git</span><br></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]   </span><br><span class="line">url = https://yourusername:password@gitee.com/xxx/xxxx.git</span><br></pre></td></tr></table></figure>
+
+<p>也就是在 <code>https://</code> 之后，增加 <code>用户名:密码@</code></p>
+<h1 id="二-SSH免密登录"><a href="#二-SSH免密登录" class="headerlink" title="二. SSH免密登录"></a>二. SSH免密登录</h1><p>如果之前是https 关联的,现在想使用ssh 方式关联,请先命令删除原有 origin 的通信方式,</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+<h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>github 网页增加本机SSH key</p>
+<p>git ssh 方式免密提交方式需要将 <code>ssh-keygen</code> 生成的公钥放到服务器上</p>
+<p>全局用户名密码配置</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot; </span><br><span class="line">git config --global user.email &quot;xxx@qq.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>项目初始化，生成 .git 目录，配置 ssh 远程项目地址。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 如果是新仓库需要git init ;否则不需要git init; git init</span><br><span class="line"># git 关联远程仓库</span><br><span class="line">git remote add origin git@gitee.com:xxx/xxx.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="生成公钥和私钥"><a href="#生成公钥和私钥" class="headerlink" title="生成公钥和私钥"></a>生成公钥和私钥</h2><p>1、首先需要检查你电脑是否已经有 SSH key</p>
+<p>运行 git Bash 客户端，检查本机的ssh密钥。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ cd ~/.ssh </span><br><span class="line">$ ls</span><br></pre></td></tr></table></figure>
+
+<p>如果提示：No such file or directory ，说明是第一次使用 git。</p>
+<p>如果不是第一次使用，已经存在 id_rsa.pub 或 id_dsa.pub 文件, 则不用重新生成,直接跳到步骤3。如果没有生成过 id_rsa.pub ,请执行下面的操作，生成ssh 密钥。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">$ mkdir key_backup   </span><br><span class="line">$ cp id_rsa* key_backup   </span><br><span class="line">$ rm id_rsa*</span><br></pre></td></tr></table></figure>
+
+<p>2、执行生成公钥和私钥的命令，生成新的密钥：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;xxx&quot;</span><br></pre></td></tr></table></figure>
+
+<p>代码参数：</p>
+<p>-t 指定密钥类型，默认是 rsa ，可以省略。</p>
+<p>-C 设置注释文字，比如邮箱。</p>
+<p>执行命令时会提示要求输入邮箱密码，这个密码会在提交时使用，如果为空的话提交时则不用输入。这个设置是防止别人往你的项目里提交内容。我们自己的电脑，自己本机使用，当然不用密码了。</p>
+<p>按默认为空，直接按回车3下，生成 id_rsa 和 id_rsa.pub 两个秘钥文件。</p>
+<p>执行查看公钥信息：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>Windows 系统，位置在用户目录下 .ssh文件夹中。<code>%USERPROFILE%</code></p>
+<h2 id="复制公钥信息到远端仓库"><a href="#复制公钥信息到远端仓库" class="headerlink" title="复制公钥信息到远端仓库"></a>复制公钥信息到远端仓库</h2><p><strong>gitee</strong><br>打开 gitee，我的账户-设置-SSH 公钥，如下图所示，把公钥粘贴到公钥文本框中，标题自己定义，然后点击确定按键，输入密码。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-8c26fae5769cb56da5e20c884a33c702_720w.webp"></p>
+<p><strong>github</strong><br>Settings -SSH and GPG keys - New SSH key<br><img src="app://db738d3bb1089e4d04f6eb022a68209f31bf/D:/obsidian_note/LeiQi_Blog/source/imgs/Pasted%20image%2020240101151324.png?1704093204312"><br>然后，提交时就不再需要用户名和密码了</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">git add -A</span><br><span class="line">git commit -m &quot;ssh免密提交&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>参考:<br><a href="https://zhuanlan.zhihu.com/p/358721423">https://zhuanlan.zhihu.com/p/358721423</a></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
     <title>github同步gitee</title>
     <url>/2024-07-18-e17dac938cf8.html</url>
     <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240719003858.png"></p>
@@ -1029,107 +1029,6 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>git</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于我</title>
-    <url>/2023-03-13-519b5e93f019.html</url>
-    <content><![CDATA[<div style="text-align: center">
-
-<h1 id="欢迎来到我的空间"><a href="#欢迎来到我的空间" class="headerlink" title="欢迎来到我的空间!"></a>欢迎来到我的空间!</h1></div>
-
-<div style="text-align: center">
-
-<h1 id="我的第"><a href="#我的第" class="headerlink" title="我的第 "></a>我的第 <img src="https://profile-counter.glitch.me/leiqitop/count.svg" alt="Visitor Count"></h1></div>
-
-
-<div style="text-align: center">
-
-<h1 id="个朋友！"><a href="#个朋友！" class="headerlink" title="个朋友！"></a>个朋友！</h1></div>
-
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
-<li><p>🌱 毕业于复旦大学</p>
-</li>
-<li><p>⭐ 现就职于华为，软件开发工程师</p>
-</li>
-</ul>
-<h2 id="兴趣-👨🏽‍💻"><a href="#兴趣-👨🏽‍💻" class="headerlink" title="兴趣 👨🏽‍💻"></a>兴趣 👨🏽‍💻</h2><ul>
-<li><p>项目: NLP, Large Language Model, Golang Project, Python Project, Vue Project.</p>
-</li>
-<li><p>编程语言 : Golang, Python, C++&#x2F;C, Java</p>
-</li>
-</ul>
-<h2 id="开源项目经验-👯"><a href="#开源项目经验-👯" class="headerlink" title="开源项目经验 👯"></a>开源项目经验 👯</h2><p><strong>As a manager</strong> ：</p>
-<ul>
-<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
-</ul>
-<p><strong>As a member</strong> :</p>
-<ul>
-<li><p><a href="https://github.com/TianlabTech/PhenoBERT.git">PhenoBERT</a> : <strong>PhenoBERT:</strong> A combined deep learning method for automated recognition of human phenotype ontology</p>
-</li>
-<li><p><a href="">IEEE Journal of Biomedical and Health Informatics（IF&#x3D;5.77）</a> : Reviewer</p>
-</li>
-</ul>
-<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><ul>
-<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
-</ul>
-<h2 id="欢迎志同道合的朋友"><a href="#欢迎志同道合的朋友" class="headerlink" title="欢迎志同道合的朋友~"></a>欢迎志同道合的朋友~</h2><p>本站是为了记录自己学习和生活，欢迎大家多多交流讨论。<br>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
-<h2 id="微信公众号"><a href="#微信公众号" class="headerlink" title="微信公众号"></a>微信公众号</h2><p><img src="/../../imgs/qrcode.jpg"></p>
-]]></content>
-      <categories>
-        <category>关于我</category>
-      </categories>
-      <tags>
-        <tag>about</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>更新网页url后，恢复valine网页评论</title>
-    <url>/2025-04-13-8c397fc87827.html</url>
-    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
-<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
-<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-ed1bf9078b39.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
       </categories>
   </entry>
   <entry>
@@ -1214,6 +1113,38 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>Leetcode1603. 设计停车系统</title>
+    <url>/2023-09-26-aeddfdb3bdac.html</url>
+    <content><![CDATA[<blockquote>
+<p>Problem: <a href="https://leetcode.cn/problems/design-parking-system/description/">1603. 设计停车系统</a></p>
+</blockquote>
+<p>  [TOC]</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
+<p>首先，读清楚题目，需要分别记录3个车的剩余车位数量，并且要在addCar的时候进行判空，这就需要用到查找，在车类型中查找，这里我们可以使用map或数组。因为车的类型是连续的，不是稀疏的。我们更建议使用数组。</p>
+</blockquote>
+<p>虽然这是一道简单的设计题，但是我们需要以小见大，认真思考。设计题就是理解题目意思——&gt;建模-&gt;选择合适的数据结构-&gt; 优化算法。一定要认真读题，先规划和设计好，再动收，一定要多练习，保持手感。需要注意的是：在 Go 语言 中，new 是一种创建变量的方式。通过 new(T) 可以创建类型为 T 的变量，初始值为 T 类型的零值，返回值为其地址（地址类型是 *T），这样在Constructor 只用返回值，而不是指针，但是在 AddCar 函数中，我们使用了指向 ParkingSystem 的指针接收器（receiver），保证可以修改new 出来的结构体。</p>
+<h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><blockquote>
+<p>lastCar [3]int 添加上边的数组</p>
+</blockquote>
+<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul>
+<li><p>时间复杂度: </p>
+<blockquote>
+<p>添加时间复杂度, 示例： $O(n)$</p>
+</blockquote>
+</li>
+<li><p>空间复杂度: </p>
+<blockquote>
+<p>添加空间复杂度, 示例： $O(1)$</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1>  <figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line">  </span><br><span class="line">  <span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;</span><br><span class="line">    lastCar [<span class="number">3</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(big <span class="type">int</span>, medium <span class="type">int</span>, small <span class="type">int</span>)</span></span> ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">var</span> parkingSystem  ParkingSystem</span><br><span class="line">    parkingSystem.lastCar[<span class="number">0</span>] = big</span><br><span class="line">    parkingSystem.lastCar[<span class="number">1</span>] = medium</span><br><span class="line">    parkingSystem.lastCar[<span class="number">2</span>] = small</span><br><span class="line">    <span class="keyword">return</span> parkingSystem</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *ParkingSystem)</span></span> AddCar(carType <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    carIdx := carType - <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> this.lastCar[carIdx] &gt; <span class="number">0</span> &#123;</span><br><span class="line">        this.lastCar[carIdx]--</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your ParkingSystem object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor(big, medium, small); // 在 Go 语言 中，new 是一种创建变量的方式。通过 new(T) 可以创建类型为 T 的变量，初始值为 T 类型的零值，返回值为其地址（地址类型是 *T），这样在Constructor 只用返回值，而不是指针，但是在 AddCar 函数中，我们使用了指向 ParkingSystem 的指针接收器（receiver）</span></span><br><span class="line"><span class="comment"> * param_1 := obj.AddCar(carType);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Leetcode 136.只出现一次的数字</title>
     <url>/2023-10-16-66afbe22520d.html</url>
     <content><![CDATA[<blockquote>
@@ -1246,38 +1177,6 @@ dfs(root.Right, res)
 <li><p>位运算</p>
 <figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">singleNumber</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    single := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        single ^= num</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> single</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ol>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Leetcode1603. 设计停车系统</title>
-    <url>/2023-09-26-aeddfdb3bdac.html</url>
-    <content><![CDATA[<blockquote>
-<p>Problem: <a href="https://leetcode.cn/problems/design-parking-system/description/">1603. 设计停车系统</a></p>
-</blockquote>
-<p>  [TOC]</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><blockquote>
-<p>首先，读清楚题目，需要分别记录3个车的剩余车位数量，并且要在addCar的时候进行判空，这就需要用到查找，在车类型中查找，这里我们可以使用map或数组。因为车的类型是连续的，不是稀疏的。我们更建议使用数组。</p>
-</blockquote>
-<p>虽然这是一道简单的设计题，但是我们需要以小见大，认真思考。设计题就是理解题目意思——&gt;建模-&gt;选择合适的数据结构-&gt; 优化算法。一定要认真读题，先规划和设计好，再动收，一定要多练习，保持手感。需要注意的是：在 Go 语言 中，new 是一种创建变量的方式。通过 new(T) 可以创建类型为 T 的变量，初始值为 T 类型的零值，返回值为其地址（地址类型是 *T），这样在Constructor 只用返回值，而不是指针，但是在 AddCar 函数中，我们使用了指向 ParkingSystem 的指针接收器（receiver），保证可以修改new 出来的结构体。</p>
-<h1 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h1><blockquote>
-<p>lastCar [3]int 添加上边的数组</p>
-</blockquote>
-<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><ul>
-<li><p>时间复杂度: </p>
-<blockquote>
-<p>添加时间复杂度, 示例： $O(n)$</p>
-</blockquote>
-</li>
-<li><p>空间复杂度: </p>
-<blockquote>
-<p>添加空间复杂度, 示例： $O(1)$</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1>  <figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line">  </span><br><span class="line">  <span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;</span><br><span class="line">    lastCar [<span class="number">3</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(big <span class="type">int</span>, medium <span class="type">int</span>, small <span class="type">int</span>)</span></span> ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">var</span> parkingSystem  ParkingSystem</span><br><span class="line">    parkingSystem.lastCar[<span class="number">0</span>] = big</span><br><span class="line">    parkingSystem.lastCar[<span class="number">1</span>] = medium</span><br><span class="line">    parkingSystem.lastCar[<span class="number">2</span>] = small</span><br><span class="line">    <span class="keyword">return</span> parkingSystem</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *ParkingSystem)</span></span> AddCar(carType <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    carIdx := carType - <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> this.lastCar[carIdx] &gt; <span class="number">0</span> &#123;</span><br><span class="line">        this.lastCar[carIdx]--</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your ParkingSystem object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor(big, medium, small); // 在 Go 语言 中，new 是一种创建变量的方式。通过 new(T) 可以创建类型为 T 的变量，初始值为 T 类型的零值，返回值为其地址（地址类型是 *T），这样在Constructor 只用返回值，而不是指针，但是在 AddCar 函数中，我们使用了指向 ParkingSystem 的指针接收器（receiver）</span></span><br><span class="line"><span class="comment"> * param_1 := obj.AddCar(carType);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1368,6 +1267,49 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>go语言实现优先队列</title>
+    <url>/2024-05-18-dfe0612e31db.html</url>
+    <content><![CDATA[<p>Go 语言中实现优先队列，最大堆和最小堆通常可以通过使用容器&#x2F;heap包来完成。Go 语言的heap包提供了一个堆操作的接口，它允许用户实现任意类型的堆，包括最大堆和最小堆。</p>
+<h3 id="1-优先队列"><a href="#1-优先队列" class="headerlink" title="1. 优先队列"></a>1. 优先队列</h3><p>优先队列是一种特殊的队列，元素出队顺序是根据优先级来决定的，而不是按照元素入队顺序。在Go语言中，优先队列可以通过heap包来实现。</p>
+<h3 id="2-最大堆"><a href="#2-最大堆" class="headerlink" title="2. 最大堆"></a>2. 最大堆</h3><p>最大堆是一种特殊的完全二叉树，其中每个父节点的值都大于或等于其子节点的值。在Go语言中，可以通过实现heap.Interface接口来创建最大堆。</p>
+<h3 id="3-最小堆"><a href="#3-最小堆" class="headerlink" title="3. 最小堆"></a>3. 最小堆</h3><p>最小堆与最大堆相反，其中每个父节点的值都小于或等于其子节点的值。最小堆也可以通过实现heap.Interface接口来创建。</p>
+<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h4 id="定义堆的元素类型"><a href="#定义堆的元素类型" class="headerlink" title="定义堆的元素类型"></a>定义堆的元素类型</h4><p>首先，你需要定义一个元素类型，这个类型将用于存储在堆中的元素。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> IntHeap []<span class="type">int</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="实现heap-Interface接口"><a href="#实现heap-Interface接口" class="headerlink" title="实现heap.Interface接口"></a>实现heap.Interface接口</h4><p>要使用heap包的功能，你需要实现heap.Interface接口。这个接口包括三个方法：Push, Pop, 和 Less。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> IntHeap []<span class="type">int</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IntHeap)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IntHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i] &lt; h[j] &#125; <span class="comment">// 对于最小堆</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IntHeap)</span></span> Swap(i, j <span class="type">int</span>)      &#123; h[i], h[j] = h[j], h[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *IntHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">	*h = <span class="built_in">append</span>(*h, x.(<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *IntHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">	old := *h</span><br><span class="line">	n := <span class="built_in">len</span>(old)</span><br><span class="line">	x := old[n<span class="number">-1</span>]</span><br><span class="line">	*h = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">	<span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="使用heap-Init初始化堆"><a href="#使用heap-Init初始化堆" class="headerlink" title="使用heap.Init初始化堆"></a>使用heap.Init初始化堆</h4><p>在使用堆之前，你需要调用heap.Init来初始化它。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> h IntHeap <span class="comment">// 先声明h</span></span><br><span class="line"></span><br><span class="line">heap.Init(&amp;h) <span class="comment">// 再使用heap.Init(&amp;h) 初始化h指针</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><p>使用heap.Push来添加元素。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">heap.Push(&amp;h, <span class="number">10</span>)</span><br><span class="line">heap.Push(&amp;&amp;h, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">h := &amp;MyHeap&#123;&#125;  <span class="comment">// 创建堆实例</span></span><br><span class="line">heap.Init(h)       <span class="comment">// 初始化堆</span></span><br><span class="line">heap.Push(h, item) <span class="comment">// 添加元素</span></span><br><span class="line">item := heap.Pop(h) <span class="comment">// 取出元素</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h4><p>使用heap.Pop来移除并获取堆顶元素。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">top := heap.Pop(&amp;h)</span><br><span class="line">fmt.Printf(<span class="string">&quot;top element: %v\n&quot;</span>, top)</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素"></a>修改元素</h4><p>如果你需要修改堆中的元素，你需要自己处理，因为heap包不提供修改元素的接口。</p>
+<h3 id="转换为最大堆"><a href="#转换为最大堆" class="headerlink" title="转换为最大堆"></a>转换为最大堆</h3><p>如果你需要实现最大堆，只需要修改Less方法，让它返回父节点大于子节点。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IntHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i] &gt; h[j] &#125; <span class="comment">// 对于最大堆</span></span><br></pre></td></tr></table></figure>
+
+<p>以上就是在Go语言中实现优先队列，最大堆和最小堆的基本步骤。通过实现heap.Interface接口，可以轻松地创建和管理各种类型的堆。</p>
+<h1 id="结构体-优先队列"><a href="#结构体-优先队列" class="headerlink" title="结构体 优先队列"></a>结构体 优先队列</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Item <span class="keyword">struct</span> &#123;</span><br><span class="line">    Value    <span class="type">string</span></span><br><span class="line">    Priority <span class="type">int</span></span><br><span class="line">    Index    <span class="type">int</span> <span class="comment">// 堆中的索引</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PriorityQueue []*Item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Len() <span class="type">int</span> &#123; <span class="keyword">return</span> <span class="built_in">len</span>(pq) &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="comment">// 优先值大的先出（最大堆）</span></span><br><span class="line">    <span class="keyword">return</span> pq[i].Priority &gt; pq[j].Priority</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Swap(i, j <span class="type">int</span>) &#123;</span><br><span class="line">    pq[i], pq[j] = pq[j], pq[i]</span><br><span class="line">    pq[i].Index = i</span><br><span class="line">    pq[j].Index = j</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Push(x any) &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(*pq)</span><br><span class="line">    item := x.(*Item)</span><br><span class="line">    item.Index = n</span><br><span class="line">    *pq = <span class="built_in">append</span>(*pq, item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Pop() any &#123;</span><br><span class="line">    old := *pq</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    item := old[n<span class="number">-1</span>]</span><br><span class="line">    old[n<span class="number">-1</span>] = <span class="literal">nil</span>  <span class="comment">// 避免内存泄漏</span></span><br><span class="line">    item.Index = <span class="number">-1</span> <span class="comment">// 标记已移除</span></span><br><span class="line">    *pq = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> item</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新元素的优先级</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Update(item *Item, value <span class="type">string</span>, priority <span class="type">int</span>) &#123;</span><br><span class="line">    item.Value = value</span><br><span class="line">    item.Priority = priority</span><br><span class="line">    heap.Fix(pq, item.Index)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://leetcode.cn/problems/kth-largest-element-in-an-array/description/?envType=problem-list-v2&envId=IAmiWIlN">215. 数组中的第K个最大元素 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240520000338.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2024 Lei Qi. All rights reserved.</span></span><br><span class="line"><span class="comment"> * Author: Lei Qi</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> * Date: 2024/5/20 上午12:00</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> leetcode215</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/heap&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findKthLargest</span><span class="params">(nums []<span class="type">int</span>, k <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	h := heapify(nums) <span class="comment">// 转化为heap 类型</span></span><br><span class="line">	<span class="keyword">var</span> res any</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; k; i++ &#123;</span><br><span class="line">		res = heap.Pop(&amp;h)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res.(<span class="type">int</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> BigHeap []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h BigHeap)</span></span> Len() <span class="type">int</span> &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h BigHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="comment">// 大根堆</span></span><br><span class="line">	<span class="keyword">return</span> h[i] &gt; h[j]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h BigHeap)</span></span> Swap(i, j <span class="type">int</span>) &#123;</span><br><span class="line">	tmp := h[i]</span><br><span class="line">	h[i] = h[j]</span><br><span class="line">	h[j] = tmp</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *BigHeap)</span></span> Push(x any) &#123; <span class="comment">// 使用any 或者interface</span></span><br><span class="line">	*h = <span class="built_in">append</span>(*h, x.(<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素待定</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *BigHeap)</span></span> Pop() any &#123;</span><br><span class="line">	x := (*h)[h.Len()<span class="number">-1</span>]</span><br><span class="line">	*h = (*h)[:h.Len()<span class="number">-1</span>]</span><br><span class="line">	<span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 nums 转换成 BigHeap</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">heapify</span><span class="params">(nums []<span class="type">int</span>)</span></span> BigHeap &#123;</span><br><span class="line"></span><br><span class="line">    h := BigHeap(nums) <span class="comment">// bigHeap 本身就是slice 的别名，所以可以转换</span></span><br><span class="line">    <span class="comment">// 或者使用下边两行</span></span><br><span class="line">	h := <span class="built_in">make</span>(BigHeap, <span class="built_in">len</span>(nums)) <span class="comment">// 新建BigHeap，长度为lenNums</span></span><br><span class="line">	<span class="built_in">copy</span>(h, nums)                 <span class="comment">// 将num copy 到 BigHeap 中去</span></span><br><span class="line">	heap.Init(&amp;h)                 <span class="comment">// 需要输入指针</span></span><br><span class="line">	<span class="keyword">return</span> h</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="347-前-K-个高频元素"><a href="#347-前-K-个高频元素" class="headerlink" title="347. 前 K 个高频元素"></a><a href="https://leetcode.cn/problems/top-k-frequent-elements/">347. 前 K 个高频元素</a></h1><p><img src="/../../imgs/Pasted%20image%2020240521004343.png"></p>
+<p>涉及到两个元素，先构建一个长度为2的数组，然后对其value 进行优先队列的排序</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//方法一：小顶堆</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">topKFrequent</span><span class="params">(nums []<span class="type">int</span>, k <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    map_num:=<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    <span class="comment">//记录每个元素出现的次数</span></span><br><span class="line">    <span class="keyword">for</span> _,item:=<span class="keyword">range</span> nums&#123;</span><br><span class="line">        map_num[item]++</span><br><span class="line">    &#125;</span><br><span class="line">    h:=&amp;IHeap&#123;&#125;</span><br><span class="line">    heap.Init(h)</span><br><span class="line">    <span class="comment">//所有元素入堆，堆的长度为k</span></span><br><span class="line">    <span class="keyword">for</span> key,value:=<span class="keyword">range</span> map_num&#123;</span><br><span class="line">        heap.Push(h,[<span class="number">2</span>]<span class="type">int</span>&#123;key,value&#125;)</span><br><span class="line">        <span class="keyword">if</span> h.Len()&gt;k&#123;</span><br><span class="line">            heap.Pop(h)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res:=<span class="built_in">make</span>([]<span class="type">int</span>,k)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//按顺序返回堆中的元素</span></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;k;i++&#123;</span><br><span class="line">        res[k-i<span class="number">-1</span>]=heap.Pop(h).([<span class="number">2</span>]<span class="type">int</span>)[<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构建小顶堆</span></span><br><span class="line"><span class="keyword">type</span> IHeap [][<span class="number">2</span>]<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IHeap)</span></span> Len()<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(h)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IHeap)</span></span> Less (i,j <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> h[i][<span class="number">1</span>]&lt;h[j][<span class="number">1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IHeap)</span></span> Swap(i,j <span class="type">int</span>) &#123;</span><br><span class="line">    h[i],h[j]=h[j],h[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *IHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;)&#123;</span><br><span class="line">    *h=<span class="built_in">append</span>(*h,x.([<span class="number">2</span>]<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *IHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">    old:=*h</span><br><span class="line">    n:=<span class="built_in">len</span>(old)</span><br><span class="line">    x:=old[n<span class="number">-1</span>]</span><br><span class="line">    *h=old[<span class="number">0</span>:n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode  1.两数之和</title>
     <url>/2024-08-21-64c0a1f316e6.html</url>
     <content><![CDATA[<p>有两种思路：</p>
@@ -1379,45 +1321,6 @@ dfs(root.Right, res)
 <ol start="2">
 <li>使用哈希表，是O(n)<br>  使用哈希表需要注意的是， 这里需要判断idx 和idx2 不相同，因为是要找两个位置，不能取同一个位置<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	maps := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		maps[num] = idx</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		<span class="keyword">if</span> idx2, ok := maps[target-num]; ok &amp;&amp; idx != idx2 &#123; <span class="comment">// 00 : 04 : 10 使用哈希表，需要注意的是，有可能使用了同一个idx 这里需要注意</span></span><br><span class="line">			<span class="keyword">return</span> []<span class="type">int</span>&#123;idx, idx2&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ol>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>go语言实现优先队列</title>
-    <url>/2024-05-18-dfe0612e31db.html</url>
-    <content><![CDATA[<p>Go 语言中实现优先队列，最大堆和最小堆通常可以通过使用容器&#x2F;heap包来完成。Go 语言的heap包提供了一个堆操作的接口，它允许用户实现任意类型的堆，包括最大堆和最小堆。</p>
-<h3 id="1-优先队列"><a href="#1-优先队列" class="headerlink" title="1. 优先队列"></a>1. 优先队列</h3><p>优先队列是一种特殊的队列，元素出队顺序是根据优先级来决定的，而不是按照元素入队顺序。在Go语言中，优先队列可以通过heap包来实现。</p>
-<h3 id="2-最大堆"><a href="#2-最大堆" class="headerlink" title="2. 最大堆"></a>2. 最大堆</h3><p>最大堆是一种特殊的完全二叉树，其中每个父节点的值都大于或等于其子节点的值。在Go语言中，可以通过实现heap.Interface接口来创建最大堆。</p>
-<h3 id="3-最小堆"><a href="#3-最小堆" class="headerlink" title="3. 最小堆"></a>3. 最小堆</h3><p>最小堆与最大堆相反，其中每个父节点的值都小于或等于其子节点的值。最小堆也可以通过实现heap.Interface接口来创建。</p>
-<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><h4 id="定义堆的元素类型"><a href="#定义堆的元素类型" class="headerlink" title="定义堆的元素类型"></a>定义堆的元素类型</h4><p>首先，你需要定义一个元素类型，这个类型将用于存储在堆中的元素。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> IntHeap []<span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="实现heap-Interface接口"><a href="#实现heap-Interface接口" class="headerlink" title="实现heap.Interface接口"></a>实现heap.Interface接口</h4><p>要使用heap包的功能，你需要实现heap.Interface接口。这个接口包括三个方法：Push, Pop, 和 Less。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IntHeap)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IntHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i] &lt; h[j] &#125; <span class="comment">// 对于最小堆</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IntHeap)</span></span> Swap(i, j <span class="type">int</span>)      &#123; h[i], h[j] = h[j], h[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *IntHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">	*h = <span class="built_in">append</span>(*h, x.(<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *IntHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">	old := *h</span><br><span class="line">	n := <span class="built_in">len</span>(old)</span><br><span class="line">	x := old[n<span class="number">-1</span>]</span><br><span class="line">	*h = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">	<span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用heap-Init初始化堆"><a href="#使用heap-Init初始化堆" class="headerlink" title="使用heap.Init初始化堆"></a>使用heap.Init初始化堆</h4><p>在使用堆之前，你需要调用heap.Init来初始化它。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> h IntHeap <span class="comment">// 先声明h</span></span><br><span class="line"></span><br><span class="line">heap.Init(&amp;h) <span class="comment">// 再使用heap.Init(&amp;h) 初始化h指针</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><p>使用heap.Push来添加元素。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">heap.Push(&amp;h, <span class="number">10</span>)</span><br><span class="line">heap.Push(&amp;&amp;h, <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h4><p>使用heap.Pop来移除并获取堆顶元素。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">top := heap.Pop(&amp;h)</span><br><span class="line">fmt.Printf(<span class="string">&quot;top element: %v\n&quot;</span>, top)</span><br></pre></td></tr></table></figure>
-
-<h4 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素"></a>修改元素</h4><p>如果你需要修改堆中的元素，你需要自己处理，因为heap包不提供修改元素的接口。</p>
-<h3 id="转换为最大堆"><a href="#转换为最大堆" class="headerlink" title="转换为最大堆"></a>转换为最大堆</h3><p>如果你需要实现最大堆，只需要修改Less方法，让它返回父节点大于子节点。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IntHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i] &gt; h[j] &#125; <span class="comment">// 对于最大堆</span></span><br></pre></td></tr></table></figure>
-
-<p>以上就是在Go语言中实现优先队列，最大堆和最小堆的基本步骤。通过实现heap.Interface接口，可以轻松地创建和管理各种类型的堆。</p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://leetcode.cn/problems/kth-largest-element-in-an-array/description/?envType=problem-list-v2&envId=IAmiWIlN">215. 数组中的第K个最大元素 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240520000338.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2024 Lei Qi. All rights reserved.</span></span><br><span class="line"><span class="comment"> * Author: Lei Qi</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> * Date: 2024/5/20 上午12:00</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> leetcode215</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/heap&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findKthLargest</span><span class="params">(nums []<span class="type">int</span>, k <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	h := heapify(nums) <span class="comment">// 转化为heap 类型</span></span><br><span class="line">	<span class="keyword">var</span> res any</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; k; i++ &#123;</span><br><span class="line">		res = heap.Pop(&amp;h)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res.(<span class="type">int</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> BigHeap []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h BigHeap)</span></span> Len() <span class="type">int</span> &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h BigHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="comment">// 大根堆</span></span><br><span class="line">	<span class="keyword">return</span> h[i] &gt; h[j]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h BigHeap)</span></span> Swap(i, j <span class="type">int</span>) &#123;</span><br><span class="line">	tmp := h[i]</span><br><span class="line">	h[i] = h[j]</span><br><span class="line">	h[j] = tmp</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *BigHeap)</span></span> Push(x any) &#123; <span class="comment">// 使用any 或者interface</span></span><br><span class="line">	*h = <span class="built_in">append</span>(*h, x.(<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除元素待定</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *BigHeap)</span></span> Pop() any &#123;</span><br><span class="line">	x := (*h)[h.Len()<span class="number">-1</span>]</span><br><span class="line">	*h = (*h)[:h.Len()<span class="number">-1</span>]</span><br><span class="line">	<span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 nums 转换成 BigHeap</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">heapify</span><span class="params">(nums []<span class="type">int</span>)</span></span> BigHeap &#123;</span><br><span class="line"></span><br><span class="line">    h := BigHeap(nums) <span class="comment">// bigHeap 本身就是slice 的别名，所以可以转换</span></span><br><span class="line">    <span class="comment">// 或者使用下边两行</span></span><br><span class="line">	h := <span class="built_in">make</span>(BigHeap, <span class="built_in">len</span>(nums)) <span class="comment">// 新建BigHeap，长度为lenNums</span></span><br><span class="line">	<span class="built_in">copy</span>(h, nums)                 <span class="comment">// 将num copy 到 BigHeap 中去</span></span><br><span class="line">	heap.Init(&amp;h)                 <span class="comment">// 需要输入指针</span></span><br><span class="line">	<span class="keyword">return</span> h</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="347-前-K-个高频元素"><a href="#347-前-K-个高频元素" class="headerlink" title="347. 前 K 个高频元素"></a><a href="https://leetcode.cn/problems/top-k-frequent-elements/">347. 前 K 个高频元素</a></h1><p><img src="/../../imgs/Pasted%20image%2020240521004343.png"></p>
-<p>涉及到两个元素，先构建一个长度为2的数组，然后对其value 进行优先队列的排序</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//方法一：小顶堆</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">topKFrequent</span><span class="params">(nums []<span class="type">int</span>, k <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    map_num:=<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    <span class="comment">//记录每个元素出现的次数</span></span><br><span class="line">    <span class="keyword">for</span> _,item:=<span class="keyword">range</span> nums&#123;</span><br><span class="line">        map_num[item]++</span><br><span class="line">    &#125;</span><br><span class="line">    h:=&amp;IHeap&#123;&#125;</span><br><span class="line">    heap.Init(h)</span><br><span class="line">    <span class="comment">//所有元素入堆，堆的长度为k</span></span><br><span class="line">    <span class="keyword">for</span> key,value:=<span class="keyword">range</span> map_num&#123;</span><br><span class="line">        heap.Push(h,[<span class="number">2</span>]<span class="type">int</span>&#123;key,value&#125;)</span><br><span class="line">        <span class="keyword">if</span> h.Len()&gt;k&#123;</span><br><span class="line">            heap.Pop(h)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res:=<span class="built_in">make</span>([]<span class="type">int</span>,k)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//按顺序返回堆中的元素</span></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;k;i++&#123;</span><br><span class="line">        res[k-i<span class="number">-1</span>]=heap.Pop(h).([<span class="number">2</span>]<span class="type">int</span>)[<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//构建小顶堆</span></span><br><span class="line"><span class="keyword">type</span> IHeap [][<span class="number">2</span>]<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IHeap)</span></span> Len()<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(h)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IHeap)</span></span> Less (i,j <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> h[i][<span class="number">1</span>]&lt;h[j][<span class="number">1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h IHeap)</span></span> Swap(i,j <span class="type">int</span>) &#123;</span><br><span class="line">    h[i],h[j]=h[j],h[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *IHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;)&#123;</span><br><span class="line">    *h=<span class="built_in">append</span>(*h,x.([<span class="number">2</span>]<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *IHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">    old:=*h</span><br><span class="line">    n:=<span class="built_in">len</span>(old)</span><br><span class="line">    x:=old[n<span class="number">-1</span>]</span><br><span class="line">    *h=old[<span class="number">0</span>:n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1476,6 +1379,27 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 1170. 比较字符串最小字母出现频次</title>
+    <url>/2023-06-14-88f65f0a1bb7.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
+<p><strong>后缀和（</strong>Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。</p>
+<p>具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+…+A[i-1] 的前缀和，其中 0≤i&lt;n。那么对于任何 0≤l≤r&lt;n，A[l]+A[l+1]+…+A[r] &#x3D; S[r+1]-S[l]。</p>
+<p>在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。</p>
+<h2 id="不使用后缀和"><a href="#不使用后缀和" class="headerlink" title="不使用后缀和"></a>不使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数 f(s)是s字符串中最小字符串的数量</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        <span class="keyword">for</span> idx, c := <span class="keyword">range</span> count &#123; <span class="comment">// 遍历count</span></span><br><span class="line">            <span class="keyword">if</span> c&gt;<span class="number">0</span> &amp;&amp; f(s) &lt; idx &#123;<span class="comment">// 如果count&gt;0,则说明该最小字符串数量(idx) 的个数为c。需要将res 加上这个数量c</span></span><br><span class="line">                res[i]+=c</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用后缀和"><a href="#使用后缀和" class="headerlink" title="使用后缀和"></a>使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算后缀和,i+1 就是大于i位置的所有个数</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">9</span>; i &gt;= <span class="number">1</span>; i-- &#123;</span><br><span class="line">        count[i] += count[i + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        res[i] = count[f(s) + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>为什么是res[i] &#x3D; count[f(s) + 1] ，而不是res[i] &#x3D; count[f(s)]？</strong></p>
+<p>在<code>numSmallerByFrequency</code>函数中， <code>count</code>数组记录的是各个不同频次出现的次数，因此 <code>count[i]</code>代表所有最小字母出现频次不于 i 的字符串的数量。</p>
+<p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
+<p><code>res[i] = count[f(s) + 1]</code></p>
+<p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 1091.二进制矩阵中的最短路径</title>
     <url>/2023-05-26-5abcbf266873.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/shortest-path-in-binary-matrix/description/">1091. 二进制矩阵中的最短路径 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230526235236.png"><br>DFS 超时版本：</p>
@@ -1505,27 +1429,6 @@ dfs(root.Right, res)
       <tags>
         <tag>二维数组最短路径</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 1170. 比较字符串最小字母出现频次</title>
-    <url>/2023-06-14-88f65f0a1bb7.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
-<p><strong>后缀和（</strong>Prefix Sum）是一种常用于区间和计算的技巧。它通过预处理把一个数组的前缀和先计算出来，然后在查询某个区间的和时，只需要构造两个前缀和相减即可得到所求的区间和。</p>
-<p>具体而言，假设有一个长度为 n 的整数数组 A，记 S[i] 为 A[0]+A[1]+…+A[i-1] 的前缀和，其中 0≤i&lt;n。那么对于任何 0≤l≤r&lt;n，A[l]+A[l+1]+…+A[r] &#x3D; S[r+1]-S[l]。</p>
-<p>在实际的应用中，如果需要进行多次区间和查询，可以利用后缀和技巧预处理出 A 数组的前缀和，并存储在一个新的数组 S 中。这样，对于任意区间 [l,] 查询，只需要计算 S[r+1]-S[l] 即可，时间复杂度为 O(1)。</p>
-<h2 id="不使用后缀和"><a href="#不使用后缀和" class="headerlink" title="不使用后缀和"></a>不使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数 f(s)是s字符串中最小字符串的数量</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        <span class="keyword">for</span> idx, c := <span class="keyword">range</span> count &#123; <span class="comment">// 遍历count</span></span><br><span class="line">            <span class="keyword">if</span> c&gt;<span class="number">0</span> &amp;&amp; f(s) &lt; idx &#123;<span class="comment">// 如果count&gt;0,则说明该最小字符串数量(idx) 的个数为c。需要将res 加上这个数量c</span></span><br><span class="line">                res[i]+=c</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用后缀和"><a href="#使用后缀和" class="headerlink" title="使用后缀和"></a>使用后缀和</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(s <span class="type">string</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    cnt := <span class="number">0</span></span><br><span class="line">    ch := <span class="string">&#x27;z&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> _, c := <span class="keyword">range</span> s &#123;</span><br><span class="line">        <span class="keyword">if</span> c &lt; ch &#123;</span><br><span class="line">        ch = c</span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> c == ch &#123;</span><br><span class="line">        cnt++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numSmallerByFrequency</span><span class="params">(queries []<span class="type">string</span>, words []<span class="type">string</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    count := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">12</span>)</span><br><span class="line">    <span class="comment">// 先计算word 里的每个数</span></span><br><span class="line">    <span class="keyword">for</span> _, s := <span class="keyword">range</span> words &#123;</span><br><span class="line">        count[f(s)] += <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算后缀和,i+1 就是大于i位置的所有个数</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">9</span>; i &gt;= <span class="number">1</span>; i-- &#123;</span><br><span class="line">        count[i] += count[i + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(queries))</span><br><span class="line">    <span class="keyword">for</span> i, s := <span class="keyword">range</span> queries &#123;</span><br><span class="line">        res[i] = count[f(s) + <span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>为什么是res[i] &#x3D; count[f(s) + 1] ，而不是res[i] &#x3D; count[f(s)]？</strong></p>
-<p>在<code>numSmallerByFrequency</code>函数中， <code>count</code>数组记录的是各个不同频次出现的次数，因此 <code>count[i]</code>代表所有最小字母出现频次不于 i 的字符串的数量。</p>
-<p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
-<p><code>res[i] = count[f(s) + 1]</code></p>
-<p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 122买动态股票的最佳时机II</title>
@@ -1787,24 +1690,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 2511 最多可以摧毁的敌人城堡数目</title>
-    <url>/2023-09-02-72954cc13c19.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-enemy-forts-that-can-be-captured/description/?envType=daily-question&envId=2023-09-02">2511. 最多可以摧毁的敌人城堡数目 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230902205220.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>抽象出来就是求1和-1间最大连续0 的数量。</p>
-<p>有两种情况，开始是1 结尾是-1，中间都是0；第二种情况开始是-1结尾是1，中间都是0；上边怎么保证终点和起点不一样呢？</p>
-<p>1.当然可以分类讨论，代码会很复杂，判断很多，容易出错</p>
-<ol start="2">
-<li>使用 一个变量pre记录开始节点，变更当1或者-1 进来的时候，pre 更新为index，判断当前节点是否和pre 不相等,符合条件则更新res</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">captureForts</span><span class="params">(forts []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    ans, pre := <span class="number">0</span>, <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 记录的是 1 或 -1 的位置 </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, fort := <span class="keyword">range</span> forts &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fort == <span class="number">-1</span> || fort == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> pre &gt;= <span class="number">0</span> &amp;&amp; forts[pre] != fort &#123;</span><br><span class="line"></span><br><span class="line">                ans = max(ans, i - pre - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pre = i</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 2594修车的最少时间</title>
     <url>/2023-09-07-b8c038c07b41.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/minimum-time-to-repair-cars/description/?envType=daily-question&envId=2023-09-07">2594. 修车的最少时间 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230908000057.png"></p>
@@ -1850,6 +1735,24 @@ dfs(root.Right, res)
 <p><strong>搜索范围可确定</strong>：二分查找适用于可以确定搜索范围的问题，通常通过定义一个左边界和右边界来实现。</p>
 <p><strong>内存连续性</strong>：在一些需要高效的内存访问场景中，二分查找比线性搜索更有效，因为它充分利用了内存的连续性。</p>
 <p>一些具体的应用场景包括在有序数组中查找元素、查找某个值的边界、查找某个值的插入位置、查找满足某个条件的最大或最小值等。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 2511 最多可以摧毁的敌人城堡数目</title>
+    <url>/2023-09-02-72954cc13c19.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-enemy-forts-that-can-be-captured/description/?envType=daily-question&envId=2023-09-02">2511. 最多可以摧毁的敌人城堡数目 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230902205220.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>抽象出来就是求1和-1间最大连续0 的数量。</p>
+<p>有两种情况，开始是1 结尾是-1，中间都是0；第二种情况开始是-1结尾是1，中间都是0；上边怎么保证终点和起点不一样呢？</p>
+<p>1.当然可以分类讨论，代码会很复杂，判断很多，容易出错</p>
+<ol start="2">
+<li>使用 一个变量pre记录开始节点，变更当1或者-1 进来的时候，pre 更新为index，判断当前节点是否和pre 不相等,符合条件则更新res</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">captureForts</span><span class="params">(forts []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    ans, pre := <span class="number">0</span>, <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//pre 记录的是 1 或 -1 的位置 </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, fort := <span class="keyword">range</span> forts &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> fort == <span class="number">-1</span> || fort == <span class="number">1</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> pre &gt;= <span class="number">0</span> &amp;&amp; forts[pre] != fort &#123;</span><br><span class="line"></span><br><span class="line">                ans = max(ans, i - pre - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pre = i</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a <span class="type">int</span>, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2125,6 +2028,28 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 最大深度和最小深度</title>
+    <url>/2023-07-29-4df215f63090.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230729235323.png"><br><a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/description/">111. 二叉树的最小深度 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230729235305.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>深度 是指从根节点到该节点的距离（节点数量）<br>高度 是指从该节点到叶子节点的角力（节点数量）</p>
+<p><strong>最大深度</strong> 可以通过迭代法，计算总共有多少层。 可以使用递归分治的思想，1 + maxDepth(左子树) + maxDepth(右子树)<br><strong>最小子树</strong> 其实和最大深度类似，但是这里要注意的是，不能直接套用最大深度的代码。最小子树的要求是，到叶子节点的距离。而上边最大深度没有这个要求。所以要对一侧子树为空的情况需要单独讨论。以下是代码实现：</p>
+<h1 id="最大深度"><a href="#最大深度" class="headerlink" title="最大深度"></a>最大深度</h1><h2 id="递归分治"><a href="#递归分治" class="headerlink" title="递归分治"></a>递归分治</h2><p>后序遍历 需要调用自生函数，需要严格按照定义调用递归。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := maxDepth(root.Right)</span><br><span class="line">    leftMaxDepth := maxDepth(root.Left)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + max(rightMaxDepth,leftMaxDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="迭代-层序遍历"><a href="#迭代-层序遍历" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="最小深度"><a href="#最小深度" class="headerlink" title="最小深度"></a>最小深度</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>后序遍历</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最小深度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := minDepth(root.Right)</span><br><span class="line"></span><br><span class="line">    leftMaxDepth := minDepth(root.Left)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意 最小深度是要到叶子节点的距离，对于一侧子树为空的情况需要单独讨论</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &amp;&amp; root.Left !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftMaxDepth <span class="comment">// 注意前面已经计算了rightMin 后边就直接调用这个函数， 不要再写个递归函数，否则会超时。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightMaxDepth</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(rightMaxDepth,leftMaxDepth)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代-层序遍历-1"><a href="#迭代-层序遍历-1" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> top.Right == <span class="literal">nil</span> &amp;&amp; top.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> depth + <span class="number">1</span> <span class="comment">// 当前节点也算哦</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 每日温度 单调栈</title>
     <url>/2024-05-20-1fbf9ee2486f.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/daily-temperatures/description/?envType=study-plan-v2&envId=top-100-liked">739. 每日温度 - 力扣（LeetCode）</a></p>
@@ -2171,28 +2096,6 @@ dfs(root.Right, res)
 </ul>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 最大深度和最小深度</title>
-    <url>/2023-07-29-4df215f63090.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230729235323.png"><br><a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/description/">111. 二叉树的最小深度 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230729235305.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>深度 是指从根节点到该节点的距离（节点数量）<br>高度 是指从该节点到叶子节点的角力（节点数量）</p>
-<p><strong>最大深度</strong> 可以通过迭代法，计算总共有多少层。 可以使用递归分治的思想，1 + maxDepth(左子树) + maxDepth(右子树)<br><strong>最小子树</strong> 其实和最大深度类似，但是这里要注意的是，不能直接套用最大深度的代码。最小子树的要求是，到叶子节点的距离。而上边最大深度没有这个要求。所以要对一侧子树为空的情况需要单独讨论。以下是代码实现：</p>
-<h1 id="最大深度"><a href="#最大深度" class="headerlink" title="最大深度"></a>最大深度</h1><h2 id="递归分治"><a href="#递归分治" class="headerlink" title="递归分治"></a>递归分治</h2><p>后序遍历 需要调用自生函数，需要严格按照定义调用递归。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := maxDepth(root.Right)</span><br><span class="line">    leftMaxDepth := maxDepth(root.Left)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + max(rightMaxDepth,leftMaxDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="迭代-层序遍历"><a href="#迭代-层序遍历" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="最小深度"><a href="#最小深度" class="headerlink" title="最小深度"></a>最小深度</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>后序遍历</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最小深度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := minDepth(root.Right)</span><br><span class="line"></span><br><span class="line">    leftMaxDepth := minDepth(root.Left)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意 最小深度是要到叶子节点的距离，对于一侧子树为空的情况需要单独讨论</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &amp;&amp; root.Left !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftMaxDepth <span class="comment">// 注意前面已经计算了rightMin 后边就直接调用这个函数， 不要再写个递归函数，否则会超时。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightMaxDepth</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(rightMaxDepth,leftMaxDepth)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="迭代-层序遍历-1"><a href="#迭代-层序遍历-1" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> top.Right == <span class="literal">nil</span> &amp;&amp; top.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> depth + <span class="number">1</span> <span class="comment">// 当前节点也算哦</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2340,25 +2243,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【刨根问底】创建slice是否填第二个参数0的区别</title>
-    <url>/2024-11-23-b80d94088ccd.html</url>
-    <content><![CDATA[<p>在Go语言中，创建切片（slice）时使用<code>make</code>函数有两种常见的方式，它们之间有细微的差别：</p>
-<ol>
-<li><p><code>slice := make([]string, 0)</code></p>
-<p> 这种方式明确指定了切片的初始长度为0。这意味着你创建了一个容量和长度都是0的字符串切片。在这种形式中，你可以指定切片的类型（这里是<code>[]string</code>），并且设置其长度为0。由于长度和容量都是0，这个切片一开始是空的，没有任何元素。</p>
-</li>
-<li><p><code>slice := make([]string)</code></p>
-<p> 这种方式创建了一个切片，但没有指定其长度和容量。在这种情况下，<code>make</code>函数会创建一个长度和容量都是0的切片，但是它默认会分配一个初始容量。这个初始容量通常是底层数组的最小大小，比如在Go中，对于字符串切片，默认的初始容量可能是2（这个值可能会根据Go的版本和实现有所不同）。这意味着虽然长度是0，但是你可以在不触发重新分配内存的情况下至少添加两个元素。</p>
-</li>
-</ol>
-<p>两种方式都会创建一个空的字符串切片，但是第二种方式在内部会预分配一些容量，这可以减少在添加元素时可能发生的内存重新分配的次数。如果你预计会向切片中添加一些元素，使用<code>make([]string)</code>（或者等价的<code>make([]string, 0)</code>）可能会稍微高效一些，因为它避免了第一次添加元素时的内存分配。</p>
-<p>总结来说，两种方式在功能上没有太大区别，都会创建一个空的字符串切片，但是第二种方式可能会在内部预分配一些额外的空间，这有助于提高在添加元素时的性能。在实际编程中，选择哪种方式取决于你的具体需求和偏好。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>【刨根问底】为什么Itoa代表整型转化为字符串，为什么不是ItoSting</title>
     <url>/2024-11-23-cf0eba4d8369.html</url>
     <content><![CDATA[<p>确实，如果我们按照缩写的逻辑来看，<code>Itos</code>（Integer to String）可能更直观地表达了<code>Itoa</code>函数的功能，即把整数转换为字符串。</p>
@@ -2381,6 +2265,25 @@ dfs(root.Right, res)
       <tags>
         <tag>刨根问底</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>【刨根问底】创建slice是否填第二个参数0的区别</title>
+    <url>/2024-11-23-b80d94088ccd.html</url>
+    <content><![CDATA[<p>在Go语言中，创建切片（slice）时使用<code>make</code>函数有两种常见的方式，它们之间有细微的差别：</p>
+<ol>
+<li><p><code>slice := make([]string, 0)</code></p>
+<p> 这种方式明确指定了切片的初始长度为0。这意味着你创建了一个容量和长度都是0的字符串切片。在这种形式中，你可以指定切片的类型（这里是<code>[]string</code>），并且设置其长度为0。由于长度和容量都是0，这个切片一开始是空的，没有任何元素。</p>
+</li>
+<li><p><code>slice := make([]string)</code></p>
+<p> 这种方式创建了一个切片，但没有指定其长度和容量。在这种情况下，<code>make</code>函数会创建一个长度和容量都是0的切片，但是它默认会分配一个初始容量。这个初始容量通常是底层数组的最小大小，比如在Go中，对于字符串切片，默认的初始容量可能是2（这个值可能会根据Go的版本和实现有所不同）。这意味着虽然长度是0，但是你可以在不触发重新分配内存的情况下至少添加两个元素。</p>
+</li>
+</ol>
+<p>两种方式都会创建一个空的字符串切片，但是第二种方式在内部会预分配一些容量，这可以减少在添加元素时可能发生的内存重新分配的次数。如果你预计会向切片中添加一些元素，使用<code>make([]string)</code>（或者等价的<code>make([]string, 0)</code>）可能会稍微高效一些，因为它避免了第一次添加元素时的内存分配。</p>
+<p>总结来说，两种方式在功能上没有太大区别，都会创建一个空的字符串切片，但是第二种方式可能会在内部预分配一些额外的空间，这有助于提高在添加元素时的性能。在实际编程中，选择哪种方式取决于你的具体需求和偏好。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
   </entry>
   <entry>
     <title>【基础知识】Golang  sort.Slice 复杂排序</title>
@@ -2631,6 +2534,81 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>设计题思考</title>
+    <url>/2024-05-08-9a58f8b87168.html</url>
+    <content><![CDATA[<p>设计数据结构和算法时，通常需要遵循以下步骤来解决问题：</p>
+<ol>
+<li><p><strong>理解问题</strong>：首先，彻底理解题目要求做什么，包括输入、输出、限制条件等。</p>
+</li>
+<li><p><strong>确定需求</strong>：明确需要哪些<strong>数据结构</strong>来存储信息，以及如何使用这些数据结构来满足题目的需求。</p>
+</li>
+<li><p><strong>设计数据结构</strong>：</p>
+<ul>
+<li>确定实体类型：例如，用户（User）、推文（Tweet）等。</li>
+<li>确定实体之间的关系：例如，用户可以发布推文，用户可以关注其他用户。</li>
+</ul>
+</li>
+<li><p><strong>定义方法</strong>：根据题目要求，设计所需的方法或函数，如发布推文、关注用户、取消关注和获取信息流。</p>
+</li>
+<li><p><strong>实现逻辑</strong>：为每个方法设计逻辑，考虑如何使用数据结构来实现题目要求的功能。</p>
+</li>
+<li><p><strong>考虑边界条件和错误处理</strong>：确保你的代码可以处理各种边界情况和潜在的错误。</p>
+</li>
+<li><p><strong>优化</strong>：在满足基本要求后，考虑是否可以优化代码，比如提高时间效率或空间效率。</p>
+</li>
+</ol>
+<p>对于LeetCode题目 <strong>设计推特</strong>，思考过程如下：</p>
+<ol>
+<li><p><strong>理解题目</strong>：题目要求模拟Twitter的功能，包括用户发布推文、关注和取消关注，以及获取个人的信息流。</p>
+</li>
+<li><p><strong>确定需求</strong>：</p>
+<ul>
+<li>需要存储用户信息，包括用户ID、关注列表和推文列表。</li>
+<li>需要存储推文信息，包括推文ID和时间戳。</li>
+</ul>
+</li>
+<li><p><strong>设计数据结构</strong>：</p>
+<ul>
+<li><code>Twitter</code>：包含用户映射，用于快速访问用户信息。</li>
+<li><code>User</code>：包含用户ID、关注列表和推文列表。</li>
+<li><code>Tweet</code>：包含推文ID和时间戳。</li>
+</ul>
+</li>
+<li><p><strong>定义方法</strong>：</p>
+<ul>
+<li><code>Constructor</code>：初始化<code>Twitter</code>实例。</li>
+<li><code>PostTweet</code>：实现用户发布推文的逻辑。</li>
+<li><code>Follow</code>：实现用户关注其他用户的逻辑。</li>
+<li><code>Unfollow</code>：实现用户取消关注的逻辑。</li>
+<li><code>GetNewsFeed</code>：实现获取用户信息流的逻辑。</li>
+</ul>
+</li>
+<li><p><strong>实现逻辑</strong>：</p>
+<ul>
+<li>对于<code>PostTweet</code>，检查用户是否存在，如果不存在则创建用户，然后添加推文。</li>
+<li>对于<code>Follow</code>和<code>Unfollow</code>，更新用户的<code>followees</code>映射。</li>
+<li>对于<code>GetNewsFeed</code>，收集并排序推文，然后返回结果。</li>
+</ul>
+</li>
+<li><p><strong>考虑边界条件</strong>：</p>
+<ul>
+<li>确保在添加推文或关注用户时，处理用户不存在的情况。</li>
+<li>在获取信息流时，处理用户没有推文或关注任何人的情况。</li>
+</ul>
+</li>
+<li><p><strong>优化</strong>：</p>
+<ul>
+<li>考虑是否可以使用更高效的数据结构或算法来提高性能。</li>
+</ul>
+</li>
+</ol>
+<p>在解决LeetCode题目时，通常需要具备一定的数据结构和算法知识，包括对数组、链表、树、图、哈希表等的熟悉，以及对排序、搜索、动态规划等算法的理解。此外，练习和分析不同的题目类型和解法也是提高解题能力的关键。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>设计题 总结</title>
     <url>/2024-04-05-d9f9294c39ef.html</url>
     <content><![CDATA[<p>举个简单的例子：<br><strong>设计题 - 实现浏览器历史记录</strong><br>1.初始化 homepage 和历史记录容量<br>2.浏览网页 </p>
@@ -2737,81 +2715,6 @@ dfs(root.Right, res)
 <blockquote>
 </blockquote>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> MaxQueue <span class="keyword">struct</span> &#123;</span><br><span class="line">    q1 []<span class="type">int</span></span><br><span class="line">    max []<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MaxQueue &#123;</span><br><span class="line">    <span class="keyword">return</span> MaxQueue&#123;</span><br><span class="line">        <span class="built_in">make</span>([]<span class="type">int</span>,<span class="number">0</span>),</span><br><span class="line">        <span class="built_in">make</span>([]<span class="type">int</span>,<span class="number">0</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MaxQueue)</span></span> Max_value() <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(this.max) == <span class="number">0</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> this.max[<span class="number">0</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MaxQueue)</span></span> Push_back(value <span class="type">int</span>)  &#123;</span><br><span class="line">    this.q1 = <span class="built_in">append</span>(this.q1,value)</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(this.max) != <span class="number">0</span> &amp;&amp; value &gt; this.max[<span class="built_in">len</span>(this.max)<span class="number">-1</span>]&#123;</span><br><span class="line">        this.max = this.max[:<span class="built_in">len</span>(this.max)<span class="number">-1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    this.max = <span class="built_in">append</span>(this.max,value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MaxQueue)</span></span> Pop_front() <span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="number">-1</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(this.q1) != <span class="number">0</span>&#123;</span><br><span class="line">        n = this.q1[<span class="number">0</span>]</span><br><span class="line">        this.q1 = this.q1[<span class="number">1</span>:]</span><br><span class="line">        <span class="keyword">if</span> this.max[<span class="number">0</span>] == n&#123;</span><br><span class="line">            this.max = this.max[<span class="number">1</span>:]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MaxQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * param_1 := obj.Max_value();</span></span><br><span class="line"><span class="comment"> * obj.Push_back(value);</span></span><br><span class="line"><span class="comment"> * param_3 := obj.Pop_front();</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line">作者：Sakura</span><br><span class="line">链接：https:<span class="comment">//leetcode.cn/problems/dui-lie-de-zui-da-zhi-lcof/solutions/135149/golang-shuang-dui-lie-by-sakura-151/</span></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>设计题思考</title>
-    <url>/2024-05-08-9a58f8b87168.html</url>
-    <content><![CDATA[<p>设计数据结构和算法时，通常需要遵循以下步骤来解决问题：</p>
-<ol>
-<li><p><strong>理解问题</strong>：首先，彻底理解题目要求做什么，包括输入、输出、限制条件等。</p>
-</li>
-<li><p><strong>确定需求</strong>：明确需要哪些<strong>数据结构</strong>来存储信息，以及如何使用这些数据结构来满足题目的需求。</p>
-</li>
-<li><p><strong>设计数据结构</strong>：</p>
-<ul>
-<li>确定实体类型：例如，用户（User）、推文（Tweet）等。</li>
-<li>确定实体之间的关系：例如，用户可以发布推文，用户可以关注其他用户。</li>
-</ul>
-</li>
-<li><p><strong>定义方法</strong>：根据题目要求，设计所需的方法或函数，如发布推文、关注用户、取消关注和获取信息流。</p>
-</li>
-<li><p><strong>实现逻辑</strong>：为每个方法设计逻辑，考虑如何使用数据结构来实现题目要求的功能。</p>
-</li>
-<li><p><strong>考虑边界条件和错误处理</strong>：确保你的代码可以处理各种边界情况和潜在的错误。</p>
-</li>
-<li><p><strong>优化</strong>：在满足基本要求后，考虑是否可以优化代码，比如提高时间效率或空间效率。</p>
-</li>
-</ol>
-<p>对于LeetCode题目 <strong>设计推特</strong>，思考过程如下：</p>
-<ol>
-<li><p><strong>理解题目</strong>：题目要求模拟Twitter的功能，包括用户发布推文、关注和取消关注，以及获取个人的信息流。</p>
-</li>
-<li><p><strong>确定需求</strong>：</p>
-<ul>
-<li>需要存储用户信息，包括用户ID、关注列表和推文列表。</li>
-<li>需要存储推文信息，包括推文ID和时间戳。</li>
-</ul>
-</li>
-<li><p><strong>设计数据结构</strong>：</p>
-<ul>
-<li><code>Twitter</code>：包含用户映射，用于快速访问用户信息。</li>
-<li><code>User</code>：包含用户ID、关注列表和推文列表。</li>
-<li><code>Tweet</code>：包含推文ID和时间戳。</li>
-</ul>
-</li>
-<li><p><strong>定义方法</strong>：</p>
-<ul>
-<li><code>Constructor</code>：初始化<code>Twitter</code>实例。</li>
-<li><code>PostTweet</code>：实现用户发布推文的逻辑。</li>
-<li><code>Follow</code>：实现用户关注其他用户的逻辑。</li>
-<li><code>Unfollow</code>：实现用户取消关注的逻辑。</li>
-<li><code>GetNewsFeed</code>：实现获取用户信息流的逻辑。</li>
-</ul>
-</li>
-<li><p><strong>实现逻辑</strong>：</p>
-<ul>
-<li>对于<code>PostTweet</code>，检查用户是否存在，如果不存在则创建用户，然后添加推文。</li>
-<li>对于<code>Follow</code>和<code>Unfollow</code>，更新用户的<code>followees</code>映射。</li>
-<li>对于<code>GetNewsFeed</code>，收集并排序推文，然后返回结果。</li>
-</ul>
-</li>
-<li><p><strong>考虑边界条件</strong>：</p>
-<ul>
-<li>确保在添加推文或关注用户时，处理用户不存在的情况。</li>
-<li>在获取信息流时，处理用户没有推文或关注任何人的情况。</li>
-</ul>
-</li>
-<li><p><strong>优化</strong>：</p>
-<ul>
-<li>考虑是否可以使用更高效的数据结构或算法来提高性能。</li>
-</ul>
-</li>
-</ol>
-<p>在解决LeetCode题目时，通常需要具备一定的数据结构和算法知识，包括对数组、链表、树、图、哈希表等的熟悉，以及对排序、搜索、动态规划等算法的理解。此外，练习和分析不同的题目类型和解法也是提高解题能力的关键。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2962,6 +2865,107 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于我</title>
+    <url>/2023-03-13-519b5e93f019.html</url>
+    <content><![CDATA[<div style="text-align: center">
+
+<h1 id="欢迎来到我的空间"><a href="#欢迎来到我的空间" class="headerlink" title="欢迎来到我的空间!"></a>欢迎来到我的空间!</h1></div>
+
+<div style="text-align: center">
+
+<h1 id="我的第"><a href="#我的第" class="headerlink" title="我的第 "></a>我的第 <img src="https://profile-counter.glitch.me/leiqitop/count.svg" alt="Visitor Count"></h1></div>
+
+
+<div style="text-align: center">
+
+<h1 id="个朋友！"><a href="#个朋友！" class="headerlink" title="个朋友！"></a>个朋友！</h1></div>
+
+<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
+<li><p>🌱 毕业于复旦大学</p>
+</li>
+<li><p>⭐ 现就职于华为，软件开发工程师</p>
+</li>
+</ul>
+<h2 id="兴趣-👨🏽‍💻"><a href="#兴趣-👨🏽‍💻" class="headerlink" title="兴趣 👨🏽‍💻"></a>兴趣 👨🏽‍💻</h2><ul>
+<li><p>项目: NLP, Large Language Model, Golang Project, Python Project, Vue Project.</p>
+</li>
+<li><p>编程语言 : Golang, Python, C++&#x2F;C, Java</p>
+</li>
+</ul>
+<h2 id="开源项目经验-👯"><a href="#开源项目经验-👯" class="headerlink" title="开源项目经验 👯"></a>开源项目经验 👯</h2><p><strong>As a manager</strong> ：</p>
+<ul>
+<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
+</ul>
+<p><strong>As a member</strong> :</p>
+<ul>
+<li><p><a href="https://github.com/TianlabTech/PhenoBERT.git">PhenoBERT</a> : <strong>PhenoBERT:</strong> A combined deep learning method for automated recognition of human phenotype ontology</p>
+</li>
+<li><p><a href="">IEEE Journal of Biomedical and Health Informatics（IF&#x3D;5.77）</a> : Reviewer</p>
+</li>
+</ul>
+<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><ul>
+<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
+</ul>
+<h2 id="欢迎志同道合的朋友"><a href="#欢迎志同道合的朋友" class="headerlink" title="欢迎志同道合的朋友~"></a>欢迎志同道合的朋友~</h2><p>本站是为了记录自己学习和生活，欢迎大家多多交流讨论。<br>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
+<h2 id="微信公众号"><a href="#微信公众号" class="headerlink" title="微信公众号"></a>微信公众号</h2><p><img src="/../../imgs/qrcode.jpg"></p>
+]]></content>
+      <categories>
+        <category>关于我</category>
+      </categories>
+      <tags>
+        <tag>about</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-8c397fc87827.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
       </categories>
   </entry>
   <entry>
