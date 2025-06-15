@@ -149,3 +149,41 @@ func trap(height []int) (ans int) {
         
     - 确保新的1作为右边界参与后续计算
 ```
+
+
+# 单调队列
+
+[239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/)
+
+
+```go
+
+func maxSlidingWindow(nums []int, k int) []int {
+    ans := make([]int, 0, len(nums)-k+1) // 预分配空间
+    q := []int{}
+    for i, x := range nums {
+        // 1. 入
+        for len(q) > 0 && x >= nums[q[len(q)-1]] {
+            q = q[:len(q)-1] // 维护 q 的单调性 从大到小
+        }
+        q = append(q, i)
+
+        // 2. 出
+        if q[0] <= i -k{ // 队首已经离开窗口了
+            q = q[1:] // Go 的切片是 O(1) 的
+        }
+
+        // 3. 记录答案
+        if i >= k-1 {
+            // 由于队首到队尾单调递减，所以窗口最大值就是队首
+            ans = append(ans, nums[q[0]])
+        }
+    }
+    return ans
+}
+
+```
+
+
+从「维护单调性」的角度上来说，单调队列和单调栈是一样的，一个弹出队尾元素，另一个弹出栈顶元素。在单调栈的基础上，单调队列多了一个「移除队首」的操作，这类似滑动窗口移动左指针 left 的过程。所以从某种程度上来说，单调队列 = 单调栈 + 滑动窗口。
+![](../../imgs/Pasted%20image%2020250615211811.png)
