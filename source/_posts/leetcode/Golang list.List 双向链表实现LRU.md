@@ -85,6 +85,61 @@ func (l *LRUCache) Put(key int, value int) {
 }
 ```
 
+
+ **使用slice 实现**
+
+
+```go
+
+type LRUCache struct {
+	capacity int
+	keysList []int // 存放key 每次update get put 等都要将对应key删除，然后追加到最新时间
+	keysMap  map[int]int // 存放key value
+}
+
+func Constructor(capacity int) LRUCache {
+	//return
+	return LRUCache{capacity, make([]int, 0), make(map[int]int, 0)}
+}
+
+// 如果key存在于缓存中，则返回关键字的值，否则返回-1
+func (this *LRUCache) Get(key int) int {
+	if ele, ok := this.keysMap[key]; ok {
+		this.updateListKey(key)
+		return ele
+	}
+	return -1
+}
+
+func (this *LRUCache) Put(key int, value int) {
+	// 关键字存在 则更新值为value
+	// 不存在，则插入value
+	// 如果插入超过数量capacity 则删除最久没有使用的关键字【list]
+	if _, ok := this.keysMap[key]; ok {
+		this.updateListKey(key)
+		this.keysMap[key] = value
+	} else {
+		this.updateListKey(key)
+		this.keysMap[key] = value
+		if len(this.keysList) > this.capacity {
+			delete(this.keysMap, this.keysList[0]) // 这里删除key 从list队列中获取
+			this.keysList = this.keysList[1:]
+		}
+	}
+}
+
+func (this *LRUCache) updateListKey(key int) {
+	for i := 0; i < len(this.keysList); i++ {
+		if key == this.keysList[i] {
+			this.keysList = append(this.keysList[:i], this.keysList[i+1:]...) // 删除该key, 然后放在末尾
+			break
+		}
+	}
+	this.keysList = append(this.keysList, key)
+}
+
+```
+
 ## 关键点解析
 
 1. **双向链表的使用**:
