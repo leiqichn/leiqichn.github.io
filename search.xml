@@ -1117,15 +1117,6 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
-    <title>github同步gitee</title>
-    <url>/2024-07-18-e17dac938cf8.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240719003858.png"></p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git 设置免密配置-全局免密-单仓库免密-SSH免密</title>
     <url>/2024-01-01-91517aa963bc.html</url>
     <content><![CDATA[<h1 id="介绍之前"><a href="#介绍之前" class="headerlink" title="介绍之前"></a>介绍之前</h1><p>我们要首先知道一个简单的概念:<br>https通过<strong>记住账号密码免登</strong>，ssh通过<strong>校验生成的密钥免登</strong>。 通常都用ssh校验。</p>
@@ -1205,6 +1196,15 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>github同步gitee</title>
+    <url>/2024-07-18-e17dac938cf8.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240719003858.png"></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
     <title>git强制拉取远端</title>
     <url>/2023-10-22-9bf76366f18c.html</url>
     <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git reset --hard origin/&lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
@@ -1212,16 +1212,6 @@ dfs(root.Right, res)
 <p>git fetch origin：这个命令会从远程仓库（通常是”origin”，可以根据你的实际情况替换）获取最新的分支信息，但不会合并或应用任何更改到你的本地分支。</p>
 <p>git reset –hard origin&#x2F;<branch_name>：这个命令会将你的本地分支重置为与指定远程分支相同的状态，并且会放弃本地的任何更改。–hard 标志会强制应用这个重置，因此请小心使用，确保你不需要本地的更改。</p>
 <p>这些命令将强制拉取远程分支的最新版本，并且会覆盖本地的任何更改。确保在执行这些命令之前，你没有重要的未提交更改，因为它们将永久丢失。</p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>git更新仓库地址</title>
-    <url>/2024-07-23-764a3cd05cde.html</url>
-    <content><![CDATA[<p>使用如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>git</category>
@@ -1237,6 +1227,16 @@ dfs(root.Right, res)
 <li>创建.github&#x2F;workflows&#x2F;xxx.ymal<br><img src="/../../imgs/Pasted%20image%2020240721221805.png"></li>
 </ol>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">master</span> <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">contents:</span> <span class="string">write</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Sync</span> <span class="string">to</span> <span class="string">Gitee</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">wearerequired/git-mirror-action@master</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="comment"># 注意在 Settings-&gt;Secrets 配置 GITEE_RSA_PRIVATE_KEY</span></span><br><span class="line">          <span class="attr">SSH_PRIVATE_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITEE_RSA_PRIVATE_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="comment"># 注意替换为你的 GitHub 源仓库地址</span></span><br><span class="line">          <span class="attr">source-repo:</span> <span class="string">git@github.com:leiqichn/novelBigModel.git</span></span><br><span class="line">          <span class="comment"># 注意替换为你的 Gitee 目标仓库地址</span></span><br><span class="line">          <span class="attr">destination-repo:</span> <span class="string">git@gitee.com:leiqichn/novelBigModel.git</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git更新仓库地址</title>
+    <url>/2024-07-23-764a3cd05cde.html</url>
+    <content><![CDATA[<p>使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>git</category>
@@ -1346,6 +1346,36 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>Leetcode 110.平衡二叉树</title>
+    <url>/2023-03-28-c58b9cf85e3e.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/balanced-binary-tree/">110. 平衡二叉树 - 力扣（Leetcode）</a></p>
+<p><font color="#2DC26B">简单 </font><br>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
+<p>本题中，一棵高度平衡二叉树定义为：</p>
+<blockquote>
+<p>一个二叉树_每个节点_ 的左右两个子树的高度差的绝对值不超过 1 。</p>
+</blockquote>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/10/06/balance_1.jpg"></p>
+<p><strong>输入：</strong>root &#x3D; [3,9,20,null,null,15,7]<br><strong>输出：</strong>true</p>
+<p><strong>示例 2：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg"></p>
+<p><strong>输入：</strong>root &#x3D; [1,2,2,3,3,null,null,4,4]<br><strong>输出：</strong>false</p>
+<p><strong>示例 3：</strong></p>
+<p><strong>输入：</strong>root &#x3D; []<br><strong>输出：</strong>true</p>
+<p><strong>提示：</strong></p>
+<ul>
+<li>树中的节点数在范围 <code>[0, 5000]</code> 内</li>
+<li><code>-104 &lt;= Node.val &lt;= 104</code></li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这里是求<strong>高度</strong>： 节点到叶子节点的最长距离，使用<strong>后序遍历</strong><br><strong>深度</strong>是root 到该节点的最长距离（距离☞节点数），使用<strong>前序遍历</strong></p>
+<p>因此只要分别计算左右子树的高度，并且做差不大于1就行</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>使用-1 记录 res 不是平衡二叉树<br>每次执行，都需要判断是不是等于-1，直接返回-1</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Leetcode 136.只出现一次的数字</title>
     <url>/2023-10-16-66afbe22520d.html</url>
     <content><![CDATA[<blockquote>
@@ -1378,36 +1408,6 @@ dfs(root.Right, res)
 <li><p>位运算</p>
 <figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">singleNumber</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    single := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        single ^= num</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> single</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ol>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Leetcode 110.平衡二叉树</title>
-    <url>/2023-03-28-c58b9cf85e3e.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/balanced-binary-tree/">110. 平衡二叉树 - 力扣（Leetcode）</a></p>
-<p><font color="#2DC26B">简单 </font><br>给定一个二叉树，判断它是否是高度平衡的二叉树。</p>
-<p>本题中，一棵高度平衡二叉树定义为：</p>
-<blockquote>
-<p>一个二叉树_每个节点_ 的左右两个子树的高度差的绝对值不超过 1 。</p>
-</blockquote>
-<p><strong>示例 1：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/10/06/balance_1.jpg"></p>
-<p><strong>输入：</strong>root &#x3D; [3,9,20,null,null,15,7]<br><strong>输出：</strong>true</p>
-<p><strong>示例 2：</strong></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg"></p>
-<p><strong>输入：</strong>root &#x3D; [1,2,2,3,3,null,null,4,4]<br><strong>输出：</strong>false</p>
-<p><strong>示例 3：</strong></p>
-<p><strong>输入：</strong>root &#x3D; []<br><strong>输出：</strong>true</p>
-<p><strong>提示：</strong></p>
-<ul>
-<li>树中的节点数在范围 <code>[0, 5000]</code> 内</li>
-<li><code>-104 &lt;= Node.val &lt;= 104</code></li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这里是求<strong>高度</strong>： 节点到叶子节点的最长距离，使用<strong>后序遍历</strong><br><strong>深度</strong>是root 到该节点的最长距离（距离☞节点数），使用<strong>前序遍历</strong></p>
-<p>因此只要分别计算左右子树的高度，并且做差不大于1就行</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>使用-1 记录 res 不是平衡二叉树<br>每次执行，都需要判断是不是等于-1，直接返回-1</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1530,23 +1530,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode  1.两数之和</title>
-    <url>/2024-08-21-64c0a1f316e6.html</url>
-    <content><![CDATA[<p>有两种思路：</p>
-<ol>
-<li>使用暴力遍历， 复杂度的是 O(n ^2)</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j:= i+<span class="number">1</span>; j &lt; <span class="built_in">len</span>(nums); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] == target &#123;</span><br><span class="line">                <span class="keyword">return</span> []<span class="type">int</span>&#123;i, j&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>使用哈希表，是O(n)<br>  使用哈希表需要注意的是， 这里需要判断idx 和idx2 不相同，因为是要找两个位置，不能取同一个位置<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	maps := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		maps[num] = idx</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		<span class="keyword">if</span> idx2, ok := maps[target-num]; ok &amp;&amp; idx != idx2 &#123; <span class="comment">// 00 : 04 : 10 使用哈希表，需要注意的是，有可能使用了同一个idx 这里需要注意</span></span><br><span class="line">			<span class="keyword">return</span> []<span class="type">int</span>&#123;idx, idx2&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>go语言实现优先队列</title>
     <url>/2024-05-18-dfe0612e31db.html</url>
     <content><![CDATA[<p>Go 语言中实现优先队列，最大堆和最小堆通常可以通过使用容器&#x2F;heap包来完成。Go 语言的heap包提供了一个堆操作的接口，它允许用户实现任意类型的堆，包括最大堆和最小堆。</p>
@@ -1590,14 +1573,17 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 102. 二叉树的层序遍历</title>
-    <url>/2023-05-23-a419f5d1c6af.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/">102. 二叉树的层序遍历 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523224632.png"></p>
-<h1 id="使用slice"><a href="#使用slice" class="headerlink" title="使用slice"></a>使用slice</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 层序遍历 使用size 记录每层数组 queue node 队列</span></span><br><span class="line"></span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">    queue := <span class="built_in">make</span>([]*TreeNode, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> root != <span class="literal">nil</span> &#123;</span><br><span class="line">        queue = <span class="built_in">append</span>(queue, root)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) != <span class="number">0</span> &#123;</span><br><span class="line">        size := <span class="built_in">len</span>(queue)</span><br><span class="line">        levels := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) </span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i:= <span class="number">0</span>; i &lt; size; i++ &#123;</span><br><span class="line">            node := queue[<span class="number">0</span>]</span><br><span class="line">            queue = queue[<span class="number">1</span>:<span class="built_in">len</span>(queue)] <span class="comment">//切掉元素0</span></span><br><span class="line"></span><br><span class="line">            levels = <span class="built_in">append</span>(levels, node.Val) <span class="comment">// 添加元素</span></span><br><span class="line">            <span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, node.Left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> node.Right != <span class="literal">nil</span>  &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, node.Right)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, levels)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>leetcode  1.两数之和</title>
+    <url>/2024-08-21-64c0a1f316e6.html</url>
+    <content><![CDATA[<p>有两种思路：</p>
+<ol>
+<li>使用暴力遍历， 复杂度的是 O(n ^2)</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j:= i+<span class="number">1</span>; j &lt; <span class="built_in">len</span>(nums); j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> nums[i] + nums[j] == target &#123;</span><br><span class="line">                <span class="keyword">return</span> []<span class="type">int</span>&#123;i, j&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
-<h1 id="使用list"><a href="#使用list" class="headerlink" title="使用list"></a>使用list</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span>&#123;<span class="comment">//防止为空</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    queue := &amp;list.List&#123;&#125;</span><br><span class="line">    queue.PushBack(root)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> queue.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">        length := queue.Len()               <span class="comment">//保存当前层的长度，然后处理当前层（十分重要，防止添加下层元素影响判断层中元素的个数）     </span></span><br><span class="line">        <span class="keyword">var</span> levelQueue []<span class="type">int</span></span><br><span class="line">        fmt.Println(length)</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length; i++ &#123;</span><br><span class="line">            node := queue.Remove(queue.Front()).(*TreeNode)    <span class="comment">//出队列</span></span><br><span class="line">            <span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue.PushBack(node.Left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> node.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue.PushBack(node.Right)</span><br><span class="line">            &#125;</span><br><span class="line">            levelQueue = <span class="built_in">append</span>(levelQueue, node.Val)    <span class="comment">//将值加入本层切片中</span></span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, levelQueue)          <span class="comment">//放入结果集</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<ol start="2">
+<li>使用哈希表，是O(n)<br>  使用哈希表需要注意的是， 这里需要判断idx 和idx2 不相同，因为是要找两个位置，不能取同一个位置<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoSum</span><span class="params">(nums []<span class="type">int</span>, target <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	maps := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, <span class="built_in">len</span>(nums))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		maps[num] = idx</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> idx, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">		<span class="keyword">if</span> idx2, ok := maps[target-num]; ok &amp;&amp; idx != idx2 &#123; <span class="comment">// 00 : 04 : 10 使用哈希表，需要注意的是，有可能使用了同一个idx 这里需要注意</span></span><br><span class="line">			<span class="keyword">return</span> []<span class="type">int</span>&#123;idx, idx2&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -1630,6 +1616,32 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
+    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
+    <url>/2023-05-04-ce9a22434c37.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
+<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 102. 二叉树的层序遍历</title>
+    <url>/2023-05-23-a419f5d1c6af.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/description/">102. 二叉树的层序遍历 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523224632.png"></p>
+<h1 id="使用slice"><a href="#使用slice" class="headerlink" title="使用slice"></a>使用slice</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 层序遍历 使用size 记录每层数组 queue node 队列</span></span><br><span class="line"></span><br><span class="line">    res := <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">    queue := <span class="built_in">make</span>([]*TreeNode, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> root != <span class="literal">nil</span> &#123;</span><br><span class="line">        queue = <span class="built_in">append</span>(queue, root)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) != <span class="number">0</span> &#123;</span><br><span class="line">        size := <span class="built_in">len</span>(queue)</span><br><span class="line">        levels := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>) </span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i:= <span class="number">0</span>; i &lt; size; i++ &#123;</span><br><span class="line">            node := queue[<span class="number">0</span>]</span><br><span class="line">            queue = queue[<span class="number">1</span>:<span class="built_in">len</span>(queue)] <span class="comment">//切掉元素0</span></span><br><span class="line"></span><br><span class="line">            levels = <span class="built_in">append</span>(levels, node.Val) <span class="comment">// 添加元素</span></span><br><span class="line">            <span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, node.Left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> node.Right != <span class="literal">nil</span>  &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, node.Right)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, levels)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="使用list"><a href="#使用list" class="headerlink" title="使用list"></a>使用list</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">levelOrder</span><span class="params">(root *TreeNode)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span>&#123;<span class="comment">//防止为空</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">    queue := &amp;list.List&#123;&#125;</span><br><span class="line">    queue.PushBack(root)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> queue.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">        length := queue.Len()               <span class="comment">//保存当前层的长度，然后处理当前层（十分重要，防止添加下层元素影响判断层中元素的个数）     </span></span><br><span class="line">        <span class="keyword">var</span> levelQueue []<span class="type">int</span></span><br><span class="line">        fmt.Println(length)</span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; length; i++ &#123;</span><br><span class="line">            node := queue.Remove(queue.Front()).(*TreeNode)    <span class="comment">//出队列</span></span><br><span class="line">            <span class="keyword">if</span> node.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue.PushBack(node.Left)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> node.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">                queue.PushBack(node.Right)</span><br><span class="line">            &#125;</span><br><span class="line">            levelQueue = <span class="built_in">append</span>(levelQueue, node.Val)    <span class="comment">//将值加入本层切片中</span></span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">append</span>(res, levelQueue)          <span class="comment">//放入结果集</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 1091.二进制矩阵中的最短路径</title>
     <url>/2023-05-26-5abcbf266873.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/shortest-path-in-binary-matrix/description/">1091. 二进制矩阵中的最短路径 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230526235236.png"><br>DFS 超时版本：</p>
@@ -1659,18 +1671,6 @@ dfs(root.Right, res)
       <tags>
         <tag>二维数组最短路径</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 108.将有序数组转换为二叉搜索树</title>
-    <url>/2023-05-04-ce9a22434c37.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/">108. 将有序数组转换为二叉搜索树 - 力扣（Leetcode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230504232459.png"></p>
-<h3 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h3><p>注意递归函数的返回值和输入值，确定终止条件，确定单层递归逻辑<br>注意递归函数定义，严格按照定义调用递归<br>使用前序遍历 中左右</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 1170. 比较字符串最小字母出现频次</title>
@@ -2914,6 +2914,20 @@ dfs(root.Right, res)
 <h1 id="355-设计推特"><a href="#355-设计推特" class="headerlink" title="355 设计推特"></a>355 设计推特</h1><p><a href="https://leetcode.cn/problems/design-twitter/">355. 设计推特</a><br><img src="/../../imgs/Pasted%20image%2020240512221227.png"></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特数目，用于时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 和时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>上边代码为什么需要使用 <code>&amp;User</code> 而不是直接使用 map 中的值：</strong></p>
+<ul>
+<li><p>当 key 不存在时，map 返回的是零值（对于 <code>*User</code> 就是 <code>nil</code>）</p>
+</li>
+<li><p>你不能对 <code>nil</code> 指针进行赋值操作</p>
+</li>
+<li><p>因此必须先创建一个新的 <code>User</code> 实例（使用 <code>&amp;User&#123;&#125;</code>），然后存入 map</p>
+</li>
+</ul>
+<p>这种模式在 Go 中很常见，特别是在需要”如果不存在则初始化”的场景中。</p>
 <h1 id="208-实现-Trie-前缀树"><a href="#208-实现-Trie-前缀树" class="headerlink" title="208. 实现 Trie (前缀树)"></a><a href="https://leetcode.cn/problems/implement-trie-prefix-tree/">208. 实现 Trie (前缀树)</a></h1><p><img src="/../../imgs/Pasted%20image%2020240512221416.png"></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// TrieNode 代表Trie中的每个节点</span></span><br><span class="line"><span class="keyword">type</span> TrieNode <span class="keyword">struct</span> &#123;</span><br><span class="line">    children [<span class="number">26</span>]*TrieNode</span><br><span class="line">    isEnd    <span class="type">bool</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Trie 代表整个前缀树</span></span><br><span class="line"><span class="keyword">type</span> Trie <span class="keyword">struct</span> &#123;</span><br><span class="line">    root *TrieNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Constructor 初始化一个Trie对象</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Trie &#123;</span><br><span class="line">    <span class="keyword">return</span> Trie&#123;root: &amp;TrieNode&#123;&#125;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Insert 将word插入到trie中</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> Insert(word <span class="type">string</span>) &#123;</span><br><span class="line">    node := this.root</span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> word &#123;</span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line">            node.children[index] = &amp;TrieNode&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        node = node.children[index]</span><br><span class="line">    &#125;</span><br><span class="line">    node.isEnd = <span class="literal">true</span> <span class="comment">// 标记单词结束的节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Search 在trie中搜索word</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> Search(word <span class="type">string</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    node := this.root</span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> word &#123;</span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 如果路径中的节点不存在，说明word不在trie中</span></span><br><span class="line">        &#125;</span><br><span class="line">        node = node.children[index]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> node.isEnd <span class="comment">// 检查最后一个节点是否标记为单词结尾</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// StartsWith 返回trie中是否有任何单词以prefix为前缀</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> StartsWith(prefix <span class="type">string</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    node := this.root</span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> prefix &#123;</span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 如果路径中的节点不存在，说明没有以prefix为前缀的word</span></span><br><span class="line">        &#125;</span><br><span class="line">        node = node.children[index]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 所有的char都在路径中，说明trie有以prefix为前缀的word</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Insert(word);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Search(word);</span></span><br><span class="line"><span class="comment"> * param_3 := obj.StartsWith(prefix);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="211-添加与搜索单词-数据结构设计"><a href="#211-添加与搜索单词-数据结构设计" class="headerlink" title="211. 添加与搜索单词 - 数据结构设计"></a><a href="https://leetcode.cn/problems/design-add-and-search-words-data-structure/">211. 添加与搜索单词 - 数据结构设计</a></h1><p><img src="/../../imgs/Pasted%20image%2020240512221549.png"></p>
@@ -3318,18 +3332,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>ssh 隧道 端口转发</title>
-    <url>/2024-04-21-29ab33001840.html</url>
-    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
-<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>pycharm配置VPN代理</title>
     <url>/2025-06-08-e7d1013a5402.html</url>
     <content><![CDATA[<p>确定本地VPN的代理端口：</p>
@@ -3340,6 +3342,18 @@ dfs(root.Right, res)
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:  </span><br><span class="line">    response = requests.get(<span class="string">&quot;http://www.youtube.com&quot;</span>)  </span><br><span class="line">    <span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../../imgs/Pasted%20image%2020250609002055.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ssh 隧道 端口转发</title>
+    <url>/2024-04-21-29ab33001840.html</url>
+    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
+<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>工具</category>
