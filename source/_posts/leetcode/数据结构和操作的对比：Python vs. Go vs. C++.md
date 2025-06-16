@@ -19,7 +19,7 @@ my_list = [1, 2, 3, 4]
 
 # 切片
 sub_list = my_list[1:3]
-reversed_list = my_list[::-1python]
+reversed_list = my_list[::-1]
 
 # 字典
 my_dict = {'name': 'Alice', 'age': 30}

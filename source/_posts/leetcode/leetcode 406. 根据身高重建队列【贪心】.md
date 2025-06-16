@@ -26,7 +26,7 @@ func reconstructQueue(people [][]int) [][]int {
 	})i
 	// 再按照K进行插入排序，优先插入K小的
 	for i, p := range people {
-		copy(people[p[1]+1 :i+1], people[p[1] :i=1])  // 腾空出一个位置
+		copy(people[p[1]+1 :i+1], people[p[1] :i+1])  // 腾空出一个位置
         people[p[1]] = pi
 	}
 	return people
