@@ -227,6 +227,25 @@
       </categories>
   </entry>
   <entry>
+    <title>Golang 使用new创建slice</title>
+    <url>/2024-07-21-01f71b57e534.html</url>
+    <content><![CDATA[<p>在 Go 语言中，new 关键字用于分配类型为 T 的零值并返回其地址，即类型为 *T 的值。对于 slice 来说，可以使用 new 来分配一个指向 slice 的指针，但是通常我们不这样做，因为 slice 是引用类型，我们更倾向于直接使用 make 函数来创建 slice。</p>
+<p>然而，如果确实需要使用 new 来创建一个 slice 的指针，可以这样做：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s *[]<span class="type">int</span> <span class="comment">// 声明一个指向int类型slice的指针</span></span><br><span class="line">s = <span class="built_in">new</span>([]<span class="type">int</span>) <span class="comment">// 分配一个int类型的slice，并将其地址赋给s</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，这样创建的 slice 是一个空的 slice，它没有任何底层数组（即 nil 的数组），并且长度和容量都是 0。如果需要一个具有特定长度和容量的 slice，应该使用 make 函数：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 创建一个长度为 length，容量为 capacity 的int类型slice</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用 new 创建了一个 slice 指针，并且想要初始化它，可以这样做：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">*s = <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 通过解引用指针并使用make来初始化slice</span></span><br></pre></td></tr></table></figure>
+
+<p>在大多数情况下，直接使用 make 函数来创建 slice 是更常见和更简单的方法。使用 new 创建 slice 指针通常不是必要的，除非你有特定的需求，比如在函数中返回一个 slice 的指针，或者你需要在多个地方共享同一个 slice 的引用。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Golang slice作为参数传递给函数需要使用指针</title>
     <url>/2024-04-11-22166b2f52d0.html</url>
     <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    dfs(<span class="number">1</span>,n,k,&amp;res,&amp;[]<span class="type">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(s, n, k <span class="type">int</span>, res *[][]<span class="type">int</span>, item *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(*item) == k &#123;</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, <span class="built_in">append</span>([]<span class="type">int</span>&#123;&#125;, *item...))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := s; i &lt;= n-(k-<span class="built_in">len</span>(*item))+<span class="number">1</span>; i++&#123;</span><br><span class="line">        *item = <span class="built_in">append</span>(*item, i)</span><br><span class="line">        dfs(i+<span class="number">1</span>, n, k, res, item)</span><br><span class="line">        *item = (*item)[:<span class="built_in">len</span>(*item)<span class="number">-1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -250,25 +269,6 @@
 
 <p>tempPath :&#x3D; make([]int, k) &#x2F;&#x2F; <strong>tempPath :&#x3D; []int{}</strong>,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。<br>copy(tempPath, path)</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res [][]<span class="type">int</span> <span class="comment">// go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    res = <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="comment">// 结束条件</span></span><br><span class="line">	<span class="keyword">var</span> backtracking <span class="function"><span class="keyword">func</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>, startIndex <span class="type">int</span>)</span></span></span><br><span class="line">    backtracking = <span class="function"><span class="keyword">func</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>, startIndex <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(path) == k &#123;</span><br><span class="line">            tempPath := <span class="built_in">make</span>([]<span class="type">int</span>, k) <span class="comment">// tempPath := []int&#123;&#125;,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。</span></span><br><span class="line">            <span class="built_in">copy</span>(tempPath, path)</span><br><span class="line">            res = <span class="built_in">append</span>(res, tempPath)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i:= startIndex; i &lt;= n; i++ &#123;</span><br><span class="line">            <span class="keyword">if</span> (n -i +<span class="number">1</span> ) &lt; (k -<span class="built_in">len</span>(path)) &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            path = <span class="built_in">append</span>(path, i)</span><br><span class="line">            backtracking(n, k, i+<span class="number">1</span>)</span><br><span class="line">            path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	backtracking(n,k,<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Golang 使用new创建slice</title>
-    <url>/2024-07-21-01f71b57e534.html</url>
-    <content><![CDATA[<p>在 Go 语言中，new 关键字用于分配类型为 T 的零值并返回其地址，即类型为 *T 的值。对于 slice 来说，可以使用 new 来分配一个指向 slice 的指针，但是通常我们不这样做，因为 slice 是引用类型，我们更倾向于直接使用 make 函数来创建 slice。</p>
-<p>然而，如果确实需要使用 new 来创建一个 slice 的指针，可以这样做：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s *[]<span class="type">int</span> <span class="comment">// 声明一个指向int类型slice的指针</span></span><br><span class="line">s = <span class="built_in">new</span>([]<span class="type">int</span>) <span class="comment">// 分配一个int类型的slice，并将其地址赋给s</span></span><br></pre></td></tr></table></figure>
-
-<p>但是，这样创建的 slice 是一个空的 slice，它没有任何底层数组（即 nil 的数组），并且长度和容量都是 0。如果需要一个具有特定长度和容量的 slice，应该使用 make 函数：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 创建一个长度为 length，容量为 capacity 的int类型slice</span></span><br></pre></td></tr></table></figure>
-
-<p>如果使用 new 创建了一个 slice 指针，并且想要初始化它，可以这样做：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">s := <span class="built_in">new</span>([]<span class="type">int</span>)</span><br><span class="line">*s = <span class="built_in">make</span>([]<span class="type">int</span>, length, capacity) <span class="comment">// 通过解引用指针并使用make来初始化slice</span></span><br></pre></td></tr></table></figure>
-
-<p>在大多数情况下，直接使用 make 函数来创建 slice 是更常见和更简单的方法。使用 new 创建 slice 指针通常不是必要的，除非你有特定的需求，比如在函数中返回一个 slice 的指针，或者你需要在多个地方共享同一个 slice 的引用。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -633,6 +633,72 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025-06-16-7a4a6054c8a5.html</url>
+    <content><![CDATA[<p>在 Go 语言中，<code>switch</code> 语句提供了灵活的条件分支控制，相比其他语言有更多特性。以下是详细用法和示例：</p>
+<hr>
+<h3 id="1-基础值匹配"><a href="#1-基础值匹配" class="headerlink" title="1. 基础值匹配"></a>1. <strong>基础值匹配</strong></h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">day := <span class="number">3</span></span><br><span class="line"><span class="keyword">switch</span> day &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Monday&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Tuesday&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Wednesday&quot;</span>) <span class="comment">// 输出</span></span><br><span class="line"><span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Thursday&quot;</span>)</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Weekend&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="2-多值匹配（逗号分隔）"><a href="#2-多值匹配（逗号分隔）" class="headerlink" title="2. 多值匹配（逗号分隔）"></a>2. <strong>多值匹配（逗号分隔）</strong></h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">char := <span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">switch</span> char &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;u&#x27;</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Vowel&quot;</span>) <span class="comment">// 输出</span></span><br><span class="line"><span class="keyword">case</span> <span class="string">&#x27;y&#x27;</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Sometimes vowel&quot;</span>)</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Consonant&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-无表达式（替代-if-else）"><a href="#3-无表达式（替代-if-else）" class="headerlink" title="3. 无表达式（替代 if-else）"></a>3. <strong>无表达式（替代 if-else）</strong></h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">score := <span class="number">85</span></span><br><span class="line"><span class="keyword">switch</span> &#123;</span><br><span class="line"><span class="keyword">case</span> score &gt;= <span class="number">90</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;A&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> score &gt;= <span class="number">80</span>: <span class="comment">// 满足条件</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;B&quot;</span>) <span class="comment">// 输出</span></span><br><span class="line"><span class="keyword">case</span> score &gt;= <span class="number">70</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;C&quot;</span>)</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;D&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-类型判断（Type-Switch）"><a href="#4-类型判断（Type-Switch）" class="headerlink" title="4. 类型判断（Type Switch）"></a>4. <strong>类型判断（Type Switch）</strong></h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> data <span class="keyword">interface</span>&#123;&#125; = <span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="keyword">switch</span> v := data.(<span class="keyword">type</span>) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="type">int</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Integer:&quot;</span>, v)</span><br><span class="line"><span class="keyword">case</span> <span class="type">string</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;String:&quot;</span>, v) <span class="comment">// 输出: String: hello</span></span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Unknown type&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="5-穿透执行（fallthrough）"><a href="#5-穿透执行（fallthrough）" class="headerlink" title="5. 穿透执行（fallthrough）"></a>5. <strong>穿透执行（fallthrough）</strong></h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">n := <span class="number">2</span></span><br><span class="line"><span class="keyword">switch</span> n &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;One&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Two&quot;</span>) <span class="comment">// 输出</span></span><br><span class="line">    <span class="keyword">fallthrough</span>        <span class="comment">// 强制执行下一个 case</span></span><br><span class="line"><span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Three&quot;</span>) <span class="comment">// 输出</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出: Two\nThree</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="6-初始化语句"><a href="#6-初始化语句" class="headerlink" title="6. 初始化语句"></a>6. <strong>初始化语句</strong></h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> lang := <span class="string">&quot;Go&quot;</span>; lang &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;Java&quot;</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Enterprise&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;Go&quot;</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Efficient&quot;</span>) <span class="comment">// 输出</span></span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Other&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="关键特性总结："><a href="#关键特性总结：" class="headerlink" title="关键特性总结："></a>关键特性总结：</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>自动终止</strong></td>
+<td>无需 <code>break</code>，执行完 case 后自动退出 switch</td>
+</tr>
+<tr>
+<td><strong>多值匹配</strong></td>
+<td>用逗号分隔多个值（如 <code>case 1, 2, 3</code>）</td>
+</tr>
+<tr>
+<td><strong>无表达式模式</strong></td>
+<td>类似 <code>if-else</code> 链，更简洁的条件分支</td>
+</tr>
+<tr>
+<td><strong>类型判断</strong></td>
+<td>通过 <code>data.(type)</code> 检测接口值的实际类型</td>
+</tr>
+<tr>
+<td><strong>fallthrough</strong></td>
+<td>显式声明继续执行下一个 case（<strong>不判断条件</strong>）</td>
+</tr>
+<tr>
+<td><strong>作用域隔离</strong></td>
+<td>支持在 <code>switch</code> 后初始化局部变量（如 <code>switch x := 10; &#123; ... &#125;</code>）</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">switch</span> hour := time.Now().Hour(); &#123;</span><br><span class="line"><span class="keyword">case</span> hour &lt; <span class="number">12</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Morning&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> hour &lt; <span class="number">18</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Afternoon&quot;</span>)</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Night&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Go 的 <code>switch</code> 设计强调简洁和安全，避免 C&#x2F;C++ 中因忘记 <code>break</code> 导致的错误。根据场景选择合适用法可大幅提升代码可读性。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>G</category>
       </categories>
   </entry>
   <entry>
@@ -1286,6 +1352,25 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>依赖注入</title>
+    <url>/2024-07-21-618c8c29b962.html</url>
+    <content><![CDATA[<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><p>使用接口来实现依赖注入，降低模块间的耦合。<br><strong>概念</strong>： 依赖注入是一种设计模式，它允许你将组件的依赖关系（即其他组件或服务）从组件本身中分离出来，并在组件外部进行配置。这样做可以减少组件之间的耦合，使得代码更加模块化，易于测试和维护。</p>
+<p><strong>Go 语言实现</strong>： 在 Go 语言中，可以通过接口来实现依赖注入。接口定义了组件所需的行为，然后你可以在运行时注入任何实现了这些行为的具体类型。</p>
+<p><strong>优点</strong>：</p>
+<ol>
+<li><strong>降低耦合</strong>：组件不直接依赖于具体的实现类，而是依赖于接口，这降低了组件之间的耦合度。</li>
+<li><strong>提高灵活性</strong>：可以轻易地替换依赖的具体实现，而不需要修改组件的代码。</li>
+<li><strong>易于测试</strong>：可以为测试注入模拟对象（mocks），从而可以隔离测试组件，不依赖于外部服务或组件。</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Logger <span class="keyword">interface</span> &#123;</span><br><span class="line">    Log(message <span class="type">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ConsoleLogger <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l ConsoleLogger)</span></span> Log(message <span class="type">string</span>) &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Log-DEBUG:&quot;</span>, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ConsoleLoggerINFO <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l ConsoleLoggerINFO)</span></span> Log(message <span class="type">string</span>) &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Log-INFO:&quot;</span>, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Application <span class="keyword">struct</span> &#123;</span><br><span class="line">    logger Logger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Application)</span></span> SetLogger(logger Logger) &#123;</span><br><span class="line">    a.logger = logger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    app := Application&#123;&#125;</span><br><span class="line">    consoleLogger := ConsoleLogger&#123;&#125;</span><br><span class="line">    app.SetLogger(consoleLogger)</span><br><span class="line">    app.logger.Log(<span class="string">&quot;Application started&quot;</span>)</span><br><span class="line">    consoleLoggerInfo := ConsoleLoggerINFO&#123;&#125;</span><br><span class="line">    app.SetLogger(consoleLoggerInfo)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上边通过Go语言的Logger接口包含了Log方法, Application包含了Logger接口。  Application可以通过SetLogger来设置任何实现接口中Log 方法的就，可以方便切换日志类型。这就是依赖注入，每个部分都是个组件，可以随意方便的更换</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>什么是二进制的按位或和按位异或</title>
     <url>/2023-06-08-3d1c210a715f.html</url>
     <content><![CDATA[<p>按位或（bitwise OR）和按位异或（bitwise XOR）是两种二进制位运算。但是这两个概念很容易忘记或者混淆，今天我们就来加深一下印象吧！</p>
@@ -1301,25 +1386,6 @@ dfs(root.Right, res)
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">^ 011</span><br><span class="line">-----</span><br><span class="line">  101</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>按位或，就是只要有1 就为1 (包含了1  1 ；0 1；1  0；三种)<br>按位异或，必须一个0一个1，才为1 （包含0 1；1  0；两种）<br>大家记住了吗？</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>依赖注入</title>
-    <url>/2024-07-21-618c8c29b962.html</url>
-    <content><![CDATA[<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><p>使用接口来实现依赖注入，降低模块间的耦合。<br><strong>概念</strong>： 依赖注入是一种设计模式，它允许你将组件的依赖关系（即其他组件或服务）从组件本身中分离出来，并在组件外部进行配置。这样做可以减少组件之间的耦合，使得代码更加模块化，易于测试和维护。</p>
-<p><strong>Go 语言实现</strong>： 在 Go 语言中，可以通过接口来实现依赖注入。接口定义了组件所需的行为，然后你可以在运行时注入任何实现了这些行为的具体类型。</p>
-<p><strong>优点</strong>：</p>
-<ol>
-<li><strong>降低耦合</strong>：组件不直接依赖于具体的实现类，而是依赖于接口，这降低了组件之间的耦合度。</li>
-<li><strong>提高灵活性</strong>：可以轻易地替换依赖的具体实现，而不需要修改组件的代码。</li>
-<li><strong>易于测试</strong>：可以为测试注入模拟对象（mocks），从而可以隔离测试组件，不依赖于外部服务或组件。</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Logger <span class="keyword">interface</span> &#123;</span><br><span class="line">    Log(message <span class="type">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ConsoleLogger <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l ConsoleLogger)</span></span> Log(message <span class="type">string</span>) &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Log-DEBUG:&quot;</span>, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ConsoleLoggerINFO <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l ConsoleLoggerINFO)</span></span> Log(message <span class="type">string</span>) &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Log-INFO:&quot;</span>, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Application <span class="keyword">struct</span> &#123;</span><br><span class="line">    logger Logger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Application)</span></span> SetLogger(logger Logger) &#123;</span><br><span class="line">    a.logger = logger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    app := Application&#123;&#125;</span><br><span class="line">    consoleLogger := ConsoleLogger&#123;&#125;</span><br><span class="line">    app.SetLogger(consoleLogger)</span><br><span class="line">    app.logger.Log(<span class="string">&quot;Application started&quot;</span>)</span><br><span class="line">    consoleLoggerInfo := ConsoleLoggerINFO&#123;&#125;</span><br><span class="line">    app.SetLogger(consoleLoggerInfo)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上边通过Go语言的Logger接口包含了Log方法, Application包含了Logger接口。  Application可以通过SetLogger来设置任何实现接口中Log 方法的就，可以方便切换日志类型。这就是依赖注入，每个部分都是个组件，可以随意方便的更换</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -1528,6 +1594,28 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>jupyter</title>
+    <url>/2024-06-21-02cd02e81f22.html</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
+<p>用于启动 Jupyter Notebook 服务的一系列命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="built_in">tr</span> -dc A-Za-z0-9 | <span class="built_in">head</span> -c16; <span class="built_in">echo</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JUPYTER_TOKEN</span></span><br><span class="line"><span class="built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="variable">$JUPYTER_TOKEN</span> &amp;</span><br><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
+
+<p>这里是每条命令的简要说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888：停止端口为 8888 的 Jupyter Notebook 服务。</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)：生成一个随机的 16 位的 token，用于 Jupyter Notebook 的安全认证。</span><br><span class="line">nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。</span><br><span class="line">jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建glm4-demo python 3.10的虚拟环境</span></span><br><span class="line">conda create --name glm4-demo python=3.10</span><br><span class="line"></span><br><span class="line">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://pytorch.org/">PyTorch</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
+
+<p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【sed】快速替换当前文件夹下文件中指定内容</title>
     <url>/2025-01-13-1b5c01477594.html</url>
     <content><![CDATA[<p>在 Linux 中，可以使用以下命令来实现这个需求：</p>
@@ -1556,28 +1644,6 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>jupyter</title>
-    <url>/2024-06-21-02cd02e81f22.html</url>
-    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
-<p>用于启动 Jupyter Notebook 服务的一系列命令</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="built_in">tr</span> -dc A-Za-z0-9 | <span class="built_in">head</span> -c16; <span class="built_in">echo</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JUPYTER_TOKEN</span></span><br><span class="line"><span class="built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="variable">$JUPYTER_TOKEN</span> &amp;</span><br><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
-
-<p>这里是每条命令的简要说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888：停止端口为 8888 的 Jupyter Notebook 服务。</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)：生成一个随机的 16 位的 token，用于 Jupyter Notebook 的安全认证。</span><br><span class="line">nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。</span><br><span class="line">jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建glm4-demo python 3.10的虚拟环境</span></span><br><span class="line">conda create --name glm4-demo python=3.10</span><br><span class="line"></span><br><span class="line">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://pytorch.org/">PyTorch</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
-
-<p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>
-]]></content>
-      <categories>
-        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -2401,6 +2467,23 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
+    <title>leetcode 122买动态股票的最佳时机II</title>
+    <url>/2023-05-27-5cebfed1675b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/">122. 买卖股票的最佳时机 II - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230527235217.png"></p>
+<p>每次只允许在一天买入一支股票，在之后某个时间卖出它。同时，你也可以选择不进行任何交易。</p>
+<p>相比于第一题买卖股票的最佳时机（只能进行一次交易），这道题没有限制交易次数，因此我们应该从一个更灵活的角度去考虑如何进行交易。</p>
+<p>下面是代码解释：</p>
+<p>首先定义变量 sum 记录当前总利润。<br>然后从第二个价格开始遍历，计算当日价格与前一天价格之差。<br>如果价格上涨了，则将当前利润加上买卖差价，否则不进行操作。<br>最后返回累计的总利润。<br>这样做的原理在于，如果在 i 天买入，在 j 天卖出（j &gt; i），我们可以等价于在 i+1、i+2……j-1、j 这些连续的日子里都进行了购入和卖出，而我们所需获得的利润即为这些差价的总和。因此，代码中只统计了所有价格差大于 0 的部分，而将其他价格差为负值的日子抛弃掉了。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="comment">// 累加每次大于0的交易</span></span><br><span class="line">        <span class="keyword">if</span> prices[i] - prices[i<span class="number">-1</span>] &gt; <span class="number">0</span> &#123;</span><br><span class="line">            sum += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 1170. 比较字符串最小字母出现频次</title>
     <url>/2023-06-14-88f65f0a1bb7.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/compare-strings-by-frequency-of-the-smallest-character/description/">1170. 比较字符串最小字母出现频次 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230614235423.png"></p>
@@ -2416,23 +2499,6 @@ dfs(root.Right, res)
 <p>如果对于 <code>queries</code> 中的某个字符串 <code>s</code> ，它的最小字母出现频次为 <code>f(s)</code>，那么可以依据 <code>count</code> 数组计算比该字符串要小的字符串的数量。由于 count数组是累加的，所以要计算比这个字符串严格小的字符串数量，只需要累加从 <code>f(s)+1</code> 开始的所有频次出现次数即可：</p>
 <p><code>res[i] = count[f(s) + 1]</code></p>
 <p>这里使用的是 <code>f(s)+1</code> 而不是 <code>f(s)</code> 是因为对于频次相同时应该被视为相同大小，否则我们会算入一些等于当前获得的最小频率的字符串。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 122买动态股票的最佳时机II</title>
-    <url>/2023-05-27-5cebfed1675b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/">122. 买卖股票的最佳时机 II - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230527235217.png"></p>
-<p>每次只允许在一天买入一支股票，在之后某个时间卖出它。同时，你也可以选择不进行任何交易。</p>
-<p>相比于第一题买卖股票的最佳时机（只能进行一次交易），这道题没有限制交易次数，因此我们应该从一个更灵活的角度去考虑如何进行交易。</p>
-<p>下面是代码解释：</p>
-<p>首先定义变量 sum 记录当前总利润。<br>然后从第二个价格开始遍历，计算当日价格与前一天价格之差。<br>如果价格上涨了，则将当前利润加上买卖差价，否则不进行操作。<br>最后返回累计的总利润。<br>这样做的原理在于，如果在 i 天买入，在 j 天卖出（j &gt; i），我们可以等价于在 i+1、i+2……j-1、j 这些连续的日子里都进行了购入和卖出，而我们所需获得的利润即为这些差价的总和。因此，代码中只统计了所有价格差大于 0 的部分，而将其他价格差为负值的日子抛弃掉了。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sum <span class="type">int</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="comment">// 累加每次大于0的交易</span></span><br><span class="line">        <span class="keyword">if</span> prices[i] - prices[i<span class="number">-1</span>] &gt; <span class="number">0</span> &#123;</span><br><span class="line">            sum += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -2823,6 +2889,21 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 455.分发饼干</title>
+    <url>/2023-05-21-c1aa51f444e0.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/assign-cookies/description/">455. 分发饼干 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230521231054.png"></p>
+<p><a href="https://leiqicn.gitee.io/">https://leiqicn.gitee.io/</a> 欢迎关注我的博客，定时更新golang 刷题笔记</p>
+<p>贪心的策略：</p>
+<blockquote>
+<p>贪心算法一般分为如下四步：<br> 将问题分解为若干个子问题<br>找出适合的贪心策略<br>求解每一个子问题的最优解<br>将局部最优解堆叠成全局最优解</p>
+</blockquote>
+<p>排序，遍历饼干，child胃口初始化idx&#x3D;0 ,res &#x3D;0 ;<br>如果没有越界并且饼干大于等于胃口，则childIdx ++；res++</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findContentChildren</span><span class="params">(g []<span class="type">int</span>, s []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// g 小孩胃口 s 饼干 从大到小排序 排序,并给胃口初始化赋值</span></span><br><span class="line">    sort.Ints(g)</span><br><span class="line">    sort.Ints(s)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="comment">// 用小饼干 来满足最小的胃口</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">        <span class="comment">// 判断越界 饼干大于胃口</span></span><br><span class="line">        <span class="keyword">if</span> j &lt; <span class="built_in">len</span>(g) &amp;&amp; s[i] &gt;= g[j]  &#123; <span class="comment">// len不越界的条件需要在前边</span></span><br><span class="line"></span><br><span class="line">            res++</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 53.最大子数和</title>
     <url>/2023-05-25-8fc7b96cd054.html</url>
     <content><![CDATA[<blockquote>
@@ -2859,21 +2940,6 @@ dfs(root.Right, res)
         <tag>贪心</tag>
         <tag>动态规划</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 455.分发饼干</title>
-    <url>/2023-05-21-c1aa51f444e0.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/assign-cookies/description/">455. 分发饼干 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230521231054.png"></p>
-<p><a href="https://leiqicn.gitee.io/">https://leiqicn.gitee.io/</a> 欢迎关注我的博客，定时更新golang 刷题笔记</p>
-<p>贪心的策略：</p>
-<blockquote>
-<p>贪心算法一般分为如下四步：<br> 将问题分解为若干个子问题<br>找出适合的贪心策略<br>求解每一个子问题的最优解<br>将局部最优解堆叠成全局最优解</p>
-</blockquote>
-<p>排序，遍历饼干，child胃口初始化idx&#x3D;0 ,res &#x3D;0 ;<br>如果没有越界并且饼干大于等于胃口，则childIdx ++；res++</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findContentChildren</span><span class="params">(g []<span class="type">int</span>, s []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// g 小孩胃口 s 饼干 从大到小排序 排序,并给胃口初始化赋值</span></span><br><span class="line">    sort.Ints(g)</span><br><span class="line">    sort.Ints(s)</span><br><span class="line">    j := <span class="number">0</span></span><br><span class="line">    res := <span class="number">0</span></span><br><span class="line">    <span class="comment">// 用小饼干 来满足最小的胃口</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">        <span class="comment">// 判断越界 饼干大于胃口</span></span><br><span class="line">        <span class="keyword">if</span> j &lt; <span class="built_in">len</span>(g) &amp;&amp; s[i] &gt;= g[j]  &#123; <span class="comment">// len不越界的条件需要在前边</span></span><br><span class="line"></span><br><span class="line">            res++</span><br><span class="line">            j++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 706. 设计哈希映射 Golang</title>
@@ -3214,20 +3280,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【Golang】for range 数组指针遍历</title>
-    <url>/2024-12-03-90d19c862e9c.html</url>
-    <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
-<p>这意味着，即使<code>for range</code>对指针进行了拷贝，你仍然可以通过这个拷贝的指针修改原始结构体的内容。下面是一个例子来说明这一点：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    students := []*Student&#123;</span><br><span class="line">        &#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">20</span>&#125;,</span><br><span class="line">        &#123;Name: <span class="string">&quot;Bob&quot;</span>, Age: <span class="number">22</span>&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for range遍历指针数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        <span class="comment">// 修改指向的结构体的内容</span></span><br><span class="line">        student.Age += <span class="number">1</span> <span class="comment">// 给每个学生的年龄加1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印修改后的students数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Name: %s, Age: %d\n&quot;</span>, student.Name, student.Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，尽管<code>for range</code>对每个<code>*Student</code>指针进行了拷贝，但通过这个拷贝的指针修改<code>Age</code>字段时，修改的是原始<code>Student</code>结构体的内容。因此，当再次遍历<code>students</code>数组时，你会看到每个学生的年龄都已经增加了。</p>
-<p>总结来说，当你使用<code>for range</code>遍历指针数组并修改指向的值时，这些修改会反映在原始数组上，因为指针拷贝仍然指向原始的内存地址。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>【Golang】 函数传入slice无法修改到原slice</title>
     <url>/2025-06-15-f16e0f79fc66.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/permutations/description/">46. 全排列 - 力扣（LeetCode）</a></p>
@@ -3267,6 +3319,20 @@ dfs(root.Right, res)
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifySlice</span><span class="params">(s []<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    s = <span class="built_in">append</span>(s, <span class="number">100</span>) <span class="comment">// 不会影响外部</span></span><br><span class="line">    s[<span class="number">0</span>] = <span class="number">99</span>          <span class="comment">// 会影响外部（修改底层数组）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifySliceByPtr</span><span class="params">(s *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    *s = <span class="built_in">append</span>(*s, <span class="number">100</span>) <span class="comment">// 会影响外部</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    modifySlice(a)</span><br><span class="line">    fmt.Println(a) <span class="comment">// 输出: [99 2 3]</span></span><br><span class="line">    </span><br><span class="line">    modifySliceByPtr(&amp;a)</span><br><span class="line">    fmt.Println(a) <span class="comment">// 输出: [99 2 3 100]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在需要修改切片本身<font color="#ff0000">（如追加元素）</font>并且希望这些修改在函数外部可见时，必须使用指针。这正是你的回溯算法中需要使用 <code>*[][]int</code> 的原因。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Golang】for range 数组指针遍历</title>
+    <url>/2024-12-03-90d19c862e9c.html</url>
+    <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
+<p>这意味着，即使<code>for range</code>对指针进行了拷贝，你仍然可以通过这个拷贝的指针修改原始结构体的内容。下面是一个例子来说明这一点：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    students := []*Student&#123;</span><br><span class="line">        &#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">20</span>&#125;,</span><br><span class="line">        &#123;Name: <span class="string">&quot;Bob&quot;</span>, Age: <span class="number">22</span>&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for range遍历指针数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        <span class="comment">// 修改指向的结构体的内容</span></span><br><span class="line">        student.Age += <span class="number">1</span> <span class="comment">// 给每个学生的年龄加1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印修改后的students数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Name: %s, Age: %d\n&quot;</span>, student.Name, student.Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，尽管<code>for range</code>对每个<code>*Student</code>指针进行了拷贝，但通过这个拷贝的指针修改<code>Age</code>字段时，修改的是原始<code>Student</code>结构体的内容。因此，当再次遍历<code>students</code>数组时，你会看到每个学生的年龄都已经增加了。</p>
+<p>总结来说，当你使用<code>for range</code>遍历指针数组并修改指向的值时，这些修改会反映在原始数组上，因为指针拷贝仍然指向原始的内存地址。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -4080,18 +4146,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>ssh 隧道 端口转发</title>
-    <url>/2024-04-21-29ab33001840.html</url>
-    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
-<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>pycharm配置VPN代理</title>
     <url>/2025-06-08-e7d1013a5402.html</url>
     <content><![CDATA[<p>确定本地VPN的代理端口：</p>
@@ -4102,6 +4156,18 @@ dfs(root.Right, res)
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:  </span><br><span class="line">    response = requests.get(<span class="string">&quot;http://www.youtube.com&quot;</span>)  </span><br><span class="line">    <span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../../imgs/Pasted%20image%2020250609002055.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ssh 隧道 端口转发</title>
+    <url>/2024-04-21-29ab33001840.html</url>
+    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
+<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>工具</category>
@@ -4252,6 +4318,17 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>网站无法访问categories？</title>
+    <url>/2023-05-21-a827bdd2d159.html</url>
+    <content><![CDATA[<p>在package.json中没有放 下边的hexo-generator-category，导致无法生成对应的文件。</p>
+<p><img src="/../../imgs/Pasted%20image%2020230521214536.png"></p>
+<p>可以显示啦<br><img src="/../../imgs/Pasted%20image%2020230521214912.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>波纹</title>
     <url>/2023-04-08-722322c4ddc3.html</url>
     <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
@@ -4263,17 +4340,6 @@ dfs(root.Right, res)
         <tag>摄影</tag>
         <tag>水</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>网站无法访问categories？</title>
-    <url>/2023-05-21-a827bdd2d159.html</url>
-    <content><![CDATA[<p>在package.json中没有放 下边的hexo-generator-category，导致无法生成对应的文件。</p>
-<p><img src="/../../imgs/Pasted%20image%2020230521214536.png"></p>
-<p>可以显示啦<br><img src="/../../imgs/Pasted%20image%2020230521214912.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
   </entry>
   <entry>
     <title>comet 生成临时文件导致磁盘满</title>
@@ -4311,6 +4377,18 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>比赛</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>windows IE代理问题解决</title>
+    <url>/2024-04-05-e1116cf34b00.html</url>
+    <content><![CDATA[<p>CMD <strong>检查系统代理配置</strong>：</p>
+<pre><code>- 通过命令提示符运行`netsh winhttp show proxy`来查看当前的系统代理设置。
+- 如果需要更改系统代理，可以使用`netsh winhttp set proxy`命令进行设置。
+</code></pre>
+]]></content>
+      <categories>
+        <category>网络</category>
       </categories>
   </entry>
   <entry>
@@ -4378,18 +4456,6 @@ dfs(root.Right, res)
 </li>
 </ol>
 <p>结论： Mesh组网通过提供去中心化、自动配置和高度鲁棒的通信基础设施，彻底改变了设备相互连接的方式。Mesh网络能够扩大覆盖范围、提高可靠性并轻松扩展，为各种应用提供了有前途的解决方案。随着技术的不断发，利用Mesh组网的潜力将在塑造无线通信未来方面发挥重要作用。</p>
-]]></content>
-      <categories>
-        <category>网络</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>windows IE代理问题解决</title>
-    <url>/2024-04-05-e1116cf34b00.html</url>
-    <content><![CDATA[<p>CMD <strong>检查系统代理配置</strong>：</p>
-<pre><code>- 通过命令提示符运行`netsh winhttp show proxy`来查看当前的系统代理设置。
-- 如果需要更改系统代理，可以使用`netsh winhttp set proxy`命令进行设置。
-</code></pre>
 ]]></content>
       <categories>
         <category>网络</category>
