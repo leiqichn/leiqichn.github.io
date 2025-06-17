@@ -1,3 +1,16 @@
+
+---
+title: 【Golang】 switch使用
+date: 2025-06-16 23:23:08
+modificationDate: 2025 六月 16日 星期一 23:23:21
+categories: 
+	- Golang
+tags: []
+sticky: []
+published: true
+category_bar: true
+---
+
 在 Go 语言中，`switch` 语句提供了灵活的条件分支控制，相比其他语言有更多特性。以下是详细用法和示例：
 
 ---

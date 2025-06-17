@@ -30,13 +30,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/【Golang】动态规划.md",
+                "file": "source/_posts/Golang/【Golang】 switch使用.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "【Golang】动态规划"
+              "title": "【Golang】 switch使用"
             }
           }
         ],
@@ -120,7 +120,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "语句提供了灵活的条件分支控制",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -161,7 +161,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/【Golang】动态规划.md",
+                "file": "source/_posts/Golang/【Golang】 switch使用.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +171,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "【Golang】动态规划 的反向链接列表"
+              "title": "【Golang】 switch使用 的反向链接列表"
             }
           },
           {
@@ -252,7 +252,7 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "ac8f8670e65ad600",
   "lastOpenFiles": [
     "source/_posts/leetcode/【Golang】动态规划.md",
     "source/_posts/leetcode/【Golang】贪心.md",
