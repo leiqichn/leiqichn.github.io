@@ -14,6 +14,74 @@ category_bar: true
 
 Go 标准库中的 `sort` 包提供了二分查找的功能，主要通过 `sort.Search` 函数实现。下面详细介绍如何使用这个功能。
 
+
+### 二分法通用模板
+
+
+```go
+
+func binarySearch(nums []int, target int) int {
+    left, right := 0, len(nums)-1 // 初始化边界
+    
+    for left <= right { // 终止条件
+        mid := left + (right-left)/2 // 防止溢出
+        
+        if nums[mid] == target {
+            return mid // 找到目标
+        } else if nums[mid] < target {
+            left = mid + 1 // 调整左边界
+        } else {
+            right = mid - 1 // 调整右边界
+        }
+    }
+    
+    return -1 // 未找到
+}
+
+// 寻找左边界变体
+func findLeftBound(nums []int, target int) int {
+    left, right := 0, len(nums)-1
+    res := -1
+    
+    for left <= right {
+        mid := left + (right-left)/2
+        if nums[mid] >= target {
+            right = mid - 1
+        } else {
+            left = mid + 1
+        }
+        
+        if nums[mid] == target {
+            res = mid
+        }
+    }
+    
+    return res
+}
+
+// 寻找右边界变体
+func findRightBound(nums []int, target int) int {
+    left, right := 0, len(nums)-1
+    res := -1
+    
+    for left <= right {
+        mid := left + (right-left)/2
+        if nums[mid] <= target {
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+        
+        if nums[mid] == target {
+            res = mid
+        }
+    }
+    
+    return res
+}
+
+```
+
 ## 1. `sort.Search` 基本用法
 
 `sort.Search` 函数的签名如下：
