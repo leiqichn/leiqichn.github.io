@@ -2,7 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://leiqi.top/shuoshuo/index.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/readings/index.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqi.top/manifest.json</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/link/index.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -47,24 +74,6 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/readings/index.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/shuoshuo/index.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://leiqi.top/photography/portrait/index.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -83,24 +92,6 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/link/index.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/categories/index.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://leiqi.top/economics/index.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -111,33 +102,6 @@
   
   <url>
     <loc>https://leiqi.top/guestbook/index.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/assets/img/Snipaste_2023-03-19_12-43-32.png.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/assets/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2025-05-01-d5e22ea4be8d.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -218,7 +182,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2025-06-08-e7d1013a5402.html</loc>
+    <loc>https://leiqi.top/categories/index.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -227,7 +191,25 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2024-04-21-29ab33001840.html</loc>
+    <loc>https://leiqi.top/assets/img/Snipaste_2023-03-19_12-43-32.png.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/assets/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2023-04-08-722322c4ddc3.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -308,6 +290,15 @@
   </url>
   
   <url>
+    <loc>https://leiqi.top/2024-08-08-efa703ec12d7.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqi.top/2024-08-07-117ef9b8f4c6.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -326,16 +317,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2024-08-08-efa703ec12d7.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2023-04-08-722322c4ddc3.html</loc>
+    <loc>https://leiqi.top/2025-05-01-d5e22ea4be8d.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -371,25 +353,16 @@
   </url>
   
   <url>
+    <loc>https://leiqi.top/2025-05-28-3ec80348e81b.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqi.top/2025-04-13-8c397fc87827.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2024-09-01-ed1bf9078b39.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2024-04-05-d9f9294c39ef.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -407,7 +380,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2025-05-28-3ec80348e81b.html</loc>
+    <loc>https://leiqi.top/2024-09-01-ed1bf9078b39.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -434,7 +407,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-12-30-3a73bdfdd568.html</loc>
+    <loc>https://leiqi.top/2025-06-15-980a140fe20b.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -443,7 +416,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2025-06-15-980a140fe20b.html</loc>
+    <loc>https://leiqi.top/2023-12-30-3a73bdfdd568.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -470,52 +443,25 @@
   </url>
   
   <url>
+    <loc>https://leiqi.top/2025-06-08-e7d1013a5402.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2024-04-21-29ab33001840.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqi.top/2024-06-24-1130f46a1ad4.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2023-05-14-776ea61b62a5.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2023-05-19-2fa443568cc1.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2024-01-06-2b3ad028343c.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2024-01-14-e61755fec3db.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2024-01-22-759654485d5d.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -542,6 +488,15 @@
   </url>
   
   <url>
+    <loc>https://leiqi.top/2025-06-17-e53745bb0899.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqi.top/2024-12-03-90d19c862e9c.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -560,6 +515,15 @@
   </url>
   
   <url>
+    <loc>https://leiqi.top/2024-01-22-93119ce81a1c.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqi.top/2024-11-23-cf0eba4d8369.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -570,15 +534,6 @@
   
   <url>
     <loc>https://leiqi.top/2024-11-23-b80d94088ccd.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2024-01-22-93119ce81a1c.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -641,34 +596,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-10-06-c2afb6383992.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2023-05-22-97adde03f66a.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2023-03-28-da7418525964.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2024-04-16-1150f59f3df6.html</loc>
+    <loc>https://leiqi.top/2024-04-05-d9f9294c39ef.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -678,6 +606,15 @@
   
   <url>
     <loc>https://leiqi.top/2023-05-23-d59f64e0619b.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2023-03-28-da7418525964.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -722,7 +659,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2024-05-10-b1491b9671d6.html</loc>
+    <loc>https://leiqi.top/2023-05-23-7b5e53100757.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -731,7 +668,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-05-23-7b5e53100757.html</loc>
+    <loc>https://leiqi.top/2024-05-10-b1491b9671d6.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -749,7 +686,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-05-25-8fc7b96cd054.html</loc>
+    <loc>https://leiqi.top/2023-05-21-c1aa51f444e0.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -758,7 +695,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-05-21-c1aa51f444e0.html</loc>
+    <loc>https://leiqi.top/2023-05-25-8fc7b96cd054.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -812,15 +749,6 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-07-29-4df215f63090.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://leiqi.top/2024-05-20-1fbf9ee2486f.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -830,7 +758,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-07-09-dda1c4b9508f.html</loc>
+    <loc>https://leiqi.top/2023-07-29-4df215f63090.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -839,7 +767,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-08-07-e74632bdccbf.html</loc>
+    <loc>https://leiqi.top/2023-05-14-776ea61b62a5.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -848,7 +776,34 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2024-01-03-58e186a9065e.html</loc>
+    <loc>https://leiqi.top/2023-05-19-2fa443568cc1.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2024-01-06-2b3ad028343c.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2024-01-14-e61755fec3db.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2024-01-22-759654485d5d.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -929,7 +884,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2024-08-21-64c0a1f316e6.html</loc>
+    <loc>https://leiqi.top/2023-05-23-a419f5d1c6af.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -938,7 +893,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-05-23-a419f5d1c6af.html</loc>
+    <loc>https://leiqi.top/2024-08-21-64c0a1f316e6.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1028,6 +983,33 @@
   </url>
   
   <url>
+    <loc>https://leiqi.top/2023-10-06-c2afb6383992.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2023-05-22-97adde03f66a.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2024-04-16-1150f59f3df6.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqi.top/2025-04-28-84ca2c3d5919.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -1073,7 +1055,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2024-07-23-764a3cd05cde.html</loc>
+    <loc>https://leiqi.top/2024-07-21-3ee37da7ed1c.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1082,7 +1064,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2024-07-21-3ee37da7ed1c.html</loc>
+    <loc>https://leiqi.top/2024-07-23-764a3cd05cde.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1100,7 +1082,25 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-03-18-87649bcaf9cc.html</loc>
+    <loc>https://leiqi.top/2023-07-09-dda1c4b9508f.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2023-08-07-e74632bdccbf.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2024-01-03-58e186a9065e.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1154,24 +1154,6 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2024-05-02-247b79126fb5.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://leiqi.top/2024-05-03-ec16a5fd018e.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://leiqi.top/2024-02-24-4fbd7a88bf6f.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -1199,7 +1181,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2025-06-17-d8f850d3d059.html</loc>
+    <loc>https://leiqi.top/2025-06-17-3927eac04272.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1217,7 +1199,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-06-08-3d1c210a715f.html</loc>
+    <loc>https://leiqi.top/2025-06-15-bd60604455f8.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1226,7 +1208,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2025-06-15-bd60604455f8.html</loc>
+    <loc>https://leiqi.top/2023-06-08-3d1c210a715f.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1253,15 +1235,6 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-05-10-7dfabb45bbc2.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://leiqi.top/2024-05-08-23291165e2d9.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -1271,7 +1244,16 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-09-13-476441b87811.html</loc>
+    <loc>https://leiqi.top/2023-05-10-7dfabb45bbc2.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2023-03-18-87649bcaf9cc.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1281,6 +1263,15 @@
   
   <url>
     <loc>https://leiqi.top/2024-08-11-a8e2c27fed87.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2023-09-13-476441b87811.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1361,15 +1352,6 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/2023-04-20-af074e588287.html</loc>
-    
-    <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://leiqi.top/2023-04-20-89710477a7ed.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -1388,6 +1370,15 @@
   </url>
   
   <url>
+    <loc>https://leiqi.top/2023-04-20-af074e588287.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://leiqi.top/2023-05-10-5e3b5c8e7446.html</loc>
     
     <lastmod>2025-06-17</lastmod>
@@ -1398,6 +1389,24 @@
   
   <url>
     <loc>https://leiqi.top/2024-05-07-c105be0dd846.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2024-05-02-247b79126fb5.html</loc>
+    
+    <lastmod>2025-06-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/2024-05-03-ec16a5fd018e.html</loc>
     
     <lastmod>2025-06-17</lastmod>
     
@@ -1529,14 +1538,14 @@
 
   
   <url>
-    <loc>https://leiqi.top/categories/C/</loc>
+    <loc>https://leiqi.top/categories/Docker/</loc>
     <lastmod>2025-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://leiqi.top/categories/Docker/</loc>
+    <loc>https://leiqi.top/categories/C/</loc>
     <lastmod>2025-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1585,13 +1594,6 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/categories/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2025-06-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://leiqi.top/categories/leetcode/</loc>
     <lastmod>2025-06-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1599,7 +1601,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://leiqi.top/categories/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2025-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1607,6 +1609,13 @@
   
   <url>
     <loc>https://leiqi.top/categories/%E6%91%84%E5%BD%B1/</loc>
+    <lastmod>2025-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/categories/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2025-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
