@@ -59,25 +59,71 @@
       </categories>
   </entry>
   <entry>
-    <title>Go 浮点数次方</title>
-    <url>/2024-12-03-3d026e7b5bec.html</url>
-    <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
-<h3 id="使用math-Pow函数"><a href="#使用math-Pow函数" class="headerlink" title="使用math.Pow函数"></a>使用<code>math.Pow</code>函数</h3><p><code>math.Pow</code>函数的签名如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Pow</span><span class="params">(x, y <span class="type">float64</span>)</span></span> <span class="type">float64</span></span><br></pre></td></tr></table></figure>
-
-<p>这个函数接受两个<code>float64</code>类型的参数：<code>x</code>是底数，<code>y</code>是指数，返回<code>x</code>的<code>y</code>次方的结果。</p>
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>下面是一个使用<code>math.Pow</code>函数的示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 计算2的3次方</span></span><br><span class="line">    result := math.Pow(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;2的3次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算3的2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;3的2次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算10的-2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">10</span>, <span class="number">-2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;10的-2次方是: %v\n&quot;</span>, result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2的3次方是: 8</span><br><span class="line">3的2次方是: 9</span><br><span class="line">10的-2次方是: 0.01</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
-<li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
-</ul>
+    <title>Linux 命令 将前台任务挂到后台运行</title>
+    <url>/2023-03-18-87649bcaf9cc.html</url>
+    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
+<p><strong>第一步：ctrl + z</strong></p>
+<p><strong>第二步：jobs  查看任务id</strong></p>
+<p><strong>第三步： bg %任务id</strong></p>
+<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
 ]]></content>
       <categories>
-        <category>Golang</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 将用户追加到对应用户组</title>
+    <url>/2023-09-17-5141f57450ab.html</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
+<li>将test 添加到GroupA</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">usermod -a -G GroupName UserName</span><br><span class="line"><span class="comment"># 例如将test 追加到GroupA</span></span><br><span class="line">usermod -a -G GroupA <span class="built_in">test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改新建文件的默认权限</li>
+</ol>
+<p>在.bashrc 里添加</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【sed】快速替换当前文件夹下文件中指定内容</title>
+    <url>/2025-01-13-1b5c01477594.html</url>
+    <content><![CDATA[<p>在 Linux 中，可以使用以下命令来实现这个需求：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *</span><br></pre></td></tr></table></figure>
+
+<p>解释一下这个命令：</p>
+<ul>
+<li><code>sed</code> 是流编辑器，用于对文本进行过滤和转换。</li>
+<li><code>-i</code> 选项表示直接修改文件，而不是输出到终端。</li>
+<li><code>&#39;s/hide: true/hide: false/g&#39;</code> 是 sed 的替换命令，其中：<ul>
+<li><code>s</code> 表示替换操作。</li>
+<li><code>hide: true</code> 是要被替换的字符串。</li>
+<li><code>hide: false</code> 是替换后的字符串。</li>
+<li><code>g</code> 表示全局替换，即在每一行中将所有匹配的 <code>hide: true</code> 都替换为 <code>hide: false</code>。</li>
+</ul>
+</li>
+<li><code>*</code> 表示当前文件夹下的所有文件。</li>
+</ul>
+<p>需要注意的是，这个命令会修改当前文件夹下所有文件的内容，包括二进制文件等，可能会导致一些文件损坏。如果只想修改特定类型的文件，可以使用通配符指定文件类型，例如替换当前文件夹下所有 <code>.txt</code> 文件中的内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *.txt</span><br></pre></td></tr></table></figure>
+
+<p>另外，如果当前文件夹下有子文件夹，并且也想修改子文件夹中文件的内容，可以使用 <code>find</code> 命令结合 <code>sed</code> 来实现，例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> &#123;&#125; +</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会递归查找当前文件夹及其子文件夹下的所有文件（<code>-type f</code>），然后对每个文件执行 <code>sed</code> 命令进行替换。</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
       </categories>
   </entry>
   <entry>
@@ -110,6 +156,28 @@
 <li>不使用 <code>make</code> 创建切片时，适用于快速创建切片并根据提供的元素自动确定长度的情况。这种方式更简洁，适合大多数情况。</li>
 </ul>
 <p>无论使用哪种方式创建切片，都可以使用 <code>append</code> 函数来动态增长切片的长度。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Go 浮点数次方</title>
+    <url>/2024-12-03-3d026e7b5bec.html</url>
+    <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
+<h3 id="使用math-Pow函数"><a href="#使用math-Pow函数" class="headerlink" title="使用math.Pow函数"></a>使用<code>math.Pow</code>函数</h3><p><code>math.Pow</code>函数的签名如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Pow</span><span class="params">(x, y <span class="type">float64</span>)</span></span> <span class="type">float64</span></span><br></pre></td></tr></table></figure>
+
+<p>这个函数接受两个<code>float64</code>类型的参数：<code>x</code>是底数，<code>y</code>是指数，返回<code>x</code>的<code>y</code>次方的结果。</p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>下面是一个使用<code>math.Pow</code>函数的示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 计算2的3次方</span></span><br><span class="line">    result := math.Pow(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;2的3次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算3的2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;3的2次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算10的-2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">10</span>, <span class="number">-2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;10的-2次方是: %v\n&quot;</span>, result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2的3次方是: 8</span><br><span class="line">3的2次方是: 9</span><br><span class="line">10的-2次方是: 0.01</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
+<li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
+</ul>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -637,7 +705,7 @@ dfs(root.Right, res)
   </entry>
   <entry>
     <title></title>
-    <url>/2025-06-17-fc658b18e8e3.html</url>
+    <url>/2025-06-17-f2a8de41a3fe.html</url>
     <content><![CDATA[<p>在 Go 语言中，<code>switch</code> 语句提供了灵活的条件分支控制，相比其他语言有更多特性。以下是详细用法和示例：</p>
 <hr>
 <h3 id="1-基础值匹配"><a href="#1-基础值匹配" class="headerlink" title="1. 基础值匹配"></a>1. <strong>基础值匹配</strong></h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line">day := <span class="number">3</span></span><br><span class="line"><span class="keyword">switch</span> day &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Monday&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Tuesday&quot;</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Wednesday&quot;</span>) <span class="comment">// 输出</span></span><br><span class="line"><span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Thursday&quot;</span>)</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    fmt.Println(<span class="string">&quot;Weekend&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1625,96 +1693,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>Linux 命令 将前台任务挂到后台运行</title>
-    <url>/2023-03-18-87649bcaf9cc.html</url>
-    <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
-<p><strong>第一步：ctrl + z</strong></p>
-<p><strong>第二步：jobs  查看任务id</strong></p>
-<p><strong>第三步： bg %任务id</strong></p>
-<p><img src="/../../imgs/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230319125819.png"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 将用户追加到对应用户组</title>
-    <url>/2023-09-17-5141f57450ab.html</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文目的是为了将多个用户设置同组用户，并且同组内用户<strong>新建文件的默认权限</strong>是同组内用户可读写。</p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ol>
-<li>将test 添加到GroupA</li>
-</ol>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">usermod -a -G GroupName UserName</span><br><span class="line"><span class="comment"># 例如将test 追加到GroupA</span></span><br><span class="line">usermod -a -G GroupA <span class="built_in">test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>修改新建文件的默认权限</li>
-</ol>
-<p>在.bashrc 里添加</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">umask</span> 003 // 文件夹具体权限 则为 777 - 003 = 774 （rwxrwxr--） 文件默认权限为 666 - 003 = 663(rw-rw-r--)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【sed】快速替换当前文件夹下文件中指定内容</title>
-    <url>/2025-01-13-1b5c01477594.html</url>
-    <content><![CDATA[<p>在 Linux 中，可以使用以下命令来实现这个需求：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *</span><br></pre></td></tr></table></figure>
-
-<p>解释一下这个命令：</p>
-<ul>
-<li><code>sed</code> 是流编辑器，用于对文本进行过滤和转换。</li>
-<li><code>-i</code> 选项表示直接修改文件，而不是输出到终端。</li>
-<li><code>&#39;s/hide: true/hide: false/g&#39;</code> 是 sed 的替换命令，其中：<ul>
-<li><code>s</code> 表示替换操作。</li>
-<li><code>hide: true</code> 是要被替换的字符串。</li>
-<li><code>hide: false</code> 是替换后的字符串。</li>
-<li><code>g</code> 表示全局替换，即在每一行中将所有匹配的 <code>hide: true</code> 都替换为 <code>hide: false</code>。</li>
-</ul>
-</li>
-<li><code>*</code> 表示当前文件夹下的所有文件。</li>
-</ul>
-<p>需要注意的是，这个命令会修改当前文件夹下所有文件的内容，包括二进制文件等，可能会导致一些文件损坏。如果只想修改特定类型的文件，可以使用通配符指定文件类型，例如替换当前文件夹下所有 <code>.txt</code> 文件中的内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> *.txt</span><br></pre></td></tr></table></figure>
-
-<p>另外，如果当前文件夹下有子文件夹，并且也想修改子文件夹中文件的内容，可以使用 <code>find</code> 命令结合 <code>sed</code> 来实现，例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -<span class="built_in">type</span> f -<span class="built_in">exec</span> sed -i <span class="string">&#x27;s/hide: true/hide: false/g&#x27;</span> &#123;&#125; +</span><br></pre></td></tr></table></figure>
-
-<p>这个命令会递归查找当前文件夹及其子文件夹下的所有文件（<code>-type f</code>），然后对每个文件执行 <code>sed</code> 命令进行替换。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>jupyter</title>
-    <url>/2024-06-21-02cd02e81f22.html</url>
-    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
-<p>用于启动 Jupyter Notebook 服务的一系列命令</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="built_in">tr</span> -dc A-Za-z0-9 | <span class="built_in">head</span> -c16; <span class="built_in">echo</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JUPYTER_TOKEN</span></span><br><span class="line"><span class="built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="variable">$JUPYTER_TOKEN</span> &amp;</span><br><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
-
-<p>这里是每条命令的简要说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888：停止端口为 8888 的 Jupyter Notebook 服务。</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)：生成一个随机的 16 位的 token，用于 Jupyter Notebook 的安全认证。</span><br><span class="line">nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。</span><br><span class="line">jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建glm4-demo python 3.10的虚拟环境</span></span><br><span class="line">conda create --name glm4-demo python=3.10</span><br><span class="line"></span><br><span class="line">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://pytorch.org/">PyTorch</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
-
-<p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-  </entry>
-  <entry>
     <title>三种Python3 判断字典中是否存在对应key的方法</title>
     <url>/2023-10-19-8f51ae9ef5a1.html</url>
     <content><![CDATA[<h1 id="第一种：使用get-方法"><a href="#第一种：使用get-方法" class="headerlink" title="第一种：使用get()方法"></a>第一种：使用get()方法</h1><p> <strong>生成一个字典</strong></p>
@@ -1738,6 +1716,28 @@ dfs(root.Right, res)
 
 <h1 id="补充：生成默认字典（collections-defaultdict）"><a href="#补充：生成默认字典（collections-defaultdict）" class="headerlink" title="补充：生成默认字典（collections.defaultdict）"></a>补充：生成默认字典（<code>collections.defaultdict</code>）</h1><p>使用<code>defaultdict(int)</code>来创建<code>maps</code>，它会自动初始化未存在的键为0，这样你无需手动检查键是否存在。普通的dict() 要判断key 不存在要赋初值。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tupleSameProduct</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        maps = defaultdict(<span class="built_in">int</span>)</span><br><span class="line">        </span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, n):</span><br><span class="line">                product = nums[i] * nums[j]</span><br><span class="line">                ans += maps[product] * <span class="number">4</span></span><br><span class="line">                maps[product] += <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jupyter</title>
+    <url>/2024-06-21-02cd02e81f22.html</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
+<p>用于启动 Jupyter Notebook 服务的一系列命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="built_in">tr</span> -dc A-Za-z0-9 | <span class="built_in">head</span> -c16; <span class="built_in">echo</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JUPYTER_TOKEN</span></span><br><span class="line"><span class="built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="variable">$JUPYTER_TOKEN</span> &amp;</span><br><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
+
+<p>这里是每条命令的简要说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888：停止端口为 8888 的 Jupyter Notebook 服务。</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)：生成一个随机的 16 位的 token，用于 Jupyter Notebook 的安全认证。</span><br><span class="line">nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。</span><br><span class="line">jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建glm4-demo python 3.10的虚拟环境</span></span><br><span class="line">conda create --name glm4-demo python=3.10</span><br><span class="line"></span><br><span class="line">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://pytorch.org/">PyTorch</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
+
+<p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>
 ]]></content>
       <categories>
         <category>Python</category>
@@ -2021,16 +2021,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>git更新仓库地址</title>
-    <url>/2024-07-23-764a3cd05cde.html</url>
-    <content><![CDATA[<p>使用如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git强制拉取远端</title>
     <url>/2023-10-22-9bf76366f18c.html</url>
     <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git reset --hard origin/&lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
@@ -2038,6 +2028,16 @@ dfs(root.Right, res)
 <p>git fetch origin：这个命令会从远程仓库（通常是”origin”，可以根据你的实际情况替换）获取最新的分支信息，但不会合并或应用任何更改到你的本地分支。</p>
 <p>git reset –hard origin&#x2F;<branch_name>：这个命令会将你的本地分支重置为与指定远程分支相同的状态，并且会放弃本地的任何更改。–hard 标志会强制应用这个重置，因此请小心使用，确保你不需要本地的更改。</p>
 <p>这些命令将强制拉取远程分支的最新版本，并且会覆盖本地的任何更改。确保在执行这些命令之前，你没有重要的未提交更改，因为它们将永久丢失。</p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git更新仓库地址</title>
+    <url>/2024-07-23-764a3cd05cde.html</url>
+    <content><![CDATA[<p>使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>git</category>
@@ -2109,6 +2109,55 @@ dfs(root.Right, res)
       <tags>
         <tag>about</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-8c397fc87827.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>Golang list.List 双向链表实现LRU</title>
@@ -3106,17 +3155,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 单调栈</title>
-    <url>/2024-02-24-dd95d981cb94.html</url>
-    <content><![CDATA[<p>单调栈用途不太广泛，只处理一类典型的问题，比如「下一个更大元素」，「上一个更小元素」</p>
-<p>输入一个数组 <code>nums</code>，请你返回一个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nextGreaterElement</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="comment">// 存放答案的数组</span></span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, n)</span><br><span class="line">    <span class="comment">// 倒着往栈里放</span></span><br><span class="line">    s := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- &#123; <span class="comment">// 倒着入栈是为了后边正着出栈</span></span><br><span class="line">        <span class="comment">// 判定个子高矮</span></span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">len</span>(s) &gt; <span class="number">0</span> &amp;&amp; s[<span class="built_in">len</span>(s)<span class="number">-1</span>] &lt;= nums[i] &#123;</span><br><span class="line">            <span class="comment">// 矮个起开，反正也被挡着了。。。</span></span><br><span class="line">            s = s[:<span class="built_in">len</span>(s)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// nums[i] 身后的更大元素</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(s) == <span class="number">0</span> &#123; <span class="comment">// 没有更大的元素</span></span><br><span class="line">            res[i] = <span class="number">-1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res[i] = s[<span class="built_in">len</span>(s)<span class="number">-1</span>] <span class="comment">// 正着出栈</span></span><br><span class="line">        &#125;</span><br><span class="line">        s = <span class="built_in">append</span>(s, nums[i]) <span class="comment">// 当前元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 双指针</title>
     <url>/2024-03-23-84678021105b.html</url>
     <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020240323225412.png"></p>
@@ -3147,6 +3185,17 @@ dfs(root.Right, res)
 
 <p>双指针</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trap</span><span class="params">(height []<span class="type">int</span>)</span></span> (ans <span class="type">int</span>) &#123;</span><br><span class="line">    left, right, preMax, sufMax := <span class="number">0</span>, <span class="built_in">len</span>(height)<span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> left &lt; right &#123;</span><br><span class="line">        preMax = max(preMax, height[left])</span><br><span class="line">        sufMax = max(sufMax, height[right])</span><br><span class="line">        <span class="keyword">if</span> preMax &lt; sufMax &#123;</span><br><span class="line">            ans += preMax - height[left]</span><br><span class="line">            left++</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            ans += sufMax - height[right]</span><br><span class="line">            right--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123; <span class="keyword">if</span> a &lt; b &#123; <span class="keyword">return</span> b &#125;; <span class="keyword">return</span> a &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 单调栈</title>
+    <url>/2024-02-24-dd95d981cb94.html</url>
+    <content><![CDATA[<p>单调栈用途不太广泛，只处理一类典型的问题，比如「下一个更大元素」，「上一个更小元素」</p>
+<p>输入一个数组 <code>nums</code>，请你返回一个等长的结果数组，结果数组中对应索引存储着下一个更大元素，如果没有更大的元素，就存 -1</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nextGreaterElement</span><span class="params">(nums []<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="comment">// 存放答案的数组</span></span><br><span class="line">    res := <span class="built_in">make</span>([]<span class="type">int</span>, n)</span><br><span class="line">    <span class="comment">// 倒着往栈里放</span></span><br><span class="line">    s := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i := n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- &#123; <span class="comment">// 倒着入栈是为了后边正着出栈</span></span><br><span class="line">        <span class="comment">// 判定个子高矮</span></span><br><span class="line">        <span class="keyword">for</span> <span class="built_in">len</span>(s) &gt; <span class="number">0</span> &amp;&amp; s[<span class="built_in">len</span>(s)<span class="number">-1</span>] &lt;= nums[i] &#123;</span><br><span class="line">            <span class="comment">// 矮个起开，反正也被挡着了。。。</span></span><br><span class="line">            s = s[:<span class="built_in">len</span>(s)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// nums[i] 身后的更大元素</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(s) == <span class="number">0</span> &#123; <span class="comment">// 没有更大的元素</span></span><br><span class="line">            res[i] = <span class="number">-1</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            res[i] = s[<span class="built_in">len</span>(s)<span class="number">-1</span>] <span class="comment">// 正着出栈</span></span><br><span class="line">        &#125;</span><br><span class="line">        s = <span class="built_in">append</span>(s, nums[i]) <span class="comment">// 当前元素</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3324,6 +3373,17 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>【BFS DFS通用模板】</title>
+    <url>/2024-01-22-759654485d5d.html</url>
+    <content><![CDATA[<h1 id="深度优先搜索（DFS）通用模板"><a href="#深度优先搜索（DFS）通用模板" class="headerlink" title="深度优先搜索（DFS）通用模板"></a>深度优先搜索（DFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 通用的深度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(node <span class="type">int</span>, visited []<span class="type">bool</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 边界终止条件 </span></span><br><span class="line">	<span class="keyword">if</span> m n &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 终止条件</span></span><br><span class="line">    <span class="keyword">if</span> visited[node] &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理当前节点</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">    visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归处理相邻节点</span></span><br><span class="line">    <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">        dfs(neighbor, visited, graph)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化节点、访问数组等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历所有节点</span></span><br><span class="line">    <span class="keyword">for</span> node := <span class="number">0</span>; node &lt; <span class="built_in">len</span>(graph); node++ &#123;</span><br><span class="line">        <span class="keyword">if</span> !visited[node] &#123;</span><br><span class="line">            dfs(node, visited, graph)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="广度优先搜索（BFS）通用模板"><a href="#广度优先搜索（BFS）通用模板" class="headerlink" title="广度优先搜索（BFS）通用模板"></a>广度优先搜索（BFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 通用的广度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bfs</span><span class="params">(start <span class="type">int</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    queue := []<span class="type">int</span>&#123;start&#125;</span><br><span class="line">    visited := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(graph))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="comment">// 出队列</span></span><br><span class="line">        node := queue[<span class="number">0</span>]</span><br><span class="line">        queue = queue[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理当前节点</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">        visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将相邻节点入队列</span></span><br><span class="line">        <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">            <span class="keyword">if</span> !visited[neighbor] &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, neighbor)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化起始节点、图等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用BFS函数</span></span><br><span class="line">    bfs(start, graph)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算从起点 start 到终点 target 的最近距离</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BFS</span><span class="params">(start Node, target Node)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 核心数据结构</span></span><br><span class="line">    q := <span class="built_in">make</span>([]Node, <span class="number">0</span>)</span><br><span class="line">    <span class="comment">// 避免走回头路</span></span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[Node]<span class="type">bool</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将起点加入队列</span></span><br><span class="line">    q = <span class="built_in">append</span>(q, start)</span><br><span class="line">    visited[start] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(q) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        sz := <span class="built_in">len</span>(q)</span><br><span class="line">        <span class="comment">// 将当前队列中的所有节点向四周扩散</span></span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; sz; i++ &#123;</span><br><span class="line">            cur := q[<span class="number">0</span>]</span><br><span class="line">            q = q[<span class="number">1</span>:]</span><br><span class="line">            <span class="comment">// 划重点：这里判断是否到达终点</span></span><br><span class="line">            <span class="keyword">if</span> cur == target &#123;</span><br><span class="line">                <span class="keyword">return</span> step</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 将 cur 的相邻节点加入队列</span></span><br><span class="line">            <span class="keyword">for</span> _, x := <span class="keyword">range</span> cur.adj() &#123;</span><br><span class="line">                <span class="keyword">if</span> _, ok := visited[x]; !ok &#123;</span><br><span class="line">                    q = <span class="built_in">append</span>(q, x)</span><br><span class="line">                    visited[x] = <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果走到这里，说明在图中没有找到目标节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【Golang】 byte和rune 有什么区别</title>
     <url>/2024-11-23-ff51ba651704.html</url>
     <content><![CDATA[<p>byte 和rune 有什么区别？<br>    在Go语言（Golang）中，byte和rune是两种不同的数据类型，它们在处理文本数据时有不同的用途和含义：</p>
@@ -3331,17 +3391,6 @@ dfs(root.Right, res)
 <p>byte是uint8的别名，即一个无符号的8位整数。<br>在Go语言中，byte通常用于表示字节（byte），即数据的基本单位。<br>byte可以存储任何0到255之间的值，因为一个字节有8位，每位可以是0或1，所以总共有256种可能的值（从0到255）。<br>rune：</p>
 <p>rune是int32的别名，即一个有符号的32位整数。<br>rune在Go语言中用于表示一个Unicode码点（Unicode scalar value），可以表示任何Unicode字符。<br>rune类型用于处理字符串中的单个字符，特别是对于需要表示多字节字符（如中文、日文、韩文等）的Unicode字符非常有用。<br>由于rune是一个32位整数，它可以表示从0到0x10FFFF（即Unicode的最大值）的任何值。<br>区别：</p>
 <p>大小：byte是8位的，而rune是32位的。<br>用途：byte用于处理字节数据，rune用于处理Unicode字符。<br>范围：byte的范围是0到255，而rune的范围是0到0x10FFFF。<br>编码：在字符串中，byte类型表示的是UTF-8编码的字节序列，而rune类型表示的是Unicode码点。例如，一个包含中文字符的字符串在byte切片中可能包含多个字节，但在rune切片中，每个rune值对应一个Unicode字符。<br>在处理文本数据时，选择byte还是rune取决于你的具体需求，如果你需要处理原始字节数据，比如文件I&#x2F;O或者网络传输，可能会使用byte。而如果你需要处理文本数据，特别是涉及到多字节字符集的文本，使用rune会更加方便。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【BFS DFS通用模板】</title>
-    <url>/2024-01-22-759654485d5d.html</url>
-    <content><![CDATA[<h1 id="深度优先搜索（DFS）通用模板"><a href="#深度优先搜索（DFS）通用模板" class="headerlink" title="深度优先搜索（DFS）通用模板"></a>深度优先搜索（DFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 通用的深度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(node <span class="type">int</span>, visited []<span class="type">bool</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 边界终止条件 </span></span><br><span class="line">	<span class="keyword">if</span> m n &#123;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">// 终止条件</span></span><br><span class="line">    <span class="keyword">if</span> visited[node] &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理当前节点</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">    visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归处理相邻节点</span></span><br><span class="line">    <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">        dfs(neighbor, visited, graph)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化节点、访问数组等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历所有节点</span></span><br><span class="line">    <span class="keyword">for</span> node := <span class="number">0</span>; node &lt; <span class="built_in">len</span>(graph); node++ &#123;</span><br><span class="line">        <span class="keyword">if</span> !visited[node] &#123;</span><br><span class="line">            dfs(node, visited, graph)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="广度优先搜索（BFS）通用模板"><a href="#广度优先搜索（BFS）通用模板" class="headerlink" title="广度优先搜索（BFS）通用模板"></a>广度优先搜索（BFS）通用模板</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 通用的广度优先搜索函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bfs</span><span class="params">(start <span class="type">int</span>, graph [][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    queue := []<span class="type">int</span>&#123;start&#125;</span><br><span class="line">    visited := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(graph))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="comment">// 出队列</span></span><br><span class="line">        node := queue[<span class="number">0</span>]</span><br><span class="line">        queue = queue[<span class="number">1</span>:]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理当前节点</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 标记当前节点为已访问</span></span><br><span class="line">        visited[node] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将相邻节点入队列</span></span><br><span class="line">        <span class="keyword">for</span> _, neighbor := <span class="keyword">range</span> graph[node] &#123;</span><br><span class="line">            <span class="keyword">if</span> !visited[neighbor] &#123;</span><br><span class="line">                queue = <span class="built_in">append</span>(queue, neighbor)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主函数中调用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 初始化起始节点、图等</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用BFS函数</span></span><br><span class="line">    bfs(start, graph)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算从起点 start 到终点 target 的最近距离</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BFS</span><span class="params">(start Node, target Node)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 核心数据结构</span></span><br><span class="line">    q := <span class="built_in">make</span>([]Node, <span class="number">0</span>)</span><br><span class="line">    <span class="comment">// 避免走回头路</span></span><br><span class="line">    visited := <span class="built_in">make</span>(<span class="keyword">map</span>[Node]<span class="type">bool</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将起点加入队列</span></span><br><span class="line">    q = <span class="built_in">append</span>(q, start)</span><br><span class="line">    visited[start] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">len</span>(q) &gt; <span class="number">0</span> &#123;</span><br><span class="line">        sz := <span class="built_in">len</span>(q)</span><br><span class="line">        <span class="comment">// 将当前队列中的所有节点向四周扩散</span></span><br><span class="line">        <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; sz; i++ &#123;</span><br><span class="line">            cur := q[<span class="number">0</span>]</span><br><span class="line">            q = q[<span class="number">1</span>:]</span><br><span class="line">            <span class="comment">// 划重点：这里判断是否到达终点</span></span><br><span class="line">            <span class="keyword">if</span> cur == target &#123;</span><br><span class="line">                <span class="keyword">return</span> step</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 将 cur 的相邻节点加入队列</span></span><br><span class="line">            <span class="keyword">for</span> _, x := <span class="keyword">range</span> cur.adj() &#123;</span><br><span class="line">                <span class="keyword">if</span> _, ok := visited[x]; !ok &#123;</span><br><span class="line">                    q = <span class="built_in">append</span>(q, x)</span><br><span class="line">                    visited[x] = <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果走到这里，说明在图中没有找到目标节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3724,6 +3773,55 @@ dfs(root.Right, res)
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用辅助函数判断窗口合法性</span></span><br><span class="line"><span class="keyword">for</span> !isValid(window, condition) &#123;</span><br><span class="line">    <span class="comment">// 收缩窗口</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>掌握这些 Golang 实现的滑动窗口模式和变种，能高效解决 LeetCode 上大部分滑动窗口问题。关键是根据问题特征选择合适的计数器类型和窗口收缩条件。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Golang】贪心</title>
+    <url>/2025-06-17-12ec7942da63.html</url>
+    <content><![CDATA[<h1 id="贪心算法经典题目及Golang实现"><a href="#贪心算法经典题目及Golang实现" class="headerlink" title="贪心算法经典题目及Golang实现"></a>贪心算法经典题目及Golang实现</h1><p>贪心算法是一种在每一步选择中都采取当前状态下最优的选择，从而希望导致全局最优解的算法策略。以下是一些LeetCode上经典的贪心算法题目及其Golang实现，并总结一个通用的解题模板。</p>
+<h2 id="经典贪心题目及Golang实现"><a href="#经典贪心题目及Golang实现" class="headerlink" title="经典贪心题目及Golang实现"></a>经典贪心题目及Golang实现</h2><h3 id="1-分发饼干-455-Assign-Cookies"><a href="#1-分发饼干-455-Assign-Cookies" class="headerlink" title="1. 分发饼干 (455. Assign Cookies)"></a>1. 分发饼干 (455. Assign Cookies)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findContentChildren</span><span class="params">(g []<span class="type">int</span>, s []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    sort.Ints(g)</span><br><span class="line">    sort.Ints(s)</span><br><span class="line">    </span><br><span class="line">    child, cookie := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> child &lt; <span class="built_in">len</span>(g) &amp;&amp; cookie &lt; <span class="built_in">len</span>(s) &#123;</span><br><span class="line">        <span class="keyword">if</span> s[cookie] &gt;= g[child] &#123;</span><br><span class="line">            child++</span><br><span class="line">        &#125;</span><br><span class="line">        cookie++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> child</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-无重叠区间-435-Non-overlapping-Intervals"><a href="#2-无重叠区间-435-Non-overlapping-Intervals" class="headerlink" title="2. 无重叠区间 (435. Non-overlapping Intervals)"></a>2. 无重叠区间 (435. Non-overlapping Intervals)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">eraseOverlapIntervals</span><span class="params">(intervals [][]<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(intervals) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 按结束时间排序</span></span><br><span class="line">    sort.Slice(intervals, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> intervals[i][<span class="number">1</span>] &lt; intervals[j][<span class="number">1</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    count := <span class="number">1</span></span><br><span class="line">    end := intervals[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(intervals); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> intervals[i][<span class="number">0</span>] &gt;= end &#123;</span><br><span class="line">            count++</span><br><span class="line">            end = intervals[i][<span class="number">1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(intervals) - count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-用最少数量的箭引爆气球-452-Minimum-Number-of-Arrows-to-Burst-Balloons"><a href="#3-用最少数量的箭引爆气球-452-Minimum-Number-of-Arrows-to-Burst-Balloons" class="headerlink" title="3. 用最少数量的箭引爆气球 (452. Minimum Number of Arrows to Burst Balloons)"></a>3. 用最少数量的箭引爆气球 (452. Minimum Number of Arrows to Burst Balloons)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findMinArrowShots</span><span class="params">(points [][]<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(points) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    sort.Slice(points, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> points[i][<span class="number">1</span>] &lt; points[j][<span class="number">1</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    arrows := <span class="number">1</span></span><br><span class="line">    pos := points[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(points); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> points[i][<span class="number">0</span>] &gt; pos &#123;</span><br><span class="line">            arrows++</span><br><span class="line">            pos = points[i][<span class="number">1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arrows</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-买卖股票的最佳时机-II-122-Best-Time-to-Buy-and-Sell-Stock-II"><a href="#4-买卖股票的最佳时机-II-122-Best-Time-to-Buy-and-Sell-Stock-II" class="headerlink" title="4. 买卖股票的最佳时机 II (122. Best Time to Buy and Sell Stock II)"></a>4. 买卖股票的最佳时机 II (122. Best Time to Buy and Sell Stock II)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxProfit</span><span class="params">(prices []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    profit := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(prices); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> prices[i] &gt; prices[i<span class="number">-1</span>] &#123;</span><br><span class="line">            profit += prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> profit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-跳跃游戏-55-Jump-Game"><a href="#5-跳跃游戏-55-Jump-Game" class="headerlink" title="5. 跳跃游戏 (55. Jump Game)"></a>5. 跳跃游戏 (55. Jump Game)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canJump</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    farthest := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">        <span class="keyword">if</span> i &gt; farthest &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        farthest = max(farthest, i+nums[i])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-跳跃游戏-II-45-Jump-Game-II"><a href="#6-跳跃游戏-II-45-Jump-Game-II" class="headerlink" title="6. 跳跃游戏 II (45. Jump Game II)"></a>6. 跳跃游戏 II (45. Jump Game II)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">jump</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    jumps, curEnd, farthest := <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        farthest = max(farthest, i+nums[i])</span><br><span class="line">        <span class="keyword">if</span> i == curEnd &#123;</span><br><span class="line">            jumps++</span><br><span class="line">            curEnd = farthest</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> jumps</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-加油站-134-Gas-Station"><a href="#7-加油站-134-Gas-Station" class="headerlink" title="7. 加油站 (134. Gas Station)"></a>7. 加油站 (134. Gas Station)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">canCompleteCircuit</span><span class="params">(gas []<span class="type">int</span>, cost []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    total, curr, start := <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(gas); i++ &#123;</span><br><span class="line">        total += gas[i] - cost[i]</span><br><span class="line">        curr += gas[i] - cost[i]</span><br><span class="line">        <span class="keyword">if</span> curr &lt; <span class="number">0</span> &#123;</span><br><span class="line">            start = i + <span class="number">1</span></span><br><span class="line">            curr = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> total &gt;= <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> start</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-任务调度器-621-Task-Scheduler"><a href="#8-任务调度器-621-Task-Scheduler" class="headerlink" title="8. 任务调度器 (621. Task Scheduler)"></a>8. 任务调度器 (621. Task Scheduler)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">leastInterval</span><span class="params">(tasks []<span class="type">byte</span>, n <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    freq := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">26</span>)</span><br><span class="line">    <span class="keyword">for</span> _, t := <span class="keyword">range</span> tasks &#123;</span><br><span class="line">        freq[t-<span class="string">&#x27;A&#x27;</span>]++</span><br><span class="line">    &#125;</span><br><span class="line">    sort.Ints(freq)</span><br><span class="line">    </span><br><span class="line">    maxFreq := freq[<span class="number">25</span>]</span><br><span class="line">    idleSlots := (maxFreq - <span class="number">1</span>) * n</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">24</span>; i &gt;= <span class="number">0</span> &amp;&amp; freq[i] &gt; <span class="number">0</span>; i-- &#123;</span><br><span class="line">        idleSlots -= min(freq[i], maxFreq<span class="number">-1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> idleSlots &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> idleSlots + <span class="built_in">len</span>(tasks)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(tasks)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="贪心算法通用模板"><a href="#贪心算法通用模板" class="headerlink" title="贪心算法通用模板"></a>贪心算法通用模板</h2><p>虽然贪心算法没有固定的模板，但通常可以遵循以下步骤：</p>
+<ol>
+<li><strong>排序</strong>：很多贪心问题需要对输入数据进行排序</li>
+<li><strong>初始化</strong>：设置必要的变量（如计数器、指针等）</li>
+<li><strong>遍历处理</strong>：遍历排序后的数据，做出贪心选择</li>
+<li><strong>验证结果</strong>：检查是否满足题目要求</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">greedyAlgorithm</span><span class="params">(input []Type)</span></span> ResultType &#123;</span><br><span class="line">    <span class="comment">// 1. 排序（如果需要）</span></span><br><span class="line">    sort.Slice(input, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> compare(input[i], input[j])</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 2. 初始化变量</span></span><br><span class="line">    result := <span class="number">0</span></span><br><span class="line">    current := initialValue</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 3. 遍历处理</span></span><br><span class="line">    <span class="keyword">for</span> _, item := <span class="keyword">range</span> input &#123;</span><br><span class="line">        <span class="keyword">if</span> canMakeGreedyChoice(current, item) &#123;</span><br><span class="line">            <span class="comment">// 做出贪心选择</span></span><br><span class="line">            update(current, item)</span><br><span class="line">            result++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4. 返回结果</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="贪心算法适用场景"><a href="#贪心算法适用场景" class="headerlink" title="贪心算法适用场景"></a>贪心算法适用场景</h2><p>贪心算法通常适用于以下类型的问题：</p>
+<ul>
+<li>可以分解为子问题的问题</li>
+<li>子问题的最优解能递推到最终问题的最优解</li>
+<li>无后效性，即某个状态以后的过程不会影响以前的状态</li>
+</ul>
+<p>常见应用场景包括：</p>
+<ul>
+<li>分配问题（如分发饼干）</li>
+<li>区间问题（如无重叠区间）</li>
+<li>调度问题（如任务调度器）</li>
+<li>股票买卖问题</li>
+<li>跳跃游戏类问题</li>
+</ul>
+<p>贪心算法的关键在于证明贪心策略的正确性，这通常需要数学证明或直观理解。在实际应用中，如果无法确定贪心策略是否正确，可以先尝试，然后验证是否能够得到全局最优解。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -4310,55 +4408,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>更新网页url后，恢复valine网页评论</title>
-    <url>/2025-04-13-8c397fc87827.html</url>
-    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
-<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
-<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-ed1bf9078b39.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
     <title>JetBrians 全家桶设置文件header</title>
     <url>/2023-10-05-7527c8e47a8b.html</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们在写代码的时候一般会在文件的头部添加header，包括copyright 时间，和作者和描述等信息。接下来我们就来看看怎么添加。</p>
@@ -4537,6 +4586,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>ssh 隧道 端口转发</title>
+    <url>/2024-04-21-29ab33001840.html</url>
+    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
+<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>pycharm配置VPN代理</title>
     <url>/2025-06-08-e7d1013a5402.html</url>
     <content><![CDATA[<p>确定本地VPN的代理端口：</p>
@@ -4547,18 +4608,6 @@ dfs(root.Right, res)
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:  </span><br><span class="line">    response = requests.get(<span class="string">&quot;http://www.youtube.com&quot;</span>)  </span><br><span class="line">    <span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../../imgs/Pasted%20image%2020250609002055.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ssh 隧道 端口转发</title>
-    <url>/2024-04-21-29ab33001840.html</url>
-    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
-<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>工具</category>
@@ -4635,6 +4684,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>删除ppt所有批注和备注</title>
+    <url>/2023-04-24-4faf63eb321c.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>免费使用Jetbrain 全家桶-服务器激活码激活软件</title>
     <url>/2023-12-30-6a1e804ab992.html</url>
     <content><![CDATA[<p>众所周知，PyCharm和IDEA Goland CLion 都是Jetbrain 公司的产品,非常适合开发项目.但是这个软件确是收费的,而且还不低. 本文就是介绍一种方法可以免费使用的方法,如果大家有余力的,还是希望购买正版产品.</p>
@@ -4651,18 +4712,6 @@ dfs(root.Right, res)
 <p><img src="/../../imgs/Pasted%20image%2020231230231034.png"><br>例如上边就是 <a href="http://111.231.22.61:1024/">http://111.231.22.61:1024</a></p>
 <p><img src="/../../imgs/Pasted%20image%2020231230231326.png"></p>
 <h1 id="激活成功"><a href="#激活成功" class="headerlink" title="激活成功"></a>激活成功</h1><p>激活成功，请开始愉快的编码吧！<br><img src="/../../imgs/Pasted%20image%2020231230231349.png"></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>删除ppt所有批注和备注</title>
-    <url>/2023-04-24-4faf63eb321c.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020230424222537.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222611.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222527.png"><br><img src="/../../imgs/Pasted%20image%2020230424222515.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230424222511.png"></p>
 ]]></content>
       <categories>
         <category>工具</category>
