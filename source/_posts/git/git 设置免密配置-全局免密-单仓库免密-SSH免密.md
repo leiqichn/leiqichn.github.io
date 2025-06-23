@@ -38,7 +38,7 @@ origin  https://gitee.com/xxx/xxx.git (push)
 全局用户名密码配置
 
 ```text
-git config --global user.name "xxx"
+git config --global user.name "leiqichn"
 git config --global user.email "lei_qi@outlook.com"
 ```
 
@@ -153,7 +153,7 @@ $ rm id_rsa*
 2、执行生成公钥和私钥的命令，生成新的密钥：
 
 ```text
-ssh-keygen -t rsa -C "xxx"
+ssh-keygen -t rsa
 ```
 
 代码参数：
