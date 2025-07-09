@@ -30,13 +30,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
+                "file": "source/_posts/设计模式/Go24种设计模式--创建型模式.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "【重要】设计题提升最佳指南"
+              "title": "Go24种设计模式--创建型模式"
             }
           }
         ],
@@ -120,7 +120,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "动态规划",
+                "query": "tags",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -161,7 +161,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
+                "file": "source/_posts/设计模式/Go24种设计模式--创建型模式.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +171,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "【重要】设计题提升最佳指南 的反向链接列表"
+              "title": "Go24种设计模式--创建型模式 的反向链接列表"
             }
           },
           {
@@ -254,8 +254,11 @@
   },
   "active": "d3d227159ce7968a",
   "lastOpenFiles": [
-    "source/_posts/leetcode/【Golang】动态规划.md",
+    "source/_posts/设计模式/设计模式-工厂方法模式.md",
+    "source/_posts/设计模式/Go24种设计模式--创建型模式.md",
+    "source/_posts/设计模式/设计模式-抽象工厂.md",
     "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
+    "source/_posts/leetcode/【Golang】动态规划.md",
     "source/_posts/工具/Linux任务忘挂后台？bg来救.md",
     "source/imgs/Pasted image 20250628003523.png",
     "source/_posts/工具/pycharm快速跳出括号.md",
@@ -282,9 +285,6 @@
     "source/imgs/Pasted image 20250616235439.png",
     "source/_posts/leetcode/leetcode 406. 根据身高重建队列【贪心】.md",
     "source/_posts/leetcode/leetcode 设计题 Constructor构建.md",
-    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
-    "source/_posts/leetcode/leetcode 每日温度 单调栈.md",
-    "source/_posts/leetcode/Sort slice 多重排序-go语言.md",
     "source/imgs/Pasted image 20250615211811.png",
     "source/imgs/Pasted image 20250615211807.png",
     "source/imgs/Pasted image 20250615200607.png",
