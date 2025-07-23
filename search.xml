@@ -27,6 +27,19 @@
       </categories>
   </entry>
   <entry>
+    <title>C++ 结构化设计</title>
+    <url>/2023-09-13-476441b87811.html</url>
+    <content><![CDATA[<h1 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h1><p><strong>自顶向下的设计 是自顶向下的分解</strong> -&gt; 找子问题 -&gt;公共的问题-&gt;抽出来子问题<br><img src="/../../imgs/Pasted%20image%2020230913232308.png"></p>
+<h1 id="实现阶段"><a href="#实现阶段" class="headerlink" title="实现阶段"></a>实现阶段</h1><p>自顶向上的实现，实现一个一个子问题</p>
+<p>程序由三种基本结构组成，<strong>顺序-分支-循环</strong><img src="/../../imgs/Pasted%20image%2020230913232249.png"></p>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="/../../imgs/Pasted%20image%2020230913232729.png"><br><img src="/../../imgs/Pasted%20image%2020230913232746.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230913232825.png"><br><img src="/../../imgs/Pasted%20image%2020230913232951.png"><br><img src="/../../imgs/Pasted%20image%2020230913232936.png"></p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>docker容器打包成本地压缩镜像并load</title>
     <url>/2024-08-11-a8e2c27fed87.html</url>
     <content><![CDATA[<h1 id="docker容器打包成镜像和压缩"><a href="#docker容器打包成镜像和压缩" class="headerlink" title="docker容器打包成镜像和压缩"></a>docker容器打包成镜像和压缩</h1><p>（1）将容器保存成新的镜像<br>相当于加了一层，使用docker commit</p>
@@ -72,28 +85,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Go 浮点数次方</title>
-    <url>/2024-12-03-3d026e7b5bec.html</url>
-    <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
-<h3 id="使用math-Pow函数"><a href="#使用math-Pow函数" class="headerlink" title="使用math.Pow函数"></a>使用<code>math.Pow</code>函数</h3><p><code>math.Pow</code>函数的签名如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Pow</span><span class="params">(x, y <span class="type">float64</span>)</span></span> <span class="type">float64</span></span><br></pre></td></tr></table></figure>
-
-<p>这个函数接受两个<code>float64</code>类型的参数：<code>x</code>是底数，<code>y</code>是指数，返回<code>x</code>的<code>y</code>次方的结果。</p>
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>下面是一个使用<code>math.Pow</code>函数的示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 计算2的3次方</span></span><br><span class="line">    result := math.Pow(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;2的3次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算3的2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;3的2次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算10的-2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">10</span>, <span class="number">-2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;10的-2次方是: %v\n&quot;</span>, result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2的3次方是: 8</span><br><span class="line">3的2次方是: 9</span><br><span class="line">10的-2次方是: 0.01</span><br></pre></td></tr></table></figure>
-
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
-<li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Go 中是否使用make创建slice的区别</title>
     <url>/2023-10-05-9d3185fd2258.html</url>
     <content><![CDATA[<p>go slice 的make 会创建默认长度 且值为0 的slice </p>
@@ -123,6 +114,28 @@
 <li>不使用 <code>make</code> 创建切片时，适用于快速创建切片并根据提供的元素自动确定长度的情况。这种方式更简洁，适合大多数情况。</li>
 </ul>
 <p>无论使用哪种方式创建切片，都可以使用 <code>append</code> 函数来动态增长切片的长度。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Go 浮点数次方</title>
+    <url>/2024-12-03-3d026e7b5bec.html</url>
+    <content><![CDATA[<p>在Go语言中，计算一个数的几次方可以通过标准库中的<code>math</code>包来实现。<code>math</code>包提供了一个<code>Pow</code>函数，用于计算x的y次方。</p>
+<h3 id="使用math-Pow函数"><a href="#使用math-Pow函数" class="headerlink" title="使用math.Pow函数"></a>使用<code>math.Pow</code>函数</h3><p><code>math.Pow</code>函数的签名如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Pow</span><span class="params">(x, y <span class="type">float64</span>)</span></span> <span class="type">float64</span></span><br></pre></td></tr></table></figure>
+
+<p>这个函数接受两个<code>float64</code>类型的参数：<code>x</code>是底数，<code>y</code>是指数，返回<code>x</code>的<code>y</code>次方的结果。</p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>下面是一个使用<code>math.Pow</code>函数的示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 计算2的3次方</span></span><br><span class="line">    result := math.Pow(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;2的3次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算3的2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;3的2次方是: %v\n&quot;</span>, result)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算10的-2次方</span></span><br><span class="line">    result = math.Pow(<span class="number">10</span>, <span class="number">-2</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;10的-2次方是: %v\n&quot;</span>, result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2的3次方是: 8</span><br><span class="line">3的2次方是: 9</span><br><span class="line">10的-2次方是: 0.01</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><code>math.Pow</code>函数的参数和返回值都是<code>float64</code>类型，因此如果你需要计算整数的次方，可能需要先将整数转换为<code>float64</code>，然后再进行计算。</li>
+<li>如果需要计算整数的整数次方，并且结果也是整数，可以使用循环来实现，或者使用第三方库提供的整数次方函数。</li>
+</ul>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -320,19 +333,6 @@
       </categories>
   </entry>
   <entry>
-    <title>C++ 结构化设计</title>
-    <url>/2023-09-13-476441b87811.html</url>
-    <content><![CDATA[<h1 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h1><p><strong>自顶向下的设计 是自顶向下的分解</strong> -&gt; 找子问题 -&gt;公共的问题-&gt;抽出来子问题<br><img src="/../../imgs/Pasted%20image%2020230913232308.png"></p>
-<h1 id="实现阶段"><a href="#实现阶段" class="headerlink" title="实现阶段"></a>实现阶段</h1><p>自顶向上的实现，实现一个一个子问题</p>
-<p>程序由三种基本结构组成，<strong>顺序-分支-循环</strong><img src="/../../imgs/Pasted%20image%2020230913232249.png"></p>
-<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="/../../imgs/Pasted%20image%2020230913232729.png"><br><img src="/../../imgs/Pasted%20image%2020230913232746.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230913232825.png"><br><img src="/../../imgs/Pasted%20image%2020230913232951.png"><br><img src="/../../imgs/Pasted%20image%2020230913232936.png"></p>
-]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Go语言-byte和rune 有什么区别 byte rune 转为int</title>
     <url>/2023-05-11-257639a12a8e.html</url>
     <content><![CDATA[<p>在 Go 语言中，byte 和 rune 都是用来表示字符类型的数据类型。</p>
@@ -396,28 +396,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Go语言-接口</title>
-    <url>/2023-04-20-89710477a7ed.html</url>
-    <content><![CDATA[<p>在 Go 语言中，接口(interface)是一种类型，它定义了对象的行为规范，即定义了一组方法签名，而不需要指定具体的实现。接口使得不同的类型可以通过实现相同的方法集合来进行互换使用。</p>
-<p>以一个简单的例子来说明接口的作用，在下面这段代码中，接口Printer定义了一个打印的方法Print()：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Printer <span class="keyword">interface</span> &#123;</span><br><span class="line">    Print()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u User)</span></span> Print() &#123;</span><br><span class="line">    fmt.Println(u.name,<span class="string">&quot;我爱加班&quot;</span>)</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printAll</span><span class="params">(ps []Printer)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, p := <span class="keyword">range</span> ps &#123;</span><br><span class="line">        p.Print()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> ps []Printer</span><br><span class="line">    ps = <span class="built_in">append</span>(ps, User&#123;<span class="string">&quot;Alice&quot;</span>&#125;)</span><br><span class="line">    ps = <span class="built_in">append</span>(ps, User&#123;<span class="string">&quot;Bob&quot;</span>&#125;)</span><br><span class="line">    printAll(ps)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在main函数中，我们创建了一个ps的切片，里面放了两个User类型的元素。然后调用printAll打印所有的元素，因为User类型实现了Printer接口中定义的Print() 方法，所以可以将User类型的变量赋值给Print()参数中的表达式，并且调用p.Print() 方法。最终的输出结果为：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">Alice 我爱加班</span><br><span class="line">Bob 我爱加班</span><br></pre></td></tr></table></figure>
-
-<p>在这段代码中，我们通过接口将<strong>User类型</strong>与PrintAll() 函数解耦，这样当我们需要添加<strong>新的类型时，只需要实现Print()方法</strong>即可，而不需要修改<strong>PrintAll()函数实现</strong>。</p>
-<p>比如现在需要有个老板类型，也要打印，我们只要实现老板对应的Print 方法即可，而不用修改<strong>PrintAll()函数实现</strong>。这样我们应该会更好理解接口的使用场景：适用于数量比较多的多个对象，<strong>有相同的特征</strong>，我们将其抽象出来，降低代码耦合性。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Boss <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Boss)</span></span> Print() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;你明天不用来了&quot;</span>)</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-
-<p>其实我们可以将其类比于现实生活中的“合同”或“协议”等，接口定义了一组规则和方法集合，当你实现接口时，就像在签署一个合同，你同意遵守这个合同的规定，将这个合同上的对应部分填上具体的内容，这样就可以按照<strong>合同的规定</strong>进行处理。</p>
-<p>同时，接口的使用，使得代码更加灵活、可扩展和相互独立，降低了耦合性，提高了代码的可维护性和重复利用性。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Go语言删除指定索引元素</title>
     <url>/2023-05-10-741623f2e4fb.html</url>
     <content><![CDATA[<p>在Go语言中，可以使用切片的操作和 append 函数来删除特定索引的元素。</p>
@@ -452,6 +430,28 @@
       <tags>
         <tag>golang</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Go语言-接口</title>
+    <url>/2023-04-20-89710477a7ed.html</url>
+    <content><![CDATA[<p>在 Go 语言中，接口(interface)是一种类型，它定义了对象的行为规范，即定义了一组方法签名，而不需要指定具体的实现。接口使得不同的类型可以通过实现相同的方法集合来进行互换使用。</p>
+<p>以一个简单的例子来说明接口的作用，在下面这段代码中，接口Printer定义了一个打印的方法Print()：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Printer <span class="keyword">interface</span> &#123;</span><br><span class="line">    Print()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u User)</span></span> Print() &#123;</span><br><span class="line">    fmt.Println(u.name,<span class="string">&quot;我爱加班&quot;</span>)</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printAll</span><span class="params">(ps []Printer)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, p := <span class="keyword">range</span> ps &#123;</span><br><span class="line">        p.Print()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> ps []Printer</span><br><span class="line">    ps = <span class="built_in">append</span>(ps, User&#123;<span class="string">&quot;Alice&quot;</span>&#125;)</span><br><span class="line">    ps = <span class="built_in">append</span>(ps, User&#123;<span class="string">&quot;Bob&quot;</span>&#125;)</span><br><span class="line">    printAll(ps)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在main函数中，我们创建了一个ps的切片，里面放了两个User类型的元素。然后调用printAll打印所有的元素，因为User类型实现了Printer接口中定义的Print() 方法，所以可以将User类型的变量赋值给Print()参数中的表达式，并且调用p.Print() 方法。最终的输出结果为：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">Alice 我爱加班</span><br><span class="line">Bob 我爱加班</span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，我们通过接口将<strong>User类型</strong>与PrintAll() 函数解耦，这样当我们需要添加<strong>新的类型时，只需要实现Print()方法</strong>即可，而不需要修改<strong>PrintAll()函数实现</strong>。</p>
+<p>比如现在需要有个老板类型，也要打印，我们只要实现老板对应的Print 方法即可，而不用修改<strong>PrintAll()函数实现</strong>。这样我们应该会更好理解接口的使用场景：适用于数量比较多的多个对象，<strong>有相同的特征</strong>，我们将其抽象出来，降低代码耦合性。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Boss <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b Boss)</span></span> Print() &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;你明天不用来了&quot;</span>)</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
+<p>其实我们可以将其类比于现实生活中的“合同”或“协议”等，接口定义了一组规则和方法集合，当你实现接口时，就像在签署一个合同，你同意遵守这个合同的规定，将这个合同上的对应部分填上具体的内容，这样就可以按照<strong>合同的规定</strong>进行处理。</p>
+<p>同时，接口的使用，使得代码更加灵活、可扩展和相互独立，降低了耦合性，提高了代码的可维护性和重复利用性。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
   </entry>
   <entry>
     <title>goland中debug 无法显示全局变量解决</title>
@@ -494,6 +494,23 @@
       </categories>
   </entry>
   <entry>
+    <title>golang 修改函数传入参数切片需要指针</title>
+    <url>/2024-02-24-4fbd7a88bf6f.html</url>
+    <content><![CDATA[<p>func dfs(root *TreeNode, res *[]int) {<br>    if root &#x3D;&#x3D; nil {<br>        return<br>    }</p>
+<pre><code>*res = append(*res, root.Val)
+dfs(root.Left, res)
+dfs(root.Right, res)
+</code></pre>
+<p>}<br>在这个修正后的版本中，res参数是一个指向切片的指针。这样，我们在函数内部通过*res来访问和修改原始切片的内容，确保递归调用可以正确地将结果收集到原始切片中。</p>
+<p>在 Go 语言中，切片是引用类型。这意味着当你将切片传递给函数时，你实际上传递的是切片的引用（底层数组的地址），而不是切片的副本。因此，对切片的修改会影响到原始切片。</p>
+<p>但是需要注意的是，虽然切片是引用类型，但当你在函数内部对切片进行重新分配（比如使用 append 函数时），你实际上是创建了一个新的切片，而原始切片并没有被修改。这是因为切片是对底层数组的一个视图，对切片的修改可能会导致底层数组的重新分配和复制。</p>
+<p>这就是为什么在你的原始 DFS 函数中，尽管你传递了切片 res 给递归函数，但在递归调用中对 res 进行 append 操作并不会修改原始切片的内容。为了避免这个问题，可以通过传递切片的指针来确保在函数内部对切片的修改可以影响到原始切片。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>golang 中格式化打印单个字符</title>
     <url>/2024-05-03-ec16a5fd018e.html</url>
     <content><![CDATA[<p>在Go语言中，<code>fmt.Printf</code> 函数是用来格式化输出的，它接受一个格式化字符串作为第一个参数，后面跟着相应的参数。格式化字符串中可以包含一些格式化动词（也称为转换说明符），它们定义了如何将相应的参数值转换为字符串并输出。</p>
@@ -506,23 +523,6 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">    bytes := []<span class="type">byte</span>(s)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b := <span class="keyword">range</span> bytes &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Byte %d: %c\n&quot;</span>, i, b)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出:</span></span><br><span class="line">    <span class="comment">// Byte 0: h</span></span><br><span class="line">    <span class="comment">// Byte 1: e</span></span><br><span class="line">    <span class="comment">// Byte 2: l</span></span><br><span class="line">    <span class="comment">// Byte 3: l</span></span><br><span class="line">    <span class="comment">// Byte 4: o</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，我们遍历字符串 <code>&quot;hello&quot;</code> 的字节表示，并使用 <code>%c</code> 格式化每个字节为字符。由于 “hello” 由纯ASCII字符组成，每个字节都是一个完整的字符。如果处理包含多字节UTF-8字符的字符串，单独的字节可能不会形成有效的字符。</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>golang 修改函数传入参数切片需要指针</title>
-    <url>/2024-02-24-4fbd7a88bf6f.html</url>
-    <content><![CDATA[<p>func dfs(root *TreeNode, res *[]int) {<br>    if root &#x3D;&#x3D; nil {<br>        return<br>    }</p>
-<pre><code>*res = append(*res, root.Val)
-dfs(root.Left, res)
-dfs(root.Right, res)
-</code></pre>
-<p>}<br>在这个修正后的版本中，res参数是一个指向切片的指针。这样，我们在函数内部通过*res来访问和修改原始切片的内容，确保递归调用可以正确地将结果收集到原始切片中。</p>
-<p>在 Go 语言中，切片是引用类型。这意味着当你将切片传递给函数时，你实际上传递的是切片的引用（底层数组的地址），而不是切片的副本。因此，对切片的修改会影响到原始切片。</p>
-<p>但是需要注意的是，虽然切片是引用类型，但当你在函数内部对切片进行重新分配（比如使用 append 函数时），你实际上是创建了一个新的切片，而原始切片并没有被修改。这是因为切片是对底层数组的一个视图，对切片的修改可能会导致底层数组的重新分配和复制。</p>
-<p>这就是为什么在你的原始 DFS 函数中，尽管你传递了切片 res 给递归函数，但在递归调用中对 res 进行 append 操作并不会修改原始切片的内容。为了避免这个问题，可以通过传递切片的指针来确保在函数内部对切片的修改可以影响到原始切片。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -1651,84 +1651,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>三种Python3 判断字典中是否存在对应key的方法</title>
-    <url>/2023-10-19-8f51ae9ef5a1.html</url>
-    <content><![CDATA[<h1 id="第一种：使用get-方法"><a href="#第一种：使用get-方法" class="headerlink" title="第一种：使用get()方法"></a>第一种：使用get()方法</h1><p> <strong>生成一个字典</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dict = &#123;&#x27;name&#x27;: &#x27;&#x27;,&#x27;age&#x27;: &#x27;&#x27;,&#x27;sex&#x27;: &#x27;&#x27;&#125;</span><br></pre></td></tr></table></figure>
-
-<p> <strong>打印返回值</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(dict.get(&#x27;name&#x27;))  # 结果返回对应val</span><br><span class="line">print(dict.get(&#x27;id&#x27;))  # 结果返回None</span><br></pre></td></tr></table></figure>
-
-<p>第二种：使用keys()方法</p>
-<p> <strong>生成一个字典</strong><br>dict &#x3D; {‘name’: ‘’,’age’: ‘’,’sex’: ‘’}<br> <strong>判断是否存在，其中dict.keys()是列出字典所有的key</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&#x27;name&#x27; in dict.keys())  # 结果返回True</span><br><span class="line">print(&#x27;id&#x27; in dict.keys())  # 结果返回False</span><br></pre></td></tr></table></figure>
-
-<p>除了使用in也可以使用not in，用于判定这个key不存在</p>
-<p>第三种：使用 in 关键字</p>
-<p><strong>生成一个字典</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dict = &#123;&#x27;name&#x27;: &#x27;&#x27;,&#x27;age&#x27;: &#x27;&#x27;,&#x27;sex&#x27;: &#x27;&#x27;&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong># 判断key是否存在于dict中</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&#x27;name&#x27; in dict)  # 结果返回True</span><br><span class="line">print(&#x27;id&#x27; in dict)  # 结果返回False</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="补充：生成默认字典（collections-defaultdict）"><a href="#补充：生成默认字典（collections-defaultdict）" class="headerlink" title="补充：生成默认字典（collections.defaultdict）"></a>补充：生成默认字典（<code>collections.defaultdict</code>）</h1><p>使用<code>defaultdict(int)</code>来创建<code>maps</code>，它会自动初始化未存在的键为0，这样你无需手动检查键是否存在。普通的dict() 要判断key 不存在要赋初值。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tupleSameProduct</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        maps = defaultdict(<span class="built_in">int</span>)</span><br><span class="line">        </span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, n):</span><br><span class="line">                product = nums[i] * nums[j]</span><br><span class="line">                ans += maps[product] * <span class="number">4</span></span><br><span class="line">                maps[product] += <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>jupyter</title>
-    <url>/2024-06-21-02cd02e81f22.html</url>
-    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
-<p>用于启动 Jupyter Notebook 服务的一系列命令</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="built_in">tr</span> -dc A-Za-z0-9 | <span class="built_in">head</span> -c16; <span class="built_in">echo</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JUPYTER_TOKEN</span></span><br><span class="line"><span class="built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="variable">$JUPYTER_TOKEN</span> &amp;</span><br><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
-
-<p>这里是每条命令的简要说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888：停止端口为 8888 的 Jupyter Notebook 服务。</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)：生成一个随机的 16 位的 token，用于 Jupyter Notebook 的安全认证。</span><br><span class="line">nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。</span><br><span class="line">jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建glm4-demo python 3.10的虚拟环境</span></span><br><span class="line">conda create --name glm4-demo python=3.10</span><br><span class="line"></span><br><span class="line">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://pytorch.org/">PyTorch</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
-
-<p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>本地运行LeetCode的Python代码 调试</title>
-    <url>/2023-10-19-6057db0e071e.html</url>
-    <content><![CDATA[<p>最近打算开始捡起来python, 同时使用多种语言进行leetcode 训练，需要本地的调试环境，恰巧之前记录过如何在本地运行leetcode python。 大家一起来看看吧！看完就可以愉快的在本地coding啦</p>
-<p>要在本地运行LeetCode的Python代码，你可以按照以下步骤创建一个Solution类：</p>
-<p>创建一个Python文件（例如，leetcode_solution.py）来存放你的解决方案。</p>
-<p>导入必要的模块。通常，你需要导入typing中的List，以及可能的其他模块，具体取决于问题的要求。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br></pre></td></tr></table></figure>
-
-<p>创建Solution类并在其中定义问题的解决方案。例如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="comment"># 实现你的解决方案</span></span><br><span class="line">        <span class="comment"># 例如，找到两个数的和等于目标，并返回它们的索引</span></span><br><span class="line">        num_to_index = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            complement = target - num</span><br><span class="line">            <span class="keyword">if</span> complement <span class="keyword">in</span> num_to_index:</span><br><span class="line">                <span class="keyword">return</span> [num_to_index[complement], i]</span><br><span class="line">            num_to_index[num] = i</span><br><span class="line">        <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure>
-
-<p>创建一个main函数来测试你的解决方案。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    solution = Solution()</span><br><span class="line">    <span class="comment"># 调用Solution类的方法进行测试</span></span><br><span class="line">    result = solution.twoSum([<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], <span class="number">9</span>)</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<p>执行你的Python脚本，可以使用命令行或你喜欢的Python集成开发环境（IDE）来运行。例如，使用命令行：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">python leetcode_solution.py</span><br></pre></td></tr></table></figure>
-
-<p>这将运行你的解决方案并输出结果。你可以根据具体问题的要求来定义Solution类中的方法和逻辑，然后在main函数中进行测试。确保将问题的输入参数和返回值类型与LeetCode上的问题描述匹配。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux 命令 将前台任务挂到后台运行</title>
     <url>/2023-03-18-87649bcaf9cc.html</url>
     <content><![CDATA[<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>   很多任务有时不能直接进行挂后台任务（比如需要输入密码的scp 命令），或者一时大意忘了直接挂后台。那么还有一个解救方式。使用<code>bg</code>  挂后台的命令。</p>
@@ -1853,6 +1775,84 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jupyter</title>
+    <url>/2024-06-21-02cd02e81f22.html</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
+<p>用于启动 Jupyter Notebook 服务的一系列命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom <span class="built_in">tr</span> -dc A-Za-z0-9 | <span class="built_in">head</span> -c16; <span class="built_in">echo</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$JUPYTER_TOKEN</span></span><br><span class="line"><span class="built_in">nohup</span> jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=<span class="variable">$JUPYTER_TOKEN</span> &amp;</span><br><span class="line">jupyter-notebook list</span><br></pre></td></tr></table></figure>
+
+<p>这里是每条命令的简要说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter-notebook stop 8888：停止端口为 8888 的 Jupyter Notebook 服务。</span><br><span class="line">JUPYTER_TOKEN=$(&lt; /dev/urandom tr -dc A-Za-z0-9 | head -c16; echo)：生成一个随机的 16 位的 token，用于 Jupyter Notebook 的安全认证。</span><br><span class="line">nohup jupyter-notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root --NotebookApp.token=$JUPYTER_TOKEN &amp;：在后台启动 Jupyter Notebook 服务，允许从任何 IP 地址访问，不打开浏览器，允许 root 用户运行，并设置之前生成的 token。</span><br><span class="line">jupyter-notebook list：列出当前运行的 Jupyter Notebook 服务。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="conda-对应版本"><a href="#conda-对应版本" class="headerlink" title="conda　对应版本"></a>conda　对应版本</h1><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建glm4-demo python 3.10的虚拟环境</span></span><br><span class="line">conda create --name glm4-demo python=3.10</span><br><span class="line"></span><br><span class="line">conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://pytorch.org/">PyTorch</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240721120138.png"></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">conda install python=3.10 pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
+
+<p>指定python版本：<br><img src="/../../imgs/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_1721534117437.png"><br>conda install python&#x3D;3.10 pytorch&#x3D;2.3.0 torchvision torchaudio pytorch-cuda&#x3D;12.1 -c pytorch -c nvidia</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>三种Python3 判断字典中是否存在对应key的方法</title>
+    <url>/2023-10-19-8f51ae9ef5a1.html</url>
+    <content><![CDATA[<h1 id="第一种：使用get-方法"><a href="#第一种：使用get-方法" class="headerlink" title="第一种：使用get()方法"></a>第一种：使用get()方法</h1><p> <strong>生成一个字典</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dict = &#123;&#x27;name&#x27;: &#x27;&#x27;,&#x27;age&#x27;: &#x27;&#x27;,&#x27;sex&#x27;: &#x27;&#x27;&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>打印返回值</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(dict.get(&#x27;name&#x27;))  # 结果返回对应val</span><br><span class="line">print(dict.get(&#x27;id&#x27;))  # 结果返回None</span><br></pre></td></tr></table></figure>
+
+<p>第二种：使用keys()方法</p>
+<p> <strong>生成一个字典</strong><br>dict &#x3D; {‘name’: ‘’,’age’: ‘’,’sex’: ‘’}<br> <strong>判断是否存在，其中dict.keys()是列出字典所有的key</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&#x27;name&#x27; in dict.keys())  # 结果返回True</span><br><span class="line">print(&#x27;id&#x27; in dict.keys())  # 结果返回False</span><br></pre></td></tr></table></figure>
+
+<p>除了使用in也可以使用not in，用于判定这个key不存在</p>
+<p>第三种：使用 in 关键字</p>
+<p><strong>生成一个字典</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dict = &#123;&#x27;name&#x27;: &#x27;&#x27;,&#x27;age&#x27;: &#x27;&#x27;,&#x27;sex&#x27;: &#x27;&#x27;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong># 判断key是否存在于dict中</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">print(&#x27;name&#x27; in dict)  # 结果返回True</span><br><span class="line">print(&#x27;id&#x27; in dict)  # 结果返回False</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="补充：生成默认字典（collections-defaultdict）"><a href="#补充：生成默认字典（collections-defaultdict）" class="headerlink" title="补充：生成默认字典（collections.defaultdict）"></a>补充：生成默认字典（<code>collections.defaultdict</code>）</h1><p>使用<code>defaultdict(int)</code>来创建<code>maps</code>，它会自动初始化未存在的键为0，这样你无需手动检查键是否存在。普通的dict() 要判断key 不存在要赋初值。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tupleSameProduct</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        maps = defaultdict(<span class="built_in">int</span>)</span><br><span class="line">        </span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i+<span class="number">1</span>, n):</span><br><span class="line">                product = nums[i] * nums[j]</span><br><span class="line">                ans += maps[product] * <span class="number">4</span></span><br><span class="line">                maps[product] += <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>本地运行LeetCode的Python代码 调试</title>
+    <url>/2023-10-19-6057db0e071e.html</url>
+    <content><![CDATA[<p>最近打算开始捡起来python, 同时使用多种语言进行leetcode 训练，需要本地的调试环境，恰巧之前记录过如何在本地运行leetcode python。 大家一起来看看吧！看完就可以愉快的在本地coding啦</p>
+<p>要在本地运行LeetCode的Python代码，你可以按照以下步骤创建一个Solution类：</p>
+<p>创建一个Python文件（例如，leetcode_solution.py）来存放你的解决方案。</p>
+<p>导入必要的模块。通常，你需要导入typing中的List，以及可能的其他模块，具体取决于问题的要求。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> <span class="type">List</span></span><br></pre></td></tr></table></figure>
+
+<p>创建Solution类并在其中定义问题的解决方案。例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">twoSum</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], target: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="comment"># 实现你的解决方案</span></span><br><span class="line">        <span class="comment"># 例如，找到两个数的和等于目标，并返回它们的索引</span></span><br><span class="line">        num_to_index = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            complement = target - num</span><br><span class="line">            <span class="keyword">if</span> complement <span class="keyword">in</span> num_to_index:</span><br><span class="line">                <span class="keyword">return</span> [num_to_index[complement], i]</span><br><span class="line">            num_to_index[num] = i</span><br><span class="line">        <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure>
+
+<p>创建一个main函数来测试你的解决方案。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    solution = Solution()</span><br><span class="line">    <span class="comment"># 调用Solution类的方法进行测试</span></span><br><span class="line">    result = solution.twoSum([<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], <span class="number">9</span>)</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>执行你的Python脚本，可以使用命令行或你喜欢的Python集成开发环境（IDE）来运行。例如，使用命令行：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">python leetcode_solution.py</span><br></pre></td></tr></table></figure>
+
+<p>这将运行你的解决方案并输出结果。你可以根据具体问题的要求来定义Solution类中的方法和逻辑，然后在main函数中进行测试。确保将问题的输入参数和返回值类型与LeetCode上的问题描述匹配。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -2142,58 +2142,6 @@ dfs(root.Right, res)
       <categories>
         <category>git</category>
       </categories>
-  </entry>
-  <entry>
-    <title>关于我</title>
-    <url>/2023-03-13-519b5e93f019.html</url>
-    <content><![CDATA[<div style="text-align: center">
-
-<h1 id="欢迎来到我的空间"><a href="#欢迎来到我的空间" class="headerlink" title="欢迎来到我的空间!"></a>欢迎来到我的空间!</h1></div>
-
-<div style="text-align: center">
-
-<h1 id="我的第"><a href="#我的第" class="headerlink" title="我的第 "></a>我的第 <img src="https://profile-counter.glitch.me/leiqitop/count.svg" alt="Visitor Count"></h1></div>
-
-
-<div style="text-align: center">
-
-<h1 id="个朋友！"><a href="#个朋友！" class="headerlink" title="个朋友！"></a>个朋友！</h1></div>
-
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
-<li><p>🌱 毕业于复旦大学</p>
-</li>
-<li><p>⭐ 现就职于华为，软件开发工程师</p>
-</li>
-</ul>
-<h2 id="兴趣-👨🏽‍💻"><a href="#兴趣-👨🏽‍💻" class="headerlink" title="兴趣 👨🏽‍💻"></a>兴趣 👨🏽‍💻</h2><ul>
-<li><p>项目: NLP, Large Language Model, Golang Project, Python Project, Vue Project.</p>
-</li>
-<li><p>编程语言 : Golang, Python, C++&#x2F;C, Java</p>
-</li>
-</ul>
-<h2 id="开源项目经验-👯"><a href="#开源项目经验-👯" class="headerlink" title="开源项目经验 👯"></a>开源项目经验 👯</h2><p><strong>As a manager</strong> ：</p>
-<ul>
-<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
-</ul>
-<p><strong>As a member</strong> :</p>
-<ul>
-<li><p><a href="https://github.com/TianlabTech/PhenoBERT.git">PhenoBERT</a> : <strong>PhenoBERT:</strong> A combined deep learning method for automated recognition of human phenotype ontology</p>
-</li>
-<li><p><a href="">IEEE Journal of Biomedical and Health Informatics（IF&#x3D;5.77）</a> : Reviewer</p>
-</li>
-</ul>
-<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><ul>
-<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
-</ul>
-<h2 id="欢迎志同道合的朋友"><a href="#欢迎志同道合的朋友" class="headerlink" title="欢迎志同道合的朋友~"></a>欢迎志同道合的朋友~</h2><p>本站是为了记录自己学习和生活，欢迎大家多多交流讨论。<br>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
-<h2 id="微信公众号"><a href="#微信公众号" class="headerlink" title="微信公众号"></a>微信公众号</h2><p><img src="/../../imgs/qrcode.jpg"></p>
-]]></content>
-      <categories>
-        <category>关于我</category>
-      </categories>
-      <tags>
-        <tag>about</tag>
-      </tags>
   </entry>
   <entry>
     <title>Golang list.List 双向链表实现LRU</title>
@@ -2826,6 +2774,16 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 226. 翻转二叉树</title>
+    <url>/2023-05-23-d59f64e0619b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Leetcode 222.完全二叉树的节点个数</title>
     <url>/2023-03-28-da7418525964.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/count-complete-tree-nodes/">222. 完全二叉树的节点个数 - 力扣（Leetcode）</a></p>
@@ -2874,16 +2832,6 @@ dfs(root.Right, res)
       <tags>
         <tag>二叉树</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 226. 翻转二叉树</title>
-    <url>/2023-05-23-d59f64e0619b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
@@ -2969,6 +2917,26 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 355设计推特</title>
+    <url>/2024-05-10-b1491b9671d6.html</url>
+    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 376.摆动序列</title>
+    <url>/2023-05-23-7b5e53100757.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 28.找出字符串中第一个匹配项的下标</title>
     <url>/2023-05-31-396a1cd3c61e.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/">28. 找出字符串中第一个匹配项的下标 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230531222721.png"></p>
@@ -2987,26 +2955,6 @@ dfs(root.Right, res)
 
 
 <h1 id="TODO-KMP-算法"><a href="#TODO-KMP-算法" class="headerlink" title="TODO　KMP 算法"></a>TODO　KMP 算法</h1>]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 355设计推特</title>
-    <url>/2024-05-10-b1491b9671d6.html</url>
-    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 376.摆动序列</title>
-    <url>/2023-05-23-7b5e53100757.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -3057,6 +3005,17 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 706. 设计哈希映射 Golang</title>
+    <url>/2023-05-20-e3f31d125f9b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashmap/description/">706. 设计哈希映射 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230520230121.png"><br>使用了go 语言的list.List (双向列表)，具体如何使用请看文章：Go语言-list.List</p>
+<h2 id="使用结构体（非指针）"><a href="#使用结构体（非指针）" class="headerlink" title="使用结构体（非指针）"></a>使用结构体（非指针）</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// func　(this *MyHashMap) hash(key int, value int)&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(entry); et.k == key &#123;</span><br><span class="line">			e.Value = entry&#123;key, value&#125; <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok&amp;&amp; et.k == key&#123;</span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用结构体指针"><a href="#使用结构体指针" class="headerlink" title="使用结构体指针"></a>使用结构体指针</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(*entry); et.k == key &#123; <span class="comment">// 注意list 的元素类型是空接口，需要断言类型</span></span><br><span class="line">			et.v = value  <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝,可以使用其指针</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(&amp;entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok&amp;&amp; et.k == key&#123; <span class="comment">// 可以缩写为if et := e.Value.(entry); et.k == key  用于断言，并找key</span></span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 53.最大子数和</title>
     <url>/2023-05-25-8fc7b96cd054.html</url>
     <content><![CDATA[<blockquote>
@@ -3093,17 +3052,6 @@ dfs(root.Right, res)
         <tag>贪心</tag>
         <tag>动态规划</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>leetcode 706. 设计哈希映射 Golang</title>
-    <url>/2023-05-20-e3f31d125f9b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashmap/description/">706. 设计哈希映射 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230520230121.png"><br>使用了go 语言的list.List (双向列表)，具体如何使用请看文章：Go语言-list.List</p>
-<h2 id="使用结构体（非指针）"><a href="#使用结构体（非指针）" class="headerlink" title="使用结构体（非指针）"></a>使用结构体（非指针）</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// func　(this *MyHashMap) hash(key int, value int)&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(entry); et.k == key &#123;</span><br><span class="line">			e.Value = entry&#123;key, value&#125; <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok&amp;&amp; et.k == key&#123;</span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用结构体指针"><a href="#使用结构体指针" class="headerlink" title="使用结构体指针"></a>使用结构体指针</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(*entry); et.k == key &#123; <span class="comment">// 注意list 的元素类型是空接口，需要断言类型</span></span><br><span class="line">			et.v = value  <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝,可以使用其指针</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(&amp;entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok&amp;&amp; et.k == key&#123; <span class="comment">// 可以缩写为if et := e.Value.(entry); et.k == key  用于断言，并找key</span></span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>leetcode 77.组合【回溯】</title>
@@ -3238,28 +3186,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 最大深度和最小深度</title>
-    <url>/2023-07-29-4df215f63090.html</url>
-    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230729235323.png"><br><a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/description/">111. 二叉树的最小深度 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230729235305.png"></p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>深度 是指从根节点到该节点的距离（节点数量）<br>高度 是指从该节点到叶子节点的角力（节点数量）</p>
-<p><strong>最大深度</strong> 可以通过迭代法，计算总共有多少层。 可以使用递归分治的思想，1 + maxDepth(左子树) + maxDepth(右子树)<br><strong>最小子树</strong> 其实和最大深度类似，但是这里要注意的是，不能直接套用最大深度的代码。最小子树的要求是，到叶子节点的距离。而上边最大深度没有这个要求。所以要对一侧子树为空的情况需要单独讨论。以下是代码实现：</p>
-<h1 id="最大深度"><a href="#最大深度" class="headerlink" title="最大深度"></a>最大深度</h1><h2 id="递归分治"><a href="#递归分治" class="headerlink" title="递归分治"></a>递归分治</h2><p>后序遍历 需要调用自生函数，需要严格按照定义调用递归。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := maxDepth(root.Right)</span><br><span class="line">    leftMaxDepth := maxDepth(root.Left)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + max(rightMaxDepth,leftMaxDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="迭代-层序遍历"><a href="#迭代-层序遍历" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="最小深度"><a href="#最小深度" class="headerlink" title="最小深度"></a>最小深度</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>后序遍历</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最小深度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := minDepth(root.Right)</span><br><span class="line"></span><br><span class="line">    leftMaxDepth := minDepth(root.Left)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意 最小深度是要到叶子节点的距离，对于一侧子树为空的情况需要单独讨论</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &amp;&amp; root.Left !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftMaxDepth <span class="comment">// 注意前面已经计算了rightMin 后边就直接调用这个函数， 不要再写个递归函数，否则会超时。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightMaxDepth</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(rightMaxDepth,leftMaxDepth)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="迭代-层序遍历-1"><a href="#迭代-层序遍历-1" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> top.Right == <span class="literal">nil</span> &amp;&amp; top.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> depth + <span class="number">1</span> <span class="comment">// 当前节点也算哦</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 每日温度 单调栈</title>
     <url>/2024-05-20-1fbf9ee2486f.html</url>
     <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020250615183912.png"></p>
@@ -3316,6 +3242,28 @@ dfs(root.Right, res)
 
 
 <p>从「维护单调性」的角度上来说，单调队列和单调栈是一样的，一个弹出队尾元素，另一个弹出栈顶元素。在单调栈的基础上，单调队列多了一个「移除队首」的操作，这类似滑动窗口移动左指针 left 的过程。所以从某种程度上来说，单调队列 &#x3D; 单调栈 + 滑动窗口。<br><img src="/../../imgs/Pasted%20image%2020250615211811.png"></p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 最大深度和最小深度</title>
+    <url>/2023-07-29-4df215f63090.html</url>
+    <content><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/">104. 二叉树的最大深度 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230729235323.png"><br><a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/description/">111. 二叉树的最小深度 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020230729235305.png"></p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>深度 是指从根节点到该节点的距离（节点数量）<br>高度 是指从该节点到叶子节点的角力（节点数量）</p>
+<p><strong>最大深度</strong> 可以通过迭代法，计算总共有多少层。 可以使用递归分治的思想，1 + maxDepth(左子树) + maxDepth(右子树)<br><strong>最小子树</strong> 其实和最大深度类似，但是这里要注意的是，不能直接套用最大深度的代码。最小子树的要求是，到叶子节点的距离。而上边最大深度没有这个要求。所以要对一侧子树为空的情况需要单独讨论。以下是代码实现：</p>
+<h1 id="最大深度"><a href="#最大深度" class="headerlink" title="最大深度"></a>最大深度</h1><h2 id="递归分治"><a href="#递归分治" class="headerlink" title="递归分治"></a>递归分治</h2><p>后序遍历 需要调用自生函数，需要严格按照定义调用递归。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := maxDepth(root.Right)</span><br><span class="line">    leftMaxDepth := maxDepth(root.Left)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + max(rightMaxDepth,leftMaxDepth)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="迭代-层序遍历"><a href="#迭代-层序遍历" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最大深度</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="最小深度"><a href="#最小深度" class="headerlink" title="最小深度"></a>最小深度</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>后序遍历</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义：输入根节点，返回这棵二叉树的最小深度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    rightMaxDepth := minDepth(root.Right)</span><br><span class="line"></span><br><span class="line">    leftMaxDepth := minDepth(root.Left)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意 最小深度是要到叶子节点的距离，对于一侧子树为空的情况需要单独讨论</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> root.Right == <span class="literal">nil</span> &amp;&amp; root.Left !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + leftMaxDepth <span class="comment">// 注意前面已经计算了rightMin 后边就直接调用这个函数， 不要再写个递归函数，否则会超时。</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> root.Left == <span class="literal">nil</span> &amp;&amp; root.Right !=<span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + rightMaxDepth</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + min(rightMaxDepth,leftMaxDepth)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="迭代-层序遍历-1"><a href="#迭代-层序遍历-1" class="headerlink" title="迭代 层序遍历"></a>迭代 层序遍历</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDepth</span><span class="params">(root *TreeNode)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	depth := <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">	queue := []*TreeNode&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	queue = <span class="built_in">append</span>(queue,root)</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123; <span class="comment">// queue 不为空的时候</span></span><br><span class="line">		size := <span class="built_in">len</span>(queue)</span><br><span class="line">		<span class="keyword">for</span> i:=<span class="number">0</span>;i &lt;size ;i++ &#123;<span class="comment">// 遍历一层</span></span><br><span class="line">			top := queue[<span class="number">0</span>]</span><br><span class="line">			queue = queue[<span class="number">1</span>:] <span class="comment">// 取最上层元素，并切掉该元素</span></span><br><span class="line">			<span class="keyword">if</span> top.Right != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Right)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> top.Left != <span class="literal">nil</span> &#123;</span><br><span class="line">				queue = <span class="built_in">append</span>(queue,top.Left)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> top.Right == <span class="literal">nil</span> &amp;&amp; top.Left == <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> depth + <span class="number">1</span> <span class="comment">// 当前节点也算哦</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">        depth++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> depth</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3962,30 +3910,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【刨根问底】为什么Itoa代表整型转化为字符串，为什么不是ItoSting</title>
-    <url>/2024-11-23-cf0eba4d8369.html</url>
-    <content><![CDATA[<p>确实，如果我们按照缩写的逻辑来看，<code>Itos</code>（Integer to String）可能更直观地表达了<code>Itoa</code>函数的功能，即把整数转换为字符串。</p>
-<p>然而，<code>Itoa</code>这个名称的由来实际上与历史和传统有关。在计算机科学和编程语言的历史中，<code>Itoa</code>这个术语已经被广泛接受和使用。以下是一些可能的原因：</p>
-<ol>
-<li><p><strong>历史原因</strong>：<code>Itoa</code>这个名称可能起源于早期的编程语言和库，当时ASCII码（American Standard Code for Information Interchange）被广泛使用。因此，<code>Itoa</code>（Integer to ASCII）这个名字被保留下来，以表示将整数转换为其对应的ASCII字符表示。</p>
-</li>
-<li><p><strong>约定俗成</strong>：在编程社区中，<code>Itoa</code>已经成为一个广泛认可的术语。改变它可能会引起混淆，因为许多开发者已经习惯了这个名字。</p>
-</li>
-<li><p><strong>ASCII与字符串的关系</strong>：虽然现代编程语言中字符串通常以Unicode表示，但在许多情况下，整数的ASCII表示和字符串表示是相同的。例如，数字<code>123</code>的ASCII表示和字符串表示都是<code>&quot;123&quot;</code>。因此，<code>Itoa</code>这个名字仍然适用。</p>
-</li>
-<li><p><strong>简洁性</strong>：<code>Itoa</code>这个名称比较简洁，易于记忆。如果使用<code>Itos</code>，虽然直观，但可能不如<code>Itoa</code>简洁。</p>
-</li>
-</ol>
-<p><code>Itoa</code>这个名字更多是基于历史和传统，而不是严格的缩写逻辑。尽管<code>Itos</code>可能更直观地表示整数到字符串的转换，但<code>Itoa</code>已经成为一个广泛接受和使用的术语。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>刨根问底</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【刨根问底】创建slice是否填第二个参数0的区别</title>
     <url>/2024-11-23-b80d94088ccd.html</url>
     <content><![CDATA[<p>在Go语言中，创建切片（slice）时使用<code>make</code>函数有两种常见的方式，它们之间有细微的差别：</p>
@@ -4031,6 +3955,30 @@ dfs(root.Right, res)
       <categories>
         <category>leetcode</category>
       </categories>
+  </entry>
+  <entry>
+    <title>【刨根问底】为什么Itoa代表整型转化为字符串，为什么不是ItoSting</title>
+    <url>/2024-11-23-cf0eba4d8369.html</url>
+    <content><![CDATA[<p>确实，如果我们按照缩写的逻辑来看，<code>Itos</code>（Integer to String）可能更直观地表达了<code>Itoa</code>函数的功能，即把整数转换为字符串。</p>
+<p>然而，<code>Itoa</code>这个名称的由来实际上与历史和传统有关。在计算机科学和编程语言的历史中，<code>Itoa</code>这个术语已经被广泛接受和使用。以下是一些可能的原因：</p>
+<ol>
+<li><p><strong>历史原因</strong>：<code>Itoa</code>这个名称可能起源于早期的编程语言和库，当时ASCII码（American Standard Code for Information Interchange）被广泛使用。因此，<code>Itoa</code>（Integer to ASCII）这个名字被保留下来，以表示将整数转换为其对应的ASCII字符表示。</p>
+</li>
+<li><p><strong>约定俗成</strong>：在编程社区中，<code>Itoa</code>已经成为一个广泛认可的术语。改变它可能会引起混淆，因为许多开发者已经习惯了这个名字。</p>
+</li>
+<li><p><strong>ASCII与字符串的关系</strong>：虽然现代编程语言中字符串通常以Unicode表示，但在许多情况下，整数的ASCII表示和字符串表示是相同的。例如，数字<code>123</code>的ASCII表示和字符串表示都是<code>&quot;123&quot;</code>。因此，<code>Itoa</code>这个名字仍然适用。</p>
+</li>
+<li><p><strong>简洁性</strong>：<code>Itoa</code>这个名称比较简洁，易于记忆。如果使用<code>Itos</code>，虽然直观，但可能不如<code>Itoa</code>简洁。</p>
+</li>
+</ol>
+<p><code>Itoa</code>这个名字更多是基于历史和传统，而不是严格的缩写逻辑。尽管<code>Itos</code>可能更直观地表示整数到字符串的转换，但<code>Itoa</code>已经成为一个广泛接受和使用的术语。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>刨根问底</tag>
+      </tags>
   </entry>
   <entry>
     <title>【基础知识】符号整数和非符号整数</title>
@@ -4454,58 +4402,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>链表总结</title>
-    <url>/2023-06-24-42b41b131ba0.html</url>
-    <content><![CDATA[<h1 id="链表的合并"><a href="#链表的合并" class="headerlink" title="链表的合并"></a>链表的合并</h1><ul>
-<li>虚拟头节点</li>
-<li>拉拉链 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeTwoLists</span><span class="params">(l1 *ListNode, l2 *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 虚拟头结点</span></span><br><span class="line">    dummy := &amp;ListNode&#123;<span class="number">-1</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    p := dummy</span><br><span class="line">    p1 := l1</span><br><span class="line">    p2 := l2</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> p1 != <span class="literal">nil</span> &amp;&amp; p2 != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="comment">// 比较 p1 和 p2 两个指针</span></span><br><span class="line">        <span class="comment">// 将值较小的的节点接到 p 指针</span></span><br><span class="line">        <span class="keyword">if</span> p1.Val &gt; p2.Val &#123;</span><br><span class="line">            p.Next = p2</span><br><span class="line">            p2 = p2.Next</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            p.Next = p1</span><br><span class="line">            p1 = p1.Next</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// p 指针不断前进</span></span><br><span class="line">        p = p.Next</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> p1 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p.Next = p1</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> p2 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p.Next = p2</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="链表的拆分"><a href="#链表的拆分" class="headerlink" title="链表的拆分"></a>链表的拆分</h1><ul>
-<li>初始化两个链表，分别添加</li>
-<li>合并前 记得 将p.next 置为空，防止后边p1.next 还挂着p.next</li>
-<li>合并</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">partition</span><span class="params">(head *ListNode, x <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 存放小于 x 的链表的虚拟头结点</span></span><br><span class="line">    dummy1 := &amp;ListNode&#123;<span class="number">-1</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    <span class="comment">// 存放大于等于 x 的链表的虚拟头结点</span></span><br><span class="line">    dummy2 := &amp;ListNode&#123;<span class="number">-1</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    <span class="comment">// p1, p2 指针负责生成结果链表</span></span><br><span class="line">    p1, p2 := dummy1, dummy2</span><br><span class="line">    <span class="comment">// p 负责遍历原链表，类似合并两个有序链表的逻辑</span></span><br><span class="line">    <span class="comment">// 这里是将一个链表分解成两个链表</span></span><br><span class="line">    p := head</span><br><span class="line">    <span class="keyword">for</span> p != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> p.Val &gt;= x &#123;</span><br><span class="line">            p2.Next = p</span><br><span class="line">            p2 = p2.Next</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            p1.Next = p</span><br><span class="line">            p1 = p1.Next</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 断开原链表中的每个节点的 next 指针</span></span><br><span class="line">        temp := p.Next</span><br><span class="line">        p.Next = <span class="literal">nil</span></span><br><span class="line">        p = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 连接两个链表</span></span><br><span class="line">    p1.Next = dummy2.Next</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dummy1.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="k-链表合并"><a href="#k-链表合并" class="headerlink" title="k 链表合并"></a>k 链表合并</h1><ul>
-<li>最小堆 go语言的实现</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> ListNode <span class="keyword">struct</span> &#123;</span><br><span class="line">    Val <span class="type">int</span></span><br><span class="line">    Next *ListNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeKLists</span><span class="params">(lists []*ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lists) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 虚拟头结点</span></span><br><span class="line">    dummy := &amp;ListNode&#123;<span class="number">-1</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    p := dummy</span><br><span class="line">    <span class="comment">// 优先级队列，最小堆</span></span><br><span class="line">    pq := <span class="built_in">make</span>(PriorityQueue, <span class="number">0</span>)</span><br><span class="line">    heap.Init(&amp;pq)</span><br><span class="line">    <span class="comment">// 将 k 个链表的头结点加入最小堆</span></span><br><span class="line">    <span class="keyword">for</span> _, head := <span class="keyword">range</span> lists &#123;</span><br><span class="line">        <span class="keyword">if</span> head != <span class="literal">nil</span> &#123;</span><br><span class="line">            heap.Push(&amp;pq, head)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> pq.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="comment">// 获取最小节点，接到结果链表中</span></span><br><span class="line">        node := heap.Pop(&amp;pq).(*ListNode)</span><br><span class="line">        p.Next = node</span><br><span class="line">        <span class="keyword">if</span> node.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">            heap.Push(&amp;pq, node.Next)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// p 指针不断前进</span></span><br><span class="line">        p = p.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PriorityQueue []*ListNode</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Len() <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(pq)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> pq[i].Val &lt; pq[j].Val</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Swap(i, j <span class="type">int</span>) &#123;</span><br><span class="line">    pq[i], pq[j] = pq[j], pq[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    node := x.(*ListNode)</span><br><span class="line">    *pq = <span class="built_in">append</span>(*pq, node)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *pq</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    node := old[n<span class="number">-1</span>]</span><br><span class="line">    *pq = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="倒数K链表"><a href="#倒数K链表" class="headerlink" title="倒数K链表"></a>倒数K链表</h1><ul>
-<li>n 是包含nil 的</li>
-<li>一个fast 去探路，先走k步</li>
-<li>slow 和fast 一起走</li>
-<li>当fast为nil 时，到达k ,赋值为next.next 即可<br><img src="/../../imgs/Pasted%20image%2020230625002218.png"></li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 虚拟头结点</span></span><br><span class="line">    dummy := &amp;ListNode&#123;<span class="number">-1</span>, head&#125;</span><br><span class="line">    <span class="comment">// 删除倒数第 n 个，要先找倒数第 n + 1 个节点</span></span><br><span class="line">    x := findFromEnd(dummy, n + <span class="number">1</span>)</span><br><span class="line">    <span class="comment">// 删掉倒数第 n 个节点</span></span><br><span class="line">    x.Next = x.Next.Next</span><br><span class="line">    <span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 返回链表的倒数第 k 个节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findFromEnd</span><span class="params">(head *ListNode, k <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    p1 := head</span><br><span class="line">    <span class="comment">// p1 先走 k 步</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; k; i++ &#123;</span><br><span class="line">        p1 = p1.Next</span><br><span class="line">    &#125;</span><br><span class="line">    p2 := head</span><br><span class="line">    <span class="comment">// p1 和 p2 同时走 n - k 步</span></span><br><span class="line">    <span class="keyword">for</span> p1 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p1 = p1.Next</span><br><span class="line">        p2 = p2.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// p2 现在指向第 n - k + 1 个节点，即倒数第 k 个节点</span></span><br><span class="line">    <span class="keyword">return</span> p2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="倒数K链表移除"><a href="#倒数K链表移除" class="headerlink" title="倒数K链表移除"></a>倒数K链表移除</h1><p>复用上边的代码，找到倒数x&#x3D;k+1, 然后赋值x.next &#x3D; x.next.next 即可</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 虚拟头结点</span></span><br><span class="line">    dummy := &amp;ListNode&#123;<span class="number">-1</span>, head&#125;</span><br><span class="line">    <span class="comment">// 删除倒数第 n 个，要先找倒数第 n + 1 个节点</span></span><br><span class="line">    x := findFromEnd(dummy, n + <span class="number">1</span>)</span><br><span class="line">    <span class="comment">// 删掉倒数第 n 个节点</span></span><br><span class="line">    x.next = x.next.next</span><br><span class="line">    <span class="keyword">return</span> dummy.next</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findFromEnd</span><span class="params">(head *ListNode, k <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 代码见上文</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="移除中间链表"><a href="#移除中间链表" class="headerlink" title="移除中间链表"></a>移除中间链表</h1><p><a href="https://leetcode.cn/problems/middle-of-the-linked-list/">876. 链表的中间结点 - 力扣（LeetCode）</a></p>
-<ul>
-<li>slow 走一步，fast走两步</li>
-<li>fast nil，slow 为中间<br><strong>每当慢指针 <code>slow</code> 前进一步，快指针 <code>fast</code> 就前进两步，这样，当 <code>fast</code> 走到链表末尾时，<code>slow</code> 就指向了链表中点</strong>。</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">middleNode</span><span class="params">(head *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 快慢指针初始化指向 head</span></span><br><span class="line">    slow, fast := head, head</span><br><span class="line">    <span class="comment">// 快指针走到末尾时停止</span></span><br><span class="line">    <span class="comment">// for fast.Next != nil &amp;&amp; fast.Next.Next != nil &#123;// 这样奇数的时候会在中点的前一步</span></span><br><span class="line">    <span class="keyword">for</span> fast!= <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span>&#123; <span class="comment">// 应该修改为这个，slow 会停在中点右边第二个部分</span></span><br><span class="line">        <span class="comment">// 慢指针走一步，快指针走两步</span></span><br><span class="line">        slow = slow.Next</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 慢指针指向中点</span></span><br><span class="line">    <span class="keyword">return</span> slow</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="判断链表是否成环"><a href="#判断链表是否成环" class="headerlink" title="判断链表是否成环"></a>判断链表是否成环</h1><ul>
-<li>slow 走一步，fast走两步</li>
-<li>fast 和slow 相遇则成环，fast 遇到nil 则不成环。</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="comment">// 快慢指针初始化指向 head</span></span><br><span class="line">    slow, fast := head, head</span><br><span class="line">    <span class="comment">// 快指针走到末尾时停止</span></span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="comment">// 慢指针走一步，快指针走两步</span></span><br><span class="line">        slow = slow.Next</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        <span class="comment">// 快慢指针相遇，说明含有环</span></span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 不包含环</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>labuladong</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>闭包介绍</title>
     <url>/2025-05-28-3ec80348e81b.html</url>
     <content><![CDATA[<h3 id="为什么闭包能共享变量-pre？"><a href="#为什么闭包能共享变量-pre？" class="headerlink" title="为什么闭包能共享变量 pre？"></a>为什么闭包能共享变量 <code>pre</code>？</h3><p>在提供的代码中，闭包能够共享变量 <code>pre</code> 的关键在于 <strong>词法作用域（Lexical Scoping）</strong> 和 <strong>闭包捕获变量</strong> 的特性：</p>
@@ -4601,6 +4497,110 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>链表总结</title>
+    <url>/2023-06-24-42b41b131ba0.html</url>
+    <content><![CDATA[<h1 id="链表的合并"><a href="#链表的合并" class="headerlink" title="链表的合并"></a>链表的合并</h1><ul>
+<li>虚拟头节点</li>
+<li>拉拉链 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeTwoLists</span><span class="params">(l1 *ListNode, l2 *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 虚拟头结点</span></span><br><span class="line">    dummy := &amp;ListNode&#123;<span class="number">-1</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    p := dummy</span><br><span class="line">    p1 := l1</span><br><span class="line">    p2 := l2</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> p1 != <span class="literal">nil</span> &amp;&amp; p2 != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="comment">// 比较 p1 和 p2 两个指针</span></span><br><span class="line">        <span class="comment">// 将值较小的的节点接到 p 指针</span></span><br><span class="line">        <span class="keyword">if</span> p1.Val &gt; p2.Val &#123;</span><br><span class="line">            p.Next = p2</span><br><span class="line">            p2 = p2.Next</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            p.Next = p1</span><br><span class="line">            p1 = p1.Next</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// p 指针不断前进</span></span><br><span class="line">        p = p.Next</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> p1 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p.Next = p1</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> p2 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p.Next = p2</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="链表的拆分"><a href="#链表的拆分" class="headerlink" title="链表的拆分"></a>链表的拆分</h1><ul>
+<li>初始化两个链表，分别添加</li>
+<li>合并前 记得 将p.next 置为空，防止后边p1.next 还挂着p.next</li>
+<li>合并</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">partition</span><span class="params">(head *ListNode, x <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 存放小于 x 的链表的虚拟头结点</span></span><br><span class="line">    dummy1 := &amp;ListNode&#123;<span class="number">-1</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    <span class="comment">// 存放大于等于 x 的链表的虚拟头结点</span></span><br><span class="line">    dummy2 := &amp;ListNode&#123;<span class="number">-1</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    <span class="comment">// p1, p2 指针负责生成结果链表</span></span><br><span class="line">    p1, p2 := dummy1, dummy2</span><br><span class="line">    <span class="comment">// p 负责遍历原链表，类似合并两个有序链表的逻辑</span></span><br><span class="line">    <span class="comment">// 这里是将一个链表分解成两个链表</span></span><br><span class="line">    p := head</span><br><span class="line">    <span class="keyword">for</span> p != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> p.Val &gt;= x &#123;</span><br><span class="line">            p2.Next = p</span><br><span class="line">            p2 = p2.Next</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            p1.Next = p</span><br><span class="line">            p1 = p1.Next</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 断开原链表中的每个节点的 next 指针</span></span><br><span class="line">        temp := p.Next</span><br><span class="line">        p.Next = <span class="literal">nil</span></span><br><span class="line">        p = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 连接两个链表</span></span><br><span class="line">    p1.Next = dummy2.Next</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dummy1.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="k-链表合并"><a href="#k-链表合并" class="headerlink" title="k 链表合并"></a>k 链表合并</h1><ul>
+<li>最小堆 go语言的实现</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> ListNode <span class="keyword">struct</span> &#123;</span><br><span class="line">    Val <span class="type">int</span></span><br><span class="line">    Next *ListNode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeKLists</span><span class="params">(lists []*ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(lists) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 虚拟头结点</span></span><br><span class="line">    dummy := &amp;ListNode&#123;<span class="number">-1</span>, <span class="literal">nil</span>&#125;</span><br><span class="line">    p := dummy</span><br><span class="line">    <span class="comment">// 优先级队列，最小堆</span></span><br><span class="line">    pq := <span class="built_in">make</span>(PriorityQueue, <span class="number">0</span>)</span><br><span class="line">    heap.Init(&amp;pq)</span><br><span class="line">    <span class="comment">// 将 k 个链表的头结点加入最小堆</span></span><br><span class="line">    <span class="keyword">for</span> _, head := <span class="keyword">range</span> lists &#123;</span><br><span class="line">        <span class="keyword">if</span> head != <span class="literal">nil</span> &#123;</span><br><span class="line">            heap.Push(&amp;pq, head)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> pq.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="comment">// 获取最小节点，接到结果链表中</span></span><br><span class="line">        node := heap.Pop(&amp;pq).(*ListNode)</span><br><span class="line">        p.Next = node</span><br><span class="line">        <span class="keyword">if</span> node.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">            heap.Push(&amp;pq, node.Next)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// p 指针不断前进</span></span><br><span class="line">        p = p.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PriorityQueue []*ListNode</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Len() <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(pq)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> pq[i].Val &lt; pq[j].Val</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Swap(i, j <span class="type">int</span>) &#123;</span><br><span class="line">    pq[i], pq[j] = pq[j], pq[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    node := x.(*ListNode)</span><br><span class="line">    *pq = <span class="built_in">append</span>(*pq, node)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *pq</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    node := old[n<span class="number">-1</span>]</span><br><span class="line">    *pq = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> node</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="倒数K链表"><a href="#倒数K链表" class="headerlink" title="倒数K链表"></a>倒数K链表</h1><ul>
+<li>n 是包含nil 的</li>
+<li>一个fast 去探路，先走k步</li>
+<li>slow 和fast 一起走</li>
+<li>当fast为nil 时，到达k ,赋值为next.next 即可<br><img src="/../../imgs/Pasted%20image%2020230625002218.png"></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 虚拟头结点</span></span><br><span class="line">    dummy := &amp;ListNode&#123;<span class="number">-1</span>, head&#125;</span><br><span class="line">    <span class="comment">// 删除倒数第 n 个，要先找倒数第 n + 1 个节点</span></span><br><span class="line">    x := findFromEnd(dummy, n + <span class="number">1</span>)</span><br><span class="line">    <span class="comment">// 删掉倒数第 n 个节点</span></span><br><span class="line">    x.Next = x.Next.Next</span><br><span class="line">    <span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 返回链表的倒数第 k 个节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findFromEnd</span><span class="params">(head *ListNode, k <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    p1 := head</span><br><span class="line">    <span class="comment">// p1 先走 k 步</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; k; i++ &#123;</span><br><span class="line">        p1 = p1.Next</span><br><span class="line">    &#125;</span><br><span class="line">    p2 := head</span><br><span class="line">    <span class="comment">// p1 和 p2 同时走 n - k 步</span></span><br><span class="line">    <span class="keyword">for</span> p1 != <span class="literal">nil</span> &#123;</span><br><span class="line">        p1 = p1.Next</span><br><span class="line">        p2 = p2.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// p2 现在指向第 n - k + 1 个节点，即倒数第 k 个节点</span></span><br><span class="line">    <span class="keyword">return</span> p2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="倒数K链表移除"><a href="#倒数K链表移除" class="headerlink" title="倒数K链表移除"></a>倒数K链表移除</h1><p>复用上边的代码，找到倒数x&#x3D;k+1, 然后赋值x.next &#x3D; x.next.next 即可</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeNthFromEnd</span><span class="params">(head *ListNode, n <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 虚拟头结点</span></span><br><span class="line">    dummy := &amp;ListNode&#123;<span class="number">-1</span>, head&#125;</span><br><span class="line">    <span class="comment">// 删除倒数第 n 个，要先找倒数第 n + 1 个节点</span></span><br><span class="line">    x := findFromEnd(dummy, n + <span class="number">1</span>)</span><br><span class="line">    <span class="comment">// 删掉倒数第 n 个节点</span></span><br><span class="line">    x.next = x.next.next</span><br><span class="line">    <span class="keyword">return</span> dummy.next</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findFromEnd</span><span class="params">(head *ListNode, k <span class="type">int</span>)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 代码见上文</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="移除中间链表"><a href="#移除中间链表" class="headerlink" title="移除中间链表"></a>移除中间链表</h1><p><a href="https://leetcode.cn/problems/middle-of-the-linked-list/">876. 链表的中间结点 - 力扣（LeetCode）</a></p>
+<ul>
+<li>slow 走一步，fast走两步</li>
+<li>fast nil，slow 为中间<br><strong>每当慢指针 <code>slow</code> 前进一步，快指针 <code>fast</code> 就前进两步，这样，当 <code>fast</code> 走到链表末尾时，<code>slow</code> 就指向了链表中点</strong>。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">middleNode</span><span class="params">(head *ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    <span class="comment">// 快慢指针初始化指向 head</span></span><br><span class="line">    slow, fast := head, head</span><br><span class="line">    <span class="comment">// 快指针走到末尾时停止</span></span><br><span class="line">    <span class="comment">// for fast.Next != nil &amp;&amp; fast.Next.Next != nil &#123;// 这样奇数的时候会在中点的前一步</span></span><br><span class="line">    <span class="keyword">for</span> fast!= <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span>&#123; <span class="comment">// 应该修改为这个，slow 会停在中点右边第二个部分</span></span><br><span class="line">        <span class="comment">// 慢指针走一步，快指针走两步</span></span><br><span class="line">        slow = slow.Next</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 慢指针指向中点</span></span><br><span class="line">    <span class="keyword">return</span> slow</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="判断链表是否成环"><a href="#判断链表是否成环" class="headerlink" title="判断链表是否成环"></a>判断链表是否成环</h1><ul>
+<li>slow 走一步，fast走两步</li>
+<li>fast 和slow 相遇则成环，fast 遇到nil 则不成环。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hasCycle</span><span class="params">(head *ListNode)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">    <span class="comment">// 快慢指针初始化指向 head</span></span><br><span class="line">    slow, fast := head, head</span><br><span class="line">    <span class="comment">// 快指针走到末尾时停止</span></span><br><span class="line">    <span class="keyword">for</span> fast != <span class="literal">nil</span> &amp;&amp; fast.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="comment">// 慢指针走一步，快指针走两步</span></span><br><span class="line">        slow = slow.Next</span><br><span class="line">        fast = fast.Next.Next</span><br><span class="line">        <span class="comment">// 快慢指针相遇，说明含有环</span></span><br><span class="line">        <span class="keyword">if</span> slow == fast &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 不包含环</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>labuladong</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于我</title>
+    <url>/2023-03-13-519b5e93f019.html</url>
+    <content><![CDATA[<div style="text-align: center">
+
+<h1 id="欢迎来到我的空间"><a href="#欢迎来到我的空间" class="headerlink" title="欢迎来到我的空间!"></a>欢迎来到我的空间!</h1></div>
+
+<div style="text-align: center">
+
+<h1 id="我的第"><a href="#我的第" class="headerlink" title="我的第 "></a>我的第 <img src="https://profile-counter.glitch.me/leiqitop/count.svg" alt="Visitor Count"></h1></div>
+
+
+<div style="text-align: center">
+
+<h1 id="个朋友！"><a href="#个朋友！" class="headerlink" title="个朋友！"></a>个朋友！</h1></div>
+
+<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
+<li><p>🌱 毕业于复旦大学</p>
+</li>
+<li><p>⭐ 现就职于华为，软件开发工程师</p>
+</li>
+</ul>
+<h2 id="兴趣-👨🏽‍💻"><a href="#兴趣-👨🏽‍💻" class="headerlink" title="兴趣 👨🏽‍💻"></a>兴趣 👨🏽‍💻</h2><ul>
+<li><p>项目: NLP, Large Language Model, Golang Project, Python Project, Vue Project.</p>
+</li>
+<li><p>编程语言 : Golang, Python, C++&#x2F;C, Java</p>
+</li>
+</ul>
+<h2 id="开源项目经验-👯"><a href="#开源项目经验-👯" class="headerlink" title="开源项目经验 👯"></a>开源项目经验 👯</h2><p><strong>As a manager</strong> ：</p>
+<ul>
+<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
+</ul>
+<p><strong>As a member</strong> :</p>
+<ul>
+<li><p><a href="https://github.com/TianlabTech/PhenoBERT.git">PhenoBERT</a> : <strong>PhenoBERT:</strong> A combined deep learning method for automated recognition of human phenotype ontology</p>
+</li>
+<li><p><a href="">IEEE Journal of Biomedical and Health Informatics（IF&#x3D;5.77）</a> : Reviewer</p>
+</li>
+</ul>
+<h2 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h2><ul>
+<li><a href="https://tianchi.aliyun.com/competition/entrance/532210/customize509">优酷x天池 「酷文」小说创作大模型挑战赛</a>: DeepThinking Team Leader, <strong>Third Prize</strong>.</li>
+</ul>
+<h2 id="欢迎志同道合的朋友"><a href="#欢迎志同道合的朋友" class="headerlink" title="欢迎志同道合的朋友~"></a>欢迎志同道合的朋友~</h2><p>本站是为了记录自己学习和生活，欢迎大家多多交流讨论。<br>希望在这里能开辟出我的第二宇宙，与大家一起分享，学习，进步！</p>
+<h2 id="微信公众号"><a href="#微信公众号" class="headerlink" title="微信公众号"></a>微信公众号</h2><p><img src="/../../imgs/qrcode.jpg"></p>
+]]></content>
+      <categories>
+        <category>关于我</category>
+      </categories>
+      <tags>
+        <tag>about</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>更新网页url后，恢复valine网页评论</title>
     <url>/2025-04-13-8c397fc87827.html</url>
     <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
@@ -4648,19 +4648,6 @@ dfs(root.Right, res)
       <categories>
         <category>前端</category>
       </categories>
-  </entry>
-  <entry>
-    <title>波纹</title>
-    <url>/2023-04-08-722322c4ddc3.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
-]]></content>
-      <categories>
-        <category>摄影</category>
-      </categories>
-      <tags>
-        <tag>摄影</tag>
-        <tag>水</tag>
-      </tags>
   </entry>
   <entry>
     <title>JetBrians 全家桶设置文件header</title>
@@ -4870,6 +4857,18 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>ssh 隧道 端口转发</title>
+    <url>/2024-04-21-29ab33001840.html</url>
+    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
+<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>pycharm配置VPN代理</title>
     <url>/2025-06-08-e7d1013a5402.html</url>
     <content><![CDATA[<p>确定本地VPN的代理端口：</p>
@@ -4886,34 +4885,12 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>ssh 隧道 端口转发</title>
-    <url>/2024-04-21-29ab33001840.html</url>
-    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
-<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>windows新增wsl bash here键快捷方式</title>
     <url>/2024-01-01-38178c63ba17.html</url>
     <content><![CDATA[<p>win + R 输入regedit<br><img src="/../../imgs/Pasted%20image%2020240101182355.png"><br>输入到 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell</p>
 <h1 id="新建wsl-bash-here目录-设置如下默认值"><a href="#新建wsl-bash-here目录-设置如下默认值" class="headerlink" title="新建wsl_bash_here目录, 设置如下默认值"></a>新建wsl_bash_here目录, 设置如下默认值</h1><p><img src="/../../imgs/Pasted%20image%2020240101183252.png"></p>
 <h1 id="新建command新建项，输入wsl-exe-的地址"><a href="#新建command新建项，输入wsl-exe-的地址" class="headerlink" title="新建command新建项，输入wsl.exe 的地址"></a>新建command新建项，输入wsl.exe 的地址</h1><p><img src="/../../imgs/Pasted%20image%2020240101183246.png"></p>
 <h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p>可以看到右侧是有wsl bash here的选项的<br><img src="/../../imgs/Pasted%20image%2020240101183634.png"><br><strong>在当面目录打开wsl 成功</strong><br><img src="/../../imgs/Pasted%20image%2020240101183645.png"><br>原理和添加git bash here 类似, 参考:<br><a href="https://blog.csdn.net/Passerby_Wang/article/details/120881670">手动添加Git Bash Here到右键菜单（超详细）_gitbash添加到右键-CSDN博客</a></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>快来压缩你的博客图片</title>
-    <url>/2023-03-23-4868b6a1c39c.html</url>
-    <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -4937,6 +4914,16 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>快来压缩你的博客图片</title>
+    <url>/2023-03-23-4868b6a1c39c.html</url>
+    <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【Win】键盘下键坏了，使用组合键模拟下方向键</title>
     <url>/2024-01-14-2aaa71f8e7be.html</url>
     <content><![CDATA[<p>使用 AutoHotKey 来创建一个脚本，使得按下 Alt + S 时模拟按下下方向键。以下是创建这样一个脚本的步骤：</p>
@@ -4946,22 +4933,6 @@ dfs(root.Right, res)
 <p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
 <p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
 <p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【最强春节抢票攻略】火车票抢票攻略</title>
-    <url>/2025-01-13-facf42a009b6.html</url>
-    <content><![CDATA[<h1 id="1-下载分流抢票（windows-，并安装"><a href="#1-下载分流抢票（windows-，并安装" class="headerlink" title="1. 下载分流抢票（windows) ，并安装"></a>1. 下载分流抢票（windows) ，并安装</h1><p><a href="https://www.bypass.cn/">https://www.bypass.cn/</a></p>
-<h1 id="2-登录，查询目标车票放票时间"><a href="#2-登录，查询目标车票放票时间" class="headerlink" title="2.  登录，查询目标车票放票时间"></a>2.  登录，查询目标车票放票时间</h1><p>需要注意的是，最好不要超过提前5小时来抢票，有可能会存在中途让你重新登录的情况，最稳妥的是在放票前10多分钟登录好，然后开始抢票。<br><img src="/../../imgs/Pasted%20image%2020250113231147.png"></p>
-<h1 id="3-先同步服务器时间"><a href="#3-先同步服务器时间" class="headerlink" title="3 先同步服务器时间"></a>3 先同步服务器时间</h1><p><img src="/../../imgs/Pasted%20image%2020250113230630.png"><br>其他设置小黑屋设置为100秒&#x2F;次。<img src="/../../imgs/Pasted%20image%2020250113231508.png"></p>
-<h1 id="4-设置微信通知"><a href="#4-设置微信通知" class="headerlink" title="4.设置微信通知"></a>4.设置微信通知</h1><p>扫码绑定微信即可，绑定完成后可以测试一下效果。这个是起到通知作用，如果抢到了，我们收到通知后去12306付钱就行啦。当然你如果想更自动化一点，可以设置自动支付。</p>
-<p><img src="/../../imgs/Pasted%20image%2020250113231735.png"></p>
-<h1 id="5-设置自动支付"><a href="#5-设置自动支付" class="headerlink" title="5.设置自动支付"></a>5.设置自动支付</h1><p>绑定支付宝，抢到票自动支付。<br><img src="/../../imgs/Pasted%20image%2020250113231928.png"></p>
-<h1 id="6-设置定时抢票提前两秒"><a href="#6-设置定时抢票提前两秒" class="headerlink" title="6. 设置定时抢票提前两秒"></a>6. 设置定时抢票提前两秒</h1><p>时间间隔修改为200，设置更低的话IP容易被封（200我抢成功了），点击<font color="#00b0f0">开始抢票</font>！等待抢票成功吧！<br><img src="/../../imgs/Pasted%20image%2020250113231359.png"></p>
-<h1 id="抢到啦"><a href="#抢到啦" class="headerlink" title="抢到啦"></a>抢到啦</h1><p><img src="/../../imgs/56b7445f8dd9a71eb1cd751e0030567.jpg"></p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -5020,6 +4991,22 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>【最强春节抢票攻略】火车票抢票攻略</title>
+    <url>/2025-01-13-facf42a009b6.html</url>
+    <content><![CDATA[<h1 id="1-下载分流抢票（windows-，并安装"><a href="#1-下载分流抢票（windows-，并安装" class="headerlink" title="1. 下载分流抢票（windows) ，并安装"></a>1. 下载分流抢票（windows) ，并安装</h1><p><a href="https://www.bypass.cn/">https://www.bypass.cn/</a></p>
+<h1 id="2-登录，查询目标车票放票时间"><a href="#2-登录，查询目标车票放票时间" class="headerlink" title="2.  登录，查询目标车票放票时间"></a>2.  登录，查询目标车票放票时间</h1><p>需要注意的是，最好不要超过提前5小时来抢票，有可能会存在中途让你重新登录的情况，最稳妥的是在放票前10多分钟登录好，然后开始抢票。<br><img src="/../../imgs/Pasted%20image%2020250113231147.png"></p>
+<h1 id="3-先同步服务器时间"><a href="#3-先同步服务器时间" class="headerlink" title="3 先同步服务器时间"></a>3 先同步服务器时间</h1><p><img src="/../../imgs/Pasted%20image%2020250113230630.png"><br>其他设置小黑屋设置为100秒&#x2F;次。<img src="/../../imgs/Pasted%20image%2020250113231508.png"></p>
+<h1 id="4-设置微信通知"><a href="#4-设置微信通知" class="headerlink" title="4.设置微信通知"></a>4.设置微信通知</h1><p>扫码绑定微信即可，绑定完成后可以测试一下效果。这个是起到通知作用，如果抢到了，我们收到通知后去12306付钱就行啦。当然你如果想更自动化一点，可以设置自动支付。</p>
+<p><img src="/../../imgs/Pasted%20image%2020250113231735.png"></p>
+<h1 id="5-设置自动支付"><a href="#5-设置自动支付" class="headerlink" title="5.设置自动支付"></a>5.设置自动支付</h1><p>绑定支付宝，抢到票自动支付。<br><img src="/../../imgs/Pasted%20image%2020250113231928.png"></p>
+<h1 id="6-设置定时抢票提前两秒"><a href="#6-设置定时抢票提前两秒" class="headerlink" title="6. 设置定时抢票提前两秒"></a>6. 设置定时抢票提前两秒</h1><p>时间间隔修改为200，设置更低的话IP容易被封（200我抢成功了），点击<font color="#00b0f0">开始抢票</font>！等待抢票成功吧！<br><img src="/../../imgs/Pasted%20image%2020250113231359.png"></p>
+<h1 id="抢到啦"><a href="#抢到啦" class="headerlink" title="抢到啦"></a>抢到啦</h1><p><img src="/../../imgs/56b7445f8dd9a71eb1cd751e0030567.jpg"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>开机自启WSL</title>
     <url>/2024-08-07-117ef9b8f4c6.html</url>
     <content><![CDATA[<p>在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp 目录下，新建vbs文件</p>
@@ -5051,6 +5038,28 @@ dfs(root.Right, res)
       <categories>
         <category>工具</category>
       </categories>
+  </entry>
+  <entry>
+    <title>英文输入时再也不打出中文标点啦</title>
+    <url>/2025-07-23-c43371daa575.html</url>
+    <content><![CDATA[<p>以微软拼音为例, 需要打开 <code>中文输入时使用英文标点</code><br><img src="/../../imgs/Pasted%20image%2020250723231812.png"></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>波纹</title>
+    <url>/2023-04-08-722322c4ddc3.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
+]]></content>
+      <categories>
+        <category>摄影</category>
+      </categories>
+      <tags>
+        <tag>摄影</tag>
+        <tag>水</tag>
+      </tags>
   </entry>
   <entry>
     <title>comet 生成临时文件导致磁盘满</title>
