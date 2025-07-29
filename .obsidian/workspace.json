@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/Python/本地运行LeetCode的Python代码 调试.md",
+                "file": "source/_posts/工具/7小时代码编写机器claude code 安装.md",
                 "mode": "source",
                 "source": false
               }
@@ -102,7 +102,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -122,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Python/本地运行LeetCode的Python代码 调试.md",
+                "file": "source/_posts/工具/7小时代码编写机器claude code 安装.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/Python/本地运行LeetCode的Python代码 调试.md",
+                "file": "source/_posts/工具/7小时代码编写机器claude code 安装.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +163,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/Python/本地运行LeetCode的Python代码 调试.md"
+                "file": "source/_posts/工具/7小时代码编写机器claude code 安装.md"
               }
             }
           },
@@ -202,13 +203,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "canvas:新建白板": false,
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": true,
-      "command-palette:打开命令面板": false,
-      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
       "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false,
@@ -217,8 +218,10 @@
   },
   "active": "a41ae88b7db7dd07",
   "lastOpenFiles": [
-    "source/_posts/Python/三种Python3 判断字典中是否存在对应key的方法.md",
+    "source/imgs/截屏2025-07-30 上午12.27.40.png",
     "source/_posts/Python/本地运行LeetCode的Python代码 调试.md",
+    "source/_posts/工具/7小时代码编写机器claude code 安装.md",
+    "source/_posts/Python/三种Python3 判断字典中是否存在对应key的方法.md",
     "source/_posts/leetcode/leetcode 1726.同积元组.md",
     "source/_posts/Python",
     "source/imgs/Pasted image 20231020003943.png",
@@ -252,8 +255,6 @@
     "source/imgs/Pasted image 20231005164404.png",
     "source/_posts/Linux/Linux 将用户追加到对应用户组,新建文件默认同组读写权限.md",
     "未命名 1.canvas",
-    "source/_posts/工具/Linux非root用户通过X11运行图形界面程序-以Rstudio为例.md",
-    "source/_posts/工具/clash在终端设置代理.md",
     "source/imgs/Pasted image 20230924205559.png",
     "source/_posts/C++",
     "C++",
