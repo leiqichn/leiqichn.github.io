@@ -76,3 +76,92 @@ func maxDepth(root *TreeNode) int {
 	return depth
 }
 ```
+
+## 切片实现
+
+```go
+// 定义：输入根节点，返回这棵二叉树的最大深度
+func maxDepth(root *TreeNode) int {
+	depth := 0;
+	
+    if root == nil {
+        return 0
+    }
+	queue := []*TreeNode{}
+	
+	queue = append(queue,root)
+	for len(queue) > 0 { // queue 不为空的时候
+		size := len(queue)
+		for i:=0;i <size ;i++ {// 遍历一层
+			top := queue[0]
+			queue = queue[1:] // 取最上层元素，并切掉该元素
+			if top.Right != nil {
+				queue = append(queue,top.Right)
+			}
+			if top.Left != nil {
+				queue = append(queue,top.Left)
+			}
+			
+		}
+        depth++
+	}
+	return depth
+}
+
+```
+
+## 使用一个临时切片来存储当前层所有节点的子节点
+
+```go
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+func maxDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	// 使用切片实现队列
+	var queue []*TreeNode
+	queue = append(queue, root)
+	depth := 0
+
+	for len(queue) > 0 {
+
+
+		// 当前层的节点数量
+		size := len(queue)
+
+		// 使用一个临时切片来存储当前层所有节点的子节点
+		var nextLevel []*TreeNode
+
+		for i := 0; i < size; i++ {
+			// 从队列头部移除节点
+			node := queue[0]
+			queue = queue[1:] // 移除队列的第一个元素
+
+			// 将左子树和右子树添加到下一层的队列
+			if node.Left != nil {
+				nextLevel = append(nextLevel, node.Left)
+			}
+			if node.Right != nil {
+				nextLevel = append(nextLevel, node.Right)
+			}
+		}
+
+		// 将下一层的节点赋值给当前层的队列
+		queue = nextLevel
+		// 每次循环处理一层的节点
+		depth++
+	}
+
+	return depth
+}
+
+```
+

@@ -24,6 +24,17 @@ export https_proxy=http://127.0.0.1:7890
 对应的网址是在settings- static-Host; 对应port 为General-Prot
 ![](../../imgs/Pasted%20image%2020230913000142.png)
 ![](../../imgs/Pasted%20image%2020230913000136.png)
+
+## clash Verge 
+复制环境变量 去github 执行
+![](../../imgs/Pasted%20image%2020250413120927.png)
+![](../../imgs/Pasted%20image%2020250413120942.png)
+
+```sh
+ export https_proxy=http://127.0.0.1:7897 http_proxy=http://127.0.0.1:7897 all_proxy=socks5://127.0.0.1:7897
+ 
+```
+![](../../imgs/Pasted%20image%2020250413121036.png)
 # 取消代理
 
 ```sh
@@ -51,9 +62,9 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-// 别名设置，其他别名设置也是类似
+# 别名设置，其他别名设置也是类似
 alias proxyon="export http_proxy=http://127.0.0.1:7890;export https_proxy=http://127.0.0.1:7890"
-alias proxyoff="unset http_proxy;unset http_proxy"
+alias proxyoff="unset http_proxy;unset https_proxy"
 ```
 
 ## 测试是否成功

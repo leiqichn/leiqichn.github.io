@@ -1,0 +1,45 @@
+# 1. 確保你使用 Butterfly 主題
+# 2. 確保你的網站是 https
+# 3. 修改 source/_data/link.yml
+# 4. 按要求新增內容
+#     - name: 博客名
+#       link: 博客地址
+#       avatar: 博客頭像
+#       descr: 博客描述
+# 5. 發起 Pull requests ，合併到 butterfly.js.org 倉庫
+
+- class_name: '<i class="fas fa-check-double" style="color: #FF6666;padding-right: 0.4rem"></i>我的网站'
+  class_desc: '<span style="font-style: italic;">重要的事情说一遍</span>'
+  link_list:
+    - name: CSDN
+      link: https://blog.csdn.net/lei_qi/
+      avatar: /imgs/CSDN.png
+      descr: "@lei_qi - 我的CSDN博客"
+    - name: Github
+      link: https://github.com/leiqichn
+      avatar: /imgs/github-logo.png
+      descr: "@leiqichn - 我的GitHub仓库"
+    - name: DeepThinking深思
+      link: /imgs/qrcode.jpg
+      avatar: /imgs/wexin-logo.png
+      descr: "@DeepThinking深思 - AI知识公众号"
+    - name: 小红书
+      link: /imgs/xiaohongshu-qrcode.jpg
+      avatar: /imgs/xiaohongshu.png
+      descr: "@随便拍拍 - 上传生活和摄影作品"
+    - name: Bilibili
+      link: /imgs/bilibili-qrcode.jpg
+      avatar: /imgs/bilibili.png
+      descr: "@八里桥好 - 上传学习作品"
+
+- class_name: '<i class="fas fa-fan" style="color:#00cccc;padding-right: 0.4rem"></i>友情链接'
+  class_desc: '<span style="font-style: italic;">最可爱的朋友在这里</span>'
+  link_list:
+    - name: Tian Lejin
+      link: https://tianlejin.top/
+      descr: 認真是我們參與這個社會的方式
+      avatar: /imgs/foresty_boy.jpg
+    - name: Butterfly
+      link: https://github.com/jerryc127/hexo-theme-butterfly
+      avatar: /imgs/butterfly-icon.png
+      descr: '🦋 A Hexo Theme: Butterfly'
