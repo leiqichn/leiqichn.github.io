@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++ 结构化设计</title>
+    <url>/2023-09-13-476441b87811.html</url>
+    <content><![CDATA[<h1 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h1><p><strong>自顶向下的设计 是自顶向下的分解</strong> -&gt; 找子问题 -&gt;公共的问题-&gt;抽出来子问题<br><img src="/../../imgs/Pasted%20image%2020230913232308.png"></p>
+<h1 id="实现阶段"><a href="#实现阶段" class="headerlink" title="实现阶段"></a>实现阶段</h1><p>自顶向上的实现，实现一个一个子问题</p>
+<p>程序由三种基本结构组成，<strong>顺序-分支-循环</strong><img src="/../../imgs/Pasted%20image%2020230913232249.png"></p>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="/../../imgs/Pasted%20image%2020230913232729.png"><br><img src="/../../imgs/Pasted%20image%2020230913232746.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230913232825.png"><br><img src="/../../imgs/Pasted%20image%2020230913232951.png"><br><img src="/../../imgs/Pasted%20image%2020230913232936.png"></p>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>下载huggingface模型</title>
     <url>/2025-06-23-bf53e7543f79.html</url>
     <content><![CDATA[<h3 id="使用-huggingface-hub-工具"><a href="#使用-huggingface-hub-工具" class="headerlink" title="使用 huggingface_hub 工具"></a>使用 <code>huggingface_hub</code> 工具</h3><ol>
@@ -24,19 +37,6 @@
 ]]></content>
       <categories>
         <category>AI学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C++ 结构化设计</title>
-    <url>/2023-09-13-476441b87811.html</url>
-    <content><![CDATA[<h1 id="结构化程序设计"><a href="#结构化程序设计" class="headerlink" title="结构化程序设计"></a>结构化程序设计</h1><p><strong>自顶向下的设计 是自顶向下的分解</strong> -&gt; 找子问题 -&gt;公共的问题-&gt;抽出来子问题<br><img src="/../../imgs/Pasted%20image%2020230913232308.png"></p>
-<h1 id="实现阶段"><a href="#实现阶段" class="headerlink" title="实现阶段"></a>实现阶段</h1><p>自顶向上的实现，实现一个一个子问题</p>
-<p>程序由三种基本结构组成，<strong>顺序-分支-循环</strong><img src="/../../imgs/Pasted%20image%2020230913232249.png"></p>
-<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><p><img src="/../../imgs/Pasted%20image%2020230913232729.png"><br><img src="/../../imgs/Pasted%20image%2020230913232746.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230913232825.png"><br><img src="/../../imgs/Pasted%20image%2020230913232951.png"><br><img src="/../../imgs/Pasted%20image%2020230913232936.png"></p>
-]]></content>
-      <categories>
-        <category>C++</category>
       </categories>
   </entry>
   <entry>
@@ -629,6 +629,39 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>go语言-回调函数（钩子）</title>
+    <url>/2023-05-25-2cbe3a05ec00.html</url>
+    <content><![CDATA[<p>在Go语言中，回调函数和钩子函数通常是使用函数类型作为参数传递给函数或方法，以便在特定事件发生时被调用。这种机制非常灵活，可以让你编写出高效的、可复用的代码。</p>
+<p>以下是一个简单的例子，展示了如何使用回调函数来实现一个函数，当输出文本时会同时调用传入的回调函数：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printWithCallback</span><span class="params">(callback <span class="keyword">func</span>(<span class="type">string</span>)</span></span>) &#123;</span><br><span class="line">    text := <span class="string">&quot;Hello, world!&quot;</span></span><br><span class="line">    fmt.Println(text)</span><br><span class="line">    callback(text)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    callback := <span class="function"><span class="keyword">func</span><span class="params">(text <span class="type">string</span>)</span></span> &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Printed: %s\n&quot;</span>, text)</span><br><span class="line">    &#125;</span><br><span class="line">    printWithCallback(callback)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码定义了一个名为 printWithCallback 的函数，该函数接受一个函数类型参数 callback，其中这个 callback 会在输出文本后被调用。然后在主函数中定义了一个回调函数并将其作为参数传递给 printWithCallback 函数。</p>
+<p>当程序运行起来后，会输出如下内容：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">Hello, world!</span><br><span class="line">Printed: Hello, world!</span><br></pre></td></tr></table></figure>
+
+<p>这表示 printWithCallback 函数被成功调用，并且在输出文本之后 callback 被调用了一次。</p>
+<p>对于钩子函数的例子，假设我们正在编写一段需要进行时间测量的代码。我们可以先定义一个钩子函数 TimeElapsedCallback，然后将它作为参数传递给要测量的代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TimeElapsedCallback</span><span class="params">(start time.Time)</span></span> &#123;</span><br><span class="line">    elapsed := time.Now().Sub(start)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Time elapsed: %v\n&quot;</span>, elapsed)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">heavyCalculation</span><span class="params">(callback <span class="keyword">func</span>(time.Time)</span></span>) &#123;</span><br><span class="line">    start := time.Now()</span><br><span class="line">    <span class="comment">// 这里进行任何需要测量时间的操作</span></span><br><span class="line">    callback(start)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    heavyCalculation(TimeElapsedCallback)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在以上示例中，当我们调用 heavyCalculation 函数时，会传入一个名为 TimeElapsedCallback 的钩子函数。这个钩子函数被定义为一个打印程序执行时长的简单函数，它接受一个 time.Time 类型参数来计算程序耗时。</p>
+<p>在执行完 heavyCalculation 函数后，TimeElapsedCallback 钩子函数就会被自动调用，然后打印程序运行时长，输出如下内容：</p>
+<p>Time elapsed: 1.001201ms<br>以上演示了如何使用回调函数和钩子函数来处理事件。在Go语言中，这种技术经常用于实现异步操作、协程等方面。</p>
+<h2 id="回调函数的不同"><a href="#回调函数的不同" class="headerlink" title="回调函数的不同"></a>回调函数的不同</h2><p>以下是不使用回调函数的方式实现计算程序执行时间的示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">heavyCalculation</span><span class="params">()</span></span> &#123;</span><br><span class="line">    start := time.Now()</span><br><span class="line">    <span class="comment">// 这里进行任何需要测量时间的操作</span></span><br><span class="line">    elapsed := time.Since(start)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Time elapsed: %v\n&quot;</span>, elapsed)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    heavyCalculation()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>和之前使用回调函数的示例代码相比，主要区别在于重构了 heavyCalculation 函数代码。</p>
+<p>在这个更改后的函数中，我们将钩子函数的功能直接集成到代码流程中，通过调用 time.Since(start) 来得到程序的执行时间。这样做的缺点在于，在需要使用程序执行时间的其他场合还需要重新编写和复制此段逻辑, 这样就会限制程序的可重用性和可扩展性。</p>
+<p>当然，在一些简单的场合下该方法也能够正常工作，不过如果需要在多处使用计算执行时间的逻辑或者需要更加细致的精度控制，建议使用钩子函数来实现。</p>
+<p>使用钩子函数和不使用钩子函数的主要区别在于代码结构和灵活性。</p>
+<p>而使用钩子函数，可以将打印程序执行时间的功能单独提出来作为一个函数。这使得我们可以像 heavyCalculation 函数那样封装其他计算逻辑并复用 TimeElapsedCallback 钩子函数。</p>
+<p>钩子函数的使用场景非常广泛，在几乎<strong>所有需要在特定事件发生时自动执行一些附加逻辑的场景中都可以使用。</strong></p>
+<h2 id="以下是使用回调函数的优点："><a href="#以下是使用回调函数的优点：" class="headerlink" title="以下是使用回调函数的优点："></a>以下是使用回调函数的优点：</h2><p>灵活性：可以轻松地将自定义代码插入到已有的代码流程中。<br>可重用性：可以将钩子函数单独进行封装，以供不同的代码文件或项目中使用。<br>易于维护：通过修改单个钩子函数即可更改所有使用该钩子函数的代码的行为。<br>总之，使用钩子函数可以帮助我们让代码变得更加简洁、灵活、模块化和可重用。</p>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【Golang】 switch使用</title>
     <url>/2025-06-16-ba6b39f2d873.html</url>
     <content><![CDATA[<p>在 Go 语言中，<code>switch</code> 语句提供了灵活的条件分支控制，相比其他语言有更多特性。以下是详细用法和示例：</p>
@@ -689,39 +722,6 @@ dfs(root.Right, res)
 <blockquote>
 <p>Go 的 <code>switch</code> 设计强调简洁和安全，避免 C&#x2F;C++ 中因忘记 <code>break</code> 导致的错误。根据场景选择合适用法可大幅提升代码可读性。</p>
 </blockquote>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>go语言-回调函数（钩子）</title>
-    <url>/2023-05-25-2cbe3a05ec00.html</url>
-    <content><![CDATA[<p>在Go语言中，回调函数和钩子函数通常是使用函数类型作为参数传递给函数或方法，以便在特定事件发生时被调用。这种机制非常灵活，可以让你编写出高效的、可复用的代码。</p>
-<p>以下是一个简单的例子，展示了如何使用回调函数来实现一个函数，当输出文本时会同时调用传入的回调函数：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printWithCallback</span><span class="params">(callback <span class="keyword">func</span>(<span class="type">string</span>)</span></span>) &#123;</span><br><span class="line">    text := <span class="string">&quot;Hello, world!&quot;</span></span><br><span class="line">    fmt.Println(text)</span><br><span class="line">    callback(text)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    callback := <span class="function"><span class="keyword">func</span><span class="params">(text <span class="type">string</span>)</span></span> &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Printed: %s\n&quot;</span>, text)</span><br><span class="line">    &#125;</span><br><span class="line">    printWithCallback(callback)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上代码定义了一个名为 printWithCallback 的函数，该函数接受一个函数类型参数 callback，其中这个 callback 会在输出文本后被调用。然后在主函数中定义了一个回调函数并将其作为参数传递给 printWithCallback 函数。</p>
-<p>当程序运行起来后，会输出如下内容：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">Hello, world!</span><br><span class="line">Printed: Hello, world!</span><br></pre></td></tr></table></figure>
-
-<p>这表示 printWithCallback 函数被成功调用，并且在输出文本之后 callback 被调用了一次。</p>
-<p>对于钩子函数的例子，假设我们正在编写一段需要进行时间测量的代码。我们可以先定义一个钩子函数 TimeElapsedCallback，然后将它作为参数传递给要测量的代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TimeElapsedCallback</span><span class="params">(start time.Time)</span></span> &#123;</span><br><span class="line">    elapsed := time.Now().Sub(start)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Time elapsed: %v\n&quot;</span>, elapsed)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">heavyCalculation</span><span class="params">(callback <span class="keyword">func</span>(time.Time)</span></span>) &#123;</span><br><span class="line">    start := time.Now()</span><br><span class="line">    <span class="comment">// 这里进行任何需要测量时间的操作</span></span><br><span class="line">    callback(start)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    heavyCalculation(TimeElapsedCallback)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在以上示例中，当我们调用 heavyCalculation 函数时，会传入一个名为 TimeElapsedCallback 的钩子函数。这个钩子函数被定义为一个打印程序执行时长的简单函数，它接受一个 time.Time 类型参数来计算程序耗时。</p>
-<p>在执行完 heavyCalculation 函数后，TimeElapsedCallback 钩子函数就会被自动调用，然后打印程序运行时长，输出如下内容：</p>
-<p>Time elapsed: 1.001201ms<br>以上演示了如何使用回调函数和钩子函数来处理事件。在Go语言中，这种技术经常用于实现异步操作、协程等方面。</p>
-<h2 id="回调函数的不同"><a href="#回调函数的不同" class="headerlink" title="回调函数的不同"></a>回调函数的不同</h2><p>以下是不使用回调函数的方式实现计算程序执行时间的示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">heavyCalculation</span><span class="params">()</span></span> &#123;</span><br><span class="line">    start := time.Now()</span><br><span class="line">    <span class="comment">// 这里进行任何需要测量时间的操作</span></span><br><span class="line">    elapsed := time.Since(start)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;Time elapsed: %v\n&quot;</span>, elapsed)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    heavyCalculation()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>和之前使用回调函数的示例代码相比，主要区别在于重构了 heavyCalculation 函数代码。</p>
-<p>在这个更改后的函数中，我们将钩子函数的功能直接集成到代码流程中，通过调用 time.Since(start) 来得到程序的执行时间。这样做的缺点在于，在需要使用程序执行时间的其他场合还需要重新编写和复制此段逻辑, 这样就会限制程序的可重用性和可扩展性。</p>
-<p>当然，在一些简单的场合下该方法也能够正常工作，不过如果需要在多处使用计算执行时间的逻辑或者需要更加细致的精度控制，建议使用钩子函数来实现。</p>
-<p>使用钩子函数和不使用钩子函数的主要区别在于代码结构和灵活性。</p>
-<p>而使用钩子函数，可以将打印程序执行时间的功能单独提出来作为一个函数。这使得我们可以像 heavyCalculation 函数那样封装其他计算逻辑并复用 TimeElapsedCallback 钩子函数。</p>
-<p>钩子函数的使用场景非常广泛，在几乎<strong>所有需要在特定事件发生时自动执行一些附加逻辑的场景中都可以使用。</strong></p>
-<h2 id="以下是使用回调函数的优点："><a href="#以下是使用回调函数的优点：" class="headerlink" title="以下是使用回调函数的优点："></a>以下是使用回调函数的优点：</h2><p>灵活性：可以轻松地将自定义代码插入到已有的代码流程中。<br>可重用性：可以将钩子函数单独进行封装，以供不同的代码文件或项目中使用。<br>易于维护：通过修改单个钩子函数即可更改所有使用该钩子函数的代码的行为。<br>总之，使用钩子函数可以帮助我们让代码变得更加简洁、灵活、模块化和可重用。</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -790,6 +790,27 @@ dfs(root.Right, res)
 <blockquote>
 <p><strong>关键教训</strong>：在操作切片时，**避免在同一个逻辑块中混合多次 <code>append</code>**，除非你能确保切片长度的变化不会影响后续操作。</p>
 </blockquote>
+]]></content>
+      <categories>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>什么是二进制的按位或和按位异或</title>
+    <url>/2023-06-08-3d1c210a715f.html</url>
+    <content><![CDATA[<p>按位或（bitwise OR）和按位异或（bitwise XOR）是两种二进制位运算。但是这两个概念很容易忘记或者混淆，今天我们就来加深一下印象吧！</p>
+<p>按位或运算符（|）对两个二进制数的每一位都执行逻辑或操作，返回一个新的二进制数。其真值表如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input bit a | input bit b | output </span><br><span class="line">------------------------------- </span><br><span class="line">	0        |     0      | 0 </span><br><span class="line">	0        |     1      | 1 </span><br><span class="line">	1        |     0      | 1 </span><br><span class="line">	1        |     1      | 1</span><br></pre></td></tr></table></figure>
+
+<p>例如，执行 6 (二进制位 110) 和 3 (二进制位 011) 的按位或运算 会得到 7 (二进制位 111):</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">| 011</span><br><span class="line">-----</span><br><span class="line">  111</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>按位异或运算符（^）对两个二进制数的每一位都执行逻辑异或操作，返回一个新的二进制数。其真值表如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input bit a | input bit b | output</span><br><span class="line">-------------------------------</span><br><span class="line">        0    |    0      |   0</span><br><span class="line">        0    |    1      |   1</span><br><span class="line">        1    |    0      |   1</span><br><span class="line">        1    |    1      |   0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">^ 011</span><br><span class="line">-----</span><br><span class="line">  101</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>按位或，就是只要有1 就为1 (包含了1  1 ；0 1；1  0；三种)<br>按位异或，必须一个0一个1，才为1 （包含0 1；1  0；两种）<br>大家记住了吗？</p>
 ]]></content>
       <categories>
         <category>Golang</category>
@@ -1446,27 +1467,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>什么是二进制的按位或和按位异或</title>
-    <url>/2023-06-08-3d1c210a715f.html</url>
-    <content><![CDATA[<p>按位或（bitwise OR）和按位异或（bitwise XOR）是两种二进制位运算。但是这两个概念很容易忘记或者混淆，今天我们就来加深一下印象吧！</p>
-<p>按位或运算符（|）对两个二进制数的每一位都执行逻辑或操作，返回一个新的二进制数。其真值表如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input bit a | input bit b | output </span><br><span class="line">------------------------------- </span><br><span class="line">	0        |     0      | 0 </span><br><span class="line">	0        |     1      | 1 </span><br><span class="line">	1        |     0      | 1 </span><br><span class="line">	1        |     1      | 1</span><br></pre></td></tr></table></figure>
-
-<p>例如，执行 6 (二进制位 110) 和 3 (二进制位 011) 的按位或运算 会得到 7 (二进制位 111):</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">| 011</span><br><span class="line">-----</span><br><span class="line">  111</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>按位异或运算符（^）对两个二进制数的每一位都执行逻辑异或操作，返回一个新的二进制数。其真值表如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">input bit a | input bit b | output</span><br><span class="line">-------------------------------</span><br><span class="line">        0    |    0      |   0</span><br><span class="line">        0    |    1      |   1</span><br><span class="line">        1    |    0      |   1</span><br><span class="line">        1    |    1      |   0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">^ 011</span><br><span class="line">-----</span><br><span class="line">  101</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>按位或，就是只要有1 就为1 (包含了1  1 ；0 1；1  0；三种)<br>按位异或，必须一个0一个1，才为1 （包含0 1；1  0；两种）<br>大家记住了吗？</p>
-]]></content>
-      <categories>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>依赖注入</title>
     <url>/2024-07-21-618c8c29b962.html</url>
     <content><![CDATA[<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><p>使用接口来实现依赖注入，降低模块间的耦合。<br><strong>概念</strong>： 依赖注入是一种设计模式，它允许你将组件的依赖关系（即其他组件或服务）从组件本身中分离出来，并在组件外部进行配置。这样做可以减少组件之间的耦合，使得代码更加模块化，易于测试和维护。</p>
@@ -1856,6 +1856,67 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>Windows Git自动转换为Linux换行符</title>
+    <url>/2025-04-28-84ca2c3d5919.html</url>
+    <content><![CDATA[<p>在 Git 中处理不同操作系统（Windows&#x2F;Linux&#x2F;macOS）的换行符（<code>LF</code> 和 <code>CRLF</code>）时，自动转换是关键。以下是配置 Git 自动处理换行符的方法：</p>
+<hr>
+<h3 id="1-核心配置：core-autocrlf"><a href="#1-核心配置：core-autocrlf" class="headerlink" title="1. 核心配置：core.autocrlf"></a><strong>1. 核心配置：<code>core.autocrlf</code></strong></h3><p>通过设置 <code>core.autocrlf</code> 属性，让 Git 自动转换换行符：</p>
+<h4 id="不同操作系统的推荐设置"><a href="#不同操作系统的推荐设置" class="headerlink" title="不同操作系统的推荐设置"></a><strong>不同操作系统的推荐设置</strong></h4><ul>
+<li><p><strong>Windows（推荐）</strong>：  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">true</span></span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时转换为 CRLF</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Linux&#x2F;macOS（推荐）</strong>：  </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时不转换</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-强制规范：-gitattributes-文件"><a href="#2-强制规范：-gitattributes-文件" class="headerlink" title="2. 强制规范：.gitattributes 文件"></a><strong>2. 强制规范：<code>.gitattributes</code> 文件</strong></h3><p>在项目根目录创建 <code>.gitattributes</code> 文件，<strong>优先级高于全局配置</strong>，适合团队协作。</p>
+<h4 id="示例配置："><a href="#示例配置：" class="headerlink" title="示例配置："></a><strong>示例配置</strong>：</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 所有文本文件使用 LF 换行符</span><br><span class="line">* text=auto eol=lf</span><br><span class="line"></span><br><span class="line"># 排除二进制文件（避免误处理）</span><br><span class="line">*.png binary</span><br><span class="line">*.jpg binary</span><br><span class="line">*.zip binary</span><br><span class="line"></span><br><span class="line"># 指定特定文件类型（可选）</span><br><span class="line">*.sh text eol=lf</span><br><span class="line">*.bat text eol=crlf</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>text=auto</code>：Git 自动识别文本文件。</li>
+<li><code>eol=lf</code> 或 <code>eol=crlf</code>：强制统一换行符。</li>
+</ul>
+<hr>
+<h3 id="3-修复已存在的换行符问题"><a href="#3-修复已存在的换行符问题" class="headerlink" title="3. 修复已存在的换行符问题"></a><strong>3. 修复已存在的换行符问题</strong></h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤：</strong></h4><ol>
+<li><p>删除缓存并重置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached -r .  <span class="comment"># 清除缓存</span></span><br><span class="line">git reset --hard      <span class="comment"># 重置文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新添加文件并提交：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;fix: normalize line endings&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h3 id="4-检查换行符状态"><a href="#4-检查换行符状态" class="headerlink" title="4. 检查换行符状态"></a><strong>4. 检查换行符状态</strong></h3><h4 id="检查文件换行符："><a href="#检查文件换行符：" class="headerlink" title="检查文件换行符："></a><strong>检查文件换行符</strong>：</h4><ul>
+<li><p><strong>Linux&#x2F;macOS</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">file yourfile.txt</span><br><span class="line"><span class="comment"># 输出中包含 &quot;LF&quot; 或 &quot;CRLF&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Windows（PowerShell）</strong>：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-Content</span> yourfile.txt <span class="literal">-Encoding</span> Byte | <span class="built_in">Select-String</span> <span class="string">&quot;0D 0A&quot;</span></span><br><span class="line"><span class="comment"># 存在 &quot;0D 0A&quot; 表示 CRLF</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="查看-Git-换行符转换日志："><a href="#查看-Git-换行符转换日志：" class="headerlink" title="查看 Git 换行符转换日志："></a><strong>查看 Git 换行符转换日志</strong>：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git ls-files --eol</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a><strong>常见问题解决</strong></h3><ul>
+<li><p>**警告 <code>LF will be replaced by CRLF</code>**：<br>正常提示，表示 Git 正在按配置转换换行符。</p>
+</li>
+<li><p><strong>文件被标记为已修改（仅换行符变化）</strong>：<br>运行以下命令清除差异：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.whitespace cr-at-eol</span><br><span class="line">git add --renormalize .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>混合换行符导致冲突</strong>：<br>使用 <code>.gitattributes</code> 强制统一换行符，并重新提交文件。</p>
+</li>
+</ul>
+<hr>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a><strong>最佳实践</strong></h3><ol>
+<li><strong>团队协作</strong>：在项目中添加 <code>.gitattributes</code> 文件，统一换行符规则。</li>
+<li><strong>编辑器配置</strong>：设置 IDE（如 VSCode）默认使用 <code>LF</code>（<a href="https://stackoverflow.com/a/44788470">配置示例</a>）。</li>
+<li><strong>Windows 用户</strong>：安装 Git 时选择 <code>Checkout as-is, commit Unix-style line endings</code>。</li>
+</ol>
+<hr>
+<p>通过上述配置，Git 会自动处理换行符，避免跨平台协作时的混乱！ 🛠️</p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
     <title>git stash</title>
     <url>/2024-08-21-d34ebab44074.html</url>
     <content><![CDATA[<p>当尝试使用 git pull -f 强制拉取远程仓库的更新时，Git 会警告你，因为本地有未提交的更改，这些更改可能会被覆盖。确定要取消对特定文件的保存，可以按照以下步骤操作：</p>
@@ -1957,67 +2018,6 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
-    <title>Windows Git自动转换为Linux换行符</title>
-    <url>/2025-04-28-84ca2c3d5919.html</url>
-    <content><![CDATA[<p>在 Git 中处理不同操作系统（Windows&#x2F;Linux&#x2F;macOS）的换行符（<code>LF</code> 和 <code>CRLF</code>）时，自动转换是关键。以下是配置 Git 自动处理换行符的方法：</p>
-<hr>
-<h3 id="1-核心配置：core-autocrlf"><a href="#1-核心配置：core-autocrlf" class="headerlink" title="1. 核心配置：core.autocrlf"></a><strong>1. 核心配置：<code>core.autocrlf</code></strong></h3><p>通过设置 <code>core.autocrlf</code> 属性，让 Git 自动转换换行符：</p>
-<h4 id="不同操作系统的推荐设置"><a href="#不同操作系统的推荐设置" class="headerlink" title="不同操作系统的推荐设置"></a><strong>不同操作系统的推荐设置</strong></h4><ul>
-<li><p><strong>Windows（推荐）</strong>：  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf <span class="literal">true</span></span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时转换为 CRLF</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Linux&#x2F;macOS（推荐）</strong>：  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.autocrlf input</span><br><span class="line"><span class="comment"># 提交时转换为 LF，检出时不转换</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2-强制规范：-gitattributes-文件"><a href="#2-强制规范：-gitattributes-文件" class="headerlink" title="2. 强制规范：.gitattributes 文件"></a><strong>2. 强制规范：<code>.gitattributes</code> 文件</strong></h3><p>在项目根目录创建 <code>.gitattributes</code> 文件，<strong>优先级高于全局配置</strong>，适合团队协作。</p>
-<h4 id="示例配置："><a href="#示例配置：" class="headerlink" title="示例配置："></a><strong>示例配置</strong>：</h4><figure class="highlight text"><table><tr><td class="code"><pre><span class="line"># 所有文本文件使用 LF 换行符</span><br><span class="line">* text=auto eol=lf</span><br><span class="line"></span><br><span class="line"># 排除二进制文件（避免误处理）</span><br><span class="line">*.png binary</span><br><span class="line">*.jpg binary</span><br><span class="line">*.zip binary</span><br><span class="line"></span><br><span class="line"># 指定特定文件类型（可选）</span><br><span class="line">*.sh text eol=lf</span><br><span class="line">*.bat text eol=crlf</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>text=auto</code>：Git 自动识别文本文件。</li>
-<li><code>eol=lf</code> 或 <code>eol=crlf</code>：强制统一换行符。</li>
-</ul>
-<hr>
-<h3 id="3-修复已存在的换行符问题"><a href="#3-修复已存在的换行符问题" class="headerlink" title="3. 修复已存在的换行符问题"></a><strong>3. 修复已存在的换行符问题</strong></h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤：</strong></h4><ol>
-<li><p>删除缓存并重置文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> --cached -r .  <span class="comment"># 清除缓存</span></span><br><span class="line">git reset --hard      <span class="comment"># 重置文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新添加文件并提交：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;fix: normalize line endings&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h3 id="4-检查换行符状态"><a href="#4-检查换行符状态" class="headerlink" title="4. 检查换行符状态"></a><strong>4. 检查换行符状态</strong></h3><h4 id="检查文件换行符："><a href="#检查文件换行符：" class="headerlink" title="检查文件换行符："></a><strong>检查文件换行符</strong>：</h4><ul>
-<li><p><strong>Linux&#x2F;macOS</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">file yourfile.txt</span><br><span class="line"><span class="comment"># 输出中包含 &quot;LF&quot; 或 &quot;CRLF&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Windows（PowerShell）</strong>：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Get-Content</span> yourfile.txt <span class="literal">-Encoding</span> Byte | <span class="built_in">Select-String</span> <span class="string">&quot;0D 0A&quot;</span></span><br><span class="line"><span class="comment"># 存在 &quot;0D 0A&quot; 表示 CRLF</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="查看-Git-换行符转换日志："><a href="#查看-Git-换行符转换日志：" class="headerlink" title="查看 Git 换行符转换日志："></a><strong>查看 Git 换行符转换日志</strong>：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git ls-files --eol</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="常见问题解决"><a href="#常见问题解决" class="headerlink" title="常见问题解决"></a><strong>常见问题解决</strong></h3><ul>
-<li><p>**警告 <code>LF will be replaced by CRLF</code>**：<br>正常提示，表示 Git 正在按配置转换换行符。</p>
-</li>
-<li><p><strong>文件被标记为已修改（仅换行符变化）</strong>：<br>运行以下命令清除差异：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global core.whitespace cr-at-eol</span><br><span class="line">git add --renormalize .</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>混合换行符导致冲突</strong>：<br>使用 <code>.gitattributes</code> 强制统一换行符，并重新提交文件。</p>
-</li>
-</ul>
-<hr>
-<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a><strong>最佳实践</strong></h3><ol>
-<li><strong>团队协作</strong>：在项目中添加 <code>.gitattributes</code> 文件，统一换行符规则。</li>
-<li><strong>编辑器配置</strong>：设置 IDE（如 VSCode）默认使用 <code>LF</code>（<a href="https://stackoverflow.com/a/44788470">配置示例</a>）。</li>
-<li><strong>Windows 用户</strong>：安装 Git 时选择 <code>Checkout as-is, commit Unix-style line endings</code>。</li>
-</ol>
-<hr>
-<p>通过上述配置，Git 会自动处理换行符，避免跨平台协作时的混乱！ 🛠️</p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git 设置免密配置-全局免密-单仓库免密-SSH免密</title>
     <url>/2024-01-01-91517aa963bc.html</url>
     <content><![CDATA[<h1 id="介绍之前"><a href="#介绍之前" class="headerlink" title="介绍之前"></a>介绍之前</h1><p>我们要首先知道一个简单的概念:<br>https通过<strong>记住账号密码免登</strong>，ssh通过<strong>校验生成的密钥免登</strong>。 通常都用ssh校验。</p>
@@ -2106,16 +2106,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>git更新仓库地址</title>
-    <url>/2024-07-23-764a3cd05cde.html</url>
-    <content><![CDATA[<p>使用如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>git强制拉取远端</title>
     <url>/2023-10-22-9bf76366f18c.html</url>
     <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line">git reset --hard origin/&lt;branch_name&gt;</span><br></pre></td></tr></table></figure>
@@ -2123,6 +2113,16 @@ dfs(root.Right, res)
 <p>git fetch origin：这个命令会从远程仓库（通常是”origin”，可以根据你的实际情况替换）获取最新的分支信息，但不会合并或应用任何更改到你的本地分支。</p>
 <p>git reset –hard origin&#x2F;<branch_name>：这个命令会将你的本地分支重置为与指定远程分支相同的状态，并且会放弃本地的任何更改。–hard 标志会强制应用这个重置，因此请小心使用，确保你不需要本地的更改。</p>
 <p>这些命令将强制拉取远程分支的最新版本，并且会覆盖本地的任何更改。确保在执行这些命令之前，你没有重要的未提交更改，因为它们将永久丢失。</p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git更新仓库地址</title>
+    <url>/2024-07-23-764a3cd05cde.html</url>
+    <content><![CDATA[<p>使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>git</category>
@@ -2256,6 +2256,55 @@ dfs(root.Right, res)
       <tags>
         <tag>about</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-8c397fc87827.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>Dijkstra算法实现带权重最短路径</title>
@@ -2491,6 +2540,15 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>Leetcode 257.二叉树的所有路径</title>
+    <url>/2023-03-28-53b6b0695943.html</url>
+    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">binaryTreePaths</span><span class="params">(root *TreeNode)</span></span> []<span class="type">string</span> &#123;</span><br><span class="line">    res = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">	backTracking(root)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backTracking</span><span class="params">(root *TreeNode)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 终点 左右子节点都为nil</span></span><br><span class="line">	<span class="keyword">if</span> isLeafNode(root) &#123;</span><br><span class="line">        NodeValStr := strconv.Itoa(root.Val)</span><br><span class="line">	    path = <span class="built_in">append</span>(path, NodeValStr)</span><br><span class="line">		pathStr := strings.Join(path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">		res = <span class="built_in">append</span>(res, pathStr)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 前序遍历 中左右</span></span><br><span class="line">	<span class="comment">// 遍历 每次递归的操作</span></span><br><span class="line">	NodeVal:= strconv.Itoa(root.Val)<span class="comment">// 中</span></span><br><span class="line">	path = <span class="built_in">append</span>(path, NodeVal)</span><br><span class="line">	<span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123; <span class="comment">// 左</span></span><br><span class="line">		backTracking(root.Left)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123; <span class="comment">// 右</span></span><br><span class="line">		backTracking(root.Right)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLeafNode</span><span class="params">(node *TreeNode)</span></span> <span class="type">bool</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> node.Right==<span class="literal">nil</span> &amp;&amp; node.Left== <span class="literal">nil</span> &amp;&amp; node!= <span class="literal">nil</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Leetcode 200.岛屿数量</title>
     <url>/2023-05-10-da8c57fb590a.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/number-of-islands/description/">200. 岛屿数量 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230511010424.png"></p>
@@ -2516,15 +2574,6 @@ dfs(root.Right, res)
       <tags>
         <tag>图遍历，岛屿问题</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Leetcode 257.二叉树的所有路径</title>
-    <url>/2023-03-28-53b6b0695943.html</url>
-    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> res []<span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">binaryTreePaths</span><span class="params">(root *TreeNode)</span></span> []<span class="type">string</span> &#123;</span><br><span class="line">    res = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">	backTracking(root)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backTracking</span><span class="params">(root *TreeNode)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 终点 左右子节点都为nil</span></span><br><span class="line">	<span class="keyword">if</span> isLeafNode(root) &#123;</span><br><span class="line">        NodeValStr := strconv.Itoa(root.Val)</span><br><span class="line">	    path = <span class="built_in">append</span>(path, NodeValStr)</span><br><span class="line">		pathStr := strings.Join(path, <span class="string">&quot;-&gt;&quot;</span>)</span><br><span class="line">		res = <span class="built_in">append</span>(res, pathStr)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 前序遍历 中左右</span></span><br><span class="line">	<span class="comment">// 遍历 每次递归的操作</span></span><br><span class="line">	NodeVal:= strconv.Itoa(root.Val)<span class="comment">// 中</span></span><br><span class="line">	path = <span class="built_in">append</span>(path, NodeVal)</span><br><span class="line">	<span class="keyword">if</span> root.Left != <span class="literal">nil</span> &#123; <span class="comment">// 左</span></span><br><span class="line">		backTracking(root.Left)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> root.Right != <span class="literal">nil</span> &#123; <span class="comment">// 右</span></span><br><span class="line">		backTracking(root.Right)</span><br><span class="line">        path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isLeafNode</span><span class="params">(node *TreeNode)</span></span> <span class="type">bool</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> node.Right==<span class="literal">nil</span> &amp;&amp; node.Left== <span class="literal">nil</span> &amp;&amp; node!= <span class="literal">nil</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
   </entry>
   <entry>
     <title>Leetcode 404.左叶子之和</title>
@@ -2905,25 +2954,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 208. 实现 Trie (前缀树)</title>
-    <url>/2024-04-16-1150f59f3df6.html</url>
-    <content><![CDATA[<p>Trie [traɪ] 读音和 try 相同，它的另一些名字有：字典树，前缀树，单词查找树等。</p>
-<p><a href="https://leetcode.cn/problems/implement-trie-prefix-tree/">208. 实现 Trie (前缀树) - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240417003637.png"></p>
-<p>Trie 是一颗非典型的多叉树模型，多叉好理解，即每个结点的分支数量可能为多个。</p>
-<p>为什么说非典型呢？因为它和一般的多叉树不一样，尤其在结点的数据结构设计上，比如一般的多叉树的结点是这样的：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> TrieNode <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    Value <span class="type">int</span></span><br><span class="line"></span><br><span class="line">    Next  *TrieNode</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>而 Trie 的结点是这样的(假设只包含’a’~’z’中的字符)：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> TrieNode <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    children [<span class="number">26</span>]*TrieNode</span><br><span class="line"></span><br><span class="line">    isEnd    <span class="type">bool</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// TrieNode 代表Trie中的每个节点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TrieNode <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    children [<span class="number">26</span>]*TrieNode</span><br><span class="line"></span><br><span class="line">    isEnd    <span class="type">bool</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Trie 代表整个前缀树</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Trie <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    root *TrieNode</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Constructor 初始化一个Trie对象</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Trie &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Trie&#123;root: &amp;TrieNode&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Insert 将word插入到trie中</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> Insert(word <span class="type">string</span>) &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> word &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            node.children[index] = &amp;TrieNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    node.isEnd = <span class="literal">true</span> <span class="comment">// 标记单词结束的节点</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Search 在trie中搜索word</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> Search(word <span class="type">string</span>) <span class="type">bool</span> &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> word &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 如果路径中的节点不存在，说明word不在trie中</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> node.isEnd <span class="comment">// 检查最后一个节点是否标记为单词结尾</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// StartsWith 返回trie中是否有任何单词以prefix为前缀</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> StartsWith(prefix <span class="type">string</span>) <span class="type">bool</span> &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> prefix &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 如果路径中的节点不存在，说明没有以prefix为前缀的word</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 所有的char都在路径中，说明trie有以prefix为前缀的word</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * obj.Insert(word);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * param_2 := obj.Search(word);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * param_3 := obj.StartsWith(prefix);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Leetcode 222.完全二叉树的节点个数</title>
     <url>/2023-03-28-da7418525964.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/count-complete-tree-nodes/">222. 完全二叉树的节点个数 - 力扣（Leetcode）</a></p>
@@ -2978,6 +3008,25 @@ dfs(root.Right, res)
     <url>/2023-05-23-d59f64e0619b.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 208. 实现 Trie (前缀树)</title>
+    <url>/2024-04-16-1150f59f3df6.html</url>
+    <content><![CDATA[<p>Trie [traɪ] 读音和 try 相同，它的另一些名字有：字典树，前缀树，单词查找树等。</p>
+<p><a href="https://leetcode.cn/problems/implement-trie-prefix-tree/">208. 实现 Trie (前缀树) - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240417003637.png"></p>
+<p>Trie 是一颗非典型的多叉树模型，多叉好理解，即每个结点的分支数量可能为多个。</p>
+<p>为什么说非典型呢？因为它和一般的多叉树不一样，尤其在结点的数据结构设计上，比如一般的多叉树的结点是这样的：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> TrieNode <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    Value <span class="type">int</span></span><br><span class="line"></span><br><span class="line">    Next  *TrieNode</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>而 Trie 的结点是这样的(假设只包含’a’~’z’中的字符)：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> TrieNode <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    children [<span class="number">26</span>]*TrieNode</span><br><span class="line"></span><br><span class="line">    isEnd    <span class="type">bool</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// TrieNode 代表Trie中的每个节点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> TrieNode <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    children [<span class="number">26</span>]*TrieNode</span><br><span class="line"></span><br><span class="line">    isEnd    <span class="type">bool</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Trie 代表整个前缀树</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Trie <span class="keyword">struct</span> &#123;</span><br><span class="line"></span><br><span class="line">    root *TrieNode</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Constructor 初始化一个Trie对象</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Trie &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Trie&#123;root: &amp;TrieNode&#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Insert 将word插入到trie中</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> Insert(word <span class="type">string</span>) &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> word &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            node.children[index] = &amp;TrieNode&#123;&#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    node.isEnd = <span class="literal">true</span> <span class="comment">// 标记单词结束的节点</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// Search 在trie中搜索word</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> Search(word <span class="type">string</span>) <span class="type">bool</span> &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> word &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 如果路径中的节点不存在，说明word不在trie中</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> node.isEnd <span class="comment">// 检查最后一个节点是否标记为单词结尾</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">// StartsWith 返回trie中是否有任何单词以prefix为前缀</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *Trie)</span></span> StartsWith(prefix <span class="type">string</span>) <span class="type">bool</span> &#123;</span><br><span class="line"></span><br><span class="line">    node := this.root</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, ch := <span class="keyword">range</span> prefix &#123;</span><br><span class="line"></span><br><span class="line">        index := ch - <span class="string">&#x27;a&#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node.children[index] == <span class="literal">nil</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 如果路径中的节点不存在，说明没有以prefix为前缀的word</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        node = node.children[index]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 所有的char都在路径中，说明trie有以prefix为前缀的word</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * obj.Insert(word);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * param_2 := obj.Search(word);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * param_3 := obj.StartsWith(prefix);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3100,16 +3149,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 376.摆动序列</title>
-    <url>/2023-05-23-7b5e53100757.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 406. 根据身高重建队列【贪心】</title>
     <url>/2024-01-23-1cb0809a7893.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/queue-reconstruction-by-height/description/">406. 根据身高重建队列 - 力扣（LeetCode）</a></p>
@@ -3155,6 +3194,16 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 376.摆动序列</title>
+    <url>/2023-05-23-7b5e53100757.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 53.最大子数和</title>
     <url>/2023-05-25-8fc7b96cd054.html</url>
     <content><![CDATA[<blockquote>
@@ -3193,17 +3242,6 @@ dfs(root.Right, res)
       </tags>
   </entry>
   <entry>
-    <title>leetcode 706. 设计哈希映射 Golang</title>
-    <url>/2023-05-20-e3f31d125f9b.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashmap/description/">706. 设计哈希映射 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230520230121.png"><br>使用了go 语言的list.List (双向列表)，具体如何使用请看文章：Go语言-list.List</p>
-<h2 id="使用结构体（非指针）"><a href="#使用结构体（非指针）" class="headerlink" title="使用结构体（非指针）"></a>使用结构体（非指针）</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// func　(this *MyHashMap) hash(key int, value int)&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(entry); et.k == key &#123;</span><br><span class="line">			e.Value = entry&#123;key, value&#125; <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok&amp;&amp; et.k == key&#123;</span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用结构体指针"><a href="#使用结构体指针" class="headerlink" title="使用结构体指针"></a>使用结构体指针</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(*entry); et.k == key &#123; <span class="comment">// 注意list 的元素类型是空接口，需要断言类型</span></span><br><span class="line">			et.v = value  <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝,可以使用其指针</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(&amp;entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok&amp;&amp; et.k == key&#123; <span class="comment">// 可以缩写为if et := e.Value.(entry); et.k == key  用于断言，并找key</span></span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 77.组合【回溯】</title>
     <url>/2024-01-23-183e0ff5f5ef.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/combinations/description/">77. 组合 - 力扣（LeetCode）</a><br><img src="/../../imgs/Pasted%20image%2020240123231742.png"></p>
@@ -3227,6 +3265,17 @@ dfs(root.Right, res)
 <li><p>在主函数中初始调用回溯函数，然后返回最终结果。</p>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 706. 设计哈希映射 Golang</title>
+    <url>/2023-05-20-e3f31d125f9b.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashmap/description/">706. 设计哈希映射 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230520230121.png"><br>使用了go 语言的list.List (双向列表)，具体如何使用请看文章：Go语言-list.List</p>
+<h2 id="使用结构体（非指针）"><a href="#使用结构体（非指针）" class="headerlink" title="使用结构体（非指针）"></a>使用结构体（非指针）</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// func　(this *MyHashMap) hash(key int, value int)&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(entry); et.k == key &#123;</span><br><span class="line">			e.Value = entry&#123;key, value&#125; <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok&amp;&amp; et.k == key&#123;</span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用结构体指针"><a href="#使用结构体指针" class="headerlink" title="使用结构体指针"></a>使用结构体指针</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 链地址法</span></span><br><span class="line"><span class="keyword">var</span> base = <span class="number">769</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// base := 769</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	k <span class="type">int</span></span><br><span class="line">	v <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashMap <span class="keyword">struct</span> &#123;</span><br><span class="line">	hashMaps []list.List</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hash集合可以使用数组链表；</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashMap &#123;</span><br><span class="line">	<span class="keyword">return</span> MyHashMap&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et := e.Value.(*entry); et.k == key &#123; <span class="comment">// 注意list 的元素类型是空接口，需要断言类型</span></span><br><span class="line">			et.v = value  <span class="comment">// 注意这里et 是拷贝，需要是使用e.Value 而不是其拷贝,可以使用其指针</span></span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.hashMaps[hash].PushBack(&amp;entry&#123;key, value&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok&amp;&amp; et.k == key&#123; <span class="comment">// 可以缩写为if et := e.Value.(entry); et.k == key  用于断言，并找key</span></span><br><span class="line">			<span class="keyword">return</span> et.v</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MyHashMap)</span></span> Remove(key <span class="type">int</span>) &#123;</span><br><span class="line">	hash := key % base</span><br><span class="line">	<span class="keyword">for</span> e := this.hashMaps[hash].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123;</span><br><span class="line">		<span class="keyword">if</span> et, ok := e.Value.(*entry); ok &amp;&amp; et.k == key &#123;</span><br><span class="line">			this.hashMaps[hash].Remove(e)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * obj := Constructor();</span></span><br><span class="line"><span class="comment"> * obj.Put(key,value);</span></span><br><span class="line"><span class="comment"> * param_2 := obj.Get(key);</span></span><br><span class="line"><span class="comment"> * obj.Remove(key);</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3995,22 +4044,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【go】初始化双向列表List</title>
-    <url>/2024-01-22-93119ce81a1c.html</url>
-    <content><![CDATA[<p>在Go语言中，两种方法都可以用于初始化一个<code>list.List</code>。</p>
-<ol>
-<li><p><code>queue := &amp;list.List&#123;&#125;</code>: 这是使用结构体字面量的方式，创建一个 <code>list.List</code> 类型的结构体变量，并返回该结构体的指针。这种方式创建了一个空的链表。</p>
-</li>
-<li><p><code>queue := list.New()</code>: 这是使用 <code>list</code> 包中的 <code>New</code> 函数来创建一个新的 <code>list.List</code>。<code>New</code> 函数返回一个指向新创建的 <code>list.List</code> 实例的指针。同样，这种方式也创建了一个空的链表。</p>
-</li>
-</ol>
-<p>两种方式都是有效的</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>【Golang】贪心</title>
     <url>/2025-06-17-12ec7942da63.html</url>
     <content><![CDATA[<h1 id="贪心算法经典题目及Golang实现"><a href="#贪心算法经典题目及Golang实现" class="headerlink" title="贪心算法经典题目及Golang实现"></a>贪心算法经典题目及Golang实现</h1><p>贪心算法是一种在每一步选择中都采取当前状态下最优的选择，从而希望导致全局最优解的算法策略。以下是一些LeetCode上经典的贪心算法题目及其Golang实现，并总结一个通用的解题模板。</p>
@@ -4054,6 +4087,22 @@ dfs(root.Right, res)
 <li>跳跃游戏类问题</li>
 </ul>
 <p>贪心算法的关键在于证明贪心策略的正确性，这通常需要数学证明或直观理解。在实际应用中，如果无法确定贪心策略是否正确，可以先尝试，然后验证是否能够得到全局最优解。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【go】初始化双向列表List</title>
+    <url>/2024-01-22-93119ce81a1c.html</url>
+    <content><![CDATA[<p>在Go语言中，两种方法都可以用于初始化一个<code>list.List</code>。</p>
+<ol>
+<li><p><code>queue := &amp;list.List&#123;&#125;</code>: 这是使用结构体字面量的方式，创建一个 <code>list.List</code> 类型的结构体变量，并返回该结构体的指针。这种方式创建了一个空的链表。</p>
+</li>
+<li><p><code>queue := list.New()</code>: 这是使用 <code>list</code> 包中的 <code>New</code> 函数来创建一个新的 <code>list.List</code>。<code>New</code> 函数返回一个指向新创建的 <code>list.List</code> 实例的指针。同样，这种方式也创建了一个空的链表。</p>
+</li>
+</ol>
+<p>两种方式都是有效的</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -4700,55 +4749,6 @@ dfs(root.Right, res)
 ]]></content>
       <categories>
         <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>更新网页url后，恢复valine网页评论</title>
-    <url>/2025-04-13-8c397fc87827.html</url>
-    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
-<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
-<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-ed1bf9078b39.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
       </categories>
   </entry>
   <entry>
