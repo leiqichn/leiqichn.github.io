@@ -9,7 +9,7 @@ sticky: []
 published: true
 category_bar: true
 ---
-在 Obsidian 中配置 Git 插件使用代理，有几种方法可以实现：
+配置 Git 插件使用代理，有几种方法可以实现：
 
 ## 方法一：通过 Git 全局配置代理（推荐）
 
