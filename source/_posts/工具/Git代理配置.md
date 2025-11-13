@@ -1,10 +1,10 @@
 ---
-title: git代理配置
+title: 【Git】Git代理配置
 date: 2025-11-13 23:24:53
 modificationDate: 2025 十一月 13日 星期四 23:24:53
 categories: 
 	- 工具
-tags: []
+tags: [git]
 sticky: []
 published: true
 category_bar: true
