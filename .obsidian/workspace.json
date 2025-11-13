@@ -47,13 +47,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/工具/开机自启WSL.md",
+                "file": "source/_posts/关于我/关于我.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "开机自启WSL"
+              "title": "关于我"
             }
           }
         ],
@@ -127,7 +127,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "刷题",
+                "query": "我的第",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -168,7 +168,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/开机自启WSL.md",
+                "file": "source/_posts/关于我/关于我.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -178,7 +178,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "开机自启WSL 的反向链接列表"
+              "title": "关于我 的反向链接列表"
             }
           },
           {
@@ -260,8 +260,10 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "50dc0787cbb3ddd9",
   "lastOpenFiles": [
+    "source/about/index.md",
+    "source/_posts/工具/开机自启WSL.md",
     "source/_posts/工具/【工具】7小时代码编写机器claude code 安装.md",
     "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
     "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
@@ -298,8 +300,6 @@
     "source/_posts/设计模式/设计模式-抽象工厂.md",
     "source/_posts/leetcode/【Golang】动态规划.md",
     "source/_posts/工具/Linux任务忘挂后台？bg来救.md",
-    "source/_posts/工具/pycharm快速跳出括号.md",
-    "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
     "source/_posts/AI学习",
     "source/imgs/ima.copilot-win-x64-1.6.1(2463).exe",
     "source/imgs/未确认 695400.crdownload",

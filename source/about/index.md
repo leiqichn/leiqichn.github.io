@@ -13,19 +13,6 @@ comment: true
 
 </div>
 
-<div style="text-align: center">
-
-# 我的第 ![Visitor Count](https://profile-counter.glitch.me/leiqitop/count.svg)
-
-</div>
-
-
-<div style="text-align: center">
-
-# 个朋友！
-
-</div>
-
 ## 关于我 
 - 🌱 毕业于复旦大学
 
@@ -42,6 +29,7 @@ comment: true
 
 - [优酷x天池 「酷文」小说创作大模型挑战赛](https://tianchi.aliyun.com/competition/entrance/532210/customize509): DeepThinking Team Leader, **Third Prize**.
 
+
 **As a member** :
 
 - [PhenoBERT](https://github.com/TianlabTech/PhenoBERT.git) : **PhenoBERT:** A combined deep learning method for automated recognition of human phenotype ontology
@@ -51,6 +39,7 @@ comment: true
 ## 比赛
 
 - [优酷x天池 「酷文」小说创作大模型挑战赛](https://tianchi.aliyun.com/competition/entrance/532210/customize509): DeepThinking Team Leader, **Third Prize**.
+- [第三届世界科学智能大赛合成生物赛道：蛋白质固有无序区域预测](http://competition.sais.com.cn/competitionDetail/532313/leaderboard): DeepThinking Team Leader, **Top 10**.
 
 
 ## 欢迎志同道合的朋友~
