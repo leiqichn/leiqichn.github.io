@@ -4,58 +4,135 @@
     "type": "split",
     "children": [
       {
-        "id": "55b603b34ef4e9a2",
-        "type": "tabs",
+        "id": "f16cd3d777056a21",
+        "type": "split",
         "children": [
           {
-            "id": "591c634332e94d6c",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/Golang/golang 设计题.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
+            "id": "55b603b34ef4e9a2",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "591c634332e94d6c",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "source/_posts/Golang/golang 设计题.md",
+                    "mode": "source",
+                    "source": false,
+                    "backlinks": false
+                  },
+                  "pinned": true,
+                  "icon": "lucide-file",
+                  "title": "golang 设计题"
+                }
               },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "golang 设计题"
-            }
+              {
+                "id": "ac8f8670e65ad600",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
+                    "mode": "source",
+                    "source": false,
+                    "backlinks": false
+                  },
+                  "pinned": true,
+                  "icon": "lucide-file",
+                  "title": "【重要】设计题提升最佳指南"
+                }
+              }
+            ],
+            "currentTab": 1
           },
           {
-            "id": "ac8f8670e65ad600",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
+            "id": "d69b7b1794892724",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "7b2bf6b60da070fb",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "D:\\Work\\Project\\Code\\github\\leiqichn.github.io",
+                      "focus": false,
+                      "profile": {
+                        "name": "",
+                        "restoreHistory": true,
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "developerConsole"
+                      },
+                      "serial": {
+                        "columns": 120,
+                        "data": "\u001b[37mgit obsidian error: fatal: unable to access 'https://github.com/leiqichn/leiqichn.github.io.git/': Failed to connect to github.com port 443 after 21112 ms: Couldn't connect to server\r\n\r\n\u001b[31m[Error: fatal: unable to access 'https://github.com/leiqichn/leiqichn.github.io.git/': Failed to connect to github.com port 443 after 21112 ms: Couldn't connect to server\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[Error: ENOENT: no such file or directory, open 'D:\\Work\\Project\\Code\\github\\leiqichn.github.io\\Excalidraw\\Drawing 2025-11-13 23.12.14.excalidraw.md'] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n\u001b[37mPushing....\r\ngit obsidian error: fatal: unable to access 'https://github.com/leiqichn/leiqichn.github.io.git/': Failed to connect to github.com port 443 after 21070 ms: Couldn't connect to server\r\nPushing to https://github.com/leiqichn/leiqichn.github.io.git\r\n\r\n\u001b[31m[Error: fatal: unable to access 'https://github.com/leiqichn/leiqichn.github.io.git/': Failed to connect to github.com port 443 after 21070 ms: Couldn't connect to server\r\nPushing to https://github.com/leiqichn/leiqichn.github.io.git\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n\r\n\u001b[90mundefined\r\n\r\nundefined\r\n\u001b[37mgit push\r\n\u001b[31m[SyntaxError: Unexpected token (1:4)]\r\n\u001b[37mproxyon\r\n\u001b[31m[ReferenceError: proxyon is not defined]\r\n\u001b[0m",
+                        "rows": 24
+                      }
+                    }
+                  },
+                  "pinned": true,
+                  "icon": "terminal",
+                  "title": "终端：开发者控制台"
+                }
               },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "【重要】设计题提升最佳指南"
-            }
-          },
-          {
-            "id": "a09228e9a269dde0",
-            "type": "leaf",
-            "state": {
-              "type": "diff-view",
-              "state": {
-                "file": "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
-                "staged": false
-              },
-              "icon": "git-pull-request",
-              "title": "Diff View (【重要】设计题提升最佳指南)"
-            }
+              {
+                "id": "c8e834e186331b93",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "D:\\Work\\Project\\Code\\github\\leiqichn.github.io",
+                      "focus": false,
+                      "profile": {
+                        "args": [],
+                        "executable": "C:\\Windows\\System32\\cmd.exe",
+                        "name": "",
+                        "platforms": {
+                          "win32": true
+                        },
+                        "pythonExecutable": "python3",
+                        "restoreHistory": true,
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "useWin32Conhost": true
+                      },
+                      "serial": {
+                        "columns": 120,
+                        "data": "git push \u001b[1B\u001b[9D",
+                        "rows": 24
+                      }
+                    }
+                  },
+                  "pinned": true,
+                  "icon": "terminal",
+                  "title": "终端：选择 C:\\Windows\\System32\\conhost.exe - git  push"
+                }
+              }
+            ]
           }
         ],
-        "currentTab": 2
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -166,6 +243,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,7 +253,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "【重要】设计题提升最佳指南 的反向链接列表"
             }
           },
           {
@@ -257,13 +335,15 @@
       "terminal:Open terminal": false
     }
   },
-  "active": "a09228e9a269dde0",
+  "active": "ac8f8670e65ad600",
   "lastOpenFiles": [
+    "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
+    "Excalidraw/Drawing 2025-11-13 23.12.14.excalidraw.md",
+    "Excalidraw",
     "source/_posts/leetcode/【Golang】滑动窗口总结.md",
     "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
     "source/_posts/carl/代码随想录 day8  字符串part 01.md",
     "source/_posts/Golang/Go vs Python：从 `append` 操作看两种语言的设计哲学.md",
-    "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
     "source/imgs/截屏2025-07-30 上午12.27.40.png",
     "source/_posts/工具/7小时代码编写机器claude code 安装.md",
     "source/_posts/leetcode/Dijkstra算法实现带权重最短路径.md",
@@ -296,7 +376,6 @@
     "source/_posts/AI学习",
     "source/_posts/Linux/sudo命令缺失解决.md",
     "source/_posts/架构/TODO Golang开发艾宾浩斯复习系统规划.md",
-    "source/_posts/Golang/【Golang】 switch使用.md",
     "source/imgs/ima.copilot-win-x64-1.6.1(2463).exe",
     "source/imgs/未确认 695400.crdownload",
     "source/imgs/公众号_爱给网_aigei_com.png.crdownload",
@@ -304,7 +383,6 @@
     "public/assets/algolia/algoliasearchLite.min.js",
     "public/assets/algolia/algoliasearchLite.js",
     "public/assets/algolia/algoliasearch.min.js",
-    "public/assets/img/微信图片_20230319125819.png.html",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
