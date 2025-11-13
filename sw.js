@@ -33,7 +33,7 @@ var precacheUrls = [
 
   '/2025-08-07-e9a26e827379.html',
 
-  '/2025-07-31-c1ada6c33858.html',
+  '/2025-07-31-d9eb653e8291.html',
 
   '/2025-07-29-f4ab9b8e573f.html',
 

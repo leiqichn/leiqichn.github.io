@@ -2144,8 +2144,8 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>【新开发】GoToDo 四象限法待办谷歌插件</title>
-    <url>/2025-07-31-c1ada6c33858.html</url>
+    <title>【项目】GoToDo 四象限法待办谷歌插件</title>
+    <url>/2025-07-31-d9eb653e8291.html</url>
     <content><![CDATA[<h1 id="GOTODO"><a href="#GOTODO" class="headerlink" title="GOTODO"></a>GOTODO</h1><blockquote>
 <p>四象限法 TODO 管理 Chrome 插件<br>Eisenhower Matrix TODO Chrome Extension</p>
 </blockquote>
@@ -2248,55 +2248,6 @@ dfs(root.Right, res)
       <tags>
         <tag>about</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>更新网页url后，恢复valine网页评论</title>
-    <url>/2025-04-13-8c397fc87827.html</url>
-    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
-<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
-<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-ed1bf9078b39.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
   </entry>
   <entry>
     <title>Dijkstra算法实现带权重最短路径</title>
@@ -2901,19 +2852,6 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 1845.座位预约管理系统</title>
-    <url>/2023-05-22-97adde03f66a.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/seat-reservation-manager/description/">1845. 座位预约管理系统 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523000703.png"></p>
-<h3 id="超时版本"><a href="#超时版本" class="headerlink" title="超时版本"></a>超时版本</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> seat <span class="keyword">struct</span> &#123;</span><br><span class="line">	seatId <span class="type">int</span></span><br><span class="line">	isFree <span class="type">int</span> <span class="comment">// 空</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> SeatManager <span class="keyword">struct</span> &#123;</span><br><span class="line">	seats   <span class="keyword">map</span>[<span class="type">int</span>]*seat</span><br><span class="line">	isFrees []<span class="type">int</span> <span class="comment">// 可预约的使用list 保存一份,记得被占用的时候，删除该座位，空缺则添加</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(n <span class="type">int</span>)</span></span> SeatManager &#123;</span><br><span class="line">	<span class="keyword">var</span> a = SeatManager&#123;<span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*seat, n), <span class="built_in">make</span>([]<span class="type">int</span>, n)&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">		id := i + <span class="number">1</span></span><br><span class="line">		a.seats[id] = &amp;seat&#123;id, <span class="number">1</span>&#125;</span><br><span class="line">		a.isFrees[i] = id <span class="comment">// 初始化</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Reserve() <span class="type">int</span> &#123;</span><br><span class="line">	sort.Ints(this.isFrees)</span><br><span class="line">	top := this.isFrees[<span class="number">0</span>]</span><br><span class="line">	this.seats[top].isFree = <span class="number">0</span></span><br><span class="line">	this.isFrees = this.isFrees[<span class="number">1</span>:]</span><br><span class="line">	<span class="keyword">return</span> top</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 或者使用map</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Unreserve(seatNumber <span class="type">int</span>) &#123;</span><br><span class="line">	this.seats[seatNumber].isFree = <span class="number">1</span></span><br><span class="line">	this.isFrees = <span class="built_in">append</span>(this.isFrees,seatNumber)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="通过版本"><a href="#通过版本" class="headerlink" title="通过版本"></a>通过版本</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> SeatManager <span class="keyword">struct</span> &#123;</span><br><span class="line">	seats []<span class="type">int</span></span><br><span class="line">	min <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(n <span class="type">int</span>)</span></span> SeatManager &#123;</span><br><span class="line">	set:=<span class="built_in">make</span>([]<span class="type">int</span>,n+<span class="number">2</span>)</span><br><span class="line">	<span class="keyword">return</span> SeatManager&#123;seats:set,min:<span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Reserve() <span class="type">int</span> &#123;</span><br><span class="line">	value := this.min</span><br><span class="line">	this.seats[value]=<span class="number">1</span></span><br><span class="line">	length := <span class="built_in">len</span> (this.seats)</span><br><span class="line">	fmt.Println(length)</span><br><span class="line">	i:=value</span><br><span class="line">	<span class="keyword">for</span> ;i&lt;length+<span class="number">1</span>;i++&#123;</span><br><span class="line">		<span class="keyword">if</span> this.seats[i]==<span class="number">1</span>&#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		this.min=i <span class="comment">// 中间变量，更新下次的最小座位号</span></span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> value <span class="comment">// 最小的座位号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Unreserve(seatNumber <span class="type">int</span>)  &#123;</span><br><span class="line">	this.seats[seatNumber]=<span class="number">0</span></span><br><span class="line">	<span class="keyword">if</span> seatNumber &lt; this.min&#123;</span><br><span class="line">		this.min=seatNumber</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 1845. 座位预约管理系统</title>
     <url>/2023-10-06-c2afb6383992.html</url>
     <content><![CDATA[<blockquote>
@@ -2940,6 +2878,19 @@ dfs(root.Right, res)
 </ul>
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><p><strong>使用slice</strong><br>  <figure class="highlight go"><figcaption><span>[]</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"><span class="keyword">type</span> SeatManager <span class="keyword">struct</span> &#123;</span><br><span class="line">	seats []<span class="type">int</span></span><br><span class="line">	min <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(n <span class="type">int</span>)</span></span> SeatManager &#123;</span><br><span class="line">	set:=<span class="built_in">make</span>([]<span class="type">int</span>,n+<span class="number">2</span>)</span><br><span class="line">	<span class="keyword">return</span> SeatManager&#123;seats:set,min:<span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Reserve() <span class="type">int</span> &#123;</span><br><span class="line">	value := this.min</span><br><span class="line">	this.seats[value]=<span class="number">1</span></span><br><span class="line">	length := <span class="built_in">len</span> (this.seats)</span><br><span class="line">	fmt.Println(length)</span><br><span class="line">	i:=value</span><br><span class="line">	<span class="keyword">for</span> ;i&lt;length+<span class="number">1</span>;i++&#123;</span><br><span class="line">		<span class="keyword">if</span> this.seats[i]==<span class="number">1</span>&#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		this.min=i <span class="comment">// 中间变量，更新下次的最小座位号</span></span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> value <span class="comment">// 最小的座位号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Unreserve(seatNumber <span class="type">int</span>)  &#123;</span><br><span class="line">	this.seats[seatNumber] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">if</span> seatNumber &lt; this.min&#123;</span><br><span class="line">		this.min=seatNumber</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><strong>使用map</strong><br>map 有个用例会超时</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> SeatManager <span class="keyword">struct</span> &#123;</span><br><span class="line">	seatMap   <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">	minSeat   <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(n <span class="type">int</span>)</span></span> SeatManager &#123;</span><br><span class="line">	seatMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, n+<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt;= n; i++ &#123; <span class="comment">// 注意从0 开始初始化</span></span><br><span class="line">		seatMap[i] = <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">	seatMan := SeatManager&#123;</span><br><span class="line">		seatMap,</span><br><span class="line">		<span class="number">1</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> seatMan</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Reserve() <span class="type">int</span> &#123;</span><br><span class="line">  value := this.minSeat</span><br><span class="line">	this.seatMap[value] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i:= value; i &lt;= <span class="built_in">len</span>(this.seatMap);i++ &#123;</span><br><span class="line">    <span class="keyword">if</span> this.seatMap[i] == <span class="number">1</span> &#123;</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">    &#125;</span><br><span class="line">    this.minSeat = i</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">	<span class="keyword">return</span> value</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Unreserve(seatNumber <span class="type">int</span>) &#123;</span><br><span class="line">  this.seatMap[seatNumber] = <span class="number">0</span></span><br><span class="line">  <span class="keyword">if</span> seatNumber &lt; this.minSeat &#123;</span><br><span class="line">    this.minSeat = seatNumber</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>leetcode 1845.座位预约管理系统</title>
+    <url>/2023-05-22-97adde03f66a.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/seat-reservation-manager/description/">1845. 座位预约管理系统 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523000703.png"></p>
+<h3 id="超时版本"><a href="#超时版本" class="headerlink" title="超时版本"></a>超时版本</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> seat <span class="keyword">struct</span> &#123;</span><br><span class="line">	seatId <span class="type">int</span></span><br><span class="line">	isFree <span class="type">int</span> <span class="comment">// 空</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> SeatManager <span class="keyword">struct</span> &#123;</span><br><span class="line">	seats   <span class="keyword">map</span>[<span class="type">int</span>]*seat</span><br><span class="line">	isFrees []<span class="type">int</span> <span class="comment">// 可预约的使用list 保存一份,记得被占用的时候，删除该座位，空缺则添加</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(n <span class="type">int</span>)</span></span> SeatManager &#123;</span><br><span class="line">	<span class="keyword">var</span> a = SeatManager&#123;<span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*seat, n), <span class="built_in">make</span>([]<span class="type">int</span>, n)&#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">		id := i + <span class="number">1</span></span><br><span class="line">		a.seats[id] = &amp;seat&#123;id, <span class="number">1</span>&#125;</span><br><span class="line">		a.isFrees[i] = id <span class="comment">// 初始化</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Reserve() <span class="type">int</span> &#123;</span><br><span class="line">	sort.Ints(this.isFrees)</span><br><span class="line">	top := this.isFrees[<span class="number">0</span>]</span><br><span class="line">	this.seats[top].isFree = <span class="number">0</span></span><br><span class="line">	this.isFrees = this.isFrees[<span class="number">1</span>:]</span><br><span class="line">	<span class="keyword">return</span> top</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历 或者使用map</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Unreserve(seatNumber <span class="type">int</span>) &#123;</span><br><span class="line">	this.seats[seatNumber].isFree = <span class="number">1</span></span><br><span class="line">	this.isFrees = <span class="built_in">append</span>(this.isFrees,seatNumber)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="通过版本"><a href="#通过版本" class="headerlink" title="通过版本"></a>通过版本</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> SeatManager <span class="keyword">struct</span> &#123;</span><br><span class="line">	seats []<span class="type">int</span></span><br><span class="line">	min <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(n <span class="type">int</span>)</span></span> SeatManager &#123;</span><br><span class="line">	set:=<span class="built_in">make</span>([]<span class="type">int</span>,n+<span class="number">2</span>)</span><br><span class="line">	<span class="keyword">return</span> SeatManager&#123;seats:set,min:<span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Reserve() <span class="type">int</span> &#123;</span><br><span class="line">	value := this.min</span><br><span class="line">	this.seats[value]=<span class="number">1</span></span><br><span class="line">	length := <span class="built_in">len</span> (this.seats)</span><br><span class="line">	fmt.Println(length)</span><br><span class="line">	i:=value</span><br><span class="line">	<span class="keyword">for</span> ;i&lt;length+<span class="number">1</span>;i++&#123;</span><br><span class="line">		<span class="keyword">if</span> this.seats[i]==<span class="number">1</span>&#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		this.min=i <span class="comment">// 中间变量，更新下次的最小座位号</span></span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> value <span class="comment">// 最小的座位号</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *SeatManager)</span></span> Unreserve(seatNumber <span class="type">int</span>)  &#123;</span><br><span class="line">	this.seats[seatNumber]=<span class="number">0</span></span><br><span class="line">	<span class="keyword">if</span> seatNumber &lt; this.min&#123;</span><br><span class="line">		this.min=seatNumber</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3141,6 +3092,16 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 376.摆动序列</title>
+    <url>/2023-05-23-7b5e53100757.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 406. 根据身高重建队列【贪心】</title>
     <url>/2024-01-23-1cb0809a7893.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/queue-reconstruction-by-height/description/">406. 根据身高重建队列 - 力扣（LeetCode）</a></p>
@@ -3165,16 +3126,6 @@ dfs(root.Right, res)
 <li>使用 <code>i+1</code> 作为结束索引可以确保包含 <code>i</code> 在内的元素，而不会超出有效的范围。</li>
 <li>如果使用 <code>len(people)</code> 作为结束索引，那么将会复制从 <code>p[1]</code> 到 <code>len(people)-1</code> 的所有元素，这超出了实际有效的范围。</li>
 </ol>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 376.摆动序列</title>
-    <url>/2023-05-23-7b5e53100757.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3399,6 +3350,32 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>leetcode 设计题 Constructor构建</title>
+    <url>/2023-05-14-776ea61b62a5.html</url>
+    <content><![CDATA[<p>在面向对象编程中，构造函数通常用于创建新对象并初始化其属性。对于 LeetCode 样例题目 “Design Parking System” 中的 ParkingSystem 结构体，可以这样编写 Constructor 方法：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;</span><br><span class="line">    carNums <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span> <span class="comment">// 记录每种停车位的数量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(big <span class="type">int</span>, medium <span class="type">int</span>, small <span class="type">int</span>)</span></span> ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">return</span> ParkingSystem&#123;</span><br><span class="line">        carNums: <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;<span class="number">1</span>: big, <span class="number">2</span>: medium, <span class="number">3</span>: small&#125;, <span class="comment">// 初始化 carNums 映射</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个实现中，我们使用传递给 Constructor 方法的三个整数参数来初始化 ParkingSystem 结构体的属性。具体而言，我们使用 map[int]int 类型的 carNums 映射保持每种车位类型的可用数量。在初始化结构体时，我们使用字面量映射来启用 1、2 和 3 的停车位类型，并将它们的值与输入参数big、medium 和 small 相关联。</p>
+<p>请注意，当声明类似 structA map[int]structB 的嵌套 map 时，只需要在创建 A 实例时初始化外部映射即可。此时内部的 structB 映射会默认为 nil，但可以在需要使用时通过相应的方法或直接进行初始化以此。例如，当需要在内部映射中添加元素时，可以先检查是否为 nil，然后在需要时进行初始化。</p>
+<p>具体来说，如果需要创建一个名为 A 的 map[int]B 类型的 map 以及名为 B 的 map[int]int 类型的嵌套 map，则可以按以下方式实现：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> B <span class="keyword">struct</span> &#123;</span><br><span class="line">    m <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    m <span class="keyword">map</span>[<span class="type">int</span>]B</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := &amp;A&#123;</span><br><span class="line">        m: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]B),</span><br><span class="line">    &#125;</span><br><span class="line">    b := &amp;B&#123;</span><br><span class="line">        m: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>),</span><br><span class="line">    &#125;</span><br><span class="line">    a.m[<span class="number">1</span>] = *b <span class="comment">// 给 A 中的第一个元素分配一个新的 B 结构体实例</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们首先定义了类型 B 和 A。在 A 中，我们使用包含 int 键和 B 值的映射来保持所有项目的索引和子结构体指针。请注意，为了确保不会出现 <strong>nil 引用错误</strong>，我们还在代码中使用了 make 函数创建了一个空映射。</p>
+<p>例如, 下边结构体中map 嵌套了另外一个结构体的map,<br>可以通过使用 make 函数和伪造的 Res 结构体实例定义方式来初始化一个新的 ParkingSystem 实例，然后在之后的代码中修改 carNums 映射对象。以下是一个示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Res <span class="keyword">struct</span> &#123;</span><br><span class="line">    big <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;<span class="keyword">map</span></span><br><span class="line">    carNums <span class="keyword">map</span>[<span class="type">int</span>]*Res <span class="comment">// map 嵌套map</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewParkingSystem</span><span class="params">()</span></span> *ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">return</span> &amp;ParkingSystem&#123;carNums: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*Res)&#125; <span class="comment">// 只用先make 一个空map,指向Res</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ps := NewParkingSystem()</span><br><span class="line">    ps.carNums[<span class="number">1</span>] = &amp;Res&#123;big: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们定义了一个名为 NewParkingSystem 的函数，它返回指向新的 ParkingSystem 实例的指针，并在函数体中使用 make 函数创建一个新的空指针映射。</p>
+<p>然后在主函数的其他位置，我们通过传入适当的值来修改 carNums 中的每个停车场位置类型。请注意，与之前相同，我们在此处使用 &amp; 参考运算符来提供指向新声明的 Res 结构体实例的指针。</p>
+<p>总之，可以分别声明 ParkingSystem 和 Res 结构体，并通过调用适当的函数或编写正确的初始化代码，在以后的程序执行期间引用并修改它们。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>设计题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode 每日温度 单调栈</title>
     <url>/2024-05-20-1fbf9ee2486f.html</url>
     <content><![CDATA[<p><img src="/../../imgs/Pasted%20image%2020250615183912.png"></p>
@@ -3461,30 +3438,15 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>leetcode 设计题 Constructor构建</title>
-    <url>/2023-05-14-776ea61b62a5.html</url>
-    <content><![CDATA[<p>在面向对象编程中，构造函数通常用于创建新对象并初始化其属性。对于 LeetCode 样例题目 “Design Parking System” 中的 ParkingSystem 结构体，可以这样编写 Constructor 方法：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;</span><br><span class="line">    carNums <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span> <span class="comment">// 记录每种停车位的数量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(big <span class="type">int</span>, medium <span class="type">int</span>, small <span class="type">int</span>)</span></span> ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">return</span> ParkingSystem&#123;</span><br><span class="line">        carNums: <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;<span class="number">1</span>: big, <span class="number">2</span>: medium, <span class="number">3</span>: small&#125;, <span class="comment">// 初始化 carNums 映射</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个实现中，我们使用传递给 Constructor 方法的三个整数参数来初始化 ParkingSystem 结构体的属性。具体而言，我们使用 map[int]int 类型的 carNums 映射保持每种车位类型的可用数量。在初始化结构体时，我们使用字面量映射来启用 1、2 和 3 的停车位类型，并将它们的值与输入参数big、medium 和 small 相关联。</p>
-<p>请注意，当声明类似 structA map[int]structB 的嵌套 map 时，只需要在创建 A 实例时初始化外部映射即可。此时内部的 structB 映射会默认为 nil，但可以在需要使用时通过相应的方法或直接进行初始化以此。例如，当需要在内部映射中添加元素时，可以先检查是否为 nil，然后在需要时进行初始化。</p>
-<p>具体来说，如果需要创建一个名为 A 的 map[int]B 类型的 map 以及名为 B 的 map[int]int 类型的嵌套 map，则可以按以下方式实现：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> B <span class="keyword">struct</span> &#123;</span><br><span class="line">    m <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    m <span class="keyword">map</span>[<span class="type">int</span>]B</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := &amp;A&#123;</span><br><span class="line">        m: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]B),</span><br><span class="line">    &#125;</span><br><span class="line">    b := &amp;B&#123;</span><br><span class="line">        m: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>),</span><br><span class="line">    &#125;</span><br><span class="line">    a.m[<span class="number">1</span>] = *b <span class="comment">// 给 A 中的第一个元素分配一个新的 B 结构体实例</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个示例中，我们首先定义了类型 B 和 A。在 A 中，我们使用包含 int 键和 B 值的映射来保持所有项目的索引和子结构体指针。请注意，为了确保不会出现 <strong>nil 引用错误</strong>，我们还在代码中使用了 make 函数创建了一个空映射。</p>
-<p>例如, 下边结构体中map 嵌套了另外一个结构体的map,<br>可以通过使用 make 函数和伪造的 Res 结构体实例定义方式来初始化一个新的 ParkingSystem 实例，然后在之后的代码中修改 carNums 映射对象。以下是一个示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Res <span class="keyword">struct</span> &#123;</span><br><span class="line">    big <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;<span class="keyword">map</span></span><br><span class="line">    carNums <span class="keyword">map</span>[<span class="type">int</span>]*Res <span class="comment">// map 嵌套map</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewParkingSystem</span><span class="params">()</span></span> *ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">return</span> &amp;ParkingSystem&#123;carNums: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*Res)&#125; <span class="comment">// 只用先make 一个空map,指向Res</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ps := NewParkingSystem()</span><br><span class="line">    ps.carNums[<span class="number">1</span>] = &amp;Res&#123;big: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个示例中，我们定义了一个名为 NewParkingSystem 的函数，它返回指向新的 ParkingSystem 实例的指针，并在函数体中使用 make 函数创建一个新的空指针映射。</p>
-<p>然后在主函数的其他位置，我们通过传入适当的值来修改 carNums 中的每个停车场位置类型。请注意，与之前相同，我们在此处使用 &amp; 参考运算符来提供指向新声明的 Res 结构体实例的指针。</p>
-<p>总之，可以分别声明 ParkingSystem 和 Res 结构体，并通过调用适当的函数或编写正确的初始化代码，在以后的程序执行期间引用并修改它们。</p>
+    <title>leetcode　705. 设计哈希集合</title>
+    <url>/2023-05-19-2fa443568cc1.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashset/description/">705. 设计哈希集合 - 力扣（Leetcode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230520225749.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> base = <span class="number">769</span> <span class="comment">// 哈希表的长度 质数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashSet <span class="keyword">struct</span> &#123;</span><br><span class="line">    data []list.List <span class="comment">// 使用链表储存冲突元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashSet &#123; <span class="comment">// 构造函数，返回一个空的哈希集合</span></span><br><span class="line">    <span class="keyword">return</span> MyHashSet&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 哈希函数：对键值取模得到哈希值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> hash(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> key % base</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Add(key <span class="type">int</span>) &#123; <span class="comment">// 向哈希集合中添加元素</span></span><br><span class="line">    <span class="keyword">if</span> !s.Contains(key) &#123; <span class="comment">// 如果元素不在集合中</span></span><br><span class="line">        h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">        s.data[h].PushBack(key) <span class="comment">// 将元素加入到链表中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Remove(key <span class="type">int</span>) &#123; <span class="comment">// 从哈希集合中删除元素</span></span><br><span class="line">    h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">    <span class="keyword">for</span> e := s.data[h].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123; <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">if</span> e.Value.(<span class="type">int</span>) == key &#123; <span class="comment">// 如果元素等于要删除的元素</span></span><br><span class="line">            s.data[h].Remove(e) <span class="comment">// 从链表中删除元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Contains(key <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="comment">// 判断某个元素是否在哈希集合中</span></span><br><span class="line">    h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">    <span class="keyword">for</span> e := s.data[h].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123; <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">if</span> e.Value.(<span class="type">int</span>) == key &#123; <span class="comment">// 如果元素等于要查找的元素</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 返回 true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 没有找到元素，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
-      <tags>
-        <tag>设计题</tag>
-      </tags>
   </entry>
   <entry>
     <title>【20240106】leetcode 2807. 在链表中插入最大公约数</title>
@@ -3504,17 +3466,6 @@ dfs(root.Right, res)
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 辗转相除法求最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gcd</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> b != <span class="number">0</span> &#123;</span><br><span class="line">        temp := b</span><br><span class="line">        b = a % b</span><br><span class="line">        a = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    num1 := <span class="number">48</span></span><br><span class="line">    num2 := <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    result := gcd(num1, num2)</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;最大公约数为:&quot;</span>, result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，<code>gcd</code> 函数使用了辗转相除法来计算两个整数的最大公约数。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode　705. 设计哈希集合</title>
-    <url>/2023-05-19-2fa443568cc1.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashset/description/">705. 设计哈希集合 - 力扣（Leetcode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230520225749.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> base = <span class="number">769</span> <span class="comment">// 哈希表的长度 质数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashSet <span class="keyword">struct</span> &#123;</span><br><span class="line">    data []list.List <span class="comment">// 使用链表储存冲突元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashSet &#123; <span class="comment">// 构造函数，返回一个空的哈希集合</span></span><br><span class="line">    <span class="keyword">return</span> MyHashSet&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 哈希函数：对键值取模得到哈希值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> hash(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> key % base</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Add(key <span class="type">int</span>) &#123; <span class="comment">// 向哈希集合中添加元素</span></span><br><span class="line">    <span class="keyword">if</span> !s.Contains(key) &#123; <span class="comment">// 如果元素不在集合中</span></span><br><span class="line">        h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">        s.data[h].PushBack(key) <span class="comment">// 将元素加入到链表中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Remove(key <span class="type">int</span>) &#123; <span class="comment">// 从哈希集合中删除元素</span></span><br><span class="line">    h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">    <span class="keyword">for</span> e := s.data[h].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123; <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">if</span> e.Value.(<span class="type">int</span>) == key &#123; <span class="comment">// 如果元素等于要删除的元素</span></span><br><span class="line">            s.data[h].Remove(e) <span class="comment">// 从链表中删除元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Contains(key <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="comment">// 判断某个元素是否在哈希集合中</span></span><br><span class="line">    h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">    <span class="keyword">for</span> e := s.data[h].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123; <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">if</span> e.Value.(<span class="type">int</span>) == key &#123; <span class="comment">// 如果元素等于要查找的元素</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 返回 true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 没有找到元素，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3566,6 +3517,51 @@ dfs(root.Right, res)
 <p>byte是uint8的别名，即一个无符号的8位整数。<br>在Go语言中，byte通常用于表示字节（byte），即数据的基本单位。<br>byte可以存储任何0到255之间的值，因为一个字节有8位，每位可以是0或1，所以总共有256种可能的值（从0到255）。<br>rune：</p>
 <p>rune是int32的别名，即一个有符号的32位整数。<br>rune在Go语言中用于表示一个Unicode码点（Unicode scalar value），可以表示任何Unicode字符。<br>rune类型用于处理字符串中的单个字符，特别是对于需要表示多字节字符（如中文、日文、韩文等）的Unicode字符非常有用。<br>由于rune是一个32位整数，它可以表示从0到0x10FFFF（即Unicode的最大值）的任何值。<br>区别：</p>
 <p>大小：byte是8位的，而rune是32位的。<br>用途：byte用于处理字节数据，rune用于处理Unicode字符。<br>范围：byte的范围是0到255，而rune的范围是0到0x10FFFF。<br>编码：在字符串中，byte类型表示的是UTF-8编码的字节序列，而rune类型表示的是Unicode码点。例如，一个包含中文字符的字符串在byte切片中可能包含多个字节，但在rune切片中，每个rune值对应一个Unicode字符。<br>在处理文本数据时，选择byte还是rune取决于你的具体需求，如果你需要处理原始字节数据，比如文件I&#x2F;O或者网络传输，可能会使用byte。而如果你需要处理文本数据，特别是涉及到多字节字符集的文本，使用rune会更加方便。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Golang】 函数传入slice无法修改到原slice</title>
+    <url>/2025-06-15-f16e0f79fc66.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/permutations/description/">46. 全排列 - 力扣（LeetCode）</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">permute</span><span class="params">(nums []<span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    track := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">    used := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">    </span><br><span class="line">    backtrack(nums, track, used, &amp;res)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回溯函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backtrack</span><span class="params">(nums []<span class="type">int</span>, track []<span class="type">int</span>, used []<span class="type">bool</span>, res *[][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">// 触发结束条件</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(track) == <span class="built_in">len</span>(nums) &#123;</span><br><span class="line">        <span class="comment">// 因为 track 是全局变量，因此需要新建一个数组来存储一份全排列</span></span><br><span class="line">        temp := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(track))</span><br><span class="line">        <span class="built_in">copy</span>(temp, track)</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, temp)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="comment">// 排除不合法的选择</span></span><br><span class="line">        <span class="keyword">if</span> used[i] &#123;</span><br><span class="line">            <span class="comment">// 剪枝，避免重复使用同一个数字</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 做选择</span></span><br><span class="line">        track = <span class="built_in">append</span>(track, nums[i])</span><br><span class="line">        used[i] = <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 进入下一层决策树</span></span><br><span class="line">        backtrack(nums, track, used, res)</span><br><span class="line">        <span class="comment">// 取消选择</span></span><br><span class="line">        track = track[:<span class="built_in">len</span>(track)<span class="number">-1</span>]</span><br><span class="line">        used[i] = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上边的res 代码slice中需要使用指针 我去掉指针不行。</p>
+<p>使用闭包函数可以。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">permute</span><span class="params">(nums []<span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    track := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">    used := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">    <span class="keyword">var</span> backtrack <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line">    backtrack = <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 触发结束条件</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(track) == <span class="built_in">len</span>(nums) &#123;</span><br><span class="line">        <span class="comment">// 因为 track 是全局变量，因此需要新建一个数组来存储一份全排列</span></span><br><span class="line">        temp := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(track))</span><br><span class="line">        <span class="built_in">copy</span>(temp, track)</span><br><span class="line">        res = <span class="built_in">append</span>(res, temp)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="comment">// 排除不合法的选择</span></span><br><span class="line">        <span class="keyword">if</span> used[i] &#123;</span><br><span class="line">            <span class="comment">// 剪枝，避免重复使用同一个数字</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 做选择</span></span><br><span class="line">        track = <span class="built_in">append</span>(track, nums[i])</span><br><span class="line">        used[i] = <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 进入下一层决策树</span></span><br><span class="line">        backtrack()</span><br><span class="line">        <span class="comment">// 取消选择</span></span><br><span class="line">        track = track[:<span class="built_in">len</span>(track)<span class="number">-1</span>]</span><br><span class="line">        used[i] = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    backtrack()</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回溯函数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="切片与指针的区别"><a href="#切片与指针的区别" class="headerlink" title="切片与指针的区别"></a>切片与指针的区别</h1><p>Go 中的切片是引用类型，但它们与指针在行为上还是有一些关键区别，这正是为什么在这个回溯算法中需要使用指针的原因。</p>
+<h2 id="切片作为引用类型的局限"><a href="#切片作为引用类型的局限" class="headerlink" title="切片作为引用类型的局限"></a>切片作为引用类型的局限</h2><p>虽然切片是引用类型（底层数组的指针+长度+容量），但切片头（slice header）本身是按值传递的。这意味着：</p>
+<ol>
+<li><strong>可以修改底层数组元素</strong>：函数内部可以修改切片指向的数组元素，这些修改会反映到外部</li>
+<li><strong>不能修改切片头</strong>：<font color="#ff0000">对切片本身的修改（如追加元素导致重新分配）不会反映到外部</font></li>
+</ol>
+<h2 id="具体到代码"><a href="#具体到代码" class="headerlink" title="具体到代码"></a>具体到代码</h2><p>回溯算法中：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">*res = <span class="built_in">append</span>(*res, temp)  <span class="comment">// 使用指针可以修改外部的res</span></span><br></pre></td></tr></table></figure>
+
+<p>如果改为不使用指针：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">res = <span class="built_in">append</span>(res, temp)  <span class="comment">// 这只修改了函数内部的切片头副本</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么需要指针的详细解释"><a href="#为什么需要指针的详细解释" class="headerlink" title="为什么需要指针的详细解释"></a>为什么需要指针的详细解释</h2><ol>
+<li><p><strong>追加操作的特殊性</strong>：</p>
+<ul>
+<li><code>append</code> 可能会返回一个新的切片头（当容量不足时）</li>
+<li>不使用指针时，新切片头只存在于函数内部</li>
+</ul>
+</li>
+<li><p><strong>递归调用的累积效果</strong>：</p>
+<ul>
+<li>每次递归调用都需要累积结果</li>
+<li>不使用指针时，每次递归的修改都会丢失</li>
+</ul>
+</li>
+</ol>
+<h2 id="验证示例"><a href="#验证示例" class="headerlink" title="验证示例"></a>验证示例</h2><p>简单例子验证：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifySlice</span><span class="params">(s []<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    s = <span class="built_in">append</span>(s, <span class="number">100</span>) <span class="comment">// 不会影响外部</span></span><br><span class="line">    s[<span class="number">0</span>] = <span class="number">99</span>          <span class="comment">// 会影响外部（修改底层数组）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifySliceByPtr</span><span class="params">(s *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    *s = <span class="built_in">append</span>(*s, <span class="number">100</span>) <span class="comment">// 会影响外部</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    modifySlice(a)</span><br><span class="line">    fmt.Println(a) <span class="comment">// 输出: [99 2 3]</span></span><br><span class="line">    </span><br><span class="line">    modifySliceByPtr(&amp;a)</span><br><span class="line">    fmt.Println(a) <span class="comment">// 输出: [99 2 3 100]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在需要修改切片本身<font color="#ff0000">（如追加元素）</font>并且希望这些修改在函数外部可见时，必须使用指针。这正是你的回溯算法中需要使用 <code>*[][]int</code> 的原因。</p>
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -3638,51 +3634,6 @@ dfs(root.Right, res)
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line">dirs := [][]<span class="type">int</span>&#123;&#123;<span class="number">-1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="示例题解：200-岛屿数量-Golang"><a href="#示例题解：200-岛屿数量-Golang" class="headerlink" title="示例题解：200. 岛屿数量 (Golang)"></a>示例题解：200. 岛屿数量 (Golang)</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numIslands</span><span class="params">(grid [][]<span class="type">byte</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(grid) == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    m, n := <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">    count := <span class="number">0</span></span><br><span class="line">    dirs := [][]<span class="type">int</span>&#123;&#123;<span class="number">-1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; m; i++ &#123;</span><br><span class="line">        <span class="keyword">for</span> j := <span class="number">0</span>; j &lt; n; j++ &#123;</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="string">&#x27;1&#x27;</span> &#123;</span><br><span class="line">                count++</span><br><span class="line">                grid[i][j] = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">                queue := [][]<span class="type">int</span>&#123;&#123;i, j&#125;&#125;</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">for</span> <span class="built_in">len</span>(queue) &gt; <span class="number">0</span> &#123;</span><br><span class="line">                    cell := queue[<span class="number">0</span>]</span><br><span class="line">                    queue = queue[<span class="number">1</span>:]</span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">for</span> _, dir := <span class="keyword">range</span> dirs &#123;</span><br><span class="line">                        x, y := cell[<span class="number">0</span>]+dir[<span class="number">0</span>], cell[<span class="number">1</span>]+dir[<span class="number">1</span>]</span><br><span class="line">                        <span class="keyword">if</span> x &gt;= <span class="number">0</span> &amp;&amp; x &lt; m &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; y &lt; n &amp;&amp; grid[x][y] == <span class="string">&#x27;1&#x27;</span> &#123;</span><br><span class="line">                            grid[x][y] = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">                            queue = <span class="built_in">append</span>(queue, []<span class="type">int</span>&#123;x, y&#125;)</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> count</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Golang】 函数传入slice无法修改到原slice</title>
-    <url>/2025-06-15-f16e0f79fc66.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/permutations/description/">46. 全排列 - 力扣（LeetCode）</a></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">permute</span><span class="params">(nums []<span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    track := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">    used := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">    </span><br><span class="line">    backtrack(nums, track, used, &amp;res)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回溯函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">backtrack</span><span class="params">(nums []<span class="type">int</span>, track []<span class="type">int</span>, used []<span class="type">bool</span>, res *[][]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">// 触发结束条件</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(track) == <span class="built_in">len</span>(nums) &#123;</span><br><span class="line">        <span class="comment">// 因为 track 是全局变量，因此需要新建一个数组来存储一份全排列</span></span><br><span class="line">        temp := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(track))</span><br><span class="line">        <span class="built_in">copy</span>(temp, track)</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, temp)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="comment">// 排除不合法的选择</span></span><br><span class="line">        <span class="keyword">if</span> used[i] &#123;</span><br><span class="line">            <span class="comment">// 剪枝，避免重复使用同一个数字</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 做选择</span></span><br><span class="line">        track = <span class="built_in">append</span>(track, nums[i])</span><br><span class="line">        used[i] = <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 进入下一层决策树</span></span><br><span class="line">        backtrack(nums, track, used, res)</span><br><span class="line">        <span class="comment">// 取消选择</span></span><br><span class="line">        track = track[:<span class="built_in">len</span>(track)<span class="number">-1</span>]</span><br><span class="line">        used[i] = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>上边的res 代码slice中需要使用指针 我去掉指针不行。</p>
-<p>使用闭包函数可以。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">permute</span><span class="params">(nums []<span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    track := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">    used := <span class="built_in">make</span>([]<span class="type">bool</span>, <span class="built_in">len</span>(nums))</span><br><span class="line">    <span class="keyword">var</span> backtrack <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line">    backtrack = <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 触发结束条件</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(track) == <span class="built_in">len</span>(nums) &#123;</span><br><span class="line">        <span class="comment">// 因为 track 是全局变量，因此需要新建一个数组来存储一份全排列</span></span><br><span class="line">        temp := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="built_in">len</span>(track))</span><br><span class="line">        <span class="built_in">copy</span>(temp, track)</span><br><span class="line">        res = <span class="built_in">append</span>(res, temp)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        <span class="comment">// 排除不合法的选择</span></span><br><span class="line">        <span class="keyword">if</span> used[i] &#123;</span><br><span class="line">            <span class="comment">// 剪枝，避免重复使用同一个数字</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 做选择</span></span><br><span class="line">        track = <span class="built_in">append</span>(track, nums[i])</span><br><span class="line">        used[i] = <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 进入下一层决策树</span></span><br><span class="line">        backtrack()</span><br><span class="line">        <span class="comment">// 取消选择</span></span><br><span class="line">        track = track[:<span class="built_in">len</span>(track)<span class="number">-1</span>]</span><br><span class="line">        used[i] = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    backtrack()</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回溯函数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="切片与指针的区别"><a href="#切片与指针的区别" class="headerlink" title="切片与指针的区别"></a>切片与指针的区别</h1><p>Go 中的切片是引用类型，但它们与指针在行为上还是有一些关键区别，这正是为什么在这个回溯算法中需要使用指针的原因。</p>
-<h2 id="切片作为引用类型的局限"><a href="#切片作为引用类型的局限" class="headerlink" title="切片作为引用类型的局限"></a>切片作为引用类型的局限</h2><p>虽然切片是引用类型（底层数组的指针+长度+容量），但切片头（slice header）本身是按值传递的。这意味着：</p>
-<ol>
-<li><strong>可以修改底层数组元素</strong>：函数内部可以修改切片指向的数组元素，这些修改会反映到外部</li>
-<li><strong>不能修改切片头</strong>：<font color="#ff0000">对切片本身的修改（如追加元素导致重新分配）不会反映到外部</font></li>
-</ol>
-<h2 id="具体到代码"><a href="#具体到代码" class="headerlink" title="具体到代码"></a>具体到代码</h2><p>回溯算法中：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">*res = <span class="built_in">append</span>(*res, temp)  <span class="comment">// 使用指针可以修改外部的res</span></span><br></pre></td></tr></table></figure>
-
-<p>如果改为不使用指针：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">res = <span class="built_in">append</span>(res, temp)  <span class="comment">// 这只修改了函数内部的切片头副本</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="为什么需要指针的详细解释"><a href="#为什么需要指针的详细解释" class="headerlink" title="为什么需要指针的详细解释"></a>为什么需要指针的详细解释</h2><ol>
-<li><p><strong>追加操作的特殊性</strong>：</p>
-<ul>
-<li><code>append</code> 可能会返回一个新的切片头（当容量不足时）</li>
-<li>不使用指针时，新切片头只存在于函数内部</li>
-</ul>
-</li>
-<li><p><strong>递归调用的累积效果</strong>：</p>
-<ul>
-<li>每次递归调用都需要累积结果</li>
-<li>不使用指针时，每次递归的修改都会丢失</li>
-</ul>
-</li>
-</ol>
-<h2 id="验证示例"><a href="#验证示例" class="headerlink" title="验证示例"></a>验证示例</h2><p>简单例子验证：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifySlice</span><span class="params">(s []<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    s = <span class="built_in">append</span>(s, <span class="number">100</span>) <span class="comment">// 不会影响外部</span></span><br><span class="line">    s[<span class="number">0</span>] = <span class="number">99</span>          <span class="comment">// 会影响外部（修改底层数组）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modifySliceByPtr</span><span class="params">(s *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    *s = <span class="built_in">append</span>(*s, <span class="number">100</span>) <span class="comment">// 会影响外部</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">    modifySlice(a)</span><br><span class="line">    fmt.Println(a) <span class="comment">// 输出: [99 2 3]</span></span><br><span class="line">    </span><br><span class="line">    modifySliceByPtr(&amp;a)</span><br><span class="line">    fmt.Println(a) <span class="comment">// 输出: [99 2 3 100]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在需要修改切片本身<font color="#ff0000">（如追加元素）</font>并且希望这些修改在函数外部可见时，必须使用指针。这正是你的回溯算法中需要使用 <code>*[][]int</code> 的原因。</p>
-]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
@@ -4830,17 +4781,53 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>波纹</title>
-    <url>/2023-04-08-722322c4ddc3.html</url>
-    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-8c397fc87827.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
 ]]></content>
       <categories>
-        <category>摄影</category>
+        <category>前端</category>
       </categories>
-      <tags>
-        <tag>摄影</tag>
-        <tag>水</tag>
-      </tags>
+  </entry>
+  <entry>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-ed1bf9078b39.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
   </entry>
   <entry>
     <title>【Git】Git代理配置</title>
@@ -5113,22 +5100,22 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
-    <title>快来压缩你的博客图片</title>
-    <url>/2023-03-23-4868b6a1c39c.html</url>
-    <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
-<p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
     <title>windows新增wsl bash here键快捷方式</title>
     <url>/2024-01-01-38178c63ba17.html</url>
     <content><![CDATA[<p>win + R 输入regedit<br><img src="/../../imgs/Pasted%20image%2020240101182355.png"><br>输入到 计算机\HKEY_CLASSES_ROOT\Directory\Background\shell</p>
 <h1 id="新建wsl-bash-here目录-设置如下默认值"><a href="#新建wsl-bash-here目录-设置如下默认值" class="headerlink" title="新建wsl_bash_here目录, 设置如下默认值"></a>新建wsl_bash_here目录, 设置如下默认值</h1><p><img src="/../../imgs/Pasted%20image%2020240101183252.png"></p>
 <h1 id="新建command新建项，输入wsl-exe-的地址"><a href="#新建command新建项，输入wsl-exe-的地址" class="headerlink" title="新建command新建项，输入wsl.exe 的地址"></a>新建command新建项，输入wsl.exe 的地址</h1><p><img src="/../../imgs/Pasted%20image%2020240101183246.png"></p>
 <h1 id="成功"><a href="#成功" class="headerlink" title="成功"></a>成功</h1><p>可以看到右侧是有wsl bash here的选项的<br><img src="/../../imgs/Pasted%20image%2020240101183634.png"><br><strong>在当面目录打开wsl 成功</strong><br><img src="/../../imgs/Pasted%20image%2020240101183645.png"><br>原理和添加git bash here 类似, 参考:<br><a href="https://blog.csdn.net/Passerby_Wang/article/details/120881670">手动添加Git Bash Here到右键菜单（超详细）_gitbash添加到右键-CSDN博客</a></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>快来压缩你的博客图片</title>
+    <url>/2023-03-23-4868b6a1c39c.html</url>
+    <content><![CDATA[<p>虽然没多大变化 哈哈哈<br><img src="/../../imgs/Pasted%20image%2020230324011438.png"><br>再试试 更大更高清的图片<br><img src="/../../imgs/code-wallpaper-6.png"></p>
+<p><img src="/../../imgs/Pasted%20image%2020230325200454.png"><br>实测,效果不太行….<br>但是还要介绍一下如何压缩哈哈哈，毕竟坑踩都踩了😂，怎么也得记录一下<br>待更新…</p>
 ]]></content>
       <categories>
         <category>工具</category>
@@ -5296,6 +5283,19 @@ dfs(root.Right, res)
       <categories>
         <category>工具</category>
       </categories>
+  </entry>
+  <entry>
+    <title>波纹</title>
+    <url>/2023-04-08-722322c4ddc3.html</url>
+    <content><![CDATA[<p><img src="/../../imgs/IMG_1502-01-01.jpeg"><br>波光粼粼</p>
+]]></content>
+      <categories>
+        <category>摄影</category>
+      </categories>
+      <tags>
+        <tag>摄影</tag>
+        <tag>水</tag>
+      </tags>
   </entry>
   <entry>
     <title>comet 生成临时文件导致磁盘满</title>
