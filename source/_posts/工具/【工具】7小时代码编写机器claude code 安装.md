@@ -1,6 +1,6 @@
 
 ---
-title: 7小时代码编写机器claude code 安装
+title: 【工具】7小时代码编写机器claude code 安装
 date: 2025-07-30 00:24:23
 modificationDate: 2025 July 30th Wednesday 00:24:34
 categories: 
