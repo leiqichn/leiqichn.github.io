@@ -4,7 +4,9 @@ date: 2025-11-21 23:08:24
 modificationDate: 2025 十一月 21日 星期五 23:08:24
 categories: 
 	- Golang
-tags: []
+tags: 
+	- golang
+	- 数组
 sticky: []
 published: true
 category_bar: true
@@ -91,3 +93,10 @@ for j := range grid[0] {
 - 在这个题目中，由于n ≤ 200，使用固定长度数组是可行的
 
 这种设计使得我们可以用数组的内容作为唯一标识，从而高效地统计和查找匹配的行列对。
+
+
+```markdown
+---
+*相关标签: #golang #数组 #map*  
+*创建于: {{date}}*
+```
