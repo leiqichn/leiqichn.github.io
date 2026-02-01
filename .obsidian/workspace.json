@@ -4,60 +4,168 @@
     "type": "split",
     "children": [
       {
-        "id": "55b603b34ef4e9a2",
-        "type": "tabs",
+        "id": "7b138680a09ea277",
+        "type": "split",
         "children": [
           {
-            "id": "591c634332e94d6c",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/Golang/golang 设计题.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
+            "id": "55b603b34ef4e9a2",
+            "type": "tabs",
+            "dimension": 67.74425287356321,
+            "children": [
+              {
+                "id": "591c634332e94d6c",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "source/_posts/Golang/golang 设计题.md",
+                    "mode": "source",
+                    "source": false,
+                    "backlinks": false
+                  },
+                  "pinned": true,
+                  "icon": "lucide-file",
+                  "title": "golang 设计题"
+                }
               },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "golang 设计题"
-            }
+              {
+                "id": "ac8f8670e65ad600",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
+                    "mode": "source",
+                    "source": false,
+                    "backlinks": false
+                  },
+                  "pinned": true,
+                  "icon": "lucide-file",
+                  "title": "【重要】设计题提升最佳指南"
+                }
+              },
+              {
+                "id": "905c2ccfb46ebc9e",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "source/_posts/AI学习/AI职业规划.md",
+                    "mode": "source",
+                    "source": false,
+                    "backlinks": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "AI职业规划"
+                }
+              },
+              {
+                "id": "3dcac3740ef37ddb",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "source/_posts/AI学习/个人贾维斯助手ClawdBot(moltBot/贾维斯AI助手OpenClaw(clawdBot moltBot) 安装.md",
+                    "mode": "source",
+                    "source": false,
+                    "backlinks": false
+                  },
+                  "icon": "lucide-file",
+                  "title": "贾维斯AI助手OpenClaw(clawdBot moltBot) 安装"
+                }
+              }
+            ],
+            "currentTab": 3
           },
           {
-            "id": "ac8f8670e65ad600",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
+            "id": "fadec5fa7b22b637",
+            "type": "tabs",
+            "dimension": 32.25574712643678,
+            "children": [
+              {
+                "id": "180bdf31dbf0425f",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "D:\\Work\\Project\\Code\\github\\leiqichn.github.io",
+                      "focus": false,
+                      "profile": {
+                        "name": "",
+                        "restoreHistory": true,
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "developerConsole"
+                      },
+                      "serial": {
+                        "columns": 96,
+                        "data": "\u001b[37mload weread plugin\r\n--------init cookie------ [ \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  \u001b[36m[Object]\u001b[37m,\r\n  [length]: \u001b[33m10\u001b[37m ]\r\n[weread plugin] setting user vid=> \u001b[32m'11897562'\r\n\u001b[37m[weread plugin] setting user name=> \u001b[32m'Rocks'\r\n\u001b[37mgit obsidian error: Too many changes to display\r\ngit obsidian message: Everything is up-to-date\r\ngit obsidian error: Too many changes to display\r\ngit obsidian error: Too many changes to display\r\ngit obsidian error: Too many changes to display\r\ngit obsidian error: Too many changes to display\r\n\r\n\u001b[90mundefined\r\n\r\nundefined\r\n\u001b[0m",
+                        "rows": 10
+                      }
+                    }
+                  },
+                  "pinned": true,
+                  "icon": "terminal",
+                  "title": "终端：开发者控制台"
+                }
               },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "【重要】设计题提升最佳指南"
-            }
-          },
-          {
-            "id": "50dc0787cbb3ddd9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "source/_posts/Golang/【Goalng】数组可以作为map的key!.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "【Goalng】数组可以作为map的key!"
-            }
+              {
+                "id": "aa44c65a38012ca0",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "terminal:terminal",
+                  "state": {
+                    "terminal:terminal": {
+                      "cwd": "D:\\Work\\Project\\Code\\github\\leiqichn.github.io",
+                      "focus": false,
+                      "profile": {
+                        "args": [],
+                        "executable": "C:\\Windows\\System32\\cmd.exe",
+                        "name": "",
+                        "platforms": {
+                          "win32": true
+                        },
+                        "pythonExecutable": "python3",
+                        "restoreHistory": true,
+                        "successExitCodes": [
+                          "0",
+                          "SIGINT",
+                          "SIGTERM"
+                        ],
+                        "terminalOptions": {
+                          "documentOverride": null
+                        },
+                        "type": "integrated",
+                        "useWin32Conhost": true
+                      },
+                      "serial": {
+                        "columns": 96,
+                        "data": "Microsoft Windows [版本 10.0.26200.7705]\r\n(c) Microsoft Corporation。保留所有权利。\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>git stash\r\nwarning: in the working copy of '.obsidian/community-plugins.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/data.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/main.js', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/manifest.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/workspace.json', LF will be replaced by CRLF the next time Git touches it\r\nSaved working directory and index state WIP on master: a0a03c563 website update: 2025-11-21 23:16:46\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>git push \r\nEverything up-to-date\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>",
+                        "rows": 10
+                      }
+                    }
+                  },
+                  "pinned": true,
+                  "icon": "terminal",
+                  "title": "终端：C:\\Windows\\System32\\conhost.exe"
+                }
+              }
+            ],
+            "currentTab": 1
           }
         ],
-        "currentTab": 2
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -69,7 +177,7 @@
       {
         "id": "5777405e05b50cb5",
         "type": "tabs",
-        "dimension": 55.33869115958668,
+        "dimension": 77.03788748564868,
         "children": [
           {
             "id": "d3d227159ce7968a",
@@ -129,7 +237,7 @@
       {
         "id": "d299abda62253875",
         "type": "tabs",
-        "dimension": 44.66130884041332,
+        "dimension": 22.96211251435132,
         "children": [
           {
             "id": "6a5736f8a6d1f448",
@@ -137,7 +245,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "新开发",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -152,7 +260,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 363.49999618530273
+    "width": 237.5
   },
   "right": {
     "id": "468a8d172cc76aa0",
@@ -168,7 +276,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/Golang/【Goalng】数组可以作为map的key!.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -178,7 +285,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "【Goalng】数组可以作为map的key! 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -241,7 +348,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 293.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -254,60 +361,60 @@
       "command-palette:打开命令面板": false,
       "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
       "mermaid-tools:Open Mermaid Toolbar": false,
-      "obsidian-weread-plugin:Weread": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false,
-      "terminal:Open terminal": false
+      "terminal:Open terminal": false,
+      "obsidian-weread-plugin:同步微信读书笔记": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "aa44c65a38012ca0",
   "lastOpenFiles": [
-    "source/_posts/作品集/【项目】GOTODO 四象限法待办谷歌插件.md",
-    "source/_posts/Golang/【Goalng】数组可以作为map的key!.md",
-    "source/_posts/关于我/关于我.md",
-    "source/about/index.md",
-    "source/_posts/工具/开机自启WSL.md",
-    "source/_posts/工具/【工具】7小时代码编写机器claude code 安装.md",
-    "source/_posts/工具/【Win】键盘下键坏了，使用组合键模拟下方向键.md",
-    "source/_posts/工具/【TODO】快来压缩你的博客图片.md",
-    "source/_posts/工具/【TODO】给你的博客 安装上PWA吧.md",
-    "source/_posts/工具/【最强春节抢票攻略】火车票抢票攻略.md",
-    "source/_posts/工具/Git代理配置.md",
-    "source/_posts/leetcode/【重要】设计题提升最佳指南.md",
-    "Excalidraw/Drawing 2025-11-13 23.12.14.excalidraw.md",
-    "Excalidraw",
-    "source/_posts/leetcode/【Golang】滑动窗口总结.md",
-    "source/_posts/leetcode/LeetCode 刷题常用数据结构 Golang.md",
-    "source/_posts/carl/代码随想录 day8  字符串part 01.md",
-    "source/_posts/Golang/Go vs Python：从 `append` 操作看两种语言的设计哲学.md",
-    "source/imgs/截屏2025-07-30 上午12.27.40.png",
-    "source/_posts/leetcode/Dijkstra算法实现带权重最短路径.md",
-    "source/imgs/Pasted image 20250731233210.png",
-    "source/imgs/Pasted image 20250731233159.png",
-    "source/imgs/Pasted image 20250731233051.png",
-    "source/imgs/Pasted image 20250731233032.png",
-    "source/_posts/leetcode/设计题 总结.md",
-    "source/_posts/作品集",
-    "source/_posts/工具/英文输入时再也不打出中文标点啦.md",
-    "source/imgs/Pasted image 20250723231812.png",
-    "source/imgs/Pasted image 20250723231735.png",
-    "source/_posts/leetcode/【算法】链表.md",
-    "source/_posts/leetcode/【算法】二分法.md",
-    "source/imgs/Pasted image 20250718000347.png",
-    "source/imgs/Pasted image 20250717232854.png",
-    "source/imgs/Pasted image 20250717232846.png",
-    "source/_posts/Golang/golang 设计题.md",
-    "source/_posts/设计模式/Go24种设计模式--创建型模式.md",
-    "source/_posts/设计模式/设计模式-工厂方法模式.md",
-    "source/_posts/设计模式/设计模式-抽象工厂.md",
-    "source/_posts/AI学习",
-    "source/imgs/ima.copilot-win-x64-1.6.1(2463).exe",
-    "source/imgs/未确认 695400.crdownload",
-    "source/imgs/公众号_爱给网_aigei_com.png.crdownload",
-    "source/imgs/xiaohongshu.zip",
-    "public/assets/algolia/algoliasearchLite.min.js",
-    "public/assets/algolia/algoliasearchLite.js",
-    "public/assets/algolia/algoliasearch.min.js",
+    "themes/temp/read/计算机/跟老男孩学Linux运维：Shell编程实战.md",
+    "themes/temp/read/计算机/面向对象分析与设计（第3版）（修订版）.md",
+    "themes/temp/read/计算机/计算机是怎样跑起来的.md",
+    "themes/temp/read/计算机/趣学数据结构.md",
+    "themes/temp/read/计算机/编写高质量代码：改善Python程序的91个建议.md",
+    "themes/temp/read/计算机/算法（第4版）.md",
+    "themes/temp/read/计算机/算法图解.md",
+    "themes/temp/read/计算机/程序员的自我修养.md",
+    "themes/temp/read/计算机/白话强化学习与PyTorch.md",
+    "themes/temp/read/计算机/深度学习进阶：自然语言处理.md",
+    "themes/temp/read/计算机/深入浅出图神经网络：GNN原理解析.md",
+    "themes/temp/read/计算机/深入浅出PyTorch：从模型到源码.md",
+    "themes/temp/read/计算机/测试架构师修炼之道：从测试工程师到测试架构师（第2版）.md",
+    "themes/temp/read/计算机/流畅的Python.md",
+    "themes/temp/read/计算机/每天5分钟玩转Docker容器技术.md",
+    "themes/temp/read/计算机/机器学习：Python实践.md",
+    "themes/temp/read/计算机/手把手教你学C语言.md",
+    "themes/temp/read/计算机/数据结构与算法图解.md",
+    "themes/temp/read/计算机/性能之巅：洞悉系统、企业与云计算.md",
+    "themes/temp/read/计算机/大话设计模式-41787784.md",
+    "themes/temp/read/计算机/大话数据结构.md",
+    "themes/temp/read/计算机/图神经网络：基础、前沿与应用.md",
+    "themes/temp/read/计算机/基于深度学习的自然语言处理.md",
+    "themes/temp/read/计算机/代码整洁之道：程序员的职业素养.md",
+    "themes/temp/read/计算机/SQL基础教程（第2版）.md",
+    "themes/temp/read/计算机/Go语言学习笔记-3300055404.md",
+    "themes/temp/read/计算机",
+    "themes/temp/read/艺术",
+    "themes/temp/read/经济理财",
+    "themes/temp/read/精品小说",
+    "themes/temp/read/科学技术",
+    "themes/temp/read/社会文化",
+    "themes/temp/read/未分类",
+    "themes/temp/read/文学",
+    "themes/temp/read/生活百科",
+    "themes/temp/read/教育学习",
+    "themes/fluid_19/source/img/police_beian.png",
+    "themes/fluid_19/source/img/qrcode.jpg",
+    "themes/fluid_19/source/img/loading.gif",
+    "themes/fluid_19/source/img/fluid.png",
+    "themes/fluid_19/source/img/keyboard.jpg",
+    "themes/fluid_19/source/img/default.png",
+    "themes/fluid_19/source/img/CLlogo.jpg",
+    "themes/fluid_19/source/img/avatar.png",
+    "source/imgs/Pasted image 20260201215324.png",
+    "source/imgs/Pasted image 20260201215226.png",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
