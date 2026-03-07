@@ -53,3 +53,32 @@ iwr -useb https://openclaw.ai/install.ps1 | iex
 ![](../../../imgs/Pasted%20image%2020260201213653.png)显示安装成功：
 ![](../../../imgs/Pasted%20image%2020260201214654.png)
 ![](../../../imgs/Pasted%20image%2020260201215226.png)![](../../../imgs/Pasted%20image%2020260201215324.png)
+
+# 更新openclaw
+
+```
+npm i openclaw@latest
+```
+
+
+# 进入终端
+
+```
+openclaw tui
+```
+
+
+# Windows 打开网页端
+
+```
+openclaw onboard
+```
+
+
+# WSL 打开映射端口
+
+```
+openclaw gateway run --port 18789
+
+http://localhost:18789
+```
