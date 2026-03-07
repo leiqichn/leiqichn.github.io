@@ -1,58 +1,31 @@
 {
-  "cookies": [
-    {
-      "name": "wr_fp",
-      "value": "2373444325"
-    },
-    {
-      "name": "wr_gid",
-      "value": "206667974"
-    },
-    {
-      "name": "wr_vid",
-      "value": "11897562"
-    },
-    {
-      "name": "wr_skey",
-      "value": "fS6NtZCP"
-    },
-    {
-      "name": "wr_pf",
-      "value": "0"
-    },
-    {
-      "name": "wr_rt",
-      "value": "web@CtBF1F5GEqeJAgJlBVO_AL"
-    },
-    {
-      "name": "wr_localvid",
-      "value": "90a32bb06b58ada90ad15e5"
-    },
-    {
-      "name": "wr_name",
-      "value": "Rocks"
-    },
-    {
-      "name": "wr_avatar",
-      "value": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKK4Nno5HQhCWRk7ibCYRKDYiaPUWJNNCs7pricSfa1ibAwTgd5ibPyBgp6XdFg7r00o61dx8ufiaonjBOw/132"
-    },
-    {
-      "name": "wr_gender",
-      "value": "1"
-    }
-  ],
+  "loginMethod": "scan",
+  "cookies": [],
   "noteLocation": "themes/temp/read",
   "dailyNotesLocation": "/",
   "insertAfter": "<!-- start of weread -->",
   "insertBefore": "<!-- end of weread -->",
   "dailyNotesFormat": "YYYY-MM-DD",
-  "lastCookieTime": 1725171300220,
-  "isCookieValid": true,
-  "user": "Rocks",
-  "userVid": "11897562",
+  "lastCookieTime": 1772889291874,
+  "isCookieValid": false,
+  "user": "",
+  "userVid": "",
   "template": "---\nisbn: {{metaData.isbn}}\ncategory: {{metaData.category}}\nlastReadDate: {{metaData.lastReadDate}}\n---\n# 元数据\n> [!abstract] {{metaData.title}}\n> - ![ {{metaData.title}}|200]({{metaData.cover}})\n> - 书名： {{metaData.title}}\n> - 作者： {{metaData.author}}\n> - 简介： {{metaData.intro}}\n> - 出版时间 {{metaData.publishTime}}\n> - ISBN： {{metaData.isbn}}\n> - 分类： {{metaData.category}}\n> - 出版社： {{metaData.publisher}}\n\n# 高亮划线\n{% for chapter in chapterHighlights %}\n## {{chapter.chapterTitle}}\n{% for highlight in chapter.highlights %}\n{% if highlight.reviewContent %}{% else %}\n- 📌 {{ highlight.markText |trim }} ^{{highlight.bookmarkId}}\n    - ⏱ {{highlight.createTime}}{% endif %} {% endfor %}{% endfor %}\n# 读书笔记\n{% for chapter in bookReview.chapterReviews %}{% if chapter.reviews or chapter.chapterReview %}\n## {{chapter.chapterTitle}}\n{% if  chapter.chapterReviews %}{% for chapterReview in chapter.chapterReviews %}\n### 章节评论 No.{{loop.index}}\n- {{chapterReview.content}} ^{{chapterReview.reviewId}}\n    - ⏱ {{chapterReview.createTime}} {% endfor%}{%endif %}{% if chapter.reviews %}{%for review in chapter.reviews %}\n### 划线评论\n- 📌 {{review.abstract |trim }}  ^{{review.reviewId}}\n    - 💭 {{review.content}}\n    - ⏱ {{review.createTime}}\n{% endfor %} {%endif %} {% endif %} {% endfor %}\n# 本书评论\n{% if bookReview.bookReviews %}{% for bookReview in bookReview.bookReviews %}\n## 书评 No.{{loop.index}} \n{{bookReview.mdContent}} ^{{bookReview.reviewId}}\n⏱ {{bookReview.createTime}}\n{% endfor%}{% endif %}",
   "noteCountLimit": -1,
   "subFolderType": "category",
   "fileNameType": "BOOK_NAME",
-  "dailyNotesToggle": false
+  "removeParens": false,
+  "removeParensWhitelist": "",
+  "dailyNotesToggle": false,
+  "notesBlacklist": "",
+  "showEmptyChapterTitleToggle": false,
+  "convertTags": false,
+  "saveArticleToggle": true,
+  "saveReadingInfoToggle": true,
+  "trimBlocks": false,
+  "cookieCloudInfo": {
+    "serverUrl": "",
+    "uuid": "",
+    "password": ""
+  }
 }

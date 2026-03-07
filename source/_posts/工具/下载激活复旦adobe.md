@@ -1,3 +1,16 @@
+---
+title: 下载激活复旦adobe
+date: 2024-03-24 00:36:08
+modificationDate: 2026 三月 7日 星期六 21:08:14
+categories:
+  - 工具
+tags: []
+sticky: []
+published: true
+category_bar: true
+---
+
+
 [ADOBE系列软件安装指南 (kdocs.cn)](https://365.kdocs.cn/l/ctgpfTBubwac)
 
 1.校园网环境下，通过https://zb.fudan.edu.cn/下载并安装Creative Cloud Desktop，安装文件setup.exe/mac_install.pkg位于压缩包Build目录下，安装前请解压缩。

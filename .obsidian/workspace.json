@@ -10,7 +10,7 @@
           {
             "id": "55b603b34ef4e9a2",
             "type": "tabs",
-            "dimension": 67.74425287356321,
+            "dimension": 77.94540229885058,
             "children": [
               {
                 "id": "591c634332e94d6c",
@@ -50,30 +50,12 @@
                 "id": "905c2ccfb46ebc9e",
                 "type": "leaf",
                 "state": {
-                  "type": "markdown",
+                  "type": "image",
                   "state": {
-                    "file": "source/_posts/AI学习/AI职业规划.md",
-                    "mode": "source",
-                    "source": false,
-                    "backlinks": false
+                    "file": "source/apple-touch-icon.png"
                   },
-                  "icon": "lucide-file",
-                  "title": "AI职业规划"
-                }
-              },
-              {
-                "id": "3dcac3740ef37ddb",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "source/_posts/AI学习/个人贾维斯助手ClawdBot(moltBot/贾维斯AI助手OpenClaw(clawdBot moltBot) 安装.md",
-                    "mode": "source",
-                    "source": false,
-                    "backlinks": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "贾维斯AI助手OpenClaw(clawdBot moltBot) 安装"
+                  "icon": "lucide-image",
+                  "title": "apple-touch-icon"
                 }
               },
               {
@@ -90,29 +72,13 @@
                   "icon": "lucide-file",
                   "title": "git 设置免密配置-全局免密-单仓库免密-SSH免密"
                 }
-              },
-              {
-                "id": "109fdefe9579f10e",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "source/_posts/工具/下载激活复旦adobe.md",
-                    "mode": "source",
-                    "source": false,
-                    "backlinks": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "下载激活复旦adobe"
-                }
               }
-            ],
-            "currentTab": 5
+            ]
           },
           {
             "id": "fadec5fa7b22b637",
             "type": "tabs",
-            "dimension": 32.25574712643678,
+            "dimension": 22.054597701149426,
             "children": [
               {
                 "id": "180bdf31dbf0425f",
@@ -125,8 +91,10 @@
                       "cwd": "D:\\Work\\Project\\Code\\github\\leiqichn.github.io",
                       "focus": false,
                       "profile": {
+                        "followTheme": true,
                         "name": "",
                         "restoreHistory": true,
+                        "rightClickAction": "copyPaste",
                         "successExitCodes": [
                           "0",
                           "SIGINT",
@@ -138,9 +106,10 @@
                         "type": "developerConsole"
                       },
                       "serial": {
-                        "columns": 199,
-                        "data": "\r\n\u001b[37mgit obsidian message: Committed 5 files\r\nPushing....\r\nPushed! \u001b[33m5\r\n\u001b[37mgit obsidian message: Pushed 5 files to remote\u001b[1B\u001b[46D\u001b[0m",
-                        "rows": 18
+                        "columns": 215,
+                        "data": "\u001b[31mMalformed data { addToCommand: \u001b[33mtrue\u001b[31m,\r\n  addToContextMenu: \u001b[33mtrue\u001b[31m,\r\n  createInstanceNearExistingOnes: \u001b[33mtrue\u001b[31m,\r\n  errorNoticeTimeout: \u001b[33m0\u001b[31m,\r\n  exposeInternalModules: \u001b[33mtrue\u001b[31m,\r\n  focusOnNewInstance: \u001b[33mtrue\u001b[31m,\r\n  hideStatusBar: \u001b[32m'focused'\u001b[31m,\r\n  interceptLogging: \u001b[33mtrue\u001b[31m,\r\n  language: \u001b[32m''\u001b[31m,\r\n  newInstanceBehavior: \u001b[32m'newHorizontalSplit'\u001b[31m,\r\n  noticeTimeout: \u001b[33m5\u001b[31m,\r\n  openChangelogOnUpdate: \u001b[33mtrue\u001b[31m,\r\n  pinNewInstance: \u001b[33mtrue\u001b[31m,\r\n  preferredRenderer: \u001b[32m'webgl'\u001b[31m,\r\n  profiles: \u001b[36m[Object]\u001b[31m } { addToCommand: \u001b[33mtrue\u001b[31m,\r\n  addToContextMenu: \u001b[33mtrue\u001b[31m,\r\n  createInstanceNearExistingOnes: \u001b[33mtrue\u001b[31m,\r\n  errorNoticeTimeout: \u001b[33m0\u001b[31m,\r\n  exposeInternalModules: \u001b[33mtrue\u001b[31m,\r\n  focusOnNewInstance: \u001b[33mtrue\u001b[31m,\r\n  hideStatusBar: \u001b[32m'focused'\u001b[31m,\r\n  interceptLogging: \u001b[33mtrue\u001b[31m,\r\n  language: \u001b[32m''\u001b[31m,\r\n  macOSOptionKeyPassthrough: \u001b[33mtrue\u001b[31m,\r\n  newInstanceBehavior: \u001b[32m'newHorizontalSplit'\u001b[31m,\r\n  noticeTimeout: \u001b[33m5\u001b[31m,\r\n  openChangelogOnUpdate: \u001b[33mtrue\u001b[31m,\r\n  pinNewInstance: \u001b[33mtrue\u001b[31m,\r\n  preferredRenderer: \u001b[32m'webgl'\u001b[31m,\r\n  profiles: \u001b[36m[Object]\u001b[31m,\r\n  defaultProfile: \u001b[1mnull\u001b[22m,\r\n  terminalOptions: \u001b[36m[Object]\u001b[31m }\r\n数据格式不正确 { cwd: \u001b[32m'D:\\\\Work\\\\Project\\\\Code\\\\github\\\\leiqichn.github.io'\u001b[31m,\r\n  focus: \u001b[33mfalse\u001b[31m,\r\n  profile: \u001b[36m[Object]\u001b[31m,\r\n  serial: \u001b[1mnull\u001b[22m } { cwd: \u001b[32m'D:\\\\Work\\\\Project\\\\Code\\\\github\\\\leiqichn.github.io'\u001b[31m,\r\n  focus: \u001b[33mfalse\u001b[31m,\r\n  profile: \u001b[36m[Object]\u001b[31m,\r\n  serial: \u001b[1mnull\u001b[22m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n数据格式不正确 { cwd: \u001b[32m'D:\\\\Work\\\\Project\\\\Code\\\\github\\\\leiqichn.github.io'\u001b[31m,\r\n  focus: \u001b[33mfalse\u001b[31m,\r\n  profile: \u001b[36m[Object]\u001b[31m,\r\n  serial: \u001b[36m[Object]\u001b[31m } { cwd: \u001b[32m'D:\\\\Work\\\\Project\\\\Code\\\\github\\\\leiqichn.github.io'\u001b[31m,\r\n  focus: \u001b[33mfalse\u001b[31m,\r\n  profile: \u001b[36m[Object]\u001b[31m,\r\n  serial: \u001b[36m[Object]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n[YAMLParseError: Tabs are not allowed as indentation at line 5, column 1:\r\n\r\ncategories: \r\n\u001b[8C- 工具\r\n^\r\n] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n\u001b[37mobsidian-git: \u001b[32m'Committed 38 files'\r\n\u001b[37mobsidian-git: \u001b[32m'Pulling....'\r\n\u001b[37mobsidian-git: \u001b[32m'Pushing....'\r\n\u001b[31mobsidian-git: \u001b[32m'Error: To https://github.com/leiqichn/leiqichn.github.io.git\\n!\\trefs/heads/master:refs/heads/master\\t[remote rejected] (push declined due to repository rule violations)\\nDone\\nPOST git-receive-pack (chunked)\\nremote: error: GH013: Repository rule violations found for refs/heads/master.        \\nremote: \\nremote: - GITHUB PUSH PROTECTION        \\nremote:   —————————————————————————————————————————        \\nremote:     Resolve the following violations before pushing again        \\nremote: \\nremote:     - Push cannot contain secrets        \\nremote: \\nremote:             \\nremote:      (?) Learn how to resolve a blocked push        \\nremote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        \\nremote:             \\nremote:      (?) This repository does not have Secret Scanning enabled, but is eligible. Enable Secret Scanning to view and manage detected secrets.        \\nremote:      Visit the repository settings page, https://github.com/leiqichn/leiqichn.github.io/settings/security_analysis        \\nremote:             \\nremote:             \\nremote:       —— Google OAuth Client ID ————————————————————————————        \\nremote:        locations:        \\nremote:          - commit: fdda8e3b6f929413c3d1ff445f7aaa57c52ac2e4        \\nremote:            path: .obsidian/plugins/remotely-save/main.js:90        \\nremote:             \\nremote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        \\nremote:        https://github.com/leiqichn/leiqichn.github.io/security/secret-scanning/unblock-secret/3AcPugPSc30noVL5xmAugD6Ovsy        \\nremote:             \\nremote:             \\nremote:       —— Google OAuth Client Secret ————————————————————————        \\nremote:        locations:        \\nremote:          - commit: fdda8e3b6f929413c3d1ff445f7aaa57c52ac2e4        \\nremote:            path: .obsidian/plugins/remotely-save/main.js:90        \\nremote:             \\nremote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        \\nremote:        https://github.com/leiqichn/leiqichn.github.io/security/secret-scanning/unblock-secret/3AcPueUSs5QJzXOHqpa6Ybsjurl        \\nremote:             \\nremote: \\nremote: \\nPushing to https://github.com/leiqichn/leiqichn.github.io.git\\nerror: failed to push some refs to \\'https://github.com/leiqichn/leiqichn.github.io.git\\'\\n\\n    at Object.action (plugin:obsidian-git:155:11264)\\n    at Tz.exec (plugin:obsidian-git:155:11760)\\n    at eval (plugin:obsidian-git:154:6943)\\n    at new Promise (<anonymous>)\\n    at c0.handleTaskData (plugin:obsidian-git:154:6832)\\n    at c0.attemptRemoteTask (plugin:obsidian-git:154:6488)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async c0.attemptTask (plugin:obsidian-git:154:5970)'\r\n\u001b[37mobsidian-git: \u001b[32m'Pushing....'\r\n\u001b[31mobsidian-git: \u001b[32m'Error: To https://github.com/leiqichn/leiqichn.github.io.git\\n!\\trefs/heads/master:refs/heads/master\\t[remote rejected] (push declined due to repository rule violations)\\nDone\\nPOST git-receive-pack (chunked)\\nremote: error: GH013: Repository rule violations found for refs/heads/master.        \\nremote: \\nremote: - GITHUB PUSH PROTECTION        \\nremote:   —————————————————————————————————————————        \\nremote:     Resolve the following violations before pushing again        \\nremote: \\nremote:     - Push cannot contain secrets        \\nremote: \\nremote:             \\nremote:      (?) Learn how to resolve a blocked push        \\nremote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        \\nremote:             \\nremote:      (?) This repository does not have Secret Scanning enabled, but is eligible. Enable Secret Scanning to view and manage detected secrets.        \\nremote:      Visit the repository settings page, https://github.com/leiqichn/leiqichn.github.io/settings/security_analysis        \\nremote:             \\nremote:             \\nremote:       —— Google OAuth Client ID ————————————————————————————        \\nremote:        locations:        \\nremote:          - commit: fdda8e3b6f929413c3d1ff445f7aaa57c52ac2e4        \\nremote:            path: .obsidian/plugins/remotely-save/main.js:90        \\nremote:             \\nremote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        \\nremote:        https://github.com/leiqichn/leiqichn.github.io/security/secret-scanning/unblock-secret/3AcPugPSc30noVL5xmAugD6Ovsy        \\nremote:             \\nremote:             \\nremote:       —— Google OAuth Client Secret ————————————————————————        \\nremote:        locations:        \\nremote:          - commit: fdda8e3b6f929413c3d1ff445f7aaa57c52ac2e4        \\nremote:            path: .obsidian/plugins/remotely-save/main.js:90        \\nremote:             \\nremote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        \\nremote:        https://github.com/leiqichn/leiqichn.github.io/security/secret-scanning/unblock-secret/3AcPueUSs5QJzXOHqpa6Ybsjurl        \\nremote:             \\nremote: \\nremote: \\nPushing to https://github.com/leiqichn/leiqichn.github.io.git\\nerror: failed to push some refs to \\'https://github.com/leiqichn/leiqichn.github.io.git\\'\\n\\n    at Object.action (plugin:obsidian-git:155:11264)\\n    at Tz.exec (plugin:obsidian-git:155:11760)\\n    at eval (plugin:obsidian-git:154:6943)\\n    at new Promise (<anonymous>)\\n    at c0.handleTaskData (plugin:obsidian-git:154:6832)\\n    at c0.attemptRemoteTask (plugin:obsidian-git:154:6488)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async c0.attemptTask (plugin:obsidian-git:154:5970)'\r\n\u001b[37mobsidian-git: \u001b[32m'Pulling....'\r\n\u001b[37mobsidian-git: \u001b[32m'Pull: Everything is up-to-date'\r\n\u001b[37mparse request to cURL for debug: curl https://weread.qq.com/api/user/notebook -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8' -H 'accept: application/json, text/plain, */*' -H 'Content-Type: application/json' -H 'Cookie: wr_fp=2373444325;wr_gid=206667974;wr_vid=11897562;wr_skey=fS6NtZCP;wr_pf=0;wr_rt=web@CtBF1F5GEqeJAgJlBVO_AL;wr_localvid=90a32bb06b58ada90ad15e5;wr_name=Rocks;wr_avatar=https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKK4Nno5HQhCWRk7ibCYRKDYiaPUWJNNCs7pricSfa1ibAwTgd5ibPyBgp6XdFg7r00o61dx8ufiaonjBOw/132;wr_gender=1'   --compressed\r\nparse request to cURL for debug: curl https://weread.qq.com/api/user/notebook -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36' -H 'Accept-Encoding: gzip, deflate, br' -H 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8' -H 'accept: application/json, text/plain, */*' -H 'Content-Type: application/json' -H 'Cookie: wr_fp=2373444325;wr_gid=206667974;wr_vid=11897562;wr_skey=fS6NtZCP;wr_pf=0;wr_rt=web@CtBF1F5GEqeJAgJlBVO_AL;wr_localvid=90a32bb06b58ada90ad15e5;wr_name=Rocks;wr_avatar=https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKK4Nno5HQhCWRk7ibCYRKDYiaPUWJNNCs7pricSfa1ibAwTgd5ibPyBgp6XdFg7r00o61dx8ufiaonjBOw/132;wr_gender=1'   --compressed\r\n[weread plugin] cookie已失效，清理cookie...\r\n\u001b[31m同步微信读书笔记异常 [Error: get weread note book error after retry]\r\n\u001b[37mflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\nflowchart-v2\r\n\u001b[31m[TypeError: Cannot read properties of null (reading 'getBoundingClientRect')] { isTrusted: \u001b[36m[Getter]\u001b[31m }\r\n\u001b[37mobsidian-git: \u001b[32m'Committed 2 files'\r\n\u001b[37mobsidian-git: \u001b[32m'Pulling....'\r\n\u001b[37mobsidian-git: \u001b[32m'Pushing....'\r\n\u001b[31mobsidian-git: \u001b[32m'Error: To https://github.com/leiqichn/leiqichn.github.io.git\\n!\\trefs/heads/master:refs/heads/master\\t[remote rejected] (push declined due to repository rule violations)\\nDone\\nPOST git-receive-pack (chunked)\\nremote: error: GH013: Repository rule violations found for refs/heads/master.        \\nremote: \\nremote: - GITHUB PUSH PROTECTION        \\nremote:   —————————————————————————————————————————        \\nremote:     Resolve the following violations before pushing again        \\nremote: \\nremote:     - Push cannot contain secrets        \\nremote: \\nremote:             \\nremote:      (?) Learn how to resolve a blocked push        \\nremote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push        \\nremote:             \\nremote:      (?) This repository does not have Secret Scanning enabled, but is eligible. Enable Secret Scanning to view and manage detected secrets.        \\nremote:      Visit the repository settings page, https://github.com/leiqichn/leiqichn.github.io/settings/security_analysis        \\nremote:             \\nremote:             \\nremote:       —— Google OAuth Client ID ————————————————————————————        \\nremote:        locations:        \\nremote:          - commit: fdda8e3b6f929413c3d1ff445f7aaa57c52ac2e4        \\nremote:            path: .obsidian/plugins/remotely-save/main.js:90        \\nremote:             \\nremote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        \\nremote:        https://github.com/leiqichn/leiqichn.github.io/security/secret-scanning/unblock-secret/3AcPugPSc30noVL5xmAugD6Ovsy        \\nremote:             \\nremote:             \\nremote:       —— Google OAuth Client Secret ————————————————————————        \\nremote:        locations:        \\nremote:          - commit: fdda8e3b6f929413c3d1ff445f7aaa57c52ac2e4        \\nremote:            path: .obsidian/plugins/remotely-save/main.js:90        \\nremote:             \\nremote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.        \\nremote:        https://github.com/leiqichn/leiqichn.github.io/security/secret-scanning/unblock-secret/3AcPueUSs5QJzXOHqpa6Ybsjurl        \\nremote:             \\nremote: \\nremote: \\nPushing to https://github.com/leiqichn/leiqichn.github.io.git\\nerror: failed to push some refs to \\'https://github.com/leiqichn/leiqichn.github.io.git\\'\\n\\n    at Object.action (plugin:obsidian-git:155:11264)\\n    at Tz.exec (plugin:obsidian-git:155:11760)\\n    at eval (plugin:obsidian-git:154:6943)\\n    at new Promise (<anonymous>)\\n    at c0.handleTaskData (plugin:obsidian-git:154:6832)\\n    at c0.attemptRemoteTask (plugin:obsidian-git:154:6488)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\\n    at async c0.attemptTask (plugin:obsidian-git:154:5970)'\r\n\r\n\u001b[90mundefined\r\n\r\nundefined\r\n\u001b[0m",
+                        "rows": 14,
+                        "scrollLine": -1
                       }
                     }
                   },
@@ -162,12 +131,14 @@
                       "profile": {
                         "args": [],
                         "executable": "C:\\Windows\\System32\\cmd.exe",
+                        "followTheme": true,
                         "name": "",
                         "platforms": {
                           "win32": true
                         },
                         "pythonExecutable": "python3",
                         "restoreHistory": true,
+                        "rightClickAction": "copyPaste",
                         "successExitCodes": [
                           "0",
                           "SIGINT",
@@ -180,18 +151,20 @@
                         "useWin32Conhost": true
                       },
                       "serial": {
-                        "columns": 96,
-                        "data": "Microsoft Windows [版本 10.0.26200.7705]\r\n(c) Microsoft Corporation。保留所有权利。\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>git stash\r\nwarning: in the working copy of '.obsidian/community-plugins.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/data.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/main.js', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/manifest.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/workspace.json', LF will be replaced by CRLF the next time Git touches it\r\nSaved working directory and index state WIP on master: a0a03c563 website update: 2025-11-21 23:16:46\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>git push \r\nEverything up-to-date\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>",
-                        "rows": 10
+                        "columns": 107,
+                        "data": "Microsoft Windows [版本 10.0.26200.7705]\r\n(c) Microsoft Corporation。保留所有权利。\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>git stash\r\nwarning: in the working copy of '.obsidian/community-plugins.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/data.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/main.js', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/manifest.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/workspace.json', LF will be replaced by CRLF the next time Git touches it\r\nSaved working directory and index state WIP on master: a0a03c563 website update: 2025-11-21 23:16:46\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>git push \r\nEverything up-to-date\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>\r\n * 已还原于Sat Mar 07 2026 21:09:04 GMT+0800 (中国标准时间)的历史\r\n\r\n^C\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\u001b[11A\u001b[2C",
+                        "rows": 12,
+                        "scrollLine": -1
                       }
                     }
                   },
                   "pinned": true,
                   "icon": "terminal",
-                  "title": "终端：C:\\Windows\\System32\\conhost.exe"
+                  "title": "终端：cmd"
                 }
               }
-            ]
+            ],
+            "currentTab": 1
           }
         ],
         "direction": "horizontal"
@@ -232,16 +205,6 @@
             }
           },
           {
-            "id": "779c6f963b9d7e25",
-            "type": "leaf",
-            "state": {
-              "type": "file-tree-view",
-              "state": {},
-              "icon": "sheets-in-box",
-              "title": "File Tree"
-            }
-          },
-          {
             "id": "dab6b88fdd11f4e2",
             "type": "leaf",
             "state": {
@@ -260,6 +223,16 @@
               "icon": "calendar-with-checkmark",
               "title": "Calendar"
             }
+          },
+          {
+            "id": "f095973993aeea83",
+            "type": "leaf",
+            "state": {
+              "type": "file-tree-view",
+              "state": {},
+              "icon": "sheets-in-box",
+              "title": "File Tree"
+            }
           }
         ]
       },
@@ -274,7 +247,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "贾维斯",
+                "query": "复旦",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -305,7 +278,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/工具/下载激活复旦adobe.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -315,7 +287,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "下载激活复旦adobe 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -373,8 +345,19 @@
               "icon": "lucide-archive",
               "title": "All properties"
             }
+          },
+          {
+            "id": "f2d7e5095f0396c0",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "trident-custom",
+              "title": "Mermaid Toolbar"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -394,14 +377,22 @@
       "mermaid-tools:Open Mermaid Toolbar": false,
       "templater-obsidian:Templater": false,
       "file-tree-alternative:File Tree Alternative Plugin": false,
-      "terminal:Open terminal": false
+      "terminal:Open terminal": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-weread-plugin:同步微信读书笔记": false
     }
   },
-  "active": "d3d227159ce7968a",
+  "active": "aa44c65a38012ca0",
   "lastOpenFiles": [
+    "source/_posts/Golang/golang 设计题.md",
+    "source/apple-touch-icon.png",
+    "source/_posts/工具/下载激活复旦adobe.md",
+    "source/_posts/AI学习/AI职业规划.md",
+    "source/_posts/git/git 设置免密配置-全局免密-单仓库免密-SSH免密.md",
+    "source/obsidian_tamplate/TemPlater.md",
     "source/_posts/AI学习/个人贾维斯助手ClawdBot(moltBot/贾维斯AI助手OpenClaw(clawdBot moltBot) 安装.md",
     "source/_posts/AI学习/贾维斯AI助手OpenClaw(clawdBot moltBot) 安装.md",
-    "source/_posts/工具/下载激活复旦adobe.md",
     "source/imgs/Pasted image 20240324003611.png",
     "source/imgs/avatar.png",
     "public/imgs/Pasted image 20240324003611.png",
@@ -426,10 +417,6 @@
     "themes/temp/read/计算机/机器学习：Python实践.md",
     "themes/temp/read/计算机/手把手教你学C语言.md",
     "themes/temp/read/计算机/数据结构与算法图解.md",
-    "themes/temp/read/计算机/性能之巅：洞悉系统、企业与云计算.md",
-    "themes/temp/read/计算机/大话设计模式-41787784.md",
-    "themes/temp/read/计算机/大话数据结构.md",
-    "themes/temp/read/计算机/图神经网络：基础、前沿与应用.md",
     "themes/temp/read/计算机",
     "themes/temp/read/艺术",
     "themes/temp/read/经济理财",
@@ -444,7 +431,6 @@
     "themes/fluid_19/source/img/fluid.png",
     "themes/fluid_19/source/img/keyboard.jpg",
     "themes/fluid_19/source/img/default.png",
-    "themes/fluid_19/source/img/CLlogo.jpg",
     "未命名 3.canvas",
     "未命名 2.canvas",
     "未命名 1.canvas",
