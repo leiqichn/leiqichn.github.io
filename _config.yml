@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Lei Qi's Blog
-subtitle: 'Lei Qi博客'
-description: 'Lei Qi Blog又名LeiQi论坛/中文网/社区/空间。是基于技术方面：Golang, Python, NLP, LLM, 云原生，大数据，生物信息，Linux学习，生活方面：摄影、经济理论、电影、读书、学习与分享为一体的综合性网络博客网站。本博客是非营利性博客，目的在于与各位编程爱好者和关注我的友友们通过本博客分享自己感兴趣的知识和一点见解。恰巧我爱写，恰巧你看到了，这就是缘分。'
+title: DeepThinking深思
+subtitle: 'DeepThinking深思'
+description: 'DeepThinking深思 Lei Qi Blog又名LeiQi论坛/中文网/社区/空间。是基于技术方面：Golang, Python, NLP, LLM, 云原生，大数据，生物信息，Linux学习，生活方面：摄影、经济理论、电影、读书、学习与分享为一体的综合性网络博客网站。本博客是非营利性博客，目的在于与各位编程爱好者和关注我的友友们通过本博客分享自己感兴趣的知识和一点见解。恰巧我爱写，恰巧你看到了，这就是缘分。'
 keywords: golang python 算法 云计算 复旦大学 华为
 author: Lei Qi
 language: zh-CN
@@ -197,8 +197,8 @@ pwa:
   manifest:
     path: /manifest.json
     body:
-      "name": "Lei Qi's Blog"
-      "short_name": "Lei Qi's Blog"
+      "name": "DeepThinking深思"
+      "short_name": "DeepThinking深思"
       "theme_color": "#2a6cb1"
       "background_color": "#ffffff"
       "display": "standalone"

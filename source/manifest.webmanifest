@@ -4,8 +4,8 @@
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Lei Qi's blog",
-    "short_name": "Lei Qi's blog",
+    "name": "DeepThinking深思",
+    "short_name": "DeepThinking深思",
     "icons": [
         {
             "src": "imgs/icon-192x192.png",
