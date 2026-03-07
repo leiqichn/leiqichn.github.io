@@ -178,8 +178,9 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
-    - "代码如诗，逻辑如歌"
     - "顺势而为"
+    - "星辰大海"
+    - "法无禁止即自由"
     - "专注、规划、高效"
     - "绝知此事要躬行"
 

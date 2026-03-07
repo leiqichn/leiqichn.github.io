@@ -151,7 +151,7 @@
                         "useWin32Conhost": true
                       },
                       "serial": {
-                        "columns": 107,
+                        "columns": 215,
                         "data": "Microsoft Windows [版本 10.0.26200.7705]\r\n(c) Microsoft Corporation。保留所有权利。\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>git stash\r\nwarning: in the working copy of '.obsidian/community-plugins.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/data.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/main.js', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/plugins/obsidian-weread-plugin/manifest.json', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of '.obsidian/workspace.json', LF will be replaced by CRLF the next time Git touches it\r\nSaved working directory and index state WIP on master: a0a03c563 website update: 2025-11-21 23:16:46\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>git push \r\nEverything up-to-date\r\n\r\nD:\\Work\\Project\\Code\\github\\leiqichn.github.io>\r\n * 已还原于Sat Mar 07 2026 21:09:04 GMT+0800 (中国标准时间)的历史\r\n\r\n^C\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\u001b[11A\u001b[2C",
                         "rows": 12,
                         "scrollLine": -1
