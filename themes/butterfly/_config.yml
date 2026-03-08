@@ -21,6 +21,7 @@ menu:
   文章 ||fas fa-list:
     归档: /archives/ || fas fa-archive
     分类: /categories/ || fas fa-archive
+    标签: /tags/ || fas fa-tags
     说说: /shuoshuo/ || fas fa-comment-dots
   生活 ||fas fa-list:
     读书: /readings/ || fas fa-book
