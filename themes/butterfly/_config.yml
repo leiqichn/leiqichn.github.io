@@ -326,7 +326,7 @@ footer:
         margin: 0 10px;
         border-radius: 50%;
         background: rgba(255,255,255,0.1);
-        color: #99a9bf;
+        color: #ffffff;
         transition: all 0.3s;
       }
       .footer-icons a:hover {
@@ -336,7 +336,7 @@ footer:
       }
       .footer-info {
         font-size: 0.9rem;
-        color: #8a8a8a;
+        color: #ffffff;
       }
       .footer-divider {
         margin: 0 10px;
