@@ -116,10 +116,7 @@ cover:
   archives_enable: true
   # When cover is not set, the default cover is displayed
   default_cover:
-    - /imgs/3f0c31123f22ff3aa51312dc4d9a726.jpg
-    - /imgs/56b7445f8dd9a71eb1cd751e0030567.jpg
-    - /imgs/a96e8e7a2780c45a863303b03c2a068.jpg
-    - /imgs/b4ef89bfab7f211d72486980e53d7b0.jpg
+    - /imgs/blog-default.png
 
 # Replace Broken Images
 error_img:
