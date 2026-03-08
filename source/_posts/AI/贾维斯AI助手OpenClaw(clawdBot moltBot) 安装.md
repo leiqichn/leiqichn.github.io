@@ -3,7 +3,7 @@
 title: 贾维斯AI助手OpenClaw(clawdBot moltBot) 安装
 date: 2026-02-01 21:35:52
 modificationDate: 2026 二月 1日 星期日 21:37:27
-categories: AI []
+categories: [AI, AI工具]
 sticky: []
 published: true
 category_bar: true
