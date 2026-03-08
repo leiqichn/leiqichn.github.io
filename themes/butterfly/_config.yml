@@ -376,7 +376,7 @@ aside:
       height="250"></a>
       </div>
   card_recent_post:
-    enable: false
+    enable: true
     # If set 0 will show all
     limit: 5
     # Sort: date / updated
