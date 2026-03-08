@@ -2,9 +2,6 @@ if theme.aside.card_tags.enable
   if site.tags.length
     .card-widget.card-tags
       .item-headline
-        a(href='/tags/' title='查看所有标签')
-          i.fas.fa-tags
-          span= _p('aside.card_tags') + ' (' + site.tags.length + ')'
 
       - let { limit, orderby, order } = theme.aside.card_tags
       - limit = limit === 0 ? 0 : limit || 40
