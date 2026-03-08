@@ -115,7 +115,10 @@ cover:
   archives_enable: true
   # When cover is not set, the default cover is displayed
   default_cover:
-    # - xxx.jpg
+    - /imgs/3f0c31123f22ff3aa51312dc4d9a726.jpg
+    - /imgs/56b7445f8dd9a71eb1cd751e0030567.jpg
+    - /imgs/a96e8e7a2780c45a863303b03c2a068.jpg
+    - /imgs/b4ef89bfab7f211d72486980e53d7b0.jpg
 
 # Replace Broken Images
 error_img:
@@ -276,29 +279,74 @@ noticeOutdate:
 footer:
   nav:
   owner:
-    enable: false
+    enable: true
     since: 2022
   # Copyright of theme and framework
   copyright:
-    enable: false
-    version: false
+    enable: true
+    version: true
   custom_text: |
     <div class="custom-footer">
-      <a href="https://leiqi.top" target="_blank" rel="nofollow noopener">
-          <span>Copyright ©Lei Qi 2022-<script>document.write(new Date().getFullYear())</script>. All right reserved.</span>
-      </a> <br />
-      <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />
-      <a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
-      <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
-      <a href="mailto:leiqi@fudan.edu.cn" target="_blank" rel="nofollow noopener"><span>Email | </span></a>
-      <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信公众号</span></a>
+      <div class="footer-icons">
+        <a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:leiqi@fudan.edu.cn" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="/imgs/qrcode.jpg" target="_blank" title="微信公众号">
+          <i class="fab fa-weixin"></i>
+        </a>
+        <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener" title="CSDN">
+          <i class="fas fa-blog"></i>
+        </a>
+      </div>
+      <div class="footer-info">
+        <span>Copyright © 2022-<script>document.write(new Date().getFullYear())</script> Lei Qi</span>
+        <span class="footer-divider">|</span>
+        <a href="https://leiqi.top">leiqi.top</a>
+      </div>
+      <div class="footer-rss">
+        <a onclick="navigator.clipboard.writeText('https://leiqi.top/atom.xml');alert('已复制RSS地址！')">RSS 订阅</a>
+      </div>
     </div>
     <style>
       .custom-footer {
-        color: #666;
-        font-size: 0.9rem;
         text-align: center;
-        margin-top: 20px;
+        padding: 20px 0;
+      }
+      .footer-icons {
+        margin-bottom: 15px;
+      }
+      .footer-icons a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 10px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        color: #99a9bf;
+        transition: all 0.3s;
+      }
+      .footer-icons a:hover {
+        background: #49b1f5;
+        color: #fff;
+        transform: translateY(-3px);
+      }
+      .footer-info {
+        font-size: 0.9rem;
+        color: #8a8a8a;
+      }
+      .footer-divider {
+        margin: 0 10px;
+      }
+      .footer-rss {
+        margin-top: 10px;
+      }
+      .footer-rss a {
+        color: #49b1f5;
+        cursor: pointer;
       }
     </style>
 
