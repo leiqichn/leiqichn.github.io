@@ -23,11 +23,6 @@ menu:
     分类: /categories/ || fas fa-archive
     标签: /tags/ || fas fa-tags
     说说: /shuoshuo/ || fas fa-comment-dots
-  生活 ||fas fa-list:
-    读书: /readings/ || fas fa-book
-    经济: /economics/ || fas fa-usd
-    Music: /music/ || fas fa-music
-    Movie: /movies/ || fas fa-video
   摄影集: /photography/ || fas fa-camera
   RSS: /atom.xml || fas fa-rss-square
   友链: /link || fas fa-link
