@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leiqi.top/sitemap.xml
+
+# 禁止爬取的路径
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/

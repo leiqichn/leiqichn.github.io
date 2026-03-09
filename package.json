@@ -29,7 +29,7 @@
     "hexo-generator-tag": "^2.0.0",
     "hexo-hide-posts": "^0.4.3",
     "hexo-neat": "^1.0.9",
-    "hexo-pwa": "git+https://github.com/leiqichn/hexo-pwa.git",
+    "hexo-pwa": "github:leiqichn/hexo-pwa",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-jade": "^0.3.0",
     "hexo-renderer-marked": "^6.0.0",

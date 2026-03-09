@@ -1,0 +1,9 @@
+# 国内CDN优化
+CDN:
+  main_css: https://cdn.bootcdn.net/ajax/libs/hexo-theme-butterfly/5.4.0/css/index.min.css
+  main_js: https://cdn.bootcdn.net/ajax/libs/hexo-theme-butterfly/5.4.0/js/main.min.js
+  jquery: https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js
+  fancybox_css: https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css
+  fancybox_js: https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js
+  highlight: https://cdn.bootcdn.net/ajax/libs/highlight.js/11.8.0/highlight.min.js
+  busuanzi: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
