@@ -21,8 +21,12 @@ menu:
   文章 ||fas fa-list:
     归档: /archives/ || fas fa-archive
     分类: /categories/ || fas fa-archive
-    标签: /tags/ || fas fa-tags
     说说: /shuoshuo/ || fas fa-comment-dots
+  生活 ||fas fa-list:
+    读书: /readings/ || fas fa-book
+    经济: /economics/ || fas fa-usd
+    Music: /music/ || fas fa-music
+    Movie: /movies/ || fas fa-video
   摄影集: /photography/ || fas fa-camera
   RSS: /atom.xml || fas fa-rss-square
   友链: /link || fas fa-link
@@ -272,74 +276,29 @@ noticeOutdate:
 footer:
   nav:
   owner:
-    enable: true
+    enable: false
     since: 2022
   # Copyright of theme and framework
   copyright:
-    enable: true
-    version: true
+    enable: false
+    version: false
   custom_text: |
     <div class="custom-footer">
-      <div class="footer-icons">
-        <a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="mailto:leiqi@fudan.edu.cn" title="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a href="/imgs/qrcode.jpg" target="_blank" title="微信公众号">
-          <i class="fab fa-weixin"></i>
-        </a>
-        <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener" title="CSDN">
-          <i class="fas fa-blog"></i>
-        </a>
-      </div>
-      <div class="footer-info">
-        <span>Copyright © 2022-<script>document.write(new Date().getFullYear())</script> Lei Qi</span>
-        <span class="footer-divider">|</span>
-        <a href="https://leiqi.top">leiqi.top</a>
-      </div>
-      <div class="footer-rss">
-        <a onclick="navigator.clipboard.writeText('https://leiqi.top/atom.xml');alert('已复制RSS地址！')">RSS 订阅</a>
-      </div>
+      <a href="https://leiqi.top" target="_blank" rel="nofollow noopener">
+          <span>Copyright ©Lei Qi 2022-<script>document.write(new Date().getFullYear())</script>. All right reserved.</span>
+      </a> <br />
+      <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />
+      <a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
+      <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
+      <a href="mailto:leiqi@fudan.edu.cn" target="_blank" rel="nofollow noopener"><span>Email | </span></a>
+      <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信公众号</span></a>
     </div>
     <style>
       .custom-footer {
-        text-align: center;
-        padding: 20px 0;
-      }
-      .footer-icons {
-        margin-bottom: 15px;
-      }
-      .footer-icons a {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        margin: 0 10px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.1);
-        color: #ffffff;
-        transition: all 0.3s;
-      }
-      .footer-icons a:hover {
-        background: #49b1f5;
-        color: #fff;
-        transform: translateY(-3px);
-      }
-      .footer-info {
+        color: #666;
         font-size: 0.9rem;
-        color: #ffffff;
-      }
-      .footer-divider {
-        margin: 0 10px;
-      }
-      .footer-rss {
-        margin-top: 10px;
-      }
-      .footer-rss a {
-        color: #49b1f5;
-        cursor: pointer;
+        text-align: center;
+        margin-top: 20px;
       }
     </style>
 
@@ -392,7 +351,7 @@ aside:
   card_categories:
     enable: true
     # If set 0 will show all
-    limit: 0
+    limit: 8
     # Choose: none / true / false
     expand: none
     sort_order:
@@ -520,9 +479,9 @@ wordcount:
 
 # Busuanzi count for PV / UV in site
 busuanzi:
-  site_uv: false
-  site_pv: false
-  page_pv: false
+  site_uv: true
+  site_pv: true
+  page_pv: true
 
 # --------------------------------------
 # Math
@@ -609,7 +568,7 @@ comments:
   # Leave it empty if you don't need comments
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # Format of two comments system : Disqus,Waline
-  use: twikoo
+  use: valine
   # Display the comment name next to the button
   text: true
   # Lazyload: The comment system will be load when comment element enters the browser's viewport.
@@ -707,7 +666,7 @@ facebook_comments:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId: /twikoo
+  envId:
   region:
   # Use Twikoo visitor count as the page view count
   visitor: false
