@@ -34,6 +34,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - "baidu_verify_*.html"
 
 # Writing
 new_post_name: :category:title.md # File name of new posts :category:title.md
@@ -237,8 +238,6 @@ pwa:
 # SEO优化
 sitemap:
   path: sitemap.xml
-  template: ./sitemap_template.xml
-  template_txt: ./sitemap_template.txt
 
 # 搜索引擎推送
 deploy:
@@ -257,5 +256,6 @@ hexo-seo-submit:
     path: bing.json
     apiKey: "d9b8435416ea4c3481982c4293d207cb"
   google:
-    enable: false
+    enable: true
     path: google.txt
+    accountKeysJSonFile: "google-service-account.json"

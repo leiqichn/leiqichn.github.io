@@ -12,9 +12,9 @@ bing:
 
 # 百度配置
 baidu:
-  enable: false
+  enable: true
   path: baidu.txt
-  token: ""
+  token: "glTLFNmivuFYFyTQ"
 
 # Google配置
 google:
