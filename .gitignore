@@ -7,3 +7,10 @@ public/
 .deploy*/
 _multiconfig.yml
 .obsidian/plugins/remotely-save/
+
+# 敏感配置文件（包含密钥）
+google-service-account.json
+*-service-account.json
+.env
+.env.*
+_config.hexo-seo-submit.yml
