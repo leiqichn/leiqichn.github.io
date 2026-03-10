@@ -1130,6 +1130,8 @@ inject:
   head:
     # Bing Webmaster 验证
     - <meta name="msvalidate.01" content="04E22EFFD711F5DFBEAFC79049E8C1F7" />
+    # 百度搜索资源平台验证
+    - <meta name="baidu-site-verification" content="codeva-43IjEHEp7U" />
     # - <link rel="stylesheet" href="/xxx.css">
   bottom:
     # - <script src="xxxx"></script>
