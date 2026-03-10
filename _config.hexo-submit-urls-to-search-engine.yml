@@ -1,0 +1,44 @@
+# SEO 自动提交配置
+# 文档: https://github.com/leiqichn/hexo-submit-urls-to-search-engine
+
+# 提交配置
+submit:
+  # 百度搜索资源平台
+  # 获取方式: https://ziyuan.baidu.com/linksubmit/index
+  baidu:
+    enable: false  # 启用后设为 true
+    token: ""      # 百度推送 token
+    count: 100     # 每次提交数量
+  
+  # Bing Webmaster Tools
+  # 获取方式: https://www.bing.com/webmasters/configure/verify/ownership
+  bing:
+    enable: false  # 启用后设为 true
+    token: ""      # Bing API Key
+    count: 100
+  
+  # Google Search Console (需要服务账号)
+  # 获取方式: https://developers.google.com/search/apis/indexing-api/v3/quickstart
+  google:
+    enable: false  # 启用后设为 true
+    # Google 需要服务账号 JSON 密钥文件
+    # 将密钥文件放在 source/_data/google-service-account.json
+    count: 100
+
+# 站点 URL
+url:
+  # 必须与 _config.yml 中的 url 一致
+  host: https://leiqi.top
+  
+# 提交的 URL 类型
+type:
+  # 提交所有页面
+  all: true
+  # 提交首页
+  index: true
+  # 提交文章
+  post: true
+  # 提交分类页
+  category: true
+  # 提交标签页
+  tag: true
