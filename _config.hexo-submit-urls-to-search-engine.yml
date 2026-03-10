@@ -13,8 +13,8 @@ submit:
   # Bing Webmaster Tools
   # 获取方式: https://www.bing.com/webmasters/configure/verify/ownership
   bing:
-    enable: false  # 启用后设为 true
-    token: ""      # Bing API Key
+    enable: true  # 启用
+    token: "f1a6b634f1db4843b618ecde3dd66c1a"  # Bing API Key
     count: 100
   
   # Google Search Console (需要服务账号)
