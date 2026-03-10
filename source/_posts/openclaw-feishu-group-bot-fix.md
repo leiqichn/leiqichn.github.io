@@ -2,6 +2,7 @@
 title: OpenClaw飞书群聊机器人@不响应问题排查与解决
 date: 2026-03-09 23:05:00
 permalink: 2026-03-09-openclaw-feishu-group-bot-fix.html
+cover: /imgs/code-wallpaper-6.png
 categories:
   - 技术栈
   - DevOps

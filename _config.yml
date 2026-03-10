@@ -245,3 +245,17 @@ deploy:
   - type: git
     repo: https://github.com/leiqichn/leiqichn.github.io.git
     branch: gh-pages
+  - type: hexo-seo-submit
+
+# hexo-seo-submit SEO提交配置
+hexo-seo-submit:
+  baidu:
+    enable: false
+    path: baidu.txt
+  bing:
+    enable: true
+    path: bing.json
+    apiKey: "d9b8435416ea4c3481982c4293d207cb"
+  google:
+    enable: false
+    path: google.txt

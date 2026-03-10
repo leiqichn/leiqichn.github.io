@@ -1,0 +1,22 @@
+# hexo-seo-submit 配置
+# 文档: https://github.com/tardis-ksh/hexo-seo-submit
+
+# 站点URL
+url: https://leiqi.top
+
+# Bing配置
+bing:
+  enable: true
+  path: bing.json
+  apiKey: "f1a6b634f1db4843b618ecde3dd66c1a"
+
+# 百度配置
+baidu:
+  enable: false
+  path: baidu.txt
+  token: ""
+
+# Google配置
+google:
+  enable: false
+  path: google.txt
