@@ -1,0 +1,29 @@
+# SEO 自动提交配置
+# 文档: https://github.com/halo-sigs/hexo-submit-urls-to-search-engine
+
+# 提交条件
+submit_condition:
+  enable: true
+
+# 提交配置
+submit:
+  # 百度搜索资源平台
+  baidu:
+    enable: false
+    token: ""
+    count: 100
+  
+  # Bing Webmaster Tools
+  bing:
+    enable: true
+    token: "f1a6b634f1db4843b618ecde3dd66c1a"
+    count: 100
+  
+  # Google Search Console
+  google:
+    enable: false
+    count: 100
+
+# 站点 URL
+url:
+  host: https://leiqi.top
