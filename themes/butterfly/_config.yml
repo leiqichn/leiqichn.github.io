@@ -290,6 +290,9 @@ footer:
         <a href="/imgs/qrcode.jpg" target="_blank" title="微信公众号">
           <i class="fab fa-weixin"></i>
         </a>
+        <a href="https://leiqi.top/atom.xml" target="_blank" title="RSS订阅">
+          <i class="fas fa-rss"></i>
+        </a>
         <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener" title="CSDN">
           <i class="fas fa-blog"></i>
         </a>
@@ -298,9 +301,6 @@ footer:
         <span>Copyright © 2022-<script>document.write(new Date().getFullYear())</script> Lei Qi</span>
         <span class="footer-divider">|</span>
         <a href="https://leiqi.top">leiqi.top</a>
-      </div>
-      <div class="footer-rss">
-        <a onclick="navigator.clipboard.writeText('https://leiqi.top/atom.xml');alert('已复制RSS地址！')">RSS 订阅</a>
       </div>
     </div>
     <style>
