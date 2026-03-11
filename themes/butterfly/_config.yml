@@ -780,7 +780,7 @@ google_analytics:
 cloudflare_analytics:
 
 # https://clarity.microsoft.com/
-microsoft_clarity:
+microsoft_clarity: vu67hmecz2
 
 # https://umami.is/
 umami_analytics:
