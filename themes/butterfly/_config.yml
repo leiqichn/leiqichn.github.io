@@ -57,6 +57,8 @@ code_blocks:
 social:
   fab fa-github: https://github.com/leiqichn || Github || '#24292e'
   fas fa-rss: /atom.xml || RSS || '#f26522'
+  fab fa-bilibili: https://space.bilibili.com/30887724 || Bilibili || '#fb7299'
+  fas fa-book-open: https://www.xiaohongshu.com/user/profile/61728491000000001f03546c || 小红书 || '#ff2442'
   fas fa-envelope: mailto:leiqi@fudan.edu.cn || Email || '#4a7dbe'
 
 # --------------------------------------
