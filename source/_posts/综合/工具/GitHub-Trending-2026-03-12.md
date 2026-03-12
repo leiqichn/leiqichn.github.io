@@ -1,6 +1,6 @@
 ---
 title: GitHub Trending 日报 - 2026/03/12
-date: 2026-03-12 13:24:20
+date: 2026-03-12 13:30:06
 categories:
   - [综合, 工具]
 tags: [GitHub, 开源, Trending, 日报]
@@ -19,11 +19,91 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/03/12
 
 ## 1. [agency-agents](https://github.com/msitarzewski/agency-agents)
 
-A complete AI agency at your fingertips
+A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.
 
-🐚 **Shell** | ⭐ **+223** 今日 | 🏆 26,352 总计
+🐚 **Shell** | ⭐ **+6167** 今日 | 🏆 30,880 总计
 
 **仓库地址**：`msitarzewski/agency-agents`
+
+---
+
+## 2. [MiroFish](https://github.com/666ghj/MiroFish)
+
+A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物
+
+🐍 **Python** | ⭐ **+2907** 今日 | 🏆 17,194 总计
+
+**仓库地址**：`666ghj/MiroFish`
+
+---
+
+## 3. [promptfoo](https://github.com/promptfoo/promptfoo)
+
+Test your prompts, agents, and RAGs. Red teaming/pentesting/vulnerability scanning for AI. Compare performance of GPT, Claude, Gemini, Llama, and more. Simple declarative configs with command line and CI/CD integration.
+
+🔷 **TypeScript** | ⭐ **+718** 今日 | 🏆 12,690 总计
+
+**仓库地址**：`promptfoo/promptfoo`
+
+---
+
+## 4. [superpowers](https://github.com/obra/superpowers)
+
+An agentic skills framework & software development methodology that works.
+
+🐚 **Shell** | ⭐ **+1483** 今日 | 🏆 78,431 总计
+
+**仓库地址**：`obra/superpowers`
+
+---
+
+## 5. [fish-speech](https://github.com/fishaudio/fish-speech)
+
+SOTA Open Source TTS
+
+🐍 **Python** | ⭐ **+313** 今日 | 🏆 25,948 总计
+
+**仓库地址**：`fishaudio/fish-speech`
+
+---
+
+## 6. [ai-hedge-fund](https://github.com/virattt/ai-hedge-fund)
+
+An AI Hedge Fund Team
+
+🐍 **Python** | ⭐ **+636** 今日 | 🏆 48,272 总计
+
+**仓库地址**：`virattt/ai-hedge-fund`
+
+---
+
+## 7. [page-agent](https://github.com/alibaba/page-agent)
+
+JavaScript in-page GUI agent. Control web interfaces with natural language.
+
+🔷 **TypeScript** | ⭐ **+1215** 今日 | 🏆 5,041 总计
+
+**仓库地址**：`alibaba/page-agent`
+
+---
+
+## 8. [hermes-agent](https://github.com/NousResearch/hermes-agent)
+
+The agent that grows with you
+
+🐍 **Python** | ⭐ **+1234** 今日 | 🏆 5,477 总计
+
+**仓库地址**：`NousResearch/hermes-agent`
+
+---
+
+## 9. [AstrBot](https://github.com/AstrBotDevs/AstrBot)
+
+Agentic IM Chatbot infrastructure that integrates lots of IM platforms, LLMs, plugins and AI feature, and can be your openclaw alternative. ✨
+
+🐍 **Python** | ⭐ **+342** 今日 | 🏆 21,616 总计
+
+**仓库地址**：`AstrBotDevs/AstrBot`
 
 ---
 
@@ -50,9 +130,9 @@ A complete AI agency at your fingertips - From frontend wizards to Reddit commun
 
 | 指标 | 数值 |
 |------|------|
-| ⭐ Stars | 30,868 |
+| ⭐ Stars | 30,880 |
 | 🍴 Forks | 4,834 |
-| 👀 Watchers | 30,868 |
+| 👀 Watchers | 30,880 |
 | 📝 Language | Shell |
 | 📅 Created | 2025-10-13 |
 | 🔄 Updated | 2026-03-12 |
@@ -211,5 +291,5 @@ cat README.md
 ---
 
 **🦞 J.A.R.V.I.S. 开源观察助手**
-📡 数据更新：2026-03-12 13:24:20
+📡 数据更新：2026-03-12 13:30:06
 🔗 数据来源：[GitHub Trending](https://github.com/trending)
