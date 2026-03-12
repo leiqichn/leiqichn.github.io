@@ -3530,7 +3530,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/guestbook/index.html</loc>
+    <loc>https://leiqi.top/economics/index.html</loc>
     
     <lastmod>2026-03-08</lastmod>
     
@@ -3539,7 +3539,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/economics/index.html</loc>
+    <loc>https://leiqi.top/guestbook/index.html</loc>
     
     <lastmod>2026-03-08</lastmod>
     
@@ -3887,13 +3887,6 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://leiqi.top/categories/%E7%BB%BC%E5%90%88/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -3908,7 +3901,7 @@
   </url>
   
   <url>
-    <loc>https://leiqi.top/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/</loc>
+    <loc>https://leiqi.top/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3916,6 +3909,13 @@
   
   <url>
     <loc>https://leiqi.top/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Golang/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://leiqi.top/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
