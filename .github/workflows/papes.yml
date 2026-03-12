@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master # default branch
+  workflow_dispatch: # 允许手动触发
 
 jobs:
   pages:
@@ -11,40 +12,45 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
         with:
-          node-version: "18"
-      - name: Cache NPM dependencies
+          fetch-depth: 0 # 获取完整历史以支持git log
       
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: 'npm'
+      
+      - name: Cache NPM dependencies
         uses: actions/cache@v4
         with:
           path: node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.OS }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-npm-
+            ${{ runner.OS }}-npm-
             
       - name: Install Dependencies
-        run: npm install
-      - name: Add execute permission to hexo command
-        run: chmod +x ./node_modules/.bin/hexo
+        run: npm ci # 使用 npm ci 而不是 npm install，更快更可靠
+      
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: production
+      
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           cname: leiqi.top  # 添加自定义域名
+          force_orphan: true # 保持部署历史干净
           
       - name: Sync to Gitee
+        if: success() # 只有前面的步骤成功才执行
         uses: wearerequired/git-mirror-action@master
         env:
-          # 注意在 Settings->Secrets 配置 GITEE_RSA_PRIVATE_KEY
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
         with:
-          # 注意替换为你的 GitHub 源仓库地址
           source-repo: git@github.com:leiqichn/leiqichn.github.io.git
-          # 注意替换为你的 Gitee 目标仓库地址
           destination-repo: git@gitee.com:leiqichn/leiqichn.git

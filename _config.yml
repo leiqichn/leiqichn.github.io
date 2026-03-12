@@ -4,9 +4,9 @@
 
 # Site
 title: DeepThinking深思
-subtitle: 'DeepThinking深思'
-description: '记录、总结、复盘、分享'
-keywords: golang python 算法 云计算 复旦大学 华为
+subtitle: '记录、总结、复盘、分享'
+description: 'Lei Qi的个人博客 - 记录技术成长、分享编程经验、探讨算法与云计算'
+keywords: Lei Qi, 雷奇, 博客, golang, python, 算法, 云计算, 复旦大学, 华为, 深度学习
 author: Lei Qi
 language: zh-CN
 timezone: 'Asia/Shanghai'
@@ -50,14 +50,14 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
-  enable: false
+  enable: true
   preprocess: true
   line_number: true
   tab_replace: ''
@@ -139,13 +139,13 @@ neat_js:
 all_minifier: false
 
 image_minifier:
-  enable: false
-  interlaced: false
-  multipass: false
-  optimizationLevel: 2
-  pngquant: false
-  progressive: false
-  silent: false
+  enable: true
+  interlaced: true
+  multipass: true
+  optimizationLevel: 3
+  pngquant: true
+  progressive: true
+  silent: true
 # hexo添加PWA
 # offline config passed to sw-precache.
 service_worker:

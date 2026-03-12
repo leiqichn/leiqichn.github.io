@@ -1,9 +1,13 @@
 User-agent: *
 Allow: /
 
+# Sitemaps
 Sitemap: https://leiqi.top/sitemap.xml
 
-# 禁止爬取的路径
+# Disallow
 Disallow: /js/
 Disallow: /css/
-Disallow: /fonts/
+Disallow: /libs/
+Disallow: / imgs/
+Disallow: /*.json$
+Disallow: /*.xml$
