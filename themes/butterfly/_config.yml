@@ -24,7 +24,6 @@ menu:
     标签: /tags/ || fas fa-tags
     说说: /shuoshuo/ || fas fa-comment-dots
   摄影集: /photography/ || fas fa-camera
-  RSS: /atom.xml || fas fa-rss-square
   友链: /link || fas fa-link
   留言板: /guestbook/ || fas fa-comment-dots
   关于我: /about/ || fas fa-heart
@@ -57,6 +56,7 @@ code_blocks:
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/leiqichn || Github || '#24292e'
+  fas fa-rss: /atom.xml || RSS || '#f26522'
   fas fa-envelope: mailto:leiqi@fudan.edu.cn || Email || '#4a7dbe'
 
 # --------------------------------------
