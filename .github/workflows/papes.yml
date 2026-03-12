@@ -45,12 +45,3 @@ jobs:
           publish_dir: ./public
           cname: leiqi.top  # 添加自定义域名
           force_orphan: true # 保持部署历史干净
-          
-      - name: Sync to Gitee
-        if: success() # 只有前面的步骤成功才执行
-        uses: wearerequired/git-mirror-action@master
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
-        with:
-          source-repo: git@github.com:leiqichn/leiqichn.github.io.git
-          destination-repo: git@gitee.com:leiqichn/leiqichn.git
