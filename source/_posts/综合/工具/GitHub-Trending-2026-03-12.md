@@ -290,6 +290,6 @@ cat README.md
 
 ---
 
-**🦞 J.A.R.V.I.S. 开源观察助手**
+
 📡 数据更新：2026-03-12 13:32:04
 🔗 数据来源：[GitHub Trending](https://github.com/trending)
