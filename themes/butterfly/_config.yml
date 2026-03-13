@@ -381,8 +381,9 @@ aside:
   card_announcement:
     enable: true
     content: 欢迎关注公众号：DeepThinking深思，本站的文章会同步发布在微信公众号，方便推送~ 
-      <div class="aside-qrcode" style="text-align: center; margin-top: 10px;">
-      <a href="https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ" rel="external nofollow noreferrer" target="_blank"><img src="/imgs/qrcode.jpg" loading="eager" title="微信公众号二维码" width="200" height="200" style="display: inline-block; border-radius: 4px;"></a>
+      <div class="aside-qrcode">
+      <a href="https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ" rel="external nofollow noreferrer" target="_blank"><img src="/imgs/qrcode.jpg" data-lazy-src="/imgs/qrcode.jpg" title="" data-ll-status="loaded" class="entered loaded" style="" width="250"
+      height="250"></a>
       </div>
   card_recent_post:
     enable: true
@@ -1090,12 +1091,12 @@ snackbar:
 
 # Instant.page
 # https://instant.page/
-instantpage: true
+instantpage: false
 
 # Lazyload
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: true
+  enable: false
   # Use browser's native lazyload instead of vanilla-lazyload
   # Specify the field to use lazyload (site or post)
   field: site
