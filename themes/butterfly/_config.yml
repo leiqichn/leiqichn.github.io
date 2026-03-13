@@ -380,7 +380,7 @@ aside:
       link: https://github.com/leiqichn
   card_announcement:
     enable: true
-    content: '<p>欢迎关注公众号：DeepThinking深思，本站的文章会同步发布在微信公众号，方便推送~</p><div class="aside-qrcode" style="text-align: center; margin-top: 10px;"><a href="https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ" rel="external nofollow noreferrer" target="_blank"><img src="/imgs/qrcode.jpg" loading="eager" title="微信公众号二维码" width="200" height="200" style="display: inline-block; border-radius: 4px;"></a></div>'
+    content: '<p>欢迎关注公众号：DeepThinking深思，本站的文章会同步发布在微信公众号，方便推送~</p><div class="aside-qrcode" style="text-align: center; margin-top: 10px;"><a href="https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ" rel="external nofollow noreferrer" target="_blank"><img src="/imgs/qrcode.jpg" data-no-lazy title="微信公众号二维码" width="200" height="200" style="display: inline-block; border-radius: 4px;"></a></div>'
   card_recent_post:
     enable: true
     # If set 0 will show all
