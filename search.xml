@@ -3873,11 +3873,164 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#x66;&#x75;&#100;&#x61;&#x6e;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#x6e;">&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#x66;&#x75;&#100;&#x61;&#x6e;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#x69;&#x40;&#102;&#117;&#100;&#97;&#110;&#46;&#x65;&#x64;&#117;&#46;&#99;&#x6e;">&#108;&#101;&#x69;&#x71;&#x69;&#x40;&#102;&#117;&#100;&#97;&#110;&#46;&#x65;&#x64;&#117;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
 <p>📡 数据更新：2026-03-12 13:32:04<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+        <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 - 2026/03/13</title>
+    <url>/2026-03-13-944a31b665d7.html</url>
+    <content><![CDATA[<h1 id="GitHub-Trending-日报"><a href="#GitHub-Trending-日报" class="headerlink" title="GitHub Trending 日报"></a>GitHub Trending 日报</h1><p>📅 <strong>日期</strong>：2026&#x2F;03&#x2F;13</p>
+<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
+<hr>
+<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2><h2 id="1-BitNet"><a href="#1-BitNet" class="headerlink" title="1. BitNet"></a>1. <a href="https://github.com/microsoft/BitNet">BitNet</a></h2><p>Official inference framework for 1-bit LLMs</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+2149</strong> 今日 | 🏆 32,351 总计</p>
+<p><strong>仓库地址</strong>：<code>microsoft/BitNet</code></p>
+<hr>
+<h2 id="2-fish-speech"><a href="#2-fish-speech" class="headerlink" title="2. fish-speech"></a>2. <a href="https://github.com/fishaudio/fish-speech">fish-speech</a></h2><p>SOTA Open Source TTS</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+637</strong> 今日 | 🏆 26,367 总计</p>
+<p><strong>仓库地址</strong>：<code>fishaudio/fish-speech</code></p>
+<hr>
+<h2 id="3-openrag"><a href="#3-openrag" class="headerlink" title="3. openrag"></a>3. <a href="https://github.com/langflow-ai/openrag">openrag</a></h2><p>OpenRAG is a comprehensive, single package Retrieval-Augmented Generation platform built on Langflow, Docling, and Opensearch.</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+322</strong> 今日 | 🏆 1,550 总计</p>
+<p><strong>仓库地址</strong>：<code>langflow-ai/openrag</code></p>
+<hr>
+<h2 id="4-InsForge"><a href="#4-InsForge" class="headerlink" title="4. InsForge"></a>4. <a href="https://github.com/InsForge/InsForge">InsForge</a></h2><p>Give agents everything they need to ship fullstack apps. The backend built for agentic development.</p>
+<p>🔷 <strong>TypeScript</strong> | ⭐ <strong>+263</strong> 今日 | 🏆 3,107 总计</p>
+<p><strong>仓库地址</strong>：<code>InsForge/InsForge</code></p>
+<hr>
+<h2 id="5-hindsight"><a href="#5-hindsight" class="headerlink" title="5. hindsight"></a>5. <a href="https://github.com/vectorize-io/hindsight">hindsight</a></h2><p>Hindsight: Agent Memory That Learns</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+217</strong> 今日 | 🏆 3,079 总计</p>
+<p><strong>仓库地址</strong>：<code>vectorize-io/hindsight</code></p>
+<hr>
+<h2 id="6-page-agent"><a href="#6-page-agent" class="headerlink" title="6. page-agent"></a>6. <a href="https://github.com/alibaba/page-agent">page-agent</a></h2><p>JavaScript in-page GUI agent. Control web interfaces with natural language.</p>
+<p>🔷 <strong>TypeScript</strong> | ⭐ <strong>+1205</strong> 今日 | 🏆 5,961 总计</p>
+<p><strong>仓库地址</strong>：<code>alibaba/page-agent</code></p>
+<hr>
+<h2 id="7-superpowers"><a href="#7-superpowers" class="headerlink" title="7. superpowers"></a>7. <a href="https://github.com/obra/superpowers">superpowers</a></h2><p>An agentic skills framework &amp; software development methodology that works.</p>
+<p>🐚 <strong>Shell</strong> | ⭐ <strong>+1706</strong> 今日 | 🏆 79,945 总计</p>
+<p><strong>仓库地址</strong>：<code>obra/superpowers</code></p>
+<hr>
+<h2 id="8-hermes-agent"><a href="#8-hermes-agent" class="headerlink" title="8. hermes-agent"></a>8. <a href="https://github.com/NousResearch/hermes-agent">hermes-agent</a></h2><p>The agent that grows with you</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+1264</strong> 今日 | 🏆 6,164 总计</p>
+<p><strong>仓库地址</strong>：<code>NousResearch/hermes-agent</code></p>
+<hr>
+<h2 id="9-MiroFish"><a href="#9-MiroFish" class="headerlink" title="9. MiroFish"></a>9. <a href="https://github.com/666ghj/MiroFish">MiroFish</a></h2><p>A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+1857</strong> 今日 | 🏆 19,180 总计</p>
+<p><strong>仓库地址</strong>：<code>666ghj/MiroFish</code></p>
+<hr>
+<h2 id="10-LiteRT"><a href="#10-LiteRT" class="headerlink" title="10. LiteRT"></a>10. <a href="https://github.com/google-ai-edge/LiteRT">LiteRT</a></h2><p>LiteRT, successor to TensorFlow Lite. is Google’s On-device framework for high-performance ML &amp; GenAI deployment on edge platforms, via efficient conversion, runtime, and optimization</p>
+<p>⚡ <strong>C++</strong> | ⭐ <strong>+13</strong> 今日 | 🏆 1,669 总计</p>
+<p><strong>仓库地址</strong>：<code>google-ai-edge/LiteRT</code></p>
+<hr>
+<h2 id="11-agency-agents"><a href="#11-agency-agents" class="headerlink" title="11. agency-agents"></a>11. <a href="https://github.com/msitarzewski/agency-agents">agency-agents</a></h2><p>A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.</p>
+<p>🐚 <strong>Shell</strong> | ⭐ <strong>+4168</strong> 今日 | 🏆 34,945 总计</p>
+<p><strong>仓库地址</strong>：<code>msitarzewski/agency-agents</code></p>
+<hr>
+<h2 id="12-A2UI"><a href="#12-A2UI" class="headerlink" title="12. A2UI"></a>12. <a href="https://github.com/google/A2UI">A2UI</a></h2><p>🔷 <strong>TypeScript</strong> | ⭐ <strong>+225</strong> 今日 | 🏆 12,604 总计</p>
+<p><strong>仓库地址</strong>：<code>google/A2UI</code></p>
+<hr>
+<h2 id="13-claude-plugins-official"><a href="#13-claude-plugins-official" class="headerlink" title="13. claude-plugins-official"></a>13. <a href="https://github.com/anthropics/claude-plugins-official">claude-plugins-official</a></h2><p>Official, Anthropic-managed directory of high quality Claude Code Plugins.</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+150</strong> 今日 | 🏆 10,265 总计</p>
+<p><strong>仓库地址</strong>：<code>anthropics/claude-plugins-official</code></p>
+<hr>
+<hr>
+<h2 id="🔍-今日精选项目详解"><a href="#🔍-今日精选项目详解" class="headerlink" title="🔍 今日精选项目详解"></a>🔍 今日精选项目详解</h2><h3 id="BitNet"><a href="#BitNet" class="headerlink" title="BitNet"></a>BitNet</h3><p><strong>项目地址</strong>：<a href="https://github.com/microsoft/BitNet">https://github.com/microsoft/BitNet</a></p>
+<p><strong>作者</strong>：microsoft</p>
+<hr>
+<h4 id="📖-项目简介"><a href="#📖-项目简介" class="headerlink" title="📖 项目简介"></a>📖 项目简介</h4><p>Official inference framework for 1-bit LLMs</p>
+<hr>
+<h4 id="📊-项目数据"><a href="#📊-项目数据" class="headerlink" title="📊 项目数据"></a>📊 项目数据</h4><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>⭐ Stars</td>
+<td>32,351</td>
+</tr>
+<tr>
+<td>🍴 Forks</td>
+<td>2,729</td>
+</tr>
+<tr>
+<td>👀 Watchers</td>
+<td>32,351</td>
+</tr>
+<tr>
+<td>📝 Language</td>
+<td>Python</td>
+</tr>
+<tr>
+<td>📅 Created</td>
+<td>2024-08-05</td>
+</tr>
+<tr>
+<td>🔄 Updated</td>
+<td>2026-03-13</td>
+</tr>
+<tr>
+<td>📜 License</td>
+<td>MIT</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="💡-核心特点"><a href="#💡-核心特点" class="headerlink" title="💡 核心特点"></a>💡 核心特点</h4><hr>
+<h4 id="📄-README-摘要"><a href="#📄-README-摘要" class="headerlink" title="📄 README 摘要"></a>📄 README 摘要</h4><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># bitnet.cpp</span></span><br><span class="line">[<span class="string">![License: MIT</span>](<span class="link">https://img.shields.io/badge/license-MIT-blue.svg</span>)](<span class="link">https://opensource.org/licenses/MIT</span>)</span><br><span class="line">![<span class="string">version</span>](<span class="link">https://img.shields.io/badge/version-1.0-blue</span>)</span><br><span class="line"></span><br><span class="line">[<span class="string">&lt;img src=&quot;./assets/header_model_release.png&quot; alt=&quot;BitNet Model on Hugging Face&quot; width=&quot;800&quot;/&gt;</span>](<span class="link">https://huggingface.co/microsoft/BitNet-b1.58-2B-4T</span>)</span><br><span class="line"></span><br><span class="line">Try it out via this [<span class="string">demo</span>](<span class="link">https://demo-bitnet-h0h8hcfqeqhrf5gf.canadacentral-01.azurewebsites.net/</span>), or build and run it on your own [<span class="string">CPU</span>](<span class="link">https://github.com/microsoft/BitNet?tab=readme-ov-file#build-from-source</span>) or [<span class="string">GPU</span>](<span class="link">https://github.com/microsoft/BitNet/blob/main/gpu/README.md</span>).</span><br><span class="line"></span><br><span class="line">bitnet.cpp is the official inference framework for 1-bit LLMs (e.g., BitNet b1.58). It offers a suite of optimized kernels, that support <span class="strong">**fast**</span> and <span class="strong">**lossless**</span> inference of 1.58-bit models on CPU and GPU (NPU support will coming next).</span><br><span class="line"></span><br><span class="line">The first release of bitnet.cpp is to support inference on CPUs. bitnet.cpp achieves speedups of <span class="strong">**1.37x**</span> to <span class="strong">**5.07x**</span> on ARM CPUs, with larger models experiencing greater performance gains. Additionally, it reduces energy consumption by <span class="strong">**55.4%**</span> to <span class="strong">**70.0%**</span>, further boosting overall efficiency. On x86 CPUs, speedups range from <span class="strong">**2.37x**</span> to <span class="strong">**6.17x**</span> with energy reductions between <span class="strong">**71.9%**</span> to <span class="strong">**82.2%**</span>. Furthermore, bitnet.cpp can run a 100B BitNet b1.58 model on a single CPU, achieving speeds comparable to human reading (5-7 tokens per second), significantly enhancing the potential for running LLMs on local devices. Please refer to the [<span class="string">technical report</span>](<span class="link">https://arxiv.org/abs/2410.16144</span>) for more details.</span><br><span class="line"></span><br><span class="line"><span class="strong">**Latest optimization**</span> introduces parallel kernel implementations with configurable tiling and embedding quantization support, achieving <span class="strong">**1.15x to 2.1x**</span> additional speedup over the original implementation across different hardware platforms and workloads. For detailed technical information, see the [<span class="string">optimization guide</span>](<span class="link">src/README.md</span>).</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./assets/performance.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;performance_comparison&quot;</span> <span class="attr">width</span>=<span class="string">&quot;800&quot;</span>/&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="section">## Demo</span></span><br><span class="line"></span><br><span class="line">A demo of bitnet.cpp running a BitNet b1.58 3B model on Apple M2:</span><br><span class="line"></span><br><span class="line">https://github.com/user-attachments/assets/7f46b736-edec-4828-b809-4be780a3e5b1</span><br><span class="line"></span><br><span class="line"><span class="section">## What&#x27;s New:</span></span><br><span class="line"><span class="bullet">-</span> 01/15/2026 [<span class="string">BitNet CPU Inference Optimization</span>](<span class="link">https://github.com/microsoft/BitNet/blob/main/src/README.md</span>) ![<span class="string">NEW</span>](<span class="link">https://img.shields.io/badge/NEW-red</span>)</span><br><span class="line"><span class="bullet">-</span> 05/20/2025 [<span class="string">BitNet Official GPU inference kernel</span>](<span class="link">https://github.com/microsoft/BitNet/blob/main/gpu/README.md</span>)</span><br><span class="line"><span class="bullet">-</span> 04/14/2025 [<span class="string">BitNet Official 2B Parameter Model on Hugging Face</span>](<span class="link">https://huggingface.co/microsoft/BitNet-b1.58-2B-4T</span>)</span><br><span class="line"><span class="bullet">-</span> 02/18/2025 [<span class="string">Bitnet.cpp: Efficient Edge Inference for Ternary LLMs</span>](<span class="link">https://arxiv.org/abs/2502.11880</span>)</span><br><span class="line"><span class="bullet">-</span> 11/08/2024 [<span class="string">BitNet a4.8: 4-bit Activations for 1-bit LLMs</span>](<span class="link">https://arxiv.org/abs/2411.04965</span>)</span><br><span class="line"><span class="bullet">-</span> 10/21/2024 [<span class="string">1-bit AI Infra: Part 1.1, Fast and Lossless BitNet b1.58 Inference on CPUs</span>](<span class="link">https://arxiv.org/abs/2410.16144</span>)</span><br><span class="line"><span class="bullet">-</span> 10/17/2024 bitnet.cpp 1.0 released.</span><br><span class="line"><span class="bullet">-</span> 03/21/2024 [The-Era-of-1-bit-LLMs<span class="strong">__Training<span class="emphasis">_Tips_</span>Code<span class="emphasis">_FAQ](https://github.com/micr</span></span></span><br><span class="line"><span class="emphasis"><span class="strong"></span></span></span><br><span class="line"><span class="emphasis"><span class="strong">... (内容过长，已截断，请访问GitHub查看完整内容)</span></span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="🚀-快速开始"><a href="#🚀-快速开始" class="headerlink" title="🚀 快速开始"></a>🚀 快速开始</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/microsoft/BitNet.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入目录</span></span><br><span class="line"><span class="built_in">cd</span> BitNet</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看文档</span></span><br><span class="line"><span class="built_in">cat</span> README.md</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="💭-推荐理由"><a href="#💭-推荐理由" class="headerlink" title="💭 推荐理由"></a>💭 推荐理由</h4><p>这个项目在今日GitHub Trending榜单中排名第一，值得关注的原因：</p>
+<ol>
+<li><strong>活跃度高</strong>：近期获得大量关注，社区活跃</li>
+<li><strong>实用性强</strong>：解决实际问题，有实用价值</li>
+<li><strong>代码质量</strong>：代码结构清晰，文档完善</li>
+<li><strong>创新性</strong>：在技术或应用上有创新突破</li>
+</ol>
+<hr>
+<hr>
+<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
+<ul>
+<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
+<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
+<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
+</ul>
+<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
+<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
+<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
+<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
+</ul>
+<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
+<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
+<li>💬 微信公众号：DeepThinking深思</li>
+<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
+</ul>
+<hr>
+<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
+<ul>
+<li>💬 评论留言推荐</li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#105;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#x6c;&#101;&#105;&#113;&#105;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a></li>
+<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
+</ul>
+<hr>
+<p>📡 数据更新：2026-03-13 09:03:35<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
 ]]></content>
       <categories>
         <category>综合</category>
