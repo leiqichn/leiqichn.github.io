@@ -5,8 +5,8 @@
 # Site
 title: DeepThinking深思
 subtitle: '记录、总结、复盘、分享'
-description: 'Lei Qi的个人博客 - 记录技术成长、分享编程经验、探讨算法与云计算'
-keywords: Lei Qi, 雷奇, 博客, golang, python, 算法, 云计算, 复旦大学, 华为, 深度学习
+description: '记录、总结、复盘、分享'
+keywords: Lei Qi, 博客, golang, python, 算法, 云计算, 复旦大学, 华为, 深度学习, AI, Agent
 author: Lei Qi
 language: zh-CN
 timezone: 'Asia/Shanghai'

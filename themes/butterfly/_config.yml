@@ -300,7 +300,7 @@ footer:
         </a>
       </div>
       <div class="footer-info">
-        <span>Copyright © 2022-<script>document.write(new Date().getFullYear())</script> Lei Qi</span>
+        <span>Copyright © 2022-<script>document.write(new Date().getFullYear())</script>  Lei Qi </span>
         <span class="footer-divider">|</span>
         <a href="https://leiqi.top">leiqi.top</a>
       </div>
