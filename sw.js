@@ -27,6 +27,8 @@ var precacheUrls = [
 
   '/',
 
+  '/2026-03-14-7473f1bf797c.html',
+
   '/2026-03-13-944a31b665d7.html',
 
   '/2026-03-12-f92bb2d7ca8b.html',
@@ -34,8 +36,6 @@ var precacheUrls = [
   '/2026-03-11-cbb5a5c4f2ee.html',
 
   '/2026-03-11-a2738046354f.html',
-
-  '//2026-03-09-openclaw-feishu-group-bot-fix.html',
 
 ];
 toolbox.precache(precacheUrls);
