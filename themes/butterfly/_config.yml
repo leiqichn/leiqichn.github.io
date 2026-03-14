@@ -530,7 +530,7 @@ busuanzi:
   site_pv: true
   page_pv: true
 
-# CDN配置 - 使用国内镜像加速不蒜子
+# Asset CDN settings
 asset:
   busuanzi: https://npm.elemecdn.com/busuanzi@2.3.0/bsz.pure.mini.js
 
