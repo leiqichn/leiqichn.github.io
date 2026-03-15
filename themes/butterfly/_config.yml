@@ -685,7 +685,7 @@ valine:
 # Waline - A simple comment system with backend support fork from Valine
 # https://waline.js.org/
 waline:
-  serverURL: /waline
+  serverURL: http://43.167.169.250:8362
   bg: 
   # Use Waline pageview count as the page view count
   pageview: true
