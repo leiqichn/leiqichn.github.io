@@ -695,6 +695,11 @@ waline:
     requiredFields:
       - nick
       - mail
+    # 表情配置 - 添加多个表情包
+    emoji:
+      - //unpkg.com/@waline/emojis@1.4.0/qq
+      - //unpkg.com/@waline/emojis@1.4.0/bmoji
+      - //unpkg.com/@waline/emojis@1.4.0/weibo
 
 # Utterances
 # https://utteranc.es/
