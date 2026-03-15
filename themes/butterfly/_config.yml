@@ -691,11 +691,15 @@ waline:
   pageview: true
   option:
     locale:
-      placeholder: 欢迎评论~
+      placeholder: 欢迎评论~ 来都来了，说点什么吧！
+    # 只显示昵称和邮箱，不显示网址
+    meta:
+      - nick
+      - mail
     requiredFields:
       - nick
       - mail
-    # 表情配置 - 添加多个表情包
+    # 表情配置
     emoji:
       - //unpkg.com/@waline/emojis@1.4.0/qq
       - //unpkg.com/@waline/emojis@1.4.0/bmoji
