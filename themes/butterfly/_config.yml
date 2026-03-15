@@ -685,7 +685,7 @@ valine:
 # Waline - A simple comment system with backend support fork from Valine
 # https://waline.js.org/
 waline:
-  serverURL: https://www.leiqi.top
+  serverURL: https://waline.leiqi.top
   bg: 
   # Use Waline pageview count as the page view count
   pageview: true
