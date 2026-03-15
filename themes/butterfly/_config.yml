@@ -691,7 +691,7 @@ waline:
   pageview: true
   option:
     locale:
-      placeholder: 欢迎评论~ 来都来了，说点什么吧！
+      placeholder: 欢迎评论~ 来都来了，说点什么吧！输入邮箱后，支持邮件回复通知你哦！支持MarkDown语法~
     # 只显示昵称和邮箱，不显示网址
     meta:
       - nick
