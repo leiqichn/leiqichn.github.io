@@ -21,14 +21,9 @@ menu:
   文章 ||fas fa-list:
     归档: /archives/ || fas fa-archive
     分类: /categories/ || fas fa-archive
+    标签: /tags/ || fas fa-tags
     说说: /shuoshuo/ || fas fa-comment-dots
-  生活 ||fas fa-list:
-    读书: /readings/ || fas fa-book
-    经济: /economics/ || fas fa-usd
-    Music: /music/ || fas fa-music
-    Movie: /movies/ || fas fa-video
   摄影集: /photography/ || fas fa-camera
-  RSS: /atom.xml || fas fa-rss-square
   友链: /link || fas fa-link
   留言板: /guestbook/ || fas fa-comment-dots
   关于我: /about/ || fas fa-heart
@@ -61,6 +56,9 @@ code_blocks:
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/leiqichn || Github || '#24292e'
+  fas fa-rss: /atom.xml || RSS || '#f26522'
+  fab fa-bilibili: https://space.bilibili.com/30887724 || Bilibili || '#fb7299'
+  fas fa-book-open: https://www.xiaohongshu.com/user/profile/61728491000000001f03546c || 小红书 || '#ff2442'
   fas fa-envelope: mailto:leiqi@fudan.edu.cn || Email || '#4a7dbe'
 
 # --------------------------------------
@@ -284,21 +282,74 @@ footer:
     version: false
   custom_text: |
     <div class="custom-footer">
-      <a href="https://leiqi.top" target="_blank" rel="nofollow noopener">
-          <span>Copyright ©Lei Qi 2022-<script>document.write(new Date().getFullYear())</script>. All right reserved.</span>
-      </a> <br />
-      <a onclick="navigator.clipboard.writeText(&quot;https://leiqichn.github.io/atom.xml&quot;);alert(&quot;已复制RSS地址到剪切板，快来订阅我的博客吧！&quot;)"> 获取RSS订阅地址</a> <br />
-      <a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener"><span>Github | </span></a>
-      <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener"><span>CSDN | </span></a>
-      <a href="mailto:leiqi@fudan.edu.cn" target="_blank" rel="nofollow noopener"><span>Email | </span></a>
-      <a href="/imgs/qrcode.jpg" target="_blank" rel="nofollow noopener"><span>微信公众号</span></a>
+      <div class="footer-icons">
+        <a href="https://github.com/leiqichn" target="_blank" rel="nofollow noopener" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:leiqi@fudan.edu.cn" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="/imgs/qrcode.jpg" target="_blank" title="微信公众号">
+          <i class="fab fa-weixin"></i>
+        </a>
+        <a href="https://leiqi.top/atom.xml" target="_blank" title="RSS订阅">
+          <i class="fas fa-rss"></i>
+        </a>
+        <a href="https://blog.csdn.net/lei_qi" target="_blank" rel="nofollow noopener" title="CSDN">
+          <i class="fas fa-blog"></i>
+        </a>
+      </div>
+      <div class="footer-info">
+        <span>Copyright © 2022-<script>document.write(new Date().getFullYear())</script>  Lei Qi </span>
+        <span class="footer-divider">|</span>
+        <a href="https://leiqi.top">leiqi.top</a>
+      </div>
     </div>
     <style>
       .custom-footer {
-        color: #666;
-        font-size: 0.9rem;
         text-align: center;
-        margin-top: 20px;
+        padding: 20px 0;
+      }
+      .footer-icons {
+        margin-bottom: 15px;
+      }
+      .footer-icons a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 10px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.2);
+        color: #ffffff;
+        transition: all 0.3s;
+        text-decoration: none;
+      }
+      .footer-icons a:hover {
+        background: #49b1f5;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(73, 177, 245, 0.4);
+      }
+      .footer-icons a:visited {
+        color: #ffffff;
+      }
+      .footer-icons a:focus {
+        outline: none;
+        color: #ffffff;
+      }
+      .footer-info {
+        font-size: 0.9rem;
+        color: #ffffff;
+      }
+      .footer-divider {
+        margin: 0 10px;
+      }
+      .footer-rss {
+        margin-top: 10px;
+      }
+      .footer-rss a {
+        color: #49b1f5;
+        cursor: pointer;
       }
     </style>
 
@@ -329,11 +380,7 @@ aside:
       link: https://github.com/leiqichn
   card_announcement:
     enable: true
-    content: 欢迎关注公众号：DeepThinking深思，本站的文章会同步发布在微信公众号，方便推送~ 
-      <div class="aside-qrcode">
-      <a href="https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ" rel="external nofollow noreferrer" target="_blank"><img src="/imgs/qrcode.jpg" data-lazy-src="/imgs/qrcode.jpg" title="" data-ll-status="loaded" class="entered loaded" style="" width="250"
-      height="250"></a>
-      </div>
+    content: '<p>欢迎关注公众号：DeepThinking深思，本站的文章会同步发布在微信公众号，方便推送~</p><div class="aside-qrcode" style="text-align: center; margin-top: 10px;"><a href="https://mp.weixin.qq.com/s/xbvKNdVUmhiyjkbvdMIzcQ" rel="external nofollow noreferrer" target="_blank"><img src="/imgs/qrcode.jpg" title="微信公众号二维码" width="200" height="200" style="display: inline-block; border-radius: 4px;"></a></div>'
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -351,12 +398,12 @@ aside:
   card_categories:
     enable: true
     # If set 0 will show all
-    limit: 8
+    limit: 0
     # Choose: none / true / false
     expand: none
     sort_order:
   card_tags:
-    enable: true
+    enable: false
     # If set 0 will show all
     limit: 40
     color: false
@@ -477,11 +524,15 @@ wordcount:
   # Display the total word count of the website in aside's webinfo
   total_wordcount: true
 
-# Busuanzi count for PV / UV in site
+# Busuanzi count for PV / UV in site (已禁用，使用Waline统计)
 busuanzi:
-  site_uv: true
-  site_pv: true
-  page_pv: true
+  site_uv: false
+  site_pv: false
+  page_pv: false
+
+# Asset CDN settings
+asset:
+  busuanzi: https://npm.elemecdn.com/busuanzi@2.3.0/bsz.pure.mini.js
 
 # --------------------------------------
 # Math
@@ -568,16 +619,16 @@ comments:
   # Leave it empty if you don't need comments
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # Format of two comments system : Disqus,Waline
-  use: valine
+  use: waline
   # Display the comment name next to the button
   text: true
   # Lazyload: The comment system will be load when comment element enters the browser's viewport.
   # If you set it to true, the comment count will be invalid
-  lazyload: true
+  lazyload: false
   # Display comment count in post's top_img
   count: true
   # Display comment count in Home Page
-  card_post_count: false
+  card_post_count: true
 
 # Disqus
 # https://disqus.com/
@@ -634,11 +685,25 @@ valine:
 # Waline - A simple comment system with backend support fork from Valine
 # https://waline.js.org/
 waline:
-  serverURL:
-  bg:
+  serverURL: https://waline.leiqi.top
+  bg: 
   # Use Waline pageview count as the page view count
-  pageview: false
+  pageview: true
   option:
+    locale:
+      placeholder: 欢迎评论~ 来都来了，说点什么吧！输入邮箱后，支持邮件回复通知你哦！支持MarkDown语法~
+    # 只显示昵称和邮箱，不显示网址
+    meta:
+      - nick
+      - mail
+    requiredFields:
+      - nick
+      - mail
+    # 表情配置
+    emoji:
+      - //unpkg.com/@waline/emojis@1.4.0/qq
+      - //unpkg.com/@waline/emojis@1.4.0/bmoji
+      - //unpkg.com/@waline/emojis@1.4.0/weibo
 
 # Utterances
 # https://utteranc.es/
@@ -666,7 +731,7 @@ facebook_comments:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId:
+  envId: /twikoo
   region:
   # Use Twikoo visitor count as the page view count
   visitor: false
@@ -739,7 +804,7 @@ google_analytics:
 cloudflare_analytics:
 
 # https://clarity.microsoft.com/
-microsoft_clarity:
+microsoft_clarity: vu67hmecz2
 
 # https://umami.is/
 umami_analytics:
@@ -749,9 +814,9 @@ umami_analytics:
   website_id:
   option:
   UV_PV:
-    site_uv: false
-    site_pv: false
-    page_pv: false
+    site_uv: true
+    site_pv: true
+    page_pv: true
     # Umami Cloud (API key) / self-hosted Umami (token)
     token:
 
@@ -955,9 +1020,9 @@ lightbox:
 
 # Series
 series:
-  enable: false
+  enable: true
   # Order by title or date
-  orderBy: 'title'
+  orderBy: 'date'
   # Sort of order. 1, asc for ascending; -1, desc for descending
   order: 1
   number: true
@@ -1040,12 +1105,12 @@ snackbar:
 
 # Instant.page
 # https://instant.page/
-instantpage: false
+instantpage: true
 
 # Lazyload
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
-  enable: false
+  enable: true
   # Use browser's native lazyload instead of vanilla-lazyload
   # Specify the field to use lazyload (site or post)
   field: site
@@ -1087,6 +1152,10 @@ css_prefix: true
 # Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
+    # Bing Webmaster 验证
+    - <meta name="msvalidate.01" content="04E22EFFD711F5DFBEAFC79049E8C1F7" />
+    # 百度搜索资源平台验证
+    - <meta name="baidu-site-verification" content="codeva-43IjEHEp7U" />
     # - <link rel="stylesheet" href="/xxx.css">
   bottom:
     # - <script src="xxxx"></script>

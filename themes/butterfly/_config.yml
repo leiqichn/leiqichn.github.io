@@ -524,7 +524,7 @@ wordcount:
   # Display the total word count of the website in aside's webinfo
   total_wordcount: true
 
-# Busuanzi count for PV / UV in site (已禁用，使用Waline统计)
+# Busuanzi count for PV / UV in site (启用 site_uv/site_pv，Waline 用于 page_pv)
 busuanzi:
   site_uv: true
   site_pv: true
@@ -532,7 +532,7 @@ busuanzi:
 
 # Asset CDN settings
 asset:
-  busuanzi: https://npm.elemecdn.com/busuanzi@2.3.0/bsz.pure.mini.js
+  busuanzi: https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/busuanzi/2.3.0/busuanzi.pure.mini.js
 
 # --------------------------------------
 # Math
