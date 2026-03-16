@@ -526,8 +526,8 @@ wordcount:
 
 # Busuanzi count for PV / UV in site (已禁用，使用Waline统计)
 busuanzi:
-  site_uv: false
-  site_pv: false
+  site_uv: true
+  site_pv: true
   page_pv: false
 
 # Asset CDN settings
