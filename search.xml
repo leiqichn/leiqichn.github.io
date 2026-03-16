@@ -1689,17 +1689,6 @@
       </tags>
   </entry>
   <entry>
-    <title>leetcode 226. 翻转二叉树</title>
-    <url>/2023-05-23-8a37eed630a8.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>leetcode 2460.对数组执行操作 2023.05.06每日一题</title>
     <url>/2023-06-05-08b060f15494.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/apply-operations-to-an-array/description/">2460. 对数组执行操作 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230605224628.png"></p>
@@ -1814,17 +1803,6 @@
     <url>/2024-05-10-5f92e64321b5.html</url>
     <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 376.摆动序列</title>
-    <url>/2023-05-24-060bcd383b9e.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2152,38 +2130,96 @@
       </categories>
   </entry>
   <entry>
-    <title>leetcode 设计题 Constructor构建</title>
-    <url>/2023-05-14-cff04e4a03ba.html</url>
-    <content><![CDATA[<p>在面向对象编程中，构造函数通常用于创建新对象并初始化其属性。对于 LeetCode 样例题目 “Design Parking System” 中的 ParkingSystem 结构体，可以这样编写 Constructor 方法：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;</span><br><span class="line">    carNums <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span> <span class="comment">// 记录每种停车位的数量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(big <span class="type">int</span>, medium <span class="type">int</span>, small <span class="type">int</span>)</span></span> ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">return</span> ParkingSystem&#123;</span><br><span class="line">        carNums: <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;<span class="number">1</span>: big, <span class="number">2</span>: medium, <span class="number">3</span>: small&#125;, <span class="comment">// 初始化 carNums 映射</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>Waline评论系统安装与Valine迁移完整指南</title>
+    <url>/2026-03-15-3f4f13ed5e54.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近将博客评论系统从Valine迁移到了Waline。Waline是从Valine衍生出的带有后端服务的评论系统，解决了Valine的一些痛点。本文记录完整的安装和迁移过程。</p>
+<h2 id="为什么选择Waline？"><a href="#为什么选择Waline？" class="headerlink" title="为什么选择Waline？"></a>为什么选择Waline？</h2><h3 id="Valine的问题"><a href="#Valine的问题" class="headerlink" title="Valine的问题"></a>Valine的问题</h3><ul>
+<li>依赖LeanCloud存储，国内访问不稳定</li>
+<li>没有后端，无法实现邮件通知等功能</li>
+<li>安全性问题（暴露AppKey）</li>
+</ul>
+<h3 id="Waline的优势"><a href="#Waline的优势" class="headerlink" title="Waline的优势"></a>Waline的优势</h3><ul>
+<li>支持多种数据库（SQLite、MySQL、MongoDB等）</li>
+<li>自建后端，数据完全可控</li>
+<li>支持邮件通知、微信通知</li>
+<li>支持评论审核、垃圾评论过滤</li>
+<li>兼容Valine前端配置</li>
+</ul>
+<h2 id="一、安装Waline服务端"><a href="#一、安装Waline服务端" class="headerlink" title="一、安装Waline服务端"></a>一、安装Waline服务端</h2><h3 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1. 安装Node.js"></a>1. 安装Node.js</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用nvm安装</span></span><br><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">nvm install --lts</span><br></pre></td></tr></table></figure>
 
-<p>在这个实现中，我们使用传递给 Constructor 方法的三个整数参数来初始化 ParkingSystem 结构体的属性。具体而言，我们使用 map[int]int 类型的 carNums 映射保持每种车位类型的可用数量。在初始化结构体时，我们使用字面量映射来启用 1、2 和 3 的停车位类型，并将它们的值与输入参数big、medium 和 small 相关联。</p>
-<p>请注意，当声明类似 structA map[int]structB 的嵌套 map 时，只需要在创建 A 实例时初始化外部映射即可。此时内部的 structB 映射会默认为 nil，但可以在需要使用时通过相应的方法或直接进行初始化以此。例如，当需要在内部映射中添加元素时，可以先检查是否为 nil，然后在需要时进行初始化。</p>
-<p>具体来说，如果需要创建一个名为 A 的 map[int]B 类型的 map 以及名为 B 的 map[int]int 类型的嵌套 map，则可以按以下方式实现：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> B <span class="keyword">struct</span> &#123;</span><br><span class="line">    m <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    m <span class="keyword">map</span>[<span class="type">int</span>]B</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := &amp;A&#123;</span><br><span class="line">        m: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]B),</span><br><span class="line">    &#125;</span><br><span class="line">    b := &amp;B&#123;</span><br><span class="line">        m: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>),</span><br><span class="line">    &#125;</span><br><span class="line">    a.m[<span class="number">1</span>] = *b <span class="comment">// 给 A 中的第一个元素分配一个新的 B 结构体实例</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装PM2进程管理"><a href="#2-安装PM2进程管理" class="headerlink" title="2. 安装PM2进程管理"></a>2. 安装PM2进程管理</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
 
-<p>在这个示例中，我们首先定义了类型 B 和 A。在 A 中，我们使用包含 int 键和 B 值的映射来保持所有项目的索引和子结构体指针。请注意，为了确保不会出现 <strong>nil 引用错误</strong>，我们还在代码中使用了 make 函数创建了一个空映射。</p>
-<p>例如, 下边结构体中map 嵌套了另外一个结构体的map,<br>可以通过使用 make 函数和伪造的 Res 结构体实例定义方式来初始化一个新的 ParkingSystem 实例，然后在之后的代码中修改 carNums 映射对象。以下是一个示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Res <span class="keyword">struct</span> &#123;</span><br><span class="line">    big <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;<span class="keyword">map</span></span><br><span class="line">    carNums <span class="keyword">map</span>[<span class="type">int</span>]*Res <span class="comment">// map 嵌套map</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewParkingSystem</span><span class="params">()</span></span> *ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">return</span> &amp;ParkingSystem&#123;carNums: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*Res)&#125; <span class="comment">// 只用先make 一个空map,指向Res</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ps := NewParkingSystem()</span><br><span class="line">    ps.carNums[<span class="number">1</span>] = &amp;Res&#123;big: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-创建Waline目录"><a href="#3-创建Waline目录" class="headerlink" title="3. 创建Waline目录"></a>3. 创建Waline目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /var/www/waline</span><br><span class="line"><span class="built_in">cd</span> /var/www/waline</span><br><span class="line">npm init -y</span><br><span class="line">npm install @waline/vercel dotenv</span><br></pre></td></tr></table></figure>
 
-<p>在这个示例中，我们定义了一个名为 NewParkingSystem 的函数，它返回指向新的 ParkingSystem 实例的指针，并在函数体中使用 make 函数创建一个新的空指针映射。</p>
-<p>然后在主函数的其他位置，我们通过传入适当的值来修改 carNums 中的每个停车场位置类型。请注意，与之前相同，我们在此处使用 &amp; 参考运算符来提供指向新声明的 Res 结构体实例的指针。</p>
-<p>总之，可以分别声明 ParkingSystem 和 Res 结构体，并通过调用适当的函数或编写正确的初始化代码，在以后的程序执行期间引用并修改它们。</p>
+<h3 id="4-创建启动脚本"><a href="#4-创建启动脚本" class="headerlink" title="4. 创建启动脚本"></a>4. 创建启动脚本</h3><p>创建 <code>start.js</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 加载环境变量</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;dotenv&#x27;</span>).<span class="title function_">config</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;/var/www/waline/.env&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置端口</span></span><br><span class="line">process.<span class="property">env</span>.<span class="property">PORT</span> = process.<span class="property">env</span>.<span class="property">PORT</span> || <span class="string">&#x27;8360&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载 Waline</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;@waline/vercel/vanilla.js&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-配置环境变量"><a href="#5-配置环境变量" class="headerlink" title="5. 配置环境变量"></a>5. 配置环境变量</h3><p>创建 <code>.env</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># SQLite本地存储</span></span><br><span class="line">SQLITE_PATH=/var/www/waline/data</span><br><span class="line">PORT=8360</span><br><span class="line">SECURE_DOMAINS=your-domain.com</span><br><span class="line">SITE_URL=https://your-domain.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件通知配置 (QQ邮箱)</span></span><br><span class="line">SMTP_SERVICE=QQ</span><br><span class="line">SMTP_USER=your-email@qq.com</span><br><span class="line">SMTP_PASS=your-smtp-password</span><br><span class="line">SITE_NAME=你的博客名称</span><br><span class="line">AUTHOR_EMAIL=your-email@qq.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-初始化SQLite数据库"><a href="#6-初始化SQLite数据库" class="headerlink" title="6. 初始化SQLite数据库"></a>6. 初始化SQLite数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlite3 /var/www/waline/data/waline.sqlite &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Comment (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  url TEXT NOT NULL,</span><br><span class="line">  nick TEXT NOT NULL,</span><br><span class="line">  mail TEXT,</span><br><span class="line">  <span class="built_in">link</span> TEXT,</span><br><span class="line">  comment TEXT NOT NULL,</span><br><span class="line">  pid INTEGER,</span><br><span class="line">  rid INTEGER,</span><br><span class="line">  status TEXT DEFAULT <span class="string">&#x27;approved&#x27;</span>,</span><br><span class="line">  ua TEXT,</span><br><span class="line">  ip TEXT,</span><br><span class="line">  insertedAt DATETIME DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  user_id TEXT,</span><br><span class="line">  sticky INTEGER DEFAULT 0,</span><br><span class="line">  like INTEGER DEFAULT 0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Counter (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  url TEXT NOT NULL UNIQUE,</span><br><span class="line">  time INTEGER DEFAULT 0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Users (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  display_name TEXT NOT NULL,</span><br><span class="line">  email TEXT NOT NULL UNIQUE,</span><br><span class="line">  password TEXT NOT NULL,</span><br><span class="line">  <span class="built_in">type</span> TEXT DEFAULT <span class="string">&#x27;guest&#x27;</span></span><br><span class="line">);</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-使用PM2启动"><a href="#7-使用PM2启动" class="headerlink" title="7. 使用PM2启动"></a>7. 使用PM2启动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start start.js --name waline</span><br><span class="line">pm2 save</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、配置Nginx代理"><a href="#二、配置Nginx代理" class="headerlink" title="二、配置Nginx代理"></a>二、配置Nginx代理</h2><h3 id="为什么需要代理？"><a href="#为什么需要代理？" class="headerlink" title="为什么需要代理？"></a>为什么需要代理？</h3><p>如果你的博客使用HTTPS，直接访问HTTP的Waline服务会被浏览器阻止（混合内容安全策略）。</p>
+<h3 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h3><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">    <span class="attribute">root</span> /var/www/blog;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Waline 评论 API 代理</span></span><br><span class="line">    <span class="section">location</span> /waline/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8360/;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">&quot;upgrade&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ =<span class="number">404</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、配置博客前端"><a href="#三、配置博客前端" class="headerlink" title="三、配置博客前端"></a>三、配置博客前端</h2><h3 id="Hexo-Butterfly主题配置"><a href="#Hexo-Butterfly主题配置" class="headerlink" title="Hexo Butterfly主题配置"></a>Hexo Butterfly主题配置</h3><p>编辑 <code>themes/butterfly/_config.yml</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">waline</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">card_post_count:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">/waline</span>  <span class="comment"># 使用相对路径，支持HTTPS</span></span><br><span class="line">  <span class="attr">pageview:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">option:</span></span><br><span class="line">    <span class="attr">locale:</span></span><br><span class="line">      <span class="attr">placeholder:</span> <span class="string">欢迎评论~</span></span><br><span class="line">    <span class="attr">meta:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nick</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mail</span></span><br><span class="line">    <span class="attr">requiredFields:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nick</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mail</span></span><br><span class="line">    <span class="attr">emoji:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/qq</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/bmoji</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/weibo</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="重要说明"><a href="#重要说明" class="headerlink" title="重要说明"></a>重要说明</h3><p><strong>serverURL使用相对路径</strong>：<code>/waline</code> 而不是 <code>http://ip:port</code></p>
+<p>这样无论博客使用HTTP还是HTTPS，都能正确加载评论。</p>
+<h2 id="四、从Valine迁移评论"><a href="#四、从Valine迁移评论" class="headerlink" title="四、从Valine迁移评论"></a>四、从Valine迁移评论</h2><h3 id="1-导出Valine评论"><a href="#1-导出Valine评论" class="headerlink" title="1. 导出Valine评论"></a>1. 导出Valine评论</h3><p>从LeanCloud后台导出评论数据，格式为JSON。</p>
+<h3 id="2-Valine表情映射"><a href="#2-Valine表情映射" class="headerlink" title="2. Valine表情映射"></a>2. Valine表情映射</h3><p>Valine使用 <code>:emotion:</code> 格式的表情，Waline使用emoji。需要转换：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Valine表情到Emoji的映射</span></span><br><span class="line">VALINE_TO_EMOJI = &#123;</span><br><span class="line">    <span class="string">&#x27;whee&#x27;</span>: <span class="string">&#x27;😁&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;clap&#x27;</span>: <span class="string">&#x27;👏&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;poor&#x27;</span>: <span class="string">&#x27;😰&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;tear&#x27;</span>: <span class="string">&#x27;😢&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;happy&#x27;</span>: <span class="string">&#x27;😊&#x27;</span>,</span><br><span class="line">    <span class="comment"># ... 更多映射</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">convert_emotion</span>(<span class="params">text</span>):</span><br><span class="line">    <span class="keyword">import</span> re</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">replace</span>(<span class="params"><span class="keyword">match</span></span>):</span><br><span class="line">        emotion = <span class="keyword">match</span>.group(<span class="number">1</span>).strip().lower()</span><br><span class="line">        <span class="keyword">return</span> VALINE_TO_EMOJI.get(emotion, <span class="keyword">match</span>.group(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> re.sub(<span class="string">r&#x27;:([a-zA-Z\s]+):&#x27;</span>, replace, text)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-迁移脚本"><a href="#3-迁移脚本" class="headerlink" title="3. 迁移脚本"></a>3. 迁移脚本</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取Valine导出数据</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;valine_comments.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    valine_comments = json.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接Waline数据库</span></span><br><span class="line">conn = sqlite3.connect(<span class="string">&#x27;/var/www/waline/data/waline.sqlite&#x27;</span>)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空现有评论</span></span><br><span class="line">cursor.execute(<span class="string">&quot;DELETE FROM wl_Comment&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ID映射表（处理回复关系）</span></span><br><span class="line">id_map = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> vc <span class="keyword">in</span> valine_comments:</span><br><span class="line">    <span class="comment"># 转换数据</span></span><br><span class="line">    url = vc.get(<span class="string">&#x27;url&#x27;</span>, <span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">    nick = vc.get(<span class="string">&#x27;nick&#x27;</span>, <span class="string">&#x27;Anonymous&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;Anonymous&#x27;</span></span><br><span class="line">    mail = vc.get(<span class="string">&#x27;mail&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    link = vc.get(<span class="string">&#x27;link&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    comment = convert_emotion(vc.get(<span class="string">&#x27;comment&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 处理回复关系</span></span><br><span class="line">    pid = id_map.get(vc.get(<span class="string">&#x27;pid&#x27;</span>)) <span class="keyword">if</span> vc.get(<span class="string">&#x27;pid&#x27;</span>) <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">    rid = id_map.get(vc.get(<span class="string">&#x27;rid&#x27;</span>)) <span class="keyword">if</span> vc.get(<span class="string">&#x27;rid&#x27;</span>) <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    cursor.execute(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        INSERT INTO wl_Comment (url, nick, mail, link, comment, pid, rid, status, insertedAt, updatedAt)</span></span><br><span class="line"><span class="string">        VALUES (?, ?, ?, ?, ?, ?, ?, &#x27;approved&#x27;, datetime(&#x27;now&#x27;), datetime(&#x27;now&#x27;))</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span>, (url, nick, mail, link, comment, pid, rid))</span><br><span class="line">    </span><br><span class="line">    id_map[vc[<span class="string">&#x27;objectId&#x27;</span>]] = cursor.lastrowid</span><br><span class="line"></span><br><span class="line">conn.commit()</span><br><span class="line">conn.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;迁移完成，共导入 <span class="subst">&#123;<span class="built_in">len</span>(valine_comments)&#125;</span> 条评论&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、验证与测试"><a href="#五、验证与测试" class="headerlink" title="五、验证与测试"></a>五、验证与测试</h2><h3 id="检查服务状态"><a href="#检查服务状态" class="headerlink" title="检查服务状态"></a>检查服务状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 list</span><br><span class="line">pm2 logs waline</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试API"><a href="#测试API" class="headerlink" title="测试API"></a>测试API</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl http://127.0.0.1/waline/</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查评论"><a href="#检查评论" class="headerlink" title="检查评论"></a>检查评论</h3><p>访问博客文章页面，确认历史评论是否正确显示。</p>
+<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q-HTTPS页面评论不显示？"><a href="#Q-HTTPS页面评论不显示？" class="headerlink" title="Q: HTTPS页面评论不显示？"></a>Q: HTTPS页面评论不显示？</h3><p>A: 确保serverURL使用相对路径，并通过nginx代理。</p>
+<h3 id="Q-邮件通知不工作？"><a href="#Q-邮件通知不工作？" class="headerlink" title="Q: 邮件通知不工作？"></a>Q: 邮件通知不工作？</h3><p>A: 检查SMTP配置，QQ邮箱需要使用授权码而非登录密码。</p>
+<h3 id="Q-表情显示为文字？"><a href="#Q-表情显示为文字？" class="headerlink" title="Q: 表情显示为文字？"></a>Q: 表情显示为文字？</h3><p>A: Valine的表情格式需要转换为emoji或图片。</p>
+<h3 id="Q-评论数不准确？"><a href="#Q-评论数不准确？" class="headerlink" title="Q: 评论数不准确？"></a>Q: 评论数不准确？</h3><p>A: 检查 <code>card_post_count: true</code> 配置，确保Waline的pageview功能开启。</p>
+<h2 id="七、维护命令"><a href="#七、维护命令" class="headerlink" title="七、维护命令"></a>七、维护命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">pm2 status waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">pm2 restart waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">pm2 logs waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份数据库</span></span><br><span class="line"><span class="built_in">cp</span> /var/www/waline/data/waline.sqlite /backup/waline_$(<span class="built_in">date</span> +%Y%m%d).sqlite</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Waline相比Valine有以下优势：</p>
+<ol>
+<li><strong>数据自主可控</strong> - 自建后端，数据存储在自己的服务器</li>
+<li><strong>功能更丰富</strong> - 支持邮件通知、评论审核、垃圾过滤</li>
+<li><strong>更好的安全性</strong> - 不暴露敏感信息</li>
+<li><strong>HTTPS兼容</strong> - 通过nginx代理解决混合内容问题</li>
+</ol>
+<p>迁移过程相对简单，主要是数据格式转换和前端配置调整。希望这篇教程对你有帮助！</p>
+<hr>
+<blockquote>
+<p>参考文档：</p>
+<ul>
+<li><a href="https://waline.js.org/">Waline官方文档</a></li>
+<li><a href="https://waline.js.org/migration/">Valine迁移指南</a></li>
+<li><a href="https://butterfly.js.org/">Hexo Butterfly主题配置</a></li>
+</ul>
+</blockquote>
 ]]></content>
       <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
+        <category>综合</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>设计题</tag>
+        <tag>Waline</tag>
+        <tag>Valine</tag>
+        <tag>博客</tag>
+        <tag>评论系统</tag>
       </tags>
   </entry>
   <entry>
-    <title>leetcode　705. 设计哈希集合</title>
-    <url>/2023-05-19-10ad820ba1eb.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashset/description/">705. 设计哈希集合 - 力扣（Leetcode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020230520225749.png"></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> base = <span class="number">769</span> <span class="comment">// 哈希表的长度 质数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashSet <span class="keyword">struct</span> &#123;</span><br><span class="line">    data []list.List <span class="comment">// 使用链表储存冲突元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashSet &#123; <span class="comment">// 构造函数，返回一个空的哈希集合</span></span><br><span class="line">    <span class="keyword">return</span> MyHashSet&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 哈希函数：对键值取模得到哈希值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> hash(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> key % base</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Add(key <span class="type">int</span>) &#123; <span class="comment">// 向哈希集合中添加元素</span></span><br><span class="line">    <span class="keyword">if</span> !s.Contains(key) &#123; <span class="comment">// 如果元素不在集合中</span></span><br><span class="line">        h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">        s.data[h].PushBack(key) <span class="comment">// 将元素加入到链表中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Remove(key <span class="type">int</span>) &#123; <span class="comment">// 从哈希集合中删除元素</span></span><br><span class="line">    h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">    <span class="keyword">for</span> e := s.data[h].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123; <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">if</span> e.Value.(<span class="type">int</span>) == key &#123; <span class="comment">// 如果元素等于要删除的元素</span></span><br><span class="line">            s.data[h].Remove(e) <span class="comment">// 从链表中删除元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Contains(key <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="comment">// 判断某个元素是否在哈希集合中</span></span><br><span class="line">    h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">    <span class="keyword">for</span> e := s.data[h].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123; <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">if</span> e.Value.(<span class="type">int</span>) == key &#123; <span class="comment">// 如果元素等于要查找的元素</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 返回 true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 没有找到元素，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>leetcode 226. 翻转二叉树</title>
+    <url>/2023-05-23-8a37eed630a8.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/invert-binary-tree/description/">226. 翻转二叉树 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230523230644.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * type TreeNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Left *TreeNode</span></span><br><span class="line"><span class="comment"> *     Right *TreeNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// 定义将二叉树翻转</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">invertTree</span><span class="params">(root *TreeNode)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="comment">// 递归终止条件</span></span><br><span class="line">    <span class="keyword">if</span> root == <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 单个任务逻辑 交换root 下的两个节点，然后在严格按照定义递归调用左右节点</span></span><br><span class="line">    root.Right,root.Left = root.Left,root.Right </span><br><span class="line">    <span class="comment">// 将右子树翻转</span></span><br><span class="line">    invertTree(root.Right)</span><br><span class="line">    <span class="comment">// 将左子树翻转</span></span><br><span class="line">    invertTree(root.Left)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2191,23 +2227,10 @@
       </categories>
   </entry>
   <entry>
-    <title>【20240106】leetcode 2807. 在链表中插入最大公约数</title>
-    <url>/2024-01-06-4213fea24f81.html</url>
-    <content><![CDATA[<p><a href="https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list/description/?envType=daily-question&envId=2024-01-06">2807. 在链表中插入最大公约数 - 力扣（LeetCode）</a></p>
-<p><img src="/../../imgs/Pasted%20image%2020240106233021.png"></p>
-<p>最大公约数（GCD，Greatest Common Divisor）是两个或多个整数的共有因数中的最大值。也叫作最大公因数、最大公因子或最大公量。如果两个整数的最大公约数是 1，那么它们被称为互质。</p>
-<p>计算两个整数的最大公约数有多种方法，其中最著名的方法之一是辗转相除法（Euclidean Algorithm）。辗转相除法的基本思想是通过反复应用两个整数的除法余数关系，直到余数为零为止。具体步骤如下：</p>
-<ol>
-<li>用较大的数除以较小的数，得到余数。</li>
-<li>将较小的数作为新的被除数，余数作为新的除数。</li>
-<li>重复步骤 1 和 2，直到余数为零。</li>
-<li>最后的非零余数即为最大公约数。</li>
-</ol>
-<p>这个算法的效率很高，时间复杂度为 �(log⁡(min⁡(�,�)))O(log(min(a,b)))。</p>
-<p>以下是一个用 Go 语言实现的最大公约数的辗转相除法示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 辗转相除法求最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gcd</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> b != <span class="number">0</span> &#123;</span><br><span class="line">        temp := b</span><br><span class="line">        b = a % b</span><br><span class="line">        a = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    num1 := <span class="number">48</span></span><br><span class="line">    num2 := <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    result := gcd(num1, num2)</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;最大公约数为:&quot;</span>, result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>gcd</code> 函数使用了辗转相除法来计算两个整数的最大公约数。</p>
+    <title>leetcode 376.摆动序列</title>
+    <url>/2023-05-24-060bcd383b9e.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">wiggleMaxLength</span><span class="params">(nums []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> count, preDiff, curDiff <span class="type">int</span></span><br><span class="line">    count = <span class="number">1</span> <span class="comment">// 初始化计数为1，至少有一个数字是有效的</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(nums) &lt; <span class="number">2</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> count <span class="comment">// 如果数组长度小于2，直接返回计数值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(nums)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">        curDiff = nums[i+<span class="number">1</span>] - nums[i] <span class="comment">// 计算当前数字之间的差值</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据差值的正负和前一个差值的正负进行判断</span></span><br><span class="line">        <span class="comment">// 如果满足摆动序列的条件，更新前一个差值和计数值</span></span><br><span class="line">        <span class="keyword">if</span> (curDiff &gt; <span class="number">0</span> &amp;&amp; preDiff &lt;= <span class="number">0</span>) || (preDiff &gt;= <span class="number">0</span> &amp;&amp; curDiff &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            preDiff = curDiff</span><br><span class="line">            count++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count <span class="comment">// 返回最终的计数值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -2453,14 +2476,11 @@
       </categories>
   </entry>
   <entry>
-    <title>【Golang】for range 数组指针遍历</title>
-    <url>/2024-12-04-35dce63131f6.html</url>
-    <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
-<p>这意味着，即使<code>for range</code>对指针进行了拷贝，你仍然可以通过这个拷贝的指针修改原始结构体的内容。下面是一个例子来说明这一点：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    students := []*Student&#123;</span><br><span class="line">        &#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">20</span>&#125;,</span><br><span class="line">        &#123;Name: <span class="string">&quot;Bob&quot;</span>, Age: <span class="number">22</span>&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for range遍历指针数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        <span class="comment">// 修改指向的结构体的内容</span></span><br><span class="line">        student.Age += <span class="number">1</span> <span class="comment">// 给每个学生的年龄加1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印修改后的students数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Name: %s, Age: %d\n&quot;</span>, student.Name, student.Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，尽管<code>for range</code>对每个<code>*Student</code>指针进行了拷贝，但通过这个拷贝的指针修改<code>Age</code>字段时，修改的是原始<code>Student</code>结构体的内容。因此，当再次遍历<code>students</code>数组时，你会看到每个学生的年龄都已经增加了。</p>
-<p>总结来说，当你使用<code>for range</code>遍历指针数组并修改指向的值时，这些修改会反映在原始数组上，因为指针拷贝仍然指向原始的内存地址。</p>
+    <title>leetcode　705. 设计哈希集合</title>
+    <url>/2023-05-19-10ad820ba1eb.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/design-hashset/description/">705. 设计哈希集合 - 力扣（Leetcode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020230520225749.png"></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> base = <span class="number">769</span> <span class="comment">// 哈希表的长度 质数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MyHashSet <span class="keyword">struct</span> &#123;</span><br><span class="line">    data []list.List <span class="comment">// 使用链表储存冲突元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MyHashSet &#123; <span class="comment">// 构造函数，返回一个空的哈希集合</span></span><br><span class="line">    <span class="keyword">return</span> MyHashSet&#123;<span class="built_in">make</span>([]list.List, base)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 哈希函数：对键值取模得到哈希值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> hash(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> key % base</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Add(key <span class="type">int</span>) &#123; <span class="comment">// 向哈希集合中添加元素</span></span><br><span class="line">    <span class="keyword">if</span> !s.Contains(key) &#123; <span class="comment">// 如果元素不在集合中</span></span><br><span class="line">        h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">        s.data[h].PushBack(key) <span class="comment">// 将元素加入到链表中</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Remove(key <span class="type">int</span>) &#123; <span class="comment">// 从哈希集合中删除元素</span></span><br><span class="line">    h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">    <span class="keyword">for</span> e := s.data[h].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123; <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">if</span> e.Value.(<span class="type">int</span>) == key &#123; <span class="comment">// 如果元素等于要删除的元素</span></span><br><span class="line">            s.data[h].Remove(e) <span class="comment">// 从链表中删除元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *MyHashSet)</span></span> Contains(key <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="comment">// 判断某个元素是否在哈希集合中</span></span><br><span class="line">    h := s.hash(key) <span class="comment">// 计算哈希值</span></span><br><span class="line">    <span class="keyword">for</span> e := s.data[h].Front(); e != <span class="literal">nil</span>; e = e.Next() &#123; <span class="comment">// 遍历链表</span></span><br><span class="line">        <span class="keyword">if</span> e.Value.(<span class="type">int</span>) == key &#123; <span class="comment">// 如果元素等于要查找的元素</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span> <span class="comment">// 返回 true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 没有找到元素，返回 false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -3551,6 +3571,33 @@
       </categories>
   </entry>
   <entry>
+    <title>leetcode 设计题 Constructor构建</title>
+    <url>/2023-05-14-cff04e4a03ba.html</url>
+    <content><![CDATA[<p>在面向对象编程中，构造函数通常用于创建新对象并初始化其属性。对于 LeetCode 样例题目 “Design Parking System” 中的 ParkingSystem 结构体，可以这样编写 Constructor 方法：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;</span><br><span class="line">    carNums <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span> <span class="comment">// 记录每种停车位的数量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(big <span class="type">int</span>, medium <span class="type">int</span>, small <span class="type">int</span>)</span></span> ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">return</span> ParkingSystem&#123;</span><br><span class="line">        carNums: <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;<span class="number">1</span>: big, <span class="number">2</span>: medium, <span class="number">3</span>: small&#125;, <span class="comment">// 初始化 carNums 映射</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个实现中，我们使用传递给 Constructor 方法的三个整数参数来初始化 ParkingSystem 结构体的属性。具体而言，我们使用 map[int]int 类型的 carNums 映射保持每种车位类型的可用数量。在初始化结构体时，我们使用字面量映射来启用 1、2 和 3 的停车位类型，并将它们的值与输入参数big、medium 和 small 相关联。</p>
+<p>请注意，当声明类似 structA map[int]structB 的嵌套 map 时，只需要在创建 A 实例时初始化外部映射即可。此时内部的 structB 映射会默认为 nil，但可以在需要使用时通过相应的方法或直接进行初始化以此。例如，当需要在内部映射中添加元素时，可以先检查是否为 nil，然后在需要时进行初始化。</p>
+<p>具体来说，如果需要创建一个名为 A 的 map[int]B 类型的 map 以及名为 B 的 map[int]int 类型的嵌套 map，则可以按以下方式实现：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> B <span class="keyword">struct</span> &#123;</span><br><span class="line">    m <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    m <span class="keyword">map</span>[<span class="type">int</span>]B</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := &amp;A&#123;</span><br><span class="line">        m: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]B),</span><br><span class="line">    &#125;</span><br><span class="line">    b := &amp;B&#123;</span><br><span class="line">        m: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>),</span><br><span class="line">    &#125;</span><br><span class="line">    a.m[<span class="number">1</span>] = *b <span class="comment">// 给 A 中的第一个元素分配一个新的 B 结构体实例</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们首先定义了类型 B 和 A。在 A 中，我们使用包含 int 键和 B 值的映射来保持所有项目的索引和子结构体指针。请注意，为了确保不会出现 <strong>nil 引用错误</strong>，我们还在代码中使用了 make 函数创建了一个空映射。</p>
+<p>例如, 下边结构体中map 嵌套了另外一个结构体的map,<br>可以通过使用 make 函数和伪造的 Res 结构体实例定义方式来初始化一个新的 ParkingSystem 实例，然后在之后的代码中修改 carNums 映射对象。以下是一个示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Res <span class="keyword">struct</span> &#123;</span><br><span class="line">    big <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ParkingSystem <span class="keyword">struct</span> &#123;<span class="keyword">map</span></span><br><span class="line">    carNums <span class="keyword">map</span>[<span class="type">int</span>]*Res <span class="comment">// map 嵌套map</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewParkingSystem</span><span class="params">()</span></span> *ParkingSystem &#123;</span><br><span class="line">    <span class="keyword">return</span> &amp;ParkingSystem&#123;carNums: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*Res)&#125; <span class="comment">// 只用先make 一个空map,指向Res</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    ps := NewParkingSystem()</span><br><span class="line">    ps.carNums[<span class="number">1</span>] = &amp;Res&#123;big: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中，我们定义了一个名为 NewParkingSystem 的函数，它返回指向新的 ParkingSystem 实例的指针，并在函数体中使用 make 函数创建一个新的空指针映射。</p>
+<p>然后在主函数的其他位置，我们通过传入适当的值来修改 carNums 中的每个停车场位置类型。请注意，与之前相同，我们在此处使用 &amp; 参考运算符来提供指向新声明的 Res 结构体实例的指针。</p>
+<p>总之，可以分别声明 ParkingSystem 和 Res 结构体，并通过调用适当的函数或编写正确的初始化代码，在以后的程序执行期间引用并修改它们。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>设计题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构设计专题</title>
     <url>/2025-03-06-11dbfc57623a.html</url>
     <content><![CDATA[<h4 id="数据结构设计"><a href="#数据结构设计" class="headerlink" title="数据结构设计"></a><a href="https://labuladong.online/algo/intro/quick-learning-plan/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1">数据结构设计</a></h4><table>
@@ -3873,7 +3920,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#x40;&#x66;&#x75;&#x64;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#46;&#99;&#110;">&#x6c;&#x65;&#x69;&#x71;&#105;&#x40;&#x66;&#x75;&#x64;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#x64;&#117;&#x2e;&#99;&#110;">&#108;&#x65;&#x69;&#113;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#x64;&#117;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4026,7 +4073,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#x63;&#110;">&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#105;&#x40;&#x66;&#x75;&#100;&#x61;&#x6e;&#x2e;&#101;&#100;&#117;&#x2e;&#x63;&#110;">&#x6c;&#101;&#x69;&#113;&#105;&#x40;&#x66;&#x75;&#100;&#x61;&#x6e;&#x2e;&#101;&#100;&#117;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4187,7 +4234,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#x69;&#64;&#102;&#117;&#100;&#97;&#110;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#x6e;">&#108;&#x65;&#105;&#113;&#x69;&#64;&#102;&#117;&#100;&#97;&#110;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#110;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;">&#108;&#x65;&#105;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#110;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4326,11 +4373,173 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#64;&#x66;&#117;&#100;&#97;&#x6e;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#108;&#x65;&#105;&#x71;&#x69;&#64;&#x66;&#117;&#100;&#97;&#x6e;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;">&#108;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
 <p>📡 数据更新：2026-03-15 09:05:56<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+        <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 - 2026/03/16</title>
+    <url>/2026-03-16-bbce019708ac.html</url>
+    <content><![CDATA[<h1 id="GitHub-Trending-日报"><a href="#GitHub-Trending-日报" class="headerlink" title="GitHub Trending 日报"></a>GitHub Trending 日报</h1><p>📅 <strong>日期</strong>：2026&#x2F;03&#x2F;16</p>
+<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
+<hr>
+<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2><h2 id="1-browser"><a href="#1-browser" class="headerlink" title="1. browser"></a>1. <a href="https://github.com/lightpanda-io/browser">browser</a></h2><p>Lightpanda: the headless browser designed for AI and automation</p>
+<p>📦 <strong>Zig</strong> | ⭐ <strong>+1335</strong> 今日 | 🏆 18,579 总计</p>
+<p><strong>仓库地址</strong>：<code>lightpanda-io/browser</code></p>
+<hr>
+<h2 id="2-project-nomad"><a href="#2-project-nomad" class="headerlink" title="2. project-nomad"></a>2. <a href="https://github.com/Crosstalk-Solutions/project-nomad">project-nomad</a></h2><p>Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowledge, and AI to keep you informed and empowered—anytime, anywhere.</p>
+<p>🔷 <strong>TypeScript</strong> | ⭐ <strong>+205</strong> 今日 | 🏆 1,109 总计</p>
+<p><strong>仓库地址</strong>：<code>Crosstalk-Solutions/project-nomad</code></p>
+<hr>
+<h2 id="3-OpenViking"><a href="#3-OpenViking" class="headerlink" title="3. OpenViking"></a>3. <a href="https://github.com/volcengine/OpenViking">OpenViking</a></h2><p>OpenViking is an open-source context database designed specifically for AI Agents(such as openclaw). OpenViking unifies the management of context (memory, resources, and skills) that Agents need through a file system paradigm, enabling hierarchical context delivery and self-evolving.</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+1870</strong> 今日 | 🏆 12,392 总计</p>
+<p><strong>仓库地址</strong>：<code>volcengine/OpenViking</code></p>
+<hr>
+<h2 id="4-learn-claude-code"><a href="#4-learn-claude-code" class="headerlink" title="4. learn-claude-code"></a>4. <a href="https://github.com/shareAI-lab/learn-claude-code">learn-claude-code</a></h2><p>Bash is all you need - A nano Claude Code–like agent, built from 0 to 1</p>
+<p>🔷 <strong>TypeScript</strong> | ⭐ <strong>+872</strong> 今日 | 🏆 27,895 总计</p>
+<p><strong>仓库地址</strong>：<code>shareAI-lab/learn-claude-code</code></p>
+<hr>
+<h2 id="5-claude-code-best-practice"><a href="#5-claude-code-best-practice" class="headerlink" title="5. claude-code-best-practice"></a>5. <a href="https://github.com/shanraisshan/claude-code-best-practice">claude-code-best-practice</a></h2><p>practice made claude perfect</p>
+<p>🌐 <strong>HTML</strong> | ⭐ <strong>+851</strong> 今日 | 🏆 16,992 总计</p>
+<p><strong>仓库地址</strong>：<code>shanraisshan/claude-code-best-practice</code></p>
+<hr>
+<h2 id="6-superpowers"><a href="#6-superpowers" class="headerlink" title="6. superpowers"></a>6. <a href="https://github.com/obra/superpowers">superpowers</a></h2><p>An agentic skills framework &amp; software development methodology that works.</p>
+<p>🐚 <strong>Shell</strong> | ⭐ <strong>+1867</strong> 今日 | 🏆 85,886 总计</p>
+<p><strong>仓库地址</strong>：<code>obra/superpowers</code></p>
+<hr>
+<h2 id="7-heretic"><a href="#7-heretic" class="headerlink" title="7. heretic"></a>7. <a href="https://github.com/p-e-w/heretic">heretic</a></h2><p>Fully automatic censorship removal for language models</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+1062</strong> 今日 | 🏆 14,697 总计</p>
+<p><strong>仓库地址</strong>：<code>p-e-w/heretic</code></p>
+<hr>
+<h2 id="8-MiroFish"><a href="#8-MiroFish" class="headerlink" title="8. MiroFish"></a>8. <a href="https://github.com/666ghj/MiroFish">MiroFish</a></h2><p>A Simple and Universal Swarm Intelligence Engine, Predicting Anything. 简洁通用的群体智能引擎，预测万物</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+2782</strong> 今日 | 🏆 27,229 总计</p>
+<p><strong>仓库地址</strong>：<code>666ghj/MiroFish</code></p>
+<hr>
+<h2 id="9-GitNexus"><a href="#9-GitNexus" class="headerlink" title="9. GitNexus"></a>9. <a href="https://github.com/abhigyanpatwari/GitNexus">GitNexus</a></h2><p>GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration</p>
+<p>🔷 <strong>TypeScript</strong> | ⭐ <strong>+451</strong> 今日 | 🏆 14,298 总计</p>
+<p><strong>仓库地址</strong>：<code>abhigyanpatwari/GitNexus</code></p>
+<hr>
+<h2 id="10-cognee"><a href="#10-cognee" class="headerlink" title="10. cognee"></a>10. <a href="https://github.com/topoteretes/cognee">cognee</a></h2><p>Knowledge Engine for AI Agent Memory in 6 lines of code</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+270</strong> 今日 | 🏆 13,908 总计</p>
+<p><strong>仓库地址</strong>：<code>topoteretes/cognee</code></p>
+<hr>
+<h2 id="11-InsForge"><a href="#11-InsForge" class="headerlink" title="11. InsForge"></a>11. <a href="https://github.com/InsForge/InsForge">InsForge</a></h2><p>Give agents everything they need to ship fullstack apps. The backend built for agentic development.</p>
+<p>🔷 <strong>TypeScript</strong> | ⭐ <strong>+515</strong> 今日 | 🏆 4,584 总计</p>
+<p><strong>仓库地址</strong>：<code>InsForge/InsForge</code></p>
+<hr>
+<h2 id="12-vite-plus"><a href="#12-vite-plus" class="headerlink" title="12. vite-plus"></a>12. <a href="https://github.com/voidzero-dev/vite-plus">vite-plus</a></h2><p>Vite+ is the unified toolchain and entry point for web development. It manages your runtime, package manager, and frontend toolchain in one place.</p>
+<p>🦀 <strong>Rust</strong> | ⭐ <strong>+300</strong> 今日 | 🏆 1,708 总计</p>
+<p><strong>仓库地址</strong>：<code>voidzero-dev/vite-plus</code></p>
+<hr>
+<h2 id="13-claude-plugins-official"><a href="#13-claude-plugins-official" class="headerlink" title="13. claude-plugins-official"></a>13. <a href="https://github.com/anthropics/claude-plugins-official">claude-plugins-official</a></h2><p>Official, Anthropic-managed directory of high quality Claude Code Plugins.</p>
+<p>🐍 <strong>Python</strong> | ⭐ <strong>+604</strong> 今日 | 🏆 11,932 总计</p>
+<p><strong>仓库地址</strong>：<code>anthropics/claude-plugins-official</code></p>
+<hr>
+<hr>
+<h2 id="🔍-今日精选项目详解"><a href="#🔍-今日精选项目详解" class="headerlink" title="🔍 今日精选项目详解"></a>🔍 今日精选项目详解</h2><h3 id="browser"><a href="#browser" class="headerlink" title="browser"></a>browser</h3><p><strong>项目地址</strong>：<a href="https://github.com/lightpanda-io/browser">https://github.com/lightpanda-io/browser</a></p>
+<p><strong>作者</strong>：lightpanda-io</p>
+<hr>
+<h4 id="📖-项目简介"><a href="#📖-项目简介" class="headerlink" title="📖 项目简介"></a>📖 项目简介</h4><p>Lightpanda: the headless browser designed for AI and automation</p>
+<hr>
+<h4 id="📊-项目数据"><a href="#📊-项目数据" class="headerlink" title="📊 项目数据"></a>📊 项目数据</h4><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>⭐ Stars</td>
+<td>18,579</td>
+</tr>
+<tr>
+<td>🍴 Forks</td>
+<td>696</td>
+</tr>
+<tr>
+<td>👀 Watchers</td>
+<td>18,579</td>
+</tr>
+<tr>
+<td>📝 Language</td>
+<td>Zig</td>
+</tr>
+<tr>
+<td>📅 Created</td>
+<td>2023-02-07</td>
+</tr>
+<tr>
+<td>🔄 Updated</td>
+<td>2026-03-16</td>
+</tr>
+<tr>
+<td>📜 License</td>
+<td>AGPL-3.0</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="💡-核心特点"><a href="#💡-核心特点" class="headerlink" title="💡 核心特点"></a>💡 核心特点</h4><p><strong>标签</strong>：browser, browser-automation, cdp, headless, playwright, puppeteer, zig</p>
+<hr>
+<h4 id="📄-项目概览"><a href="#📄-项目概览" class="headerlink" title="📄 项目概览"></a>📄 项目概览</h4><p>Lightpanda Browser<br>The headless browser built from scratch for AI agents and automation.<br>Not a Chromium fork. Not a WebKit patch. A new browser, written in Zig.<br>&emsp;<br><em>Puppeteer requesting 100 pages from a local website on a AWS EC2 m5.large instance.<br>See benchmark details.</em><br>Lightpanda is the open-source browser made for headless usage:</p>
+<ul>
+<li>Javascript execution</li>
+<li>Support of Web APIs (partial, WIP)</li>
+<li>Compatible with Playwright[^1], Puppeteer, chromedp through CDP<br>Fast web automation for AI agents, LLM training, scraping and testing:</li>
+<li>Ultra-low memory footprint (9x less than Chrome)</li>
+<li>Exceptionally fast execution (11x faster than Chrome)</li>
+<li>Instant startup<br>[^1]: <strong>Playwright support disclaimer:</strong></li>
+</ul>
+<h2 id="Quick-start"><a href="#Quick-start" class="headerlink" title="Quick start"></a>Quick start</h2><hr>
+<h4 id="🚀-快速开始"><a href="#🚀-快速开始" class="headerlink" title="🚀 快速开始"></a>🚀 快速开始</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/lightpanda-io/browser.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入目录</span></span><br><span class="line"><span class="built_in">cd</span> browser</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看文档</span></span><br><span class="line"><span class="built_in">cat</span> README.md</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="💭-推荐理由"><a href="#💭-推荐理由" class="headerlink" title="💭 推荐理由"></a>💭 推荐理由</h4><p>这个项目在今日GitHub Trending榜单中排名第一，值得关注的原因：</p>
+<ol>
+<li>🤖 <strong>AI&#x2F;ML领域</strong>：紧跟当前AI技术浪潮，具有前瞻性</li>
+<li>🔥 <strong>快速增长</strong>：累计18,579 Stars，社区认可度高</li>
+<li>🚀 <strong>持续迭代</strong>：近一周内有更新，项目活跃度高</li>
+<li>📖 <strong>文档完善</strong>：有详细的安装和使用指南，上手友好</li>
+</ol>
+<hr>
+<hr>
+<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
+<ul>
+<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
+<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
+<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
+</ul>
+<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
+<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
+<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
+<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
+</ul>
+<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
+<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
+<li>💬 微信公众号：DeepThinking深思</li>
+<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
+</ul>
+<hr>
+<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
+<ul>
+<li>💬 评论留言推荐</li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#110;">&#108;&#101;&#x69;&#x71;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#110;</a></li>
+<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
+</ul>
+<hr>
+<p>📡 数据更新：2026-03-16 09:05:22<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
 ]]></content>
       <categories>
         <category>综合</category>
@@ -4651,14 +4860,42 @@
       </categories>
   </entry>
   <entry>
-    <title>pycharm快速跳出括号</title>
-    <url>/2025-06-27-ad6d3fa6b55a.html</url>
-    <content><![CDATA[<p><a href="https://so.csdn.net/so/search?q=%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8&spm=1001.2101.3001.7020">自动补全</a>括号，但是写到代码语句末尾，要跳出括号，还得向右下角方向移动一下，按右键<code>→</code>，再移手回来按分号<code>;</code>，再移到右下角，按<code>↓</code>向下键。这样手就脱离了键盘，降低了效率。<br>我们可以把上下左右改成<code>Alt+i/k/j/l</code>，爽到飞起！</p>
-<p><img src="/../../imgs/Pasted%20image%2020250627001735.png"></p>
+    <title>【20240106】leetcode 2807. 在链表中插入最大公约数</title>
+    <url>/2024-01-06-4213fea24f81.html</url>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list/description/?envType=daily-question&envId=2024-01-06">2807. 在链表中插入最大公约数 - 力扣（LeetCode）</a></p>
+<p><img src="/../../imgs/Pasted%20image%2020240106233021.png"></p>
+<p>最大公约数（GCD，Greatest Common Divisor）是两个或多个整数的共有因数中的最大值。也叫作最大公因数、最大公因子或最大公量。如果两个整数的最大公约数是 1，那么它们被称为互质。</p>
+<p>计算两个整数的最大公约数有多种方法，其中最著名的方法之一是辗转相除法（Euclidean Algorithm）。辗转相除法的基本思想是通过反复应用两个整数的除法余数关系，直到余数为零为止。具体步骤如下：</p>
+<ol>
+<li>用较大的数除以较小的数，得到余数。</li>
+<li>将较小的数作为新的被除数，余数作为新的除数。</li>
+<li>重复步骤 1 和 2，直到余数为零。</li>
+<li>最后的非零余数即为最大公约数。</li>
+</ol>
+<p>这个算法的效率很高，时间复杂度为 �(log⁡(min⁡(�,�)))O(log(min(a,b)))。</p>
+<p>以下是一个用 Go 语言实现的最大公约数的辗转相除法示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 辗转相除法求最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">gcd</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> b != <span class="number">0</span> &#123;</span><br><span class="line">        temp := b</span><br><span class="line">        b = a % b</span><br><span class="line">        a = temp</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    num1 := <span class="number">48</span></span><br><span class="line">    num2 := <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    result := gcd(num1, num2)</span><br><span class="line"></span><br><span class="line">    fmt.Println(<span class="string">&quot;最大公约数为:&quot;</span>, result)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>gcd</code> 函数使用了辗转相除法来计算两个整数的最大公约数。</p>
 ]]></content>
       <categories>
-        <category>综合</category>
-        <category>工具</category>
+        <category>算法</category>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【Golang】for range 数组指针遍历</title>
+    <url>/2024-12-04-35dce63131f6.html</url>
+    <content><![CDATA[<p>在Go语言中，使用<code>for range</code>遍历数组或切片时，确实会对每个元素进行值拷贝。但是，当你遍历的是指针数组（如<code>[]*Student</code>）时，虽然指针本身是被拷贝的，但拷贝的指针仍然指向原始的内存地址。因此，通过这个拷贝的指针修改指向的值会影响到原始数据。</p>
+<p>这意味着，即使<code>for range</code>对指针进行了拷贝，你仍然可以通过这个拷贝的指针修改原始结构体的内容。下面是一个例子来说明这一点：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    students := []*Student&#123;</span><br><span class="line">        &#123;Name: <span class="string">&quot;Alice&quot;</span>, Age: <span class="number">20</span>&#125;,</span><br><span class="line">        &#123;Name: <span class="string">&quot;Bob&quot;</span>, Age: <span class="number">22</span>&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用for range遍历指针数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        <span class="comment">// 修改指向的结构体的内容</span></span><br><span class="line">        student.Age += <span class="number">1</span> <span class="comment">// 给每个学生的年龄加1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印修改后的students数组</span></span><br><span class="line">    <span class="keyword">for</span> _, student := <span class="keyword">range</span> students &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Name: %s, Age: %d\n&quot;</span>, student.Name, student.Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，尽管<code>for range</code>对每个<code>*Student</code>指针进行了拷贝，但通过这个拷贝的指针修改<code>Age</code>字段时，修改的是原始<code>Student</code>结构体的内容。因此，当再次遍历<code>students</code>数组时，你会看到每个学生的年龄都已经增加了。</p>
+<p>总结来说，当你使用<code>for range</code>遍历指针数组并修改指向的值时，这些修改会反映在原始数组上，因为指针拷贝仍然指向原始的内存地址。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
       </categories>
   </entry>
   <entry>
@@ -4672,19 +4909,6 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:  </span><br><span class="line">    response = requests.get(<span class="string">&quot;http://www.youtube.com&quot;</span>)  </span><br><span class="line">    <span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../../imgs/Pasted%20image%2020250609002055.png"></p>
-]]></content>
-      <categories>
-        <category>综合</category>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ssh 隧道 端口转发</title>
-    <url>/2024-04-21-3d4eeeebac5a.html</url>
-    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
-<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>综合</category>
@@ -4861,6 +5085,17 @@
       </categories>
   </entry>
   <entry>
+    <title>pycharm快速跳出括号</title>
+    <url>/2025-06-27-ad6d3fa6b55a.html</url>
+    <content><![CDATA[<p><a href="https://so.csdn.net/so/search?q=%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8&spm=1001.2101.3001.7020">自动补全</a>括号，但是写到代码语句末尾，要跳出括号，还得向右下角方向移动一下，按右键<code>→</code>，再移手回来按分号<code>;</code>，再移到右下角，按<code>↓</code>向下键。这样手就脱离了键盘，降低了效率。<br>我们可以把上下左右改成<code>Alt+i/k/j/l</code>，爽到飞起！</p>
+<p><img src="/../../imgs/Pasted%20image%2020250627001735.png"></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
     <title>开机自启WSL</title>
     <url>/2024-08-07-d504d9d57e9a.html</url>
     <content><![CDATA[<p>在C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp 目录下，新建vbs文件</p>
@@ -4900,6 +5135,19 @@
     <title>英文输入时再也不打出中文标点啦</title>
     <url>/2025-07-23-21c4d5e26385.html</url>
     <content><![CDATA[<p>以微软拼音为例, 需要打开 <code>中文输入时使用英文标点</code><br><img src="/../../imgs/Pasted%20image%2020250723231812.png"></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ssh 隧道 端口转发</title>
+    <url>/2024-04-21-3d4eeeebac5a.html</url>
+    <content><![CDATA[<p>使用SSH端口转发<br>   如果物理机在远程，你需要使用SSH的端口转发功能来将远程物理机上的容器端口转发到你的PC上。这可以通过使用<code>-L</code>参数实现，如下所示：<br>   <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh -L 本地端口:localhost:13579 用户名@物理机IP</span><br></pre></td></tr></table></figure><br>   其中“本地端口”是你希望在PC上使用的端口号，而“物理机IP”是物理机的IP地址。</p>
+<p>例如：<br>我想直接登录110.43.203.19 上其中一个容器，而其没有放开对应容器的端口，我们就可以将端口映射到本地PC；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -L 13579:localhost:13579 root@110.43.203.19 -p 30005 </span><br><span class="line">// </span><br><span class="line">ssh -p 13579 root@localhost</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>综合</category>
@@ -5124,36 +5372,6 @@
 </ul>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>编程语言</category>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Golang slice作为参数传递给函数需要使用指针</title>
-    <url>/2024-04-12-f3d9990d6059.html</url>
-    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    dfs(<span class="number">1</span>,n,k,&amp;res,&amp;[]<span class="type">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(s, n, k <span class="type">int</span>, res *[][]<span class="type">int</span>, item *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(*item) == k &#123;</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, <span class="built_in">append</span>([]<span class="type">int</span>&#123;&#125;, *item...))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := s; i &lt;= n-(k-<span class="built_in">len</span>(*item))+<span class="number">1</span>; i++&#123;</span><br><span class="line">        *item = <span class="built_in">append</span>(*item, i)</span><br><span class="line">        dfs(i+<span class="number">1</span>, n, k, res, item)</span><br><span class="line">        *item = (*item)[:<span class="built_in">len</span>(*item)<span class="number">-1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>在 Go 语言中，虽然 slice 是引用类型，但是当它作为参数传递给函数时，传递的实际上是 slice 的引用副本，而不是指向底层数组的指针。这意味着函数接收到的是一个指向原始 slice 的指针的副本。对于 slice 的修改操作，如果是改变 slice 内部的元素，那么在函数内外都是同步的，因为它们指向同一个底层数组。 然而，如果操作涉及到改变 slice 的长度或者容量，比如通过 <strong>append 函数或者直接索引赋值的方式，</strong>那么在函数内部对 slice 进行这样的操作不会影响到原始 slice，因为这些操作会创建一个新的底层数组来存储新的 slice 元素，而原始 slice 仍然指向原来的底层数组。</p>
-<p>这就是为什么在需要修改 slice 的长度或容量的情况下，我们需要传递指向 slice 的指针（即指针的指针），因为只有这样，函数内部对 slice 的修改才能反映到原始 slice 上。</p>
-<p>例如，在 <code>combine</code> 函数中，如果想要 <code>dfs</code> 函数能够修改 <code>res</code> slice 的长度（即添加新的组合到 <code>res</code> 中），那么需要传递 <code>res</code> 的指针的指针。这样，当 <code>dfs</code> 函数执行 <code>*res = append(*res, newCombination...)</code> 时，它会修改原始的 <code>res</code> slice 而不是它的副本。</p>
-<p>传递指针的原因是为了：</p>
-<ol>
-<li><p><strong>避免不必要的副本创建</strong>：传递指针可以避免在每次函数调用时创建 slice 的副本，从而减少内存的使用和垃圾回收的压力。</p>
-</li>
-<li><p><strong>确保函数内部的修改能够反映到原始数据上</strong>：当需要在函数内部修改 slice 的长度或容量时，传递指针是必要的，因为只有通过指针，函数才能访问并修改原始 slice 的底层数组。</p>
-</li>
-<li><p><strong>提高代码的效率和性能</strong>：使用指针可以提高代码的执行效率，尤其是在处理大量数据或者递归算法时，可以显著减少内存分配和复制操作，从而提高程序的整体性能。</p>
-</li>
-</ol>
-<p>还可以转化为全局变量；需要注意的是<br>go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res [][]<span class="type">int</span> <span class="comment">// go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    res = <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>) <span class="comment">// 需要进行初始化</span></span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="comment">// 结束条件</span></span><br><span class="line">	<span class="keyword">var</span> backtracking <span class="function"><span class="keyword">func</span><span class="params">(n, k ,startIdx <span class="type">int</span>)</span></span></span><br><span class="line">	backtracking = <span class="function"><span class="keyword">func</span><span class="params">(n, k ,startIdx <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 提前返回需要return</span></span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(path) == k &#123;</span><br><span class="line">            pathTmp := <span class="built_in">make</span>([]<span class="type">int</span>,<span class="built_in">len</span>(path))</span><br><span class="line">			<span class="built_in">copy</span>(pathTmp, path)</span><br><span class="line">			res = <span class="built_in">append</span>(res, pathTmp)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i := startIdx;i&lt;= n ;i++ &#123;</span><br><span class="line">			path = <span class="built_in">append</span>(path,i)</span><br><span class="line">			backtracking(n,k,i+<span class="number">1</span>)</span><br><span class="line">			path = path[:(<span class="built_in">len</span>(path) <span class="number">-1</span>)]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	backtracking(n,k,<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>tempPath :&#x3D; make([]int, k) &#x2F;&#x2F; <strong>tempPath :&#x3D; []int{}</strong>,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。<br>copy(tempPath, path)</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res [][]<span class="type">int</span> <span class="comment">// go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    res = <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="comment">// 结束条件</span></span><br><span class="line">	<span class="keyword">var</span> backtracking <span class="function"><span class="keyword">func</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>, startIndex <span class="type">int</span>)</span></span></span><br><span class="line">    backtracking = <span class="function"><span class="keyword">func</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>, startIndex <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(path) == k &#123;</span><br><span class="line">            tempPath := <span class="built_in">make</span>([]<span class="type">int</span>, k) <span class="comment">// tempPath := []int&#123;&#125;,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。</span></span><br><span class="line">            <span class="built_in">copy</span>(tempPath, path)</span><br><span class="line">            res = <span class="built_in">append</span>(res, tempPath)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i:= startIndex; i &lt;= n; i++ &#123;</span><br><span class="line">            <span class="keyword">if</span> (n -i +<span class="number">1</span> ) &lt; (k -<span class="built_in">len</span>(path)) &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            path = <span class="built_in">append</span>(path, i)</span><br><span class="line">            backtracking(n, k, i+<span class="number">1</span>)</span><br><span class="line">            path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	backtracking(n,k,<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>编程语言</category>
@@ -6381,6 +6599,36 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>Golang slice作为参数传递给函数需要使用指针</title>
+    <url>/2024-04-12-f3d9990d6059.html</url>
+    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line">    res := [][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">    dfs(<span class="number">1</span>,n,k,&amp;res,&amp;[]<span class="type">int</span>&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(s, n, k <span class="type">int</span>, res *[][]<span class="type">int</span>, item *[]<span class="type">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(*item) == k &#123;</span><br><span class="line">        *res = <span class="built_in">append</span>(*res, <span class="built_in">append</span>([]<span class="type">int</span>&#123;&#125;, *item...))</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i := s; i &lt;= n-(k-<span class="built_in">len</span>(*item))+<span class="number">1</span>; i++&#123;</span><br><span class="line">        *item = <span class="built_in">append</span>(*item, i)</span><br><span class="line">        dfs(i+<span class="number">1</span>, n, k, res, item)</span><br><span class="line">        *item = (*item)[:<span class="built_in">len</span>(*item)<span class="number">-1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>在 Go 语言中，虽然 slice 是引用类型，但是当它作为参数传递给函数时，传递的实际上是 slice 的引用副本，而不是指向底层数组的指针。这意味着函数接收到的是一个指向原始 slice 的指针的副本。对于 slice 的修改操作，如果是改变 slice 内部的元素，那么在函数内外都是同步的，因为它们指向同一个底层数组。 然而，如果操作涉及到改变 slice 的长度或者容量，比如通过 <strong>append 函数或者直接索引赋值的方式，</strong>那么在函数内部对 slice 进行这样的操作不会影响到原始 slice，因为这些操作会创建一个新的底层数组来存储新的 slice 元素，而原始 slice 仍然指向原来的底层数组。</p>
+<p>这就是为什么在需要修改 slice 的长度或容量的情况下，我们需要传递指向 slice 的指针（即指针的指针），因为只有这样，函数内部对 slice 的修改才能反映到原始 slice 上。</p>
+<p>例如，在 <code>combine</code> 函数中，如果想要 <code>dfs</code> 函数能够修改 <code>res</code> slice 的长度（即添加新的组合到 <code>res</code> 中），那么需要传递 <code>res</code> 的指针的指针。这样，当 <code>dfs</code> 函数执行 <code>*res = append(*res, newCombination...)</code> 时，它会修改原始的 <code>res</code> slice 而不是它的副本。</p>
+<p>传递指针的原因是为了：</p>
+<ol>
+<li><p><strong>避免不必要的副本创建</strong>：传递指针可以避免在每次函数调用时创建 slice 的副本，从而减少内存的使用和垃圾回收的压力。</p>
+</li>
+<li><p><strong>确保函数内部的修改能够反映到原始数据上</strong>：当需要在函数内部修改 slice 的长度或容量时，传递指针是必要的，因为只有通过指针，函数才能访问并修改原始 slice 的底层数组。</p>
+</li>
+<li><p><strong>提高代码的效率和性能</strong>：使用指针可以提高代码的执行效率，尤其是在处理大量数据或者递归算法时，可以显著减少内存分配和复制操作，从而提高程序的整体性能。</p>
+</li>
+</ol>
+<p>还可以转化为全局变量；需要注意的是<br>go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res [][]<span class="type">int</span> <span class="comment">// go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    res = <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>) <span class="comment">// 需要进行初始化</span></span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="comment">// 结束条件</span></span><br><span class="line">	<span class="keyword">var</span> backtracking <span class="function"><span class="keyword">func</span><span class="params">(n, k ,startIdx <span class="type">int</span>)</span></span></span><br><span class="line">	backtracking = <span class="function"><span class="keyword">func</span><span class="params">(n, k ,startIdx <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">        <span class="comment">// 提前返回需要return</span></span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(path) == k &#123;</span><br><span class="line">            pathTmp := <span class="built_in">make</span>([]<span class="type">int</span>,<span class="built_in">len</span>(path))</span><br><span class="line">			<span class="built_in">copy</span>(pathTmp, path)</span><br><span class="line">			res = <span class="built_in">append</span>(res, pathTmp)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> i := startIdx;i&lt;= n ;i++ &#123;</span><br><span class="line">			path = <span class="built_in">append</span>(path,i)</span><br><span class="line">			backtracking(n,k,i+<span class="number">1</span>)</span><br><span class="line">			path = path[:(<span class="built_in">len</span>(path) <span class="number">-1</span>)]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	backtracking(n,k,<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>tempPath :&#x3D; make([]int, k) &#x2F;&#x2F; <strong>tempPath :&#x3D; []int{}</strong>,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。<br>copy(tempPath, path)</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> res [][]<span class="type">int</span> <span class="comment">// go 中引用类型（如切片、map、channel等会自动初始化为nil, 需要手动初始化</span></span><br><span class="line"><span class="keyword">var</span> path []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">combine</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>)</span></span> [][]<span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">    res = <span class="built_in">make</span>([][]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">    path = <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="comment">// 结束条件</span></span><br><span class="line">	<span class="keyword">var</span> backtracking <span class="function"><span class="keyword">func</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>, startIndex <span class="type">int</span>)</span></span></span><br><span class="line">    backtracking = <span class="function"><span class="keyword">func</span><span class="params">(n <span class="type">int</span>, k <span class="type">int</span>, startIndex <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(path) == k &#123;</span><br><span class="line">            tempPath := <span class="built_in">make</span>([]<span class="type">int</span>, k) <span class="comment">// tempPath := []int&#123;&#125;,copy(tempPath, path) 将会失败，因为 copy 函数需要目标切片有足够的容量来接收源切片的元素。</span></span><br><span class="line">            <span class="built_in">copy</span>(tempPath, path)</span><br><span class="line">            res = <span class="built_in">append</span>(res, tempPath)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i:= startIndex; i &lt;= n; i++ &#123;</span><br><span class="line">            <span class="keyword">if</span> (n -i +<span class="number">1</span> ) &lt; (k -<span class="built_in">len</span>(path)) &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            path = <span class="built_in">append</span>(path, i)</span><br><span class="line">            backtracking(n, k, i+<span class="number">1</span>)</span><br><span class="line">            path = path[:<span class="built_in">len</span>(path)<span class="number">-1</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	backtracking(n,k,<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>什么是二进制的按位或和按位异或</title>
     <url>/2023-06-08-33240d8b3873.html</url>
     <content><![CDATA[<p>按位或（bitwise OR）和按位异或（bitwise XOR）是两种二进制位运算。但是这两个概念很容易忘记或者混淆，今天我们就来加深一下印象吧！</p>
@@ -6396,177 +6644,6 @@ dfs(root.Right, res)
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  110</span><br><span class="line">^ 011</span><br><span class="line">-----</span><br><span class="line">  101</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>按位或，就是只要有1 就为1 (包含了1  1 ；0 1；1  0；三种)<br>按位异或，必须一个0一个1，才为1 （包含0 1；1  0；两种）<br>大家记住了吗？</p>
-]]></content>
-      <categories>
-        <category>编程语言</category>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>依赖注入</title>
-    <url>/2024-07-21-5d2010ec811e.html</url>
-    <content><![CDATA[<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><p>使用接口来实现依赖注入，降低模块间的耦合。<br><strong>概念</strong>： 依赖注入是一种设计模式，它允许你将组件的依赖关系（即其他组件或服务）从组件本身中分离出来，并在组件外部进行配置。这样做可以减少组件之间的耦合，使得代码更加模块化，易于测试和维护。</p>
-<p><strong>Go 语言实现</strong>： 在 Go 语言中，可以通过接口来实现依赖注入。接口定义了组件所需的行为，然后你可以在运行时注入任何实现了这些行为的具体类型。</p>
-<p><strong>优点</strong>：</p>
-<ol>
-<li><strong>降低耦合</strong>：组件不直接依赖于具体的实现类，而是依赖于接口，这降低了组件之间的耦合度。</li>
-<li><strong>提高灵活性</strong>：可以轻易地替换依赖的具体实现，而不需要修改组件的代码。</li>
-<li><strong>易于测试</strong>：可以为测试注入模拟对象（mocks），从而可以隔离测试组件，不依赖于外部服务或组件。</li>
-</ol>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Logger <span class="keyword">interface</span> &#123;</span><br><span class="line">    Log(message <span class="type">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ConsoleLogger <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l ConsoleLogger)</span></span> Log(message <span class="type">string</span>) &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Log-DEBUG:&quot;</span>, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ConsoleLoggerINFO <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l ConsoleLoggerINFO)</span></span> Log(message <span class="type">string</span>) &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Log-INFO:&quot;</span>, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Application <span class="keyword">struct</span> &#123;</span><br><span class="line">    logger Logger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Application)</span></span> SetLogger(logger Logger) &#123;</span><br><span class="line">    a.logger = logger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    app := Application&#123;&#125;</span><br><span class="line">    consoleLogger := ConsoleLogger&#123;&#125;</span><br><span class="line">    app.SetLogger(consoleLogger)</span><br><span class="line">    app.logger.Log(<span class="string">&quot;Application started&quot;</span>)</span><br><span class="line">    consoleLoggerInfo := ConsoleLoggerINFO&#123;&#125;</span><br><span class="line">    app.SetLogger(consoleLoggerInfo)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上边通过Go语言的Logger接口包含了Log方法, Application包含了Logger接口。  Application可以通过SetLogger来设置任何实现接口中Log 方法的就，可以方便切换日志类型。这就是依赖注入，每个部分都是个组件，可以随意方便的更换</p>
-]]></content>
-      <categories>
-        <category>编程语言</category>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>回调函数和直接调用的区别</title>
-    <url>/2024-07-21-967579da378a.html</url>
-    <content><![CDATA[<p>回调函数与直接调用在表面上看起来可能相似，但它们在程序设计和执行上有本质的区别。以下是回调函数与直接调用之间的一些关键差异：</p>
-<ol>
-<li><p><strong>调用时机</strong>：</p>
-<ul>
-<li><strong>直接调用</strong>：函数A直接调用函数B，函数B的执行是立即的，并且是在函数A的控制下进行的。</li>
-<li><strong>回调函数</strong>：函数A接收函数B作为参数，但函数B的执行时机可能由外部事件或条件触发，不一定立即执行。</li>
-</ul>
-</li>
-<li><p><strong>控制流</strong>：</p>
-<ul>
-<li><strong>直接调用</strong>：控制流是线性的，函数B执行完毕后，控制权返回给函数A。</li>
-<li><strong>回调函数</strong>：控制流可能会中断，函数A执行到某个点后，将控制权交给函数B，函数B执行完毕后，控制权可能不会直接返回给函数A，而是等待某个条件满足后才继续执行。</li>
-</ul>
-</li>
-<li><p><strong>执行环境</strong>：</p>
-<ul>
-<li><strong>直接调用</strong>：函数B在函数A的上下文中执行，可以访问函数A的局部变量。</li>
-<li><strong>回调函数</strong>：函数B可能在不同的上下文中执行，例如在异步操作完成后，此时它可能无法访问函数A的局部变量。</li>
-</ul>
-</li>
-<li><p><strong>目的和用途</strong>：</p>
-<ul>
-<li><strong>直接调用</strong>：通常用于直接执行某个操作或计算。</li>
-<li><strong>回调函数</strong>：通常用于响应事件、处理异步操作的结果或在特定条件下触发后续操作。</li>
-</ul>
-</li>
-<li><p><strong>编程模式</strong>：</p>
-<ul>
-<li><strong>直接调用</strong>：更符合同步编程模式，代码执行顺序明确。</li>
-<li><strong>回调函数</strong>：常用于异步编程模式，代码的执行顺序可能不那么明确，需要更多的控制结构来管理。</li>
-</ul>
-</li>
-<li><p><strong>函数定义</strong>：</p>
-<ul>
-<li><strong>直接调用</strong>：函数B在被调用时不需要特定的定义或约束。</li>
-<li><strong>回调函数</strong>：函数B可能需要符合特定的接口或签名，以便作为回调被其他函数使用。</li>
-</ul>
-</li>
-<li><p><strong>错误处理</strong>：</p>
-<ul>
-<li><strong>直接调用</strong>：错误处理通常在调用者（函数A）中进行。</li>
-<li><strong>回调函数</strong>：错误处理可能需要在回调函数本身中进行，调用者可能不知道回调函数何时被调用。</li>
-</ul>
-</li>
-<li><p><strong>代码组织</strong>：</p>
-<ul>
-<li><strong>直接调用</strong>：代码组织可能更直观，因为函数调用关系清晰。</li>
-<li><strong>回调函数</strong>：代码组织可能需要更多的设计考虑，以确保回调函数在适当的时机被调用，并且逻辑清晰。</li>
-</ul>
-</li>
-</ol>
-<p>使用回调函数而不是直接调用的原因通常与程序设计的复杂性、灵活性和可扩展性有关。例如，在处理异步事件、网络请求或用户界面操作时，回调函数提供了一种有效的方式来处理这些操作的结果，而不需要阻塞主程序流程。此外，回调函数还可以帮助实现更高层次的抽象，如事件监听器、中间件等</p>
-]]></content>
-      <categories>
-        <category>编程语言</category>
-        <category>Golang</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>如何使用递归</title>
-    <url>/2024-05-08-d73ac58a954d.html</url>
-    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>解决递归问题的关键在于理解问题的本质并将其分解为更小的子问题。以下是一些帮助你思考递归解题思路的步骤：</p>
-<ol>
-<li><p><strong>识别重复模式</strong>：</p>
-<ul>
-<li>确定问题是否存在重复的子问题。在许多递归问题中，整个问题可以分解为与其相似但规模更小的子问题。</li>
-</ul>
-</li>
-<li><p><strong>定义递归函数</strong>：</p>
-<ul>
-<li>根据问题定义一个或多个递归函数，这些函数将接受问题的子集作为输入，并返回解决子问题的答案。</li>
-</ul>
-</li>
-<li><p><strong>确定基本情况</strong>：</p>
-<ul>
-<li>找出问题的基本情况，也就是递归终止的条件。在基本情况下，问题可以直接解决，而不需要进一步递归。</li>
-</ul>
-</li>
-<li><p><strong>分解问题</strong>：</p>
-<ul>
-<li>将问题分解为更小的子问题。思考如何使用子问题的解来构建原问题的解。</li>
-</ul>
-</li>
-<li><p><strong>递归工作</strong>：</p>
-<ul>
-<li>描述递归如何工作，包括如何从子问题的解中构建出原问题的解。</li>
-</ul>
-</li>
-<li><p><strong>合并结果</strong>：</p>
-<ul>
-<li>确定如何将子问题的解合并为原问题的解。</li>
-</ul>
-</li>
-<li><p><strong>编写伪代码</strong>：</p>
-<ul>
-<li>在编写实际代码之前，先用伪代码描述递归逻辑。</li>
-</ul>
-</li>
-<li><p><strong>考虑边界条件</strong>：</p>
-<ul>
-<li>考虑所有可能的边界条件，确保递归能够在所有情况下正确终止。</li>
-</ul>
-</li>
-<li><p><strong>优化性能</strong>：</p>
-<ul>
-<li>如果可能，考虑使用记忆化（memoization）或动态规划来避免重复计算相同的子问题。</li>
-</ul>
-</li>
-<li><p><strong>测试和调试</strong>：</p>
-<ul>
-<li>编写测试用例来验证递归逻辑，并调试任何出现的问题。</li>
-</ul>
-</li>
-</ol>
-<p>以排序数组转换为二叉搜索树的问题为例，解题思路可以这样形成：</p>
-<ul>
-<li><p><strong>重复模式</strong>：注意到二叉搜索树的性质，即中间的元素可以作为根，左边的元素可以作为左子树的节点，右边的元素可以作为右子树的节点。</p>
-</li>
-<li><p><strong>定义递归函数</strong>：<code>traversal</code> 函数接收一个数组和两个索引，表示当前考虑的子数组。</p>
-</li>
-<li><p><strong>确定基本情况</strong>：如果左索引大于右索引，说明子数组为空，返回 <code>nil</code>。</p>
-</li>
-<li><p><strong>分解问题</strong>：选择子数组的中间元素作为当前子树的根，然后对左右两部分分别递归调用 <code>traversal</code> 函数。</p>
-</li>
-<li><p><strong>递归工作</strong>：递归地构建左子树和右子树，然后将它们连接到当前根节点。</p>
-</li>
-<li><p><strong>合并结果</strong>：通过将子树赋值给根节点的左右指针，将子问题的解合并为原问题的解。</p>
-</li>
-<li><p><strong>编写伪代码</strong>：在脑中或纸上概述递归调用的流程。</p>
-</li>
-<li><p><strong>考虑边界条件</strong>：确保数组索引不会超出数组边界。</p>
-</li>
-<li><p><strong>优化性能</strong>：此问题中没有明显的性能优化空间，因为每个元素恰好使用一次。</p>
-</li>
-<li><p><strong>测试和调试</strong>：通过在不同的数组输入上测试函数来确保其正确性。</p>
-</li>
-</ul>
-<p>通过这些步骤，可以构建出解决递归问题的清晰思路，并将其转化为有效的代码实现。</p>
 ]]></content>
       <categories>
         <category>编程语言</category>
@@ -6720,6 +6797,177 @@ dfs(root.Right, res)
       <categories>
         <category>编程语言</category>
         <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>回调函数和直接调用的区别</title>
+    <url>/2024-07-21-967579da378a.html</url>
+    <content><![CDATA[<p>回调函数与直接调用在表面上看起来可能相似，但它们在程序设计和执行上有本质的区别。以下是回调函数与直接调用之间的一些关键差异：</p>
+<ol>
+<li><p><strong>调用时机</strong>：</p>
+<ul>
+<li><strong>直接调用</strong>：函数A直接调用函数B，函数B的执行是立即的，并且是在函数A的控制下进行的。</li>
+<li><strong>回调函数</strong>：函数A接收函数B作为参数，但函数B的执行时机可能由外部事件或条件触发，不一定立即执行。</li>
+</ul>
+</li>
+<li><p><strong>控制流</strong>：</p>
+<ul>
+<li><strong>直接调用</strong>：控制流是线性的，函数B执行完毕后，控制权返回给函数A。</li>
+<li><strong>回调函数</strong>：控制流可能会中断，函数A执行到某个点后，将控制权交给函数B，函数B执行完毕后，控制权可能不会直接返回给函数A，而是等待某个条件满足后才继续执行。</li>
+</ul>
+</li>
+<li><p><strong>执行环境</strong>：</p>
+<ul>
+<li><strong>直接调用</strong>：函数B在函数A的上下文中执行，可以访问函数A的局部变量。</li>
+<li><strong>回调函数</strong>：函数B可能在不同的上下文中执行，例如在异步操作完成后，此时它可能无法访问函数A的局部变量。</li>
+</ul>
+</li>
+<li><p><strong>目的和用途</strong>：</p>
+<ul>
+<li><strong>直接调用</strong>：通常用于直接执行某个操作或计算。</li>
+<li><strong>回调函数</strong>：通常用于响应事件、处理异步操作的结果或在特定条件下触发后续操作。</li>
+</ul>
+</li>
+<li><p><strong>编程模式</strong>：</p>
+<ul>
+<li><strong>直接调用</strong>：更符合同步编程模式，代码执行顺序明确。</li>
+<li><strong>回调函数</strong>：常用于异步编程模式，代码的执行顺序可能不那么明确，需要更多的控制结构来管理。</li>
+</ul>
+</li>
+<li><p><strong>函数定义</strong>：</p>
+<ul>
+<li><strong>直接调用</strong>：函数B在被调用时不需要特定的定义或约束。</li>
+<li><strong>回调函数</strong>：函数B可能需要符合特定的接口或签名，以便作为回调被其他函数使用。</li>
+</ul>
+</li>
+<li><p><strong>错误处理</strong>：</p>
+<ul>
+<li><strong>直接调用</strong>：错误处理通常在调用者（函数A）中进行。</li>
+<li><strong>回调函数</strong>：错误处理可能需要在回调函数本身中进行，调用者可能不知道回调函数何时被调用。</li>
+</ul>
+</li>
+<li><p><strong>代码组织</strong>：</p>
+<ul>
+<li><strong>直接调用</strong>：代码组织可能更直观，因为函数调用关系清晰。</li>
+<li><strong>回调函数</strong>：代码组织可能需要更多的设计考虑，以确保回调函数在适当的时机被调用，并且逻辑清晰。</li>
+</ul>
+</li>
+</ol>
+<p>使用回调函数而不是直接调用的原因通常与程序设计的复杂性、灵活性和可扩展性有关。例如，在处理异步事件、网络请求或用户界面操作时，回调函数提供了一种有效的方式来处理这些操作的结果，而不需要阻塞主程序流程。此外，回调函数还可以帮助实现更高层次的抽象，如事件监听器、中间件等</p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>依赖注入</title>
+    <url>/2024-07-21-5d2010ec811e.html</url>
+    <content><![CDATA[<h1 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h1><p>使用接口来实现依赖注入，降低模块间的耦合。<br><strong>概念</strong>： 依赖注入是一种设计模式，它允许你将组件的依赖关系（即其他组件或服务）从组件本身中分离出来，并在组件外部进行配置。这样做可以减少组件之间的耦合，使得代码更加模块化，易于测试和维护。</p>
+<p><strong>Go 语言实现</strong>： 在 Go 语言中，可以通过接口来实现依赖注入。接口定义了组件所需的行为，然后你可以在运行时注入任何实现了这些行为的具体类型。</p>
+<p><strong>优点</strong>：</p>
+<ol>
+<li><strong>降低耦合</strong>：组件不直接依赖于具体的实现类，而是依赖于接口，这降低了组件之间的耦合度。</li>
+<li><strong>提高灵活性</strong>：可以轻易地替换依赖的具体实现，而不需要修改组件的代码。</li>
+<li><strong>易于测试</strong>：可以为测试注入模拟对象（mocks），从而可以隔离测试组件，不依赖于外部服务或组件。</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Logger <span class="keyword">interface</span> &#123;</span><br><span class="line">    Log(message <span class="type">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ConsoleLogger <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l ConsoleLogger)</span></span> Log(message <span class="type">string</span>) &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Log-DEBUG:&quot;</span>, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> ConsoleLoggerINFO <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l ConsoleLoggerINFO)</span></span> Log(message <span class="type">string</span>) &#123;</span><br><span class="line">    <span class="built_in">println</span>(<span class="string">&quot;Log-INFO:&quot;</span>, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Application <span class="keyword">struct</span> &#123;</span><br><span class="line">    logger Logger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a *Application)</span></span> SetLogger(logger Logger) &#123;</span><br><span class="line">    a.logger = logger</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    app := Application&#123;&#125;</span><br><span class="line">    consoleLogger := ConsoleLogger&#123;&#125;</span><br><span class="line">    app.SetLogger(consoleLogger)</span><br><span class="line">    app.logger.Log(<span class="string">&quot;Application started&quot;</span>)</span><br><span class="line">    consoleLoggerInfo := ConsoleLoggerINFO&#123;&#125;</span><br><span class="line">    app.SetLogger(consoleLoggerInfo)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上边通过Go语言的Logger接口包含了Log方法, Application包含了Logger接口。  Application可以通过SetLogger来设置任何实现接口中Log 方法的就，可以方便切换日志类型。这就是依赖注入，每个部分都是个组件，可以随意方便的更换</p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>Golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何使用递归</title>
+    <url>/2024-05-08-d73ac58a954d.html</url>
+    <content><![CDATA[<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sortedArrayToBST</span><span class="params">(nums []<span class="type">int</span>)</span></span> *TreeNode &#123;</span><br><span class="line">    <span class="keyword">return</span> traversal(nums,<span class="number">0</span>,<span class="built_in">len</span>(nums)<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义：返回nums root 节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">traversal</span><span class="params">(nums []<span class="type">int</span>,left <span class="type">int</span> , right <span class="type">int</span>)</span></span> *TreeNode&#123;</span><br><span class="line">    <span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    mid := (left + right)/<span class="number">2</span></span><br><span class="line">    root := &amp;TreeNode&#123;nums[mid],<span class="literal">nil</span>,<span class="literal">nil</span>&#125;</span><br><span class="line">    root.Left =  traversal(nums,left,mid<span class="number">-1</span>) <span class="comment">// 把后边 root 节点添加到当前root left 左节点上</span></span><br><span class="line">    root.Right = traversal(nums,mid+<span class="number">1</span>,right) <span class="comment">// 把后边 root 节点添加到当前root right 左节点上</span></span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>解决递归问题的关键在于理解问题的本质并将其分解为更小的子问题。以下是一些帮助你思考递归解题思路的步骤：</p>
+<ol>
+<li><p><strong>识别重复模式</strong>：</p>
+<ul>
+<li>确定问题是否存在重复的子问题。在许多递归问题中，整个问题可以分解为与其相似但规模更小的子问题。</li>
+</ul>
+</li>
+<li><p><strong>定义递归函数</strong>：</p>
+<ul>
+<li>根据问题定义一个或多个递归函数，这些函数将接受问题的子集作为输入，并返回解决子问题的答案。</li>
+</ul>
+</li>
+<li><p><strong>确定基本情况</strong>：</p>
+<ul>
+<li>找出问题的基本情况，也就是递归终止的条件。在基本情况下，问题可以直接解决，而不需要进一步递归。</li>
+</ul>
+</li>
+<li><p><strong>分解问题</strong>：</p>
+<ul>
+<li>将问题分解为更小的子问题。思考如何使用子问题的解来构建原问题的解。</li>
+</ul>
+</li>
+<li><p><strong>递归工作</strong>：</p>
+<ul>
+<li>描述递归如何工作，包括如何从子问题的解中构建出原问题的解。</li>
+</ul>
+</li>
+<li><p><strong>合并结果</strong>：</p>
+<ul>
+<li>确定如何将子问题的解合并为原问题的解。</li>
+</ul>
+</li>
+<li><p><strong>编写伪代码</strong>：</p>
+<ul>
+<li>在编写实际代码之前，先用伪代码描述递归逻辑。</li>
+</ul>
+</li>
+<li><p><strong>考虑边界条件</strong>：</p>
+<ul>
+<li>考虑所有可能的边界条件，确保递归能够在所有情况下正确终止。</li>
+</ul>
+</li>
+<li><p><strong>优化性能</strong>：</p>
+<ul>
+<li>如果可能，考虑使用记忆化（memoization）或动态规划来避免重复计算相同的子问题。</li>
+</ul>
+</li>
+<li><p><strong>测试和调试</strong>：</p>
+<ul>
+<li>编写测试用例来验证递归逻辑，并调试任何出现的问题。</li>
+</ul>
+</li>
+</ol>
+<p>以排序数组转换为二叉搜索树的问题为例，解题思路可以这样形成：</p>
+<ul>
+<li><p><strong>重复模式</strong>：注意到二叉搜索树的性质，即中间的元素可以作为根，左边的元素可以作为左子树的节点，右边的元素可以作为右子树的节点。</p>
+</li>
+<li><p><strong>定义递归函数</strong>：<code>traversal</code> 函数接收一个数组和两个索引，表示当前考虑的子数组。</p>
+</li>
+<li><p><strong>确定基本情况</strong>：如果左索引大于右索引，说明子数组为空，返回 <code>nil</code>。</p>
+</li>
+<li><p><strong>分解问题</strong>：选择子数组的中间元素作为当前子树的根，然后对左右两部分分别递归调用 <code>traversal</code> 函数。</p>
+</li>
+<li><p><strong>递归工作</strong>：递归地构建左子树和右子树，然后将它们连接到当前根节点。</p>
+</li>
+<li><p><strong>合并结果</strong>：通过将子树赋值给根节点的左右指针，将子问题的解合并为原问题的解。</p>
+</li>
+<li><p><strong>编写伪代码</strong>：在脑中或纸上概述递归调用的流程。</p>
+</li>
+<li><p><strong>考虑边界条件</strong>：确保数组索引不会超出数组边界。</p>
+</li>
+<li><p><strong>优化性能</strong>：此问题中没有明显的性能优化空间，因为每个元素恰好使用一次。</p>
+</li>
+<li><p><strong>测试和调试</strong>：通过在不同的数组输入上测试函数来确保其正确性。</p>
+</li>
+</ul>
+<p>通过这些步骤，可以构建出解决递归问题的清晰思路，并将其转化为有效的代码实现。</p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>Golang</category>
       </categories>
   </entry>
 </search>
