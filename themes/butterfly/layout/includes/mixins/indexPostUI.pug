@@ -104,15 +104,6 @@ mixin indexPostUI()
                         span.artalk-count(data-page-key=url_for(link))
                           i.fa-solid.fa-spinner.fa-spin
 
-              //- 文章浏览量显示
-              if theme.waline && theme.waline.pageview
-                span.article-meta
-                  span.article-meta-separator |
-                  i.fas.fa-eye
-                  span.waline-pageview-count(data-path=url_for(article.path))
-                    i.fa-solid.fa-spinner.fa-spin
-                  span.article-meta-label= ' 浏览'
-
             //- Display the article introduction on homepage
             - const content = postDesc(article)
             if content
