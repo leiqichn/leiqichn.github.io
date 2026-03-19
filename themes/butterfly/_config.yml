@@ -1158,7 +1158,8 @@ inject:
     - <meta name="baidu-site-verification" content="codeva-43IjEHEp7U" />
     # - <link rel="stylesheet" href="/xxx.css">
   bottom:
-    # - <script src="xxxx"></script>
+    # RAG 智能问答嵌入
+    - <script src="/rag/embed.js"></script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
