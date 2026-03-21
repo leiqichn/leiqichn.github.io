@@ -1159,7 +1159,7 @@ inject:
     # - <link rel="stylesheet" href="/xxx.css">
   bottom:
     # RAG 智能问答嵌入
-    - <script src="/rag/embed.js"></script>
+    - <script src="https://www.leiqi.top/rag/embed.js"></script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work
