@@ -1,6 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Waline评论系统安装与Valine迁移完整指南</title>
+    <url>/2026-03-15-3f4f13ed5e54.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近将博客评论系统从Valine迁移到了Waline。Waline是从Valine衍生出的带有后端服务的评论系统，解决了Valine的一些痛点。本文记录完整的安装和迁移过程。</p>
+<h2 id="为什么选择Waline？"><a href="#为什么选择Waline？" class="headerlink" title="为什么选择Waline？"></a>为什么选择Waline？</h2><h3 id="Valine的问题"><a href="#Valine的问题" class="headerlink" title="Valine的问题"></a>Valine的问题</h3><ul>
+<li>依赖LeanCloud存储，国内访问不稳定</li>
+<li>没有后端，无法实现邮件通知等功能</li>
+<li>安全性问题（暴露AppKey）</li>
+</ul>
+<h3 id="Waline的优势"><a href="#Waline的优势" class="headerlink" title="Waline的优势"></a>Waline的优势</h3><ul>
+<li>支持多种数据库（SQLite、MySQL、MongoDB等）</li>
+<li>自建后端，数据完全可控</li>
+<li>支持邮件通知、微信通知</li>
+<li>支持评论审核、垃圾评论过滤</li>
+<li>兼容Valine前端配置</li>
+</ul>
+<h2 id="一、安装Waline服务端"><a href="#一、安装Waline服务端" class="headerlink" title="一、安装Waline服务端"></a>一、安装Waline服务端</h2><h3 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1. 安装Node.js"></a>1. 安装Node.js</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用nvm安装</span></span><br><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">nvm install --lts</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装PM2进程管理"><a href="#2-安装PM2进程管理" class="headerlink" title="2. 安装PM2进程管理"></a>2. 安装PM2进程管理</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-创建Waline目录"><a href="#3-创建Waline目录" class="headerlink" title="3. 创建Waline目录"></a>3. 创建Waline目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /var/www/waline</span><br><span class="line"><span class="built_in">cd</span> /var/www/waline</span><br><span class="line">npm init -y</span><br><span class="line">npm install @waline/vercel dotenv</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-创建启动脚本"><a href="#4-创建启动脚本" class="headerlink" title="4. 创建启动脚本"></a>4. 创建启动脚本</h3><p>创建 <code>start.js</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 加载环境变量</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;dotenv&#x27;</span>).<span class="title function_">config</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;/var/www/waline/.env&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置端口</span></span><br><span class="line">process.<span class="property">env</span>.<span class="property">PORT</span> = process.<span class="property">env</span>.<span class="property">PORT</span> || <span class="string">&#x27;8360&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载 Waline</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;@waline/vercel/vanilla.js&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-配置环境变量"><a href="#5-配置环境变量" class="headerlink" title="5. 配置环境变量"></a>5. 配置环境变量</h3><p>创建 <code>.env</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># SQLite本地存储</span></span><br><span class="line">SQLITE_PATH=/var/www/waline/data</span><br><span class="line">PORT=8360</span><br><span class="line">SECURE_DOMAINS=your-domain.com</span><br><span class="line">SITE_URL=https://your-domain.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件通知配置 (QQ邮箱)</span></span><br><span class="line">SMTP_SERVICE=QQ</span><br><span class="line">SMTP_USER=your-email@qq.com</span><br><span class="line">SMTP_PASS=your-smtp-password</span><br><span class="line">SITE_NAME=你的博客名称</span><br><span class="line">AUTHOR_EMAIL=your-email@qq.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-初始化SQLite数据库"><a href="#6-初始化SQLite数据库" class="headerlink" title="6. 初始化SQLite数据库"></a>6. 初始化SQLite数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlite3 /var/www/waline/data/waline.sqlite &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Comment (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  url TEXT NOT NULL,</span><br><span class="line">  nick TEXT NOT NULL,</span><br><span class="line">  mail TEXT,</span><br><span class="line">  <span class="built_in">link</span> TEXT,</span><br><span class="line">  comment TEXT NOT NULL,</span><br><span class="line">  pid INTEGER,</span><br><span class="line">  rid INTEGER,</span><br><span class="line">  status TEXT DEFAULT <span class="string">&#x27;approved&#x27;</span>,</span><br><span class="line">  ua TEXT,</span><br><span class="line">  ip TEXT,</span><br><span class="line">  insertedAt DATETIME DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  user_id TEXT,</span><br><span class="line">  sticky INTEGER DEFAULT 0,</span><br><span class="line">  like INTEGER DEFAULT 0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Counter (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  url TEXT NOT NULL UNIQUE,</span><br><span class="line">  time INTEGER DEFAULT 0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Users (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  display_name TEXT NOT NULL,</span><br><span class="line">  email TEXT NOT NULL UNIQUE,</span><br><span class="line">  password TEXT NOT NULL,</span><br><span class="line">  <span class="built_in">type</span> TEXT DEFAULT <span class="string">&#x27;guest&#x27;</span></span><br><span class="line">);</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-使用PM2启动"><a href="#7-使用PM2启动" class="headerlink" title="7. 使用PM2启动"></a>7. 使用PM2启动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start start.js --name waline</span><br><span class="line">pm2 save</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、配置Nginx代理"><a href="#二、配置Nginx代理" class="headerlink" title="二、配置Nginx代理"></a>二、配置Nginx代理</h2><h3 id="为什么需要代理？"><a href="#为什么需要代理？" class="headerlink" title="为什么需要代理？"></a>为什么需要代理？</h3><p>如果你的博客使用HTTPS，直接访问HTTP的Waline服务会被浏览器阻止（混合内容安全策略）。</p>
+<h3 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h3><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">    <span class="attribute">root</span> /var/www/blog;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Waline 评论 API 代理</span></span><br><span class="line">    <span class="section">location</span> /waline/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8360/;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">&quot;upgrade&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ =<span class="number">404</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、配置博客前端"><a href="#三、配置博客前端" class="headerlink" title="三、配置博客前端"></a>三、配置博客前端</h2><h3 id="Hexo-Butterfly主题配置"><a href="#Hexo-Butterfly主题配置" class="headerlink" title="Hexo Butterfly主题配置"></a>Hexo Butterfly主题配置</h3><p>编辑 <code>themes/butterfly/_config.yml</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">waline</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">card_post_count:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">/waline</span>  <span class="comment"># 使用相对路径，支持HTTPS</span></span><br><span class="line">  <span class="attr">pageview:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">option:</span></span><br><span class="line">    <span class="attr">locale:</span></span><br><span class="line">      <span class="attr">placeholder:</span> <span class="string">欢迎评论~</span></span><br><span class="line">    <span class="attr">meta:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nick</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mail</span></span><br><span class="line">    <span class="attr">requiredFields:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nick</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mail</span></span><br><span class="line">    <span class="attr">emoji:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/qq</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/bmoji</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/weibo</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="重要说明"><a href="#重要说明" class="headerlink" title="重要说明"></a>重要说明</h3><p><strong>serverURL使用相对路径</strong>：<code>/waline</code> 而不是 <code>http://ip:port</code></p>
+<p>这样无论博客使用HTTP还是HTTPS，都能正确加载评论。</p>
+<h2 id="四、从Valine迁移评论"><a href="#四、从Valine迁移评论" class="headerlink" title="四、从Valine迁移评论"></a>四、从Valine迁移评论</h2><h3 id="1-导出Valine评论"><a href="#1-导出Valine评论" class="headerlink" title="1. 导出Valine评论"></a>1. 导出Valine评论</h3><p>从LeanCloud后台导出评论数据，格式为JSON。</p>
+<h3 id="2-Valine表情映射"><a href="#2-Valine表情映射" class="headerlink" title="2. Valine表情映射"></a>2. Valine表情映射</h3><p>Valine使用 <code>:emotion:</code> 格式的表情，Waline使用emoji。需要转换：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Valine表情到Emoji的映射</span></span><br><span class="line">VALINE_TO_EMOJI = &#123;</span><br><span class="line">    <span class="string">&#x27;whee&#x27;</span>: <span class="string">&#x27;😁&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;clap&#x27;</span>: <span class="string">&#x27;👏&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;poor&#x27;</span>: <span class="string">&#x27;😰&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;tear&#x27;</span>: <span class="string">&#x27;😢&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;happy&#x27;</span>: <span class="string">&#x27;😊&#x27;</span>,</span><br><span class="line">    <span class="comment"># ... 更多映射</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">convert_emotion</span>(<span class="params">text</span>):</span><br><span class="line">    <span class="keyword">import</span> re</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">replace</span>(<span class="params"><span class="keyword">match</span></span>):</span><br><span class="line">        emotion = <span class="keyword">match</span>.group(<span class="number">1</span>).strip().lower()</span><br><span class="line">        <span class="keyword">return</span> VALINE_TO_EMOJI.get(emotion, <span class="keyword">match</span>.group(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> re.sub(<span class="string">r&#x27;:([a-zA-Z\s]+):&#x27;</span>, replace, text)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-迁移脚本"><a href="#3-迁移脚本" class="headerlink" title="3. 迁移脚本"></a>3. 迁移脚本</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取Valine导出数据</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;valine_comments.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    valine_comments = json.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接Waline数据库</span></span><br><span class="line">conn = sqlite3.connect(<span class="string">&#x27;/var/www/waline/data/waline.sqlite&#x27;</span>)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空现有评论</span></span><br><span class="line">cursor.execute(<span class="string">&quot;DELETE FROM wl_Comment&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ID映射表（处理回复关系）</span></span><br><span class="line">id_map = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> vc <span class="keyword">in</span> valine_comments:</span><br><span class="line">    <span class="comment"># 转换数据</span></span><br><span class="line">    url = vc.get(<span class="string">&#x27;url&#x27;</span>, <span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">    nick = vc.get(<span class="string">&#x27;nick&#x27;</span>, <span class="string">&#x27;Anonymous&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;Anonymous&#x27;</span></span><br><span class="line">    mail = vc.get(<span class="string">&#x27;mail&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    link = vc.get(<span class="string">&#x27;link&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    comment = convert_emotion(vc.get(<span class="string">&#x27;comment&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 处理回复关系</span></span><br><span class="line">    pid = id_map.get(vc.get(<span class="string">&#x27;pid&#x27;</span>)) <span class="keyword">if</span> vc.get(<span class="string">&#x27;pid&#x27;</span>) <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">    rid = id_map.get(vc.get(<span class="string">&#x27;rid&#x27;</span>)) <span class="keyword">if</span> vc.get(<span class="string">&#x27;rid&#x27;</span>) <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    cursor.execute(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        INSERT INTO wl_Comment (url, nick, mail, link, comment, pid, rid, status, insertedAt, updatedAt)</span></span><br><span class="line"><span class="string">        VALUES (?, ?, ?, ?, ?, ?, ?, &#x27;approved&#x27;, datetime(&#x27;now&#x27;), datetime(&#x27;now&#x27;))</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span>, (url, nick, mail, link, comment, pid, rid))</span><br><span class="line">    </span><br><span class="line">    id_map[vc[<span class="string">&#x27;objectId&#x27;</span>]] = cursor.lastrowid</span><br><span class="line"></span><br><span class="line">conn.commit()</span><br><span class="line">conn.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;迁移完成，共导入 <span class="subst">&#123;<span class="built_in">len</span>(valine_comments)&#125;</span> 条评论&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、验证与测试"><a href="#五、验证与测试" class="headerlink" title="五、验证与测试"></a>五、验证与测试</h2><h3 id="检查服务状态"><a href="#检查服务状态" class="headerlink" title="检查服务状态"></a>检查服务状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 list</span><br><span class="line">pm2 logs waline</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试API"><a href="#测试API" class="headerlink" title="测试API"></a>测试API</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl http://127.0.0.1/waline/</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查评论"><a href="#检查评论" class="headerlink" title="检查评论"></a>检查评论</h3><p>访问博客文章页面，确认历史评论是否正确显示。</p>
+<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q-HTTPS页面评论不显示？"><a href="#Q-HTTPS页面评论不显示？" class="headerlink" title="Q: HTTPS页面评论不显示？"></a>Q: HTTPS页面评论不显示？</h3><p>A: 确保serverURL使用相对路径，并通过nginx代理。</p>
+<h3 id="Q-邮件通知不工作？"><a href="#Q-邮件通知不工作？" class="headerlink" title="Q: 邮件通知不工作？"></a>Q: 邮件通知不工作？</h3><p>A: 检查SMTP配置，QQ邮箱需要使用授权码而非登录密码。</p>
+<h3 id="Q-表情显示为文字？"><a href="#Q-表情显示为文字？" class="headerlink" title="Q: 表情显示为文字？"></a>Q: 表情显示为文字？</h3><p>A: Valine的表情格式需要转换为emoji或图片。</p>
+<h3 id="Q-评论数不准确？"><a href="#Q-评论数不准确？" class="headerlink" title="Q: 评论数不准确？"></a>Q: 评论数不准确？</h3><p>A: 检查 <code>card_post_count: true</code> 配置，确保Waline的pageview功能开启。</p>
+<h2 id="七、维护命令"><a href="#七、维护命令" class="headerlink" title="七、维护命令"></a>七、维护命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">pm2 status waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">pm2 restart waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">pm2 logs waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份数据库</span></span><br><span class="line"><span class="built_in">cp</span> /var/www/waline/data/waline.sqlite /backup/waline_$(<span class="built_in">date</span> +%Y%m%d).sqlite</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Waline相比Valine有以下优势：</p>
+<ol>
+<li><strong>数据自主可控</strong> - 自建后端，数据存储在自己的服务器</li>
+<li><strong>功能更丰富</strong> - 支持邮件通知、评论审核、垃圾过滤</li>
+<li><strong>更好的安全性</strong> - 不暴露敏感信息</li>
+<li><strong>HTTPS兼容</strong> - 通过nginx代理解决混合内容问题</li>
+</ol>
+<p>迁移过程相对简单，主要是数据格式转换和前端配置调整。希望这篇教程对你有帮助！</p>
+<hr>
+<blockquote>
+<p>参考文档：</p>
+<ul>
+<li><a href="https://waline.js.org/">Waline官方文档</a></li>
+<li><a href="https://waline.js.org/migration/">Valine迁移指南</a></li>
+<li><a href="https://butterfly.js.org/">Hexo Butterfly主题配置</a></li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Waline</tag>
+        <tag>Valine</tag>
+        <tag>博客</tag>
+        <tag>评论系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GitHub Trending 每日热点追踪系统 - 自动化早晚报推送到飞书群</title>
     <url>/2026-03-19-5d7003d296e7.html</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GitHub Trending 是发现新技术趋势和热门项目的重要渠道。但每天手动查看很麻烦，所以我开发了一个自动化系统：</p>
@@ -90,6 +176,65 @@
         <tag>OpenClaw</tag>
         <tag>自动化</tag>
         <tag>飞书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenClaw飞书群聊机器人@不响应问题排查与解决</title>
+    <url>//2026-03-09-openclaw-feishu-group-bot-fix.html</url>
+    <content><![CDATA[<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在飞书群聊中 @OpenClaw 机器人时，机器人没有响应。日志显示：</p>
+<p>```<br>message in group oc_xxx did not mention bot, recording to history<br>```</p>
+<p>消息被记录到历史，但没有触发回复。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><h3 id="1-权限检查"><a href="#1-权限检查" class="headerlink" title="1. 权限检查"></a>1. 权限检查</h3><p>首先确认飞书应用权限配置正确：</p>
+<ul>
+<li>`im:message` ✅</li>
+<li>`im:message:send_as_bot` ✅</li>
+<li>`im:message.group_at_msg:readonly` ✅</li>
+<li>`contact:contact.base:readonly` ✅</li>
+</ul>
+<p>所有必要权限都已授权。</p>
+<h3 id="2-日志分析"><a href="#2-日志分析" class="headerlink" title="2. 日志分析"></a>2. 日志分析</h3><p>查看 Gateway 日志发现关键问题：</p>
+<p>```<br>[feishu] feishu[default]: message in group oc_xxx did not mention bot, recording to history<br>```</p>
+<p>这表明机器人收到了消息，但没有识别到被 @提及。</p>
+<h3 id="3-源码分析"><a href="#3-源码分析" class="headerlink" title="3. 源码分析"></a>3. 源码分析</h3><p>查看 OpenClaw 飞书扩展源码 (`bot.ts`)：</p>
+<p>```typescript<br>function checkBotMentioned(event: FeishuMessageEvent, botOpenId?: string): boolean {<br>  if (!botOpenId) return false;  &#x2F;&#x2F; 关键：没有 botOpenId 直接返回 false<br>  const mentions &#x3D; event.message.mentions ?? [];<br>  if (mentions.length &gt; 0) {<br>    return mentions.some((m) &#x3D;&gt; m.id.open_id &#x3D;&#x3D;&#x3D; botOpenId);<br>  }<br>  &#x2F;&#x2F; …<br>}<br>```</p>
+<p><strong>根本原因</strong>：`botOpenId` 没有配置，导致 `checkBotMentioned` 函数直接返回 `false`。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1-获取机器人-Open-ID"><a href="#1-获取机器人-Open-ID" class="headerlink" title="1. 获取机器人 Open ID"></a>1. 获取机器人 Open ID</h3><p>```bash</p>
+<h1 id="获取-tenant-access-token"><a href="#获取-tenant-access-token" class="headerlink" title="获取 tenant_access_token"></a>获取 tenant_access_token</h1><p>curl -s “<a href="https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal">https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal</a>“ \<br>  -H “Content-Type: application&#x2F;json” \<br>  -d ‘{“app_id”:”cli_xxx”,”app_secret”:”xxx”}’</p>
+<h1 id="获取机器人信息"><a href="#获取机器人信息" class="headerlink" title="获取机器人信息"></a>获取机器人信息</h1><p>curl -s “<a href="https://open.feishu.cn/open-apis/bot/v3/info">https://open.feishu.cn/open-apis/bot/v3/info</a>“ \<br>  -H “Authorization: Bearer $TOKEN”<br>```</p>
+<p>返回结果：</p>
+<p>```json<br>{<br>  “bot”: {<br>    “open_id”: “ou_c0224f261ab61714eaafe98ac6edd0a1”,<br>    “app_name”: “贾维斯”<br>  }<br>}<br>```</p>
+<h3 id="2-更新配置"><a href="#2-更新配置" class="headerlink" title="2. 更新配置"></a>2. 更新配置</h3><p>在 `~&#x2F;.openclaw&#x2F;openclaw.json` 中添加 `botOpenId`：</p>
+<p>```json<br>{<br>  “channels”: {<br>    “feishu”: {<br>      “enabled”: true,<br>      “appId”: “cli_xxx”,<br>      “appSecret”: “xxx”,<br>      “domain”: “feishu”,<br>      “groupPolicy”: “open”,<br>      “botOpenId”: “ou_c0224f261ab61714eaafe98ac6edd0a1”<br>    }<br>  }<br>}<br>```</p>
+<h3 id="3-重启-Gateway"><a href="#3-重启-Gateway" class="headerlink" title="3. 重启 Gateway"></a>3. 重启 Gateway</h3><p>```bash</p>
+<h1 id="重启-OpenClaw-Gateway"><a href="#重启-OpenClaw-Gateway" class="headerlink" title="重启 OpenClaw Gateway"></a>重启 OpenClaw Gateway</h1><p>pkill -9 -f openclaw-gateway<br>openclaw gateway start<br>```</p>
+<h3 id="4-验证"><a href="#4-验证" class="headerlink" title="4. 验证"></a>4. 验证</h3><p>重启后日志显示：</p>
+<p>```<br>[feishu] feishu[default]: bot open_id resolved: ou_c0224f261ab61714eaafe98ac6edd0a1<br>```</p>
+<p>机器人在群聊中 @ 后可以正常回复了！</p>
+<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><ol>
+<li><strong>日志是最好的调试工具</strong> - 通过日志定位到 “did not mention bot” 的关键信息</li>
+<li><strong>理解源码逻辑</strong> - 查看 `checkBotMentioned` 函数发现问题根源</li>
+<li><strong>配置完整性</strong> - 飞书机器人需要配置 `botOpenId` 才能正确识别群聊 @提及</li>
+<li><strong>官方文档可能遗漏</strong> - 这个配置项在 OpenClaw 文档中可能没有明确说明</li>
+</ol>
+<h2 id="其他相关问题"><a href="#其他相关问题" class="headerlink" title="其他相关问题"></a>其他相关问题</h2><h3 id="磁盘空间清理"><a href="#磁盘空间清理" class="headerlink" title="磁盘空间清理"></a>磁盘空间清理</h3><p>在排查过程中发现磁盘已满 (100%)：</p>
+<p>```bash</p>
+<h1 id="清理大文件"><a href="#清理大文件" class="headerlink" title="清理大文件"></a>清理大文件</h1><p>rm -rf node_modules&#x2F;venv&#x2F;.git  # 根据实际情况清理</p>
+<h1 id="清理系统缓存"><a href="#清理系统缓存" class="headerlink" title="清理系统缓存"></a>清理系统缓存</h1><p>journalctl –vacuum-size&#x3D;50M<br>npm cache clean –force<br>```</p>
+<h3 id="项目备份"><a href="#项目备份" class="headerlink" title="项目备份"></a>项目备份</h3><p>使用 GitHub 备份重要项目：</p>
+<p>```bash</p>
+<h1 id="创建私有仓库并推送"><a href="#创建私有仓库并推送" class="headerlink" title="创建私有仓库并推送"></a>创建私有仓库并推送</h1><p>gh repo create project-name –private –source&#x3D;. –push<br>```</p>
+<hr>
+<p>希望这篇文章对你有帮助！如果你也遇到类似问题，欢迎交流。</p>
+]]></content>
+      <categories>
+        <category>技术栈</category>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>OpenClaw</tag>
+        <tag>飞书</tag>
+        <tag>机器人</tag>
+        <tag>问题排查</tag>
       </tags>
   </entry>
   <entry>
@@ -456,6 +601,17 @@
 <p>git fetch origin：这个命令会从远程仓库（通常是”origin”，可以根据你的实际情况替换）获取最新的分支信息，但不会合并或应用任何更改到你的本地分支。</p>
 <p>git reset –hard origin&#x2F;<branch_name>：这个命令会将你的本地分支重置为与指定远程分支相同的状态，并且会放弃本地的任何更改。–hard 标志会强制应用这个重置，因此请小心使用，确保你不需要本地的更改。</p>
 <p>这些命令将强制拉取远程分支的最新版本，并且会覆盖本地的任何更改。确保在执行这些命令之前，你没有重要的未提交更改，因为它们将永久丢失。</p>
+]]></content>
+      <categories>
+        <category>技术栈</category>
+        <category>Git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>git更新仓库地址</title>
+    <url>/2024-07-23-2e781f6ac522.html</url>
+    <content><![CDATA[<p>使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>技术栈</category>
@@ -1593,92 +1749,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Waline评论系统安装与Valine迁移完整指南</title>
-    <url>/2026-03-15-3f4f13ed5e54.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近将博客评论系统从Valine迁移到了Waline。Waline是从Valine衍生出的带有后端服务的评论系统，解决了Valine的一些痛点。本文记录完整的安装和迁移过程。</p>
-<h2 id="为什么选择Waline？"><a href="#为什么选择Waline？" class="headerlink" title="为什么选择Waline？"></a>为什么选择Waline？</h2><h3 id="Valine的问题"><a href="#Valine的问题" class="headerlink" title="Valine的问题"></a>Valine的问题</h3><ul>
-<li>依赖LeanCloud存储，国内访问不稳定</li>
-<li>没有后端，无法实现邮件通知等功能</li>
-<li>安全性问题（暴露AppKey）</li>
-</ul>
-<h3 id="Waline的优势"><a href="#Waline的优势" class="headerlink" title="Waline的优势"></a>Waline的优势</h3><ul>
-<li>支持多种数据库（SQLite、MySQL、MongoDB等）</li>
-<li>自建后端，数据完全可控</li>
-<li>支持邮件通知、微信通知</li>
-<li>支持评论审核、垃圾评论过滤</li>
-<li>兼容Valine前端配置</li>
-</ul>
-<h2 id="一、安装Waline服务端"><a href="#一、安装Waline服务端" class="headerlink" title="一、安装Waline服务端"></a>一、安装Waline服务端</h2><h3 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1. 安装Node.js"></a>1. 安装Node.js</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用nvm安装</span></span><br><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">nvm install --lts</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-安装PM2进程管理"><a href="#2-安装PM2进程管理" class="headerlink" title="2. 安装PM2进程管理"></a>2. 安装PM2进程管理</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-创建Waline目录"><a href="#3-创建Waline目录" class="headerlink" title="3. 创建Waline目录"></a>3. 创建Waline目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /var/www/waline</span><br><span class="line"><span class="built_in">cd</span> /var/www/waline</span><br><span class="line">npm init -y</span><br><span class="line">npm install @waline/vercel dotenv</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-创建启动脚本"><a href="#4-创建启动脚本" class="headerlink" title="4. 创建启动脚本"></a>4. 创建启动脚本</h3><p>创建 <code>start.js</code>：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 加载环境变量</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;dotenv&#x27;</span>).<span class="title function_">config</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;/var/www/waline/.env&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置端口</span></span><br><span class="line">process.<span class="property">env</span>.<span class="property">PORT</span> = process.<span class="property">env</span>.<span class="property">PORT</span> || <span class="string">&#x27;8360&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载 Waline</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;@waline/vercel/vanilla.js&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-配置环境变量"><a href="#5-配置环境变量" class="headerlink" title="5. 配置环境变量"></a>5. 配置环境变量</h3><p>创建 <code>.env</code> 文件：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># SQLite本地存储</span></span><br><span class="line">SQLITE_PATH=/var/www/waline/data</span><br><span class="line">PORT=8360</span><br><span class="line">SECURE_DOMAINS=your-domain.com</span><br><span class="line">SITE_URL=https://your-domain.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 邮件通知配置 (QQ邮箱)</span></span><br><span class="line">SMTP_SERVICE=QQ</span><br><span class="line">SMTP_USER=your-email@qq.com</span><br><span class="line">SMTP_PASS=your-smtp-password</span><br><span class="line">SITE_NAME=你的博客名称</span><br><span class="line">AUTHOR_EMAIL=your-email@qq.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-初始化SQLite数据库"><a href="#6-初始化SQLite数据库" class="headerlink" title="6. 初始化SQLite数据库"></a>6. 初始化SQLite数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlite3 /var/www/waline/data/waline.sqlite &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Comment (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  url TEXT NOT NULL,</span><br><span class="line">  nick TEXT NOT NULL,</span><br><span class="line">  mail TEXT,</span><br><span class="line">  <span class="built_in">link</span> TEXT,</span><br><span class="line">  comment TEXT NOT NULL,</span><br><span class="line">  pid INTEGER,</span><br><span class="line">  rid INTEGER,</span><br><span class="line">  status TEXT DEFAULT <span class="string">&#x27;approved&#x27;</span>,</span><br><span class="line">  ua TEXT,</span><br><span class="line">  ip TEXT,</span><br><span class="line">  insertedAt DATETIME DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,</span><br><span class="line">  user_id TEXT,</span><br><span class="line">  sticky INTEGER DEFAULT 0,</span><br><span class="line">  like INTEGER DEFAULT 0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Counter (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  url TEXT NOT NULL UNIQUE,</span><br><span class="line">  time INTEGER DEFAULT 0</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE IF NOT EXISTS wl_Users (</span><br><span class="line">  <span class="built_in">id</span> INTEGER PRIMARY KEY AUTOINCREMENT,</span><br><span class="line">  display_name TEXT NOT NULL,</span><br><span class="line">  email TEXT NOT NULL UNIQUE,</span><br><span class="line">  password TEXT NOT NULL,</span><br><span class="line">  <span class="built_in">type</span> TEXT DEFAULT <span class="string">&#x27;guest&#x27;</span></span><br><span class="line">);</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-使用PM2启动"><a href="#7-使用PM2启动" class="headerlink" title="7. 使用PM2启动"></a>7. 使用PM2启动</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start start.js --name waline</span><br><span class="line">pm2 save</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、配置Nginx代理"><a href="#二、配置Nginx代理" class="headerlink" title="二、配置Nginx代理"></a>二、配置Nginx代理</h2><h3 id="为什么需要代理？"><a href="#为什么需要代理？" class="headerlink" title="为什么需要代理？"></a>为什么需要代理？</h3><p>如果你的博客使用HTTPS，直接访问HTTP的Waline服务会被浏览器阻止（混合内容安全策略）。</p>
-<h3 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h3><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span> default_server;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">    <span class="attribute">root</span> /var/www/blog;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Waline 评论 API 代理</span></span><br><span class="line">    <span class="section">location</span> /waline/ &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:8360/;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Connection <span class="string">&quot;upgrade&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ =<span class="number">404</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、配置博客前端"><a href="#三、配置博客前端" class="headerlink" title="三、配置博客前端"></a>三、配置博客前端</h2><h3 id="Hexo-Butterfly主题配置"><a href="#Hexo-Butterfly主题配置" class="headerlink" title="Hexo Butterfly主题配置"></a>Hexo Butterfly主题配置</h3><p>编辑 <code>themes/butterfly/_config.yml</code>：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">waline</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">card_post_count:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">waline:</span></span><br><span class="line">  <span class="attr">serverURL:</span> <span class="string">/waline</span>  <span class="comment"># 使用相对路径，支持HTTPS</span></span><br><span class="line">  <span class="attr">pageview:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">option:</span></span><br><span class="line">    <span class="attr">locale:</span></span><br><span class="line">      <span class="attr">placeholder:</span> <span class="string">欢迎评论~</span></span><br><span class="line">    <span class="attr">meta:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nick</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mail</span></span><br><span class="line">    <span class="attr">requiredFields:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">nick</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">mail</span></span><br><span class="line">    <span class="attr">emoji:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/qq</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/bmoji</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">//unpkg.com/@waline/emojis@1.4.0/weibo</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="重要说明"><a href="#重要说明" class="headerlink" title="重要说明"></a>重要说明</h3><p><strong>serverURL使用相对路径</strong>：<code>/waline</code> 而不是 <code>http://ip:port</code></p>
-<p>这样无论博客使用HTTP还是HTTPS，都能正确加载评论。</p>
-<h2 id="四、从Valine迁移评论"><a href="#四、从Valine迁移评论" class="headerlink" title="四、从Valine迁移评论"></a>四、从Valine迁移评论</h2><h3 id="1-导出Valine评论"><a href="#1-导出Valine评论" class="headerlink" title="1. 导出Valine评论"></a>1. 导出Valine评论</h3><p>从LeanCloud后台导出评论数据，格式为JSON。</p>
-<h3 id="2-Valine表情映射"><a href="#2-Valine表情映射" class="headerlink" title="2. Valine表情映射"></a>2. Valine表情映射</h3><p>Valine使用 <code>:emotion:</code> 格式的表情，Waline使用emoji。需要转换：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Valine表情到Emoji的映射</span></span><br><span class="line">VALINE_TO_EMOJI = &#123;</span><br><span class="line">    <span class="string">&#x27;whee&#x27;</span>: <span class="string">&#x27;😁&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;clap&#x27;</span>: <span class="string">&#x27;👏&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;poor&#x27;</span>: <span class="string">&#x27;😰&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;tear&#x27;</span>: <span class="string">&#x27;😢&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;happy&#x27;</span>: <span class="string">&#x27;😊&#x27;</span>,</span><br><span class="line">    <span class="comment"># ... 更多映射</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">convert_emotion</span>(<span class="params">text</span>):</span><br><span class="line">    <span class="keyword">import</span> re</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">replace</span>(<span class="params"><span class="keyword">match</span></span>):</span><br><span class="line">        emotion = <span class="keyword">match</span>.group(<span class="number">1</span>).strip().lower()</span><br><span class="line">        <span class="keyword">return</span> VALINE_TO_EMOJI.get(emotion, <span class="keyword">match</span>.group(<span class="number">0</span>))</span><br><span class="line">    <span class="keyword">return</span> re.sub(<span class="string">r&#x27;:([a-zA-Z\s]+):&#x27;</span>, replace, text)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-迁移脚本"><a href="#3-迁移脚本" class="headerlink" title="3. 迁移脚本"></a>3. 迁移脚本</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> sqlite3</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取Valine导出数据</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;valine_comments.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    valine_comments = json.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接Waline数据库</span></span><br><span class="line">conn = sqlite3.connect(<span class="string">&#x27;/var/www/waline/data/waline.sqlite&#x27;</span>)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空现有评论</span></span><br><span class="line">cursor.execute(<span class="string">&quot;DELETE FROM wl_Comment&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ID映射表（处理回复关系）</span></span><br><span class="line">id_map = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> vc <span class="keyword">in</span> valine_comments:</span><br><span class="line">    <span class="comment"># 转换数据</span></span><br><span class="line">    url = vc.get(<span class="string">&#x27;url&#x27;</span>, <span class="string">&#x27;/&#x27;</span>)</span><br><span class="line">    nick = vc.get(<span class="string">&#x27;nick&#x27;</span>, <span class="string">&#x27;Anonymous&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;Anonymous&#x27;</span></span><br><span class="line">    mail = vc.get(<span class="string">&#x27;mail&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    link = vc.get(<span class="string">&#x27;link&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    comment = convert_emotion(vc.get(<span class="string">&#x27;comment&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 处理回复关系</span></span><br><span class="line">    pid = id_map.get(vc.get(<span class="string">&#x27;pid&#x27;</span>)) <span class="keyword">if</span> vc.get(<span class="string">&#x27;pid&#x27;</span>) <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">    rid = id_map.get(vc.get(<span class="string">&#x27;rid&#x27;</span>)) <span class="keyword">if</span> vc.get(<span class="string">&#x27;rid&#x27;</span>) <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    cursor.execute(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        INSERT INTO wl_Comment (url, nick, mail, link, comment, pid, rid, status, insertedAt, updatedAt)</span></span><br><span class="line"><span class="string">        VALUES (?, ?, ?, ?, ?, ?, ?, &#x27;approved&#x27;, datetime(&#x27;now&#x27;), datetime(&#x27;now&#x27;))</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span>, (url, nick, mail, link, comment, pid, rid))</span><br><span class="line">    </span><br><span class="line">    id_map[vc[<span class="string">&#x27;objectId&#x27;</span>]] = cursor.lastrowid</span><br><span class="line"></span><br><span class="line">conn.commit()</span><br><span class="line">conn.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;迁移完成，共导入 <span class="subst">&#123;<span class="built_in">len</span>(valine_comments)&#125;</span> 条评论&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、验证与测试"><a href="#五、验证与测试" class="headerlink" title="五、验证与测试"></a>五、验证与测试</h2><h3 id="检查服务状态"><a href="#检查服务状态" class="headerlink" title="检查服务状态"></a>检查服务状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 list</span><br><span class="line">pm2 logs waline</span><br></pre></td></tr></table></figure>
-
-<h3 id="测试API"><a href="#测试API" class="headerlink" title="测试API"></a>测试API</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl http://127.0.0.1/waline/</span><br></pre></td></tr></table></figure>
-
-<h3 id="检查评论"><a href="#检查评论" class="headerlink" title="检查评论"></a>检查评论</h3><p>访问博客文章页面，确认历史评论是否正确显示。</p>
-<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><h3 id="Q-HTTPS页面评论不显示？"><a href="#Q-HTTPS页面评论不显示？" class="headerlink" title="Q: HTTPS页面评论不显示？"></a>Q: HTTPS页面评论不显示？</h3><p>A: 确保serverURL使用相对路径，并通过nginx代理。</p>
-<h3 id="Q-邮件通知不工作？"><a href="#Q-邮件通知不工作？" class="headerlink" title="Q: 邮件通知不工作？"></a>Q: 邮件通知不工作？</h3><p>A: 检查SMTP配置，QQ邮箱需要使用授权码而非登录密码。</p>
-<h3 id="Q-表情显示为文字？"><a href="#Q-表情显示为文字？" class="headerlink" title="Q: 表情显示为文字？"></a>Q: 表情显示为文字？</h3><p>A: Valine的表情格式需要转换为emoji或图片。</p>
-<h3 id="Q-评论数不准确？"><a href="#Q-评论数不准确？" class="headerlink" title="Q: 评论数不准确？"></a>Q: 评论数不准确？</h3><p>A: 检查 <code>card_post_count: true</code> 配置，确保Waline的pageview功能开启。</p>
-<h2 id="七、维护命令"><a href="#七、维护命令" class="headerlink" title="七、维护命令"></a>七、维护命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">pm2 status waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启服务</span></span><br><span class="line">pm2 restart waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line">pm2 logs waline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 备份数据库</span></span><br><span class="line"><span class="built_in">cp</span> /var/www/waline/data/waline.sqlite /backup/waline_$(<span class="built_in">date</span> +%Y%m%d).sqlite</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Waline相比Valine有以下优势：</p>
-<ol>
-<li><strong>数据自主可控</strong> - 自建后端，数据存储在自己的服务器</li>
-<li><strong>功能更丰富</strong> - 支持邮件通知、评论审核、垃圾过滤</li>
-<li><strong>更好的安全性</strong> - 不暴露敏感信息</li>
-<li><strong>HTTPS兼容</strong> - 通过nginx代理解决混合内容问题</li>
-</ol>
-<p>迁移过程相对简单，主要是数据格式转换和前端配置调整。希望这篇教程对你有帮助！</p>
-<hr>
-<blockquote>
-<p>参考文档：</p>
-<ul>
-<li><a href="https://waline.js.org/">Waline官方文档</a></li>
-<li><a href="https://waline.js.org/migration/">Valine迁移指南</a></li>
-<li><a href="https://butterfly.js.org/">Hexo Butterfly主题配置</a></li>
-</ul>
-</blockquote>
-]]></content>
-      <categories>
-        <category>综合</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>Waline</tag>
-        <tag>Valine</tag>
-        <tag>博客</tag>
-        <tag>评论系统</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>leetcode 1845. 座位预约管理系统</title>
     <url>/2023-10-06-515545d31512.html</url>
     <content><![CDATA[<blockquote>
@@ -1724,65 +1794,6 @@
         <category>算法</category>
         <category>LeetCode</category>
       </categories>
-  </entry>
-  <entry>
-    <title>OpenClaw飞书群聊机器人@不响应问题排查与解决</title>
-    <url>//2026-03-09-openclaw-feishu-group-bot-fix.html</url>
-    <content><![CDATA[<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在飞书群聊中 @OpenClaw 机器人时，机器人没有响应。日志显示：</p>
-<p>```<br>message in group oc_xxx did not mention bot, recording to history<br>```</p>
-<p>消息被记录到历史，但没有触发回复。</p>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><h3 id="1-权限检查"><a href="#1-权限检查" class="headerlink" title="1. 权限检查"></a>1. 权限检查</h3><p>首先确认飞书应用权限配置正确：</p>
-<ul>
-<li>`im:message` ✅</li>
-<li>`im:message:send_as_bot` ✅</li>
-<li>`im:message.group_at_msg:readonly` ✅</li>
-<li>`contact:contact.base:readonly` ✅</li>
-</ul>
-<p>所有必要权限都已授权。</p>
-<h3 id="2-日志分析"><a href="#2-日志分析" class="headerlink" title="2. 日志分析"></a>2. 日志分析</h3><p>查看 Gateway 日志发现关键问题：</p>
-<p>```<br>[feishu] feishu[default]: message in group oc_xxx did not mention bot, recording to history<br>```</p>
-<p>这表明机器人收到了消息，但没有识别到被 @提及。</p>
-<h3 id="3-源码分析"><a href="#3-源码分析" class="headerlink" title="3. 源码分析"></a>3. 源码分析</h3><p>查看 OpenClaw 飞书扩展源码 (`bot.ts`)：</p>
-<p>```typescript<br>function checkBotMentioned(event: FeishuMessageEvent, botOpenId?: string): boolean {<br>  if (!botOpenId) return false;  &#x2F;&#x2F; 关键：没有 botOpenId 直接返回 false<br>  const mentions &#x3D; event.message.mentions ?? [];<br>  if (mentions.length &gt; 0) {<br>    return mentions.some((m) &#x3D;&gt; m.id.open_id &#x3D;&#x3D;&#x3D; botOpenId);<br>  }<br>  &#x2F;&#x2F; …<br>}<br>```</p>
-<p><strong>根本原因</strong>：`botOpenId` 没有配置，导致 `checkBotMentioned` 函数直接返回 `false`。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1-获取机器人-Open-ID"><a href="#1-获取机器人-Open-ID" class="headerlink" title="1. 获取机器人 Open ID"></a>1. 获取机器人 Open ID</h3><p>```bash</p>
-<h1 id="获取-tenant-access-token"><a href="#获取-tenant-access-token" class="headerlink" title="获取 tenant_access_token"></a>获取 tenant_access_token</h1><p>curl -s “<a href="https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal">https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal</a>“ \<br>  -H “Content-Type: application&#x2F;json” \<br>  -d ‘{“app_id”:”cli_xxx”,”app_secret”:”xxx”}’</p>
-<h1 id="获取机器人信息"><a href="#获取机器人信息" class="headerlink" title="获取机器人信息"></a>获取机器人信息</h1><p>curl -s “<a href="https://open.feishu.cn/open-apis/bot/v3/info">https://open.feishu.cn/open-apis/bot/v3/info</a>“ \<br>  -H “Authorization: Bearer $TOKEN”<br>```</p>
-<p>返回结果：</p>
-<p>```json<br>{<br>  “bot”: {<br>    “open_id”: “ou_c0224f261ab61714eaafe98ac6edd0a1”,<br>    “app_name”: “贾维斯”<br>  }<br>}<br>```</p>
-<h3 id="2-更新配置"><a href="#2-更新配置" class="headerlink" title="2. 更新配置"></a>2. 更新配置</h3><p>在 `~&#x2F;.openclaw&#x2F;openclaw.json` 中添加 `botOpenId`：</p>
-<p>```json<br>{<br>  “channels”: {<br>    “feishu”: {<br>      “enabled”: true,<br>      “appId”: “cli_xxx”,<br>      “appSecret”: “xxx”,<br>      “domain”: “feishu”,<br>      “groupPolicy”: “open”,<br>      “botOpenId”: “ou_c0224f261ab61714eaafe98ac6edd0a1”<br>    }<br>  }<br>}<br>```</p>
-<h3 id="3-重启-Gateway"><a href="#3-重启-Gateway" class="headerlink" title="3. 重启 Gateway"></a>3. 重启 Gateway</h3><p>```bash</p>
-<h1 id="重启-OpenClaw-Gateway"><a href="#重启-OpenClaw-Gateway" class="headerlink" title="重启 OpenClaw Gateway"></a>重启 OpenClaw Gateway</h1><p>pkill -9 -f openclaw-gateway<br>openclaw gateway start<br>```</p>
-<h3 id="4-验证"><a href="#4-验证" class="headerlink" title="4. 验证"></a>4. 验证</h3><p>重启后日志显示：</p>
-<p>```<br>[feishu] feishu[default]: bot open_id resolved: ou_c0224f261ab61714eaafe98ac6edd0a1<br>```</p>
-<p>机器人在群聊中 @ 后可以正常回复了！</p>
-<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><ol>
-<li><strong>日志是最好的调试工具</strong> - 通过日志定位到 “did not mention bot” 的关键信息</li>
-<li><strong>理解源码逻辑</strong> - 查看 `checkBotMentioned` 函数发现问题根源</li>
-<li><strong>配置完整性</strong> - 飞书机器人需要配置 `botOpenId` 才能正确识别群聊 @提及</li>
-<li><strong>官方文档可能遗漏</strong> - 这个配置项在 OpenClaw 文档中可能没有明确说明</li>
-</ol>
-<h2 id="其他相关问题"><a href="#其他相关问题" class="headerlink" title="其他相关问题"></a>其他相关问题</h2><h3 id="磁盘空间清理"><a href="#磁盘空间清理" class="headerlink" title="磁盘空间清理"></a>磁盘空间清理</h3><p>在排查过程中发现磁盘已满 (100%)：</p>
-<p>```bash</p>
-<h1 id="清理大文件"><a href="#清理大文件" class="headerlink" title="清理大文件"></a>清理大文件</h1><p>rm -rf node_modules&#x2F;venv&#x2F;.git  # 根据实际情况清理</p>
-<h1 id="清理系统缓存"><a href="#清理系统缓存" class="headerlink" title="清理系统缓存"></a>清理系统缓存</h1><p>journalctl –vacuum-size&#x3D;50M<br>npm cache clean –force<br>```</p>
-<h3 id="项目备份"><a href="#项目备份" class="headerlink" title="项目备份"></a>项目备份</h3><p>使用 GitHub 备份重要项目：</p>
-<p>```bash</p>
-<h1 id="创建私有仓库并推送"><a href="#创建私有仓库并推送" class="headerlink" title="创建私有仓库并推送"></a>创建私有仓库并推送</h1><p>gh repo create project-name –private –source&#x3D;. –push<br>```</p>
-<hr>
-<p>希望这篇文章对你有帮助！如果你也遇到类似问题，欢迎交流。</p>
-]]></content>
-      <categories>
-        <category>技术栈</category>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>OpenClaw</tag>
-        <tag>飞书</tag>
-        <tag>机器人</tag>
-        <tag>问题排查</tag>
-      </tags>
   </entry>
   <entry>
     <title>leetcode 208. 实现 Trie (前缀树)</title>
@@ -1864,17 +1875,6 @@
       <categories>
         <category>算法</category>
         <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>git更新仓库地址</title>
-    <url>/2024-07-23-2e781f6ac522.html</url>
-    <content><![CDATA[<p>使用如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote set-url origin https://gitee.com/xxxxx</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>技术栈</category>
-        <category>Git</category>
       </categories>
   </entry>
   <entry>
@@ -1982,17 +1982,6 @@
 
 
 <h1 id="TODO-KMP-算法"><a href="#TODO-KMP-算法" class="headerlink" title="TODO　KMP 算法"></a>TODO　KMP 算法</h1>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>leetcode 355设计推特</title>
-    <url>/2024-05-10-5f92e64321b5.html</url>
-    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
       <categories>
         <category>算法</category>
         <category>LeetCode</category>
@@ -3006,6 +2995,17 @@
       </categories>
   </entry>
   <entry>
+    <title>leetcode 355设计推特</title>
+    <url>/2024-05-10-5f92e64321b5.html</url>
+    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>【Golang】贪心</title>
     <url>/2025-06-18-64bb1fc9a340.html</url>
     <content><![CDATA[<h1 id="贪心算法经典题目及Golang实现"><a href="#贪心算法经典题目及Golang实现" class="headerlink" title="贪心算法经典题目及Golang实现"></a>贪心算法经典题目及Golang实现</h1><p>贪心算法是一种在每一步选择中都采取当前状态下最优的选择，从而希望导致全局最优解的算法策略。以下是一些LeetCode上经典的贪心算法题目及其Golang实现，并总结一个通用的解题模板。</p>
@@ -3049,23 +3049,6 @@
 <li>跳跃游戏类问题</li>
 </ul>
 <p>贪心算法的关键在于证明贪心策略的正确性，这通常需要数学证明或直观理解。在实际应用中，如果无法确定贪心策略是否正确，可以先尝试，然后验证是否能够得到全局最优解。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【go】初始化双向列表List</title>
-    <url>/2024-01-22-a4b210cdc4d5.html</url>
-    <content><![CDATA[<p>在Go语言中，两种方法都可以用于初始化一个<code>list.List</code>。</p>
-<ol>
-<li><p><code>queue := &amp;list.List&#123;&#125;</code>: 这是使用结构体字面量的方式，创建一个 <code>list.List</code> 类型的结构体变量，并返回该结构体的指针。这种方式创建了一个空的链表。</p>
-</li>
-<li><p><code>queue := list.New()</code>: 这是使用 <code>list</code> 包中的 <code>New</code> 函数来创建一个新的 <code>list.List</code>。<code>New</code> 函数返回一个指向新创建的 <code>list.List</code> 实例的指针。同样，这种方式也创建了一个空的链表。</p>
-</li>
-</ol>
-<p>两种方式都是有效的</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -3729,6 +3712,23 @@
       </categories>
   </entry>
   <entry>
+    <title>【go】初始化双向列表List</title>
+    <url>/2024-01-22-a4b210cdc4d5.html</url>
+    <content><![CDATA[<p>在Go语言中，两种方法都可以用于初始化一个<code>list.List</code>。</p>
+<ol>
+<li><p><code>queue := &amp;list.List&#123;&#125;</code>: 这是使用结构体字面量的方式，创建一个 <code>list.List</code> 类型的结构体变量，并返回该结构体的指针。这种方式创建了一个空的链表。</p>
+</li>
+<li><p><code>queue := list.New()</code>: 这是使用 <code>list</code> 包中的 <code>New</code> 函数来创建一个新的 <code>list.List</code>。<code>New</code> 函数返回一个指向新创建的 <code>list.List</code> 实例的指针。同样，这种方式也创建了一个空的链表。</p>
+</li>
+</ol>
+<p>两种方式都是有效的</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>数据结构设计专题</title>
     <url>/2025-03-06-11dbfc57623a.html</url>
     <content><![CDATA[<h4 id="数据结构设计"><a href="#数据结构设计" class="headerlink" title="数据结构设计"></a><a href="https://labuladong.online/algo/intro/quick-learning-plan/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1">数据结构设计</a></h4><table>
@@ -4163,7 +4163,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#110;">&#108;&#x65;&#x69;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#x71;&#105;&#x40;&#102;&#117;&#100;&#97;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#99;&#x6e;">&#108;&#x65;&#x69;&#x71;&#105;&#x40;&#102;&#117;&#100;&#97;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4316,7 +4316,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#x71;&#x69;&#64;&#x66;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;">&#108;&#x65;&#x69;&#x71;&#x69;&#64;&#x66;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#101;&#x64;&#117;&#46;&#x63;&#110;">&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#101;&#x64;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4477,7 +4477,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#x75;&#100;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#46;&#99;&#x6e;">&#108;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#x75;&#100;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#46;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#x69;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#x6e;">&#x6c;&#x65;&#x69;&#x71;&#x69;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4616,7 +4616,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#117;&#100;&#97;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#110;">&#108;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#117;&#100;&#97;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#110;">&#x6c;&#x65;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4778,7 +4778,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#97;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#46;&#99;&#x6e;">&#108;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#97;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#46;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#110;&#46;&#101;&#100;&#x75;&#46;&#x63;&#x6e;">&#x6c;&#101;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#110;&#46;&#101;&#100;&#x75;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4932,7 +4932,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#46;&#101;&#100;&#117;&#x2e;&#99;&#x6e;">&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#46;&#101;&#100;&#117;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#x6e;&#x2e;&#x65;&#100;&#117;&#46;&#99;&#110;">&#108;&#101;&#x69;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#x6e;&#x2e;&#x65;&#100;&#117;&#46;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5060,7 +5060,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#105;&#x40;&#x66;&#117;&#100;&#97;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#101;&#x69;&#113;&#105;&#x40;&#x66;&#117;&#100;&#97;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#117;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#99;&#110;">&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#117;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5186,7 +5186,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#46;&#x65;&#100;&#117;&#46;&#99;&#x6e;">&#x6c;&#101;&#105;&#x71;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#46;&#x65;&#100;&#117;&#46;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#105;&#64;&#102;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#x75;&#46;&#99;&#110;">&#x6c;&#101;&#105;&#113;&#105;&#64;&#102;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#x75;&#46;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5337,7 +5337,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#105;&#64;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#110;">&#108;&#101;&#x69;&#113;&#105;&#64;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#105;&#x40;&#102;&#117;&#100;&#x61;&#110;&#46;&#x65;&#x64;&#117;&#46;&#99;&#110;">&#108;&#x65;&#105;&#113;&#105;&#x40;&#102;&#117;&#100;&#x61;&#110;&#46;&#x65;&#x64;&#117;&#46;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5475,7 +5475,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#x69;&#x40;&#102;&#x75;&#x64;&#97;&#110;&#x2e;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;">&#x6c;&#101;&#x69;&#x71;&#x69;&#x40;&#102;&#x75;&#x64;&#97;&#110;&#x2e;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#102;&#117;&#x64;&#97;&#110;&#x2e;&#101;&#100;&#x75;&#x2e;&#x63;&#x6e;">&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#102;&#117;&#x64;&#97;&#110;&#x2e;&#101;&#100;&#x75;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5629,7 +5629,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#105;&#x40;&#x66;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;">&#108;&#x65;&#x69;&#113;&#105;&#x40;&#x66;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#110;">&#x6c;&#101;&#105;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5806,7 +5806,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#x2e;&#99;&#110;">&#108;&#101;&#105;&#113;&#105;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#64;&#102;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#110;">&#108;&#x65;&#105;&#x71;&#x69;&#64;&#102;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5984,7 +5984,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#x69;&#64;&#102;&#x75;&#100;&#97;&#110;&#46;&#x65;&#x64;&#117;&#46;&#99;&#110;">&#108;&#101;&#105;&#x71;&#x69;&#64;&#102;&#x75;&#100;&#97;&#110;&#46;&#x65;&#x64;&#117;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#x69;&#64;&#x66;&#x75;&#100;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;">&#108;&#101;&#105;&#113;&#x69;&#64;&#x66;&#x75;&#100;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6140,7 +6140,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#110;&#46;&#101;&#100;&#117;&#46;&#x63;&#110;">&#108;&#101;&#x69;&#113;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#110;&#46;&#101;&#100;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6288,7 +6288,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;">&#x6c;&#101;&#105;&#113;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6382,7 +6382,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#x71;&#105;&#64;&#102;&#117;&#100;&#97;&#110;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#108;&#x65;&#x69;&#x71;&#105;&#64;&#102;&#117;&#100;&#97;&#110;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#117;&#x2e;&#x63;&#x6e;">&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#117;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6476,7 +6476,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#101;&#100;&#117;&#x2e;&#x63;&#110;">&#108;&#101;&#x69;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#101;&#100;&#117;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#46;&#x65;&#x64;&#117;&#46;&#x63;&#x6e;">&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#46;&#x65;&#x64;&#117;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6568,7 +6568,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#105;&#x40;&#102;&#117;&#x64;&#97;&#x6e;&#x2e;&#101;&#x64;&#117;&#x2e;&#99;&#x6e;">&#x6c;&#x65;&#105;&#113;&#105;&#x40;&#102;&#117;&#x64;&#97;&#x6e;&#x2e;&#101;&#x64;&#117;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#105;&#64;&#102;&#117;&#100;&#x61;&#110;&#x2e;&#x65;&#100;&#117;&#x2e;&#x63;&#x6e;">&#108;&#101;&#105;&#x71;&#105;&#64;&#102;&#117;&#100;&#x61;&#110;&#x2e;&#x65;&#100;&#117;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6671,7 +6671,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#102;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#46;&#99;&#110;">&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#102;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#x69;&#64;&#102;&#x75;&#x64;&#97;&#110;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#110;">&#108;&#101;&#x69;&#113;&#x69;&#64;&#102;&#x75;&#x64;&#97;&#110;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6775,7 +6775,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#105;&#64;&#x66;&#117;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#101;&#x69;&#113;&#105;&#64;&#x66;&#117;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#105;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;">&#108;&#101;&#x69;&#113;&#105;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -7212,463 +7212,11 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#105;&#x40;&#102;&#117;&#100;&#97;&#110;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#x6e;">&#x6c;&#101;&#105;&#113;&#105;&#x40;&#102;&#117;&#100;&#97;&#110;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#110;">&#x6c;&#101;&#x69;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
 <p>📡 数据更新：2026-04-13 19:02:09<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
-]]></content>
-      <categories>
-        <category>综合</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-        <tag>Trending</tag>
-        <tag>开源</tag>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub Trending 日报 - 2026/04/14</title>
-    <url>/2026-04-14-6cf814f2782d.html</url>
-    <content><![CDATA[<h1 id="GitHub-Trending-日报"><a href="#GitHub-Trending-日报" class="headerlink" title="GitHub Trending 日报"></a>GitHub Trending 日报</h1><p>📅 <strong>日期</strong>：2026&#x2F;04&#x2F;14</p>
-<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
-<hr>
-<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2>
-<style>
-.github-trending-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 20px 0;
-}
-.trending-card {
-    background: var(--card-bg, #f8f9fa);
-    border: 1px solid var(--border-color, #e9ecef);
-    border-radius: 12px;
-    padding: 16px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.trending-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-.card-number {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
-}
-.card-title {
-    margin: 0 !important;
-    font-size: 16px !important;
-}
-.card-title a {
-    color: #1a73e8;
-    text-decoration: none;
-}
-.card-desc {
-    color: #666;
-    font-size: 14px;
-    margin: 8px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-.card-meta {
-    display: flex;
-    gap: 12px;
-    font-size: 13px;
-    color: #666;
-    margin: 8px 0;
-}
-.card-repo {
-    font-size: 12px;
-    color: #999;
-    font-family: monospace;
-    margin-bottom: 8px;
-}
-.card-ai-insight {
-    margin-top: 8px;
-}
-.card-ai-insight summary {
-    cursor: pointer;
-    font-size: 13px;
-    color: #666;
-}
-.insight-content {
-    font-size: 13px;
-    color: #555;
-    margin-top: 8px;
-    padding: 8px;
-    background: rgba(0,0,0,0.03);
-    border-radius: 6px;
-}
-@media (max-width: 768px) {
-    .github-trending-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
-
-<div class="github-trending-grid">
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">1</span>
-                <h3 class="card-title"><a href="https://github.com/forrestchang/andrej-karpathy-skills" target="_blank">andrej-karpathy-skills</a></h3>
-            </div>
-            <p class="card-desc">A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.</p>
-            <div class="card-meta">
-                <span class="card-lang">📦 Unknown</span>
-                <span class="card-stars">⭐ +5733 今日</span>
-                <span class="card-total">🏆 26,595</span>
-            </div>
-            <div class="card-repo">📦 forrestchang/andrej-karpathy-skills</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">这个项目之所以在GitHub Trending上迅速走红，主要得益于Andrej Karpathy在AI和LLM领域的权威影响力，他关于大模型编程陷阱的观察本身就让开发者们非常感兴趣，而作者巧妙地把这些洞察整理成一份CLAUDE.md文件，让它能被Claude Code直接读取使用，这种“用AI工具优化AI工具”的自举方式很有创意，加上当前AI编程助手正火热，这类实用指南自然供不应求。这个项目最值得借鉴的是它的选题思路——不是去重复造轮子，而是聚焦于解决真实痛点，用极低的维护成本（仅一个markdown文件）产出高实用价值，同时借助名人背书和MetaGPT的概念包装，让一个简单的配置文件变成了热门项目。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">2</span>
-                <h3 class="card-title"><a href="https://github.com/NousResearch/hermes-agent" target="_blank">hermes-agent</a></h3>
-            </div>
-            <p class="card-desc">The agent that grows with you</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +11289 今日</span>
-                <span class="card-total">🏆 79,051</span>
-            </div>
-            <div class="card-repo">📦 NousResearch/hermes-agent</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">hermes-agent的火爆主要得益于当前AI agent赛道的持续火热，加上NousResearch在开源AI社区积累的良好声誉和大量粉丝基础，推出的产品往往自带流量。该项目主打“与你一起成长”的理念，精准契合了开发者对能够持续学习和进化的智能agent的期待。今日单日暴涨1.1万star的数据也说明其宣传时机的把握相当精准，很可能借助了某个行业热点或技术演示引发了社区的广泛关注和传播。
-
-从值得借鉴的角度来看，NousResearch的产品往往在技术实现与概念营销之间找到了很好的平衡点，强调“成长性”和“陪伴”这样的用户价值主张，而不是单纯堆砌技术参数，这种做法对于开发者社区的传播非常有帮助，值得其他开源项目学习。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">3</span>
-                <h3 class="card-title"><a href="https://github.com/shiyu-coder/Kronos" target="_blank">Kronos</a></h3>
-            </div>
-            <p class="card-desc">Kronos: A Foundation Model for the Language of Financial Markets</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +1554 今日</span>
-                <span class="card-total">🏆 17,173</span>
-            </div>
-            <div class="card-repo">📦 shiyu-coder/Kronos</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">Kronos之所以在GitHub Trending上迅速走红，主要是因为它瞄准了金融科技这个热门赛道，将大语言模型的能力与金融市场语言分析相结合，这在当前AI应用落地的大背景下非常有吸引力，加上今日新增超过1500 stars的强劲增长势头，说明开发者们对垂直领域基础模型的需求非常旺盛。这个项目的借鉴意义在于展示了如何将通用语言模型的能力迁移到专业领域，通过构建领域特定的预训练模型来解决金融文本理解、情感分析等实际问题，这种"基础模型+垂直场景"的思路值得其他AI项目参考。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">4</span>
-                <h3 class="card-title"><a href="https://github.com/thedotmack/claude-mem" target="_blank">claude-mem</a></h3>
-            </div>
-            <p class="card-desc">A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.</p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +3175 今日</span>
-                <span class="card-total">🏆 53,757</span>
-            </div>
-            <div class="card-repo">📦 thedotmack/claude-mem</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">这个项目之所以火起来，是因为它精准解决了AI编程工具的长期痛点——上下文丢失。Claude Code虽然强大，但每次会话都是独立的，无法记住之前的决策和代码演变，而这个插件通过用AI压缩历史操作并智能注入上下文，让Claude拥有了"记忆"，再加上搭上了Claude Code这个当红工具的生态顺风车，想不火都难。这个项目值得借鉴的地方在于它的"自举"思维——用Claude自身的能力来优化Claude，用AI压缩AI上下文；同时也展示了插件化开发的智慧，与其做一个大而全的工具，不如针对热门平台做深度增强，这样更容易获得用户和流量。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">5</span>
-                <h3 class="card-title"><a href="https://github.com/microsoft/markitdown" target="_blank">markitdown</a></h3>
-            </div>
-            <p class="card-desc">Python tool for converting files and office documents to Markdown.</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +2808 今日</span>
-                <span class="card-total">🏆 107,296</span>
-            </div>
-            <div class="card-repo">📦 microsoft/markitdown</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">markitdown之所以在GitHub Trending上火起来，主要是因为它精准切中了开发者和内容创作者的真实痛点——日常工作中经常需要将Word、Excel、PPT等办公文档转换为Markdown格式，这个需求既高频又普遍，加上背靠微软的Office生态和技术背书，自然获得了大量关注。
-
-这个项目值得借鉴的地方在于它的垂直定位策略，专注于“转Markdown”这一件事而不是做大而全的工具，降低了使用门槛，同时可能拥有简洁易用的API设计，让用户能快速上手解决实际问题。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">6</span>
-                <h3 class="card-title"><a href="https://github.com/multica-ai/multica" target="_blank">multica</a></h3>
-            </div>
-            <p class="card-desc">The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills.</p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +1715 今日</span>
-                <span class="card-total">🏆 11,434</span>
-            </div>
-            <div class="card-repo">📦 multica-ai/multica</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 1,715 stars，The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills.。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">7</span>
-                <h3 class="card-title"><a href="https://github.com/coleam00/Archon" target="_blank">Archon</a></h3>
-            </div>
-            <p class="card-desc">The first open-source harness builder for AI coding. Make AI coding deterministic and repeatable.</p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +677 今日</span>
-                <span class="card-total">🏆 17,708</span>
-            </div>
-            <div class="card-repo">📦 coleam00/Archon</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 677 stars，The first open-source harness builder for AI coding. Make AI coding deterministic and repeatable.。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">8</span>
-                <h3 class="card-title"><a href="https://github.com/snarktank/ralph" target="_blank">ralph</a></h3>
-            </div>
-            <p class="card-desc">Ralph is an autonomous AI agent loop that runs repeatedly until all PRD items are complete.</p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +691 今日</span>
-                <span class="card-total">🏆 16,615</span>
-            </div>
-            <div class="card-repo">📦 snarktank/ralph</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 691 stars，Ralph is an autonomous AI agent loop that runs repeatedly until all PRD items are complete.。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">9</span>
-                <h3 class="card-title"><a href="https://github.com/virattt/ai-hedge-fund" target="_blank">ai-hedge-fund</a></h3>
-            </div>
-            <p class="card-desc">An AI Hedge Fund Team</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +783 今日</span>
-                <span class="card-total">🏆 53,136</span>
-            </div>
-            <div class="card-repo">📦 virattt/ai-hedge-fund</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 783 stars，An AI Hedge Fund Team。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">10</span>
-                <h3 class="card-title"><a href="https://github.com/anthropics/claude-cookbooks" target="_blank">claude-cookbooks</a></h3>
-            </div>
-            <p class="card-desc">A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.</p>
-            <div class="card-meta">
-                <span class="card-lang">📓 Jupyter Notebook</span>
-                <span class="card-stars">⭐ +1012 今日</span>
-                <span class="card-total">🏆 39,680</span>
-            </div>
-            <div class="card-repo">📦 anthropics/claude-cookbooks</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 1,012 stars，A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">11</span>
-                <h3 class="card-title"><a href="https://github.com/shanraisshan/claude-code-best-practice" target="_blank">claude-code-best-practice</a></h3>
-            </div>
-            <p class="card-desc">practice made claude perfect</p>
-            <div class="card-meta">
-                <span class="card-lang">🌐 HTML</span>
-                <span class="card-stars">⭐ +2461 今日</span>
-                <span class="card-total">🏆 42,209</span>
-            </div>
-            <div class="card-repo">📦 shanraisshan/claude-code-best-practice</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 2,461 stars，practice made claude perfect。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">12</span>
-                <h3 class="card-title"><a href="https://github.com/jamiepine/voicebox" target="_blank">voicebox</a></h3>
-            </div>
-            <p class="card-desc">The open-source voice synthesis studio</p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +512 今日</span>
-                <span class="card-total">🏆 16,469</span>
-            </div>
-            <div class="card-repo">📦 jamiepine/voicebox</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 512 stars，The open-source voice synthesis studio。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">13</span>
-                <h3 class="card-title"><a href="https://github.com/ahujasid/blender-mcp" target="_blank">blender-mcp</a></h3>
-            </div>
-            <p class="card-desc"></p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +339 今日</span>
-                <span class="card-total">🏆 19,560</span>
-            </div>
-            <div class="card-repo">📦 ahujasid/blender-mcp</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 339 stars，。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">14</span>
-                <h3 class="card-title"><a href="https://github.com/hacksider/Deep-Live-Cam" target="_blank">Deep-Live-Cam</a></h3>
-            </div>
-            <p class="card-desc">real time face swap and one-click video deepfake with only a single image</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +217 今日</span>
-                <span class="card-total">🏆 90,331</span>
-            </div>
-            <div class="card-repo">📦 hacksider/Deep-Live-Cam</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 217 stars，real time face swap and one-click video deepfake with only a single image。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">15</span>
-                <h3 class="card-title"><a href="https://github.com/gsd-build/get-shit-done" target="_blank">get-shit-done</a></h3>
-            </div>
-            <p class="card-desc">A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.</p>
-            <div class="card-meta">
-                <span class="card-lang">🟨 JavaScript</span>
-                <span class="card-stars">⭐ +655 今日</span>
-                <span class="card-total">🏆 52,279</span>
-            </div>
-            <div class="card-repo">📦 gsd-build/get-shit-done</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 655 stars，A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.。</div>
-                </details>
-            </div>
-        </div></div>
-<hr>
-<h2 id="🔍-今日精选项目：andrej-karpathy-skills"><a href="#🔍-今日精选项目：andrej-karpathy-skills" class="headerlink" title="🔍 今日精选项目：andrej-karpathy-skills"></a>🔍 今日精选项目：andrej-karpathy-skills</h2><p><strong>项目地址</strong>：<a href="https://github.com/forrestchang/andrej-karpathy-skills">https://github.com/forrestchang/andrej-karpathy-skills</a></p>
-<p><strong>作者</strong>：forrestchang</p>
-<p><strong>描述</strong>：A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy’s observations on LLM coding pitfalls.</p>
-<p><strong>语言</strong>：Unknown</p>
-<p><strong>今日新增星标</strong>：+5733</p>
-<p><strong>总星标数</strong>：26,595</p>
-<hr>
-<h3 id="📝-深度分析"><a href="#📝-深度分析" class="headerlink" title="📝 深度分析"></a>📝 深度分析</h3><h2 id="🎯-项目本质"><a href="#🎯-项目本质" class="headerlink" title="🎯 项目本质"></a>🎯 项目本质</h2><p><strong>andrej-karpathy-skills</strong> 实质上是一个经过精心设计的 <code>CLAUDE.md</code> 配置文件，其核心功能是通过系统化的指令工程（Instruction Engineering）来约束和引导 Claude Code 的行为模式。这个项目源自 Andrej Karpathy 对大语言模型在编程任务中反复出现的认知缺陷的深度观察，将这些零散的专家洞察凝练为一套可执行的 AI 交互策略。它解决的本质问题是：**如何让 AI 编程助手真正成为可靠的编码伙伴，而非表面流畅但暗藏隐患的”幻觉机器”**。</p>
-<hr>
-<h2 id="🔥-为什么火"><a href="#🔥-为什么火" class="headerlink" title="🔥 为什么火"></a>🔥 为什么火</h2><p>这个项目在 GitHub Trending 上的爆发式增长，背后是多重因素共振的结果。</p>
-<p><strong>首先是 Andrej Karpathy 的个人品牌势能。</strong> 作为前 Tesla Autopilot 总监、李飞飞高徒、AI 教育领域最具影响力的布道者之一，Karpathy 的任何技术观点都会引发社区的高度关注。他对 LLM 编程缺陷的洞察，本质上是将多年一线 AI 工程经验浓缩为可操作的避坑指南。</p>
-<p><strong>其次是 AI 编程工具普及带来的刚性需求。</strong> Claude Code、Cursor、Copilot 等工具正在重塑开发者工作流，但大多数使用者只停留在”会用”的层面，缺乏对 AI 思维局限的系统认知。这个项目恰好填补了这一空白——它不是教你写代码，而是教你”如何指挥 AI 写代码”。</p>
-<p><strong>第三是低门槛高回报的项目形态。</strong> 这是一个纯粹的配置文件，无需安装、无需配置，直接复制粘贴即可生效。这种”即插即用”的特性极大地降低了传播成本，使其能够快速在开发者社区形成病毒式扩散。</p>
-<hr>
-<h2 id="💡-核心创新"><a href="#💡-核心创新" class="headerlink" title="💡 核心创新"></a>💡 核心创新</h2><p>这个项目的核心创新在于<strong>将”AI 编程反模式”从隐性经验转化为显性规则</strong>。</p>
-<p>传统的 prompt 优化往往是增量式的改进，而 <code>CLAUDE.md</code> 采取的是一种<strong>防御性架构</strong>：它不告诉 AI 做什么，而是系统性地告诉 AI <strong>不要做什么、什么时候要质疑自己、什么信号意味着需要停下来思考</strong>。这本质上是在 AI 的推理链路中植入了一个”安全检查层”。</p>
-<p>具体而言，它针对的创新点包括：</p>
-<ol>
-<li><strong>长程依赖的脆弱性处理</strong> - 当任务涉及跨文件的上下文理解时，强制 AI 显式确认关键假设</li>
-<li><strong>过度自信的抑制机制</strong> - 针对 AI 在简单任务上容易跳过验证步骤的倾向，设置了强制复核节点</li>
-<li><strong>代码质量与速度的平衡策略</strong> - 在”快速交付”和”正确交付”之间建立了明确的优先级框架</li>
-</ol>
-<p>这种创新思路的底层逻辑是：<strong>AI 的强大之处在于生成，弱点在于自我纠错能力不足</strong>。该项目正是围绕这一核心矛盾，构建了一套人机协作的”质量门禁”机制。</p>
-<hr>
-<h2 id="📈-可借鉴价值"><a href="#📈-可借鉴价值" class="headerlink" title="📈 可借鉴价值"></a>📈 可借鉴价值</h2><p>对于个人开发者而言，这个项目提供了几个维度的启发：</p>
-<p><strong>Prompt 工程层面</strong>，可以学习如何将抽象的质量要求（如”代码要健壮”）转化为可量化的行为约束（如”遇到边界条件时必须显式处理”）。这种从目标到指令的翻译能力，是 AI 时代开发</p>
-<hr>
-<hr>
-<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
-<ul>
-<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
-<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
-<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
-</ul>
-<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
-<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
-<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
-<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
-</ul>
-<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
-<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
-<li>💬 微信公众号：DeepThinking深思</li>
-<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
-</ul>
-<hr>
-<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
-<ul>
-<li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#110;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#x6c;&#101;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#110;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a></li>
-<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
-</ul>
-<hr>
-<p>📡 数据更新：2026-04-14 12:37:30<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
 ]]></content>
       <categories>
         <category>综合</category>
@@ -9992,6 +9540,445 @@ dfs(root.Right, res)
         <category>编程语言</category>
         <category>Golang</category>
       </categories>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 - 2026/04/14</title>
+    <url>/2026-04-14-57758482bd4c.html</url>
+    <content><![CDATA[<h1 id="GitHub-Trending-日报"><a href="#GitHub-Trending-日报" class="headerlink" title="GitHub Trending 日报"></a>GitHub Trending 日报</h1><p>📅 <strong>日期</strong>：2026&#x2F;04&#x2F;14</p>
+<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
+<hr>
+<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2>
+<style>
+.github-trending-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+.trending-card {
+    background: var(--card-bg, #f8f9fa);
+    border: 1px solid var(--border-color, #e9ecef);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.trending-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.card-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+.card-title {
+    margin: 0 !important;
+    font-size: 16px !important;
+}
+.card-title a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+.card-desc {
+    color: #666;
+    font-size: 14px;
+    margin: 8px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.card-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #666;
+    margin: 8px 0;
+}
+.card-repo {
+    font-size: 12px;
+    color: #999;
+    font-family: monospace;
+    margin-bottom: 8px;
+}
+.card-ai-insight {
+    margin-top: 8px;
+}
+.card-ai-insight summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: #666;
+}
+.insight-content {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 6px;
+}
+@media (max-width: 768px) {
+    .github-trending-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="github-trending-grid">
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">1</span>
+                <h3 class="card-title"><a href="https://github.com/forrestchang/andrej-karpathy-skills" target="_blank">andrej-karpathy-skills</a></h3>
+            </div>
+            <p class="card-desc">A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.</p>
+            <div class="card-meta">
+                <span class="card-lang">📦 Unknown</span>
+                <span class="card-stars">⭐ +5733 今日</span>
+                <span class="card-total">🏆 26,608</span>
+            </div>
+            <div class="card-repo">📦 forrestchang/andrej-karpathy-skills</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">这个项目之所以在GitHub Trending上爆火，是因为它将AI领域权威Andrej Karpathy关于大语言模型编程陷阱的深度观察转化成了一个简单却高效的CLAUDE.md配置文件，而Karpathy本人的影响力加上众多开发者对提升AI编程工具效果的迫切需求，形成了强大的传播势能。值得借鉴的地方在于它找到了一个巧妙的切入点——不是开发新工具，而是通过优化现有工具的配置来最大化其效能，这种“知识变现型”的开源方式既降低了贡献门槛，又具有即时的实用价值。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">2</span>
+                <h3 class="card-title"><a href="https://github.com/NousResearch/hermes-agent" target="_blank">hermes-agent</a></h3>
+            </div>
+            <p class="card-desc">The agent that grows with you</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +11289 今日</span>
+                <span class="card-total">🏆 79,056</span>
+            </div>
+            <div class="card-repo">📦 NousResearch/hermes-agent</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">hermes-agent之所以能够在今天新增超过11000颗星，主要得益于NosResearch团队在开源AI领域的良好声誉以及"与你共同成长"这一核心理念——它代表了一种新型的AI Agent开发框架，能够让开发者更轻松地构建和部署智能代理，同时保持了高度的可扩展性和灵活性。这个项目值得借鉴的地方在于它采用了模块化的设计思想，使得AI Agent的构建不再是复杂的工程挑战，而是变成了一个循序渐进、持续迭代的过程，这种"成长型"的设计哲学恰好契合了当前AI快速发展的需求。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">3</span>
+                <h3 class="card-title"><a href="https://github.com/shiyu-coder/Kronos" target="_blank">Kronos</a></h3>
+            </div>
+            <p class="card-desc">Kronos: A Foundation Model for the Language of Financial Markets</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +1554 今日</span>
+                <span class="card-total">🏆 17,173</span>
+            </div>
+            <div class="card-repo">📦 shiyu-coder/Kronos</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">Kronos之所以在GitHub Trending上迅速走红，主要是因为它瞄准了金融科技这个当下最热门的赛道——将大语言模型的能力与金融市场分析相结合，正好切中了行业内对智能投研、情感分析、量化策略等工具的强烈需求，加上近期宣传推广到位，单日就获得超过1500颗星。
+
+从技术角度看，这个项目的定位策略非常值得学习：它没有做通用的基础模型，而是选择一个垂直细分领域深耕，这种差异化路线既能建立专业壁垒，又容易在特定社区形成口碑；另外从零复现或微调Foundation Model的做法，也为个人开发者和小型团队提供了可参考的技术路径。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">4</span>
+                <h3 class="card-title"><a href="https://github.com/thedotmack/claude-mem" target="_blank">claude-mem</a></h3>
+            </div>
+            <p class="card-desc">A Claude Code plugin that automatically captures everything Claude does during your coding sessions, compresses it with AI (using Claude's agent-sdk), and injects relevant context back into future sessions.</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +3175 今日</span>
+                <span class="card-total">🏆 53,759</span>
+            </div>
+            <div class="card-repo">📦 thedotmack/claude-mem</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">claude-mem之所以迅速走红，是因为它精准解决了AI编程助手面临的核心痛点——每次新会话都是"从零开始"，开发者不得不反复解释项目背景和历史决策，而这款插件让Claude Code能够记住并复用之前的编码过程和上下文，大幅提升了开发效率。它巧妙地利用自身API（agent-sdk）来完成记忆压缩，既展示了技术自信，也确保了压缩质量与模型风格的一致性。
+
+这个项目值得借鉴的地方在于产品切入点的选择——它没有试图做一个独立的大产品，而是专注于填补AI编程工具生态中的关键缺口；同时其"用AI管理AI记忆"的技术思路很有启发性，证明了即使是被AI帮助的人，也可以反过来用AI来优化AI的使用体验。对于开发者而言，这种"让工具学会记住"的理念或许能应用到更多场景中。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">5</span>
+                <h3 class="card-title"><a href="https://github.com/microsoft/markitdown" target="_blank">markitdown</a></h3>
+            </div>
+            <p class="card-desc">Python tool for converting files and office documents to Markdown.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +2808 今日</span>
+                <span class="card-total">🏆 107,297</span>
+            </div>
+            <div class="card-repo">📦 microsoft/markitdown</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">markitdown之所以火起来，是因为它解决了一个普遍痛点——办公文档（Word、Excel、PowerPoint等）转Markdown一直缺乏好用的工具，而微软官方的这款工具支持格式丰富、转换效果好，加上微软品牌的信任背书，自然吸引大量开发者关注。这个项目的借鉴意义在于定位精准：专注于一个具体场景做到极致，同时保持开源开放，让用户能贡献更多文件格式支持，形成了良性循环。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">6</span>
+                <h3 class="card-title"><a href="https://github.com/multica-ai/multica" target="_blank">multica</a></h3>
+            </div>
+            <p class="card-desc">The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills.</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +1715 今日</span>
+                <span class="card-total">🏆 11,435</span>
+            </div>
+            <div class="card-repo">📦 multica-ai/multica</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 1,715 stars，The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills.。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">7</span>
+                <h3 class="card-title"><a href="https://github.com/coleam00/Archon" target="_blank">Archon</a></h3>
+            </div>
+            <p class="card-desc">The first open-source harness builder for AI coding. Make AI coding deterministic and repeatable.</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +677 今日</span>
+                <span class="card-total">🏆 17,708</span>
+            </div>
+            <div class="card-repo">📦 coleam00/Archon</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 677 stars，The first open-source harness builder for AI coding. Make AI coding deterministic and repeatable.。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">8</span>
+                <h3 class="card-title"><a href="https://github.com/snarktank/ralph" target="_blank">ralph</a></h3>
+            </div>
+            <p class="card-desc">Ralph is an autonomous AI agent loop that runs repeatedly until all PRD items are complete.</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +691 今日</span>
+                <span class="card-total">🏆 16,615</span>
+            </div>
+            <div class="card-repo">📦 snarktank/ralph</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 691 stars，Ralph is an autonomous AI agent loop that runs repeatedly until all PRD items are complete.。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">9</span>
+                <h3 class="card-title"><a href="https://github.com/virattt/ai-hedge-fund" target="_blank">ai-hedge-fund</a></h3>
+            </div>
+            <p class="card-desc">An AI Hedge Fund Team</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +783 今日</span>
+                <span class="card-total">🏆 53,139</span>
+            </div>
+            <div class="card-repo">📦 virattt/ai-hedge-fund</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 783 stars，An AI Hedge Fund Team。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">10</span>
+                <h3 class="card-title"><a href="https://github.com/anthropics/claude-cookbooks" target="_blank">claude-cookbooks</a></h3>
+            </div>
+            <p class="card-desc">A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.</p>
+            <div class="card-meta">
+                <span class="card-lang">📓 Jupyter Notebook</span>
+                <span class="card-stars">⭐ +1012 今日</span>
+                <span class="card-total">🏆 39,680</span>
+            </div>
+            <div class="card-repo">📦 anthropics/claude-cookbooks</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 1,012 stars，A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">11</span>
+                <h3 class="card-title"><a href="https://github.com/shanraisshan/claude-code-best-practice" target="_blank">claude-code-best-practice</a></h3>
+            </div>
+            <p class="card-desc">practice made claude perfect</p>
+            <div class="card-meta">
+                <span class="card-lang">🌐 HTML</span>
+                <span class="card-stars">⭐ +2461 今日</span>
+                <span class="card-total">🏆 42,210</span>
+            </div>
+            <div class="card-repo">📦 shanraisshan/claude-code-best-practice</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 2,461 stars，practice made claude perfect。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">12</span>
+                <h3 class="card-title"><a href="https://github.com/jamiepine/voicebox" target="_blank">voicebox</a></h3>
+            </div>
+            <p class="card-desc">The open-source voice synthesis studio</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +512 今日</span>
+                <span class="card-total">🏆 16,469</span>
+            </div>
+            <div class="card-repo">📦 jamiepine/voicebox</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 512 stars，The open-source voice synthesis studio。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">13</span>
+                <h3 class="card-title"><a href="https://github.com/ahujasid/blender-mcp" target="_blank">blender-mcp</a></h3>
+            </div>
+            <p class="card-desc"></p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +339 今日</span>
+                <span class="card-total">🏆 19,560</span>
+            </div>
+            <div class="card-repo">📦 ahujasid/blender-mcp</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 339 stars，。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">14</span>
+                <h3 class="card-title"><a href="https://github.com/hacksider/Deep-Live-Cam" target="_blank">Deep-Live-Cam</a></h3>
+            </div>
+            <p class="card-desc">real time face swap and one-click video deepfake with only a single image</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +217 今日</span>
+                <span class="card-total">🏆 90,332</span>
+            </div>
+            <div class="card-repo">📦 hacksider/Deep-Live-Cam</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 217 stars，real time face swap and one-click video deepfake with only a single image。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">15</span>
+                <h3 class="card-title"><a href="https://github.com/gsd-build/get-shit-done" target="_blank">get-shit-done</a></h3>
+            </div>
+            <p class="card-desc">A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.</p>
+            <div class="card-meta">
+                <span class="card-lang">🟨 JavaScript</span>
+                <span class="card-stars">⭐ +655 今日</span>
+                <span class="card-total">🏆 52,280</span>
+            </div>
+            <div class="card-repo">📦 gsd-build/get-shit-done</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 655 stars，A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.。</div>
+                </details>
+            </div>
+        </div></div>
+<hr>
+<h2 id="🔍-今日精选项目：andrej-karpathy-skills"><a href="#🔍-今日精选项目：andrej-karpathy-skills" class="headerlink" title="🔍 今日精选项目：andrej-karpathy-skills"></a>🔍 今日精选项目：andrej-karpathy-skills</h2><p><strong>项目地址</strong>：<a href="https://github.com/forrestchang/andrej-karpathy-skills">https://github.com/forrestchang/andrej-karpathy-skills</a></p>
+<p><strong>作者</strong>：forrestchang</p>
+<p><strong>描述</strong>：A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy’s observations on LLM coding pitfalls.</p>
+<p><strong>语言</strong>：Unknown</p>
+<p><strong>今日新增星标</strong>：+5733</p>
+<p><strong>总星标数</strong>：26,608</p>
+<hr>
+<h3 id="📝-深度分析"><a href="#📝-深度分析" class="headerlink" title="📝 深度分析"></a>📝 深度分析</h3><h2 id="🎯-项目本质"><a href="#🎯-项目本质" class="headerlink" title="🎯 项目本质"></a>🎯 项目本质</h2><p>这是一个仅包含单个 <strong>CLAUDE.md</strong> 配置文件的仓库，旨在通过整合AI领域知名研究者Andrej Karpathy的实战观察，系统性改善Claude Code（Anthropic的AI编程助手）的输出质量与可靠性。本质上，这是一个“AI教练提示词库”——将大模型在编程任务中的常见陷阱（如上下文丢失、指令误解、代码幻觉等）转化为可执行的配置规则，引导AI更精准地辅助开发者。</p>
+<h2 id="🔥-为什么火"><a href="#🔥-为什么火" class="headerlink" title="🔥 为什么火"></a>🔥 为什么火</h2><p><strong>技术层面</strong>，2024-2025年正值AI编程工具爆发期，Claude Code、Cursor等工具快速普及，但大量开发者仍停留在“随意对话”阶段，未能充分发挥AI潜力。该项目恰好填补了“如何正确使用AI编程助手”这一知识空白。</p>
+<p><strong>社区层面</strong>，Andrej Karpathy作为深度学习领域的标杆人物，其观点自带流量与信任背书。项目将Karpathy散落在博客、演讲中的洞见进行系统化提炼，形成可落地的配置方案，降低了普通开发者的学习门槛。</p>
+<p><strong>市场层面</strong>，GitHub Trending近期对AI+开发者工具类项目高度敏感，单日5733 stars的增速说明社区对“提升AI编程效率”存在强烈刚需。该项目以极简形式（一个文件）呈现，零学习成本、即装即用，完美契合开源社区“拿来主义”文化。</p>
+<h2 id="💡-核心创新"><a href="#💡-核心创新" class="headerlink" title="💡 核心创新"></a>💡 核心创新</h2><p>项目开创了“<strong>经验驱动型提示工程</strong>”的范式——不依赖复杂的微调或RAG技术，而是通过高质量的系统指令（CLAUDE.md）激活模型已有但未被充分调用的能力。这种“用规则解锁模型潜力”的思路，比训练新模型成本更低、迭代更快。此外，其内容组织方式（按场景分类：调试、代码审查、重构等）也为后续开发者提供了可复用的模板框架。</p>
+<h2 id="📈-可借鉴价值"><a href="#📈-可借鉴价值" class="headerlink" title="📈 可借鉴价值"></a>📈 可借鉴价值</h2><p>对于个人开发者，该项目提供了<strong>三层可迁移价值</strong>：其一，学习如何为AI工具编写高效的配置文件（CLAUDE.md、.cursorrules等）；其二，理解Karpathy等专家对AI局限性的洞察，从而在日常编程中扬长避短；其三，借鉴“提炼专家经验→结构化输出→开源共享”的知识传播模式，将其应用于自己专长领域的经验沉淀。一个文件、26K stars的背后，是“小而美”解决真实痛点的经典案例。</p>
+<hr>
+<hr>
+<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
+<ul>
+<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
+<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
+<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
+</ul>
+<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
+<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
+<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
+<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
+</ul>
+<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
+<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
+<li>💬 微信公众号：DeepThinking深思</li>
+<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
+</ul>
+<hr>
+<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
+<ul>
+<li>💬 评论留言推荐</li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#113;&#105;&#64;&#102;&#x75;&#100;&#97;&#x6e;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#x6c;&#x65;&#x69;&#113;&#105;&#64;&#102;&#x75;&#100;&#97;&#x6e;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a></li>
+<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
+</ul>
+<hr>
+<p>📡 数据更新：2026-04-14 12:38:39<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Trending</tag>
+        <tag>开源</tag>
+        <tag>日报</tag>
+      </tags>
   </entry>
   <entry>
     <title>结构体指针作为map key 结构体值改变对map有影响吗</title>
