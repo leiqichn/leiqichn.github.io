@@ -27,7 +27,7 @@ var precacheUrls = [
 
   '/',
 
-  '/2026-04-14-57758482bd4c.html',
+  '/2026-04-14-2bb57deadaf3.html',
 
   '/2026-04-13-cc40d64d2a03.html',
 
