@@ -1,5 +1,5 @@
 ---
-title: 【Agent工具】5分钟让你飞书远控Claude Code
+title: 【Agent工具】龙虾何必是OpenClaw，5分钟让你飞书远控Claude Code
 date: 2026-04-15 08:55:00
 tags:
   - 飞书
@@ -9,7 +9,7 @@ tags:
 categories: AI
 ---
 
-# 飞书机器人控制 Claude Code 实战
+# 【Agent工具】龙虾何必是OpenClaw，5分钟让你飞书远控Claude Code
 
 ## 背景
 
