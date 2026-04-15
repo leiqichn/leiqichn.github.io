@@ -1,15 +1,15 @@
 ---
-title: 通过 cc-connect 将 Claude Code 接入飞书
+title: 飞书机器人控制 Claude Code 实战
 date: 2026-04-15 08:55:00
 tags:
-  - Claude Code
   - 飞书
-  - cc-connect
+  - Claude Code
   - AI
-categories: 工具
+  - 自动化
+categories: AI
 ---
 
-# 通过 cc-connect 将 Claude Code 接入飞书
+# 飞书机器人控制 Claude Code 实战
 
 ## 背景
 
