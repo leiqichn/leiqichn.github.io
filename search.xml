@@ -1160,6 +1160,53 @@
       </categories>
   </entry>
   <entry>
+    <title>Golang list.List 双向链表实现LRU</title>
+    <url>/2025-06-16-dc71f06ad4b8.html</url>
+    <content><![CDATA[<h1 id="Go语言中使用双向链表-list-List-实现LRU缓存"><a href="#Go语言中使用双向链表-list-List-实现LRU缓存" class="headerlink" title="Go语言中使用双向链表(list.List)实现LRU缓存"></a>Go语言中使用双向链表(list.List)实现LRU缓存</h1><p>LeetCode第146题”LRU缓存”来演示如何在Go语言中使用<code>container/list</code>包中的双向链表。</p>
+<h2 id="LRU缓存题目要求"><a href="#LRU缓存题目要求" class="headerlink" title="LRU缓存题目要求"></a>LRU缓存题目要求</h2><p>设计一个LRU (Least Recently Used) 缓存机制，它应该支持以下操作：</p>
+<ul>
+<li><code>Get(key)</code>: 如果密钥存在则获取值，否则返回-1</li>
+<li><code>Put(key, value)</code>: 如果密钥不存在，则写入数据；当缓存容量达到上限时，删除最久未使用的数据</li>
+</ul>
+<h2 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h2><p>我们将使用<code>container/list</code>包中的双向链表来跟踪访问顺序，同时使用map来实现快速查找。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;container/list&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// LRUCache 结构体</span></span><br><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">	capacity <span class="type">int</span>                      <span class="comment">// 缓存容量</span></span><br><span class="line">	list     *list.List               <span class="comment">// 双向链表用于维护访问顺序</span></span><br><span class="line">	cache    <span class="keyword">map</span>[<span class="type">int</span>]*list.Element    <span class="comment">// 哈希表用于快速查找</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// entry 用于存储键值对</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	key   <span class="type">int</span></span><br><span class="line">	value <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Constructor 初始化LRU缓存</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="type">int</span>)</span></span> LRUCache &#123;</span><br><span class="line">	<span class="keyword">return</span> LRUCache&#123;</span><br><span class="line">		capacity: capacity,</span><br><span class="line">		list:     list.New(),</span><br><span class="line">		cache:    <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*list.Element),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get 获取键对应的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *LRUCache)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> elem, ok := l.cache[key]; ok &#123;</span><br><span class="line">		<span class="comment">// 将访问的元素移动到链表头部表示最近使用</span></span><br><span class="line">		l.list.MoveToFront(elem)</span><br><span class="line">		<span class="keyword">return</span> elem.Value.(*entry).value</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Put 插入或更新键值对</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *LRUCache)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 如果键已存在，更新值并移动到头部</span></span><br><span class="line">	<span class="keyword">if</span> elem, ok := l.cache[key]; ok &#123;</span><br><span class="line">		l.list.MoveToFront(elem)</span><br><span class="line">		elem.Value.(*entry).value = value</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 如果缓存已满，删除最近最少使用的元素（链表尾部）</span></span><br><span class="line">	<span class="keyword">if</span> l.list.Len() == l.capacity &#123;</span><br><span class="line">		tail := l.list.Back()</span><br><span class="line">		<span class="keyword">if</span> tail != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="built_in">delete</span>(l.cache, tail.Value.(*entry).key)</span><br><span class="line">			l.list.Remove(tail)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 添加新元素到链表头部</span></span><br><span class="line">	elem := l.list.PushFront(&amp;entry&#123;key, value&#125;)</span><br><span class="line">	l.cache[key] = elem</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p> <strong>使用slice 实现</strong></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">	capacity <span class="type">int</span></span><br><span class="line">	keysList []<span class="type">int</span> <span class="comment">// 存放key 每次update get put 等都要将对应key删除，然后追加到最新时间</span></span><br><span class="line">	keysMap  <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span> <span class="comment">// 存放key value</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="type">int</span>)</span></span> LRUCache &#123;</span><br><span class="line">	<span class="comment">//return</span></span><br><span class="line">	<span class="keyword">return</span> LRUCache&#123;capacity, <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>), <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, <span class="number">0</span>)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果key存在于缓存中，则返回关键字的值，否则返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> ele, ok := this.keysMap[key]; ok &#123;</span><br><span class="line">		this.updateListKey(key)</span><br><span class="line">		<span class="keyword">return</span> ele</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 关键字存在 则更新值为value</span></span><br><span class="line">	<span class="comment">// 不存在，则插入value</span></span><br><span class="line">	<span class="comment">// 如果插入超过数量capacity 则删除最久没有使用的关键字【list]</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := this.keysMap[key]; ok &#123;</span><br><span class="line">		this.updateListKey(key)</span><br><span class="line">		this.keysMap[key] = value</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		this.updateListKey(key)</span><br><span class="line">		this.keysMap[key] = value</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(this.keysList) &gt; this.capacity &#123;</span><br><span class="line">			<span class="built_in">delete</span>(this.keysMap, this.keysList[<span class="number">0</span>]) <span class="comment">// 这里删除key 从list队列中获取</span></span><br><span class="line">			this.keysList = this.keysList[<span class="number">1</span>:]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> updateListKey(key <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(this.keysList); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> key == this.keysList[i] &#123;</span><br><span class="line">			this.keysList = <span class="built_in">append</span>(this.keysList[:i], this.keysList[i+<span class="number">1</span>:]...) <span class="comment">// 删除该key, 然后放在末尾</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.keysList = <span class="built_in">append</span>(this.keysList, key)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="关键点解析"><a href="#关键点解析" class="headerlink" title="关键点解析"></a>关键点解析</h2><ol>
+<li><p><strong>双向链表的使用</strong>:</p>
+<ul>
+<li><code>list.New()</code> 创建一个新的双向链表</li>
+<li><code>PushFront()</code> 在链表头部插入元素</li>
+<li><code>MoveToFront()</code> 将元素移动到链表头部</li>
+<li><code>Back()</code> 获取链表尾部元素</li>
+<li><code>Remove()</code> 从链表中删除元素</li>
+</ul>
+</li>
+<li><p><strong>LRU策略实现</strong>:</p>
+<ul>
+<li>最近访问的元素总是放在链表头部</li>
+<li>当需要淘汰元素时，删除链表尾部的元素</li>
+<li>使用map实现O(1)时间的查找</li>
+</ul>
+</li>
+<li><p><strong>性能分析</strong>:</p>
+<ul>
+<li>Get操作时间复杂度: O(1)</li>
+<li>Put操作时间复杂度: O(1)</li>
+<li>空间复杂度: O(capacity)</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Go语言中的byte类型与Unicode码点与整数的转换</title>
     <url>/2023-07-09-f6c40b75638f.html</url>
     <content><![CDATA[<h1 id="byte类型与Unicode码点的转换"><a href="#byte类型与Unicode码点的转换" class="headerlink" title="byte类型与Unicode码点的转换"></a>byte类型与Unicode码点的转换</h1><p>在Go语言中，byte 类型是无符号的8位整数类型，而字符类型 rune 则用于表示Unicode码点。</p>
@@ -1941,6 +1988,17 @@
       </categories>
   </entry>
   <entry>
+    <title>leetcode 355设计推特</title>
+    <url>/2024-05-10-5f92e64321b5.html</url>
+    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>leetcode 376.摆动序列</title>
     <url>/2023-05-24-060bcd383b9e.html</url>
     <content><![CDATA[<p><a href="https://leetcode.cn/problems/wiggle-subsequence/description/">376. 摆动序列 - 力扣（Leetcode）</a><br><img src="/../../imgs/Pasted%20image%2020230524010708.png"></p>
@@ -2636,46 +2694,54 @@
       </categories>
   </entry>
   <entry>
-    <title>Golang list.List 双向链表实现LRU</title>
-    <url>/2025-06-16-dc71f06ad4b8.html</url>
-    <content><![CDATA[<h1 id="Go语言中使用双向链表-list-List-实现LRU缓存"><a href="#Go语言中使用双向链表-list-List-实现LRU缓存" class="headerlink" title="Go语言中使用双向链表(list.List)实现LRU缓存"></a>Go语言中使用双向链表(list.List)实现LRU缓存</h1><p>LeetCode第146题”LRU缓存”来演示如何在Go语言中使用<code>container/list</code>包中的双向链表。</p>
-<h2 id="LRU缓存题目要求"><a href="#LRU缓存题目要求" class="headerlink" title="LRU缓存题目要求"></a>LRU缓存题目要求</h2><p>设计一个LRU (Least Recently Used) 缓存机制，它应该支持以下操作：</p>
+    <title>【Golang】优先队列</title>
+    <url>/2025-06-18-9fac781c2fa8.html</url>
+    <content><![CDATA[<h1 id="优先队列在LeetCode上的经典题目及Golang实现"><a href="#优先队列在LeetCode上的经典题目及Golang实现" class="headerlink" title="优先队列在LeetCode上的经典题目及Golang实现"></a>优先队列在LeetCode上的经典题目及Golang实现</h1><p>优先队列（Priority Queue）是一种重要的数据结构，它在很多算法问题中都有广泛应用。以下是LeetCode上一些经典的优先队列题目，以及用Golang实现的解决方案和模板总结。</p>
+<h2 id="优先队列的Golang实现"><a href="#优先队列的Golang实现" class="headerlink" title="优先队列的Golang实现"></a>优先队列的Golang实现</h2><p>在Golang中，我们可以使用<code>container/heap</code>包来实现优先队列。首先，我们需要定义一个实现heap.Interface的类型：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/heap&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个最小堆</span></span><br><span class="line"><span class="keyword">type</span> MinHeap []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MinHeap)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MinHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i] &lt; h[j] &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MinHeap)</span></span> Swap(i, j <span class="type">int</span>)      &#123; h[i], h[j] = h[j], h[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *MinHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    *h = <span class="built_in">append</span>(*h, x.(<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *MinHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *h</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    x := old[n<span class="number">-1</span>]</span><br><span class="line">    *h = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大堆只需修改Less方法</span></span><br><span class="line"><span class="keyword">type</span> MaxHeap []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MaxHeap)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MaxHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i] &gt; h[j] &#125; <span class="comment">// 改为大于号</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MaxHeap)</span></span> Swap(i, j <span class="type">int</span>)      &#123; h[i], h[j] = h[j], h[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *MaxHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    *h = <span class="built_in">append</span>(*h, x.(<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *MaxHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *h</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    x := old[n<span class="number">-1</span>]</span><br><span class="line">    *h = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="经典题目及实现"><a href="#经典题目及实现" class="headerlink" title="经典题目及实现"></a>经典题目及实现</h2><h3 id="1-合并K个升序链表-LeetCode-23"><a href="#1-合并K个升序链表-LeetCode-23" class="headerlink" title="1. 合并K个升序链表 (LeetCode 23)"></a>1. 合并K个升序链表 (LeetCode 23)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> NodeHeap []*ListNode</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h NodeHeap)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h NodeHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i].Val &lt; h[j].Val &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h NodeHeap)</span></span> Swap(i, j <span class="type">int</span>)      &#123; h[i], h[j] = h[j], h[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *NodeHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    *h = <span class="built_in">append</span>(*h, x.(*ListNode))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *NodeHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *h</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    x := old[n<span class="number">-1</span>]</span><br><span class="line">    *h = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeKLists</span><span class="params">(lists []*ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    h := &amp;NodeHeap&#123;&#125;</span><br><span class="line">    heap.Init(h)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将所有链表的头节点加入堆</span></span><br><span class="line">    <span class="keyword">for</span> _, list := <span class="keyword">range</span> lists &#123;</span><br><span class="line">        <span class="keyword">if</span> list != <span class="literal">nil</span> &#123;</span><br><span class="line">            heap.Push(h, list)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    dummy := &amp;ListNode&#123;&#125;</span><br><span class="line">    current := dummy</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> h.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">        node := heap.Pop(h).(*ListNode)</span><br><span class="line">        current.Next = node</span><br><span class="line">        current = current.Next</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> node.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">            heap.Push(h, node.Next)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-数组中的第K个最大元素-LeetCode-215"><a href="#2-数组中的第K个最大元素-LeetCode-215" class="headerlink" title="2. 数组中的第K个最大元素 (LeetCode 215)"></a>2. 数组中的第K个最大元素 (LeetCode 215)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findKthLargest</span><span class="params">(nums []<span class="type">int</span>, k <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    h := &amp;MinHeap&#123;&#125;</span><br><span class="line">    heap.Init(h)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        heap.Push(h, num)</span><br><span class="line">        <span class="keyword">if</span> h.Len() &gt; k &#123;</span><br><span class="line">            heap.Pop(h)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> heap.Pop(h).(<span class="type">int</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-前K个高频元素-LeetCode-347"><a href="#3-前K个高频元素-LeetCode-347" class="headerlink" title="3. 前K个高频元素 (LeetCode 347)"></a>3. 前K个高频元素 (LeetCode 347)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Item <span class="keyword">struct</span> &#123;</span><br><span class="line">    value <span class="type">int</span></span><br><span class="line">    count <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PriorityQueue []*Item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(pq) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> pq[i].count &lt; pq[j].count &#125; <span class="comment">// 最小堆</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Swap(i, j <span class="type">int</span>)      &#123; pq[i], pq[j] = pq[j], pq[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    item := x.(*Item)</span><br><span class="line">    *pq = <span class="built_in">append</span>(*pq, item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *pq</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    item := old[n<span class="number">-1</span>]</span><br><span class="line">    *pq = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> item</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">topKFrequent</span><span class="params">(nums []<span class="type">int</span>, k <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 统计频率</span></span><br><span class="line">    frequency := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line">    <span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        frequency[num]++</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建优先队列</span></span><br><span class="line">    pq := &amp;PriorityQueue&#123;&#125;</span><br><span class="line">    heap.Init(pq)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将元素加入队列</span></span><br><span class="line">    <span class="keyword">for</span> value, count := <span class="keyword">range</span> frequency &#123;</span><br><span class="line">        heap.Push(pq, &amp;Item&#123;value: value, count: count&#125;)</span><br><span class="line">        <span class="keyword">if</span> pq.Len() &gt; k &#123;</span><br><span class="line">            heap.Pop(pq)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 收集结果</span></span><br><span class="line">    result := <span class="built_in">make</span>([]<span class="type">int</span>, k)</span><br><span class="line">    <span class="keyword">for</span> i := k - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        result[i] = heap.Pop(pq).(*Item).value</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-数据流的中位数-LeetCode-295"><a href="#4-数据流的中位数-LeetCode-295" class="headerlink" title="4. 数据流的中位数 (LeetCode 295)"></a>4. 数据流的中位数 (LeetCode 295)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> MedianFinder <span class="keyword">struct</span> &#123;</span><br><span class="line">    maxHeap *MaxHeap <span class="comment">// 存储较小的一半</span></span><br><span class="line">    minHeap *MinHeap <span class="comment">// 存储较大的一半</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MedianFinder &#123;</span><br><span class="line">    <span class="keyword">return</span> MedianFinder&#123;</span><br><span class="line">        maxHeap: &amp;MaxHeap&#123;&#125;,</span><br><span class="line">        minHeap: &amp;MinHeap&#123;&#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MedianFinder)</span></span> AddNum(num <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 先加入maxHeap</span></span><br><span class="line">    heap.Push(this.maxHeap, num)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 平衡两个堆</span></span><br><span class="line">    heap.Push(this.minHeap, heap.Pop(this.maxHeap))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> this.maxHeap.Len() &lt; this.minHeap.Len() &#123;</span><br><span class="line">        heap.Push(this.maxHeap, heap.Pop(this.minHeap))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MedianFinder)</span></span> FindMedian() <span class="type">float64</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> this.maxHeap.Len() &gt; this.minHeap.Len() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">float64</span>((*this.maxHeap)[<span class="number">0</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">float64</span>((*this.maxHeap)[<span class="number">0</span>]+(*this.minHeap)[<span class="number">0</span>]) / <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="优先队列解题模板"><a href="#优先队列解题模板" class="headerlink" title="优先队列解题模板"></a>优先队列解题模板</h2><p>基于以上题目，可以总结出优先队列的通用解题模板：</p>
+<ol>
+<li><p><strong>定义堆类型</strong>：</p>
 <ul>
-<li><code>Get(key)</code>: 如果密钥存在则获取值，否则返回-1</li>
-<li><code>Put(key, value)</code>: 如果密钥不存在，则写入数据；当缓存容量达到上限时，删除最久未使用的数据</li>
-</ul>
-<h2 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h2><p>我们将使用<code>container/list</code>包中的双向链表来跟踪访问顺序，同时使用map来实现快速查找。</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;container/list&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// LRUCache 结构体</span></span><br><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">	capacity <span class="type">int</span>                      <span class="comment">// 缓存容量</span></span><br><span class="line">	list     *list.List               <span class="comment">// 双向链表用于维护访问顺序</span></span><br><span class="line">	cache    <span class="keyword">map</span>[<span class="type">int</span>]*list.Element    <span class="comment">// 哈希表用于快速查找</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// entry 用于存储键值对</span></span><br><span class="line"><span class="keyword">type</span> entry <span class="keyword">struct</span> &#123;</span><br><span class="line">	key   <span class="type">int</span></span><br><span class="line">	value <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Constructor 初始化LRU缓存</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="type">int</span>)</span></span> LRUCache &#123;</span><br><span class="line">	<span class="keyword">return</span> LRUCache&#123;</span><br><span class="line">		capacity: capacity,</span><br><span class="line">		list:     list.New(),</span><br><span class="line">		cache:    <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*list.Element),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get 获取键对应的值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *LRUCache)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> elem, ok := l.cache[key]; ok &#123;</span><br><span class="line">		<span class="comment">// 将访问的元素移动到链表头部表示最近使用</span></span><br><span class="line">		l.list.MoveToFront(elem)</span><br><span class="line">		<span class="keyword">return</span> elem.Value.(*entry).value</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Put 插入或更新键值对</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *LRUCache)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 如果键已存在，更新值并移动到头部</span></span><br><span class="line">	<span class="keyword">if</span> elem, ok := l.cache[key]; ok &#123;</span><br><span class="line">		l.list.MoveToFront(elem)</span><br><span class="line">		elem.Value.(*entry).value = value</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 如果缓存已满，删除最近最少使用的元素（链表尾部）</span></span><br><span class="line">	<span class="keyword">if</span> l.list.Len() == l.capacity &#123;</span><br><span class="line">		tail := l.list.Back()</span><br><span class="line">		<span class="keyword">if</span> tail != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="built_in">delete</span>(l.cache, tail.Value.(*entry).key)</span><br><span class="line">			l.list.Remove(tail)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 添加新元素到链表头部</span></span><br><span class="line">	elem := l.list.PushFront(&amp;entry&#123;key, value&#125;)</span><br><span class="line">	l.cache[key] = elem</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p> <strong>使用slice 实现</strong></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> LRUCache <span class="keyword">struct</span> &#123;</span><br><span class="line">	capacity <span class="type">int</span></span><br><span class="line">	keysList []<span class="type">int</span> <span class="comment">// 存放key 每次update get put 等都要将对应key删除，然后追加到最新时间</span></span><br><span class="line">	keysMap  <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span> <span class="comment">// 存放key value</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">(capacity <span class="type">int</span>)</span></span> LRUCache &#123;</span><br><span class="line">	<span class="comment">//return</span></span><br><span class="line">	<span class="keyword">return</span> LRUCache&#123;capacity, <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>), <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>, <span class="number">0</span>)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果key存在于缓存中，则返回关键字的值，否则返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Get(key <span class="type">int</span>) <span class="type">int</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> ele, ok := this.keysMap[key]; ok &#123;</span><br><span class="line">		this.updateListKey(key)</span><br><span class="line">		<span class="keyword">return</span> ele</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> Put(key <span class="type">int</span>, value <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 关键字存在 则更新值为value</span></span><br><span class="line">	<span class="comment">// 不存在，则插入value</span></span><br><span class="line">	<span class="comment">// 如果插入超过数量capacity 则删除最久没有使用的关键字【list]</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := this.keysMap[key]; ok &#123;</span><br><span class="line">		this.updateListKey(key)</span><br><span class="line">		this.keysMap[key] = value</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		this.updateListKey(key)</span><br><span class="line">		this.keysMap[key] = value</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(this.keysList) &gt; this.capacity &#123;</span><br><span class="line">			<span class="built_in">delete</span>(this.keysMap, this.keysList[<span class="number">0</span>]) <span class="comment">// 这里删除key 从list队列中获取</span></span><br><span class="line">			this.keysList = this.keysList[<span class="number">1</span>:]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *LRUCache)</span></span> updateListKey(key <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(this.keysList); i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> key == this.keysList[i] &#123;</span><br><span class="line">			this.keysList = <span class="built_in">append</span>(this.keysList[:i], this.keysList[i+<span class="number">1</span>:]...) <span class="comment">// 删除该key, 然后放在末尾</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	this.keysList = <span class="built_in">append</span>(this.keysList, key)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="关键点解析"><a href="#关键点解析" class="headerlink" title="关键点解析"></a>关键点解析</h2><ol>
-<li><p><strong>双向链表的使用</strong>:</p>
-<ul>
-<li><code>list.New()</code> 创建一个新的双向链表</li>
-<li><code>PushFront()</code> 在链表头部插入元素</li>
-<li><code>MoveToFront()</code> 将元素移动到链表头部</li>
-<li><code>Back()</code> 获取链表尾部元素</li>
-<li><code>Remove()</code> 从链表中删除元素</li>
+<li>实现heap.Interface接口（Len, Less, Swap, Push, Pop方法）</li>
+<li>根据需求决定是最小堆还是最大堆（通过Less方法控制）</li>
 </ul>
 </li>
-<li><p><strong>LRU策略实现</strong>:</p>
+<li><p><strong>初始化堆</strong>：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">h := &amp;CustomHeap&#123;&#125;</span><br><span class="line">heap.Init(h)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>使用堆</strong>：</p>
 <ul>
-<li>最近访问的元素总是放在链表头部</li>
-<li>当需要淘汰元素时，删除链表尾部的元素</li>
-<li>使用map实现O(1)时间的查找</li>
+<li>添加元素：<code>heap.Push(h, element)</code></li>
+<li>弹出元素：<code>heap.Pop(h)</code></li>
+<li>访问堆顶元素（不弹出）：对于最小堆是<code>h[0]</code>，注意要先检查长度</li>
 </ul>
 </li>
-<li><p><strong>性能分析</strong>:</p>
+<li><p><strong>常见模式</strong>：</p>
 <ul>
-<li>Get操作时间复杂度: O(1)</li>
-<li>Put操作时间复杂度: O(1)</li>
-<li>空间复杂度: O(capacity)</li>
+<li>维护一个大小为K的堆（求前K大&#x2F;小元素）</li>
+<li>使用两个堆维护动态数据流的中位数</li>
+<li>在贪心算法中使用优先队列选择最优解</li>
 </ul>
 </li>
 </ol>
+<h2 id="其他经典优先队列题目"><a href="#其他经典优先队列题目" class="headerlink" title="其他经典优先队列题目"></a>其他经典优先队列题目</h2><ol>
+<li>滑动窗口最大值 (LeetCode 239)</li>
+<li>任务调度器 (LeetCode 621)</li>
+<li>最接近原点的K个点 (LeetCode 973)</li>
+<li>重构字符串 (LeetCode 767)</li>
+<li>网络延迟时间 (LeetCode 743)</li>
+</ol>
+<p>优先队列是解决许多复杂问题的有力工具，特别是在需要动态获取最大&#x2F;最小元素或前K个元素的场景中。掌握其实现和应用模式对算法面试非常有帮助。</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -3663,72 +3729,6 @@
       </categories>
   </entry>
   <entry>
-    <title>leetcode 355设计推特</title>
-    <url>/2024-05-10-5f92e64321b5.html</url>
-    <content><![CDATA[<p>Problem: <a href="https://leetcode.cn/problems/design-twitter/description/">355. 设计推特</a></p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">type</span> Twitter <span class="keyword">struct</span> &#123;</span><br><span class="line">	userMap <span class="keyword">map</span>[<span class="type">int</span>]*User</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">	userId    <span class="type">int</span></span><br><span class="line">	followees <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span></span><br><span class="line">	tweets    []*Tweet</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Tweet <span class="keyword">struct</span> &#123;</span><br><span class="line">	tweetId <span class="type">int</span></span><br><span class="line">	time    <span class="type">int</span></span><br><span class="line">	userId  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 推特时间排序</span></span><br><span class="line"><span class="keyword">var</span> tweetCount <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> Twitter &#123;</span><br><span class="line">	<span class="keyword">return</span> Twitter&#123;userMap: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]*User)&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> PostTweet(userId <span class="type">int</span>, tweetId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="comment">// 新建tweet  将自己设置为关注</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果map 中不存在需要新建，因为User 类中存在map 和 slice</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; !ok &#123;</span><br><span class="line">		t.userMap[userId] = &amp;User&#123;userId: userId, tweets: <span class="built_in">make</span>([]*Tweet, <span class="number">0</span>), followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>)&#125;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line">		t.userMap[userId].followees[userId] = <span class="literal">true</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tweet := &amp;Tweet&#123;tweetId, tweetCount, userId&#125;</span><br><span class="line">		t.userMap[userId].tweets = <span class="built_in">append</span>(t.userMap[userId].tweets, tweet)</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将tweetId 时间做一个新增</span></span><br><span class="line">	tweetCount++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Follow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 如果关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followerId]; !ok &#123;</span><br><span class="line">        t.userMap[followerId] = &amp;User&#123;</span><br><span class="line">            userId:        followerId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followerId].followees[followerId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果被关注人不存在则新建</span></span><br><span class="line">    <span class="keyword">if</span> _, ok := t.userMap[followeeId]; !ok &#123;</span><br><span class="line">        t.userMap[followeeId] = &amp;User&#123;</span><br><span class="line">            userId:        followeeId,</span><br><span class="line">            followees: <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">bool</span>),</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次新建user的时候 将自己加入自己关注</span></span><br><span class="line">        t.userMap[followeeId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    t.userMap[followerId].followees[followeeId] = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 形参上的Id 在使用数据结构的时候一般使用map查找</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> Unfollow(followerId <span class="type">int</span>, followeeId <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[followerId]; ok &#123;</span><br><span class="line">		<span class="built_in">delete</span>(t.userMap[followerId].followees, followeeId)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Twitter)</span></span> GetNewsFeed(userId <span class="type">int</span>) []<span class="type">int</span> &#123;</span><br><span class="line">	resTop10 := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	tweeters := []*Tweet&#123;&#125;</span><br><span class="line">	<span class="keyword">if</span> _, ok := t.userMap[userId]; ok &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> followeeId, _ := <span class="keyword">range</span> t.userMap[userId].followees &#123;</span><br><span class="line">			tweeters = <span class="built_in">append</span>(tweeters, t.userMap[followeeId].tweets...)</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	sort.Slice(tweeters, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> tweeters[i].time &gt; tweeters[j].time &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(tweeters) &amp;&amp; i &lt; <span class="number">10</span> ; i++ &#123;</span><br><span class="line">		resTop10 = <span class="built_in">append</span>(resTop10, tweeters[i].tweetId)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> resTop10</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>【Golang】优先队列</title>
-    <url>/2025-06-18-9fac781c2fa8.html</url>
-    <content><![CDATA[<h1 id="优先队列在LeetCode上的经典题目及Golang实现"><a href="#优先队列在LeetCode上的经典题目及Golang实现" class="headerlink" title="优先队列在LeetCode上的经典题目及Golang实现"></a>优先队列在LeetCode上的经典题目及Golang实现</h1><p>优先队列（Priority Queue）是一种重要的数据结构，它在很多算法问题中都有广泛应用。以下是LeetCode上一些经典的优先队列题目，以及用Golang实现的解决方案和模板总结。</p>
-<h2 id="优先队列的Golang实现"><a href="#优先队列的Golang实现" class="headerlink" title="优先队列的Golang实现"></a>优先队列的Golang实现</h2><p>在Golang中，我们可以使用<code>container/heap</code>包来实现优先队列。首先，我们需要定义一个实现heap.Interface的类型：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;container/heap&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个最小堆</span></span><br><span class="line"><span class="keyword">type</span> MinHeap []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MinHeap)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MinHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i] &lt; h[j] &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MinHeap)</span></span> Swap(i, j <span class="type">int</span>)      &#123; h[i], h[j] = h[j], h[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *MinHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    *h = <span class="built_in">append</span>(*h, x.(<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *MinHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *h</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    x := old[n<span class="number">-1</span>]</span><br><span class="line">    *h = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最大堆只需修改Less方法</span></span><br><span class="line"><span class="keyword">type</span> MaxHeap []<span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MaxHeap)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MaxHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i] &gt; h[j] &#125; <span class="comment">// 改为大于号</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h MaxHeap)</span></span> Swap(i, j <span class="type">int</span>)      &#123; h[i], h[j] = h[j], h[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *MaxHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    *h = <span class="built_in">append</span>(*h, x.(<span class="type">int</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *MaxHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *h</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    x := old[n<span class="number">-1</span>]</span><br><span class="line">    *h = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="经典题目及实现"><a href="#经典题目及实现" class="headerlink" title="经典题目及实现"></a>经典题目及实现</h2><h3 id="1-合并K个升序链表-LeetCode-23"><a href="#1-合并K个升序链表-LeetCode-23" class="headerlink" title="1. 合并K个升序链表 (LeetCode 23)"></a>1. 合并K个升序链表 (LeetCode 23)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * type ListNode struct &#123;</span></span><br><span class="line"><span class="comment"> *     Val int</span></span><br><span class="line"><span class="comment"> *     Next *ListNode</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> NodeHeap []*ListNode</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h NodeHeap)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(h) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h NodeHeap)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> h[i].Val &lt; h[j].Val &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h NodeHeap)</span></span> Swap(i, j <span class="type">int</span>)      &#123; h[i], h[j] = h[j], h[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *NodeHeap)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    *h = <span class="built_in">append</span>(*h, x.(*ListNode))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(h *NodeHeap)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *h</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    x := old[n<span class="number">-1</span>]</span><br><span class="line">    *h = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mergeKLists</span><span class="params">(lists []*ListNode)</span></span> *ListNode &#123;</span><br><span class="line">    h := &amp;NodeHeap&#123;&#125;</span><br><span class="line">    heap.Init(h)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将所有链表的头节点加入堆</span></span><br><span class="line">    <span class="keyword">for</span> _, list := <span class="keyword">range</span> lists &#123;</span><br><span class="line">        <span class="keyword">if</span> list != <span class="literal">nil</span> &#123;</span><br><span class="line">            heap.Push(h, list)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    dummy := &amp;ListNode&#123;&#125;</span><br><span class="line">    current := dummy</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> h.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">        node := heap.Pop(h).(*ListNode)</span><br><span class="line">        current.Next = node</span><br><span class="line">        current = current.Next</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> node.Next != <span class="literal">nil</span> &#123;</span><br><span class="line">            heap.Push(h, node.Next)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dummy.Next</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-数组中的第K个最大元素-LeetCode-215"><a href="#2-数组中的第K个最大元素-LeetCode-215" class="headerlink" title="2. 数组中的第K个最大元素 (LeetCode 215)"></a>2. 数组中的第K个最大元素 (LeetCode 215)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findKthLargest</span><span class="params">(nums []<span class="type">int</span>, k <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    h := &amp;MinHeap&#123;&#125;</span><br><span class="line">    heap.Init(h)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        heap.Push(h, num)</span><br><span class="line">        <span class="keyword">if</span> h.Len() &gt; k &#123;</span><br><span class="line">            heap.Pop(h)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> heap.Pop(h).(<span class="type">int</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-前K个高频元素-LeetCode-347"><a href="#3-前K个高频元素-LeetCode-347" class="headerlink" title="3. 前K个高频元素 (LeetCode 347)"></a>3. 前K个高频元素 (LeetCode 347)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Item <span class="keyword">struct</span> &#123;</span><br><span class="line">    value <span class="type">int</span></span><br><span class="line">    count <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> PriorityQueue []*Item</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Len() <span class="type">int</span>           &#123; <span class="keyword">return</span> <span class="built_in">len</span>(pq) &#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Less(i, j <span class="type">int</span>) <span class="type">bool</span> &#123; <span class="keyword">return</span> pq[i].count &lt; pq[j].count &#125; <span class="comment">// 最小堆</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq PriorityQueue)</span></span> Swap(i, j <span class="type">int</span>)      &#123; pq[i], pq[j] = pq[j], pq[i] &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Push(x <span class="keyword">interface</span>&#123;&#125;) &#123;</span><br><span class="line">    item := x.(*Item)</span><br><span class="line">    *pq = <span class="built_in">append</span>(*pq, item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(pq *PriorityQueue)</span></span> Pop() <span class="keyword">interface</span>&#123;&#125; &#123;</span><br><span class="line">    old := *pq</span><br><span class="line">    n := <span class="built_in">len</span>(old)</span><br><span class="line">    item := old[n<span class="number">-1</span>]</span><br><span class="line">    *pq = old[<span class="number">0</span> : n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> item</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">topKFrequent</span><span class="params">(nums []<span class="type">int</span>, k <span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">    <span class="comment">// 统计频率</span></span><br><span class="line">    frequency := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span><br><span class="line">    <span class="keyword">for</span> _, num := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        frequency[num]++</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建优先队列</span></span><br><span class="line">    pq := &amp;PriorityQueue&#123;&#125;</span><br><span class="line">    heap.Init(pq)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将元素加入队列</span></span><br><span class="line">    <span class="keyword">for</span> value, count := <span class="keyword">range</span> frequency &#123;</span><br><span class="line">        heap.Push(pq, &amp;Item&#123;value: value, count: count&#125;)</span><br><span class="line">        <span class="keyword">if</span> pq.Len() &gt; k &#123;</span><br><span class="line">            heap.Pop(pq)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 收集结果</span></span><br><span class="line">    result := <span class="built_in">make</span>([]<span class="type">int</span>, k)</span><br><span class="line">    <span class="keyword">for</span> i := k - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i-- &#123;</span><br><span class="line">        result[i] = heap.Pop(pq).(*Item).value</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-数据流的中位数-LeetCode-295"><a href="#4-数据流的中位数-LeetCode-295" class="headerlink" title="4. 数据流的中位数 (LeetCode 295)"></a>4. 数据流的中位数 (LeetCode 295)</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> MedianFinder <span class="keyword">struct</span> &#123;</span><br><span class="line">    maxHeap *MaxHeap <span class="comment">// 存储较小的一半</span></span><br><span class="line">    minHeap *MinHeap <span class="comment">// 存储较大的一半</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Constructor</span><span class="params">()</span></span> MedianFinder &#123;</span><br><span class="line">    <span class="keyword">return</span> MedianFinder&#123;</span><br><span class="line">        maxHeap: &amp;MaxHeap&#123;&#125;,</span><br><span class="line">        minHeap: &amp;MinHeap&#123;&#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MedianFinder)</span></span> AddNum(num <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// 先加入maxHeap</span></span><br><span class="line">    heap.Push(this.maxHeap, num)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 平衡两个堆</span></span><br><span class="line">    heap.Push(this.minHeap, heap.Pop(this.maxHeap))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> this.maxHeap.Len() &lt; this.minHeap.Len() &#123;</span><br><span class="line">        heap.Push(this.maxHeap, heap.Pop(this.minHeap))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(this *MedianFinder)</span></span> FindMedian() <span class="type">float64</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> this.maxHeap.Len() &gt; this.minHeap.Len() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">float64</span>((*this.maxHeap)[<span class="number">0</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">float64</span>((*this.maxHeap)[<span class="number">0</span>]+(*this.minHeap)[<span class="number">0</span>]) / <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="优先队列解题模板"><a href="#优先队列解题模板" class="headerlink" title="优先队列解题模板"></a>优先队列解题模板</h2><p>基于以上题目，可以总结出优先队列的通用解题模板：</p>
-<ol>
-<li><p><strong>定义堆类型</strong>：</p>
-<ul>
-<li>实现heap.Interface接口（Len, Less, Swap, Push, Pop方法）</li>
-<li>根据需求决定是最小堆还是最大堆（通过Less方法控制）</li>
-</ul>
-</li>
-<li><p><strong>初始化堆</strong>：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">h := &amp;CustomHeap&#123;&#125;</span><br><span class="line">heap.Init(h)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>使用堆</strong>：</p>
-<ul>
-<li>添加元素：<code>heap.Push(h, element)</code></li>
-<li>弹出元素：<code>heap.Pop(h)</code></li>
-<li>访问堆顶元素（不弹出）：对于最小堆是<code>h[0]</code>，注意要先检查长度</li>
-</ul>
-</li>
-<li><p><strong>常见模式</strong>：</p>
-<ul>
-<li>维护一个大小为K的堆（求前K大&#x2F;小元素）</li>
-<li>使用两个堆维护动态数据流的中位数</li>
-<li>在贪心算法中使用优先队列选择最优解</li>
-</ul>
-</li>
-</ol>
-<h2 id="其他经典优先队列题目"><a href="#其他经典优先队列题目" class="headerlink" title="其他经典优先队列题目"></a>其他经典优先队列题目</h2><ol>
-<li>滑动窗口最大值 (LeetCode 239)</li>
-<li>任务调度器 (LeetCode 621)</li>
-<li>最接近原点的K个点 (LeetCode 973)</li>
-<li>重构字符串 (LeetCode 767)</li>
-<li>网络延迟时间 (LeetCode 743)</li>
-</ol>
-<p>优先队列是解决许多复杂问题的有力工具，特别是在需要动态获取最大&#x2F;最小元素或前K个元素的场景中。掌握其实现和应用模式对算法面试非常有帮助。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-      </categories>
-  </entry>
-  <entry>
     <title>数据结构设计专题</title>
     <url>/2025-03-06-11dbfc57623a.html</url>
     <content><![CDATA[<h4 id="数据结构设计"><a href="#数据结构设计" class="headerlink" title="数据结构设计"></a><a href="https://labuladong.online/algo/intro/quick-learning-plan/#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1">数据结构设计</a></h4><table>
@@ -4163,7 +4163,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#105;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#110;">&#x6c;&#101;&#x69;&#113;&#105;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#105;&#64;&#x66;&#117;&#x64;&#97;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#108;&#x65;&#105;&#113;&#105;&#64;&#x66;&#117;&#x64;&#97;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4316,7 +4316,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#46;&#x65;&#100;&#x75;&#46;&#x63;&#110;">&#108;&#x65;&#105;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#46;&#x65;&#100;&#x75;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#100;&#97;&#110;&#46;&#x65;&#x64;&#x75;&#x2e;&#x63;&#110;">&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#100;&#97;&#110;&#46;&#x65;&#x64;&#x75;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4477,7 +4477,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#105;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#117;&#46;&#99;&#110;">&#108;&#101;&#x69;&#x71;&#105;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#117;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#x69;&#64;&#x66;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#108;&#x65;&#105;&#113;&#x69;&#64;&#x66;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4616,7 +4616,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#x6e;&#x2e;&#101;&#x64;&#117;&#46;&#99;&#x6e;">&#108;&#x65;&#x69;&#113;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#x6e;&#x2e;&#101;&#x64;&#117;&#46;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#110;&#46;&#101;&#x64;&#x75;&#46;&#99;&#x6e;">&#x6c;&#x65;&#x69;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#110;&#46;&#101;&#x64;&#x75;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4778,7 +4778,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#110;&#46;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;">&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#110;&#46;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#113;&#105;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#101;&#100;&#117;&#46;&#99;&#x6e;">&#x6c;&#x65;&#x69;&#113;&#105;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#101;&#100;&#117;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4932,7 +4932,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#105;&#64;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#x65;&#100;&#117;&#x2e;&#x63;&#110;">&#x6c;&#x65;&#105;&#113;&#105;&#64;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#x65;&#100;&#117;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#105;&#64;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#46;&#x63;&#110;">&#108;&#101;&#105;&#x71;&#105;&#64;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5060,7 +5060,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;">&#x6c;&#101;&#105;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#101;&#x69;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5186,7 +5186,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#64;&#x66;&#117;&#100;&#97;&#x6e;&#46;&#x65;&#100;&#x75;&#46;&#x63;&#110;">&#108;&#x65;&#105;&#x71;&#x69;&#64;&#x66;&#117;&#100;&#97;&#x6e;&#46;&#x65;&#100;&#x75;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#105;&#64;&#102;&#117;&#100;&#97;&#x6e;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#110;">&#x6c;&#101;&#105;&#x71;&#105;&#64;&#102;&#117;&#100;&#97;&#x6e;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5337,7 +5337,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#x61;&#110;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#110;">&#x6c;&#101;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#x61;&#110;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#46;&#101;&#100;&#117;&#46;&#99;&#x6e;">&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#46;&#101;&#100;&#117;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5475,7 +5475,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#x69;&#64;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#101;&#100;&#117;&#46;&#99;&#110;">&#x6c;&#x65;&#x69;&#x71;&#x69;&#64;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#101;&#100;&#117;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#x69;&#64;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#46;&#99;&#x6e;">&#108;&#101;&#x69;&#x71;&#x69;&#64;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5629,7 +5629,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#x69;&#64;&#102;&#x75;&#x64;&#97;&#110;&#46;&#101;&#x64;&#117;&#46;&#99;&#110;">&#108;&#101;&#105;&#113;&#x69;&#64;&#102;&#x75;&#x64;&#97;&#110;&#46;&#101;&#x64;&#117;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#x69;&#64;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#x6e;">&#108;&#101;&#105;&#113;&#x69;&#64;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5806,7 +5806,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#110;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;">&#x6c;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#110;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#x6e;&#x2e;&#x65;&#100;&#x75;&#46;&#99;&#110;">&#108;&#101;&#105;&#x71;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#x6e;&#x2e;&#x65;&#100;&#x75;&#46;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5984,7 +5984,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#117;&#x64;&#97;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#117;&#x64;&#97;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#46;&#101;&#100;&#117;&#46;&#99;&#x6e;">&#108;&#101;&#105;&#113;&#105;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#46;&#101;&#100;&#117;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6140,7 +6140,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#x69;&#x40;&#102;&#117;&#100;&#x61;&#110;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#x65;&#105;&#x71;&#x69;&#x40;&#102;&#117;&#100;&#x61;&#110;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#x69;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#110;">&#x6c;&#101;&#105;&#113;&#x69;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6288,7 +6288,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#x65;&#100;&#x75;&#46;&#99;&#110;">&#108;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#x65;&#100;&#x75;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;">&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6382,7 +6382,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#46;&#x63;&#x6e;">&#108;&#x65;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#113;&#x69;&#x40;&#x66;&#x75;&#x64;&#97;&#110;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#110;">&#x6c;&#x65;&#x69;&#113;&#x69;&#x40;&#x66;&#x75;&#x64;&#97;&#110;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6476,7 +6476,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#x40;&#x66;&#117;&#100;&#x61;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;">&#x6c;&#x65;&#x69;&#x71;&#105;&#x40;&#x66;&#117;&#100;&#x61;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#105;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#101;&#100;&#x75;&#x2e;&#x63;&#x6e;">&#108;&#101;&#105;&#x71;&#105;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#101;&#100;&#x75;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6568,7 +6568,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#x69;&#x40;&#102;&#117;&#x64;&#97;&#110;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#108;&#x65;&#x69;&#113;&#x69;&#x40;&#102;&#117;&#x64;&#97;&#110;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#105;&#64;&#102;&#117;&#x64;&#97;&#x6e;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#110;">&#108;&#101;&#105;&#x71;&#105;&#64;&#102;&#117;&#x64;&#97;&#x6e;&#46;&#101;&#x64;&#x75;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6671,7 +6671,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#105;&#64;&#x66;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#46;&#x63;&#x6e;">&#x6c;&#x65;&#105;&#x71;&#105;&#64;&#x66;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6775,7 +6775,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#x69;&#x40;&#102;&#x75;&#100;&#x61;&#110;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;">&#108;&#x65;&#x69;&#113;&#x69;&#x40;&#102;&#x75;&#100;&#x61;&#110;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#105;&#x40;&#x66;&#117;&#100;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#x6e;">&#x6c;&#101;&#105;&#x71;&#105;&#x40;&#x66;&#117;&#100;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -7212,7 +7212,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#105;&#64;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#x65;&#x64;&#117;&#46;&#x63;&#110;">&#108;&#101;&#x69;&#113;&#105;&#64;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#x65;&#x64;&#117;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#105;&#64;&#102;&#117;&#100;&#x61;&#110;&#46;&#x65;&#x64;&#117;&#x2e;&#99;&#x6e;">&#108;&#101;&#105;&#x71;&#105;&#64;&#102;&#117;&#100;&#x61;&#110;&#46;&#x65;&#x64;&#117;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -7703,7 +7703,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#101;&#x64;&#117;&#46;&#99;&#110;">&#x6c;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#101;&#x64;&#117;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#101;&#100;&#117;&#46;&#x63;&#110;">&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#101;&#100;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -8108,7 +8108,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#x69;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;">&#108;&#101;&#x69;&#113;&#x69;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#x71;&#105;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#46;&#101;&#100;&#x75;&#46;&#x63;&#110;">&#108;&#x65;&#x69;&#x71;&#105;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#46;&#101;&#100;&#x75;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -8560,7 +8560,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#x69;&#x40;&#102;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#108;&#x65;&#x69;&#113;&#x69;&#x40;&#102;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#110;">&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#46;&#101;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -8910,7 +8910,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#x75;&#46;&#99;&#x6e;">&#108;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#46;&#101;&#100;&#x75;&#46;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#105;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x63;&#x6e;">&#108;&#101;&#x69;&#x71;&#105;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -9256,351 +9256,11 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#105;&#x40;&#102;&#117;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#99;&#110;">&#x6c;&#101;&#x69;&#113;&#105;&#x40;&#102;&#117;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#105;&#x40;&#102;&#x75;&#100;&#97;&#x6e;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;">&#x6c;&#101;&#105;&#x71;&#105;&#x40;&#102;&#x75;&#100;&#97;&#x6e;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
 <p>📡 数据更新：2026-04-19 20:02:23<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
-]]></content>
-      <categories>
-        <category>综合</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-        <tag>Trending</tag>
-        <tag>开源</tag>
-        <tag>日报</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub Trending 日报 - 2026/04/20</title>
-    <url>/2026-04-20-667878cd9e74.html</url>
-    <content><![CDATA[<h1 id="GitHub-Trending-日报"><a href="#GitHub-Trending-日报" class="headerlink" title="GitHub Trending 日报"></a>GitHub Trending 日报</h1><p>📅 <strong>日期</strong>：2026&#x2F;04&#x2F;20</p>
-<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
-<hr>
-<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2>
-<style>
-.github-trending-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 20px 0;
-}
-.trending-card {
-    background: var(--card-bg, #f8f9fa);
-    border: 1px solid var(--border-color, #e9ecef);
-    border-radius: 12px;
-    padding: 16px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.trending-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-.card-number {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
-}
-.card-title {
-    margin: 0 !important;
-    font-size: 16px !important;
-}
-.card-title a {
-    color: #1a73e8;
-    text-decoration: none;
-}
-.card-desc {
-    color: #666;
-    font-size: 14px;
-    margin: 8px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-.card-meta {
-    display: flex;
-    gap: 12px;
-    font-size: 13px;
-    color: #666;
-    margin: 8px 0;
-}
-.card-repo {
-    font-size: 12px;
-    color: #999;
-    font-family: monospace;
-    margin-bottom: 8px;
-}
-.card-ai-insight {
-    margin-top: 8px;
-}
-.card-ai-insight summary {
-    cursor: pointer;
-    font-size: 13px;
-    color: #666;
-}
-.insight-content {
-    font-size: 13px;
-    color: #555;
-    margin-top: 8px;
-    padding: 8px;
-    background: rgba(0,0,0,0.03);
-    border-radius: 6px;
-}
-@media (max-width: 768px) {
-    .github-trending-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
-
-<div class="github-trending-grid">
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">1</span>
-                <h3 class="card-title"><a href="https://github.com/Fincept-Corporation/FinceptTerminal" target="_blank">FinceptTerminal</a></h3>
-            </div>
-            <p class="card-desc">FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +1254 今日</span>
-                <span class="card-total">🏆 6,482</span>
-            </div>
-            <div class="card-repo">📦 Fincept-Corporation/FinceptTerminal</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">FinceptTerminal之所以近期在GitHub Trending上增长迅速，主要是因为它精准切入了当下投资者和金融从业者对数据驱动决策工具的强烈需求，将市场分析、投资研究和宏观经济数据整合到一个交互式的终端环境中，满足了用户一站式获取金融洞察的诉求，加上Python在数据科学领域的生态优势，降低了使用门槛。这个项目在产品设计上值得借鉴的地方在于它将复杂金融工具平民化的思路，以及强调“交互式探索”的用户体验，这种把专业级功能包装成易于上手产品的做法，对于任何面向C端或B端用户的工具型项目都有参考价值。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">2</span>
-                <h3 class="card-title"><a href="https://github.com/thunderbird/thunderbolt" target="_blank">thunderbolt</a></h3>
-            </div>
-            <p class="card-desc">AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.</p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +695 今日</span>
-                <span class="card-total">🏆 2,203</span>
-            </div>
-            <div class="card-repo">📦 thunderbird/thunderbolt</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">Thunderbolt火起来主要是因为它契合了当下用户对AI隐私和数据主权的强烈需求，特别是"Own your data"和"Eliminate vendor lock-in"这个核心理念，正好戳中了很多人对大厂AI服务数据安全隐患的痛点，再加上Thunderbird本身作为Mozilla旗下知名开源项目的品牌背书，让大家对这个项目多了几分信任感和期待。
-
-这个项目值得借鉴的地方在于它精准的定位策略——不是自己去训练AI模型，而是做一个中间层让用户能自由选择不同的AI模型提供商，这样既避开了与头部玩家的正面竞争，又为用户提供了真正的选择权，另外它将AI能力整合进邮件客户端这个日常工具的场景化思路也很有参考价值。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">3</span>
-                <h3 class="card-title"><a href="https://github.com/tractorjuice/arc-kit" target="_blank">arc-kit</a></h3>
-            </div>
-            <p class="card-desc">Enterprise Architecture Governance & Vendor Procurement Toolkit</p>
-            <div class="card-meta">
-                <span class="card-lang">🌐 HTML</span>
-                <span class="card-stars">⭐ +263 今日</span>
-                <span class="card-total">🏆 991</span>
-            </div>
-            <div class="card-repo">📦 tractorjuice/arc-kit</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">arc-kit之所以近期获得关注，主要是因为它针对企业架构治理和供应商采购这个实际但常被忽视的企业痛点提供了实用工具，在企业数字化转型背景下，这类解决方案正好满足了市场需求。该项目虽然总stars不到1000，但今日新增就达263，说明其提供的模板和最佳实践对IT管理者和采购人员具有实际价值，体现了专注于细分领域、解决真实问题的项目更容易获得社区认可。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">4</span>
-                <h3 class="card-title"><a href="https://github.com/openai/openai-agents-python" target="_blank">openai-agents-python</a></h3>
-            </div>
-            <p class="card-desc">A lightweight, powerful framework for multi-agent workflows</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +752 今日</span>
-                <span class="card-total">🏆 23,146</span>
-            </div>
-            <div class="card-repo">📦 openai/openai-agents-python</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">openai-agents-python之所以迅速走红，主要得益于OpenAI的品牌号召力和当前AI Agent热潮，它作为官方推出的轻量级多智能体框架，正好满足了开发者对构建复杂AI工作流的迫切需求，加上Python生态的天然优势，使得这个项目一经发布就获得了大量关注。该框架值得借鉴的地方在于其简洁优雅的架构设计理念，既保持了功能强大又不会给项目引入过多复杂性，同时OpenAI作为大模型提供商推出的官方框架，也为行业提供了一套可参考的智能体协作设计模式。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">5</span>
-                <h3 class="card-title"><a href="https://github.com/pingdotgg/t3code" target="_blank">t3code</a></h3>
-            </div>
-            <p class="card-desc"></p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +109 今日</span>
-                <span class="card-total">🏆 9,871</span>
-            </div>
-            <div class="card-repo">📦 pingdotgg/t3code</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">t3code之所以受到关注，主要是因为它出自T3 Stack创始人pingdot.gg之手，作为一个专注于TypeScript全栈开发的工具或代码资源库，正好契合了当下开发者对高效、类型安全的现代Web开发方案的强烈需求，加上作者本身的品牌影响力，自然吸引了不少关注。这个项目值得借鉴的地方在于它展现了如何围绕核心产品（T3 Stack）构建完整的开发者生态，通过提供配套工具和资源来增强用户粘性，同时项目采用了TypeScript作为主要语言，这也反映了当前全栈开发领域对类型安全和开发体验的重视。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">6</span>
-                <h3 class="card-title"><a href="https://github.com/paperless-ngx/paperless-ngx" target="_blank">paperless-ngx</a></h3>
-            </div>
-            <p class="card-desc">A community-supported supercharged document management system: scan, index and archive all your documents</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +393 今日</span>
-                <span class="card-total">🏆 38,851</span>
-            </div>
-            <div class="card-repo">📦 paperless-ngx/paperless-ngx</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 393 stars，A community-supported supercharged document management system: scan, index and archive all your documents。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">7</span>
-                <h3 class="card-title"><a href="https://github.com/ruvnet/RuView" target="_blank">RuView</a></h3>
-            </div>
-            <p class="card-desc">π RuView: WiFi DensePose turns commodity WiFi signals into real-time human pose estimation, vital sign monitoring, and presence detection — all without a single pixel of video.</p>
-            <div class="card-meta">
-                <span class="card-lang">🦀 Rust</span>
-                <span class="card-stars">⭐ +149 今日</span>
-                <span class="card-total">🏆 47,481</span>
-            </div>
-            <div class="card-repo">📦 ruvnet/RuView</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 149 stars，π RuView: WiFi DensePose turns commodity WiFi signals into real-time human pose estimation, vital sign monitoring, and presence detection — all without a single pixel of video.。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">8</span>
-                <h3 class="card-title"><a href="https://github.com/EvoMap/evolver" target="_blank">evolver</a></h3>
-            </div>
-            <p class="card-desc">The GEP-Powered Self-Evolution Engine for AI Agents. Genome Evolution Protocol. | evomap.ai</p>
-            <div class="card-meta">
-                <span class="card-lang">🟨 JavaScript</span>
-                <span class="card-stars">⭐ +527 今日</span>
-                <span class="card-total">🏆 5,501</span>
-            </div>
-            <div class="card-repo">📦 EvoMap/evolver</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 527 stars，The GEP-Powered Self-Evolution Engine for AI Agents. Genome Evolution Protocol. | evomap.ai。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">9</span>
-                <h3 class="card-title"><a href="https://github.com/BasedHardware/omi" target="_blank">omi</a></h3>
-            </div>
-            <p class="card-desc">AI that sees your screen, listens to your conversations and tells you what to do</p>
-            <div class="card-meta">
-                <span class="card-lang">📦 Dart</span>
-                <span class="card-stars">⭐ +685 今日</span>
-                <span class="card-total">🏆 11,133</span>
-            </div>
-            <div class="card-repo">📦 BasedHardware/omi</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 685 stars，AI that sees your screen, listens to your conversations and tells you what to do。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">10</span>
-                <h3 class="card-title"><a href="https://github.com/Donchitos/Claude-Code-Game-Studios" target="_blank">Claude-Code-Game-Studios</a></h3>
-            </div>
-            <p class="card-desc">Turn Claude Code into a full game dev studio — 49 AI agents, 72 workflow skills, and a complete coordination system mirroring real studio hierarchy.</p>
-            <div class="card-meta">
-                <span class="card-lang">🐚 Shell</span>
-                <span class="card-stars">⭐ +704 今日</span>
-                <span class="card-total">🏆 13,399</span>
-            </div>
-            <div class="card-repo">📦 Donchitos/Claude-Code-Game-Studios</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 704 stars，Turn Claude Code into a full game dev studio — 49 AI agents, 72 workflow skills, and a complete coordination system mirroring real studio hierarchy.。</div>
-                </details>
-            </div>
-        </div></div>
-<hr>
-<h2 id="🔍-今日精选项目：FinceptTerminal"><a href="#🔍-今日精选项目：FinceptTerminal" class="headerlink" title="🔍 今日精选项目：FinceptTerminal"></a>🔍 今日精选项目：FinceptTerminal</h2><p><strong>项目地址</strong>：<a href="https://github.com/Fincept-Corporation/FinceptTerminal">https://github.com/Fincept-Corporation/FinceptTerminal</a></p>
-<p><strong>作者</strong>：Fincept-Corporation</p>
-<p><strong>描述</strong>：FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</p>
-<p><strong>语言</strong>：Python</p>
-<p><strong>今日新增星标</strong>：+1254</p>
-<p><strong>总星标数</strong>：6,482</p>
-<hr>
-<h3 id="📝-深度分析"><a href="#📝-深度分析" class="headerlink" title="📝 深度分析"></a>📝 深度分析</h3><h2 id="🎯-项目本质"><a href="#🎯-项目本质" class="headerlink" title="🎯 项目本质"></a>🎯 项目本质</h2><p>FinceptTerminal是一个基于Python构建的现代化金融终端应用，定位为专业级市场数据分析与投资研究平台。它整合了市场行情监控、技术分析工具、经济数据查询和投资研究功能，通过交互式界面为投资者和金融分析师提供一站式数据驱动决策环境。本质上，它试图将彭博终端的核心功能开源化、民主化，让普通投资者也能拥有专业级的分析工具。</p>
-<h2 id="🔥-为什么火"><a href="#🔥-为什么火" class="headerlink" title="🔥 为什么火"></a>🔥 为什么火</h2><p>这个项目爆发式增长的背后是三重驱动力。首先是<strong>需求端爆发</strong>：后疫情时代个人投资群体急剧扩大，散户化趋势明显，但专业工具往往价格高昂（如彭博终端月费超2000美元），市场存在明显的供给缺口。其次是<strong>Python生态成熟</strong>：pandas、matplotlib、yfinance等库的成熟使得快速构建金融分析工具成为可能，降低了开发门槛。第三是<strong>开源社区情绪</strong>：近期传统金融数据垄断引发开发者社区不满，FinceptTerminal的出现恰好满足了“用开源对抗封闭”的社区心理，形成了自发传播效应。</p>
-<h2 id="💡-核心创新"><a href="#💡-核心创新" class="headerlink" title="💡 核心创新"></a>💡 核心创新</h2><p>该项目最突出的创新在于<strong>模块化架构设计</strong>——将复杂的金融终端功能解耦为可独立运行的分析模块，用户可以按需组合，这种设计思路借鉴了Bloomberg Open Market Data Initiative的理念。同时，项目在数据可视化层面采用了响应式交互设计，将静态图表升级为可探索的数据探索工具，这比传统金融终端的“表格+按钮”模式有显著体验提升。</p>
-<h2 id="📈-可借鉴价值"><a href="#📈-可借鉴价值" class="headerlink" title="📈 可借鉴价值"></a>📈 可借鉴价值</h2><p>对于个人开发者而言，这个项目提供了宝贵的参考：<strong>垂直领域工具的快速MVP验证路径</strong>——从yfinance获取数据、用Plotly&#x2F;Dash构建交互界面、围绕单一痛点打磨功能，一套组合拳即可产出可用产品。更重要的是，它示范了如何通过<strong>差异化定位</strong>切入被巨头垄断的市场——不追求功能全面，而是聚焦“个人投资者也能用”的易用性，这对于工具类产品的市场切入策略极具参考意义。</p>
-<hr>
-<hr>
-<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
-<ul>
-<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
-<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
-<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
-</ul>
-<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
-<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
-<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
-<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
-</ul>
-<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
-<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
-<li>💬 微信公众号：DeepThinking深思</li>
-<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
-</ul>
-<hr>
-<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
-<ul>
-<li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#x69;&#64;&#x66;&#x75;&#x64;&#97;&#110;&#46;&#x65;&#x64;&#x75;&#46;&#99;&#110;">&#108;&#101;&#x69;&#x71;&#x69;&#64;&#x66;&#x75;&#x64;&#97;&#110;&#46;&#x65;&#x64;&#x75;&#46;&#99;&#110;</a></li>
-<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
-</ul>
-<hr>
-<p>📡 数据更新：2026-04-20 08:08:01<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
 ]]></content>
       <categories>
         <category>综合</category>
@@ -12136,5 +11796,363 @@ dfs(root.Right, res)
         <category>编程语言</category>
         <category>前端</category>
       </categories>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 - 2026/04/20</title>
+    <url>/2026-04-20-b7fda93c23ca.html</url>
+    <content><![CDATA[<h1 id="GitHub-Trending-日报"><a href="#GitHub-Trending-日报" class="headerlink" title="GitHub Trending 日报"></a>GitHub Trending 日报</h1><p>📅 <strong>日期</strong>：2026&#x2F;04&#x2F;20</p>
+<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
+<hr>
+<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2>
+<style>
+.github-trending-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+.trending-card {
+    background: var(--card-bg, #f8f9fa);
+    border: 1px solid var(--border-color, #e9ecef);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.trending-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.card-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+.card-title {
+    margin: 0 !important;
+    font-size: 16px !important;
+}
+.card-title a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+.card-desc {
+    color: #666;
+    font-size: 14px;
+    margin: 8px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.card-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #666;
+    margin: 8px 0;
+}
+.card-repo {
+    font-size: 12px;
+    color: #999;
+    font-family: monospace;
+    margin-bottom: 8px;
+}
+.card-ai-insight {
+    margin-top: 8px;
+}
+.card-ai-insight summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: #666;
+}
+.insight-content {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 6px;
+}
+@media (max-width: 768px) {
+    .github-trending-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="github-trending-grid">
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">1</span>
+                <h3 class="card-title"><a href="https://github.com/Fincept-Corporation/FinceptTerminal" target="_blank">FinceptTerminal</a></h3>
+            </div>
+            <p class="card-desc">FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +1254 今日</span>
+                <span class="card-total">🏆 8,262</span>
+            </div>
+            <div class="card-repo">📦 Fincept-Corporation/FinceptTerminal</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">FinceptTerminal之所以在GitHub Trending上火起来，主要是因为它抓住了金融数据分析和投资研究工具的刚需，市场上类似Bloomberg终端这样的专业工具价格昂贵，而开源的现代化替代方案自然会吸引大量个人投资者、学生和初创团队的关注，再加上Python在数据科学领域的主导地位，使得项目能够快速获得曝光和社区贡献。
+
+这个项目值得借鉴的地方在于它的产品定位——将复杂的金融数据分析能力以开源和用户友好的方式呈现，降低了专业级投资工具的使用门槛，同时通过整合市场分析、投资研究和经济数据等多维度功能，形成了一个完整的数据驱动决策生态，这种“普惠金融科技”的思路对于其他垂直领域的开源工具开发也有很好的启发意义。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">2</span>
+                <h3 class="card-title"><a href="https://github.com/ruvnet/RuView" target="_blank">RuView</a></h3>
+            </div>
+            <p class="card-desc">π RuView: WiFi DensePose turns commodity WiFi signals into real-time human pose estimation, vital sign monitoring, and presence detection — all without a single pixel of video.</p>
+            <div class="card-meta">
+                <span class="card-lang">🦀 Rust</span>
+                <span class="card-stars">⭐ +149 今日</span>
+                <span class="card-total">🏆 47,840</span>
+            </div>
+            <div class="card-repo">📦 ruvnet/RuView</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">RuView之所以在GitHub Trending上火起来，主要是因为它解决了一个非常实际的问题——用普通WiFi信号就能实现人体姿态估计和生命体征监测，完全不依赖摄像头，这在隐私保护和复杂环境监控方面有很大的应用前景，而且它选择用Rust来实现这个项目，性能和安全性都很突出，加上最近新增149颗stars，说明社区对这类隐私友好的感知技术关注度在上升。这个项目值得借鉴的地方在于它巧妙地利用了WiFi CSI（信道状态信息）来实现非视觉感知，这种“借力”的思路很聪明，另外Rust语言的高性能和内存安全特性也让它在处理实时信号数据时更有优势，对于想做边缘计算或IoT相关项目的开发者来说，这个项目展示了一种很酷的技术组合方式。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">3</span>
+                <h3 class="card-title"><a href="https://github.com/thunderbird/thunderbolt" target="_blank">thunderbolt</a></h3>
+            </div>
+            <p class="card-desc">AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +695 今日</span>
+                <span class="card-total">🏆 2,548</span>
+            </div>
+            <div class="card-repo">📦 thunderbird/thunderbolt</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">Thunderbolt之所以在GitHub Trending上火起来，主要是因为它切中了当前AI应用开发中的痛点——用户对数据主权和避免供应商绑定的强烈需求，由Thunderbird这样有信誉的组织来开发，给项目增添了不少可信度。TypeScript的选用也降低了前端开发者接入的门槛，使得这个项目既能吸引技术爱好者，也能在更广泛的用户群体中传播。
+
+这个项目值得借鉴的地方在于它精准的市场定位策略，通过明确的价值主张——“你的AI你做主”——快速建立差异化优势。同时，采用模块化设计让用户能灵活切换不同AI模型，这种开放架构思维在当前AI生态快速变化的环境下显得尤为明智。对于其他开源项目而言，这种“解决问题而非堆砌功能”的开发理念，以及借助成熟品牌背书的运营方式，都是很好的参考方向。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">4</span>
+                <h3 class="card-title"><a href="https://github.com/paperless-ngx/paperless-ngx" target="_blank">paperless-ngx</a></h3>
+            </div>
+            <p class="card-desc">A community-supported supercharged document management system: scan, index and archive all your documents</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +393 今日</span>
+                <span class="card-total">🏆 39,166</span>
+            </div>
+            <div class="card-repo">📦 paperless-ngx/paperless-ngx</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">paperless-ngx之所以在GitHub Trending上持续火热，主要是因为它精准解决了现代人数字化管理纸质文档的痛点——通过OCR识别、全文搜索和自动化分类，让繁琐的文件归档变得轻松高效，而且完全开源免费，相比昂贵的商业解决方案更具吸引力。这个项目的成功还得益于Docker的便捷部署、活跃的社区支持以及从paperless-ngfork后持续迭代带来的功能增强，形成了一个可靠的个人文档管理闭环。它的崛起提醒我们，专注于解决具体生活场景需求、注重易用性的工具型项目往往拥有持久的生命力。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">5</span>
+                <h3 class="card-title"><a href="https://github.com/tractorjuice/arc-kit" target="_blank">arc-kit</a></h3>
+            </div>
+            <p class="card-desc">Enterprise Architecture Governance & Vendor Procurement Toolkit</p>
+            <div class="card-meta">
+                <span class="card-lang">🌐 HTML</span>
+                <span class="card-stars">⭐ +263 今日</span>
+                <span class="card-total">🏆 1,172</span>
+            </div>
+            <div class="card-repo">📦 tractorjuice/arc-kit</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">arc-kit之所以今天获得较多关注，主要是因为它提供了一套实用的企业架构治理和供应商采购解决方案，在这个领域开源工具相对稀缺的背景下填补了市场需求。该项目以纯HTML方式实现，便于企业快速部署和使用，同时覆盖了架构评估、供应商审查等企业采购流程中的关键环节。作为一个轻量级的工具包，它的借鉴价值在于专注于解决具体业务痛点，并且用最简单直接的技术栈实现，降低了企业的使用门槛。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">6</span>
+                <h3 class="card-title"><a href="https://github.com/koala73/worldmonitor" target="_blank">worldmonitor</a></h3>
+            </div>
+            <p class="card-desc">Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +343 今日</span>
+                <span class="card-total">🏆 49,466</span>
+            </div>
+            <div class="card-repo">📦 koala73/worldmonitor</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 343 stars，Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">7</span>
+                <h3 class="card-title"><a href="https://github.com/openai/openai-agents-python" target="_blank">openai-agents-python</a></h3>
+            </div>
+            <p class="card-desc">A lightweight, powerful framework for multi-agent workflows</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +752 今日</span>
+                <span class="card-total">🏆 23,667</span>
+            </div>
+            <div class="card-repo">📦 openai/openai-agents-python</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 752 stars，A lightweight, powerful framework for multi-agent workflows。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">8</span>
+                <h3 class="card-title"><a href="https://github.com/deepseek-ai/DeepGEMM" target="_blank">DeepGEMM</a></h3>
+            </div>
+            <p class="card-desc">DeepGEMM: clean and efficient FP8 GEMM kernels with fine-grained scaling</p>
+            <div class="card-meta">
+                <span class="card-lang">📦 Cuda</span>
+                <span class="card-stars">⭐ +155 今日</span>
+                <span class="card-total">🏆 6,728</span>
+            </div>
+            <div class="card-repo">📦 deepseek-ai/DeepGEMM</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 155 stars，DeepGEMM: clean and efficient FP8 GEMM kernels with fine-grained scaling。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">9</span>
+                <h3 class="card-title"><a href="https://github.com/pi-hole/pi-hole" target="_blank">pi-hole</a></h3>
+            </div>
+            <p class="card-desc">A black hole for Internet advertisements</p>
+            <div class="card-meta">
+                <span class="card-lang">🐚 Shell</span>
+                <span class="card-stars">⭐ +154 今日</span>
+                <span class="card-total">🏆 56,789</span>
+            </div>
+            <div class="card-repo">📦 pi-hole/pi-hole</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 154 stars，A black hole for Internet advertisements。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">10</span>
+                <h3 class="card-title"><a href="https://github.com/XTLS/Xray-core" target="_blank">Xray-core</a></h3>
+            </div>
+            <p class="card-desc">Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐹 Go</span>
+                <span class="card-stars">⭐ +52 今日</span>
+                <span class="card-total">🏆 37,299</span>
+            </div>
+            <div class="card-repo">📦 XTLS/Xray-core</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 52 stars，Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.。</div>
+                </details>
+            </div>
+        </div></div>
+<hr>
+<h2 id="🔍-今日精选项目：FinceptTerminal"><a href="#🔍-今日精选项目：FinceptTerminal" class="headerlink" title="🔍 今日精选项目：FinceptTerminal"></a>🔍 今日精选项目：FinceptTerminal</h2><p><strong>项目地址</strong>：<a href="https://github.com/Fincept-Corporation/FinceptTerminal">https://github.com/Fincept-Corporation/FinceptTerminal</a></p>
+<p><strong>作者</strong>：Fincept-Corporation</p>
+<p><strong>描述</strong>：FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</p>
+<p><strong>语言</strong>：Python</p>
+<p><strong>今日新增星标</strong>：+1254</p>
+<p><strong>总星标数</strong>：8,262</p>
+<hr>
+<h3 id="📝-深度分析"><a href="#📝-深度分析" class="headerlink" title="📝 深度分析"></a>📝 深度分析</h3><h2 id="🎯-项目本质"><a href="#🎯-项目本质" class="headerlink" title="🎯 项目本质"></a>🎯 项目本质</h2><p>FinceptTerminal 是一个基于 Python 构建的现代化金融终端应用，定位为<strong>一站式市场分析与投资研究平台</strong>。它旨在为个人投资者、散户及金融爱好者提供专业级的市场数据可视化、经济指标追踪和投资研究工具，让用户能够在友好的界面中完成从数据获取到决策分析的全流程操作。换句话说，它试图用<strong>开源的方式</strong>重新定义”人人都能用的金融终端”这一概念。</p>
+<h2 id="🔥-为什么火"><a href="#🔥-为什么火" class="headerlink" title="🔥 为什么火"></a>🔥 为什么火</h2><p>这个项目在 GitHub Trending 上的爆发式增长并非偶然，而是多重因素叠加的必然结果。</p>
+<p><strong>市场需求层面</strong>：近年来随着 Robinhood 等零佣金交易平台的兴起，个人投资者参与金融市场的门槛大幅降低。然而，普通投资者与机构投资者之间在<strong>数据获取和分析能力</strong>上的鸿沟依然巨大。FinceptTerminal 精准切中了这一痛点——它用开源+免费的方式，让普通用户也能拥有”华尔街级别”的工具感。</p>
+<p><strong>技术选型层面</strong>：Python 是金融量化领域的事实标准，拥有极其丰富的生态（pandas、numpy、matplotlib、requests 等），这使得项目在数据处理和可视化方面具备天然优势。同时，Python 的低门槛也让更多非专业开发者能够参与贡献。</p>
+<p><strong>社区情绪层面</strong>：在全球通胀、经济不确定性的背景下，年轻人对投资理财的关注度空前高涨。GitHub 上任何一个与”金融科技”相关且定位清晰的项目，都能迅速吸引大量关注。</p>
+<h2 id="💡-核心创新"><a href="#💡-核心创新" class="headerlink" title="💡 核心创新"></a>💡 核心创新</h2><p>FinceptTerminal 的核心创新不在于某个单一技术突破，而在于<strong>产品定位与用户体验的重新整合</strong>。传统金融终端（如 Bloomberg Terminal）虽然功能强大，但价格高昂（年费数万美元）、学习曲线陡峭，普通用户难以企及。</p>
+<p>FinceptTerminal 的创新点在于：</p>
+<ol>
+<li><strong>模块化架构设计</strong>：将市场数据、技术指标、经济日历、新闻舆情等功能拆分为独立模块，用户可以按需组合，降低了系统复杂度。</li>
+<li><strong>交互式数据探索</strong>：强调”探索式”体验，用户可以动态筛选、可视化、对比不同资产或时间维度的数据，而非被动接受预制报告。</li>
+<li><strong>轻量化与可扩展性</strong>：基于 Python 生态，可以轻松对接各种数据源（YFinance、Alpha Vantage 等免费 API），兼顾了成本与功能性。</li>
+</ol>
+<h2 id="📈-可借鉴价值"><a href="#📈-可借鉴价值" class="headerlink" title="📈 可借鉴价值"></a>📈 可借鉴价值</h2><p>对于个人开发者而言，FinceptTerminal 是一个极具参考价值的项目模板：</p>
+<ul>
+<li><strong>项目结构设计</strong>：如何用 Python 组织一个功能丰富的 CLI&#x2F;TUI 应用，其目录结构和模块划分值得学习。</li>
+<li><strong>数据源整合思路</strong>：如何优雅地封装多个外部 API，实现数据源的统一抽象和错误处理。</li>
+<li><strong>产品化思维</strong>：从”技术实现”到”用户价值”的转化——它不只是一个数据爬虫或脚本，而是一个完整的、面向终端用户的产品。这种<strong>产品化意识</strong>是许多技术开发者所欠缺的。</li>
+<li><strong>社区运营经验</strong>：从 0 到 8,000+ stars 的增长路径，本身就是一个值得研究的案例。</li>
+</ul>
+<p><strong>建议</strong>：如果你对金融科技或数据可视化感兴趣，可以深入研究其源码结构，学习如何将复杂的金融逻辑转化为简洁的代码实现。</p>
+<hr>
+<hr>
+<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
+<ul>
+<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
+<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
+<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
+</ul>
+<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
+<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
+<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
+<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
+</ul>
+<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
+<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
+<li>💬 微信公众号：DeepThinking深思</li>
+<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
+</ul>
+<hr>
+<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
+<ul>
+<li>💬 评论留言推荐</li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#x69;&#64;&#x66;&#117;&#x64;&#97;&#110;&#46;&#101;&#100;&#117;&#46;&#x63;&#110;">&#x6c;&#x65;&#105;&#x71;&#x69;&#64;&#x66;&#117;&#x64;&#97;&#110;&#46;&#101;&#100;&#117;&#46;&#x63;&#110;</a></li>
+<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
+</ul>
+<hr>
+<p>📡 数据更新：2026-04-20 20:04:59<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Trending</tag>
+        <tag>开源</tag>
+        <tag>日报</tag>
+      </tags>
   </entry>
 </search>
