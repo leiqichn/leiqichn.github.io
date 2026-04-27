@@ -204,15 +204,104 @@ Claude Code 安全限制不允许 root 用户使用 `--dangerously-skip-permissi
 1. 使用非 root 用户运行 cc-connect
 2. 或在 `settings.json` 中预配置权限
 
-### 模型不兼容错误
+**关键修复**：使用 `su -s /bin/bash testuser` 切换用户：
 
-确保代理正在运行，并且 `ANTHROPIC_BASE_URL` 指向代理地址。
+```bash
+#!/bin/bash
+cd /home/testuser
+export HOME=/home/testuser
+export PATH=/home/testuser/cc_bin:/usr/local/bin:/usr/bin:/bin
+su -s /bin/bash testuser << 'EOF'
+exec /home/testuser/cc_bin/node /path/to/script.js >> /home/testuser/.log 2>&1
+EOF
+```
 
-## 参考资料
+**注意**：`su testuser` 直接切换会失败，必须使用 `su -s /bin/bash testuser`
+
+## PM2守护进程配置
+
+为确保服务稳定运行，使用PM2守护进程自动重启：
+
+**配置文件** `/root/.openclaw/workspace/ecosystem.config.js`：
+
+```javascript
+module.exports = {
+  apps: [
+    {
+      name: 'claude-proxy',
+      script: '/home/testuser/run-claude-proxy.sh',
+      interpreter: '/bin/bash',
+      cwd: '/home/testuser',
+      autorestart: true,
+      watch: false,
+      exp_backoff_restart_delay: 1000
+    },
+    {
+      name: 'cc-connect',
+      script: '/home/testuser/run-cc-connect.sh',
+      interpreter: '/bin/bash',
+      cwd: '/home/testuser',
+      autorestart: true,
+      watch: false,
+      exp_backoff_restart_delay: 3000
+    }
+  ]
+};
+```
+
+**启动脚本** `/home/testuser/run-claude-proxy.sh`：
+
+```bash
+#!/bin/bash
+cd /home/testuser
+export HOME=/home/testuser
+export PATH=/home/testuser/cc_bin:/usr/local/bin:/usr/bin:/bin
+su -s /bin/bash testuser << 'EOF'
+exec /home/testuser/cc_bin/node /root/.openclaw/workspace/claude-model-proxy.js >> /home/testuser/.claude-proxy.log 2>&1
+EOF
+```
+
+**启动脚本** `/home/testuser/run-cc-connect.sh`：
+
+```bash
+#!/bin/bash
+cd /home/testuser
+export HOME=/home/testuser
+export PATH=/home/testuser/cc_bin:/usr/local/bin:/usr/bin:/bin
+su -s /bin/bash testuser << 'EOF'
+exec /home/testuser/cc_bin/node /home/testuser/.local/lib/node_modules/cc-connect/run.js >> /home/testuser/.cc-connect/cc-connect.log 2>&1
+EOF
+```
+
+**PM2命令**：
+
+```bash
+pm2 start /root/.openclaw/workspace/ecosystem.config.js  # 启动
+pm2 list                                    # 查看状态
+pm2 logs                                    # 查看日志
+pm2 kill                                    # 停止所有
+```
+
+**验证服务状态**：
+
+```bash
+# 检查用户
+ps aux | grep testuser | grep node
+
+# 检查API
+curl -s http://127.0.0.1:8080/v1/chat/completions -H "Content-Type: application/json" -d '{"model":"claude-sonnet-4-6","messages":[{"role":"user","content":"test"}],"max_tokens":5}'
+
+# 查看日志
+tail -5 /home/testuser/.cc-connect/cc-connect.log
+```
 
 - [cc-connect GitHub](https://github.com/chenhg5/cc-connect)
 - [Claude Code 官方文档](https://docs.claude.com)
 
 ---
 
-*本文档更新于 2026-04-15*
+*本文档更新于 2026-04-27*
+
+## 更新记录
+
+- **2026-04-27**: 添加PM2守护进程配置，解决`--dangerously-skip-permissions`与root权限冲突问题
