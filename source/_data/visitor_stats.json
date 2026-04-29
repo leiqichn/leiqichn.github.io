@@ -1,1 +1,9 @@
-{"site_pv": 0, "site_uv": 0, "page_pv": 0, "timestamp": "2026-04-13 21:14:47"}
+{
+  "last_uv": 0,
+  "last_pv": 0,
+  "last_build": "2026-04-29 09:52:20",
+  "current_uv": 0,
+  "current_pv": 0,
+  "uv_increase": 0,
+  "pv_increase": 0
+}
