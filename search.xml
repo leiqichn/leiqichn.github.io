@@ -87,6 +87,216 @@
       </tags>
   </entry>
   <entry>
+    <title>GitHub Trending 每日热点追踪系统 - 自动化早晚报推送到飞书群</title>
+    <url>/2026-03-19-5d7003d296e7.html</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GitHub Trending 是发现新技术趋势和热门项目的重要渠道。但每天手动查看很麻烦，所以我开发了一个自动化系统：</p>
+<ul>
+<li>🌅 <strong>早报</strong>：早上 8:00 推送，了解最新热点</li>
+<li>🌙 <strong>晚报</strong>：晚上 20:00 推送，回顾全天动态</li>
+</ul>
+<h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────┐     ┌──────────────────┐     ┌─────────────┐</span><br><span class="line">│  GitHub         │────▶│  Python 脚本      │────▶│  OpenClaw   │</span><br><span class="line">│  Trending 页面   │     │  (抓取+解析)       │     │  Cron 任务  │</span><br><span class="line">└─────────────────┘     └──────────────────┘     └──────┬──────┘</span><br><span class="line">                                                       │</span><br><span class="line">                                                       ▼</span><br><span class="line">                                               ┌─────────────┐</span><br><span class="line">                                               │  飞书群通知  │</span><br><span class="line">                                               └─────────────┘</span><br></pre></td></tr></table></figure>
+
+<h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><h3 id="1-数据抓取"><a href="#1-数据抓取" class="headerlink" title="1. 数据抓取"></a>1. 数据抓取</h3><p>使用 <code>requests</code> + <code>BeautifulSoup</code> 解析 GitHub Trending 页面：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fetch_trending</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;抓取 GitHub Trending 页面&quot;&quot;&quot;</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 ...&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    response = requests.get(GITHUB_TRENDING_URL, headers=headers, timeout=<span class="number">30</span>)</span><br><span class="line">    <span class="keyword">return</span> response.text</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_trending</span>(<span class="params">html</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;解析仓库信息&quot;&quot;&quot;</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">    repos = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> article <span class="keyword">in</span> soup.select(<span class="string">&quot;article.Box-row&quot;</span>):</span><br><span class="line">        repo_name = article.select_one(<span class="string">&quot;h2 a&quot;</span>).get(<span class="string">&quot;href&quot;</span>, <span class="string">&quot;&quot;</span>).strip(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">        description = article.select_one(<span class="string">&quot;p.col-9&quot;</span>).get_text(strip=<span class="literal">True</span>)</span><br><span class="line">        language = article.select_one(<span class="string">&quot;[itemprop=&#x27;programmingLanguage&#x27;]&quot;</span>).get_text(strip=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 今日新增 stars</span></span><br><span class="line">        stars_span = article.select_one(<span class="string">&quot;span.float-sm-right&quot;</span>)</span><br><span class="line">        stars_today = re.search(<span class="string">r&quot;([\d,]+)\s*stars today&quot;</span>, stars_span.get_text())</span><br><span class="line">        </span><br><span class="line">        repos.append(&#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: repo_name,</span><br><span class="line">            <span class="string">&quot;description&quot;</span>: description,</span><br><span class="line">            <span class="string">&quot;language&quot;</span>: language,</span><br><span class="line">            <span class="string">&quot;stars_today&quot;</span>: stars_today.group(<span class="number">1</span>) <span class="keyword">if</span> stars_today <span class="keyword">else</span> <span class="string">&quot;0&quot;</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> repos</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-报告格式化"><a href="#2-报告格式化" class="headerlink" title="2. 报告格式化"></a>2. 报告格式化</h3><p>生成带有多语言 Emoji 的 Markdown 报告：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">format_report</span>(<span class="params">repos, time_of_day</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;格式化报告&quot;&quot;&quot;</span></span><br><span class="line">    time_emoji = <span class="string">&quot;🌅&quot;</span> <span class="keyword">if</span> time_of_day == <span class="string">&quot;morning&quot;</span> <span class="keyword">else</span> <span class="string">&quot;🌙&quot;</span></span><br><span class="line">    report = <span class="string">f&quot;&quot;&quot;# <span class="subst">&#123;time_emoji&#125;</span> GitHub Trending 日报</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">📅 **<span class="subst">&#123;datetime.now().strftime(<span class="string">&quot;%Y-%m-%d&quot;</span>)&#125;</span>** | 今日热点仓库 Top 10</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">---&quot;&quot;&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i, repo <span class="keyword">in</span> <span class="built_in">enumerate</span>(repos[:<span class="number">10</span>], <span class="number">1</span>):</span><br><span class="line">        lang_emoji = get_language_emoji(repo[<span class="string">&quot;language&quot;</span>])</span><br><span class="line">        report += <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">## <span class="subst">&#123;i&#125;</span>. [<span class="subst">&#123;repo[<span class="string">&#x27;name&#x27;</span>]&#125;</span>](https://github.com/<span class="subst">&#123;repo[<span class="string">&#x27;name&#x27;</span>]&#125;</span>)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt; <span class="subst">&#123;repo[<span class="string">&#x27;description&#x27;</span>][:<span class="number">100</span>]&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"><span class="subst">&#123;lang_emoji&#125;</span> **<span class="subst">&#123;repo[<span class="string">&#x27;language&#x27;</span>]&#125;</span>** | ⭐ **+<span class="subst">&#123;repo[<span class="string">&#x27;stars_today&#x27;</span>]&#125;</span>** 今日</span></span><br><span class="line"><span class="string">---&quot;&quot;&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> report</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Cron-任务配置"><a href="#3-Cron-任务配置" class="headerlink" title="3. Cron 任务配置"></a>3. Cron 任务配置</h3><p>使用 OpenClaw 的 cron 功能设置定时任务：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 早报 - 每天 8:00</span></span><br><span class="line">openclaw cron add <span class="string">&quot;github-trending-morning&quot;</span> \</span><br><span class="line">  --schedule <span class="string">&quot;0 8 * * *&quot;</span> \</span><br><span class="line">  --<span class="built_in">command</span> <span class="string">&quot;python3 /root/.openclaw/workspace/github_trending_report.py morning&quot;</span> \</span><br><span class="line">  --target <span class="string">&quot;isolated&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 晚报 - 每天 20:00</span></span><br><span class="line">openclaw cron add <span class="string">&quot;github-trending-evening&quot;</span> \</span><br><span class="line">  --schedule <span class="string">&quot;0 20 * * *&quot;</span> \</span><br><span class="line">  --<span class="built_in">command</span> <span class="string">&quot;python3 /root/.openclaw/workspace/github_trending_report.py evening&quot;</span> \</span><br><span class="line">  --target <span class="string">&quot;isolated&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="报告示例"><a href="#报告示例" class="headerlink" title="报告示例"></a>报告示例</h2><h3 id="早报格式"><a href="#早报格式" class="headerlink" title="早报格式"></a>早报格式</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">🌅 <span class="strong">**GitHub Trending 早安日报**</span></span><br><span class="line"></span><br><span class="line">📅 2026-03-19 08:00 | 今日热点仓库 Top 10</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## 1. [<span class="string">obra/superpowers</span>](<span class="link">https://github.com/obra/superpowers</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; An agentic skills framework &amp; software development methodology that works.</span></span><br><span class="line"></span><br><span class="line">🐚 <span class="strong">**Shell**</span> | ⭐ <span class="strong">**+3,476**</span> 今日 | 🏆 98,069 总计</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## 2. [<span class="string">gsd-build/get-shit-done</span>](<span class="link">https://github.com/gsd-build/get-shit-done</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; A light-weight and powerful meta-prompting, context engineering and spec-driven development system</span></span><br><span class="line"></span><br><span class="line">🟨 <span class="strong">**JavaScript**</span> | ⭐ <span class="strong">**+2,642**</span> 今日 | 🏆 35,418 总计</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="技术亮点"><a href="#技术亮点" class="headerlink" title="技术亮点"></a>技术亮点</h2><h3 id="1-编程语言-Emoji-映射"><a href="#1-编程语言-Emoji-映射" class="headerlink" title="1. 编程语言 Emoji 映射"></a>1. 编程语言 Emoji 映射</h3><p>自动识别编程语言并显示对应 Emoji：</p>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>Emoji</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Python</td>
+<td>🐍</td>
+</tr>
+<tr>
+<td>TypeScript</td>
+<td>🔷</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>🟨</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>🦀</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>🐹</td>
+</tr>
+<tr>
+<td>Jupyter</td>
+<td>📓</td>
+</tr>
+</tbody></table>
+<h3 id="2-智能简介截断"><a href="#2-智能简介截断" class="headerlink" title="2. 智能简介截断"></a>2. 智能简介截断</h3><p>长简介自动截断并保持可读性：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">description[:<span class="number">100</span>] + <span class="string">&quot;...&quot;</span> <span class="keyword">if</span> <span class="built_in">len</span>(description) &gt; <span class="number">100</span> <span class="keyword">else</span> description</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-错误处理与重试"><a href="#3-错误处理与重试" class="headerlink" title="3. 错误处理与重试"></a>3. 错误处理与重试</h3><p>网络请求超时和解析失败的优雅处理：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = requests.get(url, headers=headers, timeout=<span class="number">30</span>)</span><br><span class="line">    response.raise_for_status()</span><br><span class="line"><span class="keyword">except</span> requests.Timeout:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;请求超时，稍后重试&quot;</span>)</span><br><span class="line"><span class="keyword">except</span> requests.RequestException <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;请求失败: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署到-OpenClaw"><a href="#部署到-OpenClaw" class="headerlink" title="部署到 OpenClaw"></a>部署到 OpenClaw</h2><h3 id="1-脚本位置"><a href="#1-脚本位置" class="headerlink" title="1. 脚本位置"></a>1. 脚本位置</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/root/.openclaw/workspace/</span><br><span class="line">├── github_trending_report.py    # 主脚本</span><br><span class="line">└── reports/                      # 报告存档</span><br><span class="line">    ├── github_trending_20260319_morning.md</span><br><span class="line">    └── github_trending_20260319_evening.md</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-依赖安装"><a href="#2-依赖安装" class="headerlink" title="2. 依赖安装"></a>2. 依赖安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install beautifulsoup4 requests</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-测试运行"><a href="#3-测试运行" class="headerlink" title="3. 测试运行"></a>3. 测试运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 测试早报</span></span><br><span class="line">python3 github_trending_report.py morning</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试晚报</span></span><br><span class="line">python3 github_trending_report.py evening</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展方向"><a href="#扩展方向" class="headerlink" title="扩展方向"></a>扩展方向</h2><ol>
+<li><strong>个性化订阅</strong> - 支持按语言、话题过滤</li>
+<li><strong>趋势对比</strong> - 对比早晚变化，识别快速增长项目</li>
+<li><strong>AI 摘要</strong> - 使用 LLM 生成项目深度解读</li>
+<li><strong>多平台推送</strong> - 支持 Telegram、Discord、微信等</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个系统让我每天能自动收到 GitHub 热点推送，不再错过重要技术趋势。结合 OpenClaw 的 cron 功能，部署简单、运行稳定。</p>
+<hr>
+<p><strong>源码</strong>：<code>/root/.openclaw/workspace/github_trending_report.py</code></p>
+<p><strong>相关文章</strong>：</p>
+<ul>
+<li><a href="/openclaw-feishu-group-bot-fix">OpenClaw飞书群聊机器人@不响应问题排查与解决</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术栈</category>
+        <category>自动化</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>GitHub</tag>
+        <tag>OpenClaw</tag>
+        <tag>自动化</tag>
+        <tag>飞书</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cc-connect 调用 claude 无输出的问题排查与解决</title>
+    <url>/2026-04-30-d3c9c094a625.html</url>
+    <content><![CDATA[<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>使用 cc-connect 连接飞书机器人时，消息可以收到，但 Claude Code 进程运行后没有任何输出，日志显示 <code>agent process exited</code> 但 <code>response_len=0</code>。</p>
+<h2 id="排查过程"><a href="#排查过程" class="headerlink" title="排查过程"></a>排查过程</h2><h3 id="1-确认服务状态"><a href="#1-确认服务状态" class="headerlink" title="1. 确认服务状态"></a>1. 确认服务状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps aux | grep cc-connect | grep testuser</span><br><span class="line">ps aux | grep claude-model-proxy | grep testuser</span><br></pre></td></tr></table></figure>
+
+<p>服务都在运行，proxy 返回正常。</p>
+<h3 id="2-测试-claude-命令"><a href="#2-测试-claude-命令" class="headerlink" title="2. 测试 claude 命令"></a>2. 测试 claude 命令</h3><p>手动执行 <code>claude -p hi</code> 发现：</p>
+<ul>
+<li>以 root 用户运行：有输出</li>
+<li>以 testuser 运行（<code>su testuser -c</code>）：无输出</li>
+</ul>
+<h3 id="3-检查环境变量"><a href="#3-检查环境变量" class="headerlink" title="3. 检查环境变量"></a>3. 检查环境变量</h3><p>cc-connect 使用 <code>su testuser -c</code> 启动 claude 进程，这是一个<strong>非登录 shell</strong>，不会加载 <code>.bash_profile</code>。</p>
+<p>testuser 的 <code>.bashrc</code> 和 <code>.profile</code> 中没有设置 ANTHROPIC_AUTH_TOKEN 和 ANTHROPIC_BASE_URL，导致 claude 无法调用 API。</p>
+<h3 id="4-根本原因"><a href="#4-根本原因" class="headerlink" title="4. 根本原因"></a>4. 根本原因</h3><p>cc-connect 在 <code>config.toml</code> 中配置了 <code>mode = &quot;bypassPermissions&quot;</code>，会调用 <code>claude</code> 命令。但：</p>
+<ol>
+<li><code>su testuser -c</code> 不会加载登录 shell 环境</li>
+<li>wrapper 脚本 <code>/home/testuser/cc_bin/claude</code> 里设置的环境变量不会被 cc-connect 使用</li>
+<li>进程 PATH 中没有 node 路径（node 在 root 的 nvm 目录下）</li>
+</ol>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1-创建全局-wrapper-链接"><a href="#1-创建全局-wrapper-链接" class="headerlink" title="1. 创建全局 wrapper 链接"></a>1. 创建全局 wrapper 链接</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ln</span> -sf /home/testuser/cc_bin/claude /usr/local/bin/claude</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-修改-wrapper-脚本"><a href="#2-修改-wrapper-脚本" class="headerlink" title="2. 修改 wrapper 脚本"></a>2. 修改 wrapper 脚本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">export</span> PATH=/root/.nvm/versions/node/v22.22.0/bin:/home/testuser/cc_bin:/usr/local/bin:/usr/bin:/bin</span><br><span class="line"><span class="built_in">export</span> HOME=/home/testuser</span><br><span class="line"><span class="built_in">export</span> XDG_CONFIG_HOME=/home/testuser/.config</span><br><span class="line"><span class="built_in">export</span> XDG_DATA_HOME=/home/testuser/.local/share</span><br><span class="line"><span class="built_in">export</span> ANTHROPIC_AUTH_TOKEN=<span class="string">&quot;your-api-token&quot;</span></span><br><span class="line"><span class="built_in">export</span> ANTHROPIC_BASE_URL=<span class="string">&quot;http://127.0.0.1:8080&quot;</span></span><br><span class="line"><span class="built_in">exec</span> /root/.nvm/versions/node/v22.22.0/bin/claude <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>关键点：</p>
+<ul>
+<li>添加 <code>/root/.nvm/versions/node/v22.22.0/bin</code> 到 PATH（testuser 无法访问 root 的 nvm bin 目录）</li>
+<li>直接 exec claude.exe 避免 symlink 递归</li>
+</ul>
+<h3 id="3-设置系统级环境变量"><a href="#3-设置系统级环境变量" class="headerlink" title="3. 设置系统级环境变量"></a>3. 设置系统级环境变量</h3><p>在 <code>/etc/environment</code> 中添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ANTHROPIC_AUTH_TOKEN=&quot;your-api-token&quot;</span><br><span class="line">ANTHROPIC_BASE_URL=&quot;http://127.0.0.1:8080&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>重启 cc-connect 后测试：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 本地测试</span></span><br><span class="line">su testuser -c <span class="string">&#x27;/home/testuser/cc_bin/claude -p hi&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 cc-connect 日志</span></span><br><span class="line"><span class="built_in">tail</span> -f /home/testuser/.cc-connect/cc-connect.log</span><br></pre></td></tr></table></figure>
+
+<p>日志中看到 <code>turn complete</code> 且 <code>response_len &gt; 0</code> 即表示正常。</p>
+<h2 id="相关文件"><a href="#相关文件" class="headerlink" title="相关文件"></a>相关文件</h2><ul>
+<li>cc-connect 配置：<code>/home/testuser/.cc-connect/config.toml</code></li>
+<li>claude wrapper：<code>/home/testuser/cc_bin/claude</code></li>
+<li>claude-model-proxy：<code>/home/testuser/claude-model-proxy.js</code></li>
+<li>运行日志：<code>/home/testuser/.cc-connect/cc-connect.log</code></li>
+<li>proxy 日志：<code>/home/testuser/.claude-proxy.log</code></li>
+</ul>
+<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><ol>
+<li><strong>环境变量问题</strong>：非登录 shell 不会加载 <code>.bash_profile</code>，设置环境变量要确保在 wrapper 脚本中 export</li>
+<li><strong>PATH 问题</strong>：<code>su user -c</code> 使用的 minimal PATH，需要手动添加所需路径</li>
+<li><strong>node 路径</strong>：nvm 安装在 root 下，testuser 无法直接访问，需要在 wrapper 中显式添加</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>OpenClaw</tag>
+        <tag>飞书</tag>
+        <tag>cc-connect</tag>
+        <tag>Claude Code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenClaw飞书群聊机器人@不响应问题排查与解决</title>
+    <url>//2026-03-09-openclaw-feishu-group-bot-fix.html</url>
+    <content><![CDATA[<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在飞书群聊中 @OpenClaw 机器人时，机器人没有响应。日志显示：</p>
+<p>```<br>message in group oc_xxx did not mention bot, recording to history<br>```</p>
+<p>消息被记录到历史，但没有触发回复。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><h3 id="1-权限检查"><a href="#1-权限检查" class="headerlink" title="1. 权限检查"></a>1. 权限检查</h3><p>首先确认飞书应用权限配置正确：</p>
+<ul>
+<li>`im:message` ✅</li>
+<li>`im:message:send_as_bot` ✅</li>
+<li>`im:message.group_at_msg:readonly` ✅</li>
+<li>`contact:contact.base:readonly` ✅</li>
+</ul>
+<p>所有必要权限都已授权。</p>
+<h3 id="2-日志分析"><a href="#2-日志分析" class="headerlink" title="2. 日志分析"></a>2. 日志分析</h3><p>查看 Gateway 日志发现关键问题：</p>
+<p>```<br>[feishu] feishu[default]: message in group oc_xxx did not mention bot, recording to history<br>```</p>
+<p>这表明机器人收到了消息，但没有识别到被 @提及。</p>
+<h3 id="3-源码分析"><a href="#3-源码分析" class="headerlink" title="3. 源码分析"></a>3. 源码分析</h3><p>查看 OpenClaw 飞书扩展源码 (`bot.ts`)：</p>
+<p>```typescript<br>function checkBotMentioned(event: FeishuMessageEvent, botOpenId?: string): boolean {<br>  if (!botOpenId) return false;  &#x2F;&#x2F; 关键：没有 botOpenId 直接返回 false<br>  const mentions &#x3D; event.message.mentions ?? [];<br>  if (mentions.length &gt; 0) {<br>    return mentions.some((m) &#x3D;&gt; m.id.open_id &#x3D;&#x3D;&#x3D; botOpenId);<br>  }<br>  &#x2F;&#x2F; …<br>}<br>```</p>
+<p><strong>根本原因</strong>：`botOpenId` 没有配置，导致 `checkBotMentioned` 函数直接返回 `false`。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1-获取机器人-Open-ID"><a href="#1-获取机器人-Open-ID" class="headerlink" title="1. 获取机器人 Open ID"></a>1. 获取机器人 Open ID</h3><p>```bash</p>
+<h1 id="获取-tenant-access-token"><a href="#获取-tenant-access-token" class="headerlink" title="获取 tenant_access_token"></a>获取 tenant_access_token</h1><p>curl -s “<a href="https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal">https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal</a>“ \<br>  -H “Content-Type: application&#x2F;json” \<br>  -d ‘{“app_id”:”cli_xxx”,”app_secret”:”xxx”}’</p>
+<h1 id="获取机器人信息"><a href="#获取机器人信息" class="headerlink" title="获取机器人信息"></a>获取机器人信息</h1><p>curl -s “<a href="https://open.feishu.cn/open-apis/bot/v3/info">https://open.feishu.cn/open-apis/bot/v3/info</a>“ \<br>  -H “Authorization: Bearer $TOKEN”<br>```</p>
+<p>返回结果：</p>
+<p>```json<br>{<br>  “bot”: {<br>    “open_id”: “ou_c0224f261ab61714eaafe98ac6edd0a1”,<br>    “app_name”: “贾维斯”<br>  }<br>}<br>```</p>
+<h3 id="2-更新配置"><a href="#2-更新配置" class="headerlink" title="2. 更新配置"></a>2. 更新配置</h3><p>在 `~&#x2F;.openclaw&#x2F;openclaw.json` 中添加 `botOpenId`：</p>
+<p>```json<br>{<br>  “channels”: {<br>    “feishu”: {<br>      “enabled”: true,<br>      “appId”: “cli_xxx”,<br>      “appSecret”: “xxx”,<br>      “domain”: “feishu”,<br>      “groupPolicy”: “open”,<br>      “botOpenId”: “ou_c0224f261ab61714eaafe98ac6edd0a1”<br>    }<br>  }<br>}<br>```</p>
+<h3 id="3-重启-Gateway"><a href="#3-重启-Gateway" class="headerlink" title="3. 重启 Gateway"></a>3. 重启 Gateway</h3><p>```bash</p>
+<h1 id="重启-OpenClaw-Gateway"><a href="#重启-OpenClaw-Gateway" class="headerlink" title="重启 OpenClaw Gateway"></a>重启 OpenClaw Gateway</h1><p>pkill -9 -f openclaw-gateway<br>openclaw gateway start<br>```</p>
+<h3 id="4-验证"><a href="#4-验证" class="headerlink" title="4. 验证"></a>4. 验证</h3><p>重启后日志显示：</p>
+<p>```<br>[feishu] feishu[default]: bot open_id resolved: ou_c0224f261ab61714eaafe98ac6edd0a1<br>```</p>
+<p>机器人在群聊中 @ 后可以正常回复了！</p>
+<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><ol>
+<li><strong>日志是最好的调试工具</strong> - 通过日志定位到 “did not mention bot” 的关键信息</li>
+<li><strong>理解源码逻辑</strong> - 查看 `checkBotMentioned` 函数发现问题根源</li>
+<li><strong>配置完整性</strong> - 飞书机器人需要配置 `botOpenId` 才能正确识别群聊 @提及</li>
+<li><strong>官方文档可能遗漏</strong> - 这个配置项在 OpenClaw 文档中可能没有明确说明</li>
+</ol>
+<h2 id="其他相关问题"><a href="#其他相关问题" class="headerlink" title="其他相关问题"></a>其他相关问题</h2><h3 id="磁盘空间清理"><a href="#磁盘空间清理" class="headerlink" title="磁盘空间清理"></a>磁盘空间清理</h3><p>在排查过程中发现磁盘已满 (100%)：</p>
+<p>```bash</p>
+<h1 id="清理大文件"><a href="#清理大文件" class="headerlink" title="清理大文件"></a>清理大文件</h1><p>rm -rf node_modules&#x2F;venv&#x2F;.git  # 根据实际情况清理</p>
+<h1 id="清理系统缓存"><a href="#清理系统缓存" class="headerlink" title="清理系统缓存"></a>清理系统缓存</h1><p>journalctl –vacuum-size&#x3D;50M<br>npm cache clean –force<br>```</p>
+<h3 id="项目备份"><a href="#项目备份" class="headerlink" title="项目备份"></a>项目备份</h3><p>使用 GitHub 备份重要项目：</p>
+<p>```bash</p>
+<h1 id="创建私有仓库并推送"><a href="#创建私有仓库并推送" class="headerlink" title="创建私有仓库并推送"></a>创建私有仓库并推送</h1><p>gh repo create project-name –private –source&#x3D;. –push<br>```</p>
+<hr>
+<p>希望这篇文章对你有帮助！如果你也遇到类似问题，欢迎交流。</p>
+]]></content>
+      <categories>
+        <category>技术栈</category>
+        <category>DevOps</category>
+      </categories>
+      <tags>
+        <tag>OpenClaw</tag>
+        <tag>飞书</tag>
+        <tag>机器人</tag>
+        <tag>问题排查</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>下载huggingface模型</title>
     <url>/2025-06-23-0d3fbf4209f3.html</url>
     <content><![CDATA[<h3 id="使用-huggingface-hub-工具"><a href="#使用-huggingface-hub-工具" class="headerlink" title="使用 huggingface_hub 工具"></a>使用 <code>huggingface_hub</code> 工具</h3><ol>
@@ -4012,7 +4222,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#105;&#64;&#x66;&#117;&#x64;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#99;&#110;">&#x6c;&#x65;&#105;&#113;&#105;&#64;&#x66;&#117;&#x64;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#x69;&#64;&#102;&#x75;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#46;&#x63;&#110;">&#x6c;&#x65;&#105;&#x71;&#x69;&#64;&#102;&#x75;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4165,7 +4375,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#x69;&#x40;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#x2e;&#99;&#110;">&#108;&#101;&#x69;&#113;&#x69;&#x40;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#105;&#64;&#102;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#110;">&#x6c;&#x65;&#105;&#x71;&#105;&#64;&#102;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4326,7 +4536,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#102;&#x75;&#x64;&#97;&#110;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;">&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#102;&#x75;&#x64;&#97;&#110;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#x66;&#x75;&#100;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#46;&#99;&#110;">&#x6c;&#101;&#x69;&#x71;&#105;&#x40;&#x66;&#x75;&#100;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#46;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4465,7 +4675,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#105;&#64;&#102;&#x75;&#100;&#97;&#110;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;">&#108;&#x65;&#105;&#113;&#105;&#64;&#102;&#x75;&#100;&#97;&#110;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#105;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#46;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#x6c;&#x65;&#105;&#113;&#105;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#46;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4627,7 +4837,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#101;&#x64;&#117;&#x2e;&#99;&#110;">&#108;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#101;&#x64;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#102;&#117;&#x64;&#97;&#x6e;&#46;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;">&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#102;&#117;&#x64;&#97;&#x6e;&#46;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4781,7 +4991,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;">&#108;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#x69;&#x40;&#102;&#x75;&#x64;&#x61;&#x6e;&#46;&#x65;&#100;&#117;&#x2e;&#99;&#110;">&#108;&#x65;&#105;&#113;&#x69;&#x40;&#102;&#x75;&#x64;&#x61;&#x6e;&#46;&#x65;&#100;&#117;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -4909,7 +5119,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;">&#108;&#101;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#x61;&#110;&#x2e;&#101;&#x64;&#x75;&#x2e;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#105;&#x40;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#110;">&#108;&#101;&#x69;&#113;&#105;&#x40;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5035,7 +5245,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#105;&#64;&#x66;&#x75;&#x64;&#97;&#x6e;&#46;&#x65;&#x64;&#x75;&#46;&#99;&#110;">&#x6c;&#101;&#105;&#x71;&#105;&#64;&#x66;&#x75;&#x64;&#97;&#x6e;&#46;&#x65;&#x64;&#x75;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#x69;&#64;&#102;&#x75;&#100;&#x61;&#110;&#46;&#101;&#100;&#x75;&#46;&#x63;&#x6e;">&#108;&#101;&#x69;&#x71;&#x69;&#64;&#102;&#x75;&#100;&#x61;&#110;&#46;&#101;&#100;&#x75;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5186,7 +5396,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#x69;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;">&#x6c;&#101;&#x69;&#113;&#x69;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#108;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5324,7 +5534,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;">&#108;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#x6e;&#46;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#105;&#64;&#x66;&#117;&#x64;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#x6e;">&#108;&#101;&#105;&#x71;&#105;&#64;&#x66;&#117;&#x64;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5478,7 +5688,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#105;&#64;&#x66;&#x75;&#x64;&#97;&#110;&#46;&#x65;&#100;&#x75;&#46;&#99;&#x6e;">&#x6c;&#x65;&#105;&#113;&#105;&#64;&#x66;&#x75;&#x64;&#97;&#110;&#46;&#x65;&#100;&#x75;&#46;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#101;&#100;&#117;&#46;&#x63;&#x6e;">&#x6c;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#101;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5655,7 +5865,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#x69;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#46;&#101;&#x64;&#x75;&#46;&#99;&#x6e;">&#x6c;&#101;&#105;&#113;&#x69;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#46;&#101;&#x64;&#x75;&#46;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#x69;&#64;&#x66;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;">&#108;&#x65;&#x69;&#113;&#x69;&#64;&#x66;&#117;&#x64;&#x61;&#110;&#x2e;&#x65;&#100;&#x75;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5833,7 +6043,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#117;&#x64;&#x61;&#110;&#46;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#108;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#117;&#x64;&#x61;&#110;&#46;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -5989,7 +6199,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#117;&#x64;&#x61;&#110;&#46;&#101;&#x64;&#117;&#x2e;&#99;&#110;">&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#117;&#x64;&#x61;&#110;&#46;&#101;&#x64;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#x69;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;">&#108;&#101;&#x69;&#x71;&#x69;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6137,7 +6347,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#x69;&#64;&#102;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#x2e;&#99;&#110;">&#x6c;&#101;&#105;&#113;&#x69;&#64;&#102;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#x6e;">&#108;&#x65;&#105;&#x71;&#x69;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6231,7 +6441,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#x63;&#110;">&#x6c;&#101;&#105;&#113;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#110;&#46;&#x65;&#100;&#117;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#x69;&#x40;&#102;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#101;&#100;&#117;&#46;&#x63;&#x6e;">&#x6c;&#101;&#x69;&#113;&#x69;&#x40;&#102;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#101;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6325,7 +6535,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#110;&#x2e;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;">&#x6c;&#101;&#105;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#110;&#x2e;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#x64;&#x75;&#46;&#99;&#110;">&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#x64;&#x75;&#46;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6417,7 +6627,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#x69;&#x40;&#102;&#117;&#100;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#46;&#x63;&#110;">&#x6c;&#101;&#105;&#x71;&#x69;&#x40;&#102;&#117;&#100;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#105;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#46;&#x63;&#110;">&#108;&#101;&#x69;&#113;&#105;&#x40;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#x64;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6520,7 +6730,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#x6c;&#101;&#105;&#x71;&#x69;&#64;&#x66;&#117;&#100;&#x61;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#105;&#64;&#102;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#x65;&#105;&#113;&#105;&#64;&#102;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -6624,7 +6834,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#x64;&#97;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#x63;&#110;">&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#x64;&#97;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#100;&#117;&#x2e;&#99;&#110;">&#108;&#x65;&#105;&#x71;&#x69;&#x40;&#x66;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#100;&#117;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -7061,7 +7271,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#x69;&#64;&#102;&#117;&#100;&#x61;&#110;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#110;">&#x6c;&#x65;&#105;&#113;&#x69;&#64;&#102;&#117;&#100;&#x61;&#110;&#x2e;&#101;&#100;&#x75;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#113;&#x69;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#101;&#x64;&#117;&#x2e;&#99;&#x6e;">&#108;&#x65;&#105;&#113;&#x69;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#101;&#x64;&#117;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -7552,7 +7762,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#x2e;&#99;&#110;">&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#x71;&#105;&#64;&#102;&#x75;&#100;&#97;&#110;&#46;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;">&#108;&#101;&#105;&#x71;&#105;&#64;&#102;&#x75;&#100;&#97;&#110;&#46;&#x65;&#100;&#x75;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -7957,7 +8167,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#105;&#x40;&#102;&#117;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#x75;&#46;&#99;&#x6e;">&#x6c;&#x65;&#105;&#x71;&#105;&#x40;&#102;&#117;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#x75;&#46;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#x69;&#x71;&#x69;&#x40;&#102;&#117;&#100;&#x61;&#110;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#110;">&#108;&#x65;&#x69;&#x71;&#x69;&#x40;&#102;&#117;&#100;&#x61;&#110;&#x2e;&#x65;&#x64;&#117;&#46;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -8409,7 +8619,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#x61;&#x6e;&#46;&#x65;&#x64;&#x75;&#46;&#99;&#110;">&#108;&#101;&#x69;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#x61;&#x6e;&#46;&#x65;&#x64;&#x75;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#x6e;&#46;&#101;&#100;&#117;&#46;&#x63;&#110;">&#x6c;&#x65;&#105;&#113;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#x6e;&#46;&#101;&#100;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -8759,7 +8969,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#46;&#99;&#110;">&#108;&#101;&#105;&#113;&#105;&#64;&#x66;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#46;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#102;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#110;">&#x6c;&#101;&#x69;&#x71;&#105;&#64;&#102;&#x75;&#100;&#97;&#x6e;&#x2e;&#101;&#x64;&#117;&#x2e;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -9105,7 +9315,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#x2e;&#99;&#110;">&#x6c;&#101;&#x69;&#x71;&#x69;&#x40;&#x66;&#x75;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#x2e;&#99;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#x69;&#64;&#x66;&#x75;&#x64;&#x61;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#110;">&#108;&#101;&#105;&#113;&#x69;&#64;&#x66;&#x75;&#x64;&#x61;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -9463,11 +9673,315 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#105;&#64;&#102;&#117;&#x64;&#x61;&#110;&#46;&#101;&#x64;&#117;&#46;&#x63;&#x6e;">&#x6c;&#101;&#x69;&#113;&#105;&#64;&#102;&#117;&#x64;&#x61;&#110;&#46;&#101;&#x64;&#117;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#113;&#105;&#64;&#102;&#117;&#100;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#46;&#x63;&#110;">&#x6c;&#101;&#105;&#113;&#105;&#64;&#102;&#117;&#100;&#97;&#110;&#x2e;&#x65;&#x64;&#117;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
 <p>📡 数据更新：2026-04-20 20:04:59<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Trending</tag>
+        <tag>开源</tag>
+        <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 - 2026/04/21</title>
+    <url>/2026-04-21-9510eb4275cc.html</url>
+    <content><![CDATA[<h1 id="GitHub-Trending-日报"><a href="#GitHub-Trending-日报" class="headerlink" title="GitHub Trending 日报"></a>GitHub Trending 日报</h1><p>📅 <strong>日期</strong>：2026&#x2F;04&#x2F;21</p>
+<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
+<hr>
+<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2>
+<style>
+.github-trending-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+.trending-card {
+    background: var(--card-bg, #f8f9fa);
+    border: 1px solid var(--border-color, #e9ecef);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.trending-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.card-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+.card-title {
+    margin: 0 !important;
+    font-size: 16px !important;
+}
+.card-title a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+.card-desc {
+    color: #666;
+    font-size: 14px;
+    margin: 8px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.card-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #666;
+    margin: 8px 0;
+}
+.card-repo {
+    font-size: 12px;
+    color: #999;
+    font-family: monospace;
+    margin-bottom: 8px;
+}
+.card-ai-insight {
+    margin-top: 8px;
+}
+.card-ai-insight summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: #666;
+}
+.insight-content {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 6px;
+}
+@media (max-width: 768px) {
+    .github-trending-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="github-trending-grid">
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">1</span>
+                <h3 class="card-title"><a href="https://github.com/Fincept-Corporation/FinceptTerminal" target="_blank">FinceptTerminal</a></h3>
+            </div>
+            <p class="card-desc">FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +2595 今日</span>
+                <span class="card-total">🏆 10,821</span>
+            </div>
+            <div class="card-repo">📦 Fincept-Corporation/FinceptTerminal</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">FinceptTerminal之所以在GitHub Trending上快速走红，主要是因为它填补了开源社区在专业金融分析领域的空白，将市场分析、投资研究和宏观经济数据整合到一个交互式平台，满足了个人投资者和金融从业者对免费专业工具的迫切需求，同时Python语言的选择也降低了技术门槛，便于开发者参与和二次开发。
+
+这个项目值得借鉴的地方在于其数据驱动决策的产品定位和对用户体验的重视，通过提供一站式的金融分析环境，让复杂的数据探索变得直观易用，这对于其他垂直领域工具的开发也很有启发意义。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">2</span>
+                <h3 class="card-title"><a href="https://github.com/thunderbird/thunderbolt" target="_blank">thunderbolt</a></h3>
+            </div>
+            <p class="card-desc">AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +591 今日</span>
+                <span class="card-total">🏆 3,133</span>
+            </div>
+            <div class="card-repo">📦 thunderbird/thunderbolt</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">Thunderbolt由知名开源邮箱客户端Thunderbird团队推出，其核心理念是让用户能够自由选择AI模型并完全掌控自己的数据，切中了当前用户对AI供应商锁定和数据隐私的普遍担忧，因此获得了广泛关注。这个项目值得借鉴的地方在于它通过模块化架构设计实现了AI模型的可插拔性，同时强调开源和数据自主权的价值观，这种做法既增强了用户信任，也为未来AI应用的去中心化发展提供了新思路。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">3</span>
+                <h3 class="card-title"><a href="https://github.com/zilliztech/claude-context" target="_blank">claude-context</a></h3>
+            </div>
+            <p class="card-desc">Code search MCP for Claude Code. Make entire codebase the context for any coding agent.</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +74 今日</span>
+                <span class="card-total">🏆 6,199</span>
+            </div>
+            <div class="card-repo">📦 zilliztech/claude-context</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">这个项目之所以火起来，是因为它解决了AI编程助手面临的核心痛点——上下文窗口有限的问题。通过将整个代码库转化为可检索的语义上下文，它让Claude Code这样的AI工具能够"理解"整个项目而不是只能处理局部代码片段，非常符合当前AI辅助编程的工作流程需求。这个项目值得借鉴的地方在于它的MCP协议设计思路，以及采用混合搜索策略（语义+关键词）来平衡搜索的准确性和全面性，同时作为zilliztech的生态产品，它也展示了如何通过开源项目为商业向量数据库Milvus引流的双赢策略。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">4</span>
+                <h3 class="card-title"><a href="https://github.com/ruvnet/RuView" target="_blank">RuView</a></h3>
+            </div>
+            <p class="card-desc">π RuView: WiFi DensePose turns commodity WiFi signals into real-time human pose estimation, vital sign monitoring, and presence detection — all without a single pixel of video.</p>
+            <div class="card-meta">
+                <span class="card-lang">🦀 Rust</span>
+                <span class="card-stars">⭐ +828 今日</span>
+                <span class="card-total">🏆 48,636</span>
+            </div>
+            <div class="card-repo">📦 ruvnet/RuView</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">RuView之所以在Trending上爆火，是因为它抓住了AI与隐私保护两大热点——仅凭普通WiFi信号就能实现精准的人体姿态估计和生命体征监测，完全不需要摄像头，这对于智能家居、医疗监护等场景来说简直是革命性的解决方案，而且用Rust语言实现保证了高性能和安全性。这个项目的借鉴意义在于它展示了“软件定义感知”的强大潜力，证明了在特定领域Rust的并发优势和内存安全特性能够很好地支撑实时信号处理任务，同时开源社区可以基于此探索WiFi感知在更多垂直场景的落地。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">5</span>
+                <h3 class="card-title"><a href="https://github.com/microsoft/ai-agents-for-beginners" target="_blank">ai-agents-for-beginners</a></h3>
+            </div>
+            <p class="card-desc">12 Lessons to Get Started Building AI Agents</p>
+            <div class="card-meta">
+                <span class="card-lang">📓 Jupyter Notebook</span>
+                <span class="card-stars">⭐ +131 今日</span>
+                <span class="card-total">🏆 57,221</span>
+            </div>
+            <div class="card-repo">📦 microsoft/ai-agents-for-beginners</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">这个项目之所以火爆，主要是因为AI Agent技术正处在大模型应用的风口，而微软精准切入了“入门者”这个最广泛的学习需求群体，配合“12节课”的结构化学习路径和Jupyter Notebook的实践形式，大大降低了学习门槛。值得借鉴的是它的产品定位策略——通过“for Beginners”标签吸引流量，同时以微软品牌背书保证内容质量，再用模块化的课程设计让学习路径清晰可控，形成了一套可复制的技术教育项目运营范式。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">6</span>
+                <h3 class="card-title"><a href="https://github.com/dayanch96/YTLite" target="_blank">YTLite</a></h3>
+            </div>
+            <p class="card-desc">A flexible enhancer for YouTube on iOS</p>
+            <div class="card-meta">
+                <span class="card-lang">📦 Logos</span>
+                <span class="card-stars">⭐ +43 今日</span>
+                <span class="card-total">🏆 4,699</span>
+            </div>
+            <div class="card-repo">📦 dayanch96/YTLite</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 43 stars，A flexible enhancer for YouTube on iOS。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">7</span>
+                <h3 class="card-title"><a href="https://github.com/HKUDS/RAG-Anything" target="_blank">RAG-Anything</a></h3>
+            </div>
+            <p class="card-desc">"RAG-Anything: All-in-One RAG Framework"</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +245 今日</span>
+                <span class="card-total">🏆 16,510</span>
+            </div>
+            <div class="card-repo">📦 HKUDS/RAG-Anything</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 245 stars，"RAG-Anything: All-in-One RAG Framework"。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">8</span>
+                <h3 class="card-title"><a href="https://github.com/sansan0/TrendRadar" target="_blank">TrendRadar</a></h3>
+            </div>
+            <p class="card-desc">⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 + RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 + AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +604 今日</span>
+                <span class="card-total">🏆 53,255</span>
+            </div>
+            <div class="card-repo">📦 sansan0/TrendRadar</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 604 stars，⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 + RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 + AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。。</div>
+                </details>
+            </div>
+        </div></div>
+<hr>
+<h2 id="🔍-今日精选项目：FinceptTerminal"><a href="#🔍-今日精选项目：FinceptTerminal" class="headerlink" title="🔍 今日精选项目：FinceptTerminal"></a>🔍 今日精选项目：FinceptTerminal</h2><p><strong>项目地址</strong>：<a href="https://github.com/Fincept-Corporation/FinceptTerminal">https://github.com/Fincept-Corporation/FinceptTerminal</a></p>
+<p><strong>作者</strong>：Fincept-Corporation</p>
+<p><strong>描述</strong>：FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</p>
+<p><strong>语言</strong>：Python</p>
+<p><strong>今日新增星标</strong>：+2595</p>
+<p><strong>总星标数</strong>：10,821</p>
+<hr>
+<h3 id="📝-深度分析"><a href="#📝-深度分析" class="headerlink" title="📝 深度分析"></a>📝 深度分析</h3><h2 id="🎯-项目本质"><a href="#🎯-项目本质" class="headerlink" title="🎯 项目本质"></a>🎯 项目本质</h2><p>FinceptTerminal是一个基于Python构建的现代化金融终端应用，其核心定位是<strong>为个人投资者和金融分析师提供一站式市场数据分析解决方案</strong>。简而言之，它试图将彭博终端的核心功能以开源、免费的方式普惠化。该项目集成了股票行情、技术指标计算、投资组合管理、经济数据可视化等功能于一身，用户可以通过交互式界面完成从数据获取到投资决策的全流程工作。</p>
+<h2 id="🔥-为什么火"><a href="#🔥-为什么火" class="headerlink" title="🔥 为什么火"></a>🔥 为什么火</h2><p>这个项目在GitHub Trending上爆发式增长，绝非偶然。从<strong>市场需求</strong>角度看，全球范围内量化交易和个人投资者数量激增，但专业金融终端高昂的订阅费（彭博终端月费高达数千美元）让普通用户难以承受，FinceptTerminal精准切入了这一市场空白。</p>
+<p>从<strong>技术生态</strong>角度，Python拥有yfinance、pandas、plotly等成熟的金融数据处理生态，该项目站在巨人肩膀上，降低了开发门槛的同时保证了功能丰富度。此外，其采用现代化终端界面设计，符合当下开发者对工具类应用“炫酷+实用”的审美偏好。</p>
+<p>从<strong>社区心理</strong>角度，“国产替代”和“开源平权”的叙事极易引发开发者共鸣，Fincept-Corporation作为商业主体推进开源项目，形成了一种“有商业背书但免费可用”的微妙信任感。</p>
+<h2 id="💡-核心创新"><a href="#💡-核心创新" class="headerlink" title="💡 核心创新"></a>💡 核心创新</h2><p>该项目的核心创新在于<strong>将专业金融终端能力模块化、可组合化</strong>。传统金融工具往往是封闭的黑盒系统，而FinceptTerminal通过开源架构，让用户不仅能使用工具，还能深入理解底层逻辑、修改自定义指标、甚至二次开发自己的交易策略。它在数据可视化方面引入了交互式图表和实时数据流的概念，相比传统静态报表更符合数据分析的思维模式。</p>
+<h2 id="📈-可借鉴价值"><a href="#📈-可借鉴价值" class="headerlink" title="📈 可借鉴价值"></a>📈 可借鉴价值</h2><p>对于个人开发者而言，这个项目提供了多维度的启发：<strong>在产品定位上</strong>，学会从高价商业产品的“功能阉割版”切入市场，以开源换用户基数，再探索商业变现路径；<strong>在技术架构上</strong>，可以学习如何将Python科学计算生态与现代化前端结合，构建复杂的数据驱动应用；<strong>在社区运营上</strong>，懂得利用GitHub Trending的曝光规律，通过“精准描述+视觉冲击+市场需求”组合拳实现项目冷启动。对于有志于金融科技领域的开发者，参与此类项目是理解行业需求、积累实战经验的绝佳切入口。</p>
+<hr>
+<hr>
+<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
+<ul>
+<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
+<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
+<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
+</ul>
+<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
+<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
+<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
+<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
+</ul>
+<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
+<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
+<li>💬 微信公众号：DeepThinking深思</li>
+<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
+</ul>
+<hr>
+<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
+<ul>
+<li>💬 评论留言推荐</li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#x69;&#64;&#102;&#117;&#100;&#97;&#110;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#x6c;&#x65;&#x69;&#x71;&#x69;&#64;&#102;&#117;&#100;&#97;&#110;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a></li>
+<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
+</ul>
+<hr>
+<p>📡 数据更新：2026-04-21 20:04:55<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
 ]]></content>
       <categories>
         <category>综合</category>
@@ -9848,7 +10362,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#x71;&#105;&#x40;&#102;&#117;&#100;&#97;&#110;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#110;">&#x6c;&#x65;&#105;&#x71;&#105;&#x40;&#102;&#117;&#100;&#97;&#110;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#100;&#x61;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#108;&#101;&#x69;&#x71;&#105;&#64;&#x66;&#117;&#100;&#x61;&#110;&#46;&#101;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -10305,7 +10819,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#101;&#x64;&#x75;&#46;&#x63;&#110;">&#108;&#101;&#105;&#113;&#105;&#x40;&#x66;&#x75;&#100;&#97;&#110;&#x2e;&#101;&#x64;&#x75;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#105;&#64;&#102;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#46;&#x63;&#110;">&#x6c;&#101;&#105;&#x71;&#105;&#64;&#102;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#x64;&#x75;&#46;&#x63;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -10673,7 +11187,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#117;&#100;&#97;&#x6e;&#46;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;">&#x6c;&#x65;&#105;&#113;&#x69;&#x40;&#x66;&#117;&#100;&#97;&#x6e;&#46;&#x65;&#x64;&#x75;&#x2e;&#99;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#113;&#x69;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#x6c;&#101;&#x69;&#113;&#x69;&#64;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -11098,7 +11612,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#x69;&#64;&#102;&#x75;&#100;&#97;&#110;&#x2e;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;">&#108;&#x65;&#105;&#x71;&#x69;&#64;&#102;&#x75;&#100;&#97;&#110;&#x2e;&#101;&#100;&#117;&#x2e;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#102;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#x6c;&#x65;&#x69;&#x71;&#105;&#64;&#102;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -11511,7 +12025,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#100;&#x75;&#46;&#x63;&#110;">&#x6c;&#x65;&#x69;&#113;&#105;&#x40;&#102;&#x75;&#x64;&#97;&#x6e;&#x2e;&#x65;&#100;&#x75;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#x69;&#64;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#46;&#99;&#x6e;">&#108;&#101;&#105;&#113;&#x69;&#64;&#x66;&#117;&#x64;&#x61;&#x6e;&#x2e;&#101;&#x64;&#x75;&#46;&#99;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -11914,7 +12428,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#x69;&#113;&#105;&#64;&#x66;&#117;&#100;&#97;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#108;&#101;&#x69;&#113;&#105;&#64;&#x66;&#117;&#100;&#97;&#110;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#105;&#x71;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#x63;&#x6e;">&#x6c;&#101;&#105;&#x71;&#105;&#x40;&#x66;&#117;&#x64;&#97;&#110;&#x2e;&#x65;&#x64;&#x75;&#x2e;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -12326,7 +12840,7 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#64;&#x66;&#x75;&#100;&#x61;&#110;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#110;">&#108;&#101;&#105;&#113;&#105;&#64;&#x66;&#x75;&#100;&#x61;&#110;&#46;&#101;&#100;&#117;&#x2e;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#x6c;&#101;&#x69;&#x71;&#x69;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#x64;&#x75;&#x2e;&#99;&#110;">&#x6c;&#101;&#x69;&#x71;&#x69;&#64;&#102;&#117;&#x64;&#x61;&#x6e;&#46;&#x65;&#x64;&#x75;&#x2e;&#99;&#110;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
@@ -12765,11 +13279,459 @@
 <h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
 <ul>
 <li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#x6c;&#x65;&#105;&#113;&#x69;&#64;&#x66;&#x75;&#100;&#97;&#110;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#110;">&#x6c;&#x65;&#105;&#113;&#x69;&#64;&#x66;&#x75;&#100;&#97;&#110;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#110;</a></li>
+<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;">&#108;&#101;&#105;&#113;&#105;&#x40;&#x66;&#x75;&#x64;&#x61;&#x6e;&#x2e;&#x65;&#100;&#117;&#46;&#x63;&#x6e;</a></li>
 <li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
 </ul>
 <hr>
 <p>📡 数据更新：2026-04-29 20:01:45<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>Trending</tag>
+        <tag>开源</tag>
+        <tag>日报</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【Github Trending 日报】深度解析 - 2026/04/30</title>
+    <url>/2026-04-30-369635b3e3e2.html</url>
+    <content><![CDATA[<h1 id="【Github-Trending-日报】深度解析"><a href="#【Github-Trending-日报】深度解析" class="headerlink" title="【Github Trending 日报】深度解析"></a>【Github Trending 日报】深度解析</h1><p>📅 <strong>日期</strong>：2026&#x2F;04&#x2F;30</p>
+<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
+<hr>
+<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2>
+<style>
+.github-trending-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+.trending-card {
+    background: var(--card-bg, #f8f9fa);
+    border: 1px solid var(--border-color, #e9ecef);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.trending-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.card-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+.card-title {
+    margin: 0 !important;
+    font-size: 16px !important;
+}
+.card-title a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+.card-desc {
+    color: #666;
+    font-size: 14px;
+    margin: 8px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.card-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #666;
+    margin: 8px 0;
+}
+.card-repo {
+    font-size: 12px;
+    color: #999;
+    font-family: monospace;
+    margin-bottom: 8px;
+}
+.card-ai-insight {
+    margin-top: 8px;
+}
+.card-ai-insight summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: #666;
+}
+.insight-content {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    padding: 8px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 6px;
+}
+@media (max-width: 768px) {
+    .github-trending-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<div class="github-trending-grid">
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">1</span>
+                <h3 class="card-title"><a href="https://github.com/warpdotdev/warp" target="_blank">warp</a></h3>
+            </div>
+            <p class="card-desc">Warp is an agentic development environment, born out of the terminal.</p>
+            <div class="card-meta">
+                <span class="card-lang">🦀 Rust</span>
+                <span class="card-stars">⭐ +12822 今日</span>
+                <span class="card-total">🏆 43,630</span>
+            </div>
+            <div class="card-repo">📦 warpdotdev/warp</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">Warp之所以在GitHub Trending上迅速走红，主要是因为它重新定义了终端体验——将AI能力与传统命令行工具深度融合，让开发者能够在日常工作中自然地使用AI辅助功能，这种"born out of the terminal"的理念恰好契合了当前AI赋能开发的大趋势，加上Rust语言带来的高性能和可靠性，使得它在短短几天内获得了超过1.2万颗新增星标。值得借鉴的地方在于，它没有简单地将AI作为插件叠加，而是从产品形态上重新思考开发者工具的可能性，同时选择Rust作为实现语言保证了底层性能和内存安全，这对于需要高频交互的工具类应用来说尤为重要。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">2</span>
+                <h3 class="card-title"><a href="https://github.com/mattpocock/skills" target="_blank">skills</a></h3>
+            </div>
+            <p class="card-desc">Skills for Real Engineers. Straight from my .claude directory.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐚 Shell</span>
+                <span class="card-stars">⭐ +7280 今日</span>
+                <span class="card-total">🏆 44,388</span>
+            </div>
+            <div class="card-repo">📦 mattpocock/skills</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">这个项目之所以在GitHub Trending上火爆，主要是因为它提供了真实工程师在日常工作中积累的实用技能和经验，特别是作者提到这些内容直接来自他的.claude目录，反映了当前AI辅助编程工作流的最佳实践，加上mattpocock作为知名技术博主的影响力，吸引了很多开发者想要了解资深工程师是如何使用工具和提升效率的。值得借鉴的地方在于它展示了如何系统化地整理和沉淀个人的工作技巧，将零散的实践心得转化为可复用的知识资产，这种做法对于任何想要建立自己知识体系或分享经验的工程师都有启发意义。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">3</span>
+                <h3 class="card-title"><a href="https://github.com/HunxByts/GhostTrack" target="_blank">GhostTrack</a></h3>
+            </div>
+            <p class="card-desc">Useful tool to track location or mobile number</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +1033 今日</span>
+                <span class="card-total">🏆 11,552</span>
+            </div>
+            <div class="card-repo">📦 HunxByts/GhostTrack</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">GhostTrack作为一款位置和手机号追踪工具，在GitHub Trending上获得关注主要源于其满足了某些用户对信息追踪的特定需求，加上今日超过1000颗stars的快速增长显示了其营销策略或特定社群的有效推广。
+
+然而需要注意的是，这类工具涉及重大隐私和法律风险，在未经明确授权的情况下追踪他人位置或手机信息在大多数司法管辖区都属于违法行为，建议关注类似项目时优先考虑其技术实现原理和隐私保护机制，而非实际应用层面。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">4</span>
+                <h3 class="card-title"><a href="https://github.com/ComposioHQ/awesome-codex-skills" target="_blank">awesome-codex-skills</a></h3>
+            </div>
+            <p class="card-desc">A curated list of practical Codex skills for automating workflows across the Codex CLI and API.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +1177 今日</span>
+                <span class="card-total">🏆 4,761</span>
+            </div>
+            <div class="card-repo">📦 ComposioHQ/awesome-codex-skills</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">这个项目之所以近期热度飙升，主要是因为Codex作为Anthropic推出的AI编程助手正受到开发者社区的广泛关注，而awesome-codex-skills提供了大量实用的技能模板，让开发者能够快速将AI能力集成到日常工作流中，降低了上手门槛。
+
+这个项目值得借鉴的地方在于它采用了“精选列表+实践案例”的轻量级知识库模式，既为AI工具生态贡献了丰富的技能资源，又通过开源协作形成了良性循环，对其他AI编程辅助工具的生态建设具有参考价值。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">5</span>
+                <h3 class="card-title"><a href="https://github.com/1jehuang/jcode" target="_blank">jcode</a></h3>
+            </div>
+            <p class="card-desc">Coding Agent Harness</p>
+            <div class="card-meta">
+                <span class="card-lang">🦀 Rust</span>
+                <span class="card-stars">⭐ +411 今日</span>
+                <span class="card-total">🏆 1,335</span>
+            </div>
+            <div class="card-repo">📦 1jehuang/jcode</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">jcode作为一个用Rust编写的Coding Agent测试框架，正好赶上了AI编程助手热潮，现在各大厂商都在推自己的AI编码工具，自然需要一个专业的评测 harness 来评估这些智能体的能力，所以获得了不少关注。Rust的选择也体现了对性能和安全性的追求，这种技术选型对于构建可靠的测试基础设施很有价值。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">6</span>
+                <h3 class="card-title"><a href="https://github.com/abhigyanpatwari/GitNexus" target="_blank">GitNexus</a></h3>
+            </div>
+            <p class="card-desc">GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration</p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +774 今日</span>
+                <span class="card-total">🏆 33,311</span>
+            </div>
+            <div class="card-repo">📦 abhigyanpatwari/GitNexus</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 774 stars，GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a GitHub repo or ZIP file, and get an interactive knowledge graph wit a built in Graph RAG Agent. Perfect for code exploration。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">7</span>
+                <h3 class="card-title"><a href="https://github.com/microsoft/VibeVoice" target="_blank">VibeVoice</a></h3>
+            </div>
+            <p class="card-desc">Open-Source Frontier Voice AI</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +1690 今日</span>
+                <span class="card-total">🏆 45,664</span>
+            </div>
+            <div class="card-repo">📦 microsoft/VibeVoice</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 1,690 stars，Open-Source Frontier Voice AI。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">8</span>
+                <h3 class="card-title"><a href="https://github.com/CJackHwang/ds2api" target="_blank">ds2api</a></h3>
+            </div>
+            <p class="card-desc">Deepseek to API: A lightweight, high-performance full-stack middleware converting client protocols to universal APIs. Supports multi-account rotation, compiled binaries, Vercel Serverless, and Docker. Compatible with Google, Claude, and OpenAI API formats.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐹 Go</span>
+                <span class="card-stars">⭐ +465 今日</span>
+                <span class="card-total">🏆 2,702</span>
+            </div>
+            <div class="card-repo">📦 CJackHwang/ds2api</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 465 stars，Deepseek to API: A lightweight, high-performance full-stack middleware converting client protocols to universal APIs. Supports multi-account rotation, compiled binaries, Vercel Serverless, and Docker. Compatible with Google, Claude, and OpenAI API formats.。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">9</span>
+                <h3 class="card-title"><a href="https://github.com/obra/superpowers" target="_blank">superpowers</a></h3>
+            </div>
+            <p class="card-desc">An agentic skills framework & software development methodology that works.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐚 Shell</span>
+                <span class="card-stars">⭐ +1653 今日</span>
+                <span class="card-total">🏆 173,072</span>
+            </div>
+            <div class="card-repo">📦 obra/superpowers</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 1,653 stars，An agentic skills framework & software development methodology that works.。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">10</span>
+                <h3 class="card-title"><a href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank">daily_stock_analysis</a></h3>
+            </div>
+            <p class="card-desc">LLM驱动的 A/H/美股智能分析器：多数据源行情 + 实时新闻 + LLM决策仪表盘 + 多渠道推送，零成本定时运行，纯白嫖. LLM-powered stock analysis system for A/H/US markets.</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +294 今日</span>
+                <span class="card-total">🏆 32,719</span>
+            </div>
+            <div class="card-repo">📦 ZhuLinsen/daily_stock_analysis</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 294 stars，LLM驱动的 A/H/美股智能分析器：多数据源行情 + 实时新闻 + LLM决策仪表盘 + 多渠道推送，零成本定时运行，纯白嫖. LLM-powered stock analysis system for A/H/US markets.。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">11</span>
+                <h3 class="card-title"><a href="https://github.com/lukilabs/craft-agents-oss" target="_blank">craft-agents-oss</a></h3>
+            </div>
+            <p class="card-desc"></p>
+            <div class="card-meta">
+                <span class="card-lang">🔷 TypeScript</span>
+                <span class="card-stars">⭐ +393 今日</span>
+                <span class="card-total">🏆 5,315</span>
+            </div>
+            <div class="card-repo">📦 lukilabs/craft-agents-oss</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 393 stars，。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">12</span>
+                <h3 class="card-title"><a href="https://github.com/EbookFoundation/free-programming-books" target="_blank">free-programming-books</a></h3>
+            </div>
+            <p class="card-desc">📚 Freely available programming books</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +604 今日</span>
+                <span class="card-total">🏆 387,164</span>
+            </div>
+            <div class="card-repo">📦 EbookFoundation/free-programming-books</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 604 stars，📚 Freely available programming books。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">13</span>
+                <h3 class="card-title"><a href="https://github.com/soxoj/maigret" target="_blank">maigret</a></h3>
+            </div>
+            <p class="card-desc">🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites</p>
+            <div class="card-meta">
+                <span class="card-lang">🐍 Python</span>
+                <span class="card-stars">⭐ +79 今日</span>
+                <span class="card-total">🏆 20,229</span>
+            </div>
+            <div class="card-repo">📦 soxoj/maigret</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 79 stars，🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">14</span>
+                <h3 class="card-title"><a href="https://github.com/iv-org/invidious" target="_blank">invidious</a></h3>
+            </div>
+            <p class="card-desc">Invidious is an alternative front-end to YouTube</p>
+            <div class="card-meta">
+                <span class="card-lang">📦 Crystal</span>
+                <span class="card-stars">⭐ +269 今日</span>
+                <span class="card-total">🏆 19,406</span>
+            </div>
+            <div class="card-repo">📦 iv-org/invidious</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 269 stars，Invidious is an alternative front-end to YouTube。</div>
+                </details>
+            </div>
+        </div>
+        <div class="trending-card">
+            <div class="card-header">
+                <span class="card-number">15</span>
+                <h3 class="card-title"><a href="https://github.com/gorhill/uBlock" target="_blank">uBlock</a></h3>
+            </div>
+            <p class="card-desc">uBlock Origin - An efficient blocker for Chromium and Firefox. Fast and lean.</p>
+            <div class="card-meta">
+                <span class="card-lang">🟨 JavaScript</span>
+                <span class="card-stars">⭐ +391 今日</span>
+                <span class="card-total">🏆 64,029</span>
+            </div>
+            <div class="card-repo">📦 gorhill/uBlock</div>
+            <div class="card-ai-insight">
+                <details>
+                    <summary>💡 分析</summary>
+                    <div class="insight-content">今日新增 391 stars，uBlock Origin - An efficient blocker for Chromium and Firefox. Fast and lean.。</div>
+                </details>
+            </div>
+        </div></div>
+<hr>
+<h2 id="🔍-今日精选项目：warp"><a href="#🔍-今日精选项目：warp" class="headerlink" title="🔍 今日精选项目：warp"></a>🔍 今日精选项目：warp</h2><p><strong>项目地址</strong>：<a href="https://github.com/warpdotdev/warp">https://github.com/warpdotdev/warp</a></p>
+<p><strong>作者</strong>：warpdotdev</p>
+<p><strong>描述</strong>：Warp is an agentic development environment, born out of the terminal.</p>
+<p><strong>语言</strong>：Rust</p>
+<p><strong>今日新增星标</strong>：+12822</p>
+<p><strong>总星标数</strong>：43,630</p>
+<hr>
+<h3 id="📝-深度分析"><a href="#📝-深度分析" class="headerlink" title="📝 深度分析"></a>📝 深度分析</h3><h2 id="🎯-项目本质"><a href="#🎯-项目本质" class="headerlink" title="🎯 项目本质"></a>🎯 项目本质</h2><p>Warp是一款基于Rust语言构建的现代化终端模拟器，但它远不止于此——它被定位为**”agentic development environment”**（智能体开发环境），旨在将AI能力原生融入命令行交互。简单来说，Warp试图重新定义我们与终端的交互方式：不再是冷冰冰的文字界面，而是具备智能补全、命令解释、错误诊断等AI辅助功能的智能工作台。</p>
+<h2 id="🔥-为什么火"><a href="#🔥-为什么火" class="headerlink" title="🔥 为什么火"></a>🔥 为什么火</h2><p>Warp在GitHub Trending上的爆发式增长，背后是多重因素共振的结果：</p>
+<p><strong>技术层面</strong>，Rust语言为终端这类性能敏感型应用提供了内存安全保证，同时保证了启动速度和响应延迟，这是其核心竞争力的底座。</p>
+<p><strong>产品层面</strong>，传统终端三十年如一日的交互范式早已无法满足现代开发者需求。Warp带来的块级文本选择、命令历史智能搜索、内置输出分享等功能，直击痛点。</p>
+<p><strong>市场层面</strong>，在”AI赋能一切”的风口下，Warp精准卡位”AI+开发者工具”赛道，既不喧宾夺主（保持终端的核心形态），又恰到好处地融入AI辅助，符合当前技术趋势和资本关注方向。</p>
+<h2 id="💡-核心创新"><a href="#💡-核心创新" class="headerlink" title="💡 核心创新"></a>💡 核心创新</h2><p>Warp最核心的突破在于<strong>重新定义终端的边界</strong>。传统终端是纯文本的、命令式的、单向的；而Warp将其升级为<strong>交互式的、智能化的、双向的</strong>。具体体现在：</p>
+<ol>
+<li><strong>Block Selection机制</strong>：以块为单位进行文本操作，而非传统逐行模式，大幅提升批量编辑效率</li>
+<li><strong>AI原生的交互流程</strong>：命令输入即获取智能提示，而非事后查文档</li>
+<li><strong>输出的结构化呈现</strong>：告别纯文本输出，拥抱更易读的格式化展示</li>
+</ol>
+<h2 id="📈-可借鉴价值"><a href="#📈-可借鉴价值" class="headerlink" title="📈 可借鉴价值"></a>📈 可借鉴价值</h2><p>对于开发者而言，Warp提供了几个值得深入研究的维度：</p>
+<p><strong>技术选型启示</strong>：Rust在CLI工具领域的应用越来越成熟，Warp展示了如何用Rust构建高性能、跨平台的桌面级应用，其架构设计、模块划分方式值得学习。</p>
+<p><strong>产品思维借鉴</strong>：如何在成熟品类中做出差异化？Warp的回答是”增量创新”——不颠覆终端的核心逻辑，而是在其基础上做智能化升级。这种策略降低了用户迁移成本，同时创造了显著价值。</p>
+<p><strong>AI集成范式</strong>：Warp展示了如何将AI能力无缝嵌入现有工作流，而非另起炉灶。对于任何想要引入AI功能的工具类产品，这都是教科书级别的参考。</p>
+<hr>
+<hr>
+<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
+<ul>
+<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
+<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
+<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
+</ul>
+<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
+<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
+<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
+<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
+</ul>
+<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
+<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
+<li>💬 微信公众号：DeepThinking深思</li>
+<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
+</ul>
+<hr>
+<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
+<ul>
+<li>💬 评论留言推荐</li>
+<li>📧 邮件：<a href="mailto:&#108;&#x65;&#105;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#x61;&#110;&#46;&#x65;&#x64;&#117;&#x2e;&#99;&#110;">&#108;&#x65;&#105;&#x71;&#105;&#x40;&#102;&#x75;&#x64;&#x61;&#110;&#46;&#x65;&#x64;&#117;&#x2e;&#99;&#110;</a></li>
+<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
+</ul>
+<hr>
+<p>📡 数据更新：2026-04-30 08:01:30<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
 ]]></content>
       <categories>
         <category>综合</category>
@@ -13192,10 +14154,10 @@
         <category>AI</category>
       </categories>
       <tags>
+        <tag>自动化</tag>
         <tag>飞书</tag>
         <tag>Claude Code</tag>
         <tag>AI</tag>
-        <tag>自动化</tag>
       </tags>
   </entry>
   <entry>
@@ -13314,6 +14276,63 @@
 <p>这个脚本表示当你按下 Alt + S 组合键时，将模拟按下下方向键。<br><img src="/../../imgs/Pasted%20image%2020240114170729.png"><br>保存文件： 将文件保存为 .ahk 扩展名（例如，AltSRemap.ahk）。</p>
 <p>运行脚本： 双击保存的 .ahk 文件，它将在系统托盘中运行。</p>
 <p>现在，按下 Alt + S 组合键会模拟按下下方向键的效果。你可以根据需要修改脚本中的组合键，确保不会与其他快捷键冲突。</p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>【工具】7小时代码编写机器claude code 安装</title>
+    <url>/2025-07-30-00eab54e46d5.html</url>
+    <content><![CDATA[<h2 id="安装Node-macOS-用户"><a href="#安装Node-macOS-用户" class="headerlink" title="安装Node macOS 用户"></a>安装Node macOS 用户</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sudo xcode-select --install # 安装 Xcode 命令行工具</span><br><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot; # 安装 Homebrew</span><br><span class="line">brew install node</span><br><span class="line">node --version</span><br></pre></td></tr></table></figure>
+
+<p>18版本以上即可</p>
+<h2 id="安装-Claude-Code"><a href="#安装-Claude-Code" class="headerlink" title="安装 Claude Code"></a>安装 Claude Code</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install -g @anthropic-ai/claude-code</span><br></pre></td></tr></table></figure>
+
+<p>验证是否成功</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">claude --version</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="大功告成-启动！"><a href="#大功告成-启动！" class="headerlink" title="大功告成 启动！"></a>大功告成 启动！</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">claude</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../imgs/%E6%88%AA%E5%B1%8F2025-07-30%20%E4%B8%8A%E5%8D%8812.27.40.png"></p>
+<h1 id="更换API"><a href="#更换API" class="headerlink" title="更换API"></a>更换API</h1><ul>
+<li>手动编辑配置文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Stpe1: 编辑或创建 Claude Code 的配置文件</span><br><span class="line"># MacOS &amp; Linux 为 `~/.claude/settings.json`</span><br><span class="line"># Windows 为`用户目录/.claude/settings.json`</span><br><span class="line"># `MINIMAX_API_KEY` 需替换为您的 MiniMax API Key</span><br><span class="line"># 环境变量 `ANTHROPIC_AUTH_TOKEN` 和 `ANTHROPIC_BASE_URL` 优先级高于配置文件</span><br><span class="line">&#123;</span><br><span class="line">  &quot;env&quot;: &#123;</span><br><span class="line">    &quot;ANTHROPIC_BASE_URL&quot;: &quot;https://api.minimaxi.com/anthropic&quot;,</span><br><span class="line">    &quot;ANTHROPIC_AUTH_TOKEN&quot;: &quot;MINIMAX_API_KEY&quot;,</span><br><span class="line">    &quot;API_TIMEOUT_MS&quot;: &quot;3000000&quot;,</span><br><span class="line">    &quot;CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC&quot;: 1,</span><br><span class="line">    &quot;ANTHROPIC_MODEL&quot;: &quot;MiniMax-M2.7&quot;,</span><br><span class="line">    &quot;ANTHROPIC_SMALL_FAST_MODEL&quot;: &quot;MiniMax-M2.7&quot;,</span><br><span class="line">    &quot;ANTHROPIC_DEFAULT_SONNET_MODEL&quot;: &quot;MiniMax-M2.7&quot;,</span><br><span class="line">    &quot;ANTHROPIC_DEFAULT_OPUS_MODEL&quot;: &quot;MiniMax-M2.7&quot;,</span><br><span class="line">    &quot;ANTHROPIC_DEFAULT_HAIKU_MODEL&quot;: &quot;MiniMax-M2.7&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"># Step2: 编辑或新增 `.claude.json` 文件</span><br><span class="line"># MacOS &amp; Linux 为 `~/.claude.json`</span><br><span class="line"># Windows 为`用户目录/.claude.json`</span><br><span class="line"># 新增 `hasCompletedOnboarding` 参数</span><br><span class="line">&#123;</span><br><span class="line">  &quot;hasCompletedOnboarding&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>API 配置</p>
+<ul>
+<li><p>使用 cc-switch（推荐）</p>
+</li>
+<li><p>手动编辑配置文件</p>
+</li>
+</ul>
+<p><a href="https://github.com/farion1231/cc-switch">cc-switch</a> 是一个便捷的工具，可以快速切换 Claude Code 的 API 配置。<strong>1. 安装 cc-switch</strong></p>
+<ul>
+<li><p>macOS &#x2F; Linux</p>
+</li>
+<li><p>Windows</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew tap farion1231/ccswitch</span><br><span class="line">brew install --cask cc-switch</span><br><span class="line">brew upgrade --cask cc-switch</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 添加 MiniMax 配置</strong>启动 cc-switch，点击右上角 <strong>”+”</strong> ，选择预设的 MiniMax 供应商，并填写您的 MiniMax API Key。<img src="https://filecdn.minimax.chat/public/0acbfee9-8871-4171-af19-e318476456a4.png" alt="choose"><strong>3. 配置模型名称</strong>将模型名称全部改为 <code>MiniMax-M2.7</code>，完成后点击右下角的 <strong>“添加”</strong>。<img src="https://filecdn.minimax.chat/public/1ceadee0-5488-44a1-82bb-94af0fc8d3b7.png" alt="add"><strong>4. 启用配置</strong>回到首页，点击 <strong>“启用”</strong> 即可开始使用。<img src="https://filecdn.minimax.chat/public/0c5cbe27-1a6d-4583-9ad9-b48222055c3b.png" alt="start"><strong>5. 编辑配置文件</strong>编辑或新增 <code>.claude.json</code> 文件，MacOS &amp; Linux 为 <code>~/.claude.json</code>，Windows 为<code>用户目录/.claude.json</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 新增 `hasCompletedOnboarding` 参数</span><br><span class="line">&#123;</span><br><span class="line">  &quot;hasCompletedOnboarding&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动 Claude Code</p>
+<p>配置完成后，进入工作目录，在终端中运行 <code>claude</code> 命令以启动 Claude Code</p>
+<h1 id="安装skill"><a href="#安装skill" class="headerlink" title="安装skill"></a>安装skill</h1><h3 id="安装-skill-creator"><a href="#安装-skill-creator" class="headerlink" title="安装 skill-creator"></a>安装 skill-creator</h3><p>首先安装 Anthropic 的 skills 集合。</p>
+<p>npx skills add <a href="https://github.com/anthropics/skills">https://github.com/anthropics/skills</a> –skill skill-creator</p>
+<p>或者：</p>
+<p>claude install anthropics&#x2F;skills&#x2F;skill-creator</p>
+<p>安装完成后，你就可以在 Claude 中调用：</p>
+<p>&#x2F;skill-creator</p>
+<p>其他skills 安装，可以从github克隆</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">git clone https://github.com/titanwings/colleague-skill ~/.claude/skills/create-colleague</span><br></pre></td></tr></table></figure>
+
+
 ]]></content>
       <categories>
         <category>综合</category>
@@ -15140,6 +16159,57 @@ dfs(root.Right, res)
       </categories>
   </entry>
   <entry>
+    <title>更新网页url后，恢复valine网页评论</title>
+    <url>/2025-04-13-692bd0e4bf96.html</url>
+    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
+<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
+<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>申请域名绑定github pages</title>
+    <url>/2024-09-01-2cd7cc603119.html</url>
+    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
+<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
+<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
+<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
+</ol>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
+<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
+<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
+<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
+<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
+<ul>
+<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
+</ul>
+<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
+<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
+<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
+<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
+<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
+<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
+<blockquote>
+<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
+</blockquote>
+<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
+<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
+<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
+<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+        <category>前端</category>
+      </categories>
+  </entry>
+  <entry>
     <title>jupyter</title>
     <url>/2024-06-21-a1948a70b424.html</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install notebook</p>
@@ -15161,157 +16231,6 @@ dfs(root.Right, res)
         <category>编程语言</category>
         <category>Python</category>
       </categories>
-  </entry>
-  <entry>
-    <title>OpenClaw飞书群聊机器人@不响应问题排查与解决</title>
-    <url>//2026-03-09-openclaw-feishu-group-bot-fix.html</url>
-    <content><![CDATA[<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在飞书群聊中 @OpenClaw 机器人时，机器人没有响应。日志显示：</p>
-<p>```<br>message in group oc_xxx did not mention bot, recording to history<br>```</p>
-<p>消息被记录到历史，但没有触发回复。</p>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><h3 id="1-权限检查"><a href="#1-权限检查" class="headerlink" title="1. 权限检查"></a>1. 权限检查</h3><p>首先确认飞书应用权限配置正确：</p>
-<ul>
-<li>`im:message` ✅</li>
-<li>`im:message:send_as_bot` ✅</li>
-<li>`im:message.group_at_msg:readonly` ✅</li>
-<li>`contact:contact.base:readonly` ✅</li>
-</ul>
-<p>所有必要权限都已授权。</p>
-<h3 id="2-日志分析"><a href="#2-日志分析" class="headerlink" title="2. 日志分析"></a>2. 日志分析</h3><p>查看 Gateway 日志发现关键问题：</p>
-<p>```<br>[feishu] feishu[default]: message in group oc_xxx did not mention bot, recording to history<br>```</p>
-<p>这表明机器人收到了消息，但没有识别到被 @提及。</p>
-<h3 id="3-源码分析"><a href="#3-源码分析" class="headerlink" title="3. 源码分析"></a>3. 源码分析</h3><p>查看 OpenClaw 飞书扩展源码 (`bot.ts`)：</p>
-<p>```typescript<br>function checkBotMentioned(event: FeishuMessageEvent, botOpenId?: string): boolean {<br>  if (!botOpenId) return false;  &#x2F;&#x2F; 关键：没有 botOpenId 直接返回 false<br>  const mentions &#x3D; event.message.mentions ?? [];<br>  if (mentions.length &gt; 0) {<br>    return mentions.some((m) &#x3D;&gt; m.id.open_id &#x3D;&#x3D;&#x3D; botOpenId);<br>  }<br>  &#x2F;&#x2F; …<br>}<br>```</p>
-<p><strong>根本原因</strong>：`botOpenId` 没有配置，导致 `checkBotMentioned` 函数直接返回 `false`。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="1-获取机器人-Open-ID"><a href="#1-获取机器人-Open-ID" class="headerlink" title="1. 获取机器人 Open ID"></a>1. 获取机器人 Open ID</h3><p>```bash</p>
-<h1 id="获取-tenant-access-token"><a href="#获取-tenant-access-token" class="headerlink" title="获取 tenant_access_token"></a>获取 tenant_access_token</h1><p>curl -s “<a href="https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal">https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal</a>“ \<br>  -H “Content-Type: application&#x2F;json” \<br>  -d ‘{“app_id”:”cli_xxx”,”app_secret”:”xxx”}’</p>
-<h1 id="获取机器人信息"><a href="#获取机器人信息" class="headerlink" title="获取机器人信息"></a>获取机器人信息</h1><p>curl -s “<a href="https://open.feishu.cn/open-apis/bot/v3/info">https://open.feishu.cn/open-apis/bot/v3/info</a>“ \<br>  -H “Authorization: Bearer $TOKEN”<br>```</p>
-<p>返回结果：</p>
-<p>```json<br>{<br>  “bot”: {<br>    “open_id”: “ou_c0224f261ab61714eaafe98ac6edd0a1”,<br>    “app_name”: “贾维斯”<br>  }<br>}<br>```</p>
-<h3 id="2-更新配置"><a href="#2-更新配置" class="headerlink" title="2. 更新配置"></a>2. 更新配置</h3><p>在 `~&#x2F;.openclaw&#x2F;openclaw.json` 中添加 `botOpenId`：</p>
-<p>```json<br>{<br>  “channels”: {<br>    “feishu”: {<br>      “enabled”: true,<br>      “appId”: “cli_xxx”,<br>      “appSecret”: “xxx”,<br>      “domain”: “feishu”,<br>      “groupPolicy”: “open”,<br>      “botOpenId”: “ou_c0224f261ab61714eaafe98ac6edd0a1”<br>    }<br>  }<br>}<br>```</p>
-<h3 id="3-重启-Gateway"><a href="#3-重启-Gateway" class="headerlink" title="3. 重启 Gateway"></a>3. 重启 Gateway</h3><p>```bash</p>
-<h1 id="重启-OpenClaw-Gateway"><a href="#重启-OpenClaw-Gateway" class="headerlink" title="重启 OpenClaw Gateway"></a>重启 OpenClaw Gateway</h1><p>pkill -9 -f openclaw-gateway<br>openclaw gateway start<br>```</p>
-<h3 id="4-验证"><a href="#4-验证" class="headerlink" title="4. 验证"></a>4. 验证</h3><p>重启后日志显示：</p>
-<p>```<br>[feishu] feishu[default]: bot open_id resolved: ou_c0224f261ab61714eaafe98ac6edd0a1<br>```</p>
-<p>机器人在群聊中 @ 后可以正常回复了！</p>
-<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><ol>
-<li><strong>日志是最好的调试工具</strong> - 通过日志定位到 “did not mention bot” 的关键信息</li>
-<li><strong>理解源码逻辑</strong> - 查看 `checkBotMentioned` 函数发现问题根源</li>
-<li><strong>配置完整性</strong> - 飞书机器人需要配置 `botOpenId` 才能正确识别群聊 @提及</li>
-<li><strong>官方文档可能遗漏</strong> - 这个配置项在 OpenClaw 文档中可能没有明确说明</li>
-</ol>
-<h2 id="其他相关问题"><a href="#其他相关问题" class="headerlink" title="其他相关问题"></a>其他相关问题</h2><h3 id="磁盘空间清理"><a href="#磁盘空间清理" class="headerlink" title="磁盘空间清理"></a>磁盘空间清理</h3><p>在排查过程中发现磁盘已满 (100%)：</p>
-<p>```bash</p>
-<h1 id="清理大文件"><a href="#清理大文件" class="headerlink" title="清理大文件"></a>清理大文件</h1><p>rm -rf node_modules&#x2F;venv&#x2F;.git  # 根据实际情况清理</p>
-<h1 id="清理系统缓存"><a href="#清理系统缓存" class="headerlink" title="清理系统缓存"></a>清理系统缓存</h1><p>journalctl –vacuum-size&#x3D;50M<br>npm cache clean –force<br>```</p>
-<h3 id="项目备份"><a href="#项目备份" class="headerlink" title="项目备份"></a>项目备份</h3><p>使用 GitHub 备份重要项目：</p>
-<p>```bash</p>
-<h1 id="创建私有仓库并推送"><a href="#创建私有仓库并推送" class="headerlink" title="创建私有仓库并推送"></a>创建私有仓库并推送</h1><p>gh repo create project-name –private –source&#x3D;. –push<br>```</p>
-<hr>
-<p>希望这篇文章对你有帮助！如果你也遇到类似问题，欢迎交流。</p>
-]]></content>
-      <categories>
-        <category>技术栈</category>
-        <category>DevOps</category>
-      </categories>
-      <tags>
-        <tag>飞书</tag>
-        <tag>OpenClaw</tag>
-        <tag>机器人</tag>
-        <tag>问题排查</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GitHub Trending 每日热点追踪系统 - 自动化早晚报推送到飞书群</title>
-    <url>/2026-03-19-5d7003d296e7.html</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>GitHub Trending 是发现新技术趋势和热门项目的重要渠道。但每天手动查看很麻烦，所以我开发了一个自动化系统：</p>
-<ul>
-<li>🌅 <strong>早报</strong>：早上 8:00 推送，了解最新热点</li>
-<li>🌙 <strong>晚报</strong>：晚上 20:00 推送，回顾全天动态</li>
-</ul>
-<h2 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌─────────────────┐     ┌──────────────────┐     ┌─────────────┐</span><br><span class="line">│  GitHub         │────▶│  Python 脚本      │────▶│  OpenClaw   │</span><br><span class="line">│  Trending 页面   │     │  (抓取+解析)       │     │  Cron 任务  │</span><br><span class="line">└─────────────────┘     └──────────────────┘     └──────┬──────┘</span><br><span class="line">                                                       │</span><br><span class="line">                                                       ▼</span><br><span class="line">                                               ┌─────────────┐</span><br><span class="line">                                               │  飞书群通知  │</span><br><span class="line">                                               └─────────────┘</span><br></pre></td></tr></table></figure>
-
-<h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><h3 id="1-数据抓取"><a href="#1-数据抓取" class="headerlink" title="1. 数据抓取"></a>1. 数据抓取</h3><p>使用 <code>requests</code> + <code>BeautifulSoup</code> 解析 GitHub Trending 页面：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">fetch_trending</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;抓取 GitHub Trending 页面&quot;&quot;&quot;</span></span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 ...&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    response = requests.get(GITHUB_TRENDING_URL, headers=headers, timeout=<span class="number">30</span>)</span><br><span class="line">    <span class="keyword">return</span> response.text</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse_trending</span>(<span class="params">html</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;解析仓库信息&quot;&quot;&quot;</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">    repos = []</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> article <span class="keyword">in</span> soup.select(<span class="string">&quot;article.Box-row&quot;</span>):</span><br><span class="line">        repo_name = article.select_one(<span class="string">&quot;h2 a&quot;</span>).get(<span class="string">&quot;href&quot;</span>, <span class="string">&quot;&quot;</span>).strip(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">        description = article.select_one(<span class="string">&quot;p.col-9&quot;</span>).get_text(strip=<span class="literal">True</span>)</span><br><span class="line">        language = article.select_one(<span class="string">&quot;[itemprop=&#x27;programmingLanguage&#x27;]&quot;</span>).get_text(strip=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 今日新增 stars</span></span><br><span class="line">        stars_span = article.select_one(<span class="string">&quot;span.float-sm-right&quot;</span>)</span><br><span class="line">        stars_today = re.search(<span class="string">r&quot;([\d,]+)\s*stars today&quot;</span>, stars_span.get_text())</span><br><span class="line">        </span><br><span class="line">        repos.append(&#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: repo_name,</span><br><span class="line">            <span class="string">&quot;description&quot;</span>: description,</span><br><span class="line">            <span class="string">&quot;language&quot;</span>: language,</span><br><span class="line">            <span class="string">&quot;stars_today&quot;</span>: stars_today.group(<span class="number">1</span>) <span class="keyword">if</span> stars_today <span class="keyword">else</span> <span class="string">&quot;0&quot;</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> repos</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-报告格式化"><a href="#2-报告格式化" class="headerlink" title="2. 报告格式化"></a>2. 报告格式化</h3><p>生成带有多语言 Emoji 的 Markdown 报告：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">format_report</span>(<span class="params">repos, time_of_day</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;格式化报告&quot;&quot;&quot;</span></span><br><span class="line">    time_emoji = <span class="string">&quot;🌅&quot;</span> <span class="keyword">if</span> time_of_day == <span class="string">&quot;morning&quot;</span> <span class="keyword">else</span> <span class="string">&quot;🌙&quot;</span></span><br><span class="line">    report = <span class="string">f&quot;&quot;&quot;# <span class="subst">&#123;time_emoji&#125;</span> GitHub Trending 日报</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">📅 **<span class="subst">&#123;datetime.now().strftime(<span class="string">&quot;%Y-%m-%d&quot;</span>)&#125;</span>** | 今日热点仓库 Top 10</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">---&quot;&quot;&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i, repo <span class="keyword">in</span> <span class="built_in">enumerate</span>(repos[:<span class="number">10</span>], <span class="number">1</span>):</span><br><span class="line">        lang_emoji = get_language_emoji(repo[<span class="string">&quot;language&quot;</span>])</span><br><span class="line">        report += <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">## <span class="subst">&#123;i&#125;</span>. [<span class="subst">&#123;repo[<span class="string">&#x27;name&#x27;</span>]&#125;</span>](https://github.com/<span class="subst">&#123;repo[<span class="string">&#x27;name&#x27;</span>]&#125;</span>)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt; <span class="subst">&#123;repo[<span class="string">&#x27;description&#x27;</span>][:<span class="number">100</span>]&#125;</span></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"><span class="subst">&#123;lang_emoji&#125;</span> **<span class="subst">&#123;repo[<span class="string">&#x27;language&#x27;</span>]&#125;</span>** | ⭐ **+<span class="subst">&#123;repo[<span class="string">&#x27;stars_today&#x27;</span>]&#125;</span>** 今日</span></span><br><span class="line"><span class="string">---&quot;&quot;&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> report</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-Cron-任务配置"><a href="#3-Cron-任务配置" class="headerlink" title="3. Cron 任务配置"></a>3. Cron 任务配置</h3><p>使用 OpenClaw 的 cron 功能设置定时任务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 早报 - 每天 8:00</span></span><br><span class="line">openclaw cron add <span class="string">&quot;github-trending-morning&quot;</span> \</span><br><span class="line">  --schedule <span class="string">&quot;0 8 * * *&quot;</span> \</span><br><span class="line">  --<span class="built_in">command</span> <span class="string">&quot;python3 /root/.openclaw/workspace/github_trending_report.py morning&quot;</span> \</span><br><span class="line">  --target <span class="string">&quot;isolated&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 晚报 - 每天 20:00</span></span><br><span class="line">openclaw cron add <span class="string">&quot;github-trending-evening&quot;</span> \</span><br><span class="line">  --schedule <span class="string">&quot;0 20 * * *&quot;</span> \</span><br><span class="line">  --<span class="built_in">command</span> <span class="string">&quot;python3 /root/.openclaw/workspace/github_trending_report.py evening&quot;</span> \</span><br><span class="line">  --target <span class="string">&quot;isolated&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="报告示例"><a href="#报告示例" class="headerlink" title="报告示例"></a>报告示例</h2><h3 id="早报格式"><a href="#早报格式" class="headerlink" title="早报格式"></a>早报格式</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">🌅 <span class="strong">**GitHub Trending 早安日报**</span></span><br><span class="line"></span><br><span class="line">📅 2026-03-19 08:00 | 今日热点仓库 Top 10</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## 1. [<span class="string">obra/superpowers</span>](<span class="link">https://github.com/obra/superpowers</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; An agentic skills framework &amp; software development methodology that works.</span></span><br><span class="line"></span><br><span class="line">🐚 <span class="strong">**Shell**</span> | ⭐ <span class="strong">**+3,476**</span> 今日 | 🏆 98,069 总计</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## 2. [<span class="string">gsd-build/get-shit-done</span>](<span class="link">https://github.com/gsd-build/get-shit-done</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; A light-weight and powerful meta-prompting, context engineering and spec-driven development system</span></span><br><span class="line"></span><br><span class="line">🟨 <span class="strong">**JavaScript**</span> | ⭐ <span class="strong">**+2,642**</span> 今日 | 🏆 35,418 总计</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<h2 id="技术亮点"><a href="#技术亮点" class="headerlink" title="技术亮点"></a>技术亮点</h2><h3 id="1-编程语言-Emoji-映射"><a href="#1-编程语言-Emoji-映射" class="headerlink" title="1. 编程语言 Emoji 映射"></a>1. 编程语言 Emoji 映射</h3><p>自动识别编程语言并显示对应 Emoji：</p>
-<table>
-<thead>
-<tr>
-<th>语言</th>
-<th>Emoji</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Python</td>
-<td>🐍</td>
-</tr>
-<tr>
-<td>TypeScript</td>
-<td>🔷</td>
-</tr>
-<tr>
-<td>JavaScript</td>
-<td>🟨</td>
-</tr>
-<tr>
-<td>Rust</td>
-<td>🦀</td>
-</tr>
-<tr>
-<td>Go</td>
-<td>🐹</td>
-</tr>
-<tr>
-<td>Jupyter</td>
-<td>📓</td>
-</tr>
-</tbody></table>
-<h3 id="2-智能简介截断"><a href="#2-智能简介截断" class="headerlink" title="2. 智能简介截断"></a>2. 智能简介截断</h3><p>长简介自动截断并保持可读性：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">description[:<span class="number">100</span>] + <span class="string">&quot;...&quot;</span> <span class="keyword">if</span> <span class="built_in">len</span>(description) &gt; <span class="number">100</span> <span class="keyword">else</span> description</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-错误处理与重试"><a href="#3-错误处理与重试" class="headerlink" title="3. 错误处理与重试"></a>3. 错误处理与重试</h3><p>网络请求超时和解析失败的优雅处理：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = requests.get(url, headers=headers, timeout=<span class="number">30</span>)</span><br><span class="line">    response.raise_for_status()</span><br><span class="line"><span class="keyword">except</span> requests.Timeout:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;请求超时，稍后重试&quot;</span>)</span><br><span class="line"><span class="keyword">except</span> requests.RequestException <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;请求失败: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="部署到-OpenClaw"><a href="#部署到-OpenClaw" class="headerlink" title="部署到 OpenClaw"></a>部署到 OpenClaw</h2><h3 id="1-脚本位置"><a href="#1-脚本位置" class="headerlink" title="1. 脚本位置"></a>1. 脚本位置</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/root/.openclaw/workspace/</span><br><span class="line">├── github_trending_report.py    # 主脚本</span><br><span class="line">└── reports/                      # 报告存档</span><br><span class="line">    ├── github_trending_20260319_morning.md</span><br><span class="line">    └── github_trending_20260319_evening.md</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-依赖安装"><a href="#2-依赖安装" class="headerlink" title="2. 依赖安装"></a>2. 依赖安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install beautifulsoup4 requests</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-测试运行"><a href="#3-测试运行" class="headerlink" title="3. 测试运行"></a>3. 测试运行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 测试早报</span></span><br><span class="line">python3 github_trending_report.py morning</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试晚报</span></span><br><span class="line">python3 github_trending_report.py evening</span><br></pre></td></tr></table></figure>
-
-<h2 id="扩展方向"><a href="#扩展方向" class="headerlink" title="扩展方向"></a>扩展方向</h2><ol>
-<li><strong>个性化订阅</strong> - 支持按语言、话题过滤</li>
-<li><strong>趋势对比</strong> - 对比早晚变化，识别快速增长项目</li>
-<li><strong>AI 摘要</strong> - 使用 LLM 生成项目深度解读</li>
-<li><strong>多平台推送</strong> - 支持 Telegram、Discord、微信等</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个系统让我每天能自动收到 GitHub 热点推送，不再错过重要技术趋势。结合 OpenClaw 的 cron 功能，部署简单、运行稳定。</p>
-<hr>
-<p><strong>源码</strong>：<code>/root/.openclaw/workspace/github_trending_report.py</code></p>
-<p><strong>相关文章</strong>：</p>
-<ul>
-<li><a href="/openclaw-feishu-group-bot-fix">OpenClaw飞书群聊机器人@不响应问题排查与解决</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术栈</category>
-        <category>自动化</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-        <tag>飞书</tag>
-        <tag>自动化</tag>
-        <tag>OpenClaw</tag>
-        <tag>Python</tag>
-      </tags>
   </entry>
   <entry>
     <title>三种Python3 判断字典中是否存在对应key的方法</title>
@@ -15370,417 +16289,5 @@ dfs(root.Right, res)
         <category>编程语言</category>
         <category>Python</category>
       </categories>
-  </entry>
-  <entry>
-    <title>【工具】7小时代码编写机器claude code 安装</title>
-    <url>/2025-07-30-00eab54e46d5.html</url>
-    <content><![CDATA[<h2 id="安装Node-macOS-用户"><a href="#安装Node-macOS-用户" class="headerlink" title="安装Node macOS 用户"></a>安装Node macOS 用户</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">sudo xcode-select --install # 安装 Xcode 命令行工具</span><br><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot; # 安装 Homebrew</span><br><span class="line">brew install node</span><br><span class="line">node --version</span><br></pre></td></tr></table></figure>
-
-<p>18版本以上即可</p>
-<h2 id="安装-Claude-Code"><a href="#安装-Claude-Code" class="headerlink" title="安装 Claude Code"></a>安装 Claude Code</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install -g @anthropic-ai/claude-code</span><br></pre></td></tr></table></figure>
-
-<p>验证是否成功</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">claude --version</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="大功告成-启动！"><a href="#大功告成-启动！" class="headerlink" title="大功告成 启动！"></a>大功告成 启动！</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">claude</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><img src="/../../imgs/%E6%88%AA%E5%B1%8F2025-07-30%20%E4%B8%8A%E5%8D%8812.27.40.png"></p>
-<h1 id="更换API"><a href="#更换API" class="headerlink" title="更换API"></a>更换API</h1><ul>
-<li>手动编辑配置文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Stpe1: 编辑或创建 Claude Code 的配置文件</span><br><span class="line"># MacOS &amp; Linux 为 `~/.claude/settings.json`</span><br><span class="line"># Windows 为`用户目录/.claude/settings.json`</span><br><span class="line"># `MINIMAX_API_KEY` 需替换为您的 MiniMax API Key</span><br><span class="line"># 环境变量 `ANTHROPIC_AUTH_TOKEN` 和 `ANTHROPIC_BASE_URL` 优先级高于配置文件</span><br><span class="line">&#123;</span><br><span class="line">  &quot;env&quot;: &#123;</span><br><span class="line">    &quot;ANTHROPIC_BASE_URL&quot;: &quot;https://api.minimaxi.com/anthropic&quot;,</span><br><span class="line">    &quot;ANTHROPIC_AUTH_TOKEN&quot;: &quot;MINIMAX_API_KEY&quot;,</span><br><span class="line">    &quot;API_TIMEOUT_MS&quot;: &quot;3000000&quot;,</span><br><span class="line">    &quot;CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC&quot;: 1,</span><br><span class="line">    &quot;ANTHROPIC_MODEL&quot;: &quot;MiniMax-M2.7&quot;,</span><br><span class="line">    &quot;ANTHROPIC_SMALL_FAST_MODEL&quot;: &quot;MiniMax-M2.7&quot;,</span><br><span class="line">    &quot;ANTHROPIC_DEFAULT_SONNET_MODEL&quot;: &quot;MiniMax-M2.7&quot;,</span><br><span class="line">    &quot;ANTHROPIC_DEFAULT_OPUS_MODEL&quot;: &quot;MiniMax-M2.7&quot;,</span><br><span class="line">    &quot;ANTHROPIC_DEFAULT_HAIKU_MODEL&quot;: &quot;MiniMax-M2.7&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"># Step2: 编辑或新增 `.claude.json` 文件</span><br><span class="line"># MacOS &amp; Linux 为 `~/.claude.json`</span><br><span class="line"># Windows 为`用户目录/.claude.json`</span><br><span class="line"># 新增 `hasCompletedOnboarding` 参数</span><br><span class="line">&#123;</span><br><span class="line">  &quot;hasCompletedOnboarding&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>API 配置</p>
-<ul>
-<li><p>使用 cc-switch（推荐）</p>
-</li>
-<li><p>手动编辑配置文件</p>
-</li>
-</ul>
-<p><a href="https://github.com/farion1231/cc-switch">cc-switch</a> 是一个便捷的工具，可以快速切换 Claude Code 的 API 配置。<strong>1. 安装 cc-switch</strong></p>
-<ul>
-<li><p>macOS &#x2F; Linux</p>
-</li>
-<li><p>Windows</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew tap farion1231/ccswitch</span><br><span class="line">brew install --cask cc-switch</span><br><span class="line">brew upgrade --cask cc-switch</span><br></pre></td></tr></table></figure>
-
-<p><strong>2. 添加 MiniMax 配置</strong>启动 cc-switch，点击右上角 <strong>”+”</strong> ，选择预设的 MiniMax 供应商，并填写您的 MiniMax API Key。<img src="https://filecdn.minimax.chat/public/0acbfee9-8871-4171-af19-e318476456a4.png" alt="choose"><strong>3. 配置模型名称</strong>将模型名称全部改为 <code>MiniMax-M2.7</code>，完成后点击右下角的 <strong>“添加”</strong>。<img src="https://filecdn.minimax.chat/public/1ceadee0-5488-44a1-82bb-94af0fc8d3b7.png" alt="add"><strong>4. 启用配置</strong>回到首页，点击 <strong>“启用”</strong> 即可开始使用。<img src="https://filecdn.minimax.chat/public/0c5cbe27-1a6d-4583-9ad9-b48222055c3b.png" alt="start"><strong>5. 编辑配置文件</strong>编辑或新增 <code>.claude.json</code> 文件，MacOS &amp; Linux 为 <code>~/.claude.json</code>，Windows 为<code>用户目录/.claude.json</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 新增 `hasCompletedOnboarding` 参数</span><br><span class="line">&#123;</span><br><span class="line">  &quot;hasCompletedOnboarding&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>启动 Claude Code</p>
-<p>配置完成后，进入工作目录，在终端中运行 <code>claude</code> 命令以启动 Claude Code</p>
-<h1 id="安装skill"><a href="#安装skill" class="headerlink" title="安装skill"></a>安装skill</h1><h3 id="安装-skill-creator"><a href="#安装-skill-creator" class="headerlink" title="安装 skill-creator"></a>安装 skill-creator</h3><p>首先安装 Anthropic 的 skills 集合。</p>
-<p>npx skills add <a href="https://github.com/anthropics/skills">https://github.com/anthropics/skills</a> –skill skill-creator</p>
-<p>或者：</p>
-<p>claude install anthropics&#x2F;skills&#x2F;skill-creator</p>
-<p>安装完成后，你就可以在 Claude 中调用：</p>
-<p>&#x2F;skill-creator</p>
-<p>其他skills 安装，可以从github克隆</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">git clone https://github.com/titanwings/colleague-skill ~/.claude/skills/create-colleague</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>综合</category>
-        <category>工具</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>更新网页url后，恢复valine网页评论</title>
-    <url>/2025-04-13-692bd0e4bf96.html</url>
-    <content><![CDATA[<p>由于Valine 是无后端评论系统，所以也就没有开发评论数据管理功能。请自行登录Leancloud应用管理。<br>具体步骤：登录&gt;选择你创建的应用&gt;数据存储&gt;结构化数据&gt;选择ClassComment，然后就可以尽情的发挥你的权利啦(～￣▽￣)～</p>
-<p>修改 对应url 列为当前url<br><img src="/../../imgs/Pasted%20image%2020250413122851.png"><img src="/../../imgs/Pasted%20image%2020250413123508.png"></p>
-<p>参考：<br><a href="https://valine.js.org/quickstart.html">https://valine.js.org/quickstart.html</a></p>
-]]></content>
-      <categories>
-        <category>编程语言</category>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>申请域名绑定github pages</title>
-    <url>/2024-09-01-2cd7cc603119.html</url>
-    <content><![CDATA[<p>你是否想让自己的github 个人博客拥有自己的个性域名，而不是很长的github.io 域名呢？快来看看吧！</p>
-<h2 id="前置需求"><a href="#前置需求" class="headerlink" title="前置需求"></a>前置需求</h2><ol>
-<li>在<a href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99! | NameSilo</a>完成了域名的购买</li>
-<li>完成了GitHub Pages的设置，有了可用的<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>库之后，可以访问 Github Pages</li>
-</ol>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="0-进入我的账户"><a href="#0-进入我的账户" class="headerlink" title="0. 进入我的账户"></a>0. 进入我的账户</h3><p><img src="/../../imgs/Pasted%20image%2020240901102308.png"></p>
-<h3 id="1-无论是什么域名服务商，找到DNS-Management页面"><a href="#1-无论是什么域名服务商，找到DNS-Management页面" class="headerlink" title="1. 无论是什么域名服务商，找到DNS Management页面"></a><strong>1. 无论是什么域名服务商，找到DNS Management页面</strong></h3><p>如果是namesilo购买的域名，可以通过以下步骤：<br><img src="/../../imgs/Pasted%20image%2020240901102340.png"><br>点击“domain manager”<br><img src="/../../imgs/Pasted%20image%2020240901102510.png"><br>点击这个蓝色的小球（Manage DNS for this domain）</p>
-<h3 id="2-写入-type-A-的DNS记录"><a href="#2-写入-type-A-的DNS记录" class="headerlink" title="2. 写入 type A 的DNS记录"></a><strong>2. 写入 type A 的DNS记录</strong></h3><ul>
-<li><strong>如果厂商提供了写入模板</strong>，这一步就很简单了。拿namesilo举例，在Manage DNS页面往下滑动可以看到namesilo支持的很多 <strong>DNS Templates</strong>。</li>
-</ul>
-<p><img src="https://pic4.zhimg.com/80/v2-b84d88c38c06b6081f02cafbd0dac24b_720w.webp"></p>
-<p>找到GitHub的template，点击“<strong>Apply Template</strong>”，然后在弹出的窗口里直接点击“<strong>Accept</strong>”，你就会发现4条A记录已经自动写入了。</p>
-<p><img src="https://pic1.zhimg.com/80/v2-c731fadefaf3d3a2268e6566d6196558_720w.webp"></p>
-<ul>
-<li><strong>如果厂商不能自动添加</strong>，也可以手动添加，并不麻烦。打开下面的网址，滑动到第五个步骤，可以看到下图</li>
-</ul>
-<p>[Managing a custom domain for your GitHub Pages site - GitHub Docs​docs.github.com&#x2F;en&#x2F;pages&#x2F;configuring-a-custom-domain-for-your-github-pages-site&#x2F;managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain!</p>
-<p><img src="https://pica.zhimg.com/80/v2-1a618fec2900e4f23039c153d8ab03da_720w.webp"></p>
-<p>上面圈起来的四个地址就是需要等会儿手动输入的。</p>
-<p>不同厂商之间的手动添加方法不一样，但只要记住 <strong>type 后填“A”</strong>，<strong>address&#x2F;points to或其他同义表达后填这四个地址中的一个</strong>，<strong>其他默认</strong>就好了，一共需要添加<strong>四条</strong>，可以复制粘贴。</p>
-<p>添加之后会多出四个<img src="/../../imgs/Pasted%20image%2020240901102815.png">### 3. 创建CNAME文件</p>
-<p>这一步也有其他方法，比如直接通过上一步类似的方法来添加，只要选择CNAME type，把address写成<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，</p>
-<blockquote>
-<p>上面的方法 save 之后看到报错不要慌，<a href="https://zhida.zhihu.com/search?q=%E8%AE%A9%E5%AD%90%E5%BC%B9%E9%A3%9E&zhida_source=entity&is_preview=1">让子弹飞</a>一会儿就好了</p>
-</blockquote>
-<p><img src="/../../imgs/Pasted%20image%2020240901102714.png"><br><img src="/../../imgs/Pasted%20image%2020240901102745.png"></p>
-<p>最终有这些配置即可：<br><img src="/../../imgs/Pasted%20image%2020240901102848.png"></p>
-<h3 id="github-填写域名地址"><a href="#github-填写域名地址" class="headerlink" title="github 填写域名地址"></a>github 填写域名地址</h3><p>在GitHub库的Settings–&gt;Pages–&gt;Custom Domain里填上自己的域名，把Enforce HTTPS打上勾即可。<br><img src="/../../imgs/Pasted%20image%2020240901103216.png"><br><img src="/../../imgs/Pasted%20image%2020240901103241.png"></p>
-<h3 id="即刻访问你自己的域名网站吧！"><a href="#即刻访问你自己的域名网站吧！" class="headerlink" title="即刻访问你自己的域名网站吧！"></a>即刻访问你自己的域名网站吧！</h3><p><img src="/../../imgs/Pasted%20image%2020240901103553.png"></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/448781791">将自己的域名绑定在GitHub的个人网页库中（以namesilo为例） - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>编程语言</category>
-        <category>前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>GitHub Trending 日报 - 2026/04/21</title>
-    <url>/2026-04-21-9510eb4275cc.html</url>
-    <content><![CDATA[<h1 id="GitHub-Trending-日报"><a href="#GitHub-Trending-日报" class="headerlink" title="GitHub Trending 日报"></a>GitHub Trending 日报</h1><p>📅 <strong>日期</strong>：2026&#x2F;04&#x2F;21</p>
-<p>🎯 <strong>系列说明</strong>：每日精选GitHub热门开源项目，带你发现最新技术趋势和优质项目。每日推送，持续更新中…</p>
-<hr>
-<h2 id="📊-今日热门项目速览"><a href="#📊-今日热门项目速览" class="headerlink" title="📊 今日热门项目速览"></a>📊 今日热门项目速览</h2>
-<style>
-.github-trending-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin: 20px 0;
-}
-.trending-card {
-    background: var(--card-bg, #f8f9fa);
-    border: 1px solid var(--border-color, #e9ecef);
-    border-radius: 12px;
-    padding: 16px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-.trending-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-.card-number {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
-}
-.card-title {
-    margin: 0 !important;
-    font-size: 16px !important;
-}
-.card-title a {
-    color: #1a73e8;
-    text-decoration: none;
-}
-.card-desc {
-    color: #666;
-    font-size: 14px;
-    margin: 8px 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-.card-meta {
-    display: flex;
-    gap: 12px;
-    font-size: 13px;
-    color: #666;
-    margin: 8px 0;
-}
-.card-repo {
-    font-size: 12px;
-    color: #999;
-    font-family: monospace;
-    margin-bottom: 8px;
-}
-.card-ai-insight {
-    margin-top: 8px;
-}
-.card-ai-insight summary {
-    cursor: pointer;
-    font-size: 13px;
-    color: #666;
-}
-.insight-content {
-    font-size: 13px;
-    color: #555;
-    margin-top: 8px;
-    padding: 8px;
-    background: rgba(0,0,0,0.03);
-    border-radius: 6px;
-}
-@media (max-width: 768px) {
-    .github-trending-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
-
-<div class="github-trending-grid">
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">1</span>
-                <h3 class="card-title"><a href="https://github.com/Fincept-Corporation/FinceptTerminal" target="_blank">FinceptTerminal</a></h3>
-            </div>
-            <p class="card-desc">FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +2595 今日</span>
-                <span class="card-total">🏆 10,821</span>
-            </div>
-            <div class="card-repo">📦 Fincept-Corporation/FinceptTerminal</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">FinceptTerminal之所以在GitHub Trending上快速走红，主要是因为它填补了开源社区在专业金融分析领域的空白，将市场分析、投资研究和宏观经济数据整合到一个交互式平台，满足了个人投资者和金融从业者对免费专业工具的迫切需求，同时Python语言的选择也降低了技术门槛，便于开发者参与和二次开发。
-
-这个项目值得借鉴的地方在于其数据驱动决策的产品定位和对用户体验的重视，通过提供一站式的金融分析环境，让复杂的数据探索变得直观易用，这对于其他垂直领域工具的开发也很有启发意义。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">2</span>
-                <h3 class="card-title"><a href="https://github.com/thunderbird/thunderbolt" target="_blank">thunderbolt</a></h3>
-            </div>
-            <p class="card-desc">AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.</p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +591 今日</span>
-                <span class="card-total">🏆 3,133</span>
-            </div>
-            <div class="card-repo">📦 thunderbird/thunderbolt</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">Thunderbolt由知名开源邮箱客户端Thunderbird团队推出，其核心理念是让用户能够自由选择AI模型并完全掌控自己的数据，切中了当前用户对AI供应商锁定和数据隐私的普遍担忧，因此获得了广泛关注。这个项目值得借鉴的地方在于它通过模块化架构设计实现了AI模型的可插拔性，同时强调开源和数据自主权的价值观，这种做法既增强了用户信任，也为未来AI应用的去中心化发展提供了新思路。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">3</span>
-                <h3 class="card-title"><a href="https://github.com/zilliztech/claude-context" target="_blank">claude-context</a></h3>
-            </div>
-            <p class="card-desc">Code search MCP for Claude Code. Make entire codebase the context for any coding agent.</p>
-            <div class="card-meta">
-                <span class="card-lang">🔷 TypeScript</span>
-                <span class="card-stars">⭐ +74 今日</span>
-                <span class="card-total">🏆 6,199</span>
-            </div>
-            <div class="card-repo">📦 zilliztech/claude-context</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">这个项目之所以火起来，是因为它解决了AI编程助手面临的核心痛点——上下文窗口有限的问题。通过将整个代码库转化为可检索的语义上下文，它让Claude Code这样的AI工具能够"理解"整个项目而不是只能处理局部代码片段，非常符合当前AI辅助编程的工作流程需求。这个项目值得借鉴的地方在于它的MCP协议设计思路，以及采用混合搜索策略（语义+关键词）来平衡搜索的准确性和全面性，同时作为zilliztech的生态产品，它也展示了如何通过开源项目为商业向量数据库Milvus引流的双赢策略。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">4</span>
-                <h3 class="card-title"><a href="https://github.com/ruvnet/RuView" target="_blank">RuView</a></h3>
-            </div>
-            <p class="card-desc">π RuView: WiFi DensePose turns commodity WiFi signals into real-time human pose estimation, vital sign monitoring, and presence detection — all without a single pixel of video.</p>
-            <div class="card-meta">
-                <span class="card-lang">🦀 Rust</span>
-                <span class="card-stars">⭐ +828 今日</span>
-                <span class="card-total">🏆 48,636</span>
-            </div>
-            <div class="card-repo">📦 ruvnet/RuView</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">RuView之所以在Trending上爆火，是因为它抓住了AI与隐私保护两大热点——仅凭普通WiFi信号就能实现精准的人体姿态估计和生命体征监测，完全不需要摄像头，这对于智能家居、医疗监护等场景来说简直是革命性的解决方案，而且用Rust语言实现保证了高性能和安全性。这个项目的借鉴意义在于它展示了“软件定义感知”的强大潜力，证明了在特定领域Rust的并发优势和内存安全特性能够很好地支撑实时信号处理任务，同时开源社区可以基于此探索WiFi感知在更多垂直场景的落地。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">5</span>
-                <h3 class="card-title"><a href="https://github.com/microsoft/ai-agents-for-beginners" target="_blank">ai-agents-for-beginners</a></h3>
-            </div>
-            <p class="card-desc">12 Lessons to Get Started Building AI Agents</p>
-            <div class="card-meta">
-                <span class="card-lang">📓 Jupyter Notebook</span>
-                <span class="card-stars">⭐ +131 今日</span>
-                <span class="card-total">🏆 57,221</span>
-            </div>
-            <div class="card-repo">📦 microsoft/ai-agents-for-beginners</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">这个项目之所以火爆，主要是因为AI Agent技术正处在大模型应用的风口，而微软精准切入了“入门者”这个最广泛的学习需求群体，配合“12节课”的结构化学习路径和Jupyter Notebook的实践形式，大大降低了学习门槛。值得借鉴的是它的产品定位策略——通过“for Beginners”标签吸引流量，同时以微软品牌背书保证内容质量，再用模块化的课程设计让学习路径清晰可控，形成了一套可复制的技术教育项目运营范式。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">6</span>
-                <h3 class="card-title"><a href="https://github.com/dayanch96/YTLite" target="_blank">YTLite</a></h3>
-            </div>
-            <p class="card-desc">A flexible enhancer for YouTube on iOS</p>
-            <div class="card-meta">
-                <span class="card-lang">📦 Logos</span>
-                <span class="card-stars">⭐ +43 今日</span>
-                <span class="card-total">🏆 4,699</span>
-            </div>
-            <div class="card-repo">📦 dayanch96/YTLite</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 43 stars，A flexible enhancer for YouTube on iOS。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">7</span>
-                <h3 class="card-title"><a href="https://github.com/HKUDS/RAG-Anything" target="_blank">RAG-Anything</a></h3>
-            </div>
-            <p class="card-desc">"RAG-Anything: All-in-One RAG Framework"</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +245 今日</span>
-                <span class="card-total">🏆 16,510</span>
-            </div>
-            <div class="card-repo">📦 HKUDS/RAG-Anything</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 245 stars，"RAG-Anything: All-in-One RAG Framework"。</div>
-                </details>
-            </div>
-        </div>
-        <div class="trending-card">
-            <div class="card-header">
-                <span class="card-number">8</span>
-                <h3 class="card-title"><a href="https://github.com/sansan0/TrendRadar" target="_blank">TrendRadar</a></h3>
-            </div>
-            <p class="card-desc">⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 + RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 + AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。</p>
-            <div class="card-meta">
-                <span class="card-lang">🐍 Python</span>
-                <span class="card-stars">⭐ +604 今日</span>
-                <span class="card-total">🏆 53,255</span>
-            </div>
-            <div class="card-repo">📦 sansan0/TrendRadar</div>
-            <div class="card-ai-insight">
-                <details>
-                    <summary>💡 分析</summary>
-                    <div class="insight-content">今日新增 604 stars，⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 + RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 + AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。。</div>
-                </details>
-            </div>
-        </div></div>
-<hr>
-<h2 id="🔍-今日精选项目：FinceptTerminal"><a href="#🔍-今日精选项目：FinceptTerminal" class="headerlink" title="🔍 今日精选项目：FinceptTerminal"></a>🔍 今日精选项目：FinceptTerminal</h2><p><strong>项目地址</strong>：<a href="https://github.com/Fincept-Corporation/FinceptTerminal">https://github.com/Fincept-Corporation/FinceptTerminal</a></p>
-<p><strong>作者</strong>：Fincept-Corporation</p>
-<p><strong>描述</strong>：FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</p>
-<p><strong>语言</strong>：Python</p>
-<p><strong>今日新增星标</strong>：+2595</p>
-<p><strong>总星标数</strong>：10,821</p>
-<hr>
-<h3 id="📝-深度分析"><a href="#📝-深度分析" class="headerlink" title="📝 深度分析"></a>📝 深度分析</h3><h2 id="🎯-项目本质"><a href="#🎯-项目本质" class="headerlink" title="🎯 项目本质"></a>🎯 项目本质</h2><p>FinceptTerminal是一个基于Python构建的现代化金融终端应用，其核心定位是<strong>为个人投资者和金融分析师提供一站式市场数据分析解决方案</strong>。简而言之，它试图将彭博终端的核心功能以开源、免费的方式普惠化。该项目集成了股票行情、技术指标计算、投资组合管理、经济数据可视化等功能于一身，用户可以通过交互式界面完成从数据获取到投资决策的全流程工作。</p>
-<h2 id="🔥-为什么火"><a href="#🔥-为什么火" class="headerlink" title="🔥 为什么火"></a>🔥 为什么火</h2><p>这个项目在GitHub Trending上爆发式增长，绝非偶然。从<strong>市场需求</strong>角度看，全球范围内量化交易和个人投资者数量激增，但专业金融终端高昂的订阅费（彭博终端月费高达数千美元）让普通用户难以承受，FinceptTerminal精准切入了这一市场空白。</p>
-<p>从<strong>技术生态</strong>角度，Python拥有yfinance、pandas、plotly等成熟的金融数据处理生态，该项目站在巨人肩膀上，降低了开发门槛的同时保证了功能丰富度。此外，其采用现代化终端界面设计，符合当下开发者对工具类应用“炫酷+实用”的审美偏好。</p>
-<p>从<strong>社区心理</strong>角度，“国产替代”和“开源平权”的叙事极易引发开发者共鸣，Fincept-Corporation作为商业主体推进开源项目，形成了一种“有商业背书但免费可用”的微妙信任感。</p>
-<h2 id="💡-核心创新"><a href="#💡-核心创新" class="headerlink" title="💡 核心创新"></a>💡 核心创新</h2><p>该项目的核心创新在于<strong>将专业金融终端能力模块化、可组合化</strong>。传统金融工具往往是封闭的黑盒系统，而FinceptTerminal通过开源架构，让用户不仅能使用工具，还能深入理解底层逻辑、修改自定义指标、甚至二次开发自己的交易策略。它在数据可视化方面引入了交互式图表和实时数据流的概念，相比传统静态报表更符合数据分析的思维模式。</p>
-<h2 id="📈-可借鉴价值"><a href="#📈-可借鉴价值" class="headerlink" title="📈 可借鉴价值"></a>📈 可借鉴价值</h2><p>对于个人开发者而言，这个项目提供了多维度的启发：<strong>在产品定位上</strong>，学会从高价商业产品的“功能阉割版”切入市场，以开源换用户基数，再探索商业变现路径；<strong>在技术架构上</strong>，可以学习如何将Python科学计算生态与现代化前端结合，构建复杂的数据驱动应用；<strong>在社区运营上</strong>，懂得利用GitHub Trending的曝光规律，通过“精准描述+视觉冲击+市场需求”组合拳实现项目冷启动。对于有志于金融科技领域的开发者，参与此类项目是理解行业需求、积累实战经验的绝佳切入口。</p>
-<hr>
-<hr>
-<h2 id="📝-系列说明"><a href="#📝-系列说明" class="headerlink" title="📝 系列说明"></a>📝 系列说明</h2><p><strong>GitHub Trending 日报</strong>是一个持续更新的系列，每日为你带来：</p>
-<ul>
-<li>🔥 <strong>热门项目速览</strong>：快速了解当日最火的开源项目</li>
-<li>🔍 <strong>精选项目详解</strong>：深入分析排名第一的项目</li>
-<li>💡 <strong>技术趋势洞察</strong>：把握开源社区最新动态</li>
-</ul>
-<h3 id="往期日报"><a href="#往期日报" class="headerlink" title="往期日报"></a>往期日报</h3><ul>
-<li><a href="./GitHub-Trending-2026-03-11.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;11</a></li>
-<li><a href="./GitHub-Trending-2026-03-10.html">GitHub Trending 日报 - 2026&#x2F;03&#x2F;10</a></li>
-<li>更多日报请访问 <a href="/tags/GitHub/">GitHub Trending 系列</a></li>
-</ul>
-<h3 id="订阅方式"><a href="#订阅方式" class="headerlink" title="订阅方式"></a>订阅方式</h3><ul>
-<li>📧 RSS订阅：<a href="/atom.xml">&#x2F;atom.xml</a></li>
-<li>💬 微信公众号：DeepThinking深思</li>
-<li>📺 B站：<a href="https://space.bilibili.com/30887724">@八里桥好</a></li>
-</ul>
-<hr>
-<h2 id="🤝-参与贡献"><a href="#🤝-参与贡献" class="headerlink" title="🤝 参与贡献"></a>🤝 参与贡献</h2><p>如果你发现有趣的开源项目，欢迎推荐！</p>
-<ul>
-<li>💬 评论留言推荐</li>
-<li>📧 邮件：<a href="mailto:&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;">&#108;&#101;&#105;&#113;&#105;&#x40;&#102;&#117;&#100;&#x61;&#x6e;&#46;&#101;&#100;&#x75;&#x2e;&#99;&#110;</a></li>
-<li>🔗 GitHub：<a href="https://github.com/leiqichn">@leiqichn</a></li>
-</ul>
-<hr>
-<p>📡 数据更新：2026-04-21 20:04:55<br>🔗 数据来源：<a href="https://github.com/trending">GitHub Trending</a></p>
-]]></content>
-      <categories>
-        <category>综合</category>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-        <tag>Trending</tag>
-        <tag>开源</tag>
-        <tag>日报</tag>
-      </tags>
   </entry>
 </search>
