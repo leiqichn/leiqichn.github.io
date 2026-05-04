@@ -16,7 +16,21 @@
 
     function getStoredStats() {
         try {
-            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+            var stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+            // 如果是首次访问（没有任何数据），用站点当前统计数据初始化，避免首次显示巨大增量
+            if (!stored.uv && !stored.pv && !stored.lastVisit) {
+                var uvEl = document.getElementById('busuanzi_value_site_uv');
+                var pvEl = document.getElementById('busuanzi_value_site_pv');
+                var currentUV = uvEl ? parseInt(uvEl.textContent) || 0 : 0;
+                var currentPV = pvEl ? parseInt(pvEl.textContent) || 0 : 0;
+                // 用当前实际数据作为初始baseline，不显示增量
+                stored.uv = currentUV;
+                stored.pv = currentPV;
+                stored.lastVisit = Date.now();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+                console.log('[访客统计] 首次访问，已初始化baseline，UV:', currentUV, 'PV:', currentPV);
+            }
+            return stored;
         } catch(e) {
             return {};
         }
@@ -47,6 +61,13 @@
         var lastPV = stored.pv || 0;
         var lastVisit = stored.lastVisit || 0;
 
+        // 首次访问时，用当前不蒜子数据初始化localStorage，不显示增量
+        if (!lastVisit) {
+            saveStats(currentUV, currentPV);
+            console.log('[访客统计] 首次访问，已初始化baseline，UV:', currentUV, 'PV:', currentPV);
+            return;
+        }
+
         // 计算增量（始终显示，只要当前 > 存储值）
         var uvIncrease = currentUV > lastUV ? currentUV - lastUV : 0;
         var pvIncrease = currentPV > lastPV ? currentPV - lastPV : 0;
@@ -60,7 +81,7 @@
         }
 
         // 只有超过30分钟才更新baseline（防止刷新重置）
-        if (!lastVisit || (Date.now() - lastVisit) >= TIME_WINDOW) {
+        if ((Date.now() - lastVisit) >= TIME_WINDOW) {
             saveStats(currentUV, currentPV);
             console.log('[访客统计] 已更新baseline，UV:', currentUV, 'PV:', currentPV);
         } else {
