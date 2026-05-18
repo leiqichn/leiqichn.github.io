@@ -2,35 +2,71 @@
  * 访客统计增量气泡
  * 在不蒜子数据加载后，计算并显示增量
  * 同一用户30分钟窗口内不更新baseline，以便看到累计增量
+ *
+ * v2.0 - 修复首次访问竞态条件：
+ *   问题：不蒜子 async 加载慢时，JS 读到空值(0)就初始化了 baseline，
+ *   下次访问显示整个历史量作为增量。
+ *   修复：只有确认不蒜子真的返回了有效数据后才设置 baseline。
  */
 
 (function() {
     var STORAGE_KEY = 'busuanzi_stats';
+    var INIT_FLAG = 'busuanzi_initialized_ok'; // 专属初始化标记
     var TIME_WINDOW = 30 * 60 * 1000; // 30分钟（毫秒）
 
     function init() {
+        // 给不蒜子留足时间加载，刷新也需要等缓存
         setTimeout(function() {
             updateStats();
-        }, 1500);
+        }, 2000);
     }
 
+    /**
+     * 读取存好的 baseline。
+     * 如果还没初始化（第一次访问），返回 null 而不是空对象，
+     * 以此通知 updateStats 继续等待不蒜子数据。
+     */
     function getStoredStats() {
         try {
-            var stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-            // 如果是首次访问（没有任何数据），用站点当前统计数据初始化，避免首次显示巨大增量
-            if (!stored.uv && !stored.pv && !stored.lastVisit) {
+            var initialized = localStorage.getItem(INIT_FLAG);
+            if (!initialized) {
+                // 还没有初始化过，检查不蒜子数据是不是真的到了
                 var uvEl = document.getElementById('busuanzi_value_site_uv');
                 var pvEl = document.getElementById('busuanzi_value_site_pv');
-                var currentUV = uvEl ? parseInt(uvEl.textContent) || 0 : 0;
-                var currentPV = pvEl ? parseInt(pvEl.textContent) || 0 : 0;
-                // 用当前实际数据作为初始baseline，不显示增量
-                stored.uv = currentUV;
-                stored.pv = currentPV;
-                stored.lastVisit = Date.now();
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
-                console.log('[访客统计] 首次访问，已初始化baseline，UV:', currentUV, 'PV:', currentPV);
+                if (!uvEl || !pvEl) {
+                    return null; // 元素都还没渲染，重试
+                }
+
+                var uvText = uvEl.textContent || '';
+                var pvText = pvEl.textContent || '';
+
+                // 不蒜子返回的数据不会为空，如果还是空或者 '0'，说明还没加载完
+                if (!uvText || uvText === '0' || uvText === '' ||
+                    !pvText || pvText === '0' || pvText === '') {
+                    return null; // 不蒜子还没填充数据，继续等
+                }
+
+                // 不蒜子真的加载完了，用真实数据初始化 baseline
+                var currentUV = parseInt(uvText) || 0;
+                var currentPV = parseInt(pvText) || 0;
+
+                if (currentUV <= 0 && currentPV <= 0) {
+                    return null; // 数据异常，再等一轮
+                }
+
+                var stats = {
+                    uv: currentUV,
+                    pv: currentPV,
+                    lastVisit: Date.now()
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+                localStorage.setItem(INIT_FLAG, '1');
+                console.log('[访客统计] 首次初始化baseline成功，UV:', currentUV, 'PV:', currentPV);
+                return stats;
             }
-            return stored;
+
+            // 已经初始化过了，直接读取
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
         } catch(e) {
             return {};
         }
@@ -56,19 +92,28 @@
         var currentUV = parseInt(uvEl.textContent) || 0;
         var currentPV = parseInt(pvEl.textContent) || 0;
 
+        // getStoredStats 返回 null 表示不蒜子还没准备好，重试
         var stored = getStoredStats();
+        if (stored === null) {
+            console.log('[访客统计] 等待不蒜子数据...');
+            setTimeout(updateStats, 1000);
+            return;
+        }
+
         var lastUV = stored.uv || 0;
         var lastPV = stored.pv || 0;
         var lastVisit = stored.lastVisit || 0;
 
-        // 首次访问时，用当前不蒜子数据初始化localStorage，不显示增量
+        // 首次访问（理论不会走到这里，因为 getStoredStats 里已经初始化了）
+        // 但作为安全兜底
         if (!lastVisit) {
             saveStats(currentUV, currentPV);
-            console.log('[访客统计] 首次访问，已初始化baseline，UV:', currentUV, 'PV:', currentPV);
+            localStorage.setItem(INIT_FLAG, '1');
+            console.log('[访客统计] 兜底初始化，UV:', currentUV, 'PV:', currentPV);
             return;
         }
 
-        // 计算增量（始终显示，只要当前 > 存储值）
+        // 计算增量
         var uvIncrease = currentUV > lastUV ? currentUV - lastUV : 0;
         var pvIncrease = currentPV > lastPV ? currentPV - lastPV : 0;
 
