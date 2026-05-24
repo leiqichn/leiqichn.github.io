@@ -59,6 +59,12 @@ mixin indexPostUI()
                     if index < article.tags.data.length - 1
                       span.article-meta-link #[='•']
 
+              span.article-meta
+                span.article-meta-separator |
+                i.far.fa-eye.fa-fw.post-meta-icon
+                span.waline-comment-count(data-path=url_for(article.link || article.path))
+                  i.fa-solid.fa-spinner.fa-spin
+
             //- Display the article introduction on homepage
             - const content = postDesc(article)
             if content

@@ -1,21 +1,28 @@
 - const serverURL = theme.waline.serverURL.replace(/\/$/, '')
 script.
   (() => {
-    async function loadWaline () {
+    async function loadWalinePageViews () {
       try {
         const eleGroup = document.querySelectorAll('#recent-posts .waline-comment-count')
+        if (!eleGroup.length) return
+        
         const keyArray = Array.from(eleGroup).map(i => i.getAttribute('data-path'))
-
-        const res = await fetch(`!{serverURL}/api/comment?type=count&url=${keyArray}`, { method: 'GET' })
+        // 使用 Waline 文章 API 获取阅读量（不是评论数）
+        const res = await fetch(`!{serverURL}/api/article?path=${keyArray}`, { method: 'GET' })
         const result = await res.json()
         
-        result.data.forEach((count, index) => {
-          eleGroup[index].textContent = count
-        })
+        if (result.data && result.data.length) {
+          result.data.forEach((item, index) => {
+            if (index < eleGroup.length) {
+              // Waline 文章 API 返回 { time: count } 格式
+              eleGroup[index].textContent = item.time || 0
+            }
+          })
+        }
       } catch (err) {
         console.error(err)
       }
     }
 
-    window.pjax ? loadWaline() : window.addEventListener('load', loadWaline)
+    window.pjax ? loadWalinePageViews() : window.addEventListener('load', loadWalinePageViews)
   })()

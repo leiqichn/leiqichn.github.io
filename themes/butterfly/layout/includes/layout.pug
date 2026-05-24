@@ -4,6 +4,7 @@
 - var hideAside = !theme.aside.enable || page.aside === false ? 'hide-aside' : ''
 - var pageType = globalPageType === 'post' ? 'post' : 'page'
 - pageType = page.type ? pageType + ' type-' + page.type : pageType
+- var needLoadCountJs = theme.comments.use && theme.comments.use[0] && (theme.comments.use[0] === 'Valine' || theme.comments.use[0] === 'Waline' || theme.comments.use[0] === 'Twikoo' || theme.comments.use[0] === 'Artalk')
 
 doctype html
 html(lang=config.language data-theme=theme.display_mode class=htmlClassHideAside)
