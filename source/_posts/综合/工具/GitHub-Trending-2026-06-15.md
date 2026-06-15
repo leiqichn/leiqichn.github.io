@@ -1,6 +1,6 @@
 ---
 title: 【Github Trending 日报】深度解析 - 2026/06/15
-date: 2026-06-15 08:00:14
+date: 2026-06-15 08:06:48
 categories:
   - [综合, 工具]
 tags: [GitHub, 开源, Trending, 日报]
@@ -158,7 +158,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🔷 TypeScript</span>
                 <span class="card-stars">⭐ +1528 今日</span>
-                <span class="card-total">🏆 120,857</span>
+                <span class="card-total">🏆 120,864</span>
             </div>
             <div class="card-repo">📦 iptv-org/iptv</div>
             <div class="card-ai-insight">
@@ -177,7 +177,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🔷 TypeScript</span>
                 <span class="card-stars">⭐ +146 今日</span>
-                <span class="card-total">🏆 447,166</span>
+                <span class="card-total">🏆 447,167</span>
             </div>
             <div class="card-repo">📦 freeCodeCamp/freeCodeCamp</div>
             <div class="card-ai-insight">
@@ -196,7 +196,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +14 今日</span>
-                <span class="card-total">🏆 14,024</span>
+                <span class="card-total">🏆 14,027</span>
             </div>
             <div class="card-repo">📦 pytest-dev/pytest</div>
             <div class="card-ai-insight">
@@ -234,7 +234,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">💎 Ruby</span>
                 <span class="card-stars">⭐ +400 今日</span>
-                <span class="card-total">🏆 31,204</span>
+                <span class="card-total">🏆 31,205</span>
             </div>
             <div class="card-repo">📦 chatwoot/chatwoot</div>
             <div class="card-ai-insight">
@@ -253,7 +253,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +964 今日</span>
-                <span class="card-total">🏆 5,257</span>
+                <span class="card-total">🏆 5,260</span>
             </div>
             <div class="card-repo">📦 NVIDIA/SkillSpector</div>
             <div class="card-ai-insight">
@@ -272,7 +272,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🔷 TypeScript</span>
                 <span class="card-stars">⭐ +20 今日</span>
-                <span class="card-total">🏆 10,395</span>
+                <span class="card-total">🏆 10,396</span>
             </div>
             <div class="card-repo">📦 meshery/meshery</div>
             <div class="card-ai-insight">
@@ -291,7 +291,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🔷 TypeScript</span>
                 <span class="card-stars">⭐ +39 今日</span>
-                <span class="card-total">🏆 49,925</span>
+                <span class="card-total">🏆 49,926</span>
             </div>
             <div class="card-repo">📦 cypress-io/cypress</div>
             <div class="card-ai-insight">
@@ -310,7 +310,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">📦 Unknown</span>
                 <span class="card-stars">⭐ +269 今日</span>
-                <span class="card-total">🏆 35,438</span>
+                <span class="card-total">🏆 35,441</span>
             </div>
             <div class="card-repo">📦 GorvGoyl/Clone-Wars</div>
             <div class="card-ai-insight">
@@ -329,7 +329,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">📦 TeX</span>
                 <span class="card-stars">⭐ +293 今日</span>
-                <span class="card-total">🏆 2,700</span>
+                <span class="card-total">🏆 2,704</span>
             </div>
             <div class="card-repo">📦 Introduction-to-Autonomous-Robots/Introduction-to-Autonomous-Robots</div>
             <div class="card-ai-insight">
@@ -367,7 +367,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +197 今日</span>
-                <span class="card-total">🏆 2,174</span>
+                <span class="card-total">🏆 2,176</span>
             </div>
             <div class="card-repo">📦 music-assistant/server</div>
             <div class="card-ai-insight">
@@ -386,7 +386,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +70 今日</span>
-                <span class="card-total">🏆 16,919</span>
+                <span class="card-total">🏆 16,920</span>
             </div>
             <div class="card-repo">📦 Free-TV/IPTV</div>
             <div class="card-ai-insight">
@@ -424,7 +424,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +291 今日</span>
-                <span class="card-total">🏆 14,380</span>
+                <span class="card-total">🏆 14,381</span>
             </div>
             <div class="card-repo">📦 andrewyng/aisuite</div>
             <div class="card-ai-insight">
@@ -448,7 +448,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/15
 
 **今日新增星标**：+1528
 
-**总星标数**：120,857
+**总星标数**：120,864
 
 ---
 
@@ -514,5 +514,5 @@ iptv-org/iptv 是一个由社区驱动的全球公开 IPTV 频道聚合仓库。
 
 ---
 
-📡 数据更新：2026-06-15 08:01:13
+📡 数据更新：2026-06-15 08:07:18
 🔗 数据来源：[GitHub Trending](https://github.com/trending)
