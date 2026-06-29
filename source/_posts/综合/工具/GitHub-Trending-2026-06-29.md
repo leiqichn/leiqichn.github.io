@@ -1,6 +1,6 @@
 ---
 title: 【Github Trending 日报】深度解析 - 2026/06/29
-date: 2026-06-29 08:00:11
+date: 2026-06-29 09:00:10
 categories:
   - [综合, 工具]
 tags: [GitHub, 开源, Trending, 日报]
@@ -158,7 +158,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">📦 Haskell</span>
                 <span class="card-stars">⭐ +1180 今日</span>
-                <span class="card-total">🏆 14,962</span>
+                <span class="card-total">🏆 15,013</span>
             </div>
             <div class="card-repo">📦 simplex-chat/simplex-chat</div>
             <div class="card-ai-insight">
@@ -177,7 +177,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🌐 HTML</span>
                 <span class="card-stars">⭐ +495 今日</span>
-                <span class="card-total">🏆 125,179</span>
+                <span class="card-total">🏆 125,235</span>
             </div>
             <div class="card-repo">📦 ripienaar/free-for-dev</div>
             <div class="card-ai-insight">
@@ -198,7 +198,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +266 今日</span>
-                <span class="card-total">🏆 62,369</span>
+                <span class="card-total">🏆 62,387</span>
             </div>
             <div class="card-repo">📦 commaai/openpilot</div>
             <div class="card-ai-insight">
@@ -217,7 +217,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +1445 今日</span>
-                <span class="card-total">🏆 5,256</span>
+                <span class="card-total">🏆 5,304</span>
             </div>
             <div class="card-repo">📦 xbtlin/ai-berkshire</div>
             <div class="card-ai-insight">
@@ -236,7 +236,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +372 今日</span>
-                <span class="card-total">🏆 8,208</span>
+                <span class="card-total">🏆 8,227</span>
             </div>
             <div class="card-repo">📦 Robbyant/lingbot-map</div>
             <div class="card-ai-insight">
@@ -255,7 +255,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🔵 C</span>
                 <span class="card-stars">⭐ +2190 今日</span>
-                <span class="card-total">🏆 19,582</span>
+                <span class="card-total">🏆 19,657</span>
             </div>
             <div class="card-repo">📦 DeusData/codebase-memory-mcp</div>
             <div class="card-ai-insight">
@@ -274,7 +274,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +174 今日</span>
-                <span class="card-total">🏆 11,504</span>
+                <span class="card-total">🏆 11,518</span>
             </div>
             <div class="card-repo">📦 cupy/cupy</div>
             <div class="card-ai-insight">
@@ -293,7 +293,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🍎 Swift</span>
                 <span class="card-stars">⭐ +365 今日</span>
-                <span class="card-total">🏆 3,704</span>
+                <span class="card-total">🏆 3,730</span>
             </div>
             <div class="card-repo">📦 altic-dev/FluidVoice</div>
             <div class="card-ai-insight">
@@ -312,7 +312,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +380 今日</span>
-                <span class="card-total">🏆 71,556</span>
+                <span class="card-total">🏆 71,593</span>
             </div>
             <div class="card-repo">📦 opendatalab/MinerU</div>
             <div class="card-ai-insight">
@@ -331,7 +331,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +492 今日</span>
-                <span class="card-total">🏆 14,285</span>
+                <span class="card-total">🏆 14,316</span>
             </div>
             <div class="card-repo">📦 HKUDS/Vibe-Trading</div>
             <div class="card-ai-insight">
@@ -350,7 +350,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">📦 Unknown</span>
                 <span class="card-stars">⭐ +250 今日</span>
-                <span class="card-total">🏆 84,419</span>
+                <span class="card-total">🏆 84,457</span>
             </div>
             <div class="card-repo">📦 ByteByteGoHq/system-design-101</div>
             <div class="card-ai-insight">
@@ -369,7 +369,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +122 今日</span>
-                <span class="card-total">🏆 26,701</span>
+                <span class="card-total">🏆 26,734</span>
             </div>
             <div class="card-repo">📦 usestrix/strix</div>
             <div class="card-ai-insight">
@@ -388,7 +388,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
             <div class="card-meta">
                 <span class="card-lang">🐍 Python</span>
                 <span class="card-stars">⭐ +196 今日</span>
-                <span class="card-total">🏆 11,017</span>
+                <span class="card-total">🏆 11,051</span>
             </div>
             <div class="card-repo">📦 browser-use/video-use</div>
             <div class="card-ai-insight">
@@ -412,7 +412,7 @@ keywords: GitHub Trending, 开源项目, 技术日报, 2026/06/29
 
 **今日新增星标**：+1180
 
-**总星标数**：14,962
+**总星标数**：15,013
 
 ---
 
@@ -473,5 +473,5 @@ SimpleX 是一个完全去中心化、不依赖任何用户标识符（如手机
 
 ---
 
-📡 数据更新：2026-06-29 08:01:02
+📡 数据更新：2026-06-29 09:00:36
 🔗 数据来源：[GitHub Trending](https://github.com/trending)
