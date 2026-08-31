@@ -27,15 +27,15 @@ var precacheUrls = [
 
   '/',
 
+  '/2026-08-31-d3617de3cfb7.html',
+
+  '/2026-08-30-28e44e98ac7a.html',
+
   '/2026-08-30-83515c52b7b9.html',
 
   '/2026-08-29-66f65603d1f1.html',
 
   '/2026-08-28-adc3e6f0d585.html',
-
-  '/2026-08-27-22623ba1aafd.html',
-
-  '/2026-08-26-8a24dea283cc.html',
 
 ];
 toolbox.precache(precacheUrls);
