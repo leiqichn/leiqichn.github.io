@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://leiqi.top/sitemap.xml
+
+# Disallow
+Disallow: /js/
+Disallow: /css/
+Disallow: /libs/
+Disallow: / imgs/
+Disallow: /*.json$
+Disallow: /*.xml$
