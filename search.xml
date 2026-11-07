@@ -94073,4 +94073,192 @@ dfs(root.Right, res)
         <tag>Trending</tag>
       </tags>
   </entry>
+  <entry>
+    <title>GitHub Trending 日报 | 2026-11-04</title>
+    <url>/2026-11-04-06d5cbcfbbd1.html</url>
+    <content><![CDATA[<p>今日 GitHub 日榜精选。星标数字为抓取时快照；中文解读由 Codex 根据项目公开简介生成，不代表实际测试结果。</p>
+<span id="more"></span>
+
+<h2 id="1-thedotmack-claude-mem"><a href="#1-thedotmack-claude-mem" class="headerlink" title="1. thedotmack&#x2F;claude-mem"></a>1. <a href="https://github.com/thedotmack/claude-mem">thedotmack&#x2F;claude-mem</a></h2><p>语言：TypeScript · 总星标：111,911 · 1,139 stars today</p>
+<p>面向需要跨会话延续任务的智能体用户，记录会话中的操作，经AI压缩后将相关上下文注入后续会话。简介列出Claude Code、Codex等多种工具，值得关注的是记忆机制与工具覆盖范围；但数据存储方式、隐私处理和实际召回效果尚不明确。</p>
+<h2 id="2-vercel-labs-agent-desktop"><a href="#2-vercel-labs-agent-desktop" class="headerlink" title="2. vercel-labs&#x2F;agent-desktop"></a>2. <a href="https://github.com/vercel-labs/agent-desktop">vercel-labs&#x2F;agent-desktop</a></h2><p>语言：Rust · 总星标：12,761 · 3,791 stars today</p>
+<p>这是用Rust编写、供AI智能体操作计算机的命令行工具，适合关注桌面自动化与智能体工具接入的开发者。榜单显示当日新增3791星，关注度突出。不过简介极简，支持哪些操作系统、能执行哪些操作以及权限控制方式，现有信息均未说明。</p>
+<h2 id="3-max-sixty-worktrunk"><a href="#3-max-sixty-worktrunk" class="headerlink" title="3. max-sixty&#x2F;worktrunk"></a>3. <a href="https://github.com/max-sixty/worktrunk">max-sixty&#x2F;worktrunk</a></h2><p>语言：Rust · 总星标：10,491 · 438 stars today</p>
+<p>Worktrunk是面向并行AI智能体工作流的Git worktree管理命令行工具，适合同时推进多个开发任务的工程师。值得关注的是它把工作树管理与多智能体协作场景结合起来；但具体自动化能力、冲突处理机制及与现有工具的集成方式，榜单没有提供。</p>
+<h2 id="4-JustVugg-colibri"><a href="#4-JustVugg-colibri" class="headerlink" title="4. JustVugg&#x2F;colibri"></a>4. <a href="https://github.com/JustVugg/colibri">JustVugg&#x2F;colibri</a></h2><p>语言：C · 总星标：47,247 · 802 stars today</p>
+<p>这是用C编写的MoE模型分层推理引擎，将热专家放在GPU、温专家放在内存，冷专家从NVMe流式读取，并提及CUDA与Vulkan。适合研究模型推理和存储分层的开发者关注。分层调度是核心看点，但具体模型兼容性、硬件门槛及速度表现尚未给出。</p>
+<h2 id="5-mattpocock-skills"><a href="#5-mattpocock-skills" class="headerlink" title="5. mattpocock&#x2F;skills"></a>5. <a href="https://github.com/mattpocock/skills">mattpocock&#x2F;skills</a></h2><p>语言：Shell · 总星标：311,465 · 1,164 stars today</p>
+<p>项目定位为面向工程师的技能集合，简介称内容直接来自作者的.agents目录，适合希望参考智能体技能组织方式的开发者。榜单累计超过31万星，说明受到广泛关注；但没有列出具体技能、适配工具或使用示例，尚无法判断其覆盖哪些工程环节及实际质量。</p>
+<h2 id="6-p-e-w-heretic"><a href="#6-p-e-w-heretic" class="headerlink" title="6. p-e-w&#x2F;heretic"></a>6. <a href="https://github.com/p-e-w/heretic">p-e-w&#x2F;heretic</a></h2><p>语言：Python · 总星标：38,794 · 701 stars today</p>
+<p>这是一个Python语言模型修改项目，主打无需训练的调整，简介列出去除审查、抑制低质套话和减少迎合等目标。适合研究模型行为干预的开发者关注。看点在于训练之外的修改路径，但支持的模型、具体方法及效果验证均未说明，不能将目标视为已证实的成效。</p>
+<h2 id="7-spotify-portal-ai-plugins"><a href="#7-spotify-portal-ai-plugins" class="headerlink" title="7. spotify&#x2F;portal-ai-plugins"></a>7. <a href="https://github.com/spotify/portal-ai-plugins">spotify&#x2F;portal-ai-plugins</a></h2><p>语言：TypeScript · 总星标：3,040 · 91 stars today</p>
+<p>榜单仅提供仓库名、TypeScript语言信息及星数，项目描述为空，因此无法确认具体用途，也无法可靠界定适用人群。名称虽含AI插件字样，但不足以判断它服务于哪个产品或提供哪些能力。当前累计3040星、当日新增91星，可作为进一步了解的线索。</p>
+<h2 id="8-floci-io-floci"><a href="#8-floci-io-floci" class="headerlink" title="8. floci-io&#x2F;floci"></a>8. <a href="https://github.com/floci-io/floci">floci-io&#x2F;floci</a></h2><p>语言：Java · 总星标：28,781 · 482 stars today</p>
+<p>Floci定位为AWS本地模拟器的替代方案，使用Java编写，适合希望探索云服务本地开发与测试工具的工程师关注。简介强调轻量与永久免费，但这些属于项目自述，不能据此推断资源占用或许可证。支持哪些AWS服务、兼容程度及运行要求，现有数据没有说明。</p>
+<h2 id="9-Usagi-org-ai-goofish-monitor"><a href="#9-Usagi-org-ai-goofish-monitor" class="headerlink" title="9. Usagi-org&#x2F;ai-goofish-monitor"></a>9. <a href="https://github.com/Usagi-org/ai-goofish-monitor">Usagi-org&#x2F;ai-goofish-monitor</a></h2><p>语言：Python · 总星标：16,371 · 228 stars today</p>
+<p>这是基于Playwright与AI的闲鱼商品监控分析系统，支持多任务实时或定时监控，并提供后台管理界面，适合有持续筛选商品需求的用户。值得关注的是监控、分析与管理界面的组合；但筛选准确性、通知渠道及运行条件未披露，实际体验仍待验证。</p>
+<h2 id="10-anomalyco-hex"><a href="#10-anomalyco-hex" class="headerlink" title="10. anomalyco&#x2F;hex"></a>10. <a href="https://github.com/anomalyco/hex">anomalyco&#x2F;hex</a></h2><p>语言：Rust · 总星标：4,587 · 410 stars today</p>
+<p>Hex是一款本地语音听写工具，使用Rust编写，简介列出mac、Windows与Linux，适合希望通过语音输入文字的跨平台用户关注。看点是本地处理定位与多平台覆盖。不过支持语种、识别准确率、是否全程离线以及硬件要求，榜单信息均未说明。</p>
+<h2 id="11-D4Vinci-Scrapling"><a href="#11-D4Vinci-Scrapling" class="headerlink" title="11. D4Vinci&#x2F;Scrapling"></a>11. <a href="https://github.com/D4Vinci/Scrapling">D4Vinci&#x2F;Scrapling</a></h2><p>语言：Python · 总星标：94,858 · 1,658 stars today</p>
+<p>Scrapling是Python网页抓取框架，简介将使用范围从单次请求延伸到完整爬取任务，适合数据采集开发者关注。值得考察的是它如何衔接不同规模的抓取工作。简介中的“最佳”属于宣传表述；具体解析能力、动态网页支持和性能边界，现有数据不足以确认。</p>
+<h2 id="12-shiyu-coder-Kronos"><a href="#12-shiyu-coder-Kronos" class="headerlink" title="12. shiyu-coder&#x2F;Kronos"></a>12. <a href="https://github.com/shiyu-coder/Kronos">shiyu-coder&#x2F;Kronos</a></h2><p>语言：Python · 总星标：46,519 · 503 stars today</p>
+<p>Kronos将自身定位为面向金融市场语言的基础模型，使用Python，适合研究金融数据建模的开发者与研究人员关注。看点是把基础模型思路引入金融市场领域，但简介没有交代输入数据、任务范围、训练方法或评测结果，不能据此推断预测准确率或投资收益。</p>
+<h2 id="13-Donchitos-Claude-Code-Game-Studios"><a href="#13-Donchitos-Claude-Code-Game-Studios" class="headerlink" title="13. Donchitos&#x2F;Claude-Code-Game-Studios"></a>13. <a href="https://github.com/Donchitos/Claude-Code-Game-Studios">Donchitos&#x2F;Claude-Code-Game-Studios</a></h2><p>语言：Shell · 总星标：34,668 · 1,182 stars today</p>
+<p>项目旨在把Claude Code组织成游戏开发工作室，简介列出49个AI智能体、72项工作流技能及模拟真实工作室层级的协调系统。适合探索多智能体游戏开发的团队关注。看点是角色与流程编排，但支持的引擎、可交付成果及协作效果，现有信息未说明。</p>
+<p>来源：<a href="https://github.com/trending?since=daily">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 | 2026-11-05</title>
+    <url>/2026-11-05-827de0fdeded.html</url>
+    <content><![CDATA[<p>今日 GitHub 日榜精选。星标数字为抓取时快照；中文解读由 Codex 根据项目公开简介生成，不代表实际测试结果。</p>
+<span id="more"></span>
+
+<h2 id="1-NVIDIA-auto-ontology"><a href="#1-NVIDIA-auto-ontology" class="headerlink" title="1. NVIDIA&#x2F;auto-ontology"></a>1. <a href="https://github.com/NVIDIA/auto-ontology">NVIDIA&#x2F;auto-ontology</a></h2><p>语言：Python · 总星标：5,010 · 2,050 stars today</p>
+<p>这是一个 Python 框架，用于在数据之上构建语义化、基于图的推理层，面向大模型应用与智能体开发者。值得关注的是确定性查询生成、上下文检索和推理可解释性的组合；今日新增 2,050 星，但榜单未提供效果评测或数据源支持范围。</p>
+<h2 id="2-max-sixty-worktrunk"><a href="#2-max-sixty-worktrunk" class="headerlink" title="2. max-sixty&#x2F;worktrunk"></a>2. <a href="https://github.com/max-sixty/worktrunk">max-sixty&#x2F;worktrunk</a></h2><p>语言：Rust · 总星标：11,037 · 531 stars today</p>
+<p>这是用 Rust 编写的 Git worktree 管理命令行工具，专为多个 AI 智能体并行工作的场景设计，适合需要同时推进多项开发任务的工程师。关注点是工作区管理与智能体工作流的结合；具体支持哪些操作、如何处理冲突，现有描述未说明。</p>
+<h2 id="3-mattpocock-skills"><a href="#3-mattpocock-skills" class="headerlink" title="3. mattpocock&#x2F;skills"></a>3. <a href="https://github.com/mattpocock/skills">mattpocock&#x2F;skills</a></h2><p>语言：Shell · 总星标：313,320 · 1,379 stars today</p>
+<p>这是面向工程师的技能集合，描述称内容直接来自作者的 .agents 目录，榜单标注语言为 Shell。适合希望参考他人智能体使用方式的开发者，关注点在于个人实践的整理与分享。不过数据未列出技能清单、适配工具或使用效果，不能仅凭星数判断质量。</p>
+<h2 id="4-floci-io-floci"><a href="#4-floci-io-floci" class="headerlink" title="4. floci-io&#x2F;floci"></a>4. <a href="https://github.com/floci-io/floci">floci-io&#x2F;floci</a></h2><p>语言：Java · 总星标：29,624 · 1,090 stars today</p>
+<p>这是一个以 Java 为主要语言的 AWS 本地模拟器替代方案，适合关注云服务本地开发与测试的工程师。项目以轻量和永久免费为宣传点，值得进一步了解服务覆盖范围；但榜单未给出兼容性、资源占用或许可证信息，相关宣传不能直接视为已验证结论。</p>
+<h2 id="5-thedotmack-claude-mem"><a href="#5-thedotmack-claude-mem" class="headerlink" title="5. thedotmack&#x2F;claude-mem"></a>5. <a href="https://github.com/thedotmack/claude-mem">thedotmack&#x2F;claude-mem</a></h2><p>语言：TypeScript · 总星标：112,862 · 1,172 stars today</p>
+<p>项目为智能体提供跨会话持久上下文：记录会话活动，经 AI 压缩后，将相关内容注入后续会话。适合长期使用编程智能体、希望减少重复交代背景的开发者。描述列出多种工具支持，值得关注记忆复用方式；数据保存位置、隐私机制与压缩效果尚不明确。</p>
+<h2 id="6-vercel-labs-agent-desktop"><a href="#6-vercel-labs-agent-desktop" class="headerlink" title="6. vercel-labs&#x2F;agent-desktop"></a>6. <a href="https://github.com/vercel-labs/agent-desktop">vercel-labs&#x2F;agent-desktop</a></h2><p>语言：Rust · 总星标：15,106 · 2,470 stars today</p>
+<p>这是面向 AI 智能体的计算机操作命令行工具，主要语言为 Rust，适合研究桌面任务自动化和智能体工具接入的开发者。今日新增 2,470 星，显示出较高关注度；但描述十分简短，未说明支持的系统、操作范围或权限机制，实际能力仍需进一步确认。</p>
+<h2 id="7-github-spec-kit"><a href="#7-github-spec-kit" class="headerlink" title="7. github&#x2F;spec-kit"></a>7. <a href="https://github.com/github/spec-kit">github&#x2F;spec-kit</a></h2><p>语言：Python · 总星标：147,307 · 808 stars today</p>
+<p>这是一个帮助用户开始采用 SDD 或其他流程的 Python 工具包，适合探索开发流程组织方式的工程师与团队。值得关注的是它以工具包形式辅助流程入门；不过描述没有展开 SDD 的含义，也未列出模板、命令或集成能力，无法据此判断与现有流程的契合程度。</p>
+<h2 id="8-The-PR-Agent-pr-agent"><a href="#8-The-PR-Agent-pr-agent" class="headerlink" title="8. The-PR-Agent&#x2F;pr-agent"></a>8. <a href="https://github.com/The-PR-Agent/pr-agent">The-PR-Agent&#x2F;pr-agent</a></h2><p>语言：Python · 总星标：14,759 · 280 stars today</p>
+<p>项目定位为开源的拉取请求审查工具，主要语言为 Python，适合希望探索自动化代码审查的开发者与维护者。描述特别强调它并非 Qodo 的免费套餐，选型时值得留意这一身份区分；榜单未说明审查范围、平台支持及准确性，不能据此推断审查质量。</p>
+<h2 id="9-harry0703-MoneyPrinterTurbo"><a href="#9-harry0703-MoneyPrinterTurbo" class="headerlink" title="9. harry0703&#x2F;MoneyPrinterTurbo"></a>9. <a href="https://github.com/harry0703/MoneyPrinterTurbo">harry0703&#x2F;MoneyPrinterTurbo</a></h2><p>语言：Python · 总星标：138,969 · 617 stars today</p>
+<p>项目通过 AI 大模型与自动化工作流，按主题或关键词生成高清短视频，主要语言为 Python。适合希望尝试视频制作自动化的内容创作者与开发者，关注点是从主题输入到视频输出的流程整合。榜单未提供成片示例、生成耗时、成本或素材来源，实际效果尚待确认。</p>
+<h2 id="10-garrytan-gstack"><a href="#10-garrytan-gstack" class="headerlink" title="10. garrytan&#x2F;gstack"></a>10. <a href="https://github.com/garrytan/gstack">garrytan&#x2F;gstack</a></h2><p>语言：TypeScript · 总星标：139,343 · 290 stars today</p>
+<p>这是 Garry Tan 分享的 Claude Code 配置，包含 23 个带有明确实践偏好的工具，覆盖设计、工程管理、发布、文档和测试等角色。适合希望参考多角色协作方式的开发者。值得关注其角色分工，但角色名称并不代表已具备相应岗位的完整能力或可靠性。</p>
+<h2 id="11-FareedKhan-dev-kimi-k3-in-c"><a href="#11-FareedKhan-dev-kimi-k3-in-c" class="headerlink" title="11. FareedKhan-dev&#x2F;kimi-k3-in-c"></a>11. <a href="https://github.com/FareedKhan-dev/kimi-k3-in-c">FareedKhan-dev&#x2F;kimi-k3-in-c</a></h2><p>语言：C · 总星标：10,296 · 351 stars today</p>
+<p>项目描述宣称用可移植 C99，让 2.78 万亿参数的 Kimi K3 在单颗 CPU、8.24 GB 内存下推理，且不依赖 BLAS、框架或 GPU。适合关注推理实现的开发者研究。该资源宣称值得核实，榜单未提供实现细节、速度或输出质量证据。</p>
+<h2 id="12-JiaFeiMiao-K-Cat-DiscImageStudio"><a href="#12-JiaFeiMiao-K-Cat-DiscImageStudio" class="headerlink" title="12. JiaFeiMiao-K-Cat&#x2F;DiscImageStudio"></a>12. <a href="https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio">JiaFeiMiao-K-Cat&#x2F;DiscImageStudio</a></h2><p>语言：C# · 总星标：6,614 · 1,778 stars today</p>
+<p>榜单仅提供项目名称、C# 语言标记及星数，没有功能描述，因此无法可靠判断用途和适用人群，也不宜根据名称推断功能。今日新增 1,778 星、累计 6,614 星，是值得关注的热度信号；若要决定是否试用，仍需补充项目说明、功能范围与使用示例。</p>
+<h2 id="13-MichaelCade-90DaysOfDevOps"><a href="#13-MichaelCade-90DaysOfDevOps" class="headerlink" title="13. MichaelCade&#x2F;90DaysOfDevOps"></a>13. <a href="https://github.com/MichaelCade/90DaysOfDevOps">MichaelCade&#x2F;90DaysOfDevOps</a></h2><p>语言：Shell · 总星标：30,421 · 97 stars today</p>
+<p>项目起初是作者的公开学习记录，后来发展为社区使用的结构化 DevOps 学习地图，内容涵盖原则、流程、工具与应用案例。适合希望建立知识框架的学习者，值得关注其三年积累和主题覆盖。榜单未列出具体课程安排、难度或更新情况，不能保证学习周期与成效。</p>
+<h2 id="14-D4Vinci-Scrapling"><a href="#14-D4Vinci-Scrapling" class="headerlink" title="14. D4Vinci&#x2F;Scrapling"></a>14. <a href="https://github.com/D4Vinci/Scrapling">D4Vinci&#x2F;Scrapling</a></h2><p>语言：Python · 总星标：96,544 · 2,005 stars today</p>
+<p>这是一个 Python 网页抓取框架，描述覆盖从单次请求到完整爬取的任务，适合需要采集网页数据的开发者。值得关注的是不同抓取规模下的统一框架定位，今日新增 2,005 星。描述中的最佳属于宣传措辞，榜单未提供性能、站点适配或稳定性证据。</p>
+<h2 id="15-Thysrael-Horizon"><a href="#15-Thysrael-Horizon" class="headerlink" title="15. Thysrael&#x2F;Horizon"></a>15. <a href="https://github.com/Thysrael/Horizon">Thysrael&#x2F;Horizon</a></h2><p>语言：Python · 总星标：12,491 · 121 stars today</p>
+<p>这是一个用 AI 构建个人新闻雷达的 Python 项目，可生成中英文每日简报，适合希望持续跟踪资讯的读者与开发者。值得关注的是个人新闻整理与双语简报的结合；榜单未说明新闻来源、筛选方式、摘要准确性或定制范围，尚无法判断具体的信息覆盖能力。</p>
+<p>来源：<a href="https://github.com/trending?since=daily">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 | 2026-11-06</title>
+    <url>/2026-11-06-92c82179feef.html</url>
+    <content><![CDATA[<p>今日 GitHub 日榜精选。星标数字为抓取时快照；中文解读由 Codex 根据项目公开简介生成，不代表实际测试结果。</p>
+<span id="more"></span>
+
+<h2 id="1-NVIDIA-auto-ontology"><a href="#1-NVIDIA-auto-ontology" class="headerlink" title="1. NVIDIA&#x2F;auto-ontology"></a>1. <a href="https://github.com/NVIDIA/auto-ontology">NVIDIA&#x2F;auto-ontology</a></h2><p>语言：Python · 总星标：7,337 · 2,679 stars today</p>
+<p>这是一个用 Python 构建数据语义与图推理层的框架，面向开发大模型应用和智能体的工程师。描述强调确定性查询生成、上下文检索与可解释性，值得关注其如何连接数据与推理流程。今日新增2679星，但实际效果仍需验证。</p>
+<h2 id="2-mattpocock-skills"><a href="#2-mattpocock-skills" class="headerlink" title="2. mattpocock&#x2F;skills"></a>2. <a href="https://github.com/mattpocock/skills">mattpocock&#x2F;skills</a></h2><p>语言：Shell · 总星标：315,233 · 2,071 stars today</p>
+<p>项目收集作者个人智能体配置目录中的技能，定位于工程实践，适合希望参考他人智能体工作方式的开发者。榜单标注语言为 Shell，今日新增2071星，关注度突出。不过描述未列出技能清单、适配工具与使用方式，具体用途仍需进一步确认。</p>
+<h2 id="3-garrytan-gstack"><a href="#3-garrytan-gstack" class="headerlink" title="3. garrytan&#x2F;gstack"></a>3. <a href="https://github.com/garrytan/gstack">garrytan&#x2F;gstack</a></h2><p>语言：TypeScript · 总星标：139,943 · 612 stars today</p>
+<p>这是 Garry Tan 的 Claude Code 配置集合，包含23个带有明确工作偏好的工具，覆盖管理、设计、工程、发布、文档与测试等角色。适合探索智能体参与软件交付的团队，值得关注角色分工思路，但描述未说明各工具的执行边界与实际效果。</p>
+<h2 id="4-Usagi-org-ai-goofish-monitor"><a href="#4-Usagi-org-ai-goofish-monitor" class="headerlink" title="4. Usagi-org&#x2F;ai-goofish-monitor"></a>4. <a href="https://github.com/Usagi-org/ai-goofish-monitor">Usagi-org&#x2F;ai-goofish-monitor</a></h2><p>语言：Python · 总星标：17,533 · 240 stars today</p>
+<p>项目基于 Playwright 与 AI，为闲鱼商品提供多任务实时或定时监控、智能分析和后台管理界面。适合有持续选购、筛选商品需求的用户，也可供自动化开发者参考。关注点是监控与分析的结合，描述未提供识别准确率或运行稳定性数据。</p>
+<h2 id="5-D4Vinci-Scrapling"><a href="#5-D4Vinci-Scrapling" class="headerlink" title="5. D4Vinci&#x2F;Scrapling"></a>5. <a href="https://github.com/D4Vinci/Scrapling">D4Vinci&#x2F;Scrapling</a></h2><p>语言：Python · 总星标：97,982 · 1,655 stars today</p>
+<p>这是一个 Python 网页抓取框架，描述覆盖从单次请求到完整爬取流程，适合数据采集开发者评估。值得关注其对不同采集规模的支持思路，今日新增1655星。不过“最佳”属于宣传表述，输入未提供性能测试、具体功能或站点适配范围。</p>
+<h2 id="6-vercel-labs-agent-desktop"><a href="#6-vercel-labs-agent-desktop" class="headerlink" title="6. vercel-labs&#x2F;agent-desktop"></a>6. <a href="https://github.com/vercel-labs/agent-desktop">vercel-labs&#x2F;agent-desktop</a></h2><p>语言：Rust · 总星标：16,853 · 2,173 stars today</p>
+<p>项目提供面向 AI 智能体的计算机操作命令行工具，榜单标注语言为 Rust，适合研究桌面自动化与智能体工具接入的开发者。今日新增2173星，热度突出。描述较简略，支持哪些系统、可执行哪些操作以及权限边界，均无法据此确定。</p>
+<h2 id="7-max-sixty-worktrunk"><a href="#7-max-sixty-worktrunk" class="headerlink" title="7. max-sixty&#x2F;worktrunk"></a>7. <a href="https://github.com/max-sixty/worktrunk">max-sixty&#x2F;worktrunk</a></h2><p>语言：Rust · 总星标：11,515 · 546 stars today</p>
+<p>Worktrunk 是管理 Git worktree 的命令行工具，专门面向多个 AI 智能体并行工作的流程。适合同时推进多个开发任务的工程师，值得关注其如何组织不同工作目录与任务。输入未列出具体命令，也未说明是否支持冲突处理或任务调度。</p>
+<h2 id="8-lz4-lz4"><a href="#8-lz4-lz4" class="headerlink" title="8. lz4&#x2F;lz4"></a>8. <a href="https://github.com/lz4/lz4">lz4&#x2F;lz4</a></h2><p>语言：C · 总星标：12,384 · 23 stars today</p>
+<p>这是一个以高速压缩为定位的算法项目，榜单标注语言为 C，适合关注数据压缩与处理效率的开发者纳入评估。值得关注的是速度导向的设计目标，但描述没有给出压缩率、吞吐量或测试条件，不能据此断言它在特定业务中优于其他方案。</p>
+<h2 id="9-google-skills"><a href="#9-google-skills" class="headerlink" title="9. google&#x2F;skills"></a>9. <a href="https://github.com/google/skills">google&#x2F;skills</a></h2><p>语言：Python · 总星标：22,372 · 211 stars today</p>
+<p>项目提供面向 Google 产品与技术的智能体技能，适合希望让智能体参与相关开发或工具使用流程的工程师。值得关注的是技能与具体产品知识的结合。榜单标注语言为 Python，但描述未列出覆盖产品、技能能力及接入条件，选用前仍需核对。</p>
+<h2 id="10-vercel-labs-agent-browser"><a href="#10-vercel-labs-agent-browser" class="headerlink" title="10. vercel-labs&#x2F;agent-browser"></a>10. <a href="https://github.com/vercel-labs/agent-browser">vercel-labs&#x2F;agent-browser</a></h2><p>语言：Rust · 总星标：45,886 · 150 stars today</p>
+<p>这是供 AI 智能体使用的浏览器自动化命令行工具，榜单标注语言为 Rust，适合构建网页操作与自动化流程的开发者。值得关注其通过命令行连接智能体与浏览器的方式。输入未说明支持的浏览器、操作范围或稳定性，不能据此推定完整能力。</p>
+<h2 id="11-scenario-labs-skills"><a href="#11-scenario-labs-skills" class="headerlink" title="11. scenario-labs&#x2F;skills"></a>11. <a href="https://github.com/scenario-labs/skills">scenario-labs&#x2F;skills</a></h2><p>语言：Python · 总星标：3,058 · 667 stars today</p>
+<p>该技能集合通过 Scenario MCP 面向智能体提供图像、视频、音频与三维内容工作流，适合创意制作与游戏开发团队。描述强调模型选择、花费前估价、角色和品牌一致性，并涉及多款创作软件；实际产出质量、费用与接入条件尚不明确。</p>
+<h2 id="12-ConardLi-garden-skills"><a href="#12-ConardLi-garden-skills" class="headerlink" title="12. ConardLi&#x2F;garden-skills"></a>12. <a href="https://github.com/ConardLi/garden-skills">ConardLi&#x2F;garden-skills</a></h2><p>语言：JavaScript · 总星标：14,131 · 175 stars today</p>
+<p>这是 ConardLi 的开源技能集合，描述列出网页设计、知识检索、图像生成等方向，适合希望扩展智能体工作内容的开发者与内容创作者。值得关注其覆盖多类任务的组织方式，但输入未给出技能明细、依赖服务及效果，不能把方向列表等同于能力保证。</p>
+<h2 id="13-microsoft-VibeVoice"><a href="#13-microsoft-VibeVoice" class="headerlink" title="13. microsoft&#x2F;VibeVoice"></a>13. <a href="https://github.com/microsoft/VibeVoice">microsoft&#x2F;VibeVoice</a></h2><p>语言：Python · 总星标：55,931 · 223 stars today</p>
+<p>项目定位为开源语音 AI，榜单标注语言为 Python，适合关注语音技术的研究者和开发者进一步了解。累计55931星体现了较高关注度，但描述仅提供领域定位，没有说明具体任务、语言覆盖或评测结果，“前沿”也不足以证明技术领先。</p>
+<h2 id="14-floci-io-floci"><a href="#14-floci-io-floci" class="headerlink" title="14. floci-io&#x2F;floci"></a>14. <a href="https://github.com/floci-io/floci">floci-io&#x2F;floci</a></h2><p>语言：Java · 总星标：30,410 · 779 stars today</p>
+<p>项目定位为 AWS 本地模拟器的替代选择，榜单标注语言为 Java，适合希望在本地验证相关开发流程的工程师关注。描述强调轻量与免费，但未列出可模拟的服务、兼容程度或资源消耗；能否满足具体测试需求，仍需结合实际能力判断。</p>
+<h2 id="15-JiaFeiMiao-K-Cat-DiscImageStudio"><a href="#15-JiaFeiMiao-K-Cat-DiscImageStudio" class="headerlink" title="15. JiaFeiMiao-K-Cat&#x2F;DiscImageStudio"></a>15. <a href="https://github.com/JiaFeiMiao-K-Cat/DiscImageStudio">JiaFeiMiao-K-Cat&#x2F;DiscImageStudio</a></h2><p>语言：C# · 总星标：7,269 · 984 stars today</p>
+<p>该项目没有提供描述，目前只能确认榜单标注语言为 C#，累计7269星，今日新增984星。短期关注度值得留意，但这些数字不能说明功能或质量。由于缺少用途信息，无法可靠判断适用人群，也不宜仅凭名称推断它支持哪些镜像操作。</p>
+<p>来源：<a href="https://github.com/trending?since=daily">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 | 2026-11-07</title>
+    <url>/2026-11-07-07bf44d5e349.html</url>
+    <content><![CDATA[<p>今日 GitHub 日榜精选。星标数字为抓取时快照；中文解读由 Codex 根据项目公开简介生成，不代表实际测试结果。</p>
+<span id="more"></span>
+
+<h2 id="1-zed-industries-zed"><a href="#1-zed-industries-zed" class="headerlink" title="1. zed-industries&#x2F;zed"></a>1. <a href="https://github.com/zed-industries/zed">zed-industries&#x2F;zed</a></h2><p>语言：Rust · 总星标：93,628 · 306 stars today</p>
+<p>Zed 是面向代码编写与多人协作的编辑器，使用 Rust，由 Atom 和 Tree-sitter 的创作者打造，适合关注协作开发的程序员。其定位强调高性能与协作体验，今日新增306星；榜单未提供性能测试，实际表现仍需验证。</p>
+<h2 id="2-NVIDIA-auto-ontology"><a href="#2-NVIDIA-auto-ontology" class="headerlink" title="2. NVIDIA&#x2F;auto-ontology"></a>2. <a href="https://github.com/NVIDIA/auto-ontology">NVIDIA&#x2F;auto-ontology</a></h2><p>语言：Python · 总星标：9,035 · 2,015 stars today</p>
+<p>Auto Ontology 是 Python 框架，用于在数据之上构建语义化、基于图的推理层，适合开发大模型与智能体工作流的团队。值得关注的是确定性查询生成、上下文检索及可解释性方向；今日新增2015星，但缺少实际效果评测。</p>
+<h2 id="3-rails-rails"><a href="#3-rails-rails" class="headerlink" title="3. rails&#x2F;rails"></a>3. <a href="https://github.com/rails/rails">rails&#x2F;rails</a></h2><p>语言：Ruby · 总星标：59,026 · 142 stars today</p>
+<p>该项目对应 Ruby on Rails，榜单标注语言为 Ruby，适合关注 Rails 的开发者作为进一步了解的入口。项目累计59026星，今日新增142星，显示持续关注。简介仅列出名称，未说明具体用途、功能范围或版本变化，无法据此判断选型适配性。</p>
+<h2 id="4-mpv-player-mpv"><a href="#4-mpv-player-mpv" class="headerlink" title="4. mpv-player&#x2F;mpv"></a>4. <a href="https://github.com/mpv-player/mpv">mpv-player&#x2F;mpv</a></h2><p>语言：C · 总星标：37,876 · 37 stars today</p>
+<p>mpv 定位为命令行媒体播放器，使用 C，适合偏好通过命令行播放媒体的用户，以及关注播放器实现的开发者。值得关注的是明确的命令行使用方向，累计37876星、今日新增37星；支持格式、平台范围及播放表现未在数据中说明。</p>
+<h2 id="5-rust-lang-rust"><a href="#5-rust-lang-rust" class="headerlink" title="5. rust-lang&#x2F;rust"></a>5. <a href="https://github.com/rust-lang/rust">rust-lang&#x2F;rust</a></h2><p>语言：Rust · 总星标：121,450 · 192 stars today</p>
+<p>该项目强调帮助人们构建可靠、高效的软件，榜单语言标注为 Rust，适合关注这一开发目标及 Rust 项目的程序员。累计121450星，今日新增192星，关注规模较大；但简介未展开具体机制，不能据此认定实际性能或可靠性表现。</p>
+<h2 id="6-react-react"><a href="#6-react-react" class="headerlink" title="6. react&#x2F;react"></a>6. <a href="https://github.com/react/react">react&#x2F;react</a></h2><p>语言：JavaScript · 总星标：252,257 · 248 stars today</p>
+<p>React 是用于构建网页和原生用户界面的库，榜单语言为 JavaScript，适合从事界面开发的程序员。值得关注的是其用途同时覆盖网页与原生界面，累计252257星、今日新增248星；具体平台支持与工程接入方式未在数据中给出。</p>
+<h2 id="7-angular-angular"><a href="#7-angular-angular" class="headerlink" title="7. angular&#x2F;angular"></a>7. <a href="https://github.com/angular/angular">angular&#x2F;angular</a></h2><p>语言：TypeScript · 总星标：101,361 · 135 stars today</p>
+<p>Angular 的简介聚焦网页应用交付，榜单标注语言为 TypeScript，适合关注网页应用开发的团队进一步了解。项目累计101361星，今日新增135星，显示较广泛的关注；现有描述偏概括，未提供功能细节、架构特点或交付效果证据。</p>
+<h2 id="8-symfony-symfony"><a href="#8-symfony-symfony" class="headerlink" title="8. symfony&#x2F;symfony"></a>8. <a href="https://github.com/symfony/symfony">symfony&#x2F;symfony</a></h2><p>语言：PHP · 总星标：31,430 · 128 stars today</p>
+<p>Symfony 明确定位为 PHP 框架，适合使用 PHP、正在评估框架选项的开发者。榜单显示累计31430星，今日新增128星，可作为观察社区关注度的线索。简介未展开具体应用场景、组件能力或版本信息，尚不足以判断它与现有项目的适配程度。</p>
+<h2 id="9-prometheus-prometheus"><a href="#9-prometheus-prometheus" class="headerlink" title="9. prometheus&#x2F;prometheus"></a>9. <a href="https://github.com/prometheus/prometheus">prometheus&#x2F;prometheus</a></h2><p>语言：Go · 总星标：67,183 · 148 stars today</p>
+<p>Prometheus 同时定位为监控系统和时间序列数据库，使用 Go，适合有监控与时序数据管理需求的开发、运维人员。两类能力的结合值得关注，今日新增148星；榜单未说明数据采集方式、存储规模或部署条件，选型仍需补充资料。</p>
+<h2 id="10-google-skills"><a href="#10-google-skills" class="headerlink" title="10. google&#x2F;skills"></a>10. <a href="https://github.com/google/skills">google&#x2F;skills</a></h2><p>语言：Python · 总星标：22,838 · 534 stars today</p>
+<p>该项目提供面向 Google 产品与技术的智能体技能，榜单语言为 Python，适合围绕相关产品构建智能体工作流的开发者。今日新增534星，体现较活跃的关注；具体覆盖哪些产品、技能如何调用以及使用边界，现有数据均未说明。</p>
+<h2 id="11-microsoft-vscode"><a href="#11-microsoft-vscode" class="headerlink" title="11. microsoft&#x2F;vscode"></a>11. <a href="https://github.com/microsoft/vscode">microsoft&#x2F;vscode</a></h2><p>语言：TypeScript · 总星标：195,024 · 301 stars today</p>
+<p>该仓库对应 Visual Studio Code，榜单标注语言为 TypeScript，适合关注该项目及其代码的开发者进一步查看。累计195024星，今日新增301星，是关注规模较大的项目。简介仅有产品名称，未交代用途细节、功能变化或扩展能力，无法据此评价体验。</p>
+<h2 id="12-nushell-nushell"><a href="#12-nushell-nushell" class="headerlink" title="12. nushell&#x2F;nushell"></a>12. <a href="https://github.com/nushell/nushell">nushell&#x2F;nushell</a></h2><p>语言：Rust · 总星标：40,983 · 131 stars today</p>
+<p>Nushell 将自身描述为一种新型 shell，使用 Rust，适合关注命令行环境、希望探索不同 shell 方案的用户与开发者。累计40983星，今日新增131星，值得持续观察；但“新型”的具体体现未被说明，不能据此推断语法特点或兼容能力。</p>
+<h2 id="13-etcd-io-etcd"><a href="#13-etcd-io-etcd" class="headerlink" title="13. etcd-io&#x2F;etcd"></a>13. <a href="https://github.com/etcd-io/etcd">etcd-io&#x2F;etcd</a></h2><p>语言：Go · 总星标：52,614 · 128 stars today</p>
+<p>etcd 定位为分布式可靠键值存储，用于保存分布式系统中最关键的数据，使用 Go，适合评估关键数据存储方案的工程团队。值得关注的是其明确的关键数据定位，今日新增128星；一致性机制、容错边界及性能指标未在榜单中提供。</p>
+<h2 id="14-openssl-openssl"><a href="#14-openssl-openssl" class="headerlink" title="14. openssl&#x2F;openssl"></a>14. <a href="https://github.com/openssl/openssl">openssl&#x2F;openssl</a></h2><p>语言：C · 总星标：31,292 · 26 stars today</p>
+<p>OpenSSL 是通用 TLS 与密码学库，使用 C，适合有相关协议及密码学功能集成需求的开发者。它的关注点在于基础库用途，累计31292星，今日新增26星。数据未列出算法范围、协议版本或安全审计情况，不能仅凭热度判断具体版本的安全性。</p>
+<h2 id="15-mattpocock-skills"><a href="#15-mattpocock-skills" class="headerlink" title="15. mattpocock&#x2F;skills"></a>15. <a href="https://github.com/mattpocock/skills">mattpocock&#x2F;skills</a></h2><p>语言：Shell · 总星标：316,720 · 2,070 stars today</p>
+<p>该项目收集面向工程师的技能，简介称内容直接来自作者的 .agents 目录，榜单语言为 Shell，适合关注工程实践与智能体技能组织的开发者。今日新增2070星，关注度突出；技能清单、适用工具与实际效果均未说明，仍需查看内容判断价值。</p>
+<p>来源：<a href="https://github.com/trending?since=daily">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+      </tags>
+  </entry>
 </search>
