@@ -94261,4 +94261,88 @@ dfs(root.Right, res)
         <tag>Trending</tag>
       </tags>
   </entry>
+  <entry>
+    <title>GitHub Trending 日报 | 2026-11-08</title>
+    <url>/2026-11-08-e6dbd6e10a94.html</url>
+    <content><![CDATA[<p>今日 GitHub 日榜精选。星标数字为抓取时快照；中文解读由 Codex 根据项目公开简介生成，不代表实际测试结果。</p>
+<span id="more"></span>
+
+<h2 id="1-vercel-labs-agent-browser"><a href="#1-vercel-labs-agent-browser" class="headerlink" title="1. vercel-labs&#x2F;agent-browser"></a>1. <a href="https://github.com/vercel-labs/agent-browser">vercel-labs&#x2F;agent-browser</a></h2><p>语言：Rust · 总星标：46,830 · 190 stars today</p>
+<p>面向AI智能体的浏览器自动化命令行工具，使用Rust编写，适合开发智能体工具链、探索网页操作自动化的工程师。值得关注的是它将浏览器操作作为智能体可调用的入口；榜单未说明支持哪些浏览器、具体操作范围及运行条件。</p>
+<h2 id="2-cloudflare-security-audit-skill"><a href="#2-cloudflare-security-audit-skill" class="headerlink" title="2. cloudflare&#x2F;security-audit-skill"></a>2. <a href="https://github.com/cloudflare/security-audit-skill">cloudflare&#x2F;security-audit-skill</a></h2><p>语言：JavaScript · 总星标：65,741 · 2,085 stars today</p>
+<p>为编程智能体提供多阶段安全审计技能，适合希望将安全检查纳入智能体开发流程的工程团队。亮点是强调发现结果经过独立验证，并以机器可读形式输出，便于后续处理；但审计覆盖范围、验证方式及误报情况，现有数据均未说明。</p>
+<h2 id="3-google-skills"><a href="#3-google-skills" class="headerlink" title="3. google&#x2F;skills"></a>3. <a href="https://github.com/google/skills">google&#x2F;skills</a></h2><p>语言：Python · 总星标：23,405 · 443 stars today</p>
+<p>围绕Google产品与技术提供智能体技能，适合正在探索相关生态与智能体结合的开发者。值得关注的是技能以产品和技术生态为组织方向，可作为寻找相关能力的入口；描述未列出具体技能、支持的产品或使用方式，暂不能判断覆盖程度。</p>
+<h2 id="4-mattpocock-skills"><a href="#4-mattpocock-skills" class="headerlink" title="4. mattpocock&#x2F;skills"></a>4. <a href="https://github.com/mattpocock/skills">mattpocock&#x2F;skills</a></h2><p>语言：Shell · 总星标：317,716 · 1,100 stars today</p>
+<p>这是面向工程实践的技能集合，作者称内容直接来自自己的.agents目录，适合关注个人智能体工作流的开发者参考。值得关注的是它以个人实践配置为来源；但榜单没有列出技能清单或示例，无法判断具体解决哪些工程问题及复用成本。</p>
+<h2 id="5-anthropics-skills"><a href="#5-anthropics-skills" class="headerlink" title="5. anthropics&#x2F;skills"></a>5. <a href="https://github.com/anthropics/skills">anthropics&#x2F;skills</a></h2><p>语言：Python · 总星标：188,790 · 390 stars today</p>
+<p>这是一个公开的智能体技能仓库，适合希望了解技能组织方式、寻找技能参考的开发者。榜单显示其累计关注度较高，可作为观察这一方向的入口；但简介仅交代仓库性质，未说明技能内容、兼容工具或使用流程，实际适用性仍需更多信息判断。</p>
+<h2 id="6-meta-astryx"><a href="#6-meta-astryx" class="headerlink" title="6. meta&#x2F;astryx"></a>6. <a href="https://github.com/meta/astryx">meta&#x2F;astryx</a></h2><p>语言：TypeScript · 总星标：14,531 · 96 stars today</p>
+<p>定位为可全面定制、面向智能体使用的开源设计系统，使用TypeScript，适合关注界面规范和智能体辅助设计的前端团队。值得关注的是定制能力与智能体适配的结合；不过具体组件、适配方式和定制边界，榜单数据并未提供。</p>
+<h2 id="7-prometheus-prometheus"><a href="#7-prometheus-prometheus" class="headerlink" title="7. prometheus&#x2F;prometheus"></a>7. <a href="https://github.com/prometheus/prometheus">prometheus&#x2F;prometheus</a></h2><p>语言：Go · 总星标：67,449 · 322 stars today</p>
+<p>这是监控系统与时间序列数据库，使用Go编写，适合有监控数据管理需求的开发和运维团队关注。值得关注的是项目同时涵盖监控与时序数据存储两个方向；当前数据未提供采集机制、查询能力、容量表现或部署条件，不能据此判断具体场景适配。</p>
+<h2 id="8-sherlock-project-sherlock"><a href="#8-sherlock-project-sherlock" class="headerlink" title="8. sherlock-project&#x2F;sherlock"></a>8. <a href="https://github.com/sherlock-project/sherlock">sherlock-project&#x2F;sherlock</a></h2><p>语言：Python · 总星标：100,474 · 1,766 stars today</p>
+<p>通过用户名跨社交网络查找账号，使用Python，适合需要核查自身账号分布或进行授权公开信息调查的人群。值得关注的是围绕同一用户名开展跨平台检索；但榜单未说明覆盖平台和匹配准确率，检索到同名账号也不能直接认定属于同一人。</p>
+<h2 id="9-milind-soni-OpenMausBot"><a href="#9-milind-soni-OpenMausBot" class="headerlink" title="9. milind-soni&#x2F;OpenMausBot"></a>9. <a href="https://github.com/milind-soni/OpenMausBot">milind-soni&#x2F;OpenMausBot</a></h2><p>语言：TypeScript · 总星标：16,989 · 1,955 stars today</p>
+<p>定位为开源Grok Bot替代项目，并提供机器人可使用的虚拟机，适合研究机器人执行环境与交互能力的开发者。值得关注的是机器人与虚拟机的结合，今日新增关注也较突出；但简介未说明替代功能范围、虚拟机权限及运行条件。</p>
+<h2 id="10-astral-sh-ruff"><a href="#10-astral-sh-ruff" class="headerlink" title="10. astral-sh&#x2F;ruff"></a>10. <a href="https://github.com/astral-sh/ruff">astral-sh&#x2F;ruff</a></h2><p>语言：Rust · 总星标：50,979 · 350 stars today</p>
+<p>用Rust编写的Python代码检查与格式化工具，适合希望统一代码风格并引入静态检查的Python开发者和团队。值得关注的是两类代码质量功能集中在同一项目中；简介强调速度，但榜单没有基准测试，无法据此量化性能或比较其他工具。</p>
+<h2 id="11-tailwindlabs-tailwindcss"><a href="#11-tailwindlabs-tailwindcss" class="headerlink" title="11. tailwindlabs&#x2F;tailwindcss"></a>11. <a href="https://github.com/tailwindlabs/tailwindcss">tailwindlabs&#x2F;tailwindcss</a></h2><p>语言：TypeScript · 总星标：98,474 · 122 stars today</p>
+<p>采用工具类优先方式的CSS框架，定位于快速构建用户界面，适合关注样式开发方式的前端工程师和界面开发团队。值得关注的是以工具类组织样式的思路；榜单未提供版本、兼容范围或具体配置要求，不能据此推断项目迁移成本。</p>
+<h2 id="12-mbillow-localthings"><a href="#12-mbillow-localthings" class="headerlink" title="12. mbillow&#x2F;localthings"></a>12. <a href="https://github.com/mbillow/localthings">mbillow&#x2F;localthings</a></h2><p>语言：Python · 总星标：1,062 · 186 stars today</p>
+<p>让用户通过家庭网络，在Home Assistant中控制三星家电，并明确无需云账号，适合已使用该平台且希望本地控制家电的人群。值得关注的是家庭网络内的控制路径；但支持哪些家电型号、有哪些控制功能及配置要求，现有数据不足以确认。</p>
+<h2 id="13-zed-industries-zed"><a href="#13-zed-industries-zed" class="headerlink" title="13. zed-industries&#x2F;zed"></a>13. <a href="https://github.com/zed-industries/zed">zed-industries&#x2F;zed</a></h2><p>语言：Rust · 总星标：94,283 · 1,114 stars today</p>
+<p>使用Rust编写的代码编辑器，由Atom和Tree-sitter的创作者打造，适合关注协作编辑体验的开发者。值得关注的是其多人协作定位与团队背景；简介强调高性能，但榜单没有测试结果，也未列出平台支持或扩展能力，不能据此判断实际体验。</p>
+<h2 id="14-ranxianglei-billion-context"><a href="#14-ranxianglei-billion-context" class="headerlink" title="14. ranxianglei&#x2F;billion-context"></a>14. <a href="https://github.com/ranxianglei/billion-context">ranxianglei&#x2F;billion-context</a></h2><p>语言：TypeScript · 总星标：4,615 · 191 stars today</p>
+<p>面向长会话的上下文压缩插件，适合研究智能体长期任务和上下文管理的开发者。简介声称可支持月级会话、十万上下文窗口并减少五倍令牌用量，这些是项目自述；榜单未提供验证数据，压缩后的信息保真度、适用条件和兼容工具仍不明确。</p>
+<h2 id="15-dsx-ai-factory-nvke"><a href="#15-dsx-ai-factory-nvke" class="headerlink" title="15. dsx-ai-factory&#x2F;nvke"></a>15. <a href="https://github.com/dsx-ai-factory/nvke">dsx-ai-factory&#x2F;nvke</a></h2><p>语言：Go · 总星标：560 · 123 stars today</p>
+<p>定位于裸金属环境中GPU Kubernetes的管理平面，使用Go编写，适合管理GPU集群的基础设施工程师关注。值得关注的是它聚焦GPU与裸金属集群管理这一具体场景；但榜单未说明支持的硬件、管理功能及安装条件，尚不足以判断落地适配性。</p>
+<p>来源：<a href="https://github.com/trending?since=daily">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GitHub Trending 日报 | 2026-11-09</title>
+    <url>/2026-11-09-a2d932ecc08e.html</url>
+    <content><![CDATA[<p>今日 GitHub 日榜精选。星标数字为抓取时快照；中文解读由 Codex 根据项目公开简介生成，不代表实际测试结果。</p>
+<span id="more"></span>
+
+<h2 id="1-sherlock-project-sherlock"><a href="#1-sherlock-project-sherlock" class="headerlink" title="1. sherlock-project&#x2F;sherlock"></a>1. <a href="https://github.com/sherlock-project/sherlock">sherlock-project&#x2F;sherlock</a></h2><p>语言：Python · 总星标：103,533 · 2,373 stars today</p>
+<p>这是一个用用户名跨社交网络查找账号的 Python 项目，适合有公开账号检索需求的研究者与调查人员。今日新增2373星，体现出较高关注度。榜单未说明覆盖平台及匹配准确率，检索结果是否属于同一人仍需核实。</p>
+<h2 id="2-dsx-ai-factory-nvke"><a href="#2-dsx-ai-factory-nvke" class="headerlink" title="2. dsx-ai-factory&#x2F;nvke"></a>2. <a href="https://github.com/dsx-ai-factory/nvke">dsx-ai-factory&#x2F;nvke</a></h2><p>语言：Go · 总星标：853 · 345 stars today</p>
+<p>NVKE 是面向裸金属环境中 GPU Kubernetes 的管理平面，使用 Go 编写，适合关注 GPU 集群管理的平台工程师。总计853星、今日新增345星，近期关注明显增长；具体管理功能、硬件兼容范围与部署条件尚不明确。</p>
+<h2 id="3-milind-soni-OpenMausBot"><a href="#3-milind-soni-OpenMausBot" class="headerlink" title="3. milind-soni&#x2F;OpenMausBot"></a>3. <a href="https://github.com/milind-soni/OpenMausBot">milind-soni&#x2F;OpenMausBot</a></h2><p>语言：TypeScript · 总星标：18,263 · 1,439 stars today</p>
+<p>项目定位为开源 Grok Bot 替代方案，并提供供机器人使用的虚拟机，适合研究机器人执行环境的开发者。值得关注的是将机器人与虚拟机结合的设计方向。榜单未给出具体任务能力、隔离机制或兼容范围，不能据此判断替代程度。</p>
+<h2 id="4-anthropics-claude-quickstarts"><a href="#4-anthropics-claude-quickstarts" class="headerlink" title="4. anthropics&#x2F;claude-quickstarts"></a>4. <a href="https://github.com/anthropics/claude-quickstarts">anthropics&#x2F;claude-quickstarts</a></h2><p>语言：Python · 总星标：19,422 · 32 stars today</p>
+<p>这是一组帮助开发者使用 Claude API 构建可部署应用的入门项目，榜单标注语言为 Python。适合希望通过项目示例理解应用开发流程的人群，关注点是从接口调用走向应用实现；具体示例、运行条件及生产适用性尚不明确。</p>
+<h2 id="5-vercel-labs-agent-browser"><a href="#5-vercel-labs-agent-browser" class="headerlink" title="5. vercel-labs&#x2F;agent-browser"></a>5. <a href="https://github.com/vercel-labs/agent-browser">vercel-labs&#x2F;agent-browser</a></h2><p>语言：Rust · 总星标：47,608 · 815 stars today</p>
+<p>这是面向 AI 智能体的浏览器自动化命令行工具，使用 Rust 编写，适合需要让智能体操作浏览器的开发者。值得关注的是以命令行提供自动化入口的定位；榜单未说明支持的浏览器、操作范围及稳定性，语言本身也不能证明性能优势。</p>
+<h2 id="6-meta-astryx"><a href="#6-meta-astryx" class="headerlink" title="6. meta&#x2F;astryx"></a>6. <a href="https://github.com/meta/astryx">meta&#x2F;astryx</a></h2><p>语言：TypeScript · 总星标：16,800 · 875 stars today</p>
+<p>Astryx 是一个强调可定制性及面向智能体使用的开源设计系统，使用 TypeScript 编写，适合前端开发者与设计系统团队关注。其看点是设计系统与智能体工作方式的结合；榜单未解释智能体适配的具体含义，也未列出组件与集成范围。</p>
+<h2 id="7-anthropics-skills"><a href="#7-anthropics-skills" class="headerlink" title="7. anthropics&#x2F;skills"></a>7. <a href="https://github.com/anthropics/skills">anthropics&#x2F;skills</a></h2><p>语言：Python · 总星标：189,656 · 792 stars today</p>
+<p>这是 Agent Skills 的公共仓库，榜单标注语言为 Python，适合希望了解相关技能组织方式的智能体开发者关注。累计接近19万星，显示出广泛关注；但简介信息有限，无法确认具体技能内容、使用方法及适配范围，星数也不代表实际效果。</p>
+<h2 id="8-google-deepmind-mujoco"><a href="#8-google-deepmind-mujoco" class="headerlink" title="8. google-deepmind&#x2F;mujoco"></a>8. <a href="https://github.com/google-deepmind/mujoco">google-deepmind&#x2F;mujoco</a></h2><p>语言：C++ · 总星标：16,420 · 41 stars today</p>
+<p>MuJoCo 是通用物理模拟器，名称指向包含接触的多关节动力学，使用 C++ 编写，适合关注相关仿真的研究者和工程师。值得关注的是其明确的物理模拟定位；榜单未提供精度、速度或支持场景的细节，无法据此判断具体任务中的表现。</p>
+<h2 id="9-ranxianglei-billion-context"><a href="#9-ranxianglei-billion-context" class="headerlink" title="9. ranxianglei&#x2F;billion-context"></a>9. <a href="https://github.com/ranxianglei/billion-context">ranxianglei&#x2F;billion-context</a></h2><p>语言：TypeScript · 总星标：5,157 · 460 stars today</p>
+<p>这是面向长会话的上下文压缩插件，使用 TypeScript 编写，适合关注上下文窗口与令牌消耗的开发者。简介宣称支持月级会话、十亿级令牌并节省约五倍令牌，但榜单没有测试条件或验证结果；这些应视为项目自述，压缩后的信息保留情况仍待确认。</p>
+<p>来源：<a href="https://github.com/trending?since=daily">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+      </tags>
+  </entry>
 </search>
