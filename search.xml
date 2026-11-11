@@ -94385,4 +94385,46 @@ dfs(root.Right, res)
         <tag>Trending</tag>
       </tags>
   </entry>
+  <entry>
+    <title>GitHub Trending 日报 | 2026-11-11</title>
+    <url>/2026-11-11-371b4c12a997.html</url>
+    <content><![CDATA[<p>今日 GitHub 日榜精选。星标数字为抓取时快照；中文解读由 Codex 根据项目公开简介生成，不代表实际测试结果。</p>
+<span id="more"></span>
+
+<h2 id="1-meta-astryx"><a href="#1-meta-astryx" class="headerlink" title="1. meta&#x2F;astryx"></a>1. <a href="https://github.com/meta/astryx">meta&#x2F;astryx</a></h2><p>语言：TypeScript · 总星标：22,845 · 3,108 stars today</p>
+<p>这是一个强调充分定制与智能体适配的开源设计系统，适合希望统一界面规范的前端开发者和设计团队关注。项目以 TypeScript 为主，今日新增3108星，热度突出；但榜单未提供组件范围、适配方式及成熟度，选型仍需进一步核实。</p>
+<h2 id="2-anthropics-skills"><a href="#2-anthropics-skills" class="headerlink" title="2. anthropics&#x2F;skills"></a>2. <a href="https://github.com/anthropics/skills">anthropics&#x2F;skills</a></h2><p>语言：Python · 总星标：192,336 · 1,679 stars today</p>
+<p>这是面向 Agent Skills 的公开仓库，适合研究智能体技能组织方式、希望扩展智能体能力的开发者关注。主语言为 Python，累计超过19万星，显示较高关注度；现有信息没有说明具体技能目录、兼容范围或使用条件，不能据此判断实际覆盖能力。</p>
+<h2 id="3-addyosmani-agent-skills"><a href="#3-addyosmani-agent-skills" class="headerlink" title="3. addyosmani&#x2F;agent-skills"></a>3. <a href="https://github.com/addyosmani/agent-skills">addyosmani&#x2F;agent-skills</a></h2><p>语言：JavaScript · 总星标：115,172 · 465 stars today</p>
+<p>项目提供面向AI编程智能体的工程技能，适合希望将工程实践融入辅助编码流程的开发者和团队参考。简介强调生产级定位，主语言为 JavaScript；值得关注其工程导向，但榜单没有给出技能细节或验证依据，生产适用性仍需自行评估。</p>
+<h2 id="4-anthropics-claude-quickstarts"><a href="#4-anthropics-claude-quickstarts" class="headerlink" title="4. anthropics&#x2F;claude-quickstarts"></a>4. <a href="https://github.com/anthropics/claude-quickstarts">anthropics&#x2F;claude-quickstarts</a></h2><p>语言：Python · 总星标：20,496 · 531 stars today</p>
+<p>这是一组帮助开发者使用 Claude API 构建可部署应用的入门项目，适合准备尝试相关应用开发的人群。主语言为 Python，关注点在于从接口使用走向应用构建；榜单未列出具体示例、运行环境与部署步骤，不能将其理解为开箱即用的部署承诺。</p>
+<h2 id="5-google-deepmind-mujoco"><a href="#5-google-deepmind-mujoco" class="headerlink" title="5. google-deepmind&#x2F;mujoco"></a>5. <a href="https://github.com/google-deepmind/mujoco">google-deepmind&#x2F;mujoco</a></h2><p>语言：C++ · 总星标：17,355 · 456 stars today</p>
+<p>这是涉及多关节动力学与接触问题的通用物理模拟器，适合关注物理仿真、机器人运动研究的开发者与研究人员了解。主语言为 C++，值得关注其明确的模拟方向；榜单未提供精度、速度、硬件支持或接口信息，无法据此比较具体仿真能力。</p>
+<h2 id="6-we-promise-sure"><a href="#6-we-promise-sure" class="headerlink" title="6. we-promise&#x2F;sure"></a>6. <a href="https://github.com/we-promise/sure">we-promise&#x2F;sure</a></h2><p>语言：Ruby · 总星标：11,958 · 159 stars today</p>
+<p>这是定位面向大众的个人财务应用，适合关注个人财务管理工具的用户，以及希望研究此类应用的开发者。主语言为 Ruby，简介强调人人参与的取向；但现有数据未说明记账、预算或账户接入等具体功能，实际适用场景仍需查看项目资料确认。</p>
+<h2 id="7-homeassistant-ai-ha-mcp"><a href="#7-homeassistant-ai-ha-mcp" class="headerlink" title="7. homeassistant-ai&#x2F;ha-mcp"></a>7. <a href="https://github.com/homeassistant-ai/ha-mcp">homeassistant-ai&#x2F;ha-mcp</a></h2><p>语言：Python · 总星标：6,664 · 790 stars today</p>
+<p>项目用于借助 Claude、ChatGPT 等AI助手配置和自动化 Home Assistant，适合已有智能家居需求、希望引入助手交互的用户与开发者。主语言为 Python，今日新增790星；值得关注助手与家居系统的结合，具体支持操作及权限机制尚不明确。</p>
+<h2 id="8-vercel-labs-agent-browser"><a href="#8-vercel-labs-agent-browser" class="headerlink" title="8. vercel-labs&#x2F;agent-browser"></a>8. <a href="https://github.com/vercel-labs/agent-browser">vercel-labs&#x2F;agent-browser</a></h2><p>语言：Rust · 总星标：49,218 · 780 stars today</p>
+<p>这是面向AI智能体的浏览器自动化命令行工具，适合需要让智能体执行浏览器操作的开发者关注。主语言为 Rust，今日新增780星，体现一定热度；其命令行定位值得留意，但榜单未说明支持的浏览器、操作范围及稳定性，不能推断实际执行效果。</p>
+<h2 id="9-sherlock-project-sherlock"><a href="#9-sherlock-project-sherlock" class="headerlink" title="9. sherlock-project&#x2F;sherlock"></a>9. <a href="https://github.com/sherlock-project/sherlock">sherlock-project&#x2F;sherlock</a></h2><p>语言：Python · 总星标：108,982 · 2,393 stars today</p>
+<p>项目按用户名跨社交网络查找账号，适合需要核查自身账号分布或开展授权公开信息检索的用户。主语言为 Python，今日新增2393星，关注度较高；值得注意的是，同名账号并不必然属于同一人，榜单也未说明平台覆盖范围与结果准确率。</p>
+<h2 id="10-tokio-rs-topcoat"><a href="#10-tokio-rs-topcoat" class="headerlink" title="10. tokio-rs&#x2F;topcoat"></a>10. <a href="https://github.com/tokio-rs/topcoat">tokio-rs&#x2F;topcoat</a></h2><p>语言：Rust · 总星标：6,814 · 192 stars today</p>
+<p>这是一个强调功能配套完整的网页应用开发框架，适合希望使用 Rust 构建网页应用的开发者关注。其看点是尝试减少开发时自行拼装基础能力的工作；不过简介未列出内置模块、架构或生态兼容情况，尚不能判断它能覆盖哪些具体应用需求。</p>
+<h2 id="11-ranxianglei-billion-context"><a href="#11-ranxianglei-billion-context" class="headerlink" title="11. ranxianglei&#x2F;billion-context"></a>11. <a href="https://github.com/ranxianglei/billion-context">ranxianglei&#x2F;billion-context</a></h2><p>语言：TypeScript · 总星标：6,314 · 375 stars today</p>
+<p>这是面向长会话的上下文压缩插件，适合关注智能体会话延续与令牌消耗的开发者研究。项目声称可支持月级会话、千亿级令牌，并以较小窗口减少用量；这些属于简介宣称，榜单未提供测试方法、压缩信息损失或兼容范围，效果仍待验证。</p>
+<h2 id="12-mattpocock-skills"><a href="#12-mattpocock-skills" class="headerlink" title="12. mattpocock&#x2F;skills"></a>12. <a href="https://github.com/mattpocock/skills">mattpocock&#x2F;skills</a></h2><p>语言：Shell · 总星标：320,923 · 1,225 stars today</p>
+<p>这是作者从自身 .agents 目录整理出的工程师技能集合，适合希望参考个人工程实践、组织智能体技能的开发者。主语言为 Shell，累计超过32万星，关注度突出；看点在于实践来源，但榜单未展示具体内容、适配工具或质量验证，不能以星数替代评估。</p>
+<p>来源：<a href="https://github.com/trending?since=daily">GitHub Trending</a></p>
+]]></content>
+      <categories>
+        <category>综合</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+        <tag>开源</tag>
+        <tag>Trending</tag>
+      </tags>
+  </entry>
 </search>
